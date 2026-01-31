@@ -1,0 +1,32 @@
+--- a/client/src/pages/Performance.tsx
++++ b/client/src/pages/Performance.tsx
+@@ -end of file - add before closing Layout tag
++      {/* Presentation Mode */}
++      <PresentationMode 
++        pageName="Unit Economics"
++        slides={[
++          {
++            id: "overview",
++            title: "Single-Center Economics",
++            content: (
++              <div className="space-y-6">
++                <h2 className="font-display text-4xl font-medium text-center mb-8">Single-Center Unit Economics</h2>
++                <p className="text-muted-foreground text-center max-w-2xl mx-auto">Year 5 mature center performance</p>
++                <div className="grid md:grid-cols-4 gap-6 mt-8">
++                  {[
++                    { value: "$57.5M", label: "Annual Revenue" },
++                    { value: "$19.8M", label: "EBITDA" },
++                    { value: "1,365", label: "Members" },
++                    { value: "66%", label: "Gross Margin" }
++                  ].map((item, i) => (
++                    <div key={i} className="bg-card border border-border rounded-2xl p-6 text-center">
++                      <span className="font-mono text-4xl font-bold text-gradient">{item.value}</span>
++                      <p className="font-display font-medium mt-2">{item.label}</p>
++                    </div>
++                  ))}
++                </div>
++              </div>
++            )
++          }
++        ]}
++      />
