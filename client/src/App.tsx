@@ -6,6 +6,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
+import About from "./pages/About";
 import Opportunity from "./pages/Opportunity";
 import Technology from "./pages/Technology";
 import Therapeutics from "./pages/Therapeutics";
@@ -23,6 +24,7 @@ function Routes() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/about" component={About} />
       <Route path="/opportunity" component={Opportunity} />
       <Route path="/memberships" component={Memberships} />
       <Route path="/therapeutics" component={Therapeutics} />
