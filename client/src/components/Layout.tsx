@@ -1,6 +1,6 @@
 /*
  * DESIGN: Well Estate Group - Premium Longevity Consultancy
- * Shared layout with navigation for all pages
+ * Shared layout with navigation for all pages - Light Theme
  */
 
 import { useState } from "react";
@@ -36,11 +36,11 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-xl border-b border-border/30">
         <div className="container mx-auto flex items-center justify-between h-20">
           <Link href="/" className="flex items-center gap-3" onClick={closeMobileMenu}>
             <img 
-              src="/well-estate-group/images/logos/logo-icon-gold-dark.png" 
+              src="/well-estate-group/images/logos/logo-icon-dark-outline.png" 
               alt="Well Estate Group" 
               className="w-10 h-10"
             />
@@ -58,7 +58,7 @@ export default function Layout({ children }: LayoutProps) {
                 className={`px-2.5 py-1.5 rounded-md border transition-all ${
                   location === link.href
                     ? "text-primary font-medium border-primary/50 bg-primary/10"
-                    : "text-muted-foreground border-border/50 hover:text-foreground hover:border-border hover:bg-muted/30"
+                    : "text-muted-foreground border-transparent hover:text-foreground hover:border-border hover:bg-muted/50"
                 }`}
               >
                 {link.label}
@@ -68,7 +68,7 @@ export default function Layout({ children }: LayoutProps) {
           
           <div className="flex items-center gap-4">
             <Link href="/contact" className="hidden sm:block">
-              <Button className="bg-accent hover:bg-accent/90 text-accent-foreground font-body font-medium">
+              <Button className="bg-primary hover:bg-primary/90 text-white font-body font-medium shadow-md">
                 Data Room
               </Button>
             </Link>
@@ -95,7 +95,7 @@ export default function Layout({ children }: LayoutProps) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden"
+              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 lg:hidden"
               onClick={closeMobileMenu}
             />
             
@@ -105,7 +105,7 @@ export default function Layout({ children }: LayoutProps) {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-background border-l border-border z-50 lg:hidden"
+              className="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-background border-l border-border z-50 lg:hidden shadow-xl"
             >
               <div className="flex flex-col h-full">
                 {/* Mobile Menu Header */}
@@ -149,7 +149,7 @@ export default function Layout({ children }: LayoutProps) {
                 {/* Mobile Menu Footer */}
                 <div className="p-6 border-t border-border">
                   <Link href="/contact" onClick={closeMobileMenu}>
-                    <Button className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-body font-medium">
+                    <Button className="w-full bg-primary hover:bg-primary/90 text-white font-body font-medium shadow-md">
                       Data Room
                     </Button>
                   </Link>
@@ -166,12 +166,12 @@ export default function Layout({ children }: LayoutProps) {
       </main>
 
       {/* Footer */}
-      <footer className="py-12 border-t border-border">
+      <footer className="py-12 border-t border-border bg-muted/30">
         <div className="container">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <Link href="/" className="flex items-center gap-3">
               <img 
-                src="/well-estate-group/images/logos/logo-icon-gold-dark.png" 
+                src="/well-estate-group/images/logos/logo-icon-dark-outline.png" 
                 alt="Well Estate Group" 
                 className="w-8 h-8"
               />

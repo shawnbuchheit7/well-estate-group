@@ -52,7 +52,7 @@ function App() {
   
   return (
     <ErrorBoundary>
-      <ThemeProvider defaultTheme="dark">
+      <ThemeProvider defaultTheme="light">
         <TooltipProvider>
           <Toaster />
           <Router base={base === "/" ? "" : base}>
