@@ -55,21 +55,21 @@
 
 :root {
   /* Well Estate Group Brand Colors - HIGH CONTRAST Light Theme */
-  /* Primary: Rich Gold #B8963E - deeper, more saturated */
-  --primary: oklch(0.68 0.14 80); /* Richer, deeper Gold */
+  /* Primary: Dark Gold for readability on light backgrounds */
+  --primary: oklch(0.52 0.14 75); /* Much darker gold - #8B6914 */
   --primary-foreground: oklch(1 0 0); /* Pure white text on gold */
-  --sidebar-primary: oklch(0.60 0.13 80);
+  --sidebar-primary: oklch(0.48 0.13 75);
   --sidebar-primary-foreground: oklch(1 0 0);
   
-  /* Accent: Rich Gold for buttons and highlights */
-  --accent: oklch(0.68 0.14 80); /* Richer Gold */
+  /* Accent: Dark Gold for buttons and highlights */
+  --accent: oklch(0.52 0.14 75); /* Much darker gold */
   --accent-foreground: oklch(1 0 0);
   
-  --chart-1: oklch(0.68 0.14 80);
-  --chart-2: oklch(0.60 0.13 80);
-  --chart-3: oklch(0.52 0.12 80);
-  --chart-4: oklch(0.44 0.10 80);
-  --chart-5: oklch(0.36 0.08 80);
+  --chart-1: oklch(0.52 0.14 75);
+  --chart-2: oklch(0.48 0.13 75);
+  --chart-3: oklch(0.44 0.12 75);
+  --chart-4: oklch(0.40 0.10 75);
+  --chart-5: oklch(0.36 0.08 75);
   
   --radius: 0.75rem;
   
@@ -95,14 +95,14 @@
   
   --border: oklch(0.78 0.005 0); /* Much more visible borders */
   --input: oklch(0.94 0.005 0);
-  --ring: oklch(0.68 0.14 80);
+  --ring: oklch(0.52 0.14 75);
   
   --sidebar: oklch(0.97 0.003 80);
   --sidebar-foreground: oklch(0.15 0.005 0);
   --sidebar-accent: oklch(0.94 0.005 0);
   --sidebar-accent-foreground: oklch(0.15 0.005 0);
   --sidebar-border: oklch(0.78 0.005 0);
-  --sidebar-ring: oklch(0.68 0.14 80);
+  --sidebar-ring: oklch(0.52 0.14 75);
 }
 
 .dark {
@@ -209,7 +209,7 @@
   }
   
   .gradient-gold {
-    background: linear-gradient(135deg, #8B6914 0%, #C9A962 50%, #8B6914 100%);
+    background: linear-gradient(135deg, #5A4210 0%, #8B6914 50%, #5A4210 100%);
   }
   
   .gradient-light {
@@ -217,7 +217,7 @@
   }
   
   .text-gradient {
-    background: linear-gradient(135deg, #B8963E 0%, #D4B85A 50%, #B8963E 100%);
+    background: linear-gradient(135deg, #7A5A12 0%, #8B6914 50%, #7A5A12 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
