@@ -46,8 +46,8 @@ const faqData: FAQCategory[] = [
         links: [{ text: "View Team Structure", href: "/hiring" }]
       },
       {
-        question: "What's the difference between CHECK and ELITE memberships?",
-        answer: "CHECK ($12,500) is our entry-level diagnostic membership focused on comprehensive testing and baseline establishment. ELITE ($29,500) includes everything in CHECK plus ongoing physician-led care, quarterly consultations, unlimited access to ancillary services, and personalized health optimization. ELITE represents 85% of our projected membership mix.",
+        question: "What's the difference between PRIME and ELITE memberships?",
+        answer: "PRIME ($12,500) is our entry-level diagnostic membership focused on comprehensive testing and baseline establishment. ELITE ($29,500) includes everything in PRIME plus ongoing physician-led care, quarterly consultations, unlimited access to ancillary services, and personalized health optimization. ELITE represents 85% of our projected membership mix.",
         links: [{ text: "View Membership Details", href: "/memberships" }]
       },
       {
@@ -64,8 +64,8 @@ const faqData: FAQCategory[] = [
         links: [{ text: "View Unit Economics", href: "/performance" }]
       },
       {
-        question: "Can members upgrade from CHECK to ELITE?",
-        answer: "Yes, CHECK members can upgrade to ELITE at any time by paying the difference in membership fees. We expect 20-30% of CHECK members to upgrade within the first year after experiencing our diagnostic capabilities. This creates a natural upsell pathway and demonstrates value before commitment to ongoing care."
+        question: "Can members upgrade from PRIME to ELITE?",
+        answer: "Yes, PRIME members can upgrade to ELITE at any time by paying the difference in membership fees. We expect 20-30% of PRIME members to upgrade within the first year after experiencing our diagnostic capabilities. This creates a natural upsell pathway and demonstrates value before commitment to ongoing care."
       },
       {
         question: "What's the member retention strategy?",
@@ -164,7 +164,7 @@ const faqData: FAQCategory[] = [
     items: [
       {
         question: "Why 14 staff for Center Operations vs 12 for ELITE teams?",
-        answer: "Center Operations (14 staff) handles all diagnostics, imaging, and ancillary services for ALL members—both CHECK and ELITE. This team is fixed per center regardless of membership. ELITE teams (12 staff at launch, 4 per team × 3 teams) focus exclusively on ongoing ELITE member care and scale with membership growth.",
+        answer: "Center Operations (14 staff) handles all diagnostics, imaging, and ancillary services for ALL members—both PRIME and ELITE. This team is fixed per center regardless of membership. ELITE teams (12 staff at launch, 4 per team × 3 teams) focus exclusively on ongoing ELITE member care and scale with membership growth.",
       },
       {
         question: "How do you recruit physicians for the ELITE model?",

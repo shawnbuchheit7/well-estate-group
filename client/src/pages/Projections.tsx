@@ -276,7 +276,7 @@ export default function Projections() {
               <div className="p-6 bg-muted/20 border-t border-border">
                 <p className="font-body text-sm text-muted-foreground">
                   <strong className="text-foreground">Assumptions:</strong> Based on single-center economics of $57.5M revenue and $19.8M EBITDA at Year 5 maturity (including 50% ancillary revenue at 60% margin). 
-                  500 new members/year accelerating via 40% referral rate, 85% ELITE ($29,500) / 15% CHECK ($12,500) mix, 70% ELITE renewal rate. Domestic centers only; international expansion upside not included.
+                  500 new members/year accelerating via 40% referral rate, 85% ELITE ($29,500) / 15% PRIME ($12,500) mix, 70% ELITE renewal rate. Domestic centers only; international expansion upside not included.
                 </p>
               </div>
             </motion.div>
@@ -973,7 +973,7 @@ export default function Projections() {
                     icon: Target,
                     color: "text-primary",
                     borderColor: "border-primary/50",
-                    assumptions: ["$29,500 ELITE / $12,500 CHECK", "1,365 members", "85% ELITE mix + 50% ancillary"],
+                    assumptions: ["$29,500 ELITE / $12,500 PRIME", "1,365 members", "85% ELITE mix + 50% ancillary"],
                     revenue: "$57.5M",
                     ebitda: "$19.8M",
                     margin: "34%",

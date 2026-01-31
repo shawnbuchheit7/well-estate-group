@@ -263,10 +263,10 @@ export default function Performance() {
                 <div className="p-6 space-y-4">
                   {[
                     { label: "ELITE Membership Price", value: "$29,500/year" },
-                    { label: "CHECK Membership Price", value: "$12,500/year" },
-                    { label: "Member Mix (ELITE/CHECK)", value: "85% / 15%" },
+                    { label: "PRIME Membership Price", value: "$12,500/year" },
+                    { label: "Member Mix (ELITE/PRIME)", value: "85% / 15%" },
                     { label: "ELITE Renewal Rate", value: "70%" },
-                    { label: "CHECK Renewal Rate", value: "10%" },
+                    { label: "PRIME Renewal Rate", value: "10%" },
                     { label: "Year 5 Target Members", value: "1,365" }
                   ].map((item, i) => (
                     <div key={i} className="flex justify-between items-center py-2 border-b border-border/50 last:border-0">
@@ -317,7 +317,7 @@ export default function Performance() {
                 <div className="p-6 space-y-4">
                   {[
                     { label: "ELITE Membership/Member", value: "$29,500" },
-                    { label: "CHECK Membership/Member", value: "$12,500" },
+                    { label: "PRIME Membership/Member", value: "$12,500" },
                     { label: "Ancillary Revenue", value: "50% of membership" },
                     { label: "Ancillary Margin", value: "60%" },
                     { label: "Blended Gross Margin", value: "66%" },
@@ -397,11 +397,11 @@ export default function Performance() {
                 </div>
                 <div className="p-6 space-y-4">
                   {[
-                    { label: "CHECK → ELITE Upgrade Rate", value: "25%" },
+                    { label: "PRIME → ELITE Upgrade Rate", value: "25%" },
                     { label: "ELITE Renewal Rate", value: "70%" },
-                    { label: "CHECK Renewal Rate", value: "10%" },
+                    { label: "PRIME Renewal Rate", value: "10%" },
                     { label: "Avg ELITE Tenure", value: "3.3 years" },
-                    { label: "Avg CHECK Tenure", value: "1.1 years" },
+                    { label: "Avg PRIME Tenure", value: "1.1 years" },
                     { label: "Blended Retention Rate", value: "61%" }
                   ].map((item, i) => (
                     <div key={i} className="flex justify-between items-center py-2 border-b border-border/50 last:border-0">
@@ -425,7 +425,7 @@ export default function Performance() {
                 <div className="p-6 space-y-4">
                   {[
                     { label: "ELITE LTV", value: "$97,350" },
-                    { label: "CHECK LTV", value: "$13,750" },
+                    { label: "PRIME LTV", value: "$13,750" },
                     { label: "Blended LTV", value: "$84,810" },
                     { label: "Blended LTV/CAC Ratio", value: "51:1" },
                     { label: "Payback Period (Blended)", value: "23 days" },
@@ -761,7 +761,7 @@ export default function Performance() {
             <motion.div variants={fadeInUp} className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
               {[
                 {
-                  tier: "CHECK",
+                  tier: "PRIME",
                   price: "$12,500",
                   mix: "15%",
                   renewal: "10%",
@@ -833,7 +833,7 @@ export default function Performance() {
                       <td className="p-4 text-right">1,265</td>
                     </tr>
                     <tr className="border-b border-border/50">
-                      <td className="p-4 font-medium">CHECK</td>
+                      <td className="p-4 font-medium">PRIME</td>
                       <td className="p-4 text-right">75</td>
                       <td className="p-4 text-right">71</td>
                       <td className="p-4 text-right">80</td>
@@ -1002,7 +1002,7 @@ export default function Performance() {
                       <td className="p-4 text-right text-primary font-medium">$37.3M</td>
                     </tr>
                     <tr className="border-b border-border/50">
-                      <td className="p-4 font-medium">CHECK Memberships</td>
+                      <td className="p-4 font-medium">PRIME Memberships</td>
                       <td className="p-4 text-right">$0.9M</td>
                       <td className="p-4 text-right">$0.9M</td>
                       <td className="p-4 text-right">$1.0M</td>
@@ -1041,7 +1041,7 @@ export default function Performance() {
             {/* Revenue Insight */}
             <motion.div variants={fadeInUp} className="mt-8 grid md:grid-cols-3 gap-6">
               {[
-                { label: "Membership Revenue", value: "67%", description: "ELITE + CHECK memberships" },
+                { label: "Membership Revenue", value: "67%", description: "ELITE + PRIME memberships" },
                 { label: "Ancillary Revenue", value: "33%", description: "50% of membership at 60% margin" },
                 { label: "Revenue CAGR", value: "30%", description: "compound annual growth" }
               ].map((item, i) => (
@@ -1754,7 +1754,7 @@ export default function Performance() {
                     <h3 className="font-display text-xl font-medium mb-4 text-primary">Membership (50%)</h3>
                     <div className="space-y-3">
                       <div className="flex justify-between p-3 bg-muted/30 rounded-lg"><span>ELITE (85%)</span><span className="font-mono">$29,500/yr</span></div>
-                      <div className="flex justify-between p-3 bg-muted/30 rounded-lg"><span>CHECK (15%)</span><span className="font-mono">$12,500/yr</span></div>
+                      <div className="flex justify-between p-3 bg-muted/30 rounded-lg"><span>PRIME (15%)</span><span className="font-mono">$12,500/yr</span></div>
                       <div className="flex justify-between p-3 bg-primary/10 rounded-lg border border-primary/20"><span className="font-medium">Blended ARPM</span><span className="font-mono font-bold text-primary">$26,950</span></div>
                     </div>
                   </div>

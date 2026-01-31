@@ -1,6 +1,6 @@
 /**
  * DESIGN: "Cellular Renaissance" - Organic Futurism
- * Memberships page - Detailed breakdown of CHECK and ELITE membership tiers
+ * Memberships page - Detailed breakdown of PRIME and ELITE membership tiers
  */
 
 import { motion } from "framer-motion";
@@ -76,7 +76,7 @@ export default function Memberships() {
                     <div className="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center">
                       <Check className="w-3 h-3 text-accent" />
                     </div>
-                    <span>Everything in CHECK, plus...</span>
+                    <span>Everything in PRIME, plus...</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <div className="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center">
@@ -106,7 +106,7 @@ export default function Memberships() {
               </div>
             </motion.div>
 
-            {/* CHECK Membership */}
+            {/* PRIME Membership */}
             <motion.div variants={scaleIn} className="relative group">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative bg-card border border-border rounded-3xl p-8 h-full hover:border-primary/50 transition-colors">
@@ -115,7 +115,7 @@ export default function Memberships() {
                     <Check className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-display text-2xl font-medium">CHECK</h3>
+                    <h3 className="font-display text-2xl font-medium">PRIME</h3>
                     <p className="text-sm text-muted-foreground">Diagnostic Foundation</p>
                   </div>
                 </div>
@@ -207,7 +207,7 @@ export default function Memberships() {
                   icon: FlaskConical,
                   title: "Advanced Diagnostics",
                   items: [
-                    "Everything in CHECK, plus...",
+                    "Everything in PRIME, plus...",
                     "Quarterly biomarker tracking",
                     "Epigenetic age testing",
                     "Microbiome analysis",
@@ -367,7 +367,7 @@ export default function Memberships() {
         </div>
       </section>
 
-      {/* CHECK Membership Details */}
+      {/* PRIME Membership Details */}
       <section className="py-20">
         <div className="container">
           <motion.div 
@@ -382,7 +382,7 @@ export default function Memberships() {
                 <Check className="w-8 h-8 text-primary" />
               </div>
               <div>
-                <h2 className="font-display text-4xl font-medium">CHECK Membership</h2>
+                <h2 className="font-display text-4xl font-medium">PRIME Membership</h2>
                 <p className="text-muted-foreground">$12,500/year • Diagnostic Foundation</p>
               </div>
             </motion.div>
@@ -441,7 +441,7 @@ export default function Memberships() {
             </motion.div>
 
             <motion.div variants={fadeInUp} className="bg-muted/30 rounded-2xl p-6">
-              <h4 className="font-display font-medium mb-4">CHECK Membership Economics</h4>
+              <h4 className="font-display font-medium mb-4">PRIME Membership Economics</h4>
               <div className="grid md:grid-cols-4 gap-6 text-center">
                 <div>
                   <span className="font-mono text-2xl text-primary">$12,500</span>
@@ -679,7 +679,7 @@ export default function Memberships() {
                 Feature Comparison
               </h2>
               <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
-                A comprehensive side-by-side comparison of CHECK and ELITE membership benefits
+                A comprehensive side-by-side comparison of PRIME and ELITE membership benefits
               </p>
             </motion.div>
 
@@ -692,7 +692,7 @@ export default function Memberships() {
                       <th className="text-center p-4 font-display font-medium">
                         <div className="flex items-center justify-center gap-2">
                           <Check className="w-4 h-4 text-primary" />
-                          CHECK
+                          PRIME
                         </div>
                         <span className="text-xs font-mono text-muted-foreground font-normal">$12,500/yr</span>
                       </th>

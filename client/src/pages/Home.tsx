@@ -15,13 +15,13 @@ export default function Home() {
         {/* Background with subtle gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-muted/30" />
         
-        {/* Animated background rings - HIGHLY VISIBLE */}
+        {/* Animated background rings - Subtle and elegant */}
         <div className="absolute inset-0 flex items-center justify-center">
-          {/* Ring 1 - Outermost, thick and bold */}
+          {/* Ring 1 - Outermost */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.3 }}
             animate={{ 
-              opacity: [0, 0.9, 0.6, 0.3, 0],
+              opacity: [0, 0.4, 0.25, 0.1, 0],
               scale: [0.3, 1, 1.5, 2, 2.5]
             }}
             transition={{ 
@@ -29,14 +29,14 @@ export default function Home() {
               delay: 2.8,
               ease: "easeOut"
             }}
-            className="absolute w-[350px] h-[350px] md:w-[550px] md:h-[550px] rounded-full border-[6px] border-primary" 
+            className="absolute w-[350px] h-[350px] md:w-[550px] md:h-[550px] rounded-full border-2 border-primary/60" 
           />
           
           {/* Ring 2 - Medium */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.3 }}
             animate={{ 
-              opacity: [0, 0.8, 0.5, 0.2, 0],
+              opacity: [0, 0.35, 0.2, 0.08, 0],
               scale: [0.3, 0.9, 1.3, 1.8, 2.2]
             }}
             transition={{ 
@@ -44,14 +44,14 @@ export default function Home() {
               delay: 2.9,
               ease: "easeOut"
             }}
-            className="absolute w-[350px] h-[350px] md:w-[550px] md:h-[550px] rounded-full border-[4px] border-primary/80" 
+            className="absolute w-[350px] h-[350px] md:w-[550px] md:h-[550px] rounded-full border border-primary/50" 
           />
           
           {/* Ring 3 - Inner */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.3 }}
             animate={{ 
-              opacity: [0, 0.7, 0.4, 0.1, 0],
+              opacity: [0, 0.3, 0.15, 0.05, 0],
               scale: [0.3, 0.8, 1.1, 1.5, 1.9]
             }}
             transition={{ 
@@ -59,23 +59,23 @@ export default function Home() {
               delay: 3,
               ease: "easeOut"
             }}
-            className="absolute w-[350px] h-[350px] md:w-[550px] md:h-[550px] rounded-full border-[3px] border-primary/60" 
+            className="absolute w-[350px] h-[350px] md:w-[550px] md:h-[550px] rounded-full border border-primary/40" 
           />
           
-          {/* Static glow ring that stays */}
+          {/* Static glow ring that stays - very subtle */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 0.4, scale: 1 }}
+            animate={{ opacity: 0.15, scale: 1 }}
             transition={{ duration: 1, delay: 3.2 }}
-            className="absolute w-[400px] h-[400px] md:w-[600px] md:h-[600px] rounded-full border-2 border-primary/30" 
+            className="absolute w-[400px] h-[400px] md:w-[600px] md:h-[600px] rounded-full border border-primary/20" 
           />
           
-          {/* Intense golden glow */}
+          {/* Subtle golden glow */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.3 }}
-            animate={{ opacity: 0.3, scale: 1 }}
+            animate={{ opacity: 0.2, scale: 1 }}
             transition={{ duration: 0.8, delay: 2.8 }}
-            className="absolute w-[600px] h-[600px] md:w-[800px] md:h-[800px] bg-gradient-radial from-primary/50 via-primary/15 to-transparent rounded-full blur-3xl" 
+            className="absolute w-[600px] h-[600px] md:w-[800px] md:h-[800px] bg-gradient-radial from-primary/30 via-primary/10 to-transparent rounded-full blur-3xl" 
           />
         </div>
         
