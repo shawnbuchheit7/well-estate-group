@@ -1,10 +1,10 @@
 /*
- * DESIGN: "Cellular Renaissance" - Organic Futurism
+ * DESIGN: Well Estate Group - Premium Longevity Consultancy
  * Shared layout with navigation for all pages
  */
 
 import { useState } from "react";
-import { Dna, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
@@ -39,9 +39,15 @@ export default function Layout({ children }: LayoutProps) {
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
         <div className="container mx-auto flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center gap-2" onClick={closeMobileMenu}>
-            <Dna className="w-8 h-8 text-primary" />
-            <span className="font-display text-2xl font-semibold tracking-tight">lumastem</span>
+          <Link href="/" className="flex items-center gap-3" onClick={closeMobileMenu}>
+            <img 
+              src="/well-estate-group/images/logos/logo-icon-gold-dark.png" 
+              alt="Well Estate Group" 
+              className="w-10 h-10"
+            />
+            <span className="font-display text-xl font-semibold tracking-wide text-foreground">
+              WELL ESTATE GROUP
+            </span>
           </Link>
           
           {/* Desktop Navigation */}
@@ -164,15 +170,19 @@ export default function Layout({ children }: LayoutProps) {
       <footer className="py-12 border-t border-border">
         <div className="container">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <Link href="/" className="flex items-center gap-2">
-              <Dna className="w-6 h-6 text-primary" />
-              <span className="font-display text-xl font-semibold">lumastem</span>
+            <Link href="/" className="flex items-center gap-3">
+              <img 
+                src="/well-estate-group/images/logos/logo-icon-gold-dark.png" 
+                alt="Well Estate Group" 
+                className="w-8 h-8"
+              />
+              <span className="font-display text-lg font-semibold tracking-wide">WELL ESTATE GROUP</span>
             </Link>
             <p className="font-body text-sm text-muted-foreground text-center">
-              Live Longer. Live Happier. © 2025 Lumastem. All rights reserved.
+              Premium Longevity Consulting. © 2025 Well Estate Group. All rights reserved.
             </p>
             <div className="flex gap-6">
-              <a href="https://lumastem.com" target="_blank" rel="noopener noreferrer" className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors">
+              <a href="#" className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors">
                 Website
               </a>
               <a href="#" className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors">

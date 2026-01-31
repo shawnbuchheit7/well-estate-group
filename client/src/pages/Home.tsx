@@ -1,5 +1,5 @@
 /*
- * DESIGN: "Cellular Renaissance" - Organic Futurism
+ * DESIGN: Well Estate Group - Premium Longevity Consultancy
  * Home page with hero section
  */
 
@@ -21,7 +21,7 @@ export default function Home() {
         {/* Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/hero-cellular.jpg')" }}
+          style={{ backgroundImage: "url('/well-estate-group/images/hero-cellular.jpg')" }}
         >
           <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background" />
         </div>
@@ -33,9 +33,14 @@ export default function Home() {
             animate="visible"
             variants={staggerContainer}
           >
-            <motion.div variants={fadeInUp} className="mb-6">
+            <motion.div variants={fadeInUp} className="mb-8">
+              <img 
+                src="/well-estate-group/images/logos/logo-full-gold.png" 
+                alt="Well Estate Group" 
+                className="h-20 md:h-24 mx-auto mb-4"
+              />
               <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/30 text-primary font-mono text-sm tracking-wider">
-                SERIES A INVESTMENT
+                LONGEVITY CONSULTING
               </span>
             </motion.div>
             
@@ -52,7 +57,7 @@ export default function Home() {
               variants={fadeInUp}
               className="font-body text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
             >
-              The world's first physician-led, vertically integrated regenerative medicine platform. 
+              Premium consulting for physician-led, vertically integrated regenerative medicine platforms. 
               Redefining longevity at the intersection of science and luxury.
             </motion.p>
             
@@ -62,7 +67,7 @@ export default function Home() {
                   size="lg" 
                   className="bg-accent hover:bg-accent/90 text-accent-foreground font-body font-semibold text-lg px-8 py-6 glow-gold"
                 >
-                  $50M Series A <ArrowRight className="ml-2 w-5 h-5" />
+                  Explore Opportunity <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
               <Button 
