@@ -77,30 +77,31 @@
   --background: oklch(1 0 0); /* Pure white */
   --foreground: oklch(0.15 0.005 0); /* Near black - #1A1A1A */
   
-  --card: oklch(0.98 0.005 0); /* Very light gray for cards */
+  /* HIGHER CONTRAST CARDS - More visible separation */
+  --card: oklch(0.97 0.003 80); /* Slight warm tint for cards */
   --card-foreground: oklch(0.15 0.005 0);
   
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.15 0.005 0);
   
-  --secondary: oklch(0.96 0.005 0);
+  --secondary: oklch(0.94 0.005 0); /* Darker secondary for more contrast */
   --secondary-foreground: oklch(0.15 0.005 0);
   
-  --muted: oklch(0.94 0.005 0);
-  --muted-foreground: oklch(0.35 0.005 0); /* Darker muted text */
+  --muted: oklch(0.92 0.005 0); /* Darker muted backgrounds */
+  --muted-foreground: oklch(0.30 0.005 0); /* Even darker muted text */
   
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
   
-  --border: oklch(0.85 0.005 0); /* Slightly more visible borders */
-  --input: oklch(0.96 0.005 0);
+  --border: oklch(0.78 0.005 0); /* Much more visible borders */
+  --input: oklch(0.94 0.005 0);
   --ring: oklch(0.68 0.14 80);
   
-  --sidebar: oklch(0.98 0.005 0);
+  --sidebar: oklch(0.97 0.003 80);
   --sidebar-foreground: oklch(0.15 0.005 0);
-  --sidebar-accent: oklch(0.96 0.005 0);
+  --sidebar-accent: oklch(0.94 0.005 0);
   --sidebar-accent-foreground: oklch(0.15 0.005 0);
-  --sidebar-border: oklch(0.85 0.005 0);
+  --sidebar-border: oklch(0.78 0.005 0);
   --sidebar-ring: oklch(0.68 0.14 80);
 }
 
@@ -240,6 +241,26 @@
   .glow-subtle {
     box-shadow: 0 4px 30px rgba(26, 26, 26, 0.15);
   }
+  
+  /* HIGH CONTRAST CARD STYLES */
+  .card-elevated {
+    background: oklch(0.97 0.003 80);
+    border: 1px solid oklch(0.75 0.02 80);
+    box-shadow: 0 4px 20px rgba(26, 26, 26, 0.08), 0 1px 3px rgba(26, 26, 26, 0.1);
+  }
+  
+  .card-elevated:hover {
+    box-shadow: 0 8px 30px rgba(26, 26, 26, 0.12), 0 2px 6px rgba(26, 26, 26, 0.1);
+  }
+  
+  .box-highlight {
+    background: oklch(0.95 0.005 80);
+    border: 1px solid oklch(0.70 0.03 80);
+  }
+  
+  .section-alt {
+    background: oklch(0.96 0.003 0);
+  }
 }
 
 /* Smooth scrolling */
@@ -253,7 +274,7 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: oklch(0.96 0.005 0);
+  background: oklch(0.94 0.005 0);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -263,4 +284,53 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
   background: oklch(0.60 0.13 80);
+}
+
+/* Enhanced card and box styling for all pages */
+[class*="bg-card"],
+[class*="bg-muted"],
+.rounded-lg[class*="border"],
+.rounded-xl[class*="border"],
+.rounded-2xl[class*="border"] {
+  box-shadow: 0 2px 12px rgba(26, 26, 26, 0.06), 0 1px 3px rgba(26, 26, 26, 0.08);
+}
+
+/* Stronger borders on interactive elements */
+[class*="border"][class*="rounded"] {
+  border-color: oklch(0.75 0.01 80);
+}
+
+/* Table styling for better contrast */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+table th {
+  background: oklch(0.94 0.005 80);
+  border-bottom: 2px solid oklch(0.70 0.03 80);
+}
+
+table td {
+  border-bottom: 1px solid oklch(0.85 0.005 0);
+}
+
+table tr:hover td {
+  background: oklch(0.97 0.003 80);
+}
+
+/* Accordion and collapsible styling */
+[data-state="open"] {
+  background: oklch(0.97 0.003 80);
+}
+
+/* Input and form field contrast */
+input, textarea, select {
+  border: 1px solid oklch(0.75 0.01 80) !important;
+  background: oklch(0.99 0 0) !important;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: oklch(0.68 0.14 80) !important;
+  box-shadow: 0 0 0 3px rgba(184, 150, 62, 0.15) !important;
 }
