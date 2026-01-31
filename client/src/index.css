@@ -55,21 +55,21 @@
 
 :root {
   /* Well Estate Group Brand Colors - HIGH CONTRAST Light Theme */
-  /* Primary: Dark Gold for readability on light backgrounds */
-  --primary: oklch(0.52 0.14 75); /* Much darker gold - #8B6914 */
+  /* Primary: Dark Gray for text - Gold only for buttons/accents */
+  --primary: oklch(0.25 0.005 0); /* Dark charcoal gray for text */
   --primary-foreground: oklch(1 0 0); /* Pure white text on gold */
-  --sidebar-primary: oklch(0.48 0.13 75);
+  --sidebar-primary: oklch(0.25 0.005 0);
   --sidebar-primary-foreground: oklch(1 0 0);
   
-  /* Accent: Dark Gold for buttons and highlights */
-  --accent: oklch(0.52 0.14 75); /* Much darker gold */
+  /* Accent: Gold for buttons and highlights only */
+  --accent: oklch(0.55 0.14 75); /* Gold for buttons/decorative elements */
   --accent-foreground: oklch(1 0 0);
   
-  --chart-1: oklch(0.52 0.14 75);
-  --chart-2: oklch(0.48 0.13 75);
-  --chart-3: oklch(0.44 0.12 75);
-  --chart-4: oklch(0.40 0.10 75);
-  --chart-5: oklch(0.36 0.08 75);
+  --chart-1: oklch(0.25 0.005 0);
+  --chart-2: oklch(0.35 0.005 0);
+  --chart-3: oklch(0.45 0.005 0);
+  --chart-4: oklch(0.55 0.005 0);
+  --chart-5: oklch(0.65 0.005 0);
   
   --radius: 0.75rem;
   
@@ -217,7 +217,7 @@
   }
   
   .text-gradient {
-    background: linear-gradient(135deg, #7A5A12 0%, #8B6914 50%, #7A5A12 100%);
+    background: linear-gradient(135deg, #1A1A1A 0%, #2D2D2D 50%, #1A1A1A 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
