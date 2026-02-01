@@ -5,7 +5,8 @@
  * Note: Partner calculations removed as Lumastem centers are company-owned
  */
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import { 
   TrendingUp, 
   Users, 
@@ -35,6 +36,8 @@ import { Link } from "wouter";
 import Layout from "@/components/Layout";
 import { PresentationMode } from "@/components/PresentationMode";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
+import { AnimatedCounter } from "@/components/AnimatedCounter";
+import { AnimatedChart, AnimatedProgress } from "@/components/AnimatedChart";
 
 export default function Performance() {
   return (
@@ -81,23 +84,42 @@ export default function Performance() {
               </h2>
             </motion.div>
 
-            <motion.div variants={fadeInUp} className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
               {[
-                { icon: DollarSign, value: "$57.5M", label: "Year 5 Revenue", subtext: "Per center" },
-                { icon: TrendingUp, value: "66%", label: "Gross Margin", subtext: "Blended membership + ancillary" },
-                { icon: Target, value: "34%", label: "Center EBITDA Margin", subtext: "True center profitability" },
-                { icon: Users, value: "1,365", label: "Members", subtext: "Year 5 capacity" }
+                { icon: DollarSign, value: 57.5, prefix: "$", suffix: "M", decimals: 1, label: "Year 5 Revenue", subtext: "Per center" },
+                { icon: TrendingUp, value: 66, prefix: "", suffix: "%", decimals: 0, label: "Gross Margin", subtext: "Blended membership + ancillary" },
+                { icon: Target, value: 34, prefix: "", suffix: "%", decimals: 0, label: "Center EBITDA Margin", subtext: "True center profitability" },
+                { icon: Users, value: 1365, prefix: "", suffix: "", decimals: 0, label: "Members", subtext: "Year 5 capacity" }
               ].map((stat, i) => (
-                <div key={i} className="bg-card border border-border rounded-2xl p-6 text-center hover:border-primary/50 transition-colors">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-accent to-primary flex items-center justify-center mx-auto mb-4">
+                <motion.div 
+                  key={i} 
+                  className="bg-card border border-border rounded-2xl p-6 text-center hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 group"
+                  initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  whileHover={{ y: -5 }}
+                >
+                  <motion.div 
+                    className="w-14 h-14 rounded-xl bg-gradient-to-br from-accent to-primary flex items-center justify-center mx-auto mb-4"
+                    whileHover={{ rotate: 360, scale: 1.1 }}
+                    transition={{ duration: 0.6 }}
+                  >
                     <stat.icon className="w-7 h-7 text-background" />
-                  </div>
-                  <span className="font-display text-3xl font-bold text-gradient">{stat.value}</span>
+                  </motion.div>
+                  <AnimatedCounter 
+                    value={stat.value} 
+                    prefix={stat.prefix} 
+                    suffix={stat.suffix} 
+                    decimals={stat.decimals}
+                    className="font-display text-3xl font-bold text-gradient"
+                    duration={2 + i * 0.3}
+                  />
                   <p className="font-display font-medium mt-2">{stat.label}</p>
                   <p className="font-body text-sm text-muted-foreground">{stat.subtext}</p>
-                </div>
+                </motion.div>
               ))}
-            </motion.div>
+            </div>
           </motion.div>
         </div>
       </section>

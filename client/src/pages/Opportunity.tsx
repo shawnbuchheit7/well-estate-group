@@ -3,10 +3,12 @@
  * Opportunity page - Market opportunity and competitive landscape
  */
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import { TrendingUp, FlaskConical, Sparkles, Heart } from "lucide-react";
 import Layout from "@/components/Layout";
 import { fadeInUp, staggerContainer, scaleIn } from "@/lib/animations";
+import { AnimatedCounter } from "@/components/AnimatedCounter";
 
 export default function Opportunity() {
   return (
@@ -47,7 +49,8 @@ export default function Opportunity() {
             {[
               { 
                 title: "Regenerative Medicine", 
-                value: "$125B", 
+                numValue: 125,
+                suffix: "B",
                 growth: "23.9% CAGR",
                 year: "by 2031",
                 icon: FlaskConical,
@@ -55,7 +58,9 @@ export default function Opportunity() {
               },
               { 
                 title: "Global Luxury Wellness", 
-                value: "$1.2T", 
+                numValue: 1.2,
+                suffix: "T",
+                decimals: 1,
                 growth: "15%+ CAGR",
                 year: "by 2027",
                 icon: Sparkles,
@@ -63,7 +68,8 @@ export default function Opportunity() {
               },
               { 
                 title: "Concierge Medicine", 
-                value: "$30B+", 
+                numValue: 30,
+                suffix: "B+",
                 growth: "Accelerating",
                 year: "U.S. Market",
                 icon: Heart,
@@ -72,21 +78,43 @@ export default function Opportunity() {
             ].map((market, index) => (
               <motion.div 
                 key={index}
-                variants={scaleIn}
+                initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: index * 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
+                whileHover={{ y: -10, scale: 1.02 }}
                 className="relative group"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative bg-card border border-border rounded-2xl p-8 h-full hover:border-primary/50 transition-colors">
-                  <market.icon className="w-10 h-10 text-primary mb-6" />
+                <div className="relative bg-card border border-border rounded-2xl p-8 h-full hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300">
+                  <motion.div
+                    whileHover={{ rotate: 360, scale: 1.1 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <market.icon className="w-10 h-10 text-primary mb-6" />
+                  </motion.div>
                   <h3 className="font-display text-2xl font-medium mb-2">{market.title}</h3>
                   <div className="flex items-baseline gap-2 mb-2">
-                    <span className="font-display text-5xl font-semibold text-gradient">{market.value}</span>
+                    <AnimatedCounter 
+                      value={market.numValue} 
+                      prefix="$" 
+                      suffix={market.suffix}
+                      decimals={market.decimals || 0}
+                      className="font-display text-5xl font-semibold text-gradient"
+                      duration={2.5 + index * 0.3}
+                    />
                     <span className="font-mono text-sm text-muted-foreground">{market.year}</span>
                   </div>
-                  <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-primary/10 text-primary font-mono text-sm mb-4">
+                  <motion.div 
+                    className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-primary/10 text-primary font-mono text-sm mb-4"
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.15 + 0.5, type: "spring" }}
+                  >
                     <TrendingUp className="w-4 h-4" />
                     {market.growth}
-                  </div>
+                  </motion.div>
                   <p className="font-body text-muted-foreground">{market.description}</p>
                 </div>
               </motion.div>

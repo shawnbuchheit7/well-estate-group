@@ -4,11 +4,14 @@
  * Updated with generic center design example and 3D renderings
  */
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import { FlaskConical, Users, Heart, Globe, Building2, Cpu, Microscope, Sparkles, ZoomIn } from "lucide-react";
 import Layout from "@/components/Layout";
 import ImageLightbox from "@/components/ImageLightbox";
 import { fadeInUp, staggerContainer, scaleIn } from "@/lib/animations";
+import { AnimatedCounter } from "@/components/AnimatedCounter";
+import { AnimatedProgress } from "@/components/AnimatedChart";
 
 export default function UseOfFunds() {
   return (
@@ -125,36 +128,52 @@ export default function UseOfFunds() {
                       { label: "Working Capital", amount: -10, cumulative: 7.5, type: "expense", color: "bg-blue-500" },
                       { label: "International Reserve", amount: -7.5, cumulative: 0, type: "expense", color: "bg-purple-500" }
                     ].map((item, i) => (
-                      <div key={i} className="flex items-center gap-4">
+                      <motion.div 
+                        key={i} 
+                        className="flex items-center gap-4"
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ duration: 0.5, delay: i * 0.1 }}
+                      >
                         <span className="font-body text-sm w-44 text-muted-foreground">{item.label}</span>
                         <div className="flex-1 h-10 bg-muted/30 rounded-lg overflow-hidden relative">
                           {item.type === "start" ? (
-                            <div 
+                            <motion.div 
                               className={`h-full ${item.color} rounded-lg flex items-center justify-end pr-3`}
-                              style={{ width: `${(item.amount / 50) * 100}%` }}
+                              initial={{ width: 0 }}
+                              whileInView={{ width: `${(item.amount / 50) * 100}%` }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 0.8, delay: i * 0.1 + 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
                             >
                               <span className="font-mono text-xs text-background font-bold">$50M</span>
-                            </div>
+                            </motion.div>
                           ) : (
                             <>
-                              <div 
+                              <motion.div 
                                 className="h-full bg-muted/50 rounded-l-lg"
-                                style={{ width: `${(item.cumulative / 50) * 100}%` }}
+                                initial={{ width: 0 }}
+                                whileInView={{ width: `${(item.cumulative / 50) * 100}%` }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6, delay: i * 0.1 + 0.2 }}
                               />
-                              <div 
+                              <motion.div 
                                 className={`absolute top-0 h-full ${item.color} flex items-center justify-center`}
+                                initial={{ width: 0 }}
+                                whileInView={{ width: `${(Math.abs(item.amount) / 50) * 100}%` }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6, delay: i * 0.1 + 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
                                 style={{ 
-                                  left: `${(item.cumulative / 50) * 100}%`,
-                                  width: `${(Math.abs(item.amount) / 50) * 100}%`
+                                  left: `${(item.cumulative / 50) * 100}%`
                                 }}
                               >
                                 <span className="font-mono text-xs text-white font-bold">${Math.abs(item.amount)}M</span>
-                              </div>
+                              </motion.div>
                             </>
                           )}
                         </div>
                         <span className="font-mono text-sm w-16 text-right text-muted-foreground">${item.cumulative}M</span>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                   

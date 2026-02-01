@@ -4,12 +4,14 @@
  * Updated with new center rollout timeline and international expansion strategy
  */
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { TrendingUp, Target, Shield, BarChart3, AlertTriangle, Rocket, ArrowUpRight, ArrowDownRight, Globe, Building2, Handshake, FileText, DollarSign, Percent, Users } from "lucide-react";
 import Layout from "@/components/Layout";
 import { PresentationMode } from "@/components/PresentationMode";
 import { fadeInUp, staggerContainer, scaleIn } from "@/lib/animations";
+import { AnimatedCounter } from "@/components/AnimatedCounter";
+import { AnimatedChart, AnimatedProgress } from "@/components/AnimatedChart";
 
 export default function Projections() {
   // Sensitivity Analysis State
@@ -64,20 +66,35 @@ export default function Projections() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.div variants={fadeInUp} className="grid md:grid-cols-4 gap-6">
+            <div className="grid md:grid-cols-4 gap-6">
               {[
-                { value: "$327M", label: "2031 Revenue", subtext: "10 domestic centers" },
-                { value: "$113M", label: "2031 EBITDA", subtext: "34% margin" },
-                { value: "7,860+", label: "Total Members", subtext: "Across all centers" },
-                { value: "16x", label: "Revenue Growth", subtext: "5-year trajectory" }
+                { value: 327, prefix: "$", suffix: "M", decimals: 0, label: "2031 Revenue", subtext: "10 domestic centers" },
+                { value: 113, prefix: "$", suffix: "M", decimals: 0, label: "2031 EBITDA", subtext: "34% margin" },
+                { value: 7860, prefix: "", suffix: "+", decimals: 0, label: "Total Members", subtext: "Across all centers" },
+                { value: 16, prefix: "", suffix: "x", decimals: 0, label: "Revenue Growth", subtext: "5-year trajectory" }
               ].map((stat, i) => (
-                <div key={i} className="bg-card border border-border rounded-2xl p-6 text-center hover:border-primary/50 transition-colors">
-                  <span className="font-display text-3xl font-bold text-gradient">{stat.value}</span>
+                <motion.div 
+                  key={i} 
+                  className="bg-card border border-border rounded-2xl p-6 text-center hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300"
+                  initial={{ opacity: 0, y: 40, scale: 0.9 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6, delay: i * 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                >
+                  <AnimatedCounter 
+                    value={stat.value} 
+                    prefix={stat.prefix} 
+                    suffix={stat.suffix} 
+                    decimals={stat.decimals}
+                    className="font-display text-3xl font-bold text-gradient"
+                    duration={2.5 + i * 0.2}
+                  />
                   <p className="font-display font-medium mt-2">{stat.label}</p>
                   <p className="font-body text-sm text-muted-foreground">{stat.subtext}</p>
-                </div>
+                </motion.div>
               ))}
-            </motion.div>
+            </div>
           </motion.div>
         </div>
       </section>

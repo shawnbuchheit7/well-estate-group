@@ -3,11 +3,13 @@
  * Memberships page - Detailed breakdown of PRIME and ELITE membership tiers
  */
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import { Check, Crown, Sparkles, Heart, Activity, FlaskConical, Users, Calendar, Home, Stethoscope, Dna, Pill, Shield, ArrowRight, BarChart3 } from "lucide-react";
 import { Link } from "wouter";
 import Layout from "@/components/Layout";
 import { fadeInUp, staggerContainer, scaleIn } from "@/lib/animations";
+import { AnimatedCounter } from "@/components/AnimatedCounter";
 
 export default function Memberships() {
   return (
@@ -64,7 +66,14 @@ export default function Memberships() {
                   </div>
                 </div>
                 <div className="mb-6">
-                  <span className="font-display text-4xl font-medium">$29,500</span>
+                  <AnimatedCounter 
+                    value={29500} 
+                    prefix="$" 
+                    suffix="" 
+                    decimals={0}
+                    className="font-display text-4xl font-medium"
+                    duration={2}
+                  />
                   <span className="text-muted-foreground">/year</span>
                 </div>
                 <p className="font-body text-muted-foreground mb-6">
@@ -120,7 +129,14 @@ export default function Memberships() {
                   </div>
                 </div>
                 <div className="mb-6">
-                  <span className="font-display text-4xl font-medium">$12,500</span>
+                  <AnimatedCounter 
+                    value={12500} 
+                    prefix="$" 
+                    suffix="" 
+                    decimals={0}
+                    className="font-display text-4xl font-medium"
+                    duration={2}
+                  />
                   <span className="text-muted-foreground">/year</span>
                 </div>
                 <p className="font-body text-muted-foreground mb-6">
