@@ -38,13 +38,20 @@ import { PresentationMode } from "@/components/PresentationMode";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
 import { AnimatedChart, AnimatedProgress } from "@/components/AnimatedChart";
+import { TiltCard } from "@/components/MicroInteractions";
+import { GlowOrb, GridPattern } from "@/components/AnimatedBackgrounds";
+import { WordReveal, GradientText } from "@/components/AnimatedTypography";
 
 export default function Performance() {
   return (
     <Layout>
       {/* Page Header */}
-      <section className="py-20 relative">
-        <div className="container">
+      <section className="py-20 relative overflow-hidden">
+        {/* Background enhancements */}
+        <GridPattern />
+        <GlowOrb className="top-0 right-0 -translate-y-1/2 translate-x-1/2" size={600} blur={150} />
+        
+        <div className="container relative z-10">
           <motion.div 
             className="text-center max-w-4xl mx-auto"
             initial="hidden"

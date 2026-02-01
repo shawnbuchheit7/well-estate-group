@@ -12,6 +12,10 @@ import { PresentationMode } from "@/components/PresentationMode";
 import { fadeInUp, staggerContainer, scaleIn } from "@/lib/animations";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
 import { AnimatedChart, AnimatedProgress } from "@/components/AnimatedChart";
+import { TiltCard, MagneticButton } from "@/components/MicroInteractions";
+import { GlowOrb, GridPattern, FloatingShapes } from "@/components/AnimatedBackgrounds";
+import { WordReveal, GradientText, BlurReveal } from "@/components/AnimatedTypography";
+import { AnimatedLineChart, AnimatedBarChart, AnimatedDonutChart } from "@/components/InteractiveCharts";
 
 export default function Projections() {
   // Sensitivity Analysis State
@@ -35,8 +39,14 @@ export default function Projections() {
   return (
     <Layout>
       {/* Page Header */}
-      <section className="py-20 relative">
-        <div className="container">
+      <section className="py-20 relative overflow-hidden">
+        {/* Background enhancements */}
+        <GridPattern />
+        <FloatingShapes count={6} />
+        <GlowOrb className="top-0 left-0 -translate-y-1/2 -translate-x-1/2" size={500} blur={130} />
+        <GlowOrb className="bottom-0 right-0 translate-y-1/2 translate-x-1/2" size={400} blur={100} color="#E8D5A3" />
+        
+        <div className="container relative z-10">
           <motion.div 
             className="text-center max-w-4xl mx-auto"
             initial="hidden"

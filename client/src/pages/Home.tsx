@@ -1,11 +1,12 @@
 /*
  * Home Page - Well Estate Group
  * Ultra-dynamic coin-flip style logo animation
- * Smooth continuous 3D Y-axis rotation
+ * Enhanced with particle effects and floating shapes
  */
 
 import Layout from "@/components/Layout";
 import { motion } from "framer-motion";
+import { ParticleField, FloatingShapes, GlowOrb } from "@/components/AnimatedBackgrounds";
 
 export default function Home() {
   return (
@@ -14,6 +15,16 @@ export default function Home() {
       <section className="relative min-h-[calc(100vh-5rem)] flex items-center justify-center overflow-hidden">
         {/* Background with subtle gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-muted/30" />
+        
+        {/* Floating geometric shapes */}
+        <FloatingShapes count={8} />
+        
+        {/* Particle field effect */}
+        <ParticleField count={40} color="#C9A962" />
+        
+        {/* Glowing orbs */}
+        <GlowOrb className="top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2" size={500} blur={120} />
+        <GlowOrb className="bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2" size={400} blur={100} color="#E8D5A3" />
         
         {/* Animated background rings - Subtle and elegant */}
         <div className="absolute inset-0 flex items-center justify-center">
@@ -68,6 +79,22 @@ export default function Home() {
             animate={{ opacity: 0.15, scale: 1 }}
             transition={{ duration: 1, delay: 3.2 }}
             className="absolute w-[400px] h-[400px] md:w-[600px] md:h-[600px] rounded-full border border-primary/20" 
+          />
+          
+          {/* Pulsing outer ring */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ 
+              opacity: [0.1, 0.2, 0.1],
+              scale: [1, 1.05, 1]
+            }}
+            transition={{ 
+              duration: 3,
+              delay: 3.5,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="absolute w-[500px] h-[500px] md:w-[700px] md:h-[700px] rounded-full border border-primary/10" 
           />
           
           {/* Subtle golden glow */}
@@ -143,22 +170,67 @@ export default function Home() {
               />
             </motion.div>
             
-            {/* Main logo */}
+            {/* Main logo with enhanced hover */}
             <motion.img 
               src="/well-estate-group/images/logos/logo-icon-gold-outline.png" 
               alt="Well Estate Group" 
-              className="relative w-64 h-64 md:w-80 md:h-80 lg:w-[400px] lg:h-[400px] xl:w-[500px] xl:h-[500px]"
+              className="relative w-64 h-64 md:w-80 md:h-80 lg:w-[400px] lg:h-[400px] xl:w-[500px] xl:h-[500px] cursor-pointer"
               style={{ 
                 filter: "drop-shadow(0 10px 30px rgba(184, 150, 62, 0.5))"
               }}
               whileHover={{ 
-                scale: 1.05,
-                rotateY: 15,
-                transition: { duration: 0.3 }
+                scale: 1.08,
+                rotateY: 20,
+                filter: "drop-shadow(0 20px 50px rgba(184, 150, 62, 0.7))",
+                transition: { duration: 0.4, ease: "easeOut" }
               }}
+              whileTap={{ scale: 0.95 }}
+            />
+          </motion.div>
+          
+          {/* Tagline that appears after animation */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 3.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="mt-12 text-center"
+          >
+            <motion.p 
+              className="font-display text-xl md:text-2xl text-muted-foreground tracking-wide"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 3.8 }}
+            >
+              Premium Longevity Consulting
+            </motion.p>
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 0.8, delay: 4.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="mt-4 h-px w-32 mx-auto bg-gradient-to-r from-transparent via-primary to-transparent"
             />
           </motion.div>
         </div>
+        
+        {/* Scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 4.5 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        >
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            className="w-6 h-10 rounded-full border-2 border-primary/30 flex items-start justify-center p-2"
+          >
+            <motion.div
+              animate={{ opacity: [1, 0.3, 1], y: [0, 8, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              className="w-1.5 h-1.5 rounded-full bg-primary"
+            />
+          </motion.div>
+        </motion.div>
       </section>
     </Layout>
   );
