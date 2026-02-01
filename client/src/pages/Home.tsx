@@ -164,7 +164,7 @@ export default function Home() {
               className="absolute inset-0 blur-2xl"
             >
               <img 
-                src="/well-estate-group/images/logos/logo-icon-gold-outline.png" 
+                src="/images/logos/logo-icon-gold-outline.png" 
                 alt="" 
                 className="w-64 h-64 md:w-80 md:h-80 lg:w-[400px] lg:h-[400px] xl:w-[500px] xl:h-[500px] opacity-50"
               />
@@ -172,7 +172,7 @@ export default function Home() {
             
             {/* Main logo with enhanced hover */}
             <motion.img 
-              src="/well-estate-group/images/logos/logo-icon-gold-outline.png" 
+              src="/images/logos/logo-icon-gold-outline.png" 
               alt="Well Estate Group" 
               className="relative w-64 h-64 md:w-80 md:h-80 lg:w-[400px] lg:h-[400px] xl:w-[500px] xl:h-[500px] cursor-pointer"
               style={{ 

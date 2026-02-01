@@ -9,7 +9,8 @@ import { vitePluginManusRuntime } from "vite-plugin-manus-runtime";
 const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime()];
 
 export default defineConfig({
-  base: '/well-estate-group/',
+  // Use root path for Vercel deployment (no subdirectory)
+  base: '/',
   plugins,
   resolve: {
     alias: {
@@ -59,6 +60,7 @@ export default defineConfig({
       ".manus-asia.computer",
       ".manuscomputer.ai",
       ".manusvm.computer",
+      ".vercel.app",
       "localhost",
       "127.0.0.1",
     ],

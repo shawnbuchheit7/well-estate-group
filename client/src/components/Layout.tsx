@@ -49,7 +49,7 @@ export default function Layout({ children }: LayoutProps) {
         <div className="container mx-auto flex items-center justify-between h-20">
           <Link href="/" className="flex items-center gap-3 group" onClick={closeMobileMenu}>
             <motion.img 
-              src="/well-estate-group/images/logos/logo-icon-dark-outline.png" 
+              src="/images/logos/logo-icon-dark-outline.png" 
               alt="Well Estate Group" 
               className="w-10 h-10"
               whileHover={{ rotate: 360, scale: 1.1 }}
@@ -207,7 +207,7 @@ export default function Layout({ children }: LayoutProps) {
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <Link href="/" className="flex items-center gap-3 group">
               <motion.img 
-                src="/well-estate-group/images/logos/logo-icon-dark-outline.png" 
+                src="/images/logos/logo-icon-dark-outline.png" 
                 alt="Well Estate Group" 
                 className="w-8 h-8"
                 whileHover={{ rotate: 360 }}
