@@ -19,12 +19,16 @@ export function AnimatedCounter({
   className = '',
 }: AnimatedCounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  // Use a smaller margin and trigger earlier
+  const isInView = useInView(ref, { once: true, margin: '0px' });
   const [displayValue, setDisplayValue] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
-    if (!isInView) return;
+    if (!isInView || hasAnimated) return;
 
+    // Start animation immediately when in view
+    setHasAnimated(true);
     let startTime: number;
     let animationFrame: number;
 
@@ -39,17 +43,24 @@ export function AnimatedCounter({
 
       if (progress < 1) {
         animationFrame = requestAnimationFrame(animate);
+      } else {
+        // Ensure we end at the exact value
+        setDisplayValue(value);
       }
     };
 
-    animationFrame = requestAnimationFrame(animate);
+    // Small delay to ensure component is mounted
+    const timeout = setTimeout(() => {
+      animationFrame = requestAnimationFrame(animate);
+    }, 50);
 
     return () => {
+      clearTimeout(timeout);
       if (animationFrame) {
         cancelAnimationFrame(animationFrame);
       }
     };
-  }, [isInView, value, duration]);
+  }, [isInView, value, duration, hasAnimated]);
 
   const formattedValue = displayValue.toFixed(decimals);
   const formattedWithCommas = Number(formattedValue).toLocaleString('en-US', {
@@ -61,9 +72,8 @@ export function AnimatedCounter({
     <motion.span
       ref={ref}
       className={className}
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5 }}
+      initial={{ opacity: 1, y: 0 }}
+      animate={{ opacity: 1, y: 0 }}
     >
       {prefix}{formattedWithCommas}{suffix}
     </motion.span>

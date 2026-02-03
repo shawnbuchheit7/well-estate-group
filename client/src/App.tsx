@@ -24,6 +24,7 @@ const Contact = lazy(() => import("./pages/Contact"));
 const Hiring = lazy(() => import("./pages/Hiring"));
 const Memberships = lazy(() => import("./pages/Memberships"));
 const FAQ = lazy(() => import("./pages/FAQ"));
+const DataRoom = lazy(() => import("./pages/DataRoom"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 // Loading fallback component
@@ -55,6 +56,7 @@ function Routes() {
         <Route path="/projections" component={Projections} />
         <Route path="/hiring" component={Hiring} />
         <Route path="/faq" component={FAQ} />
+        <Route path="/data-room" component={DataRoom} />
         <Route path="/contact" component={Contact} />
         <Route path="/404" component={NotFound} />
         {/* Final fallback route */}

@@ -25,7 +25,7 @@ export default function Memberships() {
             animate="visible"
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary text-sm tracking-wider">
+            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
               MEMBERSHIP TIERS
             </motion.span>
             <motion.h1 variants={fadeInUp} className="font-display text-5xl md:text-7xl font-medium mt-4 mb-6">
@@ -500,7 +500,7 @@ export default function Memberships() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary text-sm tracking-wider">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
                 MEMBER EXPERIENCE
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-4">
@@ -566,7 +566,7 @@ export default function Memberships() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary text-sm tracking-wider">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
                 REVENUE EXPANSION
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-4">
@@ -639,7 +639,7 @@ export default function Memberships() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp}>
-              <span className="font-mono text-primary text-sm tracking-wider">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
                 MEMBER ACQUISITION
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-4">
@@ -696,7 +696,7 @@ export default function Memberships() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary text-sm tracking-wider">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
                 QUICK COMPARISON
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-4">
@@ -810,7 +810,7 @@ export default function Memberships() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-8">
-              <span className="font-mono text-primary text-sm tracking-wider">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
                 DIVE DEEPER
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-4">

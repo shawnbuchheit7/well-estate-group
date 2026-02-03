@@ -33,7 +33,7 @@ export default function Technology() {
             animate="visible"
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary text-sm tracking-wider">
+            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
               TECHNOLOGY PLATFORM
             </motion.span>
             <motion.h1 variants={fadeInUp} className="font-display text-5xl md:text-7xl font-medium mt-4 mb-6">
@@ -58,7 +58,7 @@ export default function Technology() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary text-sm tracking-wider">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
                 PLATFORM ARCHITECTURE
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
@@ -111,7 +111,7 @@ export default function Technology() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary text-sm tracking-wider">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
                 ARTIFICIAL INTELLIGENCE
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
@@ -182,7 +182,7 @@ export default function Technology() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary text-sm tracking-wider">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
                 PATIENT EXPERIENCE
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
@@ -250,7 +250,7 @@ export default function Technology() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary text-sm tracking-wider">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
                 CLINICAL OPERATIONS
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
@@ -322,7 +322,7 @@ export default function Technology() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary text-sm tracking-wider">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
                 INFRASTRUCTURE
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
@@ -377,7 +377,7 @@ export default function Technology() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary text-sm tracking-wider">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
                 FUTURE DEVELOPMENT
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
@@ -441,7 +441,7 @@ export default function Technology() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp}>
-              <span className="font-mono text-primary text-sm tracking-wider">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
                 COMPETITIVE ADVANTAGE
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-8">
@@ -452,17 +452,17 @@ export default function Technology() {
             <motion.div variants={fadeInUp} className="grid md:grid-cols-3 gap-6">
               {[
                 {
-                  value: "XX%",
+                  value: "15%",
                   label: "of Series A",
                   description: "Allocated to technology development and AI capabilities"
                 },
                 {
-                  value: "XX+",
+                  value: "8+",
                   label: "Engineers",
                   description: "Dedicated technology team building proprietary systems"
                 },
                 {
-                  value: "XX",
+                  value: "3",
                   label: "Patents Pending",
                   description: "Intellectual property in AI-driven healthcare delivery"
                 }

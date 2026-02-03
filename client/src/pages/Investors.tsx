@@ -21,7 +21,7 @@ export default function Investors() {
             animate="visible"
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary text-sm tracking-wider">
+            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
               FOUNDING TEAM
             </motion.span>
             <motion.h1 variants={fadeInUp} className="font-display text-5xl md:text-7xl font-medium mt-4 mb-6">
@@ -187,7 +187,7 @@ export default function Investors() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary text-sm tracking-wider">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
                 STRATEGIC VALUE
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
@@ -239,7 +239,7 @@ export default function Investors() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary text-sm tracking-wider">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
                 SERIES A INVESTMENT
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-4">
@@ -318,7 +318,7 @@ export default function Investors() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary text-sm tracking-wider">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
                 OWNERSHIP STRUCTURE
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
@@ -584,7 +584,7 @@ export default function Investors() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary text-sm tracking-wider">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
                 INVESTOR RESOURCES
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">

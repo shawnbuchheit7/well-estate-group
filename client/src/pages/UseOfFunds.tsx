@@ -25,7 +25,7 @@ export default function UseOfFunds() {
             animate="visible"
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary text-sm tracking-wider">
+            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
               CAPITAL DEPLOYMENT
             </motion.span>
             <motion.h1 variants={fadeInUp} className="font-display text-5xl md:text-7xl font-medium mt-4 mb-6">
@@ -355,7 +355,7 @@ export default function UseOfFunds() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary text-sm tracking-wider">
+            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
               CENTER DEVELOPMENT
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
@@ -666,7 +666,7 @@ export default function UseOfFunds() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary text-sm tracking-wider">
+            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
               REVENUE ARCHITECTURE
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
@@ -734,7 +734,7 @@ export default function UseOfFunds() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary text-sm tracking-wider">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
                 GLOBAL FOOTPRINT
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
@@ -819,7 +819,7 @@ export default function UseOfFunds() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary text-sm tracking-wider">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
                 MARKET TIMING
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">

@@ -201,7 +201,7 @@ export default function Home() {
               animate={{ opacity: 1 }}
               transition={{ delay: 3.8 }}
             >
-              Premium Longevity Consulting
+              The Business of Longevity
             </motion.p>
             <motion.div
               initial={{ scaleX: 0 }}

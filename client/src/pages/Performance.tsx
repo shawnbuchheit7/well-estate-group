@@ -58,7 +58,7 @@ export default function Performance() {
             animate="visible"
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary text-sm tracking-wider">
+            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
               SINGLE CENTER PROFORMA
             </motion.span>
             <motion.h1 variants={fadeInUp} className="font-display text-5xl md:text-7xl font-medium mt-4 mb-6">
@@ -83,7 +83,7 @@ export default function Performance() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary text-sm tracking-wider">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
                 5-YEAR OUTLOOK
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
@@ -142,7 +142,7 @@ export default function Performance() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary text-sm tracking-wider">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
                 PROFIT & LOSS
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
@@ -267,7 +267,7 @@ export default function Performance() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary text-sm tracking-wider">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
                 MODEL INPUTS
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
@@ -775,7 +775,7 @@ export default function Performance() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary text-sm tracking-wider">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
                 MEMBERSHIP TIERS
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
@@ -1000,7 +1000,7 @@ export default function Performance() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary text-sm tracking-wider">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
                 REVENUE MIX
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
@@ -1143,7 +1143,7 @@ export default function Performance() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary text-sm tracking-wider">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
                 CAPITAL REQUIREMENTS
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
@@ -1303,7 +1303,7 @@ export default function Performance() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary text-sm tracking-wider">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
                 OPERATIONS
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
@@ -1428,7 +1428,7 @@ export default function Performance() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary text-sm tracking-wider">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
                 CAPACITY ANALYSIS
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
@@ -1635,7 +1635,7 @@ export default function Performance() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp}>
-              <span className="font-mono text-primary text-sm tracking-wider">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
                 INVESTMENT THESIS
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-8">

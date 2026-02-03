@@ -95,7 +95,7 @@ export default function Layout({ children }: LayoutProps) {
           
           {/* Data Room Button - Far Right */}
           <div className="flex items-center gap-4 flex-shrink-0">
-            <Link href="/contact" className="hidden sm:block">
+            <Link href="/data-room" className="hidden sm:block">
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -185,7 +185,7 @@ export default function Layout({ children }: LayoutProps) {
                 
                 {/* Mobile Menu Footer */}
                 <div className="p-6 border-t border-border">
-                  <Link href="/contact" onClick={closeMobileMenu}>
+                  <Link href="/data-room" onClick={closeMobileMenu}>
                     <Button className="w-full bg-primary hover:bg-primary/90 text-white font-body font-medium shadow-md">
                       Data Room
                     </Button>
