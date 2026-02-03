@@ -46,8 +46,9 @@ export default function Layout({ children }: LayoutProps) {
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
-        <div className="container mx-auto flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center gap-3 group" onClick={closeMobileMenu}>
+        <div className="w-full px-6 lg:px-10 xl:px-16 flex items-center justify-between h-20">
+          {/* Logo - Far Left */}
+          <Link href="/" className="flex items-center gap-3 group flex-shrink-0" onClick={closeMobileMenu}>
             <motion.img 
               src="/images/logos/logo-icon-dark-outline.png" 
               alt="Well Estate Group" 
@@ -55,48 +56,51 @@ export default function Layout({ children }: LayoutProps) {
               whileHover={{ rotate: 360, scale: 1.1 }}
               transition={{ duration: 0.6 }}
             />
-            <span className="font-display text-xl font-semibold tracking-wide text-foreground group-hover:text-primary transition-colors">
+            <span className="font-display text-lg font-semibold tracking-wide text-foreground group-hover:text-primary transition-colors whitespace-nowrap">
               WELL ESTATE GROUP
             </span>
           </Link>
           
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-1 font-body text-xs">
-            {navLinks.map((link, index) => (
-              <motion.div
-                key={link.href}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.05 }}
-              >
-                <Link
-                  href={link.href}
-                  className={`relative px-2.5 py-1.5 rounded-md border transition-all ${
-                    location === link.href
-                      ? "text-primary font-medium border-primary/50 bg-primary/10"
-                      : "text-muted-foreground border-transparent hover:text-foreground hover:border-border hover:bg-muted/50"
-                  }`}
+          {/* Desktop Navigation - Center with good spacing */}
+          <div className="hidden xl:flex items-center justify-center flex-1 mx-8">
+            <div className="flex items-center gap-3 font-body text-sm">
+              {navLinks.map((link, index) => (
+                <motion.div
+                  key={link.href}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.05 }}
                 >
-                  {link.label}
-                  {location === link.href && (
-                    <motion.div
-                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary"
-                      layoutId="navIndicator"
-                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                    />
-                  )}
-                </Link>
-              </motion.div>
-            ))}
+                  <Link
+                    href={link.href}
+                    className={`relative px-3.5 py-2 rounded-md border transition-all whitespace-nowrap ${
+                      location === link.href
+                        ? "text-primary font-medium border-primary/50 bg-primary/10"
+                        : "text-muted-foreground border-transparent hover:text-foreground hover:border-border hover:bg-muted/50"
+                    }`}
+                  >
+                    {link.label}
+                    {location === link.href && (
+                      <motion.div
+                        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary"
+                        layoutId="navIndicator"
+                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                      />
+                    )}
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
           </div>
           
-          <div className="flex items-center gap-4">
+          {/* Data Room Button - Far Right */}
+          <div className="flex items-center gap-4 flex-shrink-0">
             <Link href="/contact" className="hidden sm:block">
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button className="bg-primary hover:bg-primary/90 text-white font-body font-medium shadow-md hover:shadow-lg hover:shadow-primary/30 transition-all">
+                <Button className="bg-primary hover:bg-primary/90 text-white font-body font-medium shadow-md hover:shadow-lg hover:shadow-primary/30 transition-all px-6">
                   Data Room
                 </Button>
               </motion.div>
@@ -105,7 +109,7 @@ export default function Layout({ children }: LayoutProps) {
             {/* Mobile Menu Button */}
             <motion.button
               onClick={toggleMobileMenu}
-              className="lg:hidden p-2 text-foreground hover:text-primary transition-colors"
+              className="xl:hidden p-2 text-foreground hover:text-primary transition-colors"
               aria-label="Toggle menu"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -126,7 +130,7 @@ export default function Layout({ children }: LayoutProps) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 lg:hidden"
+              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 xl:hidden"
               onClick={closeMobileMenu}
             />
             
@@ -136,7 +140,7 @@ export default function Layout({ children }: LayoutProps) {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-background border-l border-border z-50 lg:hidden shadow-xl"
+              className="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-background border-l border-border z-50 xl:hidden shadow-xl"
             >
               <div className="flex flex-col h-full">
                 {/* Mobile Menu Header */}

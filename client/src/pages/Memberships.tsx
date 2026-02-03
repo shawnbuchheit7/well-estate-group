@@ -40,10 +40,10 @@ export default function Memberships() {
       </section>
 
       {/* Membership Comparison Overview */}
-      <section className="py-12">
+      <section className="py-16">
         <div className="container">
           <motion.div 
-            className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto"
+            className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -52,62 +52,66 @@ export default function Memberships() {
             {/* ELITE Membership - Primary Tier (85% of members) */}
             <motion.div variants={scaleIn} className="relative group">
               <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-primary/10 rounded-3xl blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-accent text-accent-foreground text-xs font-mono rounded-full">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-5 py-1.5 bg-accent text-accent-foreground text-xs font-mono rounded-full shadow-lg z-10">
                 85% OF MEMBERS
               </div>
-              <div className="relative bg-card border-2 border-accent rounded-3xl p-8 h-full">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center">
-                    <Crown className="w-6 h-6 text-accent" />
+              <div className="relative bg-card border-2 border-accent rounded-3xl p-10 h-full shadow-xl">
+                {/* Header with icon and title side by side */}
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center flex-shrink-0">
+                    <Crown className="w-7 h-7 text-accent" />
                   </div>
                   <div>
-                    <h3 className="font-display text-2xl font-medium">ELITE</h3>
-                    <p className="text-sm text-muted-foreground">Full Regenerative Program</p>
+                    <h3 className="font-display text-3xl font-semibold tracking-tight">ELITE</h3>
+                    <p className="text-base text-muted-foreground">Full Regenerative Program</p>
                   </div>
                 </div>
-                <div className="mb-6">
+                
+                <div className="mb-8">
                   <AnimatedCounter 
                     value={29500} 
                     prefix="$" 
                     suffix="" 
                     decimals={0}
-                    className="font-display text-4xl font-medium"
+                    className="font-display text-5xl font-semibold"
                     duration={2}
                   />
-                  <span className="text-muted-foreground">/year</span>
+                  <span className="text-lg text-muted-foreground ml-1">/year</span>
                 </div>
-                <p className="font-body text-muted-foreground mb-6">
+                
+                <p className="font-body text-muted-foreground mb-8 text-base leading-relaxed">
                   Complete access to Lumastem's regenerative medicine platform including 
                   biologics, peptides, and ongoing physician-led care.
                 </p>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-2 text-sm">
-                    <div className="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center">
-                      <Check className="w-3 h-3 text-accent" />
+                
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3 text-base">
+                    <div className="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
+                      <Check className="w-4 h-4 text-accent" />
                     </div>
                     <span>Everything in PRIME, plus...</span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <div className="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center">
-                      <Check className="w-3 h-3 text-accent" />
+                  <div className="flex items-center gap-3 text-base">
+                    <div className="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
+                      <Check className="w-4 h-4 text-accent" />
                     </div>
                     <span>MUSE Cell therapy access</span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <div className="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center">
-                      <Check className="w-3 h-3 text-accent" />
+                  <div className="flex items-center gap-3 text-base">
+                    <div className="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
+                      <Check className="w-4 h-4 text-accent" />
                     </div>
                     <span>Peptide & hormone protocols</span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <div className="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center">
-                      <Check className="w-3 h-3 text-accent" />
+                  <div className="flex items-center gap-3 text-base">
+                    <div className="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
+                      <Check className="w-4 h-4 text-accent" />
                     </div>
                     <span>90% at-home care delivery</span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <div className="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center">
-                      <Check className="w-3 h-3 text-accent" />
+                  <div className="flex items-center gap-3 text-base">
+                    <div className="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
+                      <Check className="w-4 h-4 text-accent" />
                     </div>
                     <span>Dedicated Longevity Physician</span>
                   </div>
@@ -118,53 +122,57 @@ export default function Memberships() {
             {/* PRIME Membership */}
             <motion.div variants={scaleIn} className="relative group">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="relative bg-card border border-border rounded-3xl p-8 h-full hover:border-primary/50 transition-colors">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <Check className="w-6 h-6 text-primary" />
+              <div className="relative bg-card border border-border rounded-3xl p-10 h-full hover:border-primary/50 transition-colors shadow-lg">
+                {/* Header with icon and title side by side */}
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="w-14 h-14 rounded-2xl bg-muted flex items-center justify-center flex-shrink-0">
+                    <Check className="w-7 h-7 text-muted-foreground" />
                   </div>
                   <div>
-                    <h3 className="font-display text-2xl font-medium">PRIME</h3>
-                    <p className="text-sm text-muted-foreground">Diagnostic Foundation</p>
+                    <h3 className="font-display text-3xl font-semibold tracking-tight">PRIME</h3>
+                    <p className="text-base text-muted-foreground">Diagnostic Foundation</p>
                   </div>
                 </div>
-                <div className="mb-6">
+                
+                <div className="mb-8">
                   <AnimatedCounter 
                     value={12500} 
                     prefix="$" 
                     suffix="" 
                     decimals={0}
-                    className="font-display text-4xl font-medium"
+                    className="font-display text-5xl font-semibold"
                     duration={2}
                   />
-                  <span className="text-muted-foreground">/year</span>
+                  <span className="text-lg text-muted-foreground ml-1">/year</span>
                 </div>
-                <p className="font-body text-muted-foreground mb-6">
+                
+                <p className="font-body text-muted-foreground mb-8 text-base leading-relaxed">
                   Comprehensive diagnostic assessment and personalized health roadmap 
                   for those beginning their longevity journey.
                 </p>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-2 text-sm">
-                    <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center">
-                      <Check className="w-3 h-3 text-primary" />
+                
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3 text-base">
+                    <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                      <Check className="w-4 h-4 text-primary" />
                     </div>
                     <span>Annual comprehensive diagnostics</span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center">
-                      <Check className="w-3 h-3 text-primary" />
+                  <div className="flex items-center gap-3 text-base">
+                    <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                      <Check className="w-4 h-4 text-primary" />
                     </div>
                     <span>Personalized health assessment</span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center">
-                      <Check className="w-3 h-3 text-primary" />
+                  <div className="flex items-center gap-3 text-base">
+                    <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                      <Check className="w-4 h-4 text-primary" />
                     </div>
                     <span>Longevity roadmap development</span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center">
-                      <Check className="w-3 h-3 text-primary" />
+                  <div className="flex items-center gap-3 text-base">
+                    <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                      <Check className="w-4 h-4 text-primary" />
                     </div>
                     <span>Physician consultation</span>
                   </div>
