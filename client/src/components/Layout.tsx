@@ -61,9 +61,9 @@ export default function Layout({ children }: LayoutProps) {
             </span>
           </Link>
           
-          {/* Desktop Navigation - Center with good spacing */}
-          <div className="hidden xl:flex items-center justify-center flex-1 mx-8">
-            <div className="flex items-center gap-3 font-body text-sm">
+          {/* Desktop Navigation - Visible tabs across the top */}
+          <div className="hidden lg:flex items-center justify-center flex-1 mx-4">
+            <div className="flex items-center gap-1 font-body text-xs">
               {navLinks.map((link, index) => (
                 <motion.div
                   key={link.href}
@@ -73,7 +73,7 @@ export default function Layout({ children }: LayoutProps) {
                 >
                   <Link
                     href={link.href}
-                    className={`relative px-3.5 py-2 rounded-md border transition-all whitespace-nowrap ${
+                    className={`relative px-2 py-1.5 rounded-md border transition-all whitespace-nowrap ${
                       location === link.href
                         ? "text-primary font-medium border-primary/50 bg-primary/10"
                         : "text-muted-foreground border-transparent hover:text-foreground hover:border-border hover:bg-muted/50"
@@ -109,7 +109,7 @@ export default function Layout({ children }: LayoutProps) {
             {/* Mobile Menu Button */}
             <motion.button
               onClick={toggleMobileMenu}
-              className="xl:hidden p-2 text-foreground hover:text-primary transition-colors"
+              className="lg:hidden p-2 text-foreground hover:text-primary transition-colors"
               aria-label="Toggle menu"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -130,7 +130,7 @@ export default function Layout({ children }: LayoutProps) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 xl:hidden"
+              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 lg:hidden"
               onClick={closeMobileMenu}
             />
             
@@ -140,7 +140,7 @@ export default function Layout({ children }: LayoutProps) {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-background border-l border-border z-50 xl:hidden shadow-xl"
+              className="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-background border-l border-border z-50 lg:hidden shadow-xl"
             >
               <div className="flex flex-col h-full">
                 {/* Mobile Menu Header */}
