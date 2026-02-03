@@ -1462,7 +1462,7 @@ export default function Hiring() {
                   <input 
                     type="range" 
                     min="0" 
-                    max="500" 
+                    max={currentCapacity} 
                     value={memberCount}
                     onChange={(e) => setMemberCount(parseInt(e.target.value))}
                     className="w-full h-2 bg-muted/50 rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:bg-primary [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:cursor-pointer"
