@@ -1425,8 +1425,8 @@ export default function Hiring() {
                       style={{ width: `${Math.min((memberCount / currentCapacity) * 100, 100)}%` }}
                     />
                     
-                    {/* Team trigger markers */}
-                    {[60, 120, 180, 240].map((trigger, i) => {
+                    {/* Team trigger markers - yellow lines every 120 members across the complete bar */}
+                    {Array.from({ length: Math.floor(currentCapacity / 120) + 1 }, (_, i) => (i + 1) * 120).map((trigger, i) => {
                       const position = (trigger / currentCapacity) * 100;
                       if (position > 100) return null;
                       return (
