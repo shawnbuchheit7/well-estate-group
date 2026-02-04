@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 interface AnimatedCounterProps {
   value: number;
@@ -13,45 +13,35 @@ export function AnimatedCounter({
   value,
   prefix = '',
   suffix = '',
-  duration = 2,
+  duration = 1.5,
   decimals = 0,
   className = '',
 }: AnimatedCounterProps) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const [displayValue, setDisplayValue] = useState(value); // Start with final value
-  const [hasAnimated, setHasAnimated] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+  const [displayValue, setDisplayValue] = useState(0);
+  const [hasStarted, setHasStarted] = useState(false);
+  const elementRef = useRef<HTMLSpanElement>(null);
 
-  // Use Intersection Observer for reliable visibility detection
+  // Format the display value
+  const formatValue = (val: number) => {
+    const fixed = val.toFixed(decimals);
+    return Number(fixed).toLocaleString('en-US', {
+      minimumFractionDigits: decimals,
+      maximumFractionDigits: decimals,
+    });
+  };
+
   useEffect(() => {
-    const element = ref.current;
-    if (!element) return;
+    // Start animation after a short delay to ensure component is mounted
+    const startTimer = setTimeout(() => {
+      setHasStarted(true);
+    }, 100);
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasAnimated) {
-            setIsVisible(true);
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '50px' }
-    );
+    return () => clearTimeout(startTimer);
+  }, []);
 
-    observer.observe(element);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [hasAnimated]);
-
-  // Animation effect
   useEffect(() => {
-    if (!isVisible || hasAnimated) return;
+    if (!hasStarted) return;
 
-    setHasAnimated(true);
-    setDisplayValue(0); // Reset to 0 for animation
-    
     let startTime: number | null = null;
     let animationFrame: number;
 
@@ -62,19 +52,15 @@ export function AnimatedCounter({
       
       // Cubic ease-out for smooth deceleration
       const easeOut = 1 - Math.pow(1 - progress, 3);
-      
-      const currentValue = easeOut * value;
-      setDisplayValue(currentValue);
+      setDisplayValue(easeOut * value);
 
       if (progress < 1) {
         animationFrame = requestAnimationFrame(animate);
       } else {
-        // Ensure we end at the exact value
         setDisplayValue(value);
       }
     };
 
-    // Start animation
     animationFrame = requestAnimationFrame(animate);
 
     return () => {
@@ -82,19 +68,10 @@ export function AnimatedCounter({
         cancelAnimationFrame(animationFrame);
       }
     };
-  }, [isVisible, value, duration, hasAnimated]);
-
-  // Format the display value
-  const formatValue = useCallback((val: number) => {
-    const fixed = val.toFixed(decimals);
-    return Number(fixed).toLocaleString('en-US', {
-      minimumFractionDigits: decimals,
-      maximumFractionDigits: decimals,
-    });
-  }, [decimals]);
+  }, [hasStarted, value, duration]);
 
   return (
-    <span ref={ref} className={className}>
+    <span ref={elementRef} className={className}>
       {prefix}{formatValue(displayValue)}{suffix}
     </span>
   );
