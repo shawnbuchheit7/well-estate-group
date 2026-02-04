@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { useEffect, useRef, useState, useCallback } from 'react';
 
 interface AnimatedCounterProps {
   value: number;
@@ -19,27 +18,53 @@ export function AnimatedCounter({
   className = '',
 }: AnimatedCounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  // Use a smaller margin and trigger earlier
-  const isInView = useInView(ref, { once: true, margin: '0px' });
-  const [displayValue, setDisplayValue] = useState(0);
+  const [displayValue, setDisplayValue] = useState(value); // Start with final value
   const [hasAnimated, setHasAnimated] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
+  // Use Intersection Observer for reliable visibility detection
   useEffect(() => {
-    if (!isInView || hasAnimated) return;
+    const element = ref.current;
+    if (!element) return;
 
-    // Start animation immediately when in view
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '50px' }
+    );
+
+    observer.observe(element);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [hasAnimated]);
+
+  // Animation effect
+  useEffect(() => {
+    if (!isVisible || hasAnimated) return;
+
     setHasAnimated(true);
-    let startTime: number;
+    setDisplayValue(0); // Reset to 0 for animation
+    
+    let startTime: number | null = null;
     let animationFrame: number;
 
     const animate = (timestamp: number) => {
       if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / (duration * 1000), 1);
       
-      // Easing function for smooth deceleration
+      // Cubic ease-out for smooth deceleration
       const easeOut = 1 - Math.pow(1 - progress, 3);
       
-      setDisplayValue(easeOut * value);
+      const currentValue = easeOut * value;
+      setDisplayValue(currentValue);
 
       if (progress < 1) {
         animationFrame = requestAnimationFrame(animate);
@@ -49,34 +74,29 @@ export function AnimatedCounter({
       }
     };
 
-    // Small delay to ensure component is mounted
-    const timeout = setTimeout(() => {
-      animationFrame = requestAnimationFrame(animate);
-    }, 50);
+    // Start animation
+    animationFrame = requestAnimationFrame(animate);
 
     return () => {
-      clearTimeout(timeout);
       if (animationFrame) {
         cancelAnimationFrame(animationFrame);
       }
     };
-  }, [isInView, value, duration, hasAnimated]);
+  }, [isVisible, value, duration, hasAnimated]);
 
-  const formattedValue = displayValue.toFixed(decimals);
-  const formattedWithCommas = Number(formattedValue).toLocaleString('en-US', {
-    minimumFractionDigits: decimals,
-    maximumFractionDigits: decimals,
-  });
+  // Format the display value
+  const formatValue = useCallback((val: number) => {
+    const fixed = val.toFixed(decimals);
+    return Number(fixed).toLocaleString('en-US', {
+      minimumFractionDigits: decimals,
+      maximumFractionDigits: decimals,
+    });
+  }, [decimals]);
 
   return (
-    <motion.span
-      ref={ref}
-      className={className}
-      initial={{ opacity: 1, y: 0 }}
-      animate={{ opacity: 1, y: 0 }}
-    >
-      {prefix}{formattedWithCommas}{suffix}
-    </motion.span>
+    <span ref={ref} className={className}>
+      {prefix}{formatValue(displayValue)}{suffix}
+    </span>
   );
 }
 
