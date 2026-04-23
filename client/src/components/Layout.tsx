@@ -39,7 +39,7 @@ const zwNavLinks = [
   { href: "/gtm/zerowheel/sales", label: "Sales Enablement" },
   { href: "/gtm/zerowheel/strategic-markets", label: "Strategic Markets" },
   { href: "/gtm/zerowheel/global-markets", label: "Global Markets" },
-  { href: "/gtm/zerowheel/sales-infrastructure", label: "Platform Stack" },
+  { href: "/gtm/zerowheel/sales-infrastructure", label: "Infrastructure" },
 ];
 
 // Sample GTM tabs (original generic)
