@@ -32,7 +32,7 @@ const GTMStrategicMarkets = lazy(() => import("./pages/GTMStrategicMarkets"));
 const GTMGlobalMarkets = lazy(() => import("./pages/GTMGlobalMarkets"));
 const GTMSalesInfrastructure = lazy(() => import("./pages/GTMSalesInfrastructure"));
 
-// Zero Wheel GTM pages
+// ZeroWheel GTM pages
 const ZWOverview = lazy(() => import("./pages/zerowheel/ZWOverview"));
 const ZWLinesOfBusiness = lazy(() => import("./pages/zerowheel/ZWLinesOfBusiness"));
 const ZWSales = lazy(() => import("./pages/zerowheel/ZWSales"));
@@ -104,7 +104,7 @@ function App() {
                   {/* GTM Projects Landing — Shows client tiles */}
                   <Route path="/gtm" component={GTMProjects} />
                   
-                  {/* Zero Wheel GTM Project */}
+                  {/* ZeroWheel GTM Project */}
                   <Route path="/gtm/zerowheel" component={ZWOverview} />
                   <Route path="/gtm/zerowheel/lines-of-business" component={ZWLinesOfBusiness} />
                   <Route path="/gtm/zerowheel/sales" component={ZWSales} />

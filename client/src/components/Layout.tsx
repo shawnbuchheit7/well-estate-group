@@ -32,7 +32,7 @@ const longevityNavLinks = [
   { href: "/longevity/faq", label: "FAQ" },
 ];
 
-// Zero Wheel GTM tabs
+// ZeroWheel GTM tabs
 const zwNavLinks = [
   { href: "/gtm/zerowheel", label: "Overview" },
   { href: "/gtm/zerowheel/lines-of-business", label: "Lines of Business" },
@@ -90,7 +90,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
   if (isZWRoute || section === "gtm-zerowheel") {
     navLinks = zwNavLinks;
     homeLink = "/gtm/zerowheel";
-    sectionLabel = "Zero Wheel";
+    sectionLabel = "ZeroWheel";
     backLink = "/gtm";
   } else if (isSampleRoute || section === "gtm-sample") {
     navLinks = sampleNavLinks;

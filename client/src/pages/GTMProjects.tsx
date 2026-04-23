@@ -25,12 +25,12 @@ interface ProjectTile {
 const projects: ProjectTile[] = [
   {
     id: "zerowheel",
-    title: "Zero Wheel",
+    title: "ZeroWheel",
     subtitle: "Connected Fitness Device — Market Entry",
     description: "Comprehensive go-to-market strategy for a next-generation motorized core training device across premium clubs, professional sports, medical, military, and hospitality channels.",
     href: "/gtm/zerowheel",
     logoSrc: "/zerowheel-logo.png",
-    logoAlt: "Zero Wheel",
+    logoAlt: "ZeroWheel",
     status: "active",
     stats: [
       { label: "Verticals", value: "8" },

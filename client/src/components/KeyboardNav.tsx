@@ -1,7 +1,7 @@
 /**
  * KeyboardNav - Enables keyboard shortcuts for navigating between GTM tabs
  * Left/Right arrows navigate between tabs when on a GTM page
- * Supports both Zero Wheel and Sample GTM route sets
+ * Supports both ZeroWheel and Sample GTM route sets
  */
 
 import { useEffect } from "react";
