@@ -29,7 +29,7 @@ const projects: ProjectTile[] = [
     subtitle: "Connected Fitness Device — Market Entry",
     description: "Comprehensive go-to-market strategy for a next-generation motorized core training device across premium clubs, professional sports, medical, military, and hospitality channels.",
     href: "/gtm/zerowheel",
-    logoSrc: "/zerowheel-logo.png",
+    logoSrc: "/manus-storage/zerowheel-logo_9e8eb913.png",
     logoAlt: "ZeroWheel",
     status: "active",
     stats: [

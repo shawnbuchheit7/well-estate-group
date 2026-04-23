@@ -97,7 +97,7 @@ ${formData.message || 'No additional message provided.'}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-accent/10" />
         <div 
           className="absolute inset-0 opacity-10"
-          style={{ backgroundImage: "url('/images/biologics-abstract.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}
+          style={{ backgroundImage: "url('/manus-storage/biologics-abstract_316899ad.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}
         />
         
         <div className="container relative z-10">

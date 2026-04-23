@@ -16,7 +16,7 @@ export default function Therapeutics() {
       <section className="py-20 relative">
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ backgroundImage: "url('/images/stem-cell-hero.png')" }}
+          style={{ backgroundImage: "url('/manus-storage/stem-cell-hero_c0af52aa.png')" }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
         
@@ -82,7 +82,7 @@ export default function Therapeutics() {
             <motion.div variants={scaleIn} className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-accent/30 rounded-3xl blur-3xl" />
               <img 
-                src="/images/therapeutics-treatment.png" 
+                src="/manus-storage/therapeutics-treatment_522ec85b.png" 
                 alt="Well Estate Group Treatment Room"
                 className="relative rounded-3xl border border-border shadow-2xl"
               />

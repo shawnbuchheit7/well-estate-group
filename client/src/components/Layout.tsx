@@ -159,7 +159,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
             )}
             <Link href={homeLink} className="flex items-center gap-3 group" onClick={closeMobileMenu}>
               <motion.img 
-                src="/images/logos/logo-icon-dark-outline.png" 
+                src="/manus-storage/logo-gold_557c1883.png" 
                 alt="Well Estate Group" 
                 className="w-10 h-10"
                 whileHover={{ rotate: 360, scale: 1.1 }}
@@ -381,7 +381,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
               <div className="flex flex-col gap-4 max-w-sm">
                 <Link href="/" className="flex items-center gap-3 group">
                   <motion.img 
-                    src="/images/logos/logo-icon-dark-outline.png" 
+                    src="/manus-storage/logo-gold_557c1883.png" 
                     alt="Well Estate Group" 
                     className="w-9 h-9"
                     whileHover={{ rotate: 360 }}

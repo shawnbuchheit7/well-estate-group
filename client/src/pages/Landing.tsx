@@ -147,7 +147,7 @@ export default function Landing() {
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             />
             <motion.img
-              src="/images/logos/logo-icon-gold-outline.png"
+              src="/manus-storage/logo-gold_557c1883.png"
               alt="Well Estate Group"
               className="w-28 h-28 md:w-36 md:h-36 cursor-pointer relative z-10"
               style={{
