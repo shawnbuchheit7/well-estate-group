@@ -710,9 +710,9 @@ export default function ZWSalesInfrastructure() {
             <DarkCard className="lg:col-span-1">
               <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Lead Source Mix</p>
               <p className="font-display text-lg font-medium text-white mb-4">YTD Distribution</p>
-              <ResponsiveContainer width="100%" height={200}>
-                <PieChart>
-                  <Pie data={sourceData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={80} innerRadius={40} paddingAngle={3}>
+              <ResponsiveContainer width="100%" height={260}>
+                <PieChart margin={{ top: 10, right: 30, bottom: 10, left: 30 }}>
+                  <Pie data={sourceData} dataKey="value" nameKey="name" cx="50%" cy="45%" outerRadius={75} innerRadius={38} paddingAngle={3}>
                     {sourceData.map((s, i) => <Cell key={i} fill={s.fill} />)}
                   </Pie>
                   <Tooltip content={<DarkTooltip />} />
