@@ -54,7 +54,12 @@ export default function PasswordGate({ children }: PasswordGateProps) {
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white">
-        <div className="w-10 h-10 border-3 border-gray-200 border-t-[#C9A962] rounded-full animate-spin" />
+        <img
+          src="/manus-storage/logo-gold_557c1883.png"
+          alt="Well Estate Group"
+          className="w-16 h-16 animate-spin"
+          style={{ animationDuration: '2s', animationTimingFunction: 'linear' }}
+        />
       </div>
     );
   }
