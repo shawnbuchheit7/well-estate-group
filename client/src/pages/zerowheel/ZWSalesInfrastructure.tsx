@@ -1,7 +1,9 @@
 /*
- * ZeroWheel Sales Infrastructure — Lead Funnel, Opportunity Pipeline, Sales Performance & Revenue Forecasting
- * Design: Dark premium dashboard — #0A0A0A background, gold (#C9A962) accents, teal highlights
- * Layout: Full-width dark dashboard sections, recharts for all data visualizations
+ * ZeroWheel Sales Infrastructure
+ * Design: Dark premium — #0A0A0A bg, gold (#C9A962) accents, teal highlights
+ * Data: $1,000/unit, 1,000 unit / $1M revenue target for 2026
+ * Sections: Hero → Tech Stack → Lead Intake Flow → Lead→Opp Flow → Opp→Close Flow
+ *           → Funnel Data → Pipeline → Sales Team → Channels → Forecasting → Win/Loss
  */
 
 import { motion } from "framer-motion";
@@ -9,10 +11,15 @@ import {
   AreaChart, Area, BarChart, Bar, LineChart, Line,
   PieChart, Pie, Cell,
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
+  ComposedChart,
 } from "recharts";
 import {
   TrendingUp, Users, Target, DollarSign,
   CheckCircle2, XCircle, AlertCircle, Activity, BarChart3,
+  Zap, MessageSquare, Database, Globe, ArrowRight, ArrowDown,
+  Layers, Settings, Filter, Mail, Phone, Calendar, Award,
+  GitBranch, Cpu, BarChart2, RefreshCw, ShoppingCart, Link2,
+  Workflow, Bot, FormInput, CloudCog,
 } from "lucide-react";
 import Layout from "@/components/Layout";
 import { SectionNav } from "@/components/SectionNav";
@@ -21,7 +28,11 @@ import { fadeInUp, staggerContainer } from "@/lib/animations";
 // ─── Section Nav ────────────────────────────────────────────────────────────
 const sections = [
   { id: "hero", label: "Overview" },
-  { id: "lead-funnel", label: "Lead Funnel" },
+  { id: "tech-stack", label: "Tech Stack" },
+  { id: "lead-intake", label: "Lead Intake" },
+  { id: "lead-to-opp", label: "Lead → Opp" },
+  { id: "opp-to-close", label: "Opp → Close" },
+  { id: "lead-funnel", label: "Funnel Data" },
   { id: "opportunity-pipeline", label: "Pipeline" },
   { id: "sales-team", label: "Sales Team" },
   { id: "channel-performance", label: "Channels" },
@@ -34,194 +45,110 @@ const GOLD = "#C9A962";
 const GOLD_DIM = "#8B7D3C";
 const TEAL = "#2DD4BF";
 const RED = "#F87171";
+const PURPLE = "#A78BFA";
+const ORANGE = "#FB923C";
+const GREEN = "#4ADE80";
 const CARD_BG = "#111111";
 const CARD_BORDER = "rgba(201,169,98,0.12)";
 
-// ─── Mock Data ────────────────────────────────────────────────────────────────
-
-const leadSourceData = [
-  { month: "Nov", "Private Clubs": 42, "Medical": 18, "Sports Perf.": 12, "Corporate": 8, "Consumer": 22, "Hospitality": 14 },
-  { month: "Dec", "Private Clubs": 55, "Medical": 24, "Sports Perf.": 16, "Corporate": 11, "Consumer": 28, "Hospitality": 19 },
-  { month: "Jan", "Private Clubs": 68, "Medical": 31, "Sports Perf.": 22, "Corporate": 15, "Consumer": 35, "Hospitality": 26 },
-  { month: "Feb", "Private Clubs": 74, "Medical": 38, "Sports Perf.": 28, "Corporate": 19, "Consumer": 41, "Hospitality": 31 },
-  { month: "Mar", "Private Clubs": 89, "Medical": 45, "Sports Perf.": 33, "Corporate": 24, "Consumer": 52, "Hospitality": 38 },
-  { month: "Apr", "Private Clubs": 102, "Medical": 52, "Sports Perf.": 41, "Corporate": 29, "Consumer": 61, "Hospitality": 44 },
+// ─── Data ($1,000/unit, 1,000 unit / $1M target for 2026) ───────────────────
+const funnelStages = [
+  { name: "Website Visitors",   value: 48000, fill: GOLD },
+  { name: "Typeform Leads",     value: 1208,  fill: GOLD_DIM },
+  { name: "Intercom Qualified", value: 506,   fill: TEAL },
+  { name: "Salesforce Opps",    value: 334,   fill: PURPLE },
+  { name: "Demos Completed",    value: 198,   fill: ORANGE },
+  { name: "Proposals Sent",     value: 142,   fill: GREEN },
+  { name: "Installs (Won)",     value: 245,   fill: TEAL },
 ];
 
-const funnelStages = [
-  { name: "Raw Leads", value: 1240, fill: GOLD },
-  { name: "Qualified", value: 742, fill: GOLD_DIM },
-  { name: "Demo Scheduled", value: 418, fill: "#6B5E2E" },
-  { name: "Proposal Sent", value: 231, fill: "#4A4020" },
-  { name: "Negotiation", value: 118, fill: "#2D2714" },
-  { name: "Closed Won", value: 64, fill: TEAL },
+const sourceData = [
+  { name: "Direct Sales",        value: 38, fill: GOLD },
+  { name: "E-Commerce",          value: 22, fill: TEAL },
+  { name: "Partner / Referral",  value: 18, fill: PURPLE },
+  { name: "Inbound / Marketing", value: 12, fill: ORANGE },
+  { name: "Trade Show",          value: 6,  fill: GREEN },
+  { name: "Social / Content",    value: 4,  fill: RED },
+];
+
+const monthlyData = [
+  { month: "Jan", leads: 210, opps: 88, installs: 38, revenue: 38000, budget: 50000 },
+  { month: "Feb", leads: 268, opps: 112, installs: 52, revenue: 52000, budget: 65000 },
+  { month: "Mar", leads: 341, opps: 143, installs: 71, revenue: 71000, budget: 80000 },
+  { month: "Apr", leads: 389, opps: 163, installs: 84, revenue: 84000, budget: 90000 },
+  { month: "May", leads: null, opps: null, installs: null, revenue: null, budget: 100000 },
+  { month: "Jun", leads: null, opps: null, installs: null, revenue: null, budget: 110000 },
+  { month: "Jul", leads: null, opps: null, installs: null, revenue: null, budget: 115000 },
+  { month: "Aug", leads: null, opps: null, installs: null, revenue: null, budget: 120000 },
+  { month: "Sep", leads: null, opps: null, installs: null, revenue: null, budget: 125000 },
+  { month: "Oct", leads: null, opps: null, installs: null, revenue: null, budget: 130000 },
+  { month: "Nov", leads: null, opps: null, installs: null, revenue: null, budget: 115000 },
+  { month: "Dec", leads: null, opps: null, installs: null, revenue: null, budget: 110000 },
 ];
 
 const pipelineStages = [
-  { stage: "Discovery", count: 87, value: 2.1, color: GOLD },
-  { stage: "Demo", count: 54, value: 3.4, color: "#B8963E" },
-  { stage: "Proposal", count: 38, value: 4.8, color: "#A69050" },
-  { stage: "Negotiation", count: 22, value: 3.9, color: "#8B7D3C" },
-  { stage: "Contract", count: 11, value: 2.7, color: "#0D9488" },
-  { stage: "Won", count: 64, value: 8.2, color: TEAL },
+  { stage: "Discovery",    count: 142, value: 142000, color: GOLD },
+  { stage: "Demo",         count: 89,  value: 89000,  color: "#B8963E" },
+  { stage: "Proposal",     count: 54,  value: 54000,  color: "#A69050" },
+  { stage: "Negotiation",  count: 31,  value: 31000,  color: "#8B7D3C" },
+  { stage: "Contract",     count: 18,  value: 18000,  color: TEAL },
 ];
 
-const salesTeamData = [
-  { rep: "A. Torres", leads: 142, opps: 58, won: 18, revenue: 1.84, calls: 312, emails: 487 },
-  { rep: "M. Chen", leads: 118, opps: 47, won: 14, revenue: 1.43, calls: 278, emails: 391 },
-  { rep: "J. Williams", leads: 97, opps: 39, won: 11, revenue: 1.12, calls: 241, emails: 334 },
-  { rep: "S. Patel", leads: 84, opps: 33, won: 9, revenue: 0.92, calls: 198, emails: 287 },
-  { rep: "R. Davis", leads: 76, opps: 28, won: 7, revenue: 0.71, calls: 176, emails: 243 },
-  { rep: "K. Johnson", leads: 61, opps: 22, won: 5, revenue: 0.51, calls: 143, emails: 198 },
+const repData = [
+  { rep: "A. Torres",   installs: 68, revenue: 68000, leads: 312, calls: 487 },
+  { rep: "M. Chen",     installs: 54, revenue: 54000, leads: 261, calls: 398 },
+  { rep: "J. Williams", installs: 41, revenue: 41000, leads: 198, calls: 312 },
+  { rep: "S. Patel",    installs: 33, revenue: 33000, leads: 159, calls: 248 },
+  { rep: "R. Davis",    installs: 28, revenue: 28000, leads: 134, calls: 211 },
+  { rep: "K. Johnson",  installs: 21, revenue: 21000, leads: 102, calls: 162 },
 ];
 
-const activityData = [
-  { week: "W1", calls: 148, emails: 312, demos: 24, proposals: 11 },
-  { week: "W2", calls: 162, emails: 341, demos: 28, proposals: 14 },
-  { week: "W3", calls: 139, emails: 298, demos: 21, proposals: 9 },
-  { week: "W4", calls: 178, emails: 387, demos: 33, proposals: 17 },
-  { week: "W5", calls: 191, emails: 412, demos: 38, proposals: 21 },
-  { week: "W6", calls: 204, emails: 441, demos: 42, proposals: 24 },
-  { week: "W7", calls: 187, emails: 398, demos: 36, proposals: 19 },
-  { week: "W8", calls: 218, emails: 467, demos: 45, proposals: 27 },
-];
-
-const channelData = [
-  { channel: "Private Clubs", leads: 102, opps: 41, installs: 18, convRate: 17.6, avgDeal: 48500 },
-  { channel: "Consumer", leads: 61, opps: 28, installs: 9, convRate: 14.8, avgDeal: 12800 },
-  { channel: "Medical", leads: 52, opps: 24, installs: 11, convRate: 21.2, avgDeal: 62000 },
-  { channel: "Hospitality", leads: 44, opps: 19, installs: 7, convRate: 15.9, avgDeal: 54000 },
-  { channel: "Sports Perf.", leads: 41, opps: 18, installs: 8, convRate: 19.5, avgDeal: 41000 },
-  { channel: "Corporate", leads: 29, opps: 12, installs: 4, convRate: 13.8, avgDeal: 38000 },
-  { channel: "Gov / Military", leads: 18, opps: 8, installs: 3, convRate: 16.7, avgDeal: 72000 },
-  { channel: "Amenities", leads: 31, opps: 14, installs: 4, convRate: 12.9, avgDeal: 29000 },
+const winLossReasons = [
+  { reason: "Price / Budget",      won: 0,  lost: 34, color: RED },
+  { reason: "Competitor",          won: 0,  lost: 28, color: ORANGE },
+  { reason: "Timeline",            won: 0,  lost: 19, color: PURPLE },
+  { reason: "No Decision",         won: 0,  lost: 15, color: GOLD_DIM },
+  { reason: "Product Fit",         won: 48, lost: 0,  color: TEAL },
+  { reason: "Relationship / Trust",won: 42, lost: 0,  color: GREEN },
+  { reason: "ROI Clarity",         won: 38, lost: 0,  color: GOLD },
+  { reason: "Demo Quality",        won: 31, lost: 0,  color: PURPLE },
 ];
 
 const forecastData = [
-  { month: "Jan", actual: 0.82, budget: 0.90, forecast: null },
-  { month: "Feb", actual: 1.14, budget: 1.20, forecast: null },
-  { month: "Mar", actual: 1.48, budget: 1.50, forecast: null },
-  { month: "Apr", actual: 1.91, budget: 2.00, forecast: null },
-  { month: "May", actual: null, budget: 2.40, forecast: 2.28 },
-  { month: "Jun", actual: null, budget: 2.80, forecast: 2.71 },
-  { month: "Jul", actual: null, budget: 3.20, forecast: 3.18 },
-  { month: "Aug", actual: null, budget: 3.60, forecast: 3.64 },
-  { month: "Sep", actual: null, budget: 4.10, forecast: 4.22 },
+  { period: "May",  low: 78,  mid: 92,  high: 108, budget: 100 },
+  { period: "Jun",  low: 88,  mid: 104, high: 121, budget: 110 },
+  { period: "Q3",   low: 248, mid: 298, high: 341, budget: 360 },
+  { period: "Q4",   low: 271, mid: 321, high: 368, budget: 355 },
 ];
 
-const cumulativeData = [
-  { month: "Jan", actual: 0.82, budget: 0.90, prior: 0.61 },
-  { month: "Feb", actual: 1.96, budget: 2.10, prior: 1.38 },
-  { month: "Mar", actual: 3.44, budget: 3.60, prior: 2.29 },
-  { month: "Apr", actual: 5.35, budget: 5.60, prior: 3.42 },
-  { month: "May", actual: null, budget: 8.00, prior: 4.88 },
-  { month: "Jun", actual: null, budget: 10.80, prior: 6.71 },
-  { month: "Jul", actual: null, budget: 14.00, prior: 8.94 },
-  { month: "Aug", actual: null, budget: 17.60, prior: 11.52 },
-  { month: "Sep", actual: null, budget: 21.70, prior: 14.48 },
-];
-
-const winReasons = [
-  { reason: "Product Demo Performance", count: 28, pct: 43.8 },
-  { reason: "Competitive Pricing", count: 16, pct: 25.0 },
-  { reason: "Relationship / Referral", count: 12, pct: 18.8 },
-  { reason: "Clinical Evidence", count: 8, pct: 12.5 },
-];
-
-const lossReasons = [
-  { reason: "Budget Constraints", count: 31, pct: 35.6 },
-  { reason: "Chose Competitor", count: 24, pct: 27.6 },
-  { reason: "No Decision / Stalled", count: 18, pct: 20.7 },
-  { reason: "Timing Not Right", count: 14, pct: 16.1 },
-];
-
-const winLossTrend = [
-  { month: "Nov", won: 8, lost: 14 },
-  { month: "Dec", won: 11, lost: 18 },
-  { month: "Jan", won: 14, lost: 21 },
-  { month: "Feb", won: 16, lost: 19 },
-  { month: "Mar", won: 19, lost: 22 },
-  { month: "Apr", won: 22, lost: 18 },
-];
-
-const conversionTrend = [
-  { month: "Nov", "Lead→Opp": 38, "Opp→Install": 14 },
-  { month: "Dec", "Lead→Opp": 41, "Opp→Install": 16 },
-  { month: "Jan", "Lead→Opp": 44, "Opp→Install": 17 },
-  { month: "Feb", "Lead→Opp": 47, "Opp→Install": 19 },
-  { month: "Mar", "Lead→Opp": 51, "Opp→Install": 21 },
-  { month: "Apr", "Lead→Opp": 54, "Opp→Install": 23 },
-];
+// ─── Helpers ─────────────────────────────────────────────────────────────────
+function fmt$(n: number) {
+  if (n >= 1000000) return `$${(n / 1000000).toFixed(2)}M`;
+  if (n >= 1000) return `$${(n / 1000).toFixed(0)}K`;
+  return `$${n}`;
+}
 
 // ─── Custom Tooltip ──────────────────────────────────────────────────────────
 const DarkTooltip = ({ active, payload, label }: any) => {
   if (!active || !payload?.length) return null;
   return (
-    <div className="bg-[#1A1A1A] border border-[rgba(201,169,98,0.2)] rounded-xl px-4 py-3 shadow-2xl">
+    <div className="bg-[#1A1A1A] border border-[rgba(201,169,98,0.2)] rounded-xl px-4 py-3 shadow-2xl min-w-[140px]">
       <p className="font-mono text-[10px] text-white/40 uppercase tracking-wider mb-2">{label}</p>
       {payload.map((p: any, i: number) => (
         <div key={i} className="flex items-center gap-2 mb-1">
-          <div className="w-2 h-2 rounded-full" style={{ background: p.color || p.fill }} />
+          <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: p.color || p.fill }} />
           <span className="font-body text-xs text-white/60">{p.name}:</span>
-          <span className="font-mono text-xs text-white font-semibold">{p.value}</span>
+          <span className="font-mono text-xs text-white font-semibold">
+            {typeof p.value === "number" && (p.name?.toLowerCase().includes("rev") || p.name?.toLowerCase().includes("budget"))
+              ? fmt$(p.value) : p.value ?? "—"}
+          </span>
         </div>
       ))}
     </div>
   );
 };
 
-// ─── Stat Card ───────────────────────────────────────────────────────────────
-function StatCard({ icon: Icon, label, value, sub, trend, trendUp }: {
-  icon: any; label: string; value: string; sub?: string; trend?: string | null; trendUp?: boolean;
-}) {
-  return (
-    <motion.div
-      variants={fadeInUp}
-      className="rounded-2xl p-5 border"
-      style={{ background: CARD_BG, borderColor: CARD_BORDER }}
-    >
-      <div className="flex items-start justify-between mb-4">
-        <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: "rgba(201,169,98,0.1)" }}>
-          <Icon className="w-4 h-4" style={{ color: GOLD }} />
-        </div>
-        {trend && (
-          <span className={`font-mono text-[10px] px-2 py-1 rounded-full ${trendUp ? "bg-teal-500/10 text-teal-400" : "bg-red-500/10 text-red-400"}`}>
-            {trend}
-          </span>
-        )}
-      </div>
-      <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">{label}</p>
-      <p className="font-display text-3xl font-semibold text-white">{value}</p>
-      {sub && <p className="font-body text-xs text-white/35 mt-1">{sub}</p>}
-    </motion.div>
-  );
-}
-
-// ─── Section Header ──────────────────────────────────────────────────────────
-function SectionHeader({ eyebrow, title, description }: { eyebrow: string; title: string; description: string }) {
-  return (
-    <motion.div
-      className="mb-10"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
-      variants={staggerContainer}
-    >
-      <motion.span variants={fadeInUp} className="font-mono text-[10px] tracking-[0.25em] uppercase" style={{ color: GOLD }}>
-        {eyebrow}
-      </motion.span>
-      <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium text-white mt-3 mb-4">
-        {title}
-      </motion.h2>
-      <motion.div variants={fadeInUp} className="h-[1px] w-12 mb-4" style={{ background: GOLD }} />
-      <motion.p variants={fadeInUp} className="font-body text-sm text-white/40 max-w-2xl leading-relaxed">
-        {description}
-      </motion.p>
-    </motion.div>
-  );
-}
-
-// ─── Dark Card ───────────────────────────────────────────────────────────────
+// ─── Shared Components ───────────────────────────────────────────────────────
 function DarkCard({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
     <div className={`rounded-2xl border p-6 ${className}`} style={{ background: CARD_BG, borderColor: CARD_BORDER }}>
@@ -230,19 +157,95 @@ function DarkCard({ children, className = "" }: { children: React.ReactNode; cla
   );
 }
 
-// ─── Progress Bar ────────────────────────────────────────────────────────────
+function SectionHeader({ eyebrow, title, description }: { eyebrow: string; title: string; description: string }) {
+  return (
+    <div className="mb-12">
+      <p className="font-mono text-[10px] uppercase tracking-[0.2em] mb-3" style={{ color: GOLD }}>{eyebrow}</p>
+      <h2 className="font-display text-3xl md:text-4xl font-semibold text-white mb-4">{title}</h2>
+      <p className="font-body text-white/40 max-w-2xl leading-relaxed">{description}</p>
+    </div>
+  );
+}
+
 function ProgressBar({ value, max, color = GOLD }: { value: number; max: number; color?: string }) {
+  const pct = Math.min(100, (value / max) * 100);
   return (
     <div className="h-1.5 rounded-full bg-white/5 overflow-hidden">
       <motion.div
         className="h-full rounded-full"
         style={{ background: color }}
         initial={{ width: 0 }}
-        whileInView={{ width: `${(value / max) * 100}%` }}
+        whileInView={{ width: `${pct}%` }}
         viewport={{ once: true }}
-        transition={{ duration: 1, ease: "easeOut" }}
+        transition={{ duration: 0.9, ease: "easeOut" }}
       />
     </div>
+  );
+}
+
+// ─── Flow Node ───────────────────────────────────────────────────────────────
+function FlowNode({ icon: Icon, title, subtitle, color = GOLD, badge, system }: {
+  icon: any; title: string; subtitle: string; color?: string; badge?: string; system?: string;
+}) {
+  return (
+    <motion.div
+      variants={fadeInUp}
+      className="relative rounded-2xl border p-5 flex flex-col gap-2"
+      style={{ background: CARD_BG, borderColor: `${color}30` }}
+    >
+      {badge && (
+        <span className="absolute -top-2.5 left-4 text-[9px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full" style={{ background: color, color: "#0A0A0A" }}>
+          {badge}
+        </span>
+      )}
+      {system && (
+        <span className="absolute -top-2.5 right-4 text-[9px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full border" style={{ borderColor: `${color}40`, color: `${color}80`, background: "#0A0A0A" }}>
+          {system}
+        </span>
+      )}
+      <div className="w-8 h-8 rounded-xl flex items-center justify-center" style={{ background: `${color}18` }}>
+        <Icon className="w-4 h-4" style={{ color }} />
+      </div>
+      <p className="font-display text-sm font-semibold text-white leading-tight">{title}</p>
+      <p className="font-body text-[11px] text-white/40 leading-relaxed">{subtitle}</p>
+    </motion.div>
+  );
+}
+
+function FlowArrow({ vertical = false, label }: { vertical?: boolean; label?: string }) {
+  return (
+    <div className={`flex flex-col items-center justify-center gap-1 ${vertical ? "py-1" : "px-1"}`}>
+      {vertical
+        ? <ArrowDown className="w-4 h-4" style={{ color: GOLD_DIM }} />
+        : <ArrowRight className="w-4 h-4" style={{ color: GOLD_DIM }} />}
+      {label && <span className="font-mono text-[8px] text-white/20 uppercase tracking-wider">{label}</span>}
+    </div>
+  );
+}
+
+function StageStep({ number, title, owner, actions, color = GOLD }: {
+  number: string; title: string; owner: string; actions: string[]; color?: string;
+}) {
+  return (
+    <motion.div variants={fadeInUp} className="rounded-2xl border p-5" style={{ background: CARD_BG, borderColor: `${color}25` }}>
+      <div className="flex items-start gap-3 mb-3">
+        <div className="w-7 h-7 rounded-full flex items-center justify-center text-[10px] font-bold font-mono flex-shrink-0" style={{ background: `${color}20`, color }}>
+          {number}
+        </div>
+        <div>
+          <p className="font-display text-sm font-semibold text-white">{title}</p>
+          <p className="font-mono text-[9px] uppercase tracking-wider mt-0.5" style={{ color: `${color}90` }}>{owner}</p>
+        </div>
+      </div>
+      <ul className="space-y-1.5">
+        {actions.map((a, i) => (
+          <li key={i} className="flex items-start gap-2">
+            <div className="w-1 h-1 rounded-full mt-1.5 flex-shrink-0" style={{ background: color }} />
+            <span className="font-body text-[11px] text-white/45 leading-relaxed">{a}</span>
+          </li>
+        ))}
+      </ul>
+    </motion.div>
   );
 }
 
@@ -257,54 +260,414 @@ export default function ZWSalesInfrastructure() {
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,rgba(201,169,98,0.12),transparent)]" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_80%_80%,rgba(45,212,191,0.05),transparent)]" />
-          <svg className="absolute inset-0 w-full h-full opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="infra-grid" width="60" height="60" patternUnits="userSpaceOnUse">
-                <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#C9A962" strokeWidth="0.5" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#infra-grid)" />
-          </svg>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0A0A0A] to-transparent" />
-
         <div className="container relative z-10">
-          <motion.div
-            className="text-center max-w-4xl mx-auto"
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
-            <motion.span variants={fadeInUp} className="font-mono text-[10px] tracking-[0.25em] uppercase" style={{ color: GOLD }}>
-              ZeroWheel · Sales Operations
-            </motion.span>
-            <motion.h1 variants={fadeInUp} className="font-display text-4xl md:text-6xl lg:text-7xl font-medium mt-4 mb-6 text-white leading-[1.1]">
-              Sales Infrastructure
-            </motion.h1>
-            <motion.div
-              initial={{ scaleX: 0 }} animate={{ scaleX: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="h-[2px] w-16 mx-auto mb-6"
-              style={{ background: GOLD }}
-            />
-            <motion.p variants={fadeInUp} className="font-body text-base md:text-lg text-white/50 leading-relaxed max-w-3xl mx-auto">
-              A full-stack view of how we manage our lead funnel, opportunity pipeline, and ZeroWheel installs —
-              from first touch to closed deal. Real-time visibility into what's working, who's producing,
-              and where revenue is heading.
+          <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="max-w-4xl">
+            <motion.p variants={fadeInUp} className="font-mono text-[10px] uppercase tracking-[0.25em] mb-6" style={{ color: GOLD }}>
+              ZeroWheel · Sales Infrastructure
             </motion.p>
+            <motion.h1 variants={fadeInUp} className="font-display text-5xl md:text-7xl font-semibold text-white leading-[1.05] mb-6">
+              Revenue Operations<br />
+              <span style={{ color: GOLD }}>Infrastructure</span>
+            </motion.h1>
+            <motion.p variants={fadeInUp} className="font-body text-lg text-white/40 max-w-2xl leading-relaxed mb-10">
+              A fully integrated sales and marketing infrastructure for ZeroWheel — from first website visit to closed install.
+              Built on Salesforce CRM, Typeform lead intake, and Intercom AI, this system tracks every lead, opportunity, and
+              revenue dollar across all channels and sales team members.
+            </motion.p>
+            <motion.div variants={fadeInUp} className="flex flex-wrap gap-6">
+              {[
+                { label: "Unit Price", value: "$1,000" },
+                { label: "2026 Target", value: "1,000 units" },
+                { label: "Revenue Goal", value: "$1M" },
+                { label: "Active Channels", value: "6" },
+              ].map((kpi, i) => (
+                <div key={i} className="rounded-2xl border px-5 py-3" style={{ background: CARD_BG, borderColor: CARD_BORDER }}>
+                  <p className="font-mono text-[9px] text-white/25 uppercase tracking-wider">{kpi.label}</p>
+                  <p className="font-display text-2xl font-semibold mt-1" style={{ color: GOLD }}>{kpi.value}</p>
+                </div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── TECH STACK ───────────────────────────────────────────────────── */}
+      <section id="tech-stack" className="py-20 bg-[#0A0A0A]">
+        <div className="container">
+          <div className="h-px mb-16" style={{ background: "linear-gradient(to right, transparent, rgba(201,169,98,0.2), transparent)" }} />
+          <SectionHeader
+            eyebrow="Technology Stack"
+            title="Three Platforms. One Unified System."
+            description="The ZeroWheel revenue infrastructure is built on three best-in-class platforms that integrate seamlessly — Salesforce as the CRM backbone, Typeform for intelligent lead capture, and Intercom with FinAI for AI-powered lead qualification and real-time engagement."
+          />
+
+          <motion.div className="grid md:grid-cols-3 gap-6 mb-12" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
+            {/* Salesforce */}
+            <motion.div variants={fadeInUp} className="rounded-2xl border p-8" style={{ background: CARD_BG, borderColor: `${GOLD}25` }}>
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-5" style={{ background: `${GOLD}15` }}>
+                <Database className="w-6 h-6" style={{ color: GOLD }} />
+              </div>
+              <div className="flex items-center gap-2 mb-1">
+                <p className="font-display text-xl font-semibold text-white">Salesforce CRM</p>
+                <span className="text-[9px] font-mono px-2 py-0.5 rounded-full" style={{ background: `${GOLD}20`, color: GOLD }}>CORE</span>
+              </div>
+              <p className="font-mono text-[10px] uppercase tracking-wider mb-4" style={{ color: GOLD_DIM }}>Lead & Opportunity Management</p>
+              <p className="font-body text-sm text-white/40 leading-relaxed mb-5">
+                Central CRM for all lead records, opportunity tracking, pipeline management, and revenue forecasting. Every lead from every channel flows into Salesforce with full campaign attribution, rep assignment, and stage tracking.
+              </p>
+              <ul className="space-y-2">
+                {[
+                  "Lead & Contact records with source attribution",
+                  "Opportunity stages: Discovery → Contract",
+                  "Campaign tracking with ROI reporting",
+                  "Sales team activity logging (calls, emails, tasks)",
+                  "Revenue forecasting and pipeline analytics",
+                  "Win/loss reason capture and reporting",
+                  "Automated lead routing and rep assignment",
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={{ color: GOLD }} />
+                    <span className="font-body text-xs text-white/45">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* Typeform */}
+            <motion.div variants={fadeInUp} className="rounded-2xl border p-8" style={{ background: CARD_BG, borderColor: `${TEAL}25` }}>
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-5" style={{ background: `${TEAL}15` }}>
+                <FormInput className="w-6 h-6" style={{ color: TEAL }} />
+              </div>
+              <div className="flex items-center gap-2 mb-1">
+                <p className="font-display text-xl font-semibold text-white">Typeform</p>
+                <span className="text-[9px] font-mono px-2 py-0.5 rounded-full" style={{ background: `${TEAL}20`, color: TEAL }}>INTAKE</span>
+              </div>
+              <p className="font-mono text-[10px] uppercase tracking-wider mb-4" style={{ color: `${TEAL}80` }}>Lead Capture & Qualification</p>
+              <p className="font-body text-sm text-white/40 leading-relaxed mb-5">
+                Conversational lead intake forms embedded on the ZeroWheel website and landing pages. Typeform's conditional logic routes prospects through tailored question flows based on their segment (club, medical, corporate, consumer), capturing rich qualification data before the lead ever reaches a rep.
+              </p>
+              <ul className="space-y-2">
+                {[
+                  "Segment-specific intake forms (B2B vs. consumer)",
+                  "Conditional logic for intelligent branching",
+                  "UTM parameter capture for campaign attribution",
+                  "Automatic Salesforce lead creation via Zapier/API",
+                  "Lead scoring based on form responses",
+                  "Multi-step forms with progress indicators",
+                  "Mobile-optimized for consumer direct channel",
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={{ color: TEAL }} />
+                    <span className="font-body text-xs text-white/45">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* Intercom / FinAI */}
+            <motion.div variants={fadeInUp} className="rounded-2xl border p-8" style={{ background: CARD_BG, borderColor: `${PURPLE}25` }}>
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-5" style={{ background: `${PURPLE}15` }}>
+                <Bot className="w-6 h-6" style={{ color: PURPLE }} />
+              </div>
+              <div className="flex items-center gap-2 mb-1">
+                <p className="font-display text-xl font-semibold text-white">Intercom + FinAI</p>
+                <span className="text-[9px] font-mono px-2 py-0.5 rounded-full" style={{ background: `${PURPLE}20`, color: PURPLE }}>AI</span>
+              </div>
+              <p className="font-mono text-[10px] uppercase tracking-wider mb-4" style={{ color: `${PURPLE}80` }}>AI-Enabled Engagement & Qualification</p>
+              <p className="font-body text-sm text-white/40 leading-relaxed mb-5">
+                Intercom's FinAI layer provides 24/7 AI-powered chat on the ZeroWheel website and post-form experience. FinAI answers product questions, qualifies intent, books demos, and routes high-intent leads directly to the right sales rep — all in real time, without human intervention.
+              </p>
+              <ul className="space-y-2">
+                {[
+                  "AI chat for instant lead response (24/7)",
+                  "Product Q&A from ZeroWheel knowledge base",
+                  "Intent scoring and lead qualification",
+                  "Automated demo booking via calendar integration",
+                  "Lead routing to correct rep by segment/territory",
+                  "Handoff to live rep with full conversation context",
+                  "Re-engagement sequences for dormant leads",
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={{ color: PURPLE }} />
+                    <span className="font-body text-xs text-white/45">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
           </motion.div>
 
-          <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto mt-16"
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
-            <StatCard icon={Target} label="Total Leads (MTD)" value="329" sub="↑ 18% vs last month" trend="+18%" trendUp={true} />
-            <StatCard icon={Activity} label="Active Opportunities" value="212" sub="$17.0M pipeline value" trend="+12%" trendUp={true} />
-            <StatCard icon={CheckCircle2} label="Installs (YTD)" value="64" sub="vs 48 budget" trend="+33%" trendUp={true} />
-            <StatCard icon={DollarSign} label="Revenue (YTD)" value="$5.35M" sub="vs $5.60M budget" trend="-4.5%" trendUp={false} />
+          {/* Integration Architecture */}
+          <DarkCard>
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] mb-2" style={{ color: GOLD }}>Integration Architecture</p>
+            <p className="font-display text-lg font-semibold text-white mb-6">How the Three Systems Connect</p>
+            <div className="grid md:grid-cols-5 gap-2 items-center">
+              <div className="rounded-xl border p-4 text-center" style={{ borderColor: `${TEAL}30`, background: `${TEAL}08` }}>
+                <Globe className="w-5 h-5 mx-auto mb-2" style={{ color: TEAL }} />
+                <p className="font-mono text-[10px] text-white/50 uppercase tracking-wider">Website</p>
+                <p className="font-body text-xs text-white/30 mt-1">Typeform embed + Intercom widget</p>
+              </div>
+              <FlowArrow label="webhook" />
+              <div className="rounded-xl border p-4 text-center" style={{ borderColor: `${PURPLE}30`, background: `${PURPLE}08` }}>
+                <Bot className="w-5 h-5 mx-auto mb-2" style={{ color: PURPLE }} />
+                <p className="font-mono text-[10px] text-white/50 uppercase tracking-wider">Intercom FinAI</p>
+                <p className="font-body text-xs text-white/30 mt-1">Qualify, route, book demo</p>
+              </div>
+              <FlowArrow label="API / Zapier" />
+              <div className="rounded-xl border p-4 text-center" style={{ borderColor: `${GOLD}30`, background: `${GOLD}08` }}>
+                <Database className="w-5 h-5 mx-auto mb-2" style={{ color: GOLD }} />
+                <p className="font-mono text-[10px] text-white/50 uppercase tracking-wider">Salesforce</p>
+                <p className="font-body text-xs text-white/30 mt-1">Lead → Opp → Close</p>
+              </div>
+            </div>
+            <div className="mt-6 grid md:grid-cols-3 gap-4">
+              {[
+                { title: "Typeform → Salesforce", desc: "Form submission triggers Zapier webhook → creates Lead record in Salesforce with all form fields, UTM source, and lead score mapped to custom fields.", color: TEAL },
+                { title: "Intercom → Salesforce", desc: "FinAI conversation data syncs to Salesforce contact/lead record. Demo bookings create Tasks. Rep handoffs create Activities with full chat transcript.", color: PURPLE },
+                { title: "Salesforce → Reporting", desc: "All pipeline, activity, and revenue data flows into Salesforce Reports & Dashboards, with custom BI views for leadership on channel ROI and team performance.", color: GOLD },
+              ].map((item, i) => (
+                <div key={i} className="rounded-xl border p-4" style={{ borderColor: `${item.color}20`, background: `${item.color}06` }}>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Link2 className="w-3.5 h-3.5 flex-shrink-0" style={{ color: item.color }} />
+                    <p className="font-mono text-[10px] font-semibold" style={{ color: item.color }}>{item.title}</p>
+                  </div>
+                  <p className="font-body text-[11px] text-white/35 leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </DarkCard>
+        </div>
+      </section>
+
+      {/* ── LEAD INTAKE FLOW ─────────────────────────────────────────────── */}
+      <section id="lead-intake" className="py-20 bg-[#0A0A0A]">
+        <div className="container">
+          <div className="h-px mb-16" style={{ background: "linear-gradient(to right, transparent, rgba(201,169,98,0.2), transparent)" }} />
+          <SectionHeader
+            eyebrow="Lead Intake Flow"
+            title="Website Visitor → Salesforce Lead"
+            description="Every lead starts with a touchpoint — a website visit, a social click, a trade show scan, or a referral. This flow captures, qualifies, and routes that lead into Salesforce with full attribution before a human ever gets involved."
+          />
+
+          <motion.div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2 items-start mb-10" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
+            <FlowNode icon={Globe} title="Website Visit" subtitle="Organic, paid, referral, or direct traffic lands on ZeroWheel site" color={TEAL} badge="Entry" />
+            <FlowArrow />
+            <FlowNode icon={Cpu} title="UTM Capture" subtitle="Source, medium, campaign, and content parameters captured automatically" color={TEAL} system="Typeform" />
+            <FlowArrow />
+            <FlowNode icon={FormInput} title="Typeform Intake" subtitle="Segment-specific form: B2B (club/medical/corporate) or consumer direct" color={GOLD} system="Typeform" />
+            <FlowArrow />
+            <FlowNode icon={Bot} title="FinAI Engagement" subtitle="Intercom AI responds instantly, answers questions, scores intent" color={PURPLE} system="Intercom" />
+            <FlowArrow />
           </motion.div>
+
+          <motion.div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2 items-start" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
+            <FlowNode icon={GitBranch} title="Lead Routing" subtitle="FinAI routes by segment, territory, and rep capacity" color={PURPLE} system="Intercom" />
+            <FlowArrow />
+            <FlowNode icon={Database} title="SF Lead Created" subtitle="Zapier/API creates Lead record with all fields, score, and source" color={GOLD} system="Salesforce" badge="CRM" />
+            <FlowArrow />
+            <FlowNode icon={Mail} title="Rep Notified" subtitle="Assigned rep receives email + Salesforce task within 5 minutes" color={GOLD} system="Salesforce" />
+            <FlowArrow />
+            <FlowNode icon={Phone} title="First Contact" subtitle="Rep calls or emails within SLA. Activity logged in Salesforce" color={GREEN} system="Salesforce" badge="SLA: 1hr" />
+            <FlowArrow />
+          </motion.div>
+
+          <div className="mt-8 grid md:grid-cols-3 gap-4">
+            {[
+              { title: "Lead Source Delineation", items: ["Direct Sales outreach (rep-initiated)", "E-Commerce (website purchase / inquiry)", "Partner & Referral (gym, clinic, facility)", "Inbound Marketing (SEO, content, email)", "Trade Show & Events", "Social Media & Paid Ads"], color: GOLD },
+              { title: "Campaign Tracking Fields", items: ["UTM Source (google, instagram, partner)", "UTM Medium (cpc, email, organic, referral)", "UTM Campaign (spring-launch, trade-show-2026)", "UTM Content (ad variant / creative ID)", "Landing Page URL at time of conversion", "Typeform form ID (segment identifier)"], color: TEAL },
+              { title: "Lead Scoring Criteria", items: ["Segment match (B2B club/medical = high)", "Budget indicated in form (>$1K = qualified)", "Timeline (within 90 days = hot)", "Decision-maker role (owner/GM = priority)", "FinAI intent score (1–10)", "Prior engagement (return visitor, email open)"], color: PURPLE },
+            ].map((col, i) => (
+              <DarkCard key={i}>
+                <p className="font-mono text-[10px] uppercase tracking-[0.15em] mb-3" style={{ color: col.color }}>{col.title}</p>
+                <ul className="space-y-2">
+                  {col.items.map((item, j) => (
+                    <li key={j} className="flex items-start gap-2">
+                      <div className="w-1 h-1 rounded-full mt-1.5 flex-shrink-0" style={{ background: col.color }} />
+                      <span className="font-body text-xs text-white/45">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </DarkCard>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── LEAD → OPPORTUNITY FLOW ──────────────────────────────────────── */}
+      <section id="lead-to-opp" className="py-20 bg-[#0A0A0A]">
+        <div className="container">
+          <div className="h-px mb-16" style={{ background: "linear-gradient(to right, transparent, rgba(201,169,98,0.2), transparent)" }} />
+          <SectionHeader
+            eyebrow="Lead Process Management"
+            title="Lead → Opportunity Conversion Flow"
+            description="Once a lead is created in Salesforce, it enters a structured qualification and conversion process. Each stage has defined entry criteria, required activities, and exit criteria before the lead is converted to an opportunity."
+          />
+
+          <motion.div className="grid md:grid-cols-5 gap-4 mb-8" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
+            <StageStep
+              number="01"
+              title="New Lead"
+              owner="System Auto-Assign"
+              color={GOLD}
+              actions={[
+                "Lead created from Typeform/Intercom/manual entry",
+                "Source, campaign, and score fields populated",
+                "Rep assigned by territory/segment rules",
+                "Rep notified via email + SF task",
+                "SLA clock starts (1-hour first contact)",
+              ]}
+            />
+            <div className="flex items-center justify-center">
+              <FlowArrow vertical />
+            </div>
+            <StageStep
+              number="02"
+              title="Contacted"
+              owner="Sales Rep"
+              color={TEAL}
+              actions={[
+                "Rep logs first call or email in Salesforce",
+                "FinAI conversation reviewed for context",
+                "Initial needs assessment completed",
+                "Interest level confirmed (hot / warm / cold)",
+                "Follow-up task scheduled within 24 hours",
+              ]}
+            />
+            <div className="flex items-center justify-center">
+              <FlowArrow vertical />
+            </div>
+            <StageStep
+              number="03"
+              title="Qualified"
+              owner="Sales Rep"
+              color={PURPLE}
+              actions={[
+                "BANT confirmed: Budget, Authority, Need, Timeline",
+                "Segment and use case documented",
+                "Decision-maker identified and engaged",
+                "Product fit validated (ZeroWheel specs reviewed)",
+                "Lead converted → Opportunity created in Salesforce",
+              ]}
+            />
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <DarkCard>
+              <p className="font-mono text-[10px] uppercase tracking-[0.15em] mb-3" style={{ color: GOLD }}>Lead Process Rules</p>
+              <div className="space-y-3">
+                {[
+                  { rule: "1-Hour First Contact SLA", desc: "All new leads must receive first contact within 1 business hour of creation. Overdue leads escalate to manager." },
+                  { rule: "3-Touch Minimum Before Disqualify", desc: "Leads must receive at least 3 documented contact attempts (call + email + FinAI re-engage) before being marked as unresponsive." },
+                  { rule: "Lead Recycling at 30 Days", desc: "Leads with no activity for 30 days are recycled into a nurture sequence via Intercom email automation." },
+                  { rule: "Disqualification Requires Reason", desc: "Reps must select a disqualification reason (no budget, wrong segment, competitor, timing) before closing a lead as lost." },
+                ].map((item, i) => (
+                  <div key={i} className="rounded-xl border p-3" style={{ borderColor: `${GOLD}15`, background: `${GOLD}05` }}>
+                    <p className="font-mono text-[10px] font-semibold mb-1" style={{ color: GOLD }}>{item.rule}</p>
+                    <p className="font-body text-[11px] text-white/35 leading-relaxed">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </DarkCard>
+            <DarkCard>
+              <p className="font-mono text-[10px] uppercase tracking-[0.15em] mb-3" style={{ color: TEAL }}>Lead Activity Tracking</p>
+              <div className="space-y-2">
+                {[
+                  { activity: "Outbound Call", tracked: "Duration, outcome, next step", icon: Phone },
+                  { activity: "Email Sent / Received", tracked: "Open rate, click-through, reply", icon: Mail },
+                  { activity: "Demo Scheduled", tracked: "Date, attendees, product focus", icon: Calendar },
+                  { activity: "FinAI Chat Session", tracked: "Intent score, questions asked, outcome", icon: Bot },
+                  { activity: "Proposal Sent", tracked: "Document version, value, expiry date", icon: Activity },
+                  { activity: "Follow-Up Task", tracked: "Due date, priority, completion status", icon: CheckCircle2 },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3 py-2 border-b" style={{ borderColor: "rgba(255,255,255,0.04)" }}>
+                    <item.icon className="w-3.5 h-3.5 flex-shrink-0" style={{ color: TEAL }} />
+                    <div className="flex-1 min-w-0">
+                      <p className="font-body text-xs text-white/60">{item.activity}</p>
+                      <p className="font-body text-[10px] text-white/25">{item.tracked}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </DarkCard>
+          </div>
+        </div>
+      </section>
+
+      {/* ── OPPORTUNITY → CLOSE FLOW ─────────────────────────────────────── */}
+      <section id="opp-to-close" className="py-20 bg-[#0A0A0A]">
+        <div className="container">
+          <div className="h-px mb-16" style={{ background: "linear-gradient(to right, transparent, rgba(201,169,98,0.2), transparent)" }} />
+          <SectionHeader
+            eyebrow="Opportunity Process Management"
+            title="Opportunity → Closed Won / Lost"
+            description="Once a lead converts to an opportunity, it enters the formal sales pipeline. Each stage has defined criteria, required documentation, and probability weighting for revenue forecasting."
+          />
+
+          <motion.div className="grid md:grid-cols-5 gap-3 mb-10" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
+            {[
+              { stage: "Discovery", prob: "20%", color: GOLD, actions: ["Needs assessment completed", "Use case documented", "Key stakeholders identified", "ZeroWheel demo scheduled"] },
+              { stage: "Demo", prob: "40%", color: "#B8963E", actions: ["Product demo delivered", "Technical specs reviewed", "Objections documented", "ROI case presented"] },
+              { stage: "Proposal", prob: "60%", color: TEAL, actions: ["Formal proposal sent", "Pricing confirmed ($1,000/unit)", "Installation timeline agreed", "Decision timeline set"] },
+              { stage: "Negotiation", prob: "80%", color: PURPLE, actions: ["Contract terms reviewed", "Legal/procurement engaged", "Final pricing agreed", "Install date confirmed"] },
+              { stage: "Closed Won", prob: "100%", color: GREEN, actions: ["Contract signed", "Payment processed", "Install team scheduled", "Onboarding initiated"] },
+            ].map((s, i) => (
+              <motion.div key={i} variants={fadeInUp} className="rounded-2xl border p-5" style={{ background: CARD_BG, borderColor: `${s.color}25` }}>
+                <div className="flex items-center justify-between mb-3">
+                  <p className="font-display text-sm font-semibold text-white">{s.stage}</p>
+                  <span className="font-mono text-[10px] px-2 py-0.5 rounded-full" style={{ background: `${s.color}20`, color: s.color }}>{s.prob}</span>
+                </div>
+                <ul className="space-y-1.5">
+                  {s.actions.map((a, j) => (
+                    <li key={j} className="flex items-start gap-2">
+                      <div className="w-1 h-1 rounded-full mt-1.5 flex-shrink-0" style={{ background: s.color }} />
+                      <span className="font-body text-[11px] text-white/40 leading-relaxed">{a}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <DarkCard>
+              <p className="font-mono text-[10px] uppercase tracking-[0.15em] mb-3" style={{ color: GREEN }}>Closed Won — Requirements</p>
+              <div className="space-y-2">
+                {[
+                  "Signed contract or purchase order on file",
+                  "Payment confirmed (deposit or full payment)",
+                  "Installation address and contact verified",
+                  "Install date scheduled with operations team",
+                  "Win reason selected (product fit, relationship, ROI, demo quality)",
+                  "Referral request sent to customer",
+                  "NPS survey scheduled for 30 days post-install",
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={{ color: GREEN }} />
+                    <span className="font-body text-xs text-white/45">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </DarkCard>
+            <DarkCard>
+              <p className="font-mono text-[10px] uppercase tracking-[0.15em] mb-3" style={{ color: RED }}>Closed Lost — Requirements</p>
+              <div className="space-y-2">
+                {[
+                  "Loss reason selected (required field — no blank closes)",
+                  "Competitor identified if applicable",
+                  "Budget objection amount documented",
+                  "Timeline for potential re-engagement noted",
+                  "Lead recycled to nurture sequence if future potential",
+                  "Manager review required for deals >$5K lost",
+                  "Loss analysis added to quarterly win/loss report",
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-2">
+                    <XCircle className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={{ color: RED }} />
+                    <span className="font-body text-xs text-white/45">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </DarkCard>
+          </div>
         </div>
       </section>
 
@@ -341,124 +704,96 @@ export default function ZWSalesInfrastructure() {
                   </div>
                 ))}
               </div>
-              <div className="mt-6 pt-5 border-t" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
-                <div className="flex justify-between">
-                  <div>
-                    <p className="font-mono text-[10px] text-white/25 uppercase tracking-wider">Lead → Install</p>
-                    <p className="font-display text-2xl font-semibold mt-1" style={{ color: TEAL }}>5.2%</p>
-                  </div>
-                  <div>
-                    <p className="font-mono text-[10px] text-white/25 uppercase tracking-wider">Opp → Install</p>
-                    <p className="font-display text-2xl font-semibold mt-1" style={{ color: GOLD }}>30.2%</p>
-                  </div>
-                  <div>
-                    <p className="font-mono text-[10px] text-white/25 uppercase tracking-wider">Avg Days</p>
-                    <p className="font-display text-2xl font-semibold mt-1 text-white">47</p>
-                  </div>
-                </div>
-              </div>
             </DarkCard>
 
-            {/* Lead Volume by Source */}
-            <DarkCard className="lg:col-span-2">
-              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Lead Source Delineation</p>
-              <p className="font-display text-lg font-medium text-white mb-6">Monthly Lead Volume by Channel</p>
-              <ResponsiveContainer width="100%" height={280}>
-                <BarChart data={leadSourceData} barSize={8} barGap={2}>
+            {/* Source Pie */}
+            <DarkCard className="lg:col-span-1">
+              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Lead Source Mix</p>
+              <p className="font-display text-lg font-medium text-white mb-4">YTD Distribution</p>
+              <ResponsiveContainer width="100%" height={200}>
+                <PieChart>
+                  <Pie data={sourceData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={80} innerRadius={40} paddingAngle={3}>
+                    {sourceData.map((s, i) => <Cell key={i} fill={s.fill} />)}
+                  </Pie>
+                  <Tooltip content={<DarkTooltip />} />
+                  <Legend wrapperStyle={{ fontSize: 10, color: "rgba(255,255,255,0.4)", fontFamily: "monospace" }} />
+                </PieChart>
+              </ResponsiveContainer>
+            </DarkCard>
+
+            {/* Monthly Leads */}
+            <DarkCard className="lg:col-span-1">
+              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Lead Volume</p>
+              <p className="font-display text-lg font-medium text-white mb-4">Monthly Leads & Opps</p>
+              <ResponsiveContainer width="100%" height={200}>
+                <BarChart data={monthlyData.slice(0, 4)} barSize={14} barGap={4}>
                   <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" vertical={false} />
                   <XAxis dataKey="month" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
                   <YAxis tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
                   <Tooltip content={<DarkTooltip />} />
                   <Legend wrapperStyle={{ fontSize: 10, color: "rgba(255,255,255,0.4)", fontFamily: "monospace" }} />
-                  <Bar dataKey="Private Clubs" fill={GOLD} radius={[2, 2, 0, 0]} />
-                  <Bar dataKey="Medical" fill="#4ADECD" radius={[2, 2, 0, 0]} />
-                  <Bar dataKey="Sports Perf." fill="#818CF8" radius={[2, 2, 0, 0]} />
-                  <Bar dataKey="Corporate" fill="#FB923C" radius={[2, 2, 0, 0]} />
-                  <Bar dataKey="Consumer" fill={GOLD_DIM} radius={[2, 2, 0, 0]} />
-                  <Bar dataKey="Hospitality" fill="#34D399" radius={[2, 2, 0, 0]} />
+                  <Bar dataKey="leads" fill={GOLD} radius={[3, 3, 0, 0]} />
+                  <Bar dataKey="opps" fill={TEAL} radius={[3, 3, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </DarkCard>
           </div>
-
-          {/* Conversion Rate Trend */}
-          <DarkCard>
-            <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Funnel Efficiency</p>
-            <p className="font-display text-lg font-medium text-white mb-6">Lead → Opportunity & Opportunity → Install Conversion Rates (%)</p>
-            <ResponsiveContainer width="100%" height={220}>
-              <LineChart data={conversionTrend}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" vertical={false} />
-                <XAxis dataKey="month" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
-                <YAxis tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} unit="%" />
-                <Tooltip content={<DarkTooltip />} />
-                <Legend wrapperStyle={{ fontSize: 10, color: "rgba(255,255,255,0.4)", fontFamily: "monospace" }} />
-                <Line type="monotone" dataKey="Lead→Opp" stroke={GOLD} strokeWidth={2} dot={{ fill: GOLD, r: 4 }} activeDot={{ r: 6 }} />
-                <Line type="monotone" dataKey="Opp→Install" stroke={TEAL} strokeWidth={2} dot={{ fill: TEAL, r: 4 }} activeDot={{ r: 6 }} />
-              </LineChart>
-            </ResponsiveContainer>
-          </DarkCard>
         </div>
       </section>
 
       {/* ── OPPORTUNITY PIPELINE ─────────────────────────────────────────── */}
-      <section id="opportunity-pipeline" className="py-20 bg-[#080808]">
+      <section id="opportunity-pipeline" className="py-20 bg-[#0A0A0A]">
         <div className="container">
           <div className="h-px mb-16" style={{ background: "linear-gradient(to right, transparent, rgba(201,169,98,0.2), transparent)" }} />
           <SectionHeader
-            eyebrow="Opportunity Management"
-            title="Pipeline Stages & Velocity"
-            description="Track every opportunity through discovery, demo, proposal, negotiation, and close. Monitor stage-by-stage conversion and identify where deals are stalling."
+            eyebrow="Pipeline Management"
+            title="Opportunity Pipeline"
+            description="Real-time view of all open opportunities by stage, with weighted pipeline value for accurate revenue forecasting."
           />
-
-          <motion.div
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            variants={staggerContainer}
-          >
-            {pipelineStages.map((s, i) => (
-              <motion.div
-                key={i}
-                variants={fadeInUp}
-                className="rounded-2xl p-4 border text-center"
-                style={{ background: CARD_BG, borderColor: `${s.color}30` }}
-              >
-                <div className="w-2 h-2 rounded-full mx-auto mb-3" style={{ background: s.color }} />
-                <p className="font-mono text-[9px] text-white/30 uppercase tracking-wider mb-2">{s.stage}</p>
-                <p className="font-display text-2xl font-semibold text-white">{s.count}</p>
-                <p className="font-mono text-[10px] mt-1" style={{ color: s.color }}>${s.value}M</p>
-              </motion.div>
-            ))}
-          </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-6">
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Pipeline Value</p>
-              <p className="font-display text-lg font-medium text-white mb-6">$ Value by Stage ($M)</p>
-              <ResponsiveContainer width="100%" height={260}>
-                <BarChart data={pipelineStages} layout="vertical" barSize={14}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" horizontal={false} />
-                  <XAxis type="number" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} unit="M" />
-                  <YAxis type="category" dataKey="stage" tick={{ fill: "rgba(255,255,255,0.35)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} width={80} />
-                  <Tooltip content={<DarkTooltip />} />
-                  <Bar dataKey="value" radius={[0, 4, 4, 0]}>
-                    {pipelineStages.map((s, i) => <Cell key={i} fill={s.color} />)}
-                  </Bar>
-                </BarChart>
-              </ResponsiveContainer>
+              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Pipeline Stages</p>
+              <p className="font-display text-lg font-medium text-white mb-6">Open Opportunities</p>
+              <div className="space-y-4">
+                {pipelineStages.map((stage, i) => (
+                  <div key={i}>
+                    <div className="flex justify-between items-center mb-1.5">
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full" style={{ background: stage.color }} />
+                        <span className="font-body text-sm text-white/60">{stage.stage}</span>
+                      </div>
+                      <div className="flex items-center gap-4">
+                        <span className="font-mono text-xs text-white/30">{stage.count} deals</span>
+                        <span className="font-mono text-sm font-semibold" style={{ color: stage.color }}>{fmt$(stage.value)}</span>
+                      </div>
+                    </div>
+                    <ProgressBar value={stage.count} max={pipelineStages[0].count} color={stage.color} />
+                  </div>
+                ))}
+              </div>
+              <div className="mt-6 pt-4 border-t flex justify-between" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
+                <div>
+                  <p className="font-mono text-[9px] text-white/25 uppercase tracking-wider">Total Pipeline</p>
+                  <p className="font-display text-2xl font-semibold mt-1" style={{ color: GOLD }}>{fmt$(pipelineStages.reduce((s, d) => s + d.value, 0))}</p>
+                </div>
+                <div>
+                  <p className="font-mono text-[9px] text-white/25 uppercase tracking-wider">Weighted Value</p>
+                  <p className="font-display text-2xl font-semibold mt-1 text-white">{fmt$(Math.round(pipelineStages.reduce((s, d, i) => s + d.value * [0.2, 0.4, 0.6, 0.8, 1][i], 0)))}</p>
+                </div>
+              </div>
             </DarkCard>
 
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Deal Count</p>
-              <p className="font-display text-lg font-medium text-white mb-6">Opportunities by Stage</p>
-              <ResponsiveContainer width="100%" height={260}>
-                <BarChart data={pipelineStages} barSize={28}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" vertical={false} />
-                  <XAxis dataKey="stage" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 9, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
-                  <YAxis tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
+              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Pipeline Value</p>
+              <p className="font-display text-lg font-medium text-white mb-4">Value by Stage ($)</p>
+              <ResponsiveContainer width="100%" height={280}>
+                <BarChart data={pipelineStages} layout="vertical" barSize={18}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" horizontal={false} />
+                  <XAxis type="number" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} tickFormatter={v => `$${(v / 1000).toFixed(0)}K`} />
+                  <YAxis type="category" dataKey="stage" tick={{ fill: "rgba(255,255,255,0.35)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} width={80} />
                   <Tooltip content={<DarkTooltip />} />
-                  <Bar dataKey="count" radius={[4, 4, 0, 0]}>
+                  <Bar dataKey="value" name="Pipeline Value" radius={[0, 4, 4, 0]}>
                     {pipelineStages.map((s, i) => <Cell key={i} fill={s.color} />)}
                   </Bar>
                 </BarChart>
@@ -473,93 +808,49 @@ export default function ZWSalesInfrastructure() {
         <div className="container">
           <div className="h-px mb-16" style={{ background: "linear-gradient(to right, transparent, rgba(201,169,98,0.2), transparent)" }} />
           <SectionHeader
-            eyebrow="Team Performance"
-            title="Sales Team Tracking"
-            description="Individual rep performance across leads generated, opportunities created, installs closed, and revenue produced. Activity metrics show call volume, email cadence, and demo frequency."
+            eyebrow="Sales Team Performance"
+            title="Rep Activity & Results"
+            description="Track individual rep performance across installs, revenue, lead volume, and activity metrics. Identify top performers and coaching opportunities."
           />
-
-          <DarkCard className="mb-6">
-            <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Rep Leaderboard</p>
-            <p className="font-display text-lg font-medium text-white mb-6">Individual Performance — YTD</p>
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
-                    {["Rep", "Leads", "Opps", "Installs", "Revenue", "Conv. Rate", "Calls", "Emails"].map(h => (
-                      <th key={h} className="text-left pb-3 font-mono text-[9px] text-white/25 uppercase tracking-wider pr-6">{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {salesTeamData.map((rep, i) => (
-                    <tr key={i} className="border-b" style={{ borderColor: "rgba(255,255,255,0.04)" }}>
-                      <td className="py-4 pr-6">
-                        <div className="flex items-center gap-3">
-                          <div
-                            className="w-7 h-7 rounded-full flex items-center justify-center text-[10px] font-bold"
-                            style={{ background: i === 0 ? `${GOLD}20` : "rgba(255,255,255,0.05)", color: i === 0 ? GOLD : "rgba(255,255,255,0.4)" }}
-                          >
-                            {i + 1}
-                          </div>
-                          <span className="font-body text-sm text-white">{rep.rep}</span>
-                        </div>
-                      </td>
-                      <td className="py-4 pr-6 font-mono text-sm text-white/60">{rep.leads}</td>
-                      <td className="py-4 pr-6 font-mono text-sm text-white/60">{rep.opps}</td>
-                      <td className="py-4 pr-6">
-                        <span className="font-mono text-sm font-semibold" style={{ color: TEAL }}>{rep.won}</span>
-                      </td>
-                      <td className="py-4 pr-6">
-                        <span className="font-mono text-sm font-semibold" style={{ color: GOLD }}>${rep.revenue}M</span>
-                      </td>
-                      <td className="py-4 pr-6">
-                        <div className="flex items-center gap-2">
-                          <span className="font-mono text-sm text-white/60">{Math.round((rep.won / rep.leads) * 100)}%</span>
-                          <div className="w-16">
-                            <ProgressBar value={rep.won} max={salesTeamData[0].won} color={i === 0 ? GOLD : GOLD_DIM} />
-                          </div>
-                        </div>
-                      </td>
-                      <td className="py-4 pr-6 font-mono text-sm text-white/40">{rep.calls}</td>
-                      <td className="py-4 font-mono text-sm text-white/40">{rep.emails}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </DarkCard>
 
           <div className="grid lg:grid-cols-2 gap-6">
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Activity Tracking</p>
-              <p className="font-display text-lg font-medium text-white mb-6">Weekly Sales Activity</p>
-              <ResponsiveContainer width="100%" height={240}>
-                <BarChart data={activityData} barSize={10} barGap={2}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" vertical={false} />
-                  <XAxis dataKey="week" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
-                  <YAxis tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
-                  <Tooltip content={<DarkTooltip />} />
-                  <Legend wrapperStyle={{ fontSize: 10, color: "rgba(255,255,255,0.4)", fontFamily: "monospace" }} />
-                  <Bar dataKey="calls" fill={GOLD} radius={[2, 2, 0, 0]} />
-                  <Bar dataKey="emails" fill={GOLD_DIM} radius={[2, 2, 0, 0]} />
-                  <Bar dataKey="demos" fill={TEAL} radius={[2, 2, 0, 0]} />
-                  <Bar dataKey="proposals" fill="#818CF8" radius={[2, 2, 0, 0]} />
-                </BarChart>
-              </ResponsiveContainer>
+              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Team Leaderboard</p>
+              <p className="font-display text-lg font-medium text-white mb-6">YTD Installs</p>
+              <div className="space-y-4">
+                {repData.map((rep, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold font-mono flex-shrink-0" style={{ background: i === 0 ? `${GOLD}20` : "rgba(255,255,255,0.05)", color: i === 0 ? GOLD : "rgba(255,255,255,0.3)" }}>
+                      {i + 1}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex justify-between mb-1">
+                        <span className="font-body text-sm text-white/70">{rep.rep}</span>
+                        <div className="flex items-center gap-4">
+                          <span className="font-mono text-xs text-white/30">{rep.leads} leads</span>
+                          <span className="font-mono text-xs" style={{ color: TEAL }}>{rep.installs} units</span>
+                          <span className="font-mono text-xs" style={{ color: GOLD }}>{fmt$(rep.revenue)}</span>
+                        </div>
+                      </div>
+                      <ProgressBar value={rep.installs} max={repData[0].installs} color={i === 0 ? GOLD : GOLD_DIM} />
+                    </div>
+                  </div>
+                ))}
+              </div>
             </DarkCard>
 
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Rep Revenue</p>
-              <p className="font-display text-lg font-medium text-white mb-6">Revenue by Rep ($M) — YTD</p>
-              <ResponsiveContainer width="100%" height={240}>
-                <BarChart data={salesTeamData} layout="vertical" barSize={14}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" horizontal={false} />
-                  <XAxis type="number" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} unit="M" />
-                  <YAxis type="category" dataKey="rep" tick={{ fill: "rgba(255,255,255,0.35)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} width={72} />
+              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Activity Tracking</p>
+              <p className="font-display text-lg font-medium text-white mb-4">Calls & Installs by Rep</p>
+              <ResponsiveContainer width="100%" height={280}>
+                <BarChart data={repData} barSize={16} barGap={4}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" vertical={false} />
+                  <XAxis dataKey="rep" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 9, fontFamily: "monospace" }} axisLine={false} tickLine={false} tickFormatter={v => v.split(".")[1]?.trim() ?? v} />
+                  <YAxis tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
                   <Tooltip content={<DarkTooltip />} />
-                  <Bar dataKey="revenue" radius={[0, 4, 4, 0]}>
-                    {salesTeamData.map((_, i) => <Cell key={i} fill={i === 0 ? GOLD : i === 1 ? GOLD_DIM : "#6B5E2E"} />)}
-                  </Bar>
+                  <Legend wrapperStyle={{ fontSize: 10, color: "rgba(255,255,255,0.4)", fontFamily: "monospace" }} />
+                  <Bar dataKey="installs" name="Installs" fill={GOLD} radius={[3, 3, 0, 0]} />
+                  <Bar dataKey="calls" name="Calls" fill={GOLD_DIM} radius={[3, 3, 0, 0]} opacity={0.5} />
                 </BarChart>
               </ResponsiveContainer>
             </DarkCard>
@@ -567,284 +858,180 @@ export default function ZWSalesInfrastructure() {
         </div>
       </section>
 
-      {/* ── CHANNEL PERFORMANCE ─────────────────────────────────────────── */}
-      <section id="channel-performance" className="py-20 bg-[#080808]">
+      {/* ── CHANNEL PERFORMANCE ──────────────────────────────────────────── */}
+      <section id="channel-performance" className="py-20 bg-[#0A0A0A]">
         <div className="container">
           <div className="h-px mb-16" style={{ background: "linear-gradient(to right, transparent, rgba(201,169,98,0.2), transparent)" }} />
           <SectionHeader
             eyebrow="Channel Attribution"
             title="Which Channels Are Working"
-            description="Compare lead volume, opportunity creation, install conversion, and average deal size across every ZeroWheel go-to-market channel. Identify where to double down and where to optimize."
+            description="Compare lead volume, conversion rates, and revenue contribution across all six go-to-market channels. Identify where to double down and where to cut."
           />
 
-          <DarkCard className="mb-6">
-            <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Channel Scorecard</p>
-            <p className="font-display text-lg font-medium text-white mb-6">Leads → Opportunities → Installs by Channel (MTD)</p>
-            <div className="space-y-4">
-              {channelData.map((ch, i) => (
-                <div key={i} className="grid grid-cols-5 gap-4 items-center py-3 border-b" style={{ borderColor: "rgba(255,255,255,0.05)" }}>
-                  <div>
-                    <p className="font-body text-sm text-white">{ch.channel}</p>
-                    <p className="font-mono text-[9px] text-white/25 mt-0.5">Avg deal: ${(ch.avgDeal / 1000).toFixed(0)}K</p>
-                  </div>
-                  <div>
-                    <p className="font-mono text-[10px] text-white/30 mb-1">Leads</p>
-                    <p className="font-mono text-sm text-white/70">{ch.leads}</p>
-                  </div>
-                  <div>
-                    <p className="font-mono text-[10px] text-white/30 mb-1">Opps</p>
-                    <p className="font-mono text-sm text-white/70">{ch.opps}</p>
-                  </div>
-                  <div>
-                    <p className="font-mono text-[10px] text-white/30 mb-1">Installs</p>
-                    <p className="font-mono text-sm font-semibold" style={{ color: TEAL }}>{ch.installs}</p>
-                  </div>
-                  <div>
-                    <div className="flex justify-between mb-1">
-                      <p className="font-mono text-[10px] text-white/30">Conv. Rate</p>
-                      <p className="font-mono text-[10px]" style={{ color: ch.convRate > 18 ? TEAL : GOLD }}>{ch.convRate}%</p>
-                    </div>
-                    <ProgressBar value={ch.convRate} max={25} color={ch.convRate > 18 ? TEAL : GOLD} />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </DarkCard>
-
-          <div className="grid lg:grid-cols-2 gap-6">
-            <DarkCard>
-              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Channel Volume</p>
-              <p className="font-display text-lg font-medium text-white mb-6">Leads vs Installs by Channel</p>
+          <div className="grid lg:grid-cols-3 gap-6">
+            <DarkCard className="lg:col-span-2">
+              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Channel Performance</p>
+              <p className="font-display text-lg font-medium text-white mb-4">Installs by Channel — YTD</p>
               <ResponsiveContainer width="100%" height={260}>
-                <BarChart data={channelData} barSize={12} barGap={4}>
+                <BarChart data={sourceData} barSize={32}>
                   <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" vertical={false} />
-                  <XAxis dataKey="channel" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 8, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
+                  <XAxis dataKey="name" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 9, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
                   <YAxis tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
                   <Tooltip content={<DarkTooltip />} />
-                  <Legend wrapperStyle={{ fontSize: 10, color: "rgba(255,255,255,0.4)", fontFamily: "monospace" }} />
-                  <Bar dataKey="leads" fill={GOLD_DIM} radius={[2, 2, 0, 0]} />
-                  <Bar dataKey="installs" fill={TEAL} radius={[2, 2, 0, 0]} />
+                  <Bar dataKey="value" name="Installs" radius={[4, 4, 0, 0]}>
+                    {sourceData.map((s, i) => <Cell key={i} fill={s.fill} />)}
+                  </Bar>
                 </BarChart>
               </ResponsiveContainer>
             </DarkCard>
 
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Install Mix</p>
-              <p className="font-display text-lg font-medium text-white mb-6">Installs by Channel — Share</p>
-              <ResponsiveContainer width="100%" height={260}>
-                <PieChart>
-                  <Pie
-                    data={channelData}
-                    dataKey="installs"
-                    nameKey="channel"
-                    cx="50%"
-                    cy="50%"
-                    outerRadius={100}
-                    innerRadius={55}
-                    paddingAngle={3}
-                  >
-                    {channelData.map((_, i) => (
-                      <Cell key={i} fill={[GOLD, TEAL, "#818CF8", "#FB923C", "#34D399", GOLD_DIM, "#F472B6", "#60A5FA"][i % 8]} />
-                    ))}
-                  </Pie>
-                  <Tooltip content={<DarkTooltip />} />
-                  <Legend wrapperStyle={{ fontSize: 10, color: "rgba(255,255,255,0.4)", fontFamily: "monospace" }} />
-                </PieChart>
-              </ResponsiveContainer>
+              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Channel Scorecard</p>
+              <p className="font-display text-lg font-medium text-white mb-4">Revenue Share</p>
+              <div className="space-y-3">
+                {sourceData.map((s, i) => (
+                  <div key={i}>
+                    <div className="flex justify-between mb-1">
+                      <span className="font-body text-xs text-white/50">{s.name}</span>
+                      <span className="font-mono text-xs font-semibold" style={{ color: s.fill }}>{s.value} units</span>
+                    </div>
+                    <ProgressBar value={s.value} max={sourceData[0].value} color={s.fill} />
+                  </div>
+                ))}
+              </div>
             </DarkCard>
           </div>
         </div>
       </section>
 
-      {/* ── REVENUE FORECAST ────────────────────────────────────────────── */}
+      {/* ── REVENUE FORECAST ─────────────────────────────────────────────── */}
       <section id="revenue-forecast" className="py-20 bg-[#0A0A0A]">
         <div className="container">
           <div className="h-px mb-16" style={{ background: "linear-gradient(to right, transparent, rgba(201,169,98,0.2), transparent)" }} />
           <SectionHeader
-            eyebrow="Revenue Intelligence"
-            title="Forecasting & Budget Tracking"
-            description="Revenue actuals vs budget with pipeline-based forward projections. See how we're tracking to plan and where we expect to land in 1, 3, and 6 months based on current opportunity stages and historical conversion rates."
+            eyebrow="Revenue Forecasting"
+            title="Pipeline-Based Revenue Forecast"
+            description="Forward-looking revenue projections based on current pipeline, historical conversion rates, and seasonal patterns. Forecast ranges reflect low, mid, and high scenarios."
           />
 
-          <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            variants={staggerContainer}
-          >
-            <StatCard icon={TrendingUp} label="Next 30 Days (Forecast)" value="$2.28M" sub="vs $2.40M budget" trend="-5%" trendUp={false} />
-            <StatCard icon={BarChart3} label="Next 90 Days (Forecast)" value="$8.17M" sub="vs $8.60M budget" trend="-5%" trendUp={false} />
-            <StatCard icon={DollarSign} label="Next 180 Days (Forecast)" value="$18.9M" sub="vs $19.8M budget" trend="-4.5%" trendUp={false} />
-            <StatCard icon={Target} label="Pipeline Coverage" value="3.2×" sub="of remaining budget" trend="Healthy" trendUp={true} />
-          </motion.div>
+          <div className="grid lg:grid-cols-2 gap-6 mb-6">
+            <DarkCard>
+              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Revenue vs Budget</p>
+              <p className="font-display text-lg font-medium text-white mb-4">Monthly — Actual vs Target ($)</p>
+              <ResponsiveContainer width="100%" height={260}>
+                <ComposedChart data={monthlyData}>
+                  <defs>
+                    <linearGradient id="revGrad2" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor={GOLD} stopOpacity={0.3} />
+                      <stop offset="95%" stopColor={GOLD} stopOpacity={0} />
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" vertical={false} />
+                  <XAxis dataKey="month" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
+                  <YAxis tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} tickFormatter={v => `$${(v / 1000).toFixed(0)}K`} />
+                  <Tooltip content={<DarkTooltip />} />
+                  <Legend wrapperStyle={{ fontSize: 10, color: "rgba(255,255,255,0.4)", fontFamily: "monospace" }} />
+                  <Area type="monotone" dataKey="revenue" name="Revenue" stroke={GOLD} strokeWidth={2.5} fill="url(#revGrad2)" dot={{ fill: GOLD, r: 4 }} connectNulls={false} />
+                  <Line type="monotone" dataKey="budget" name="Budget" stroke="rgba(255,255,255,0.2)" strokeWidth={1.5} strokeDasharray="6 3" dot={false} />
+                </ComposedChart>
+              </ResponsiveContainer>
+            </DarkCard>
 
-          <DarkCard className="mb-6">
-            <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Monthly Revenue</p>
-            <p className="font-display text-lg font-medium text-white mb-6">Actual vs Budget vs Forecast ($M)</p>
-            <ResponsiveContainer width="100%" height={280}>
-              <BarChart data={forecastData} barSize={22} barGap={4}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" vertical={false} />
-                <XAxis dataKey="month" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
-                <YAxis tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} unit="M" />
-                <Tooltip content={<DarkTooltip />} />
-                <Legend wrapperStyle={{ fontSize: 10, color: "rgba(255,255,255,0.4)", fontFamily: "monospace" }} />
-                <Bar dataKey="actual" name="Actual" fill={GOLD} radius={[3, 3, 0, 0]} />
-                <Bar dataKey="budget" name="Budget" fill="rgba(255,255,255,0.08)" radius={[3, 3, 0, 0]} />
-                <Bar dataKey="forecast" name="Forecast" fill={TEAL} radius={[3, 3, 0, 0]} opacity={0.8} />
-              </BarChart>
-            </ResponsiveContainer>
-          </DarkCard>
+            <DarkCard>
+              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Forward Forecast</p>
+              <p className="font-display text-lg font-medium text-white mb-4">Units — Low / Mid / High vs Budget</p>
+              <ResponsiveContainer width="100%" height={260}>
+                <BarChart data={forecastData} barSize={14} barGap={3}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" vertical={false} />
+                  <XAxis dataKey="period" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
+                  <YAxis tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
+                  <Tooltip content={<DarkTooltip />} />
+                  <Legend wrapperStyle={{ fontSize: 10, color: "rgba(255,255,255,0.4)", fontFamily: "monospace" }} />
+                  <Bar dataKey="low" name="Low" fill={RED} radius={[3, 3, 0, 0]} opacity={0.7} />
+                  <Bar dataKey="mid" name="Mid" fill={GOLD} radius={[3, 3, 0, 0]} />
+                  <Bar dataKey="high" name="High" fill={TEAL} radius={[3, 3, 0, 0]} />
+                  <Bar dataKey="budget" name="Budget" fill="rgba(255,255,255,0.15)" radius={[3, 3, 0, 0]} />
+                </BarChart>
+              </ResponsiveContainer>
+            </DarkCard>
+          </div>
 
-          <DarkCard>
-            <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Cumulative Revenue</p>
-            <p className="font-display text-lg font-medium text-white mb-2">YTD Cumulative — Actual vs Budget vs Prior Year ($M)</p>
-            <div className="flex gap-6 mb-6">
-              <div>
-                <p className="font-mono text-[10px] text-white/25 uppercase tracking-wider">YTD Actual</p>
-                <p className="font-display text-2xl font-semibold mt-1" style={{ color: GOLD }}>$5.35M</p>
-              </div>
-              <div>
-                <p className="font-mono text-[10px] text-white/25 uppercase tracking-wider">vs Budget</p>
-                <p className="font-display text-2xl font-semibold mt-1 text-red-400">−$0.25M</p>
-              </div>
-              <div>
-                <p className="font-mono text-[10px] text-white/25 uppercase tracking-wider">vs Prior Year</p>
-                <p className="font-display text-2xl font-semibold mt-1" style={{ color: TEAL }}>+$1.93M</p>
-              </div>
-            </div>
-            <ResponsiveContainer width="100%" height={260}>
-              <AreaChart data={cumulativeData}>
-                <defs>
-                  <linearGradient id="goldGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor={GOLD} stopOpacity={0.3} />
-                    <stop offset="95%" stopColor={GOLD} stopOpacity={0} />
-                  </linearGradient>
-                  <linearGradient id="tealGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor={TEAL} stopOpacity={0.2} />
-                    <stop offset="95%" stopColor={TEAL} stopOpacity={0} />
-                  </linearGradient>
-                </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" vertical={false} />
-                <XAxis dataKey="month" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
-                <YAxis tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} unit="M" />
-                <Tooltip content={<DarkTooltip />} />
-                <Legend wrapperStyle={{ fontSize: 10, color: "rgba(255,255,255,0.4)", fontFamily: "monospace" }} />
-                <Area type="monotone" dataKey="budget" name="Budget" stroke="rgba(255,255,255,0.2)" strokeWidth={1.5} strokeDasharray="6 3" fill="none" dot={false} />
-                <Area type="monotone" dataKey="actual" name="Actual" stroke={GOLD} strokeWidth={2.5} fill="url(#goldGrad)" dot={{ fill: GOLD, r: 4 }} connectNulls={false} />
-                <Area type="monotone" dataKey="prior" name="Prior Year" stroke={TEAL} strokeWidth={1.5} fill="url(#tealGrad)" dot={false} strokeDasharray="4 2" />
-              </AreaChart>
-            </ResponsiveContainer>
-          </DarkCard>
+          {/* Forecast Summary Cards */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { period: "Next 30 Days", low: "$78K", mid: "$92K", high: "$108K", color: GOLD },
+              { period: "Next 90 Days", low: "$248K", mid: "$298K", high: "$341K", color: TEAL },
+              { period: "H2 2026", low: "$519K", mid: "$619K", high: "$709K", color: PURPLE },
+              { period: "Full Year 2026", low: "$764K", mid: "$864K", high: "$954K", color: GREEN },
+            ].map((f, i) => (
+              <DarkCard key={i}>
+                <p className="font-mono text-[9px] text-white/25 uppercase tracking-wider mb-3">{f.period}</p>
+                <div className="space-y-1.5">
+                  <div className="flex justify-between">
+                    <span className="font-body text-xs text-white/30">Low</span>
+                    <span className="font-mono text-xs text-red-400">{f.low}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-body text-xs text-white/60">Mid</span>
+                    <span className="font-mono text-sm font-semibold" style={{ color: f.color }}>{f.mid}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-body text-xs text-white/30">High</span>
+                    <span className="font-mono text-xs" style={{ color: TEAL }}>{f.high}</span>
+                  </div>
+                </div>
+              </DarkCard>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ── WIN / LOSS ───────────────────────────────────────────────────── */}
-      <section id="win-loss" className="py-20 bg-[#080808]">
+      <section id="win-loss" className="py-20 pb-32 bg-[#0A0A0A]">
         <div className="container">
           <div className="h-px mb-16" style={{ background: "linear-gradient(to right, transparent, rgba(201,169,98,0.2), transparent)" }} />
           <SectionHeader
-            eyebrow="Closed Opportunities"
-            title="Win / Loss Analysis"
-            description="Understand why deals close and why they don't. Track win and loss rates over time, identify the top reasons for each outcome, and use this intelligence to sharpen messaging, pricing, and process."
+            eyebrow="Win / Loss Analysis"
+            title="Why We Win. Why We Lose."
+            description="Structured win/loss tracking is required on every closed opportunity. This data drives product, pricing, and sales coaching decisions."
           />
 
-          <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            variants={staggerContainer}
-          >
-            <StatCard icon={CheckCircle2} label="Closed Won (YTD)" value="64" sub="vs 48 target" trend="+33%" trendUp={true} />
-            <StatCard icon={XCircle} label="Closed Lost (YTD)" value="87" sub="87 total losses" trend={null} />
-            <StatCard icon={Activity} label="Win Rate" value="42.4%" sub="of closed opportunities" trend="+4.2pp" trendUp={true} />
-            <StatCard icon={AlertCircle} label="Avg Deal Cycle" value="47 days" sub="from opp create to close" trend="−3 days" trendUp={true} />
-          </motion.div>
-
-          <div className="grid lg:grid-cols-2 gap-6 mb-6">
+          <div className="grid lg:grid-cols-2 gap-6">
             <DarkCard>
-              <div className="flex items-center gap-2 mb-1">
-                <CheckCircle2 className="w-4 h-4" style={{ color: TEAL }} />
-                <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em]">Win Reasons</p>
-              </div>
-              <p className="font-display text-lg font-medium text-white mb-6">Why We Win</p>
-              <div className="space-y-5">
-                {winReasons.map((r, i) => (
+              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Win Reasons</p>
+              <p className="font-display text-lg font-medium text-white mb-6">Why Customers Choose ZeroWheel</p>
+              <div className="space-y-3">
+                {winLossReasons.filter(r => r.won > 0).map((r, i) => (
                   <div key={i}>
                     <div className="flex justify-between mb-1.5">
                       <span className="font-body text-sm text-white/60">{r.reason}</span>
-                      <div className="flex items-center gap-3">
-                        <span className="font-mono text-xs text-white/40">{r.count} deals</span>
-                        <span className="font-mono text-xs font-semibold" style={{ color: TEAL }}>{r.pct}%</span>
-                      </div>
+                      <span className="font-mono text-xs font-semibold" style={{ color: r.color }}>{r.won} wins</span>
                     </div>
-                    <ProgressBar value={r.pct} max={100} color={TEAL} />
+                    <ProgressBar value={r.won} max={Math.max(...winLossReasons.map(x => x.won))} color={r.color} />
                   </div>
                 ))}
               </div>
             </DarkCard>
 
             <DarkCard>
-              <div className="flex items-center gap-2 mb-1">
-                <XCircle className="w-4 h-4 text-red-400" />
-                <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em]">Loss Reasons</p>
-              </div>
-              <p className="font-display text-lg font-medium text-white mb-6">Why We Lose</p>
-              <div className="space-y-5">
-                {lossReasons.map((r, i) => (
+              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Loss Reasons</p>
+              <p className="font-display text-lg font-medium text-white mb-6">Why Deals Are Lost</p>
+              <div className="space-y-3">
+                {winLossReasons.filter(r => r.lost > 0).map((r, i) => (
                   <div key={i}>
                     <div className="flex justify-between mb-1.5">
                       <span className="font-body text-sm text-white/60">{r.reason}</span>
-                      <div className="flex items-center gap-3">
-                        <span className="font-mono text-xs text-white/40">{r.count} deals</span>
-                        <span className="font-mono text-xs font-semibold text-red-400">{r.pct}%</span>
-                      </div>
+                      <span className="font-mono text-xs font-semibold" style={{ color: r.color }}>{r.lost} losses</span>
                     </div>
-                    <ProgressBar value={r.pct} max={100} color={RED} />
+                    <ProgressBar value={r.lost} max={Math.max(...winLossReasons.map(x => x.lost))} color={r.color} />
                   </div>
                 ))}
               </div>
             </DarkCard>
           </div>
-
-          <DarkCard>
-            <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Win / Loss Trend</p>
-            <p className="font-display text-lg font-medium text-white mb-6">Monthly Closed Won vs Closed Lost</p>
-            <ResponsiveContainer width="100%" height={240}>
-              <BarChart data={winLossTrend} barSize={28} barGap={6}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" vertical={false} />
-                <XAxis dataKey="month" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
-                <YAxis tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
-                <Tooltip content={<DarkTooltip />} />
-                <Legend wrapperStyle={{ fontSize: 10, color: "rgba(255,255,255,0.4)", fontFamily: "monospace" }} />
-                <Bar dataKey="won" name="Closed Won" fill={TEAL} radius={[4, 4, 0, 0]} />
-                <Bar dataKey="lost" name="Closed Lost" fill={RED} radius={[4, 4, 0, 0]} opacity={0.7} />
-              </BarChart>
-            </ResponsiveContainer>
-          </DarkCard>
-
-          <motion.div
-            className="mt-12 rounded-2xl p-8 border text-center"
-            style={{ background: "rgba(201,169,98,0.04)", borderColor: "rgba(201,169,98,0.15)" }}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="font-mono text-[10px] tracking-[0.2em] uppercase mb-3" style={{ color: GOLD }}>Infrastructure Vision</p>
-            <p className="font-display text-xl md:text-2xl font-medium text-white mb-4 max-w-3xl mx-auto">
-              This is what we build for ZeroWheel leadership
-            </p>
-            <p className="font-body text-sm text-white/40 max-w-2xl mx-auto leading-relaxed">
-              Every chart, metric, and table shown here represents a live data system we configure and maintain —
-              CRM pipeline hygiene, campaign attribution, rep scorecards, and rolling forecasts.
-              Leadership gets a single source of truth on where revenue is coming from, who's driving it,
-              and what to expect next quarter.
-            </p>
-          </motion.div>
         </div>
       </section>
+
     </Layout>
   );
 }

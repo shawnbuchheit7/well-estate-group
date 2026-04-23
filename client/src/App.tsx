@@ -39,6 +39,7 @@ const ZWSales = lazy(() => import("./pages/zerowheel/ZWSales"));
 const ZWStrategicMarkets = lazy(() => import("./pages/zerowheel/ZWStrategicMarkets"));
 const ZWGlobalMarkets = lazy(() => import("./pages/zerowheel/ZWGlobalMarkets"));
 const ZWSalesInfrastructure = lazy(() => import("./pages/zerowheel/ZWSalesInfrastructure"));
+const ZWBusinessIntelligence = lazy(() => import("./pages/zerowheel/ZWBusinessIntelligence"));
 
 const ProductIntelligence = lazy(() => import("./pages/ProductIntelligence"));
 const VentureCapital = lazy(() => import("./pages/VentureCapital"));
@@ -111,6 +112,7 @@ function App() {
                   <Route path="/gtm/zerowheel/strategic-markets" component={ZWStrategicMarkets} />
                   <Route path="/gtm/zerowheel/global-markets" component={ZWGlobalMarkets} />
                   <Route path="/gtm/zerowheel/sales-infrastructure" component={ZWSalesInfrastructure} />
+                  <Route path="/gtm/zerowheel/business-intelligence" component={ZWBusinessIntelligence} />
                   
                   {/* Sample GTM Project (original generic content) */}
                   <Route path="/gtm/sample" component={GTMHome} />
