@@ -225,7 +225,7 @@ export default function Landing() {
                 <div className="relative p-8 md:p-9 flex flex-col items-center text-center min-h-[300px] md:min-h-[320px] justify-center">
                   {/* Pillar Number */}
                   <motion.span
-                    className="font-mono text-[10px] text-white/25 tracking-[0.3em] mb-4 group-hover:text-[#C9A962]/60 transition-colors duration-500"
+                    className="font-mono text-[10px] text-white/50 tracking-[0.3em] mb-4 group-hover:text-[#C9A962]/80 transition-colors duration-500"
                   >
                     PILLAR {pillar.num}
                   </motion.span>
@@ -272,7 +272,7 @@ export default function Landing() {
           transition={{ delay: 2.8, duration: 0.8 }}
           className="mt-20 md:mt-28 w-full max-w-5xl"
         >
-          <p className="font-mono text-[10px] text-white/25 tracking-[0.2em] uppercase text-center mb-8">
+          <p className="font-mono text-[10px] text-white/50 tracking-[0.2em] uppercase text-center mb-8">
             Industry Reach
           </p>
           
@@ -296,7 +296,7 @@ export default function Landing() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 3 + i * 0.08 }}
-                  className="font-display text-sm md:text-base font-semibold text-white/15 hover:text-[#C9A962]/50 transition-colors duration-300 whitespace-nowrap"
+                  className="font-display text-sm md:text-base font-semibold text-white/40 hover:text-[#C9A962]/70 transition-colors duration-300 whitespace-nowrap"
                 >
                   {name}
                 </motion.span>
