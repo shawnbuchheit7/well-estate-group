@@ -84,7 +84,7 @@ export default function DarkHero({ eyebrow, title, description, stats, children,
             />
             <motion.p
               variants={fadeInUp}
-              className="font-body text-base md:text-lg text-white/60 leading-relaxed max-w-3xl mx-auto"
+              className="font-body text-base md:text-lg text-white/70 leading-relaxed max-w-3xl mx-auto"
             >
               {description}
             </motion.p>
@@ -108,7 +108,7 @@ export default function DarkHero({ eyebrow, title, description, stats, children,
                   >
                     <AnimatedCounter valueStr={stat.value} duration={1.8} />
                   </motion.div>
-                  <p className="font-mono text-[10px] text-white/45 tracking-wider uppercase mt-1">
+                  <p className="font-mono text-[10px] text-white/55 tracking-wider uppercase mt-1">
                     {stat.label}
                   </p>
                 </motion.div>
@@ -121,8 +121,8 @@ export default function DarkHero({ eyebrow, title, description, stats, children,
         </div>
       </div>
 
-      {/* Bottom fade */}
-      <div className={`absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t ${darkFade ? 'from-[#0A0A0A]' : 'from-white'} to-transparent`} />
+      {/* Bottom fade — extended for smooth transition */}
+      <div className={`absolute bottom-0 left-0 right-0 h-48 ${darkFade ? '' : ''}`} style={{ background: darkFade ? 'linear-gradient(to top, #0A0A0A 0%, rgba(10,10,10,0.8) 30%, rgba(10,10,10,0.3) 60%, transparent 100%)' : 'linear-gradient(to top, #ffffff 0%, rgba(255,255,255,0.85) 25%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.15) 75%, transparent 100%)' }} />
     </section>
   );
 }

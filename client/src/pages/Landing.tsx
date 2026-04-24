@@ -243,7 +243,7 @@ export default function Landing() {
                   </h2>
 
                   {/* Subtitle */}
-                  <p className="font-body text-xs text-white/60 leading-relaxed max-w-[220px] mb-7">
+                  <p className="font-body text-xs text-white/65 leading-relaxed max-w-[220px] mb-7">
                     {pillar.description}
                   </p>
 
@@ -296,7 +296,7 @@ export default function Landing() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 3 + i * 0.08 }}
-                  className="font-display text-sm md:text-base font-semibold text-white/50 hover:text-[#C9A962]/80 transition-colors duration-300 whitespace-nowrap"
+                  className="font-display text-sm md:text-base font-semibold text-white/60 hover:text-[#C9A962]/80 transition-colors duration-300 whitespace-nowrap"
                 >
                   {name}
                 </motion.span>
@@ -319,7 +319,7 @@ export default function Landing() {
             <h3 className="font-display text-2xl md:text-3xl font-semibold text-white mb-4">
               Built on Decades of Industry Leadership
             </h3>
-            <p className="font-body text-sm text-white/55 leading-relaxed max-w-2xl mx-auto">
+            <p className="font-body text-sm text-white/65 leading-relaxed max-w-2xl mx-auto">
               Well Estate Group brings together senior executives from the world's leading fitness, 
               wellness, and hospitality brands — delivering institutional-grade consulting to companies 
               ready to scale.
@@ -342,7 +342,7 @@ export default function Landing() {
                 className="text-center p-5 rounded-xl border border-white/[0.15] bg-white/[0.04] backdrop-blur-sm hover:border-white/[0.25] transition-colors duration-300"
               >
                 <p className="font-display text-2xl font-semibold text-white">{stat.value}</p>
-                <p className="font-body text-[11px] text-white/50 mt-1">{stat.label}</p>
+                <p className="font-body text-[11px] text-white/60 mt-1">{stat.label}</p>
               </motion.div>
             ))}
           </div>
