@@ -275,19 +275,7 @@ export default function ZWSalesInfrastructure() {
               Built on Salesforce CRM, Typeform lead intake, and Intercom AI, this system tracks every lead, opportunity, and
               revenue dollar across all channels and sales team members.
             </motion.p>
-            <motion.div variants={fadeInUp} className="flex flex-wrap gap-6">
-              {[
-                { label: "Unit Price", value: "$1,000" },
-                { label: "2026 Target", value: "1,000 units" },
-                { label: "Revenue Goal", value: "$1M" },
-                { label: "Active Channels", value: "6" },
-              ].map((kpi, i) => (
-                <div key={i} className="rounded-2xl border px-5 py-3" style={{ background: CARD_BG, borderColor: CARD_BORDER }}>
-                  <p className="font-mono text-[9px] text-white/25 uppercase tracking-wider">{kpi.label}</p>
-                  <p className="font-display text-2xl font-semibold mt-1" style={{ color: GOLD }}>{kpi.value}</p>
-                </div>
-              ))}
-            </motion.div>
+
           </motion.div>
         </div>
       </section>
@@ -570,10 +558,10 @@ export default function ZWSalesInfrastructure() {
               <p className="font-mono text-[10px] uppercase tracking-[0.15em] mb-3" style={{ color: TEAL }}>Lead Activity Tracking</p>
               <div className="space-y-2">
                 {[
+                  { activity: "FinAI Chat Session", tracked: "Intent score, questions asked, outcome", icon: Bot },
                   { activity: "Outbound Call", tracked: "Duration, outcome, next step", icon: Phone },
                   { activity: "Email Sent / Received", tracked: "Open rate, click-through, reply", icon: Mail },
                   { activity: "Demo Scheduled", tracked: "Date, attendees, product focus", icon: Calendar },
-                  { activity: "FinAI Chat Session", tracked: "Intent score, questions asked, outcome", icon: Bot },
                   { activity: "Proposal Sent", tracked: "Document version, value, expiry date", icon: Activity },
                   { activity: "Follow-Up Task", tracked: "Due date, priority, completion status", icon: CheckCircle2 },
                 ].map((item, i) => (
