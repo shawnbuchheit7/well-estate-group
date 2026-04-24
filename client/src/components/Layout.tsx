@@ -147,7 +147,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
       
       {/* Navigation */}
       <motion.nav 
-        className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b ${isDarkLayout ? 'bg-[#0A0A0A]/95 border-white/[0.08]' : 'bg-white/95 border-black/[0.10]'}`}
+        className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b ${isDarkLayout ? 'bg-[#0A0A0A]/95 border-white/[0.12]' : 'bg-white/95 border-black/[0.12]'}`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] }}
@@ -261,7 +261,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-white border-l border-black/10 z-50 lg:hidden shadow-2xl"
+              className="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-white border-l border-black/15 z-50 lg:hidden shadow-2xl"
             >
               <div className="flex flex-col h-full">
                 {/* Mobile Menu Header */}
@@ -341,12 +341,12 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
 
       {/* Cross-Pillar Navigation */}
       {currentPillarIndex >= 0 && (
-        <section className={`py-12 border-t ${isDarkLayout ? 'bg-[#0A0A0A] border-white/[0.08]' : 'bg-white border-black/[0.08]'}`}>
+        <section className={`py-12 border-t ${isDarkLayout ? 'bg-[#0A0A0A] border-white/[0.12]' : 'bg-white border-black/[0.12]'}`}>
           <div className="container px-6">
             <div className="flex items-center justify-between max-w-4xl mx-auto">
               {prevPillar ? (
                 <Link href={prevPillar.href} className="group flex items-center gap-3 text-left">
-                  <div className={`w-10 h-10 rounded-full border flex items-center justify-center group-hover:border-[#C9A962]/50 group-hover:bg-[#C9A962]/[0.04] transition-all ${isDarkLayout ? 'border-white/15' : 'border-black/15'}`}>
+                  <div className={`w-10 h-10 rounded-full border flex items-center justify-center group-hover:border-[#C9A962]/50 group-hover:bg-[#C9A962]/[0.04] transition-all ${isDarkLayout ? 'border-white/20' : 'border-black/20'}`}>
                     <ChevronLeft className={`w-4 h-4 group-hover:text-[#C9A962] transition-colors ${isDarkLayout ? 'text-white/40' : 'text-black/40'}`} />
                   </div>
                   <div>
@@ -366,7 +366,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                     <p className={`font-mono text-[10px] tracking-wider uppercase ${isDarkLayout ? 'text-white/35' : 'text-black/35'}`}>Pillar {nextPillar.num}</p>
                     <p className={`font-body text-sm transition-colors ${isDarkLayout ? 'text-white/70 group-hover:text-white' : 'text-black/70 group-hover:text-black'}`}>{nextPillar.label}</p>
                   </div>
-                  <div className={`w-10 h-10 rounded-full border flex items-center justify-center group-hover:border-[#C9A962]/50 group-hover:bg-[#C9A962]/[0.04] transition-all ${isDarkLayout ? 'border-white/15' : 'border-black/15'}`}>
+                  <div className={`w-10 h-10 rounded-full border flex items-center justify-center group-hover:border-[#C9A962]/50 group-hover:bg-[#C9A962]/[0.04] transition-all ${isDarkLayout ? 'border-white/20' : 'border-black/20'}`}>
                     <ArrowRight className={`w-4 h-4 group-hover:text-[#C9A962] transition-colors ${isDarkLayout ? 'text-white/40' : 'text-black/40'}`} />
                   </div>
                 </Link>
@@ -380,7 +380,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
       <BackToTop />
 
       {/* Enhanced Footer with Contact CTA */}
-      <footer className={`py-16 border-t ${isDarkLayout ? 'border-white/[0.08] bg-[#0A0A0A]' : 'border-black/[0.10] bg-[#FAFAF8]'}`}>
+      <footer className={`py-16 border-t ${isDarkLayout ? 'border-white/[0.12] bg-[#0A0A0A]' : 'border-black/[0.12] bg-[#FAFAF8]'}`}>
         <div className="container px-6">
           <div className="max-w-6xl mx-auto">
             {/* Footer Top */}
@@ -421,7 +421,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                   <p className={`font-mono text-[10px] tracking-wider uppercase mb-1 ${isDarkLayout ? 'text-white/40' : 'text-black/40'}`}>Get in Touch</p>
                   <a 
                     href="mailto:info@wellestategroup.com" 
-                    className={`group flex items-center gap-3 px-5 py-3 rounded-xl border hover:border-[#C9A962]/50 transition-all ${isDarkLayout ? 'border-white/15 bg-white/[0.05] hover:bg-[#C9A962]/[0.06]' : 'border-black/15 bg-white hover:bg-[#C9A962]/[0.03]'}`}
+                    className={`group flex items-center gap-3 px-5 py-3 rounded-xl border hover:border-[#C9A962]/50 transition-all ${isDarkLayout ? 'border-white/20 bg-white/[0.06] hover:bg-[#C9A962]/[0.08]' : 'border-black/20 bg-white hover:bg-[#C9A962]/[0.04]'}`}
                   >
                     <div className="w-9 h-9 rounded-full bg-black flex items-center justify-center group-hover:bg-[#C9A962] transition-colors">
                       <Mail className="w-4 h-4 text-white" />

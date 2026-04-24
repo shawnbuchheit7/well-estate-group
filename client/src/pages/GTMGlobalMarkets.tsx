@@ -140,9 +140,9 @@ export default function GTMGlobalMarkets() {
                 key={i}
                 variants={scaleIn}
                 whileHover={{ y: -4, boxShadow: "0 16px 40px rgba(0,0,0,0.08)" }}
-                className="bg-white border border-black/[0.08] rounded-xl overflow-hidden hover:border-[#C9A962]/30 transition-all duration-300"
+                className="bg-white border border-black/[0.12] rounded-xl overflow-hidden hover:border-[#C9A962]/30 transition-all duration-300"
               >
-                <div className="px-6 py-4 border-b border-black/[0.06] bg-[#FAFAF8]">
+                <div className="px-6 py-4 border-b border-black/[0.10] bg-[#FAFAF8]">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <span className="text-2xl">{region.flag}</span>
@@ -271,7 +271,7 @@ export default function GTMGlobalMarkets() {
                     className={`px-3 py-3 rounded-lg bg-white border mb-2 shadow-[0_2px_8px_rgba(0,0,0,0.03)] cursor-pointer transition-all duration-300 ${
                       region.status === "active" 
                         ? "border-[#C9A962]/30 hover:border-[#C9A962]/60" 
-                        : "border-black/[0.08] hover:border-black/[0.15]"
+                        : "border-black/[0.12] hover:border-black/[0.15]"
                     }`}
                     whileHover={{ y: -2, boxShadow: "0 8px 20px rgba(0,0,0,0.06)" }}
                     onClick={() => setExpandedRegion(expandedRegion === i ? null : i)}
@@ -293,7 +293,7 @@ export default function GTMGlobalMarkets() {
                         {region.cities.map((city, j) => (
                           <motion.div 
                             key={j} 
-                            className="px-2.5 py-1.5 rounded-md bg-white border border-black/[0.06] hover:border-[#C9A962]/20 transition-colors"
+                            className="px-2.5 py-1.5 rounded-md bg-white border border-black/[0.10] hover:border-[#C9A962]/20 transition-colors"
                             whileHover={{ x: 2 }}
                           >
                             <div className="flex items-center justify-center gap-1">
@@ -304,7 +304,7 @@ export default function GTMGlobalMarkets() {
                         ))}
                       </motion.div>
                     ) : region.cities.length === 0 ? (
-                      <div className="px-3 py-3 rounded-md border border-dashed border-black/[0.08]">
+                      <div className="px-3 py-3 rounded-md border border-dashed border-black/[0.12]">
                         <span className="font-mono text-[10px] text-black/20 tracking-wider">Expansion planned</span>
                       </div>
                     ) : null}

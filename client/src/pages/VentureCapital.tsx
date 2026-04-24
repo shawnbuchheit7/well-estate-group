@@ -166,7 +166,7 @@ export default function VentureCapital() {
               <div
                 key={i}
                 className={`grid grid-cols-12 gap-4 px-5 sm:px-6 py-4 items-start ${
-                  i !== focusAreas.length - 1 ? "border-b border-black/[0.06]" : ""
+                  i !== focusAreas.length - 1 ? "border-b border-black/[0.10]" : ""
                 } ${i % 2 === 0 ? "bg-white" : "bg-[#FAFAF8]"}`}
               >
                 <div className="col-span-4">
@@ -224,7 +224,7 @@ export default function VentureCapital() {
       </section>
 
       {/* CTA */}
-      <section className="py-14 sm:py-18 bg-[#FAFAF8] border-t border-black/[0.06]">
+      <section className="py-14 sm:py-18 bg-[#FAFAF8] border-t border-black/[0.10]">
         <div className="container px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

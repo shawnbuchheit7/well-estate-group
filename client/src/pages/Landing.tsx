@@ -200,14 +200,14 @@ export default function Landing() {
           {pillars.map((pillar, i) => (
             <Link key={pillar.num} href={pillar.href}>
               <motion.div
-                className="group relative overflow-hidden rounded-2xl border border-white/[0.10] bg-white/[0.04] backdrop-blur-sm cursor-pointer h-full"
+                className="group relative overflow-hidden rounded-2xl border border-white/[0.18] bg-white/[0.05] backdrop-blur-sm cursor-pointer h-full"
                 style={{
-                  boxShadow: "0 4px 24px rgba(0,0,0,0.3), 0 1px 4px rgba(0,0,0,0.2)",
+                  boxShadow: "0 4px 24px rgba(0,0,0,0.4), 0 1px 4px rgba(0,0,0,0.3)",
                 }}
                 whileHover={{
                   scale: 1.03,
                   y: -8,
-                  boxShadow: "0 25px 60px rgba(0,0,0,0.4), 0 0 40px rgba(201,169,98,0.08)",
+                  boxShadow: "0 25px 60px rgba(0,0,0,0.5), 0 0 50px rgba(201,169,98,0.12), inset 0 0 0 1px rgba(201,169,98,0.15)",
                 }}
                 whileTap={{ scale: 0.98 }}
                 initial={{ opacity: 0, y: 30 }}
@@ -243,7 +243,7 @@ export default function Landing() {
                   </h2>
 
                   {/* Subtitle */}
-                  <p className="font-body text-xs text-white/45 leading-relaxed max-w-[220px] mb-7">
+                  <p className="font-body text-xs text-white/60 leading-relaxed max-w-[220px] mb-7">
                     {pillar.description}
                   </p>
 
@@ -296,7 +296,7 @@ export default function Landing() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 3 + i * 0.08 }}
-                  className="font-display text-sm md:text-base font-semibold text-white/40 hover:text-[#C9A962]/70 transition-colors duration-300 whitespace-nowrap"
+                  className="font-display text-sm md:text-base font-semibold text-white/50 hover:text-[#C9A962]/80 transition-colors duration-300 whitespace-nowrap"
                 >
                   {name}
                 </motion.span>
@@ -319,7 +319,7 @@ export default function Landing() {
             <h3 className="font-display text-2xl md:text-3xl font-semibold text-white mb-4">
               Built on Decades of Industry Leadership
             </h3>
-            <p className="font-body text-sm text-white/45 leading-relaxed max-w-2xl mx-auto">
+            <p className="font-body text-sm text-white/55 leading-relaxed max-w-2xl mx-auto">
               Well Estate Group brings together senior executives from the world's leading fitness, 
               wellness, and hospitality brands — delivering institutional-grade consulting to companies 
               ready to scale.
@@ -339,10 +339,10 @@ export default function Landing() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 3.4 + i * 0.1 }}
                 whileHover={{ y: -3 }}
-                className="text-center p-5 rounded-xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm"
+                className="text-center p-5 rounded-xl border border-white/[0.15] bg-white/[0.04] backdrop-blur-sm hover:border-white/[0.25] transition-colors duration-300"
               >
                 <p className="font-display text-2xl font-semibold text-white">{stat.value}</p>
-                <p className="font-body text-[11px] text-white/35 mt-1">{stat.label}</p>
+                <p className="font-body text-[11px] text-white/50 mt-1">{stat.label}</p>
               </motion.div>
             ))}
           </div>
@@ -355,7 +355,7 @@ export default function Landing() {
           transition={{ delay: 3.6, duration: 0.6 }}
           className="mt-16 md:mt-20 text-center"
         >
-          <p className="font-body text-[10px] text-white/25 tracking-wider">
+          <p className="font-body text-[10px] text-white/35 tracking-wider">
             &copy; 2026 Well Estate Group. All rights reserved.
           </p>
         </motion.div>

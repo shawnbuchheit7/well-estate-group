@@ -385,19 +385,19 @@ export default function ZWSalesInfrastructure() {
               <div className="rounded-xl border p-4 text-center" style={{ borderColor: `${TEAL}30`, background: `${TEAL}08` }}>
                 <Globe className="w-5 h-5 mx-auto mb-2" style={{ color: TEAL }} />
                 <p className="font-mono text-[10px] text-white/50 uppercase tracking-wider">Website</p>
-                <p className="font-body text-xs text-white/30 mt-1">Typeform embed + Intercom widget</p>
+                <p className="font-body text-xs text-white/45 mt-1">Typeform embed + Intercom widget</p>
               </div>
               <FlowArrow label="webhook" />
               <div className="rounded-xl border p-4 text-center" style={{ borderColor: `${PURPLE}30`, background: `${PURPLE}08` }}>
                 <Bot className="w-5 h-5 mx-auto mb-2" style={{ color: PURPLE }} />
                 <p className="font-mono text-[10px] text-white/50 uppercase tracking-wider">Intercom FinAI</p>
-                <p className="font-body text-xs text-white/30 mt-1">Qualify, route, book demo</p>
+                <p className="font-body text-xs text-white/45 mt-1">Qualify, route, book demo</p>
               </div>
               <FlowArrow label="API / Zapier" />
               <div className="rounded-xl border p-4 text-center" style={{ borderColor: `${GOLD}30`, background: `${GOLD}08` }}>
                 <Database className="w-5 h-5 mx-auto mb-2" style={{ color: GOLD }} />
                 <p className="font-mono text-[10px] text-white/50 uppercase tracking-wider">Salesforce</p>
-                <p className="font-body text-xs text-white/30 mt-1">Lead → Opp → Close</p>
+                <p className="font-body text-xs text-white/45 mt-1">Lead → Opp → Close</p>
               </div>
             </div>
             <div className="mt-6 grid md:grid-cols-3 gap-4">
@@ -561,7 +561,7 @@ export default function ZWSalesInfrastructure() {
                     <item.icon className="w-3.5 h-3.5 flex-shrink-0" style={{ color: TEAL }} />
                     <div className="flex-1 min-w-0">
                       <p className="font-body text-xs text-white/60">{item.activity}</p>
-                      <p className="font-body text-[10px] text-white/25">{item.tracked}</p>
+                      <p className="font-body text-[10px] text-white/40">{item.tracked}</p>
                     </div>
                   </div>
                 ))}
@@ -662,7 +662,7 @@ export default function ZWSalesInfrastructure() {
           <div className="grid lg:grid-cols-3 gap-6 mb-8">
             {/* Funnel */}
             <DarkCard className="lg:col-span-1">
-              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Funnel Stages</p>
+              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Funnel Stages</p>
               <p className="font-display text-lg font-medium text-white mb-6">Lead → Install</p>
               <div className="space-y-3">
                 {funnelStages.map((stage, i) => (
@@ -672,7 +672,7 @@ export default function ZWSalesInfrastructure() {
                       <div className="flex items-center gap-3">
                         <span className="font-mono text-xs text-white font-semibold">{stage.value.toLocaleString()}</span>
                         {i > 0 && (
-                          <span className="font-mono text-[10px] text-white/25">
+                          <span className="font-mono text-[10px] text-white/40">
                             {Math.round((stage.value / funnelStages[i - 1].value) * 100)}%
                           </span>
                         )}
@@ -686,7 +686,7 @@ export default function ZWSalesInfrastructure() {
 
             {/* Source Pie */}
             <DarkCard className="lg:col-span-1">
-              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Lead Source Mix</p>
+              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Lead Source Mix</p>
               <p className="font-display text-lg font-medium text-white mb-4">YTD Distribution</p>
               <ResponsiveContainer width="100%" height={260}>
                 <PieChart margin={{ top: 10, right: 30, bottom: 10, left: 30 }}>
@@ -701,7 +701,7 @@ export default function ZWSalesInfrastructure() {
 
             {/* Monthly Leads */}
             <DarkCard className="lg:col-span-1">
-              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Lead Volume</p>
+              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Lead Volume</p>
               <p className="font-display text-lg font-medium text-white mb-4">Monthly Leads & Opps</p>
               <ResponsiveContainer width="100%" height={200}>
                 <BarChart data={monthlyData.slice(0, 4)} barSize={14} barGap={4}>
@@ -731,7 +731,7 @@ export default function ZWSalesInfrastructure() {
 
           <div className="grid lg:grid-cols-2 gap-6">
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Pipeline Stages</p>
+              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Pipeline Stages</p>
               <p className="font-display text-lg font-medium text-white mb-6">Open Opportunities</p>
               <div className="space-y-4">
                 {pipelineStages.map((stage, i) => (
@@ -742,7 +742,7 @@ export default function ZWSalesInfrastructure() {
                         <span className="font-body text-sm text-white/60">{stage.stage}</span>
                       </div>
                       <div className="flex items-center gap-4">
-                        <span className="font-mono text-xs text-white/30">{stage.count} deals</span>
+                        <span className="font-mono text-xs text-white/45">{stage.count} deals</span>
                         <span className="font-mono text-sm font-semibold" style={{ color: stage.color }}>{fmt$(stage.value)}</span>
                       </div>
                     </div>
@@ -752,18 +752,18 @@ export default function ZWSalesInfrastructure() {
               </div>
               <div className="mt-6 pt-4 border-t flex justify-between" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
                 <div>
-                  <p className="font-mono text-[9px] text-white/25 uppercase tracking-wider">Total Pipeline</p>
+                  <p className="font-mono text-[9px] text-white/40 uppercase tracking-wider">Total Pipeline</p>
                   <p className="font-display text-2xl font-semibold mt-1" style={{ color: GOLD }}>{fmt$(pipelineStages.reduce((s, d) => s + d.value, 0))}</p>
                 </div>
                 <div>
-                  <p className="font-mono text-[9px] text-white/25 uppercase tracking-wider">Weighted Value</p>
+                  <p className="font-mono text-[9px] text-white/40 uppercase tracking-wider">Weighted Value</p>
                   <p className="font-display text-2xl font-semibold mt-1 text-white">{fmt$(Math.round(pipelineStages.reduce((s, d, i) => s + d.value * [0.2, 0.4, 0.6, 0.8, 1][i], 0)))}</p>
                 </div>
               </div>
             </DarkCard>
 
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Pipeline Value</p>
+              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Pipeline Value</p>
               <p className="font-display text-lg font-medium text-white mb-4">Value by Stage ($)</p>
               <ResponsiveContainer width="100%" height={280}>
                 <BarChart data={pipelineStages} layout="vertical" barSize={18}>
@@ -793,7 +793,7 @@ export default function ZWSalesInfrastructure() {
 
           <div className="grid lg:grid-cols-2 gap-6">
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Team Leaderboard</p>
+              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Team Leaderboard</p>
               <p className="font-display text-lg font-medium text-white mb-6">YTD Installs</p>
               <div className="space-y-4">
                 {repData.map((rep, i) => (
@@ -805,7 +805,7 @@ export default function ZWSalesInfrastructure() {
                       <div className="flex justify-between mb-1">
                         <span className="font-body text-sm text-white/70">{rep.rep}</span>
                         <div className="flex items-center gap-4">
-                          <span className="font-mono text-xs text-white/30">{rep.leads} leads</span>
+                          <span className="font-mono text-xs text-white/45">{rep.leads} leads</span>
                           <span className="font-mono text-xs" style={{ color: TEAL }}>{rep.installs} units</span>
                           <span className="font-mono text-xs" style={{ color: GOLD }}>{fmt$(rep.revenue)}</span>
                         </div>
@@ -818,7 +818,7 @@ export default function ZWSalesInfrastructure() {
             </DarkCard>
 
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Activity Tracking</p>
+              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Activity Tracking</p>
               <p className="font-display text-lg font-medium text-white mb-4">Calls & Installs by Rep</p>
               <ResponsiveContainer width="100%" height={280}>
                 <BarChart data={repData} barSize={16} barGap={4}>
@@ -848,7 +848,7 @@ export default function ZWSalesInfrastructure() {
 
           <div className="grid lg:grid-cols-3 gap-6">
             <DarkCard className="lg:col-span-2">
-              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Channel Performance</p>
+              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Channel Performance</p>
               <p className="font-display text-lg font-medium text-white mb-4">Installs by Channel — YTD</p>
               <ResponsiveContainer width="100%" height={260}>
                 <BarChart data={sourceData} barSize={32}>
@@ -864,7 +864,7 @@ export default function ZWSalesInfrastructure() {
             </DarkCard>
 
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Channel Scorecard</p>
+              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Channel Scorecard</p>
               <p className="font-display text-lg font-medium text-white mb-4">Revenue Share</p>
               <div className="space-y-3">
                 {sourceData.map((s, i) => (
@@ -894,7 +894,7 @@ export default function ZWSalesInfrastructure() {
 
           <div className="grid lg:grid-cols-2 gap-6 mb-6">
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Revenue vs Budget</p>
+              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Revenue vs Budget</p>
               <p className="font-display text-lg font-medium text-white mb-4">Monthly — Actual vs Target ($)</p>
               <ResponsiveContainer width="100%" height={260}>
                 <ComposedChart data={monthlyData}>
@@ -916,7 +916,7 @@ export default function ZWSalesInfrastructure() {
             </DarkCard>
 
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Forward Forecast</p>
+              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Forward Forecast</p>
               <p className="font-display text-lg font-medium text-white mb-4">Units — Low / Mid / High vs Budget</p>
               <ResponsiveContainer width="100%" height={260}>
                 <BarChart data={forecastData} barSize={14} barGap={3}>
@@ -943,10 +943,10 @@ export default function ZWSalesInfrastructure() {
               { period: "Full Year 2026", low: "$764K", mid: "$864K", high: "$954K", color: GREEN },
             ].map((f, i) => (
               <DarkCard key={i}>
-                <p className="font-mono text-[9px] text-white/25 uppercase tracking-wider mb-3">{f.period}</p>
+                <p className="font-mono text-[9px] text-white/40 uppercase tracking-wider mb-3">{f.period}</p>
                 <div className="space-y-1.5">
                   <div className="flex justify-between">
-                    <span className="font-body text-xs text-white/30">Low</span>
+                    <span className="font-body text-xs text-white/45">Low</span>
                     <span className="font-mono text-xs text-red-400">{f.low}</span>
                   </div>
                   <div className="flex justify-between">
@@ -954,7 +954,7 @@ export default function ZWSalesInfrastructure() {
                     <span className="font-mono text-sm font-semibold" style={{ color: f.color }}>{f.mid}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="font-body text-xs text-white/30">High</span>
+                    <span className="font-body text-xs text-white/45">High</span>
                     <span className="font-mono text-xs" style={{ color: TEAL }}>{f.high}</span>
                   </div>
                 </div>
@@ -976,7 +976,7 @@ export default function ZWSalesInfrastructure() {
 
           <div className="grid lg:grid-cols-2 gap-6">
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Win Reasons</p>
+              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Win Reasons</p>
               <p className="font-display text-lg font-medium text-white mb-6">Why Customers Choose ZeroWheel</p>
               <div className="space-y-3">
                 {winLossReasons.filter(r => r.won > 0).map((r, i) => (
@@ -992,7 +992,7 @@ export default function ZWSalesInfrastructure() {
             </DarkCard>
 
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Loss Reasons</p>
+              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Loss Reasons</p>
               <p className="font-display text-lg font-medium text-white mb-6">Why Deals Are Lost</p>
               <div className="space-y-3">
                 {winLossReasons.filter(r => r.lost > 0).map((r, i) => (

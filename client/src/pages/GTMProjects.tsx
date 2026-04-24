@@ -185,7 +185,7 @@ export default function GTMProjects() {
                       {project.stats && (
                         <div className="flex gap-4 mb-5">
                           {project.stats.map((stat, i) => (
-                            <div key={i} className="flex-1 text-center py-2 rounded-lg bg-black/[0.03] border border-black/[0.05]">
+                            <div key={i} className="flex-1 text-center py-2 rounded-lg bg-black/[0.03] border border-black/[0.10]">
                               <p className="font-display text-lg font-semibold text-black">{stat.value}</p>
                               <p className="font-body text-[10px] text-black/40 uppercase tracking-wider">{stat.label}</p>
                             </div>

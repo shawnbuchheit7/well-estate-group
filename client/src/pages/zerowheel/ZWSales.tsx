@@ -213,10 +213,10 @@ export default function ZWSales() {
                 key={i}
                 variants={fadeInUp}
                 whileHover={{ y: -3, boxShadow: "0 12px 30px rgba(0,0,0,0.06)" }}
-                className="bg-white border border-black/[0.08] rounded-xl overflow-hidden hover:border-[#C9A962]/30 transition-all duration-300"
+                className="bg-white border border-black/[0.12] rounded-xl overflow-hidden hover:border-[#C9A962]/30 hover:shadow-lg transition-all duration-300"
               >
                 {/* Card Header */}
-                <div className="flex items-center justify-between px-6 py-4 border-b border-black/[0.06]" style={{ background: `linear-gradient(135deg, ${lob.color}08, transparent)` }}>
+                <div className="flex items-center justify-between px-6 py-4 border-b border-black/[0.15]" style={{ background: `linear-gradient(135deg, ${lob.color}08, transparent)` }}>
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: `${lob.color}15` }}>
                       <lob.icon className="w-5 h-5" style={{ color: lob.color }} />
@@ -233,7 +233,7 @@ export default function ZWSales() {
                   <div className="grid md:grid-cols-[1fr_auto] gap-6">
                     {/* Targets */}
                     <div>
-                      <p className="font-mono text-[10px] text-black/30 uppercase tracking-[0.15em] mb-3">Target Accounts & Channels</p>
+                      <p className="font-mono text-[10px] text-black/45 uppercase tracking-[0.15em] mb-3">Target Accounts & Channels</p>
                       <ul className="space-y-2">
                         {lob.targets.map((target, j) => (
                           <li key={j} className="flex items-start gap-2.5">
@@ -245,7 +245,7 @@ export default function ZWSales() {
                     </div>
 
                     {/* Metrics Sidebar */}
-                    <div className="flex md:flex-col gap-4 md:gap-3 md:min-w-[160px] md:border-l md:border-black/[0.06] md:pl-6">
+                    <div className="flex md:flex-col gap-4 md:gap-3 md:min-w-[160px] md:border-l md:border-black/[0.15] md:pl-6">
                       <div>
                         <p className="font-mono text-[9px] text-black/25 uppercase tracking-wider">Addressable</p>
                         <p className="font-display text-lg font-semibold text-black mt-0.5">{lob.metrics.accounts}</p>
@@ -305,7 +305,7 @@ export default function ZWSales() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.02 }}
                 whileHover={{ scale: 1.05, y: -2, boxShadow: "0 8px 20px rgba(0,0,0,0.06)" }}
-                className="px-4 py-2 rounded-full bg-white border border-black/[0.10] text-sm font-body font-medium text-black/60 hover:border-[#C9A962]/40 hover:text-black hover:bg-[#C9A962]/[0.03] transition-all cursor-default shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
+                className="px-4 py-2 rounded-full bg-white border border-black/[0.15] text-sm font-body font-medium text-black/60 hover:border-[#C9A962]/40 hover:text-black hover:bg-[#C9A962]/[0.03] transition-all cursor-default shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
               >
                 {partner}
               </motion.span>

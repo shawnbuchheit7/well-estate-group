@@ -220,9 +220,9 @@ export default function GTMSales() {
                 key={i}
                 variants={fadeInUp}
                 whileHover={{ y: -3, boxShadow: "0 12px 30px rgba(0,0,0,0.06)" }}
-                className="bg-white border border-black/[0.08] rounded-xl overflow-hidden hover:border-[#C9A962]/30 transition-all duration-300"
+                className="bg-white border border-black/[0.12] rounded-xl overflow-hidden hover:border-[#C9A962]/30 transition-all duration-300"
               >
-                <div className="flex items-center gap-3 px-5 py-3.5 border-b border-black/[0.06] bg-[#FAFAF8]">
+                <div className="flex items-center gap-3 px-5 py-3.5 border-b border-black/[0.10] bg-[#FAFAF8]">
                   <div className="w-9 h-9 rounded-lg bg-[#C9A962]/10 flex items-center justify-center flex-shrink-0">
                     <lob.icon className="w-4.5 h-4.5 text-[#C9A962]" />
                   </div>

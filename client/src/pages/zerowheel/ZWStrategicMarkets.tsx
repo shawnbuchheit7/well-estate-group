@@ -171,7 +171,7 @@ function MatrixGrid({ quadrants, year }: { quadrants: Quadrant[]; year: number }
               className={`${q.bg} rounded-xl sm:rounded-2xl p-4 sm:p-6 flex flex-col border transition-all duration-300 shadow-[0_2px_12px_rgba(0,0,0,0.04)] ${
                 hoveredQuadrant === i 
                   ? "border-[#C9A962]/40 shadow-[0_8px_30px_rgba(0,0,0,0.08)]" 
-                  : "border-black/[0.08]"
+                  : "border-black/[0.12]"
               }`}
               style={{ minHeight: '200px' }}
             >
@@ -186,7 +186,7 @@ function MatrixGrid({ quadrants, year }: { quadrants: Quadrant[]; year: number }
                 </motion.div>
                 <div className="min-w-0">
                   <h3 className="font-display text-base sm:text-lg font-semibold text-black leading-tight">{q.title}</h3>
-                  <p className="font-mono text-[9px] sm:text-[10px] text-black/35 tracking-wide mt-0.5 leading-snug">{q.subtitle}</p>
+                  <p className="font-mono text-[9px] sm:text-[10px] text-black/50 tracking-wide mt-0.5 leading-snug">{q.subtitle}</p>
                 </div>
               </div>
 
@@ -206,7 +206,7 @@ function MatrixGrid({ quadrants, year }: { quadrants: Quadrant[]; year: number }
                     className={`px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-medium tracking-wide transition-all cursor-default ${
                       item.highlighted
                         ? "bg-black text-white shadow-md"
-                        : "bg-white text-black/70 border border-black/[0.10] hover:border-[#C9A962]/30"
+                        : "bg-white text-black/70 border border-black/[0.15] hover:border-[#C9A962]/30"
                     }`}
                   >
                     {item.name}
@@ -331,7 +331,7 @@ export default function ZWStrategicMarkets() {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
                   whileHover={{ x: 4, boxShadow: "0 8px 24px rgba(0,0,0,0.06)" }}
-                  className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-4 sm:p-5 rounded-xl bg-white border border-black/[0.08] shadow-[0_2px_8px_rgba(0,0,0,0.03)] transition-all duration-300"
+                  className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-4 sm:p-5 rounded-xl bg-white border border-black/[0.12] shadow-[0_2px_8px_rgba(0,0,0,0.03)] transition-all duration-300"
                 >
                   {/* Direction indicator + Segment name */}
                   <div className="flex items-center gap-3 sm:min-w-[220px]">

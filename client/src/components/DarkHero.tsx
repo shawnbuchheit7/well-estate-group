@@ -84,7 +84,7 @@ export default function DarkHero({ eyebrow, title, description, stats, children,
             />
             <motion.p
               variants={fadeInUp}
-              className="font-body text-base md:text-lg text-white/50 leading-relaxed max-w-3xl mx-auto"
+              className="font-body text-base md:text-lg text-white/60 leading-relaxed max-w-3xl mx-auto"
             >
               {description}
             </motion.p>
@@ -108,7 +108,7 @@ export default function DarkHero({ eyebrow, title, description, stats, children,
                   >
                     <AnimatedCounter valueStr={stat.value} duration={1.8} />
                   </motion.div>
-                  <p className="font-mono text-[10px] text-white/30 tracking-wider uppercase mt-1">
+                  <p className="font-mono text-[10px] text-white/45 tracking-wider uppercase mt-1">
                     {stat.label}
                   </p>
                 </motion.div>

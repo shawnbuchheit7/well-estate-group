@@ -133,9 +133,9 @@ function KPICard({ label, value, sub, trend, trendVal, color = GOLD }: {
   const trendColor = trend === "up" ? GREEN : trend === "down" ? RED : "rgba(255,255,255,0.3)";
   return (
     <DarkCard>
-      <p className="font-mono text-[9px] text-white/25 uppercase tracking-wider mb-2">{label}</p>
+      <p className="font-mono text-[9px] text-white/40 uppercase tracking-wider mb-2">{label}</p>
       <p className="font-display text-3xl font-semibold mb-1" style={{ color }}>{value}</p>
-      {sub && <p className="font-body text-xs text-white/30 mb-2">{sub}</p>}
+      {sub && <p className="font-body text-xs text-white/45 mb-2">{sub}</p>}
       {trendVal && (
         <div className="flex items-center gap-1">
           <TrendIcon className="w-3 h-3" style={{ color: trendColor }} />
@@ -174,7 +174,7 @@ function FilterDropdown({ label, options, value, onChange, color = GOLD }: {
         className="flex items-center gap-2 rounded-xl border px-3 py-2 text-xs font-mono transition-colors"
         style={{ background: CARD_BG, borderColor: open ? `${color}50` : CARD_BORDER, color: value === options[0] ? "rgba(255,255,255,0.4)" : color }}
       >
-        <span className="text-white/30">{label}:</span>
+        <span className="text-white/45">{label}:</span>
         <span>{value}</span>
         <ChevronDown className="w-3 h-3 ml-1" style={{ color: "rgba(255,255,255,0.3)" }} />
       </button>
@@ -280,7 +280,7 @@ export default function ZWBusinessIntelligence() {
               <BarChart3 className="w-5 h-5" style={{ color: GOLD }} />
               <div>
                 <p className="font-display text-base font-semibold text-white leading-none">Business Intelligence</p>
-                <p className="font-mono text-[9px] text-white/30 uppercase tracking-wider mt-0.5">ZeroWheel · Revenue Operations</p>
+                <p className="font-mono text-[9px] text-white/45 uppercase tracking-wider mt-0.5">ZeroWheel · Revenue Operations</p>
               </div>
             </div>
             <div className="flex flex-wrap items-center gap-2">
@@ -328,16 +328,16 @@ export default function ZWBusinessIntelligence() {
           <DarkCard>
             <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
               <div>
-                <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Revenue Performance</p>
+                <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Revenue Performance</p>
                 <p className="font-display text-xl font-semibold text-white">Revenue vs Budget — {dateRange}</p>
               </div>
               <div className="flex items-center gap-6">
                 <div>
-                  <p className="font-mono text-[9px] text-white/25 uppercase tracking-wider">Actual</p>
+                  <p className="font-mono text-[9px] text-white/40 uppercase tracking-wider">Actual</p>
                   <p className="font-display text-xl font-semibold" style={{ color: GOLD }}>{fmt$(kpis.revenue)}</p>
                 </div>
                 <div>
-                  <p className="font-mono text-[9px] text-white/25 uppercase tracking-wider">Budget</p>
+                  <p className="font-mono text-[9px] text-white/40 uppercase tracking-wider">Budget</p>
                   <p className="font-display text-xl font-semibold text-white/50">{fmt$(Math.round(monthlySlice.reduce((s, d) => s + d.budget, 0) * (selectedRep !== "All Reps" ? 0.17 : 1) * (selectedLOB !== "All Channels" ? 0.2 : 1)))}</p>
                 </div>
               </div>
@@ -364,7 +364,7 @@ export default function ZWBusinessIntelligence() {
           {/* ── LEADS + INSTALLS TREND ───────────────────────────────────── */}
           <div className="grid lg:grid-cols-2 gap-6">
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Lead Volume</p>
+              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Lead Volume</p>
               <p className="font-display text-lg font-semibold text-white mb-4">Leads & Opportunities — {dateRange}</p>
               <ResponsiveContainer width="100%" height={220}>
                 <BarChart data={monthlySlice} barSize={14} barGap={4}>
@@ -380,7 +380,7 @@ export default function ZWBusinessIntelligence() {
             </DarkCard>
 
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Install Velocity</p>
+              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Install Velocity</p>
               <p className="font-display text-lg font-semibold text-white mb-4">Monthly Installs — {dateRange}</p>
               <ResponsiveContainer width="100%" height={220}>
                 <AreaChart data={monthlySlice}>
@@ -405,7 +405,7 @@ export default function ZWBusinessIntelligence() {
           <DarkCard>
             <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
               <div>
-                <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Channel Attribution</p>
+                <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Channel Attribution</p>
                 <p className="font-display text-xl font-semibold text-white">
                   {selectedLOB === "All Channels" ? "All Channels" : selectedLOB} — Performance Breakdown
                 </p>
@@ -436,10 +436,10 @@ export default function ZWBusinessIntelligence() {
                         <span className="font-body text-sm text-white/60">{c.name}</span>
                       </div>
                       <div className="flex items-center gap-4">
-                        <span className="font-mono text-xs text-white/30">{c.leads} leads</span>
+                        <span className="font-mono text-xs text-white/45">{c.leads} leads</span>
                         <span className="font-mono text-xs" style={{ color: TEAL }}>{c.installs} installs</span>
                         <span className="font-mono text-xs" style={{ color: GOLD }}>{fmt$(c.revenue)}</span>
-                        <span className="font-mono text-xs text-white/25">{pct(c.convRate)} CR</span>
+                        <span className="font-mono text-xs text-white/40">{pct(c.convRate)} CR</span>
                       </div>
                     </div>
                     <ProgressBar value={c.installs} max={filteredChannels[0].installs} color={c.color} />
@@ -453,14 +453,14 @@ export default function ZWBusinessIntelligence() {
           <DarkCard>
             <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
               <div>
-                <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Sales Team</p>
+                <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Sales Team</p>
                 <p className="font-display text-xl font-semibold text-white">
                   {selectedRep === "All Reps" ? "All Reps" : selectedRep} — Activity & Results
                 </p>
               </div>
               <div className="flex items-center gap-2">
                 <Award className="w-4 h-4" style={{ color: GOLD }} />
-                <span className="font-mono text-xs text-white/30">Top Rep: A. Torres — 68 installs</span>
+                <span className="font-mono text-xs text-white/45">Top Rep: A. Torres — 68 installs</span>
               </div>
             </div>
             <div className="grid lg:grid-cols-2 gap-8">
@@ -474,11 +474,11 @@ export default function ZWBusinessIntelligence() {
                       <div className="flex justify-between mb-1">
                         <span className="font-body text-sm text-white/70">{rep.rep}</span>
                         <div className="flex items-center gap-3">
-                          <span className="font-mono text-xs text-white/25">{rep.calls} calls</span>
-                          <span className="font-mono text-xs text-white/25">{rep.demos} demos</span>
+                          <span className="font-mono text-xs text-white/40">{rep.calls} calls</span>
+                          <span className="font-mono text-xs text-white/40">{rep.demos} demos</span>
                           <span className="font-mono text-xs" style={{ color: TEAL }}>{rep.installs} units</span>
                           <span className="font-mono text-xs" style={{ color: GOLD }}>{fmt$(rep.revenue)}</span>
-                          <span className="font-mono text-xs text-white/25">{pct(rep.winRate)} WR</span>
+                          <span className="font-mono text-xs text-white/40">{pct(rep.winRate)} WR</span>
                         </div>
                       </div>
                       <ProgressBar value={rep.installs} max={filteredReps[0].installs} color={i === 0 ? GOLD : GOLD_DIM} />
@@ -503,7 +503,7 @@ export default function ZWBusinessIntelligence() {
           {/* ── PIPELINE ─────────────────────────────────────────────────── */}
           <div className="grid lg:grid-cols-2 gap-6">
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Pipeline Stages</p>
+              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Pipeline Stages</p>
               <p className="font-display text-lg font-semibold text-white mb-6">Open Opportunities</p>
               <div className="space-y-4">
                 {ALL_DATA.pipeline.map((stage, i) => {
@@ -516,7 +516,7 @@ export default function ZWBusinessIntelligence() {
                           <span className="font-body text-sm text-white/60">{stage.stage}</span>
                         </div>
                         <div className="flex items-center gap-4">
-                          <span className="font-mono text-xs text-white/30">{stage.count} deals</span>
+                          <span className="font-mono text-xs text-white/45">{stage.count} deals</span>
                           <span className="font-mono text-sm font-semibold" style={{ color: colors[i] }}>{fmt$(stage.value)}</span>
                         </div>
                       </div>
@@ -527,18 +527,18 @@ export default function ZWBusinessIntelligence() {
               </div>
               <div className="mt-6 pt-4 border-t flex justify-between" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
                 <div>
-                  <p className="font-mono text-[9px] text-white/25 uppercase tracking-wider">Total Pipeline</p>
+                  <p className="font-mono text-[9px] text-white/40 uppercase tracking-wider">Total Pipeline</p>
                   <p className="font-display text-2xl font-semibold mt-1" style={{ color: GOLD }}>{fmt$(ALL_DATA.pipeline.reduce((s, d) => s + d.value, 0))}</p>
                 </div>
                 <div>
-                  <p className="font-mono text-[9px] text-white/25 uppercase tracking-wider">Weighted Value</p>
+                  <p className="font-mono text-[9px] text-white/40 uppercase tracking-wider">Weighted Value</p>
                   <p className="font-display text-2xl font-semibold mt-1 text-white">{fmt$(Math.round(ALL_DATA.pipeline.reduce((s, d, i) => s + d.value * [0.2, 0.4, 0.6, 0.8, 1][i], 0)))}</p>
                 </div>
               </div>
             </DarkCard>
 
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Activity Metrics</p>
+              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Activity Metrics</p>
               <p className="font-display text-lg font-semibold text-white mb-4">Calls & Demos — {dateRange}</p>
               <ResponsiveContainer width="100%" height={260}>
                 <LineChart data={monthlySlice}>
@@ -557,7 +557,7 @@ export default function ZWBusinessIntelligence() {
           {/* ── CHANNEL PIE + FORECAST SUMMARY ──────────────────────────── */}
           <div className="grid lg:grid-cols-3 gap-6">
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Revenue Mix</p>
+              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Revenue Mix</p>
               <p className="font-display text-lg font-semibold text-white mb-4">By Channel</p>
               <ResponsiveContainer width="100%" height={200}>
                 <PieChart>
@@ -571,7 +571,7 @@ export default function ZWBusinessIntelligence() {
             </DarkCard>
 
             <DarkCard className="lg:col-span-2">
-              <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.15em] mb-1">Revenue Forecast</p>
+              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Revenue Forecast</p>
               <p className="font-display text-lg font-semibold text-white mb-4">Forward-Looking Projections</p>
               <div className="grid grid-cols-2 gap-4 mb-4">
                 {[
@@ -581,10 +581,10 @@ export default function ZWBusinessIntelligence() {
                   { period: "Full Year 2026", low: "$764K", mid: "$864K", high: "$954K", color: GREEN },
                 ].map((f, i) => (
                   <div key={i} className="rounded-xl border p-4" style={{ borderColor: `${f.color}20`, background: `${f.color}06` }}>
-                    <p className="font-mono text-[9px] text-white/25 uppercase tracking-wider mb-2">{f.period}</p>
+                    <p className="font-mono text-[9px] text-white/40 uppercase tracking-wider mb-2">{f.period}</p>
                     <div className="space-y-1">
                       <div className="flex justify-between">
-                        <span className="font-body text-xs text-white/30">Low</span>
+                        <span className="font-body text-xs text-white/45">Low</span>
                         <span className="font-mono text-xs text-red-400">{f.low}</span>
                       </div>
                       <div className="flex justify-between">
@@ -592,7 +592,7 @@ export default function ZWBusinessIntelligence() {
                         <span className="font-mono text-sm font-semibold" style={{ color: f.color }}>{f.mid}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="font-body text-xs text-white/30">High</span>
+                        <span className="font-body text-xs text-white/45">High</span>
                         <span className="font-mono text-xs" style={{ color: TEAL }}>{f.high}</span>
                       </div>
                     </div>
