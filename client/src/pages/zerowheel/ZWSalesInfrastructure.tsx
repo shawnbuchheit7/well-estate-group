@@ -449,26 +449,24 @@ export default function ZWSalesInfrastructure() {
             description="Every lead starts with a touchpoint — a website visit, a social click, a trade show scan, or a referral. This flow captures, qualifies, and routes that lead into Salesforce with full attribution before a human ever gets involved."
           />
 
-          <motion.div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2 items-start mb-10" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
+
+          {/* Row 1: Website Visit → UTM Capture → FinAI Engagement → Typeform Intake */}
+          <motion.div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-2 items-start mb-10" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
             <FlowNode icon={Globe} title="Website Visit" subtitle="Organic, paid, referral, or direct traffic lands on ZeroWheel site" color={TEAL} badge="Entry" />
             <FlowArrow />
             <FlowNode icon={Cpu} title="UTM Capture" subtitle="Source, medium, campaign, and content parameters captured automatically" color={TEAL} system="Typeform" />
             <FlowArrow />
+            <FlowNode icon={Bot} title="FinAI Engagement" subtitle="Intercom AI responds instantly, answers questions, and scores visitor intent" color={PURPLE} system="Intercom" />
+            <FlowArrow />
             <FlowNode icon={FormInput} title="Typeform Intake" subtitle="Segment-specific form: B2B (club/medical/corporate) or consumer direct" color={GOLD} system="Typeform" />
-            <FlowArrow />
-            <FlowNode icon={Bot} title="FinAI Engagement" subtitle="Intercom AI responds instantly, answers questions, scores intent" color={PURPLE} system="Intercom" />
-            <FlowArrow />
           </motion.div>
-
-          <motion.div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2 items-start" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
-            <FlowNode icon={GitBranch} title="Lead Routing" subtitle="FinAI routes by segment, territory, and rep capacity" color={PURPLE} system="Intercom" />
+          {/* Row 2: SF Lead Created → Rep Notified → Sales Team Reachout */}
+          <motion.div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2 items-start" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
+            <FlowNode icon={Database} title="SF Lead Created" subtitle="Zapier/API creates Lead record in Salesforce with all fields, score, and source — routed to the right rep" color={GOLD} system="Salesforce" />
             <FlowArrow />
-            <FlowNode icon={Database} title="SF Lead Created" subtitle="Zapier/API creates Lead record with all fields, score, and source" color={GOLD} system="Salesforce" badge="CRM" />
+            <FlowNode icon={Mail} title="Rep Notified" subtitle="Assigned rep receives email + Salesforce task within 5 minutes of lead creation" color={GOLD} system="Salesforce" />
             <FlowArrow />
-            <FlowNode icon={Mail} title="Rep Notified" subtitle="Assigned rep receives email + Salesforce task within 5 minutes" color={GOLD} system="Salesforce" />
-            <FlowArrow />
-            <FlowNode icon={Phone} title="First Contact" subtitle="Rep calls or emails within SLA. Activity logged in Salesforce" color={GREEN} system="Salesforce" badge="SLA: 1hr" />
-            <FlowArrow />
+            <FlowNode icon={Phone} title="Sales Team Reachout" subtitle="Rep calls or emails within SLA. All activity logged in Salesforce automatically" color={GREEN} system="Salesforce" badge="SLA: 1hr" />
           </motion.div>
 
           <div className="mt-8 grid md:grid-cols-3 gap-4">
