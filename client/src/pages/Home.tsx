@@ -86,7 +86,7 @@ export default function Home() {
                 className="mb-10"
               >
                 <img
-                  src="/manus-storage/logo-gold_557c1883.png"
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/LHselcWIkeWDRNuE.png"
                   alt="Well Estate Group"
                   className="w-32 h-32 md:w-40 md:h-40 mx-auto"
                   style={{ filter: "drop-shadow(0 10px 30px rgba(184, 150, 62, 0.4))" }}

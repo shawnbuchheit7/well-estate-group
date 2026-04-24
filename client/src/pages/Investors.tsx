@@ -47,7 +47,7 @@ export default function Investors() {
           >
             <div className="relative rounded-2xl overflow-hidden border border-border group">
               <img 
-                src="/manus-storage/founders-group_b5cc24dd.png" 
+                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/fQPnPIvzRyJNNhfN.png" 
                 alt="Well Estate Group Founders - Joe Russo, Chris Hemsworth, Josh Brolin, Donald Mustard"
                 className="w-full h-auto"
               />
@@ -107,7 +107,7 @@ export default function Investors() {
                 name: "Joe Russo",
                 role: "Film Director & Producer",
                 icon: Clapperboard,
-                image: "/manus-storage/joe-russo_3f4ec574.jpg",
+                image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/YEHtnvyIGxMibvrJ.jpg",
                 imagePosition: "object-top",
                 credits: "Avengers: Endgame, Infinity War",
                 description: "Co-directed the highest-grossing film of all time. Brings unparalleled entertainment industry connections and storytelling expertise."
@@ -116,7 +116,7 @@ export default function Investors() {
                 name: "Chris Hemsworth",
                 role: "Actor & Wellness Advocate",
                 icon: Star,
-                image: "/manus-storage/chris-hemsworth_f3a32b71.jpg",
+                image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/DmSnAxEBdgDVjVtR.jpg",
                 imagePosition: "object-top",
                 credits: "Thor, Limitless",
                 description: "Global icon and founder of Centr fitness app. Personal commitment to longevity science and massive social reach."
@@ -125,7 +125,7 @@ export default function Investors() {
                 name: "Josh Brolin",
                 role: "Actor & Producer",
                 icon: Film,
-                image: "/manus-storage/josh-brolin_7e56869b.png",
+                image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/xbXdCSZlBtoQOUqc.png",
                 imagePosition: "object-center",
                 credits: "Avengers, Dune, No Country for Old Men",
                 description: "Academy Award-nominated actor with decades of Hollywood influence and personal interest in regenerative medicine."
@@ -134,7 +134,7 @@ export default function Investors() {
                 name: "Donald Mustard",
                 role: "Chief Creative Officer",
                 icon: Gamepad2,
-                image: "/manus-storage/donald-mustard_b33343c8.jpg",
+                image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/ofKuztLKaChzdTZb.jpg",
                 imagePosition: "object-center",
                 credits: "Fortnite, Infinity Blade",
                 description: "Creative visionary behind Fortnite's cultural phenomenon. Brings gaming industry connections and Gen Z/Millennial reach."

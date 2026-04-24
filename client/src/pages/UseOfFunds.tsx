@@ -473,9 +473,9 @@ export default function UseOfFunds() {
                   <p className="font-body text-sm text-muted-foreground">Full floor plan with furniture placement and room designations</p>
                 </div>
                 <div className="p-4 bg-white relative group">
-                  <ImageLightbox src="/manus-storage/miami-floorplan-full-1_ac44e687.png" alt="Complete Center Floor Plan">
+                  <ImageLightbox src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/kbXKfSSSEfoSNfzI.png" alt="Complete Center Floor Plan">
                     <img 
-                      src="/manus-storage/miami-floorplan-full-1_ac44e687.png" 
+                      src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/kbXKfSSSEfoSNfzI.png" 
                       alt="Complete Center Floor Plan" 
                       className="w-full h-auto rounded-lg"
                     />
@@ -526,7 +526,7 @@ export default function UseOfFunds() {
             <motion.div variants={fadeInUp} className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
 <div className="bg-card border border-border rounded-2xl overflow-hidden">
                 <ImageLightbox
-                  src="/manus-storage/lumastem-reception-1_6465e391.jpg"
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/rZMRFqNlZXobGXKO.jpg"
                   alt="Reception Area - Entry"
                   className="aspect-[4/3]"
                 />
@@ -538,7 +538,7 @@ export default function UseOfFunds() {
 
               <div className="bg-card border border-border rounded-2xl overflow-hidden">
                 <ImageLightbox
-                  src="/manus-storage/lumastem-reception-4_394da083.jpg"
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/KbwUcCDWQiXoJQaP.jpg"
                   alt="Reception Area - Concierge"
                   className="aspect-[4/3]"
                 />
@@ -566,7 +566,7 @@ export default function UseOfFunds() {
             <motion.div variants={fadeInUp} className="grid md:grid-cols-2 gap-6">
               <div className="bg-card border border-border rounded-2xl overflow-hidden">
                 <ImageLightbox
-                  src="/manus-storage/lumastem-suite-1_fd31add1.jpg"
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/hhSjBSwqXHSHkHyu.jpg"
                   alt="Treatment Suite - Main View"
                   className="aspect-[16/10]"
                 />
@@ -580,7 +580,7 @@ export default function UseOfFunds() {
 
               <div className="bg-card border border-border rounded-2xl overflow-hidden">
                 <ImageLightbox
-                  src="/manus-storage/lumastem-suite-2_383a1c23.jpg"
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/VwvNhVzXPNfmaFwA.jpg"
                   alt="Treatment Suite - Seating Area"
                   className="aspect-[16/10]"
                 />
@@ -721,7 +721,7 @@ export default function UseOfFunds() {
       <section className="py-20 relative bg-card/30">
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-10"
-          style={{ backgroundImage: "url('/manus-storage/global-expansion_59f2f3e2.jpg')" }}
+          style={{ backgroundImage: "url('https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/EtdQiGqFkWiUzcUh.jpg')" }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
         

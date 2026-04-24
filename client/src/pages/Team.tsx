@@ -47,7 +47,7 @@ export default function Team() {
               {
                 name: "Dr. Pradeep Albert",
                 title: "Chair, Physician Advisory Board",
-                image: "/manus-storage/dr-pradeep-albert_6280ec80.png",
+                image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/lLdQBTnehsVgwKyD.png",
                 credentials: "MD",
                 linkedin: "https://www.linkedin.com/in/pradeep-albert-md-8301ab9/",
                 bio: "One of the most experienced regenerative medicine physicians in the world, with over 40,000 stem cell and biologic procedures performed. Bestselling author of 'Exosomes, PRP, and Stem Cells in Musculoskeletal Medicine' and co-author of 'Lifespan Decoded'. Founder of Longerton University with contributions to stem cell policy across the Caribbean, Latin America, and Europe.",
@@ -60,7 +60,7 @@ export default function Team() {
               {
                 name: "Dr. Gus Vickery",
                 title: "Chair, Peptide & Precision Hormone Program",
-                image: "/manus-storage/dr-gus-vickery_22efa11d.png",
+                image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/cjUKKZGSzTgqDOMo.png",
                 credentials: "MD",
                 linkedin: "https://www.linkedin.com/in/gus-vickery-b5301b15a/",
                 bio: "Board-certified family physician and nationally recognized leader in precision medicine, hormone optimization, and peptide therapeutics. Founder of Vickery Family Medicine and The Clinic at Biltmore. At Well Estate Group, designs personalized longevity protocols using genomic data, advanced lab panels, and targeted hormone therapies. Leads integration of the GeneMetrics™ diagnostic platform.",
@@ -73,7 +73,7 @@ export default function Team() {
               {
                 name: "Linda McIver",
                 title: "Director, Peptide Program",
-                image: "/manus-storage/linda-mciver_0aca5430.png",
+                image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/RycQillbNkdvxeYl.png",
                 credentials: "FNP-C, ABAAHP",
                 linkedin: "https://www.linkedin.com/in/linda-mciver-fnp-c-abaahp-882b4a38/",
                 bio: "Board-certified family nurse practitioner with nearly 30 years of clinical experience in peptide therapy, hormone optimization, and functional medicine. Completed the A4M Fellowship and holds advanced certifications from the International Peptide Society. Leads clinical execution of the Peptide Program, managing protocol-driven delivery of hormone and peptide therapies under Dr. Gus Vickery's direction.",
