@@ -20,9 +20,10 @@ interface DarkHeroProps {
   description: string;
   stats?: DarkHeroStat[];
   children?: ReactNode;
+  darkFade?: boolean;
 }
 
-export default function DarkHero({ eyebrow, title, description, stats, children }: DarkHeroProps) {
+export default function DarkHero({ eyebrow, title, description, stats, children, darkFade = false }: DarkHeroProps) {
   return (
     <section className="relative overflow-hidden">
       {/* Dark background with gradient mesh */}
@@ -120,8 +121,8 @@ export default function DarkHero({ eyebrow, title, description, stats, children 
         </div>
       </div>
 
-      {/* Bottom fade to white */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent" />
+      {/* Bottom fade */}
+      <div className={`absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t ${darkFade ? 'from-[#0A0A0A]' : 'from-white'} to-transparent`} />
     </section>
   );
 }

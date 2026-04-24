@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import Layout from "@/components/Layout";
 import { SectionNav } from "@/components/SectionNav";
+import DarkHero from "@/components/DarkHero";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 
 // ─── Section Nav ────────────────────────────────────────────────────────────
@@ -256,29 +257,20 @@ export default function ZWSalesInfrastructure() {
       <SectionNav sections={sections} />
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <section id="hero" className="py-24 md:py-32 relative overflow-hidden bg-[#0A0A0A]">
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,rgba(201,169,98,0.12),transparent)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_80%_80%,rgba(45,212,191,0.05),transparent)]" />
-        </div>
-        <div className="container relative z-10">
-          <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="max-w-4xl">
-            <motion.p variants={fadeInUp} className="font-mono text-[10px] uppercase tracking-[0.25em] mb-6" style={{ color: GOLD }}>
-              ZeroWheel · Sales Infrastructure
-            </motion.p>
-            <motion.h1 variants={fadeInUp} className="font-display text-5xl md:text-7xl font-semibold text-white leading-[1.05] mb-6">
-              Revenue Operations<br />
-              <span style={{ color: GOLD }}>Infrastructure</span>
-            </motion.h1>
-            <motion.p variants={fadeInUp} className="font-body text-lg text-white/40 max-w-2xl leading-relaxed mb-10">
-              A fully integrated sales and marketing infrastructure for ZeroWheel — from first website visit to closed install.
-              Built on Salesforce CRM, Typeform lead intake, and Intercom AI, this system tracks every lead, opportunity, and
-              revenue dollar across all channels and sales team members.
-            </motion.p>
-
-          </motion.div>
-        </div>
-      </section>
+      <div id="hero" style={{ background: "#0A0A0A" }}>
+        <DarkHero
+          eyebrow="ZeroWheel · Sales Infrastructure"
+          title="Revenue Operations Infrastructure"
+          description="A fully integrated sales and marketing infrastructure for ZeroWheel — from first website visit to closed install. Built on Salesforce CRM, Typeform lead intake, and Intercom AI, this system tracks every lead, opportunity, and revenue dollar across all channels and sales team members."
+          stats={[
+            { value: "3", label: "Core Platforms" },
+            { value: "245", label: "Installs YTD" },
+            { value: "$245K", label: "Revenue YTD" },
+            { value: "42%", label: "Win Rate" },
+          ]}
+          darkFade
+        />
+      </div>
 
       {/* ── TECH STACK ───────────────────────────────────────────────────── */}
       <section id="tech-stack" className="py-20 bg-[#0A0A0A]">

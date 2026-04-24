@@ -20,6 +20,7 @@ import {
   ShoppingCart, Zap, RefreshCw,
 } from "lucide-react";
 import Layout from "@/components/Layout";
+import DarkHero from "@/components/DarkHero";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 
 // ─── Color Palette ───────────────────────────────────────────────────────────
@@ -255,6 +256,22 @@ export default function ZWBusinessIntelligence() {
 
   return (
     <Layout section="gtm-zerowheel">
+      {/* ── HERO ─────────────────────────────────────────────────────────── */}
+      <div style={{ background: "#0A0A0A" }}>
+        <DarkHero
+          eyebrow="ZeroWheel · Business Intelligence"
+          title="Revenue Operations Dashboard"
+          description="Real-time visibility into every lead, opportunity, and revenue dollar across all channels, reps, and lines of business. Filter by period, rep, or channel to drill into performance."
+          stats={[
+            { value: "$990K", label: "Revenue YTD" },
+            { value: "245", label: "Installs YTD" },
+            { value: "1,208", label: "Total Leads" },
+            { value: "20.3%", label: "Conversion Rate" },
+          ]}
+          darkFade
+        />
+      </div>
+
       {/* ── HEADER + FILTERS ─────────────────────────────────────────────── */}
       <div className="sticky top-0 z-40 border-b" style={{ background: "rgba(10,10,10,0.95)", backdropFilter: "blur(12px)", borderColor: CARD_BORDER }}>
         <div className="container py-4">
