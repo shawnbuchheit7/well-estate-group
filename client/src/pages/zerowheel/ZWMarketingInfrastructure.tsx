@@ -1,432 +1,722 @@
 /*
- * ZeroWheel Marketing Infrastructure Page
- * Design: Dark luxury — #0A0A0A bg, #C9A962 gold accents, #00C9A7 teal highlights
- * Layout: Full-width sections, asymmetric grids, animated funnel diagram
+ * ZeroWheel Marketing Infrastructure — Full GTM Engine
+ * Design: Dark luxury — #0A0A0A bg, #C9A962 gold, #2DD4BF teal, #A78BFA purple
  * Sections:
- *   1. Hero — strategic overview
- *   2. Multi-Channel Acquisition Funnel (visual diagram)
- *   3. Channel Deep-Dives (B2B Direct, Partnerships, Thought Leadership, Digital, Consumer)
- *   4. LOB-Specific Strategies (8 macro LOBs)
- *   5. Salesforce Architecture & Tracking
- *   6. Team Accountability & Cadence
+ *   1. Hero
+ *   2. Lead Intake Flow (Website Visit → UTM → FinAI → Typeform → SF Lead → Rep Notified → Reachout)
+ *   3. Multi-Channel Acquisition Funnel (with stage-level data)
+ *   4. Channel Playbooks (B2B Direct, Partnerships, Thought Leadership, Digital, Influencer, Events)
+ *   5. LOB-Specific Strategies (8 macro LOBs with named targets)
+ *   6. Salesforce CRM Architecture (objects, fields, automation rules)
+ *   7. Influencer & Affiliate Program ($250/unit)
+ *   8. Team Accountability & Weekly Cadence
  */
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Building2, Dumbbell, Home, Landmark, Stethoscope, Trophy, Briefcase, UserCircle,
-  Target, Users, Megaphone, Globe, Star, ArrowRight, ChevronDown, ChevronUp,
-  Database, BarChart3, Bell, CheckCircle2, AlertCircle, TrendingUp, Zap,
-  Ship, Hotel, GraduationCap, Handshake, Instagram, Mail, Phone, MapPin,
-  Award, Activity, Eye, DollarSign, Calendar, Filter, RefreshCw, Shield
+  Globe, Cpu, Bot, FormInput, Database, Mail, Phone,
+  Users, Handshake, GraduationCap, Star, Award, Building2,
+  Dumbbell, Stethoscope, Trophy, Briefcase, UserCircle, Home, Landmark,
+  ArrowRight, ArrowDown, CheckCircle2,
+  Target, DollarSign, Activity,
+  ChevronDown, ChevronUp,
+  Bell, Megaphone,
 } from "lucide-react";
 import Layout from "@/components/Layout";
 import DarkHero from "@/components/DarkHero";
 import { SectionNav } from "@/components/SectionNav";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 
+// ─── Colors ──────────────────────────────────────────────────────────────────
+const GOLD = "#C9A962";
+const GOLD_DIM = "#8B7D3C";
+const TEAL = "#2DD4BF";
+const PURPLE = "#A78BFA";
+const GREEN = "#4ADE80";
+const RED = "#F87171";
+const ORANGE = "#FB923C";
+const CARD_BG = "#111111";
+const CARD_BORDER = "rgba(201,169,98,0.12)";
+
+// ─── Section Nav ─────────────────────────────────────────────────────────────
 const sections = [
   { id: "hero", label: "Overview" },
+  { id: "lead-intake", label: "Lead Intake Flow" },
   { id: "funnel", label: "Acquisition Funnel" },
-  { id: "channels", label: "Channel Strategy" },
-  { id: "lob-strategy", label: "LOB Playbooks" },
+  { id: "channels", label: "Channel Playbooks" },
+  { id: "lob-strategy", label: "LOB Strategies" },
   { id: "salesforce", label: "Salesforce Architecture" },
+  { id: "influencer", label: "Influencer Program" },
   { id: "accountability", label: "Team Accountability" },
 ];
 
-// ─── Channel data ───────────────────────────────────────────────────────────
-const funnelChannels = [
-  { id: "b2b-direct", label: "B2B Direct Sales", color: "#C9A962", icon: Users, pct: 35 },
-  { id: "partnerships", label: "Strategic Partnerships", color: "#00C9A7", icon: Handshake, pct: 20 },
-  { id: "thought-leadership", label: "Thought Leadership", color: "#A78BFA", icon: GraduationCap, pct: 15 },
-  { id: "digital", label: "Digital / Paid", color: "#F59E0B", icon: Globe, pct: 12 },
-  { id: "influencer", label: "Influencer Network", color: "#F472B6", icon: Star, pct: 10 },
-  { id: "events", label: "Events & Trade Shows", color: "#34D399", icon: Award, pct: 8 },
-];
-
-const funnelStages = [
-  { label: "Awareness", width: "100%", count: "10,000+", color: "#C9A962", desc: "Impressions across all channels" },
-  { label: "Interest", width: "60%", count: "6,000", color: "#B8963E", desc: "Engaged with content or outreach" },
-  { label: "Lead", width: "35%", count: "3,500", color: "#A07830", desc: "Typeform intake or SF Lead created" },
-  { label: "Qualified", width: "18%", count: "1,800", color: "#8B6020", desc: "MQL → SQL conversion via FinAI + rep" },
-  { label: "Opportunity", width: "10%", count: "1,000", color: "#764808", desc: "Demo completed, proposal stage" },
-  { label: "Install (Won)", width: "10%", count: "1,000", color: "#C9A962", desc: "$1M revenue · 1,000 units · $1K ASP" },
-];
-
-// ─── Channel deep-dive data ──────────────────────────────────────────────────
-interface ChannelDetail {
-  id: string;
-  title: string;
-  subtitle: string;
-  icon: typeof Users;
-  color: string;
-  tactics: { label: string; detail: string }[];
-  sfTracking: string[];
-  kpis: { label: string; target: string }[];
+// ─── Shared UI Components ─────────────────────────────────────────────────────
+function DarkCard({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return (
+    <div className={`rounded-2xl border p-6 ${className}`} style={{ background: CARD_BG, borderColor: CARD_BORDER }}>
+      {children}
+    </div>
+  );
 }
 
-const channelDetails: ChannelDetail[] = [
+function SectionHeader({ eyebrow, title, description }: { eyebrow: string; title: string; description: string }) {
+  return (
+    <div className="mb-12">
+      <p className="font-mono text-[10px] uppercase tracking-[0.2em] mb-3" style={{ color: GOLD }}>{eyebrow}</p>
+      <h2 className="font-display text-3xl md:text-4xl font-semibold text-white mb-4">{title}</h2>
+      <p className="font-body text-white/40 max-w-2xl leading-relaxed">{description}</p>
+    </div>
+  );
+}
+
+function Divider() {
+  return <div className="h-px mb-16" style={{ background: "linear-gradient(to right, transparent, rgba(201,169,98,0.2), transparent)" }} />;
+}
+
+function FlowArrow({ vertical = false, label }: { vertical?: boolean; label?: string }) {
+  return (
+    <div className={`flex flex-col items-center justify-center gap-1 ${vertical ? "py-1" : "px-1"}`}>
+      {vertical
+        ? <ArrowDown className="w-4 h-4" style={{ color: GOLD_DIM }} />
+        : <ArrowRight className="w-4 h-4" style={{ color: GOLD_DIM }} />}
+      {label && <span className="font-mono text-[8px] text-white/20 uppercase tracking-wider">{label}</span>}
+    </div>
+  );
+}
+
+function FlowNode({ icon: Icon, step, title, subtitle, detail, color = GOLD, badge, system }: {
+  icon: any; step?: string; title: string; subtitle: string; detail?: string[];
+  color?: string; badge?: string; system?: string;
+}) {
+  return (
+    <motion.div
+      variants={fadeInUp}
+      className="relative rounded-2xl border p-5 flex flex-col gap-2"
+      style={{ background: CARD_BG, borderColor: `${color}30` }}
+    >
+      {badge && (
+        <span className="absolute -top-2.5 left-4 text-[9px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full" style={{ background: color, color: "#0A0A0A" }}>
+          {badge}
+        </span>
+      )}
+      {system && (
+        <span className="absolute -top-2.5 right-4 text-[9px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full border" style={{ borderColor: `${color}40`, color: `${color}80`, background: "#0A0A0A" }}>
+          {system}
+        </span>
+      )}
+      {step && <span className="font-mono text-[9px] font-bold" style={{ color: `${color}60` }}>STEP {step}</span>}
+      <div className="w-8 h-8 rounded-xl flex items-center justify-center" style={{ background: `${color}18` }}>
+        <Icon className="w-4 h-4" style={{ color }} />
+      </div>
+      <p className="font-display text-sm font-semibold text-white leading-tight">{title}</p>
+      <p className="font-body text-[11px] text-white/40 leading-relaxed">{subtitle}</p>
+      {detail && detail.length > 0 && (
+        <ul className="mt-1 space-y-1">
+          {detail.map((d, i) => (
+            <li key={i} className="flex items-start gap-1.5">
+              <div className="w-1 h-1 rounded-full mt-1.5 flex-shrink-0" style={{ background: color }} />
+              <span className="font-body text-[10px] text-white/30 leading-relaxed">{d}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </motion.div>
+  );
+}
+
+function ProgressBar({ value, max, color = GOLD }: { value: number; max: number; color?: string }) {
+  const pct = Math.min(100, (value / max) * 100);
+  return (
+    <div className="h-1.5 rounded-full bg-white/5 overflow-hidden">
+      <motion.div
+        className="h-full rounded-full"
+        style={{ background: color }}
+        initial={{ width: 0 }}
+        whileInView={{ width: `${pct}%` }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.9, ease: "easeOut" }}
+      />
+    </div>
+  );
+}
+
+// ─── Lead Intake Flow Data ────────────────────────────────────────────────────
+const intakeSteps = [
+  {
+    icon: Globe, step: "01", title: "Website Visit", color: TEAL, badge: "Entry Point", system: "Any Channel",
+    subtitle: "Visitor arrives via organic search, paid ad, partner referral, QR code at trade show, or direct URL.",
+    detail: [
+      "Organic: SEO content, LinkedIn post, YouTube video",
+      "Paid: Meta lead form, Google PMax, LinkedIn Sponsored",
+      "Referral: Partner link, influencer promo code, CMAA newsletter",
+      "Direct: Business card, trade show badge scan, email campaign",
+    ],
+  },
+  {
+    icon: Cpu, step: "02", title: "UTM Capture", color: TEAL, system: "Typeform + GA4",
+    subtitle: "Every inbound URL carries UTM parameters that are auto-captured and stored against the lead record.",
+    detail: [
+      "utm_source: google | instagram | linkedin | cmaa | partner",
+      "utm_medium: cpc | organic | email | referral | event",
+      "utm_campaign: spring-launch-2026 | cmaa-regional | golf-series",
+      "utm_content: ad variant or creative ID for A/B tracking",
+      "Landing page URL stored as custom SF field at conversion",
+    ],
+  },
+  {
+    icon: Bot, step: "03", title: "FinAI Engagement", color: PURPLE, system: "Intercom",
+    subtitle: "Intercom's FinAI chat widget activates immediately. AI answers product questions, scores intent, and routes high-value visitors before they leave.",
+    detail: [
+      "Responds in <5 seconds, 24/7 — no rep required",
+      "Pulls answers from ZeroWheel product knowledge base",
+      "Asks qualifying questions: segment, facility size, timeline",
+      "Intent score 1–10 assigned based on conversation depth",
+      "High-intent (7+): auto-books demo via calendar integration",
+      "Passes full chat transcript to Salesforce on lead creation",
+    ],
+  },
+  {
+    icon: FormInput, step: "04", title: "Typeform Intake", color: GOLD, system: "Typeform",
+    subtitle: "Segment-specific intake form captures structured lead data. B2B form (club/medical/corporate) differs from consumer direct form.",
+    detail: [
+      "B2B Form: Facility name, segment (club/hotel/medical/maritime), role, # of units, timeline, budget range",
+      "Consumer Form: Name, email, phone, use case, purchase timeline",
+      "Conditional logic routes to correct form variant by referral source",
+      "Partial completions trigger FinAI re-engagement sequence",
+      "Form ID stored in SF to identify which segment funnel the lead entered",
+    ],
+  },
+  {
+    icon: Database, step: "05", title: "SF Lead Created", color: GOLD, system: "Salesforce",
+    subtitle: "Zapier webhook fires on Typeform submission. Lead record created in Salesforce within 60 seconds with all fields, score, and routing logic applied.",
+    detail: [
+      "Lead Source field: auto-populated from UTM source",
+      "Lead Score: calculated from segment match + budget + timeline + FinAI score",
+      "Territory/segment routing rules assign rep automatically",
+      "Duplicate check runs — merges if existing contact found",
+      "Campaign Member created to attribute lead to active campaign",
+    ],
+  },
+  {
+    icon: Bell, step: "06", title: "Rep Notified", color: GOLD, system: "Salesforce",
+    subtitle: "Assigned rep receives immediate notification via email and a Salesforce task with full lead context, FinAI transcript, and SLA clock.",
+    detail: [
+      "Email alert: lead name, company, segment, score, source",
+      "SF Task created: 'First Contact — SLA: 1 Business Hour'",
+      "FinAI conversation transcript attached to lead record",
+      "Manager CC'd if lead score ≥ 8 (high-priority flag)",
+      "SLA timer starts — overdue tasks escalate to manager at 2 hours",
+    ],
+  },
+  {
+    icon: Phone, step: "07", title: "Sales Team Reachout", color: GREEN, badge: "SLA: 1hr", system: "Salesforce",
+    subtitle: "Rep initiates contact within 1 business hour. All activity logged in Salesforce. Three-touch minimum before any disqualification.",
+    detail: [
+      "Touch 1: Phone call — outcome logged (connected / VM / no answer)",
+      "Touch 2: Personalized email referencing FinAI conversation context",
+      "Touch 3: FinAI re-engagement sequence if no reply after 48 hours",
+      "Minimum 3 documented touches before marking 'Unresponsive'",
+      "Unresponsive leads enter 30-day nurture sequence via Intercom",
+    ],
+  },
+];
+
+// ─── Funnel Stage Data ────────────────────────────────────────────────────────
+const funnelStages = [
+  { label: "Website Visitors",   count: 48000, pct: null,  color: GOLD,     desc: "All inbound traffic across all channels and campaigns" },
+  { label: "FinAI Engaged",      count: 9600,  pct: "20%", color: TEAL,     desc: "Visitors who interacted with FinAI chat widget" },
+  { label: "Typeform Submitted", count: 1208,  pct: "13%", color: PURPLE,   desc: "Completed intake form — B2B or consumer variant" },
+  { label: "SF Lead Created",    count: 1208,  pct: "100%",color: GOLD,     desc: "Every Typeform submission creates a Salesforce Lead" },
+  { label: "MQL (Qualified)",    count: 506,   pct: "42%", color: ORANGE,   desc: "Lead score ≥ 6, segment match, budget indicated" },
+  { label: "SQL (Opportunity)",  count: 334,   pct: "66%", color: TEAL,     desc: "BANT confirmed, demo scheduled, converted to Opportunity" },
+  { label: "Demo Completed",     count: 198,   pct: "59%", color: PURPLE,   desc: "Full product demo delivered, ROI case presented" },
+  { label: "Proposal Sent",      count: 142,   pct: "72%", color: GREEN,    desc: "Formal proposal at $1,000/unit with install timeline" },
+  { label: "Closed Won (Install)",count: 245,  pct: "—",   color: GOLD,     desc: "$245K revenue · 245 units · $1,000 ASP · YTD" },
+];
+
+const channelMix = [
+  { id: "b2b-direct",        label: "B2B Direct Sales",       color: GOLD,   pct: 35, target: "350 installs" },
+  { id: "partnerships",      label: "Strategic Partnerships", color: TEAL,   pct: 20, target: "200 installs" },
+  { id: "thought-leadership",label: "Thought Leadership",     color: PURPLE, pct: 15, target: "150 installs" },
+  { id: "digital",           label: "Digital / Paid",         color: ORANGE, pct: 12, target: "120 installs" },
+  { id: "influencer",        label: "Influencer Network",     color: "#F472B6", pct: 10, target: "100 installs" },
+  { id: "events",            label: "Events & Trade Shows",   color: GREEN,  pct: 8,  target: "80 installs" },
+];
+
+// ─── Channel Playbook Data ────────────────────────────────────────────────────
+interface ChannelPlaybook {
+  id: string;
+  title: string;
+  icon: typeof Users;
+  color: string;
+  target: string;
+  owner: string;
+  tactics: { label: string; detail: string }[];
+  sfFields: string[];
+  kpis: { label: string; target: string }[];
+  sequences: { step: string; action: string; timing: string }[];
+}
+
+const channelPlaybooks: ChannelPlaybook[] = [
   {
     id: "b2b-direct",
     title: "B2B Direct Sales",
-    subtitle: "Relationship-led outreach across Private Clubs, Maritime, Hospitality & Medical",
     icon: Users,
-    color: "#C9A962",
+    color: GOLD,
+    target: "350 installs · 35% of 2026 goal",
+    owner: "Sales Reps by Territory (Clubs / Maritime / Medical / Corporate)",
     tactics: [
-      { label: "Strategic Account Mapping", detail: "Build Salesforce Account lists by LOB with named owners, relationship scores, and next-action dates. Every rep owns a territory with clear ICP criteria." },
-      { label: "CMAA Sponsorship & Regional Shows", detail: "Sponsor CMAA regional conferences to get ZeroWheel in front of GMs and fitness directors at country clubs. Booth presence + private demos + follow-up sequences." },
-      { label: "Cruise & Hospitality Direct", detail: "Leverage WEG's existing cruise and hospitality relationships. Target in-room wellness programs and fitness center upgrades. Dedicated rep with maritime/hospitality quota." },
-      { label: "Country Club Fitness Director Outreach", detail: "Targeted cold + warm outreach to fitness directors and GMs at golf & country clubs. Personalized sequences referencing CMAA membership, club tier, and member demographics." },
-      { label: "Medical & PT Channel", detail: "Target physical therapists, hospital-supported wellness centers, and health care facilities. ZeroWheel's core-strength and longevity positioning is a natural fit for rehab and preventive care." },
+      { label: "CMAA Chapters — National, State & Local", detail: "Sponsor CMAA regional conferences (Philadelphia, Florida, Mile High chapters). Booth presence + private demos + follow-up sequences. Target GMs, fitness directors, and club presidents. CMAA preferred vendor status pursuit for directory access and newsletter placement." },
+      { label: "Troon & Club Corp Account Mapping", detail: "Build named-account lists for Troon Golf and Club Corp managed properties. Each rep owns a territory of 50+ named accounts with relationship scores, last-activity dates, and next-action tasks in Salesforce. Platinum Clubs and Distinguished Clubs prioritized." },
+      { label: "Maritime: One Spa World & Delos", detail: "Leverage WEG's existing maritime relationships. One Spa World operates across 144 vessels — target in-room wellness and fitness center upgrades. Delos (Alfredo Carvajal) is a named relationship. KT Lim and Sea Trade contacts in Salesforce as named accounts." },
+      { label: "Medical: PT & Hospital Wellness Centers", detail: "Target physical therapists, Crohn's Association, Alzheimer's Association, and hospital-supported wellness centers. ZeroWheel's rotational core and longevity positioning is a natural fit for rehab and preventive care programs. Dr. Mike Clark (NASM) is a named relationship for sports performance crossover." },
+      { label: "Country Club Fitness Director Sequences", detail: "Personalized cold + warm outreach sequences to fitness directors and GMs. Reference CMAA membership tier, club demographics, and member age profile. Sequence: Day 1 — LinkedIn connect + email. Day 3 — Phone call. Day 7 — FinAI re-engage. Day 14 — Case study email. Day 21 — Final call." },
     ],
-    sfTracking: [
-      "Account: LOB, sub-LOB, territory, owner, relationship score",
-      "Contact: Role, decision-maker flag, last activity date",
-      "Lead Source: 'B2B Direct — [Rep Name]'",
-      "Campaign: CMAA 2026, Cruise Outreach Q1, Medical Channel",
-      "Activity: Call outcome, email open, demo scheduled",
+    sfFields: [
+      "Account: LOB (Private Club / Maritime / Medical), Sub-LOB, Territory, Owner, Relationship Score (1–5)",
+      "Contact: Role (GM / Fitness Director / Owner), Decision Maker flag, Last Activity Date",
+      "Lead Source: 'B2B Direct — [Rep Name] — [Territory]'",
+      "Campaign: CMAA-2026, Maritime-Q1, Medical-Channel, Club-Corp-Outreach",
+      "Activity: Call outcome (Connected / VM / No Answer), Email open, Demo scheduled",
+      "Custom Field: Account Tier (Platinum / Gold / Standard), CMAA Member (Y/N)",
     ],
     kpis: [
-      { label: "Accounts Mapped", target: "500 by Q1" },
-      { label: "Outreach Sequences Active", target: "8 per rep" },
-      { label: "Demo Rate", target: "15% of qualified leads" },
-      { label: "Win Rate (B2B)", target: "25%" },
+      { label: "Named Accounts Mapped", target: "500 by Q1" },
+      { label: "Active Sequences per Rep", target: "8 concurrent" },
+      { label: "Demo Rate (qualified leads)", target: "15%" },
+      { label: "Win Rate (B2B Direct)", target: "25%" },
+      { label: "1-Hour First Contact SLA", target: "≥ 90% compliance" },
+    ],
+    sequences: [
+      { step: "Day 1", action: "LinkedIn connect + personalized email referencing club tier", timing: "Morning" },
+      { step: "Day 3", action: "Phone call — reference FinAI conversation if applicable", timing: "10am–12pm" },
+      { step: "Day 7", action: "FinAI re-engagement triggered if no reply", timing: "Automated" },
+      { step: "Day 14", action: "Case study email (club or maritime install story)", timing: "Morning" },
+      { step: "Day 21", action: "Final call — offer demo or mark as 30-day nurture", timing: "Afternoon" },
     ],
   },
   {
     id: "partnerships",
     title: "Strategic Partnerships",
-    subtitle: "Category-specific alliances that open doors at scale without mass spend",
     icon: Handshake,
-    color: "#00C9A7",
+    color: TEAL,
+    target: "200 installs · 20% of 2026 goal",
+    owner: "Business Development Lead + Channel Partner Manager",
     tactics: [
-      { label: "CMAA Preferred Vendor Status", detail: "Pursue CMAA preferred vendor or allied association membership to gain credibility and access to member directories, newsletters, and conference speaking slots." },
-      { label: "Golf & Pickleball Trainer Networks", detail: "Partner with certified golf and pickleball trainers in private clubs. Provide ZeroWheels for program integration. Trainers become product advocates and referral sources." },
-      { label: "Cruise Line Wellness Partnerships", detail: "Formal partnerships with cruise line fitness and spa operators. Revenue share or preferred supplier agreements for in-room wellness and fitness center installations." },
-      { label: "Sports Performance Facility Alliances", detail: "Partner with HOA-managed sports performance facilities and Exos-style training centers. Pilot programs with measurable outcome data to build case studies." },
-      { label: "Commission-Based Influencer Partnerships", detail: "Structured affiliate program: $250/unit commission for influencers who drive sales via unique promo codes. Not just social posts — full sales partnership with tracking." },
+      { label: "CMAA Preferred Vendor / Allied Association", detail: "Pursue CMAA preferred vendor or allied association status. This unlocks member directory access, newsletter placement, conference speaking slots, and co-branded content opportunities. Target: approved status by Q2 2026." },
+      { label: "Golf & Pickleball Trainer Networks", detail: "Seed ZeroWheels with 10–15 certified golf and pickleball trainers at private clubs. Trainers integrate ZeroWheel into their programs, generate testimonials, and refer facility purchases. Titleist Performance Institute (TPI) and AMPD Golf Performance are named partnership targets." },
+      { label: "Cruise Line Wellness Partnerships", detail: "Formal preferred supplier agreements with cruise line fitness and spa operators. One Spa World (144 vessels), Sea Trade, and Delos are named targets. Revenue share or preferred pricing in exchange for multi-vessel commitments." },
+      { label: "Management Company Alliances", detail: "Partner with top fitness and wellness management companies: Troon Golf, Peacock & Lewis, Club Wellness Evolutions, The Salus Group, Kopplin Kuebler & Wallace, McMahon Group. These companies manage hundreds of facilities and can embed ZeroWheel into their standard equipment recommendations." },
+      { label: "Commission-Based Affiliate Program", detail: "Structured $250/unit affiliate commission for partners who drive sales via unique promo codes. Not just social posts — full sales partnership with Salesforce tracking, monthly commission reporting, and tiered bonuses at 10, 25, and 50 unit milestones." },
     ],
-    sfTracking: [
-      "Partner Account type in Salesforce with partner tier (Gold/Silver/Bronze)",
-      "Referral Lead Source: 'Partner — [Partner Name]'",
-      "Partner-attributed Opportunity revenue tracked separately",
-      "Commission tracking via custom Salesforce object",
-      "Partner performance dashboard: leads referred, conversion rate, revenue",
+    sfFields: [
+      "Partner Account Type: Partner Tier (Gold / Silver / Bronze), Partner Category (Management Co / Association / Trainer)",
+      "Referral Lead Source: 'Partner — [Partner Name] — [Promo Code]'",
+      "Custom Object: Partner Commission — units referred, commission rate, payment status",
+      "Partner Performance Dashboard: leads referred, conversion rate, revenue attributed",
+      "Campaign: Partner-Referral-2026, CMAA-Allied, TPI-Trainer-Program",
     ],
     kpis: [
-      { label: "Active Partners", target: "20 by Q2" },
-      { label: "Partner-Sourced Leads", target: "20% of total pipeline" },
-      { label: "Influencer Codes Active", target: "15 by Q2" },
-      { label: "Commission Revenue Attributed", target: "Tracked per partner" },
+      { label: "Active Signed Partners", target: "20 by Q2" },
+      { label: "Partner-Sourced Pipeline", target: "20% of total" },
+      { label: "Affiliate Codes Active", target: "15 by Q2" },
+      { label: "Commission Paid YTD", target: "Tracked per partner" },
+      { label: "Management Co. Agreements", target: "3 by Q3" },
+    ],
+    sequences: [
+      { step: "Week 1", action: "Outreach to target partner — intro email + one-pager", timing: "BD Lead" },
+      { step: "Week 2", action: "Discovery call — understand their client base and referral flow", timing: "BD Lead" },
+      { step: "Week 3", action: "Proposal: commission structure, co-marketing, Salesforce tracking setup", timing: "BD Lead" },
+      { step: "Week 4", action: "Agreement signed — promo code created, SF partner record created", timing: "Ops" },
+      { step: "Ongoing", action: "Monthly partner performance review — leads, conversions, commission", timing: "Monthly" },
     ],
   },
   {
     id: "thought-leadership",
     title: "Thought Leadership",
-    subtitle: "Owning the conversation in sports performance, longevity, and club wellness",
     icon: GraduationCap,
-    color: "#A78BFA",
+    color: PURPLE,
+    target: "150 installs · 15% of 2026 goal",
+    owner: "Content Lead + Sales Reps (co-creation)",
     tactics: [
-      { label: "Golf & Pickleball Performance Content", detail: "Create ZeroWheel-specific training programs for golf rotation and pickleball core stability. Publish via YouTube, LinkedIn, and club newsletters. Position ZeroWheel as the performance tool for aging athletes." },
-      { label: "Longevity & Core Strength Positioning", detail: "Publish research-backed content on rotational core training and longevity. Target club fitness directors, physical therapists, and wellness-conscious consumers aged 45–70." },
-      { label: "Trainer & Influencer Feedback Loop", detail: "Seed ZeroWheels with 10–15 key trainers in golf and pickleball. Gather structured feedback, build testimonials, co-create content. These trainers become credibility anchors." },
-      { label: "Event Participation", detail: "Attend and present at CMAA regional shows, PGA merchandise shows, and sports performance conferences. Speaking slots and demo stations build brand authority." },
-      { label: "Case Study Library", detail: "Document 5–10 early installation stories with measurable outcomes (member engagement, trainer adoption, revenue impact). Publish as sales collateral and content marketing." },
+      { label: "Golf & Pickleball Performance Content Series", detail: "Publish ZeroWheel-specific training programs for golf rotation and pickleball core stability. 2x per week on YouTube, LinkedIn, and club newsletters. Target: fitness directors, club GMs, and wellness-conscious members aged 45–70. Trainers from TPI and AMPD Golf co-create content for credibility." },
+      { label: "Longevity & Core Strength Positioning", detail: "Research-backed content on rotational core training and longevity. Reference Crohn's Association, Alzheimer's Association, and Blue Zone (Dan Buettner) connections. Position ZeroWheel as the performance tool for aging athletes and preventive wellness programs." },
+      { label: "Case Study Library — 5 Stories by Q3", detail: "Document 5–10 early installation stories with measurable outcomes: member engagement rates, trainer adoption, revenue impact for the facility, and before/after performance data. Publish as sales collateral, LinkedIn articles, and email campaign content." },
+      { label: "CMAA & PGA Conference Speaking Slots", detail: "Submit speaker proposals to CMAA regional conferences (Philadelphia, Florida, Mile High), PGA Merchandise Show, and NRPA Annual Conference. Speaking slots build brand authority and generate warm leads from attendees." },
+      { label: "Trainer Seeding Program", detail: "Seed ZeroWheels with 15 key trainers across golf, pickleball, and sports performance. Structured feedback program: monthly check-ins, testimonial collection, co-created content. These trainers become credibility anchors for B2B sales conversations." },
     ],
-    sfTracking: [
-      "Lead Source: 'Content — [Article/Video Title]'",
-      "UTM parameters: source=content, medium=organic, campaign=[topic]",
-      "Contact: Content engagement score (email opens, video views)",
-      "Campaign: Thought Leadership Q1, Golf Performance Series",
+    sfFields: [
+      "Lead Source: 'Content — [Article/Video Title] — [Platform]'",
+      "UTM: source=content, medium=organic|linkedin|youtube, campaign=[topic-series]",
+      "Contact: Content Engagement Score (email opens, video views, article shares)",
+      "Campaign: Thought-Leadership-Q1, Golf-Performance-Series, Case-Study-Library",
+      "Custom Field: Content Attribution — which piece drove the lead",
     ],
     kpis: [
-      { label: "Content Pieces Published", target: "2/week" },
+      { label: "Content Pieces Published", target: "2/week (100+ by EOY)" },
       { label: "Trainer Advocates Active", target: "15 by Q2" },
-      { label: "Content-Sourced Leads", target: "15% of total" },
+      { label: "Content-Sourced Leads", target: "15% of total pipeline" },
       { label: "Case Studies Published", target: "5 by Q3" },
+      { label: "Conference Speaking Slots", target: "3 by Q2" },
+    ],
+    sequences: [
+      { step: "Week 1–2", action: "Publish 2 golf performance videos + LinkedIn articles", timing: "Content Lead" },
+      { step: "Week 3", action: "Email case study to warm leads in relevant LOB", timing: "Sales Rep" },
+      { step: "Week 4", action: "Trainer co-created content published + tagged on social", timing: "Content Lead" },
+      { step: "Monthly", action: "Content performance review — top pieces repurposed for email", timing: "Content Lead" },
+      { step: "Quarterly", action: "New case study published + distributed to sales team", timing: "BD Lead" },
     ],
   },
   {
     id: "digital",
     title: "Digital & Paid Campaigns",
-    subtitle: "Targeted, measurable, persona-driven campaigns tested at low cost before scaling",
     icon: Globe,
-    color: "#F59E0B",
+    color: ORANGE,
+    target: "120 installs · 12% of 2026 goal",
+    owner: "Marketing Manager + Agency (if applicable)",
     tactics: [
-      { label: "Meta Lead Forms by Persona", detail: "Run persona-specific Meta campaigns targeting: (1) Club GMs/fitness directors, (2) Golf/pickleball enthusiasts 45–65, (3) Cruise/hospitality procurement. Each persona gets its own creative, copy, and Typeform intake." },
-      { label: "Multiple Landing Pages", detail: "Dedicated landing pages per LOB and persona. Each page has a unique UTM, Typeform embed, and FinAI chat widget. A/B test headlines, proof points, and CTAs at low budget before scaling winners." },
-      { label: "LinkedIn Outreach for B2B", detail: "LinkedIn Sales Navigator for targeted outreach to GMs, fitness directors, and wellness VPs. Personalized connection requests + message sequences tied to Salesforce activities." },
-      { label: "Retargeting Sequences", detail: "Pixel all landing pages. Retarget visitors who didn't convert with social proof ads (testimonials, case studies). Email retargeting via Typeform partial completions." },
-      { label: "Test Fast, Scale Winners", detail: "Start with $500–$1,000/month per campaign. Kill underperformers at 2 weeks. Scale winners at 4x. Never commit large budget without 2-week test data." },
+      { label: "Meta Lead Forms — 3 Persona Campaigns", detail: "Campaign 1: Club GMs and fitness directors (B2B) — targeting by job title, company size, interests (golf, club management). Campaign 2: Golf/pickleball enthusiasts aged 45–65 — lookalike audiences from existing customer list. Campaign 3: Cruise/hospitality procurement — targeting by industry and seniority. Each persona has unique creative, copy, and Typeform intake." },
+      { label: "Dedicated Landing Pages per LOB", detail: "Separate landing pages for: Private Clubs, Maritime/Hospitality, Sports Performance, Medical/PT, Consumer Direct. Each page has unique UTM, Typeform embed, and FinAI chat widget. A/B test headlines and proof points at $500–$1,000/month before scaling winners." },
+      { label: "LinkedIn Sales Navigator Outreach", detail: "Targeted outreach to GMs, fitness directors, and wellness VPs at CMAA member clubs, Troon properties, and Club Corp facilities. Personalized connection requests + message sequences tied to Salesforce activities. 50 new connections/week per rep." },
+      { label: "Google PMax for High-Intent Search", detail: "Performance Max campaigns targeting searches for 'club fitness equipment', 'rotational core training', 'wellness facility equipment'. Conversion tracking via Typeform submission. Budget: $1,000/month test, scale to $5K/month if CPL < $50." },
+      { label: "Retargeting — Social Proof Sequences", detail: "Pixel all landing pages. Retarget non-converters with testimonial ads (trainer endorsements, club install photos). Email retargeting via Typeform partial completions. Sequence: Day 3 — testimonial ad. Day 7 — case study. Day 14 — limited offer." },
     ],
-    sfTracking: [
-      "UTM: source, medium, campaign, content, term — all mapped to SF Lead",
-      "Campaign ROI: cost-per-lead, cost-per-opportunity, cost-per-install",
-      "Landing page performance tracked via Salesforce Campaign Member",
-      "A/B test results documented in Campaign Notes",
+    sfFields: [
+      "UTM Source / Medium / Campaign / Content / Term — all mapped to SF Lead on creation",
+      "Campaign ROI: cost-per-lead, cost-per-opportunity, cost-per-install by campaign",
+      "Landing Page URL stored as custom field — identifies which LOB page converted",
+      "A/B Test Results documented in Campaign Notes field",
+      "Ad Creative ID stored in UTM Content for creative performance analysis",
     ],
     kpis: [
       { label: "Cost Per Lead (Digital)", target: "< $50" },
       { label: "Cost Per Install (Digital)", target: "< $200" },
-      { label: "Landing Page CVR", target: "> 8%" },
-      { label: "ROAS (Return on Ad Spend)", target: "> 5x" },
+      { label: "Landing Page Conv. Rate", target: "> 3%" },
+      { label: "LinkedIn Connections/Week", target: "50 per rep" },
+      { label: "Meta ROAS", target: "> 5x by Q3" },
+    ],
+    sequences: [
+      { step: "Week 1–2", action: "Launch 3 Meta campaigns at $500/month each — test creatives", timing: "Marketing" },
+      { step: "Week 3", action: "Review CPL data — kill underperformers, double winners", timing: "Marketing" },
+      { step: "Week 4", action: "Scale winning campaigns to $2,000/month", timing: "Marketing" },
+      { step: "Day 3", action: "Retargeting: testimonial ad to non-converters", timing: "Automated" },
+      { step: "Day 7", action: "Retargeting: case study ad to non-converters", timing: "Automated" },
     ],
   },
   {
     id: "influencer",
-    title: "Influencer & Consumer",
-    subtitle: "Commission-based product placement with authentic advocates — not vanity metrics",
+    title: "Influencer Network",
     icon: Star,
     color: "#F472B6",
+    target: "100 installs · 10% of 2026 goal",
+    owner: "Business Development Lead",
     tactics: [
-      { label: "Product Placement with Key Influencers", detail: "Seed ZeroWheels with 15–20 micro and mid-tier influencers in golf, pickleball, fitness, and longevity. Not for follower count — for network access and authentic use." },
-      { label: "Commission Program ($250/unit)", detail: "Each influencer gets a unique promo code. $250 commission per unit sold. Tracked via Salesforce custom object. Monthly payouts. Performance reviewed quarterly." },
-      { label: "Network Activation", detail: "Influencers leverage their private networks (club members, training clients, social followers) to drive demos and sales. This is a sales partnership, not just a media buy." },
-      { label: "Consumer Direct (Selective)", detail: "Consumer direct is not the primary focus at this stage. Target high-intent, high-value consumers: serious golfers, pickleball players, and longevity-focused individuals. Average order value $1,000." },
-      { label: "Social Proof Engine", detail: "Aggregate influencer content, testimonials, and user-generated content into a social proof library. Use in paid ads, landing pages, and sales decks." },
+      { label: "Delos — Alfredo Carvajal (Maritime)", detail: "Named relationship. Alfredo Carvajal at Delos is a key influencer in the maritime wellness space. Seed ZeroWheel for in-cabin wellness programs. Co-create content for cruise line audiences. Unique promo code tracked in Salesforce." },
+      { label: "Blue Zone — Dan Buettner (Longevity)", detail: "Named relationship. Dan Buettner's Blue Zone brand has massive reach in the longevity and wellness space. ZeroWheel's core-strength and aging-athlete positioning aligns directly. Co-branded content and affiliate arrangement." },
+      { label: "Top 2–3 Trainers per Macro LOB", detail: "Identify and seed 2–3 key influencers per macro LOB: golf performance trainers (TPI certified), pickleball coaches, sports performance specialists (NASM/Dr. Mike Clark network), PT influencers. Each receives a ZeroWheel unit, structured feedback program, and $250/unit affiliate commission." },
+      { label: "Structured Affiliate Program", detail: "$250/unit commission for every install driven via unique promo code. Tiered bonuses: 10 units = $500 bonus, 25 units = $1,500 bonus, 50 units = $3,500 bonus. Monthly commission reports sent automatically. All tracked via custom Salesforce object." },
     ],
-    sfTracking: [
-      "Influencer as Partner Account in Salesforce",
-      "Lead Source: 'Influencer — [Name] — [Code]'",
-      "Commission object: code used, units sold, payout status",
-      "Consumer Lead Source: 'Consumer Direct — [Channel]'",
+    sfFields: [
+      "Influencer Account Type in Salesforce — Tier (Anchor / Active / Prospect)",
+      "Custom Object: Influencer Commission — promo code, units driven, commission owed, payment status",
+      "Lead Source: 'Influencer — [Name] — [Promo Code]'",
+      "Campaign: Influencer-Program-2026, Delos-Partnership, Blue-Zone-Collab",
+      "Monthly Report: units per influencer, conversion rate, total commission paid",
     ],
     kpis: [
-      { label: "Active Influencer Partners", target: "20 by Q2" },
-      { label: "Units Sold via Influencer Codes", target: "100 by Q3" },
-      { label: "Commission Paid Out", target: "Tracked monthly" },
-      { label: "Consumer Direct Units", target: "50 by Q4" },
+      { label: "Active Influencer Partners", target: "15 by Q2" },
+      { label: "Influencer-Sourced Installs", target: "100 by EOY" },
+      { label: "Avg. Units per Influencer", target: "7" },
+      { label: "Commission Paid YTD", target: "~$25K at 100 installs" },
+      { label: "Anchor Influencers (Delos, Blue Zone)", target: "Signed by Q1" },
+    ],
+    sequences: [
+      { step: "Week 1", action: "Outreach to anchor influencers (Delos, Blue Zone, Dr. Mike Clark)", timing: "BD Lead" },
+      { step: "Week 2", action: "Ship ZeroWheel unit + onboarding kit + promo code", timing: "Ops" },
+      { step: "Week 3", action: "Co-create first content piece — video or article", timing: "Content Lead" },
+      { step: "Monthly", action: "Commission report + performance review with influencer", timing: "BD Lead" },
+      { step: "Quarterly", action: "Tier review — promote top performers, add new influencers", timing: "BD Lead" },
+    ],
+  },
+  {
+    id: "events",
+    title: "Events & Trade Shows",
+    icon: Award,
+    color: GREEN,
+    target: "80 installs · 8% of 2026 goal",
+    owner: "Sales Reps + BD Lead",
+    tactics: [
+      { label: "CMAA Regional Conferences", detail: "Sponsor and exhibit at CMAA Philadelphia, CMAA Florida, and CMAA Mile High chapter conferences. Booth with live ZeroWheel demo station. Private demos for GMs and fitness directors. Badge scan → Salesforce Lead via Zapier integration. Follow-up sequence starts within 24 hours of event." },
+      { label: "PGA Merchandise Show", detail: "Exhibit at PGA Merchandise Show in Orlando. Target golf performance trainers, club pros, and fitness directors. Co-exhibit with TPI or AMPD Golf Performance for credibility. Demo station + QR code → Typeform intake." },
+      { label: "NRPA Annual Conference", detail: "Attend NRPA Annual Conference targeting Parks & Recreation directors and local government wellness program managers. Tampa (Well Certified District) and City of Denver are named targets. Focus on public authority LOB." },
+      { label: "Sea Trade Cruise Global", detail: "Attend Sea Trade Cruise Global for maritime LOB. Target cruise line procurement, spa operators, and wellness directors. One Spa World and Delos contacts pre-scheduled for meetings." },
+      { label: "Post-Event Lead Sequence", detail: "All badge scans and QR code submissions create Salesforce Leads within 24 hours. Rep assigned by event/territory. Sequence: Day 1 — 'Great meeting you' email with product one-pager. Day 3 — Phone call. Day 7 — FinAI re-engage. Day 14 — Case study relevant to their LOB." },
+    ],
+    sfFields: [
+      "Lead Source: 'Event — [Event Name] — [Year]'",
+      "Campaign: CMAA-Regional-2026, PGA-Show-2026, NRPA-2026, SeaTrade-2026",
+      "Custom Field: Event Badge Scan (Y/N), QR Code Variant",
+      "Activity: Event Meeting logged with attendee name, company, discussion notes",
+      "Campaign Member: All event leads added to event campaign for ROI tracking",
+    ],
+    kpis: [
+      { label: "Events Attended", target: "6 in 2026" },
+      { label: "Leads per Event", target: "50+ qualified scans" },
+      { label: "Event Lead → Opp Rate", target: "20%" },
+      { label: "Event-Sourced Installs", target: "80 by EOY" },
+      { label: "Post-Event Follow-Up SLA", target: "24 hours" },
+    ],
+    sequences: [
+      { step: "Day 1 (at event)", action: "Badge scan → Typeform → SF Lead created automatically", timing: "Automated" },
+      { step: "Day 1 (post-event)", action: "'Great meeting you' email + product one-pager", timing: "Rep" },
+      { step: "Day 3", action: "Phone call — reference event conversation", timing: "Rep" },
+      { step: "Day 7", action: "FinAI re-engagement if no reply", timing: "Automated" },
+      { step: "Day 14", action: "LOB-specific case study email", timing: "Rep" },
     ],
   },
 ];
 
-// ─── LOB Playbook data ───────────────────────────────────────────────────────
-interface LobPlaybook {
-  name: string;
-  icon: typeof Building2;
-  color: string;
-  priority: "Primary" | "Secondary" | "Opportunistic";
-  strategy: string;
-  entryPoint: string;
-  keyContacts: string;
-  channels: string[];
-  sfNotes: string;
-  targetUnits: number;
-}
-
-const lobPlaybooks: LobPlaybook[] = [
+// ─── LOB Strategy Data ────────────────────────────────────────────────────────
+const lobStrategies = [
   {
     name: "Private Clubs",
     icon: Building2,
-    color: "#C9A962",
-    priority: "Primary",
-    strategy: "Golf & country clubs are the highest-priority LOB. WEG has existing relationships and ZeroWheel's rotational core training is a perfect fit for golf performance. Target fitness directors and GMs at CMAA-member clubs. Sponsor CMAA regional shows. Build golf-specific training programs with club trainers. Expand to city clubs, yacht clubs, and athletic clubs in Y2.",
-    entryPoint: "Fitness Director / GM via CMAA relationships and direct outreach",
-    keyContacts: "CMAA members, fitness directors, head golf pros, club GMs",
-    channels: ["B2B Direct", "CMAA Sponsorship", "Thought Leadership", "Trainer Partnerships"],
-    sfNotes: "Account LOB = 'Private Clubs'. Sub-LOB field. CMAA member flag. Relationship owner assigned. Demo date tracked.",
-    targetUnits: 300,
+    color: GOLD,
+    priority: "Tier 1",
+    subLobs: ["Golf & Country Clubs", "City Clubs", "Yacht Clubs", "Athletic Clubs", "Stadium/Alumni Clubs"],
+    namedTargets: ["CMAA Chapters (National, State & Local)", "Platinum Clubs of America", "Distinguished Clubs", "Troon Golf (managed properties)", "Club Corp (managed properties)", "Club Benchmarking", "McMahon Group", "Kopplin Kuebler & Wallace"],
+    primaryChannel: "B2B Direct + CMAA Partnership",
+    entryPoint: "Fitness Director or GM — typically CMAA member",
+    message: "ZeroWheel is the only rotational core training tool built for the aging athlete demographic that defines private club membership. Clubs that add ZeroWheel differentiate their fitness programming, increase member engagement, and reduce churn.",
+    sequence: ["CMAA chapter conference sponsorship → booth demo → badge scan → SF Lead", "Fitness director LinkedIn outreach → personalized email → phone call → demo", "Troon/Club Corp account mapping → rep-owned territory → quarterly business review"],
+    installs2026: 200,
   },
   {
     name: "Amenities",
     icon: Home,
-    color: "#00C9A7",
-    priority: "Primary",
-    strategy: "Maritime (cruise ships) is a standout opportunity given WEG's existing relationships. In-room wellness and fitness center upgrades on cruise ships represent high-volume, high-value deals. Destination resorts and city hotels follow. Multi-family and condo amenity packages are a longer sales cycle but high volume in Y2.",
-    entryPoint: "Cruise line wellness/spa operators and hotel fitness procurement via WEG relationships",
-    keyContacts: "Cruise line F&B/wellness VPs, hotel fitness directors, resort GMs, HOA managers",
-    channels: ["B2B Direct (WEG Relationships)", "Partnership Agreements", "B2B Direct Sales"],
-    sfNotes: "Account LOB = 'Amenities'. Sub-LOB: Maritime / Destination Resort / City Hotel / Multi-Family. Cruise deals tracked as enterprise accounts.",
-    targetUnits: 250,
-  },
-  {
-    name: "Commercial Clubs",
-    icon: Dumbbell,
-    color: "#A78BFA",
-    priority: "Secondary",
-    strategy: "National and regional key accounts (large gym chains) are high-volume but long sales cycles with procurement committees. Boutique studios are faster to close and great for social proof. Target boutique studios first for quick wins and case studies, then use those to approach national accounts.",
-    entryPoint: "Boutique studio owners direct; national accounts via VP of Fitness/Procurement",
-    keyContacts: "Studio owners, regional fitness directors, national account procurement",
-    channels: ["B2B Direct", "Digital / LinkedIn", "Influencer (studio trainers)"],
-    sfNotes: "Account LOB = 'Commercial Clubs'. National Key Account flag for enterprise deals. Boutique Studio fast-track pipeline.",
-    targetUnits: 150,
+    color: TEAL,
+    priority: "Tier 1",
+    subLobs: ["Multi-Family BTR", "Condominium BTO", "HOA", "Destination Resorts", "City Hotels", "Maritime", "Live/Work/Play"],
+    namedTargets: ["One Spa World (144 vessels)", "Delos — Alfredo Carvajal", "KT Lim", "Sea Trade", "National Apartment Association", "State Apartment Associations", "ISPA", "Z Capital & Ownership Groups"],
+    primaryChannel: "B2B Direct (Maritime) + Digital (Residential)",
+    entryPoint: "Wellness/Spa Director (Maritime) or Property Manager (Residential)",
+    message: "For maritime: ZeroWheel is a compact, premium wellness amenity that fits in-cabin and fitness center formats across any vessel class. For residential: ZeroWheel differentiates amenity packages in BTR and condo developments targeting wellness-conscious residents.",
+    sequence: ["Maritime: One Spa World + Delos direct outreach → vessel pilot → fleet agreement", "Residential: Meta ads targeting property managers + Typeform intake → rep follow-up", "Hotel: ISPA conference + Z Capital ownership group outreach"],
+    installs2026: 150,
   },
   {
     name: "Sports Performance",
     icon: Trophy,
-    color: "#F59E0B",
-    priority: "Primary",
-    strategy: "Sports performance is a credibility anchor. Placing ZeroWheels with NFL/NBA/NHL sports agencies and Exos-style facilities creates powerful proof points. Target trainers who work with professional athletes — their endorsement carries enormous weight with private club members. Golf and pickleball performance is the immediate focus.",
-    entryPoint: "Sports performance trainers, strength & conditioning coaches, sports agency wellness staff",
-    keyContacts: "S&C coaches, sports agency wellness directors, Exos facility managers",
-    channels: ["Thought Leadership", "Direct Outreach", "Trainer Partnerships", "Product Placement"],
-    sfNotes: "Account LOB = 'Sports Performance'. Athlete endorsement flag. Trainer advocate tracking. Case study pipeline.",
-    targetUnits: 100,
+    color: PURPLE,
+    priority: "Tier 1",
+    subLobs: ["Sports Agencies (NFL/NBA/NHL)", "Sports Performance Facilities (HOA & Exos-style)", "Golf Performance", "Pickleball Performance"],
+    namedTargets: ["PGA TOUR", "PGA of America", "PGA Southwest Section", "NASM — Dr. Mike Clark", "Titleist Performance Institute (TPI)", "AMPD Golf Performance", "Exos-style performance facilities", "Sports agencies (NFL/NBA/NHL)"],
+    primaryChannel: "Thought Leadership + Partnerships (TPI, NASM)",
+    entryPoint: "Head of Performance or Athletic Trainer",
+    message: "ZeroWheel is the rotational core training tool that elite golf and pickleball athletes use to build the foundation for power and injury prevention. TPI-certified trainers and NASM professionals are the credibility gateway to facility adoption.",
+    sequence: ["TPI trainer seeding program → testimonials → club facility referrals", "PGA Merchandise Show exhibit → fitness director demos → SF Lead pipeline", "Dr. Mike Clark / NASM network outreach → co-created content → affiliate arrangement"],
+    installs2026: 120,
   },
   {
     name: "Medical",
     icon: Stethoscope,
-    color: "#34D399",
-    priority: "Secondary",
-    strategy: "Physical therapists and hospital-supported wellness centers are a natural fit for ZeroWheel's core strength and injury prevention positioning. Longer sales cycles but high credibility and recurring revenue potential. Target PT practices first — smaller decisions, faster closes, strong referral networks.",
-    entryPoint: "Physical therapist practice owners and hospital wellness program directors",
-    keyContacts: "PT practice owners, hospital wellness VPs, orthopedic surgeons (as referrers)",
-    channels: ["B2B Direct", "Thought Leadership (clinical content)", "Medical Conference Presence"],
-    sfNotes: "Account LOB = 'Medical'. PT Practice vs Hospital flag. Clinical outcome tracking for case studies.",
-    targetUnits: 80,
-  },
-  {
-    name: "Corporate Wellness",
-    icon: Briefcase,
-    color: "#F472B6",
-    priority: "Opportunistic",
-    strategy: "Corporate wellness is a large market but requires navigating HR and procurement. Best approach is through existing relationships at mid-size companies where a wellness champion can drive the decision. Not a primary focus in Y1 — opportunistic when inbound comes through.",
-    entryPoint: "HR/Benefits directors or C-suite wellness champions via referral",
-    keyContacts: "HR directors, Chief People Officers, corporate wellness program managers",
-    channels: ["Referral / WOM", "LinkedIn Outreach", "B2B Direct (when inbound)"],
-    sfNotes: "Account LOB = 'Corporate Wellness'. Inbound flag. Referral source tracked.",
-    targetUnits: 60,
+    color: RED,
+    priority: "Tier 2",
+    subLobs: ["Physical Therapists", "Hospital-Supported Wellness Centers", "Health Care Facilities"],
+    namedTargets: ["Crohn's & Colitis Foundation", "Alzheimer's Association", "Hospital wellness center networks", "PT clinic chains", "Executive Team medical referrals"],
+    primaryChannel: "B2B Direct + Thought Leadership",
+    entryPoint: "Physical Therapist or Wellness Director",
+    message: "ZeroWheel's low-impact rotational core training is clinically relevant for post-surgical rehab, Crohn's management, and cognitive health programs. The longevity and core-strength positioning bridges fitness and medical wellness seamlessly.",
+    sequence: ["Executive team medical referrals → warm intro → clinical pilot program", "PT association outreach → case study distribution → facility adoption", "Hospital wellness center direct outreach → demo → department head approval"],
+    installs2026: 80,
   },
   {
     name: "Public Authorities",
     icon: Landmark,
-    color: "#60A5FA",
-    priority: "Opportunistic",
-    strategy: "Parks & Rec, YMCA, and JCC represent high volume but low ASP pressure and long procurement cycles. Police and fire are niche but have strong union-driven wellness budgets. Opportunistic — pursue when inbound or when a champion emerges. Not a Y1 priority.",
-    entryPoint: "Parks & Rec directors, YMCA fitness directors, union wellness reps",
-    keyContacts: "Municipal fitness directors, YMCA regional directors, union benefits managers",
-    channels: ["B2B Direct (when inbound)", "Government RFP monitoring"],
-    sfNotes: "Account LOB = 'Public Authorities'. Procurement cycle flag. RFP tracking.",
-    targetUnits: 30,
+    color: ORANGE,
+    priority: "Tier 2",
+    subLobs: ["Parks & Recreation", "YMCA", "JCC", "Police & Fire Wellness"],
+    namedTargets: ["NRPA Annual Conference", "Tampa — Well Certified District", "City of Denver", "Local governments with wellness centers", "YMCA national + regional"],
+    primaryChannel: "Events (NRPA) + B2B Direct",
+    entryPoint: "Parks & Recreation Director or Wellness Program Manager",
+    message: "ZeroWheel fits the public wellness mandate — accessible, durable, and effective for community fitness programs. GSA procurement pathway available for government facilities.",
+    sequence: ["NRPA Annual Conference → booth demo → badge scan → SF Lead", "Tampa and Denver named-account outreach → city wellness program pilot", "YMCA national account team → program integration proposal"],
+    installs2026: 60,
   },
   {
-    name: "Consumer",
+    name: "Commercial Clubs",
+    icon: Dumbbell,
+    color: GOLD_DIM,
+    priority: "Tier 2",
+    subLobs: ["National Key Accounts", "Regional Key Accounts", "Boutique Studios", "Local Club Chains"],
+    namedTargets: ["National account yearly company meetings", "Appropriate industry trade shows", "Premium member journey programs", "Boutique studio chains"],
+    primaryChannel: "B2B Direct + Trade Shows",
+    entryPoint: "VP of Fitness or Regional Operations Director",
+    message: "ZeroWheel redefines the premium member journey. For commercial clubs targeting the 45+ demographic, rotational core training is a differentiator that drives member retention and premium tier upgrades.",
+    sequence: ["National account meetings → corporate fitness VP outreach → pilot program", "Trade show presence → fitness director demos → regional rollout proposal", "Boutique studio direct outreach → trainer seeding → member program integration"],
+    installs2026: 50,
+  },
+  {
+    name: "Corporate Wellness",
+    icon: Briefcase,
+    color: TEAL,
+    priority: "Tier 3",
+    subLobs: ["Mid/Large Corporation Wellness Programs", "Corporate Wellness Facilities"],
+    namedTargets: ["Top recognized employers in corporate wellness space", "Sports agencies as resellers", "Top management companies as channel partners"],
+    primaryChannel: "Partnerships + B2B Direct",
+    entryPoint: "VP of HR or Corporate Wellness Director",
+    message: "ZeroWheel is a premium wellness benefit that signals investment in employee longevity. For corporations building best-in-class wellness facilities, ZeroWheel is the signature piece that differentiates the program.",
+    sequence: ["Corporate wellness conference outreach → HR director demos", "Management company partnerships → embedded in wellness facility specs", "Sports agency channel partner → reseller agreement"],
+    installs2026: 40,
+  },
+  {
+    name: "Consumer Direct",
     icon: UserCircle,
-    color: "#FB923C",
-    priority: "Secondary",
-    strategy: "Consumer direct is not the primary focus given startup budget constraints. Target high-intent, high-value consumers: serious golfers aged 45–65, pickleball enthusiasts, and longevity-focused individuals. Drive via influencer codes, landing pages, and organic content. $1,000 ASP requires strong proof points — use club and sports performance case studies as social proof.",
-    entryPoint: "Landing pages, influencer codes, organic content, word of mouth",
-    keyContacts: "Individual consumers via digital channels and influencer networks",
-    channels: ["Influencer Network", "Digital / Meta", "Organic Content", "WOM"],
-    sfNotes: "Lead Source = 'Consumer Direct'. Influencer code tracked. E-commerce order integration.",
-    targetUnits: 30,
+    color: "#F472B6",
+    priority: "Tier 3",
+    subLobs: ["Individual Consumer", "Influencer Networks"],
+    namedTargets: ["Delos — Alfredo Carvajal", "Blue Zone — Dan Buettner", "Top 2–3 influencers per macro LOB", "Golf/pickleball enthusiasts 45–70"],
+    primaryChannel: "Influencer Network + Digital Paid",
+    entryPoint: "Individual purchase via website or influencer promo code",
+    message: "For the serious golfer, pickleball player, or longevity-focused individual, ZeroWheel is the at-home or studio training tool that elite athletes use. Influencer credibility + Meta targeting drives direct consumer acquisition.",
+    sequence: ["Meta ads targeting golf/pickleball enthusiasts 45–65 → Typeform → SF Lead", "Influencer promo code → website purchase → onboarding email sequence", "Blue Zone / Delos co-branded content → direct consumer awareness"],
+    installs2026: 30,
   },
 ];
 
-// ─── Salesforce architecture ─────────────────────────────────────────────────
+// ─── Salesforce Architecture ──────────────────────────────────────────────────
 const sfObjects = [
   {
     name: "Lead",
-    color: "#C9A962",
-    icon: Users,
-    fields: ["Lead Source (channel + sub-channel)", "UTM Source / Medium / Campaign", "LOB (macro + sub)", "Territory / Rep Owner", "FinAI Intent Score", "Typeform Completion Status", "Lead Score (auto-calculated)"],
-    automations: ["Auto-assign to rep by territory on creation", "FinAI score triggers priority flag", "5-min rep notification via Slack + email", "SLA breach alert at 24h no contact"],
+    color: GOLD,
+    icon: Target,
+    description: "Every inbound inquiry — from Typeform, FinAI, trade show, or manual entry — starts as a Lead. Leads are qualified and converted to Contacts + Opportunities.",
+    fields: [
+      { field: "Lead Source", type: "Picklist", values: "B2B Direct, E-Commerce, Partner/Referral, Inbound/Marketing, Trade Show, Social/Content, Influencer" },
+      { field: "Lead Score", type: "Number (1–10)", values: "Auto-calculated: segment match (3pts) + budget (2pts) + timeline (2pts) + FinAI score (3pts)" },
+      { field: "Segment", type: "Picklist", values: "Private Club, Maritime, Medical, Sports Performance, Public Authority, Commercial Club, Corporate, Consumer" },
+      { field: "Sub-Segment", type: "Text", values: "e.g., Golf & Country Club, PT Clinic, Cruise Line, BTR Residential" },
+      { field: "UTM Source / Medium / Campaign", type: "Text (3 fields)", values: "Auto-populated from Typeform hidden fields via Zapier" },
+      { field: "Landing Page URL", type: "URL", values: "Page URL at time of Typeform submission" },
+      { field: "FinAI Intent Score", type: "Number (1–10)", values: "Passed from Intercom via API on lead creation" },
+      { field: "Typeform Form ID", type: "Text", values: "Identifies which segment form variant was completed" },
+      { field: "Territory", type: "Picklist", values: "Auto-assigned by segment + geography routing rules" },
+    ],
   },
   {
     name: "Account",
-    color: "#00C9A7",
+    color: TEAL,
     icon: Building2,
-    fields: ["LOB (macro + sub-macro)", "Account Tier (Enterprise / Mid / SMB)", "CMAA Member flag", "Relationship Owner", "Partner flag + Partner Tier", "Annual Revenue estimate", "Decision-Maker contacts linked"],
-    automations: ["Duplicate detection on creation", "Relationship score auto-updated on activity", "Quarterly review task auto-created"],
+    description: "Accounts represent facilities, companies, or organizations. Named accounts are pre-loaded for Troon, Club Corp, CMAA chapters, One Spa World, and other key targets.",
+    fields: [
+      { field: "Account Type", type: "Picklist", values: "Prospect, Customer, Partner, Influencer, Competitor" },
+      { field: "LOB", type: "Picklist", values: "Private Club, Maritime, Medical, Sports Performance, etc." },
+      { field: "Sub-LOB", type: "Text", values: "e.g., Golf & Country Club, Cruise Line, PT Clinic" },
+      { field: "Account Tier", type: "Picklist", values: "Platinum, Gold, Standard (maps to Platinum Clubs, Distinguished Clubs tiers)" },
+      { field: "CMAA Member", type: "Checkbox", values: "Y/N — flags accounts for CMAA campaign targeting" },
+      { field: "Relationship Score", type: "Number (1–5)", values: "Rep-assigned: 1=Cold, 3=Warm, 5=Active Relationship" },
+      { field: "Territory Owner", type: "Lookup: User", values: "Assigned rep — drives all activity routing and reporting" },
+      { field: "Partner Tier", type: "Picklist", values: "Gold, Silver, Bronze — for Partner Account Type" },
+    ],
   },
   {
     name: "Opportunity",
-    color: "#A78BFA",
-    icon: TrendingUp,
-    fields: ["Stage (7-stage pipeline)", "Close Date", "Amount (units × $1,000)", "Lead Source (inherited)", "LOB (inherited)", "Rep Owner + Team", "Next Step (required field)", "Loss Reason (required on Closed Lost)"],
-    automations: ["Stage change triggers next-step task", "Stale opportunity alert (14 days no activity)", "Forecast category auto-set by stage", "Win/Loss survey triggered on close"],
+    color: PURPLE,
+    icon: DollarSign,
+    description: "Opportunities represent active sales cycles. Created when a Lead is converted after BANT qualification. Each opportunity tracks stage, probability, unit count, and close date.",
+    fields: [
+      { field: "Stage", type: "Picklist", values: "Discovery (20%), Demo (40%), Proposal (60%), Negotiation (80%), Closed Won (100%), Closed Lost (0%)" },
+      { field: "Amount", type: "Currency", values: "Unit Count × $1,000 — auto-calculated" },
+      { field: "Unit Count", type: "Number", values: "Number of ZeroWheel units in the deal" },
+      { field: "Close Date", type: "Date", values: "Expected close — drives forecast reports" },
+      { field: "Win Reason", type: "Picklist", values: "Product Fit, Relationship/Trust, ROI Clarity, Demo Quality, Competitive Win" },
+      { field: "Loss Reason", type: "Picklist", values: "Price/Budget, Competitor, Timeline, No Decision, Product Fit — required for Closed Lost" },
+      { field: "Lead Source (inherited)", type: "Text", values: "Carried from Lead — preserves channel attribution through close" },
+      { field: "Campaign Source", type: "Lookup: Campaign", values: "Links opportunity to originating campaign for ROI reporting" },
+    ],
   },
   {
     name: "Campaign",
-    color: "#F59E0B",
+    color: ORANGE,
     icon: Megaphone,
-    fields: ["Channel (B2B / Digital / Influencer / Event)", "UTM Campaign value", "Budget + Actual Spend", "Leads Generated", "Opportunities Created", "Revenue Attributed", "ROI (auto-calculated)"],
-    automations: ["Lead auto-added to campaign on UTM match", "Weekly performance report to marketing", "Budget alert at 80% spend"],
-  },
-  {
-    name: "Partner (Custom)",
-    color: "#F472B6",
-    icon: Handshake,
-    fields: ["Partner Type (Influencer / Alliance / Referral)", "Promo Code", "Units Sold via Code", "Commission Rate ($250/unit)", "Total Commission Owed", "Payout Status", "Partner Tier"],
-    automations: ["Commission auto-calculated on Opp close", "Monthly payout report generated", "Partner performance alert if 0 referrals in 30 days"],
-  },
-];
-
-const sfPipeline = [
-  { stage: "Prospect", prob: 10, color: "#555" },
-  { stage: "Contacted", prob: 20, color: "#C9A962" },
-  { stage: "Qualified", prob: 35, color: "#B8963E" },
-  { stage: "Demo Completed", prob: 50, color: "#A07830" },
-  { stage: "Proposal Sent", prob: 65, color: "#8B6020" },
-  { stage: "Negotiation", prob: 80, color: "#764808" },
-  { stage: "Closed Won", prob: 100, color: "#00C9A7" },
-];
-
-// ─── Accountability cadence ──────────────────────────────────────────────────
-const cadenceItems = [
-  {
-    freq: "Daily",
-    color: "#C9A962",
-    icon: Activity,
-    items: [
-      "Each rep reviews their Salesforce task queue (auto-generated by pipeline stage changes)",
-      "FinAI lead alerts actioned within 2 hours of notification",
-      "New leads contacted within 24-hour SLA — tracked via Salesforce report",
-      "Activity logged same-day: calls, emails, demos (required field enforcement)",
-    ],
-  },
-  {
-    freq: "Weekly",
-    color: "#00C9A7",
-    icon: Calendar,
-    items: [
-      "Team pipeline review: all Opportunities reviewed by stage, next step, and close date",
-      "Stale deal report: any Opportunity with no activity in 7 days flagged for manager review",
-      "Channel performance: leads by source, conversion rates, campaign spend vs leads",
-      "Rep leaderboard: units sold, pipeline value, activity volume — shared with team",
-    ],
-  },
-  {
-    freq: "Monthly",
-    color: "#A78BFA",
-    icon: BarChart3,
-    items: [
-      "Revenue vs budget review: actual installs vs $1M target, by LOB and channel",
-      "Win/loss analysis: closed deals reviewed for patterns — what's working, what isn't",
-      "Partner performance: influencer codes, referral partners — commissions paid, pipeline generated",
-      "Forecast update: 30/60/90-day pipeline weighted by stage probability",
-    ],
-  },
-  {
-    freq: "Quarterly",
-    color: "#F59E0B",
-    icon: RefreshCw,
-    items: [
-      "Strategic review: LOB performance vs plan, channel ROI, territory adjustments",
-      "ICP refinement: update ideal customer profile based on closed-won patterns",
-      "Campaign budget reallocation: kill underperformers, scale winners",
-      "Salesforce data quality audit: completeness, accuracy, duplicate cleanup",
+    description: "Campaigns track every marketing initiative — CMAA conferences, Meta campaigns, influencer programs, content series. Every lead and opportunity is attributed to a campaign.",
+    fields: [
+      { field: "Campaign Type", type: "Picklist", values: "Event, Email, Paid Social, Content, Partner, Influencer, Trade Show" },
+      { field: "Start / End Date", type: "Date", values: "Campaign active window" },
+      { field: "Budget", type: "Currency", values: "Planned spend for the campaign" },
+      { field: "Actual Cost", type: "Currency", values: "Actual spend — updated monthly" },
+      { field: "Expected Revenue", type: "Currency", values: "Projected revenue from campaign-attributed opportunities" },
+      { field: "Leads Generated", type: "Roll-up", values: "Count of Campaign Members with 'Responded' status" },
+      { field: "Opportunities Created", type: "Roll-up", values: "Count of Opportunities attributed to campaign" },
+      { field: "Revenue Won", type: "Roll-up", values: "Sum of Closed Won opportunity amounts attributed to campaign" },
     ],
   },
 ];
 
-// ─── Required SF fields (accountability) ─────────────────────────────────────
-const requiredFields = [
-  { object: "Lead", field: "Lead Source", reason: "Attribution integrity — every lead must be traceable to a channel" },
-  { object: "Lead", field: "LOB (Macro + Sub)", reason: "Territory routing and LOB performance reporting" },
-  { object: "Lead", field: "UTM Parameters", reason: "Digital campaign ROI measurement" },
-  { object: "Opportunity", field: "Next Step", reason: "Pipeline hygiene — no stale deals without a clear next action" },
-  { object: "Opportunity", field: "Close Date", reason: "Forecasting accuracy — must be realistic, reviewed weekly" },
-  { object: "Opportunity", field: "Loss Reason", reason: "Win/loss analysis — required on every Closed Lost deal" },
-  { object: "Activity", field: "Call / Email Outcome", reason: "Sales activity quality tracking, not just volume" },
-  { object: "Partner", field: "Promo Code Used", reason: "Commission accuracy and influencer attribution" },
+const sfAutomations = [
+  { trigger: "Typeform Submitted", action: "Zapier webhook → Create Lead in Salesforce with all fields, UTM, and FinAI score", system: "Zapier + Typeform" },
+  { trigger: "Lead Created (Score ≥ 6)", action: "Auto-assign to rep by territory/segment rules. Create SF Task: 'First Contact — SLA: 1hr'. Email alert to rep.", system: "Salesforce Flow" },
+  { trigger: "Lead Created (Score ≥ 8)", action: "All above + CC manager on email alert. Flag as 'High Priority' in lead record.", system: "Salesforce Flow" },
+  { trigger: "Task Overdue (> 2 hours)", action: "Escalation email to manager. Lead flagged 'SLA Breach' in dashboard.", system: "Salesforce Flow" },
+  { trigger: "FinAI Demo Booked", action: "Create SF Task: 'Demo Confirmed — [Date]'. Update Lead Stage to 'Demo Scheduled'.", system: "Intercom → Salesforce API" },
+  { trigger: "Lead Inactive (30 days)", action: "Enroll in Intercom 30-day nurture email sequence. Update Lead Status to 'Nurture'.", system: "Salesforce Flow → Intercom" },
+  { trigger: "Lead Converted to Opportunity", action: "Create Contact + Account + Opportunity. Inherit Lead Source and Campaign. Notify rep.", system: "Salesforce Native" },
+  { trigger: "Opportunity Closed Won", action: "Create onboarding task. Schedule NPS survey (30 days post-install). Send referral request email.", system: "Salesforce Flow" },
+  { trigger: "Opportunity Closed Lost", action: "Require Loss Reason selection. If future potential: enroll in 90-day re-engagement sequence.", system: "Salesforce Flow" },
+  { trigger: "Partner Promo Code Used", action: "Create Lead with Source = 'Influencer — [Name] — [Code]'. Create Commission record in custom object.", system: "Zapier + Salesforce" },
 ];
 
+// ─── Accountability Data ──────────────────────────────────────────────────────
+const weeklyRhythm = [
+  {
+    day: "Monday",
+    color: GOLD,
+    meetings: [
+      { time: "9:00 AM", title: "Weekly Pipeline Review", attendees: "All Sales Reps + Manager", agenda: "Review all opportunities in Proposal + Negotiation stages. Identify deals at risk. Assign action items for the week." },
+      { time: "10:00 AM", title: "New Lead Assignment Review", attendees: "Manager", agenda: "Review all leads created in prior week. Confirm rep assignment, score accuracy, and SLA compliance. Flag any uncontacted leads." },
+    ],
+  },
+  {
+    day: "Wednesday",
+    color: TEAL,
+    meetings: [
+      { time: "9:00 AM", title: "Channel Performance Check", attendees: "Marketing + BD Lead", agenda: "Review digital campaign CPL, Meta ad performance, content engagement. Kill underperformers. Scale winners. Review partner referral volume." },
+    ],
+  },
+  {
+    day: "Friday",
+    color: PURPLE,
+    meetings: [
+      { time: "2:00 PM", title: "Weekly Wins & Losses Debrief", attendees: "All Sales Reps + Manager", agenda: "Review all Closed Won and Closed Lost from the week. Win reasons, loss reasons, competitive intel. Lessons applied to next week's sequences." },
+    ],
+  },
+];
+
+const monthlyReviews = [
+  { title: "Monthly Revenue vs. Budget Review", owner: "Manager + Finance", items: ["Actual installs vs. monthly target (pace to 1,000)", "Revenue vs. budget by channel and LOB", "Pipeline coverage ratio (3x target minimum)", "Forecast accuracy review — adjust Q2/Q3 targets if needed"] },
+  { title: "Monthly Channel ROI Report", owner: "Marketing Manager", items: ["Cost per lead by channel (B2B Direct, Digital, Events, Influencer)", "Cost per install by channel", "Campaign-attributed revenue vs. spend", "Top 3 performing campaigns — scale decisions"] },
+  { title: "Monthly Partner & Influencer Report", owner: "BD Lead", items: ["Units driven per partner/influencer", "Commission owed and paid", "New partners onboarded", "Partner tier reviews — promotions and exits"] },
+  { title: "Monthly Win/Loss Analysis", owner: "Manager", items: ["Win rate by channel, LOB, and rep", "Top 3 win reasons — reinforce in training", "Top 3 loss reasons — address in product/pricing/messaging", "Competitive win/loss tracking"] },
+];
+
+const repKPIs = [
+  { kpi: "Monthly Installs", target: "Per quota (varies by territory)", tracking: "Salesforce Opportunity — Closed Won" },
+  { kpi: "Pipeline Coverage", target: "3× monthly quota minimum", tracking: "Salesforce Pipeline Report — open opportunities" },
+  { kpi: "First Contact SLA", target: "≥ 90% within 1 business hour", tracking: "Salesforce Task completion time vs. lead creation" },
+  { kpi: "Demo Rate", target: "≥ 15% of qualified leads", tracking: "Salesforce — leads with Demo stage reached" },
+  { kpi: "Win Rate", target: "≥ 25% of opportunities", tracking: "Salesforce — Closed Won / Total Closed" },
+  { kpi: "Activity Volume", target: "50 calls + 100 emails/week", tracking: "Salesforce Activity Report" },
+  { kpi: "Sequence Compliance", target: "3-touch minimum before disqualify", tracking: "Salesforce — leads with < 3 activities flagged" },
+  { kpi: "Lead Recycling", target: "0 leads inactive > 30 days", tracking: "Salesforce — leads with no activity in 30 days" },
+];
+
+// ─── Main Component ───────────────────────────────────────────────────────────
 export default function ZWMarketingInfrastructure() {
   const [activeChannel, setActiveChannel] = useState<string | null>(null);
   const [activeLob, setActiveLob] = useState<number | null>(null);
-  const [activeSfObj, setActiveSfObj] = useState<number | null>(null);
+  const [activeSfObject, setActiveSfObject] = useState<number>(0);
 
-  const activeChannelData = channelDetails.find(c => c.id === activeChannel);
+  const activePlaybook = channelPlaybooks.find(c => c.id === activeChannel) ?? null;
 
   return (
     <Layout section="gtm-zerowheel">
@@ -435,472 +725,490 @@ export default function ZWMarketingInfrastructure() {
       {/* ── HERO ── */}
       <DarkHero
         eyebrow="ZEROWHEEL · MARKETING INFRASTRUCTURE"
-        title="Go-To-Market Infrastructure"
-        description="A fully integrated acquisition engine — from first impression to installed unit — built on Salesforce, Typeform, and FinAI, with clear channel ownership, LOB-specific playbooks, and team accountability at every stage."
+        title="Go-To-Market Engine"
+        description="A fully operational acquisition infrastructure — from first website visit to installed unit. Every channel, every lead stage, every Salesforce field, and every team accountability mechanism documented and ready to execute."
         stats={[
-          { value: "8", label: "Macro LOBs" },
+          { value: "7", label: "Lead Intake Steps" },
           { value: "6", label: "Acquisition Channels" },
-          { value: "1,000", label: "2026 Install Target" },
-          { value: "$1M", label: "Revenue Goal" },
+          { value: "8", label: "LOB Playbooks" },
+          { value: "$1M", label: "2026 Revenue Target" },
         ]}
       />
 
-      {/* ── ACQUISITION FUNNEL ── */}
-      <section id="funnel" className="py-20 bg-[#0A0A0A]">
-        <div className="max-w-6xl mx-auto px-6">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="mb-14">
-            <p className="font-mono text-xs tracking-[0.2em] text-[#C9A962] mb-3">ACQUISITION FUNNEL</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">
-              Multi-Channel Acquisition Engine
-            </h2>
-            <p className="font-body text-white/50 max-w-2xl text-base leading-relaxed">
-              Six distinct channels feed a single, unified funnel. Every lead — regardless of source — flows through Salesforce with full attribution, scoring, and routing. No channel operates in isolation.
-            </p>
+      {/* ── LEAD INTAKE FLOW ── */}
+      <section id="lead-intake" className="py-20 bg-[#0A0A0A]">
+        <div className="container">
+          <Divider />
+          <SectionHeader
+            eyebrow="Lead Intake Flow · Step by Step"
+            title="Website Visit → Salesforce Lead → Sales Reachout"
+            description="Every lead — regardless of channel — flows through this exact 7-step sequence. No lead enters the pipeline without UTM attribution, FinAI qualification, and a Salesforce record. No rep touches a lead without a task, a score, and a transcript."
+          />
+
+          {/* Steps 1–4 */}
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-2 items-start mb-4"
+            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}
+          >
+            {intakeSteps.slice(0, 4).map((step, i) => (
+              <div key={i} className="contents">
+                <FlowNode {...step} />
+                {i < 3 && <div className="hidden lg:flex items-center justify-center"><FlowArrow /></div>}
+              </div>
+            ))}
           </motion.div>
 
-          {/* Channel inputs → Funnel */}
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-10 items-start">
-            {/* Left: Channel list */}
-            <div className="space-y-3">
-              <p className="font-mono text-[10px] tracking-[0.2em] text-white/30 mb-5">ACQUISITION CHANNELS</p>
-              {funnelChannels.map((ch) => (
-                <motion.button
-                  key={ch.id}
-                  onClick={() => setActiveChannel(activeChannel === channelDetails.find(c => c.title.includes(ch.label.split(" ")[0]))?.id ? null : channelDetails.find(c => c.title.includes(ch.label.split(" ")[0]))?.id ?? null)}
-                  whileHover={{ x: 4 }}
-                  className="w-full flex items-center gap-3 p-3 rounded-lg border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all text-left"
-                >
-                  <div className="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0" style={{ backgroundColor: ch.color + "20" }}>
-                    <ch.icon className="w-4 h-4" style={{ color: ch.color }} />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="font-body text-sm font-medium text-white/80">{ch.label}</p>
-                  </div>
-                  <div className="text-right flex-shrink-0">
-                    <span className="font-mono text-xs font-bold" style={{ color: ch.color }}>{ch.pct}%</span>
-                    <p className="font-mono text-[9px] text-white/20">of pipeline</p>
-                  </div>
-                </motion.button>
-              ))}
-            </div>
+          {/* Steps 5–7 */}
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-2 items-start mb-10"
+            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}
+          >
+            {intakeSteps.slice(4).map((step, i) => (
+              <div key={i} className="contents">
+                <FlowNode {...step} />
+                {i < 2 && <div className="hidden lg:flex items-center justify-center"><FlowArrow /></div>}
+              </div>
+            ))}
+          </motion.div>
 
-            {/* Right: Funnel stages */}
-            <div>
-              <p className="font-mono text-[10px] tracking-[0.2em] text-white/30 mb-5">FUNNEL STAGES · 2026 TARGETS</p>
+          {/* Three supporting detail cards */}
+          <div className="grid md:grid-cols-3 gap-6">
+            <DarkCard>
+              <p className="font-mono text-[10px] uppercase tracking-[0.15em] mb-4" style={{ color: GOLD }}>Lead Source Delineation</p>
               <div className="space-y-2">
-                {funnelStages.map((stage, i) => (
-                  <motion.div
-                    key={stage.label}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.08 }}
-                    viewport={{ once: true }}
-                    className="relative"
-                  >
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="font-mono text-xs tracking-wider text-white/60">{stage.label}</span>
-                      <div className="flex items-center gap-3">
-                        <span className="font-body text-xs text-white/30">{stage.desc}</span>
-                        <span className="font-mono text-sm font-bold text-white">{stage.count}</span>
-                      </div>
+                {[
+                  { src: "B2B Direct Sales", detail: "Rep-initiated outreach — logged manually or via sequence" },
+                  { src: "E-Commerce / Website", detail: "Typeform submission from website — no rep involved at entry" },
+                  { src: "Partner & Referral", detail: "Gym, clinic, facility, or management company referral" },
+                  { src: "Inbound / Marketing", detail: "SEO, content, email nurture, or organic social" },
+                  { src: "Trade Show & Events", detail: "Badge scan or QR code at CMAA, PGA Show, NRPA, Sea Trade" },
+                  { src: "Social / Paid Ads", detail: "Meta lead form, LinkedIn Sponsored, Google PMax" },
+                  { src: "Influencer / Affiliate", detail: "Promo code from Delos, Blue Zone, TPI trainer, or affiliate" },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-3 py-2 border-b" style={{ borderColor: "rgba(255,255,255,0.04)" }}>
+                    <div className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ background: GOLD }} />
+                    <div>
+                      <p className="font-body text-xs text-white/60 font-medium">{item.src}</p>
+                      <p className="font-body text-[10px] text-white/25">{item.detail}</p>
                     </div>
-                    <div className="h-8 rounded bg-white/[0.03] overflow-hidden relative">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: stage.width }}
-                        transition={{ duration: 1, delay: i * 0.1, ease: "easeOut" }}
-                        viewport={{ once: true }}
-                        className="h-full rounded flex items-center px-3"
-                        style={{ backgroundColor: stage.color + (i === funnelStages.length - 1 ? "FF" : "60") }}
-                      >
-                        <span className="font-mono text-[10px] font-bold text-black/70">{stage.label}</span>
-                      </motion.div>
-                    </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
+            </DarkCard>
 
-              {/* Funnel summary */}
-              <div className="mt-6 grid grid-cols-3 gap-3">
-                <div className="p-3 rounded-lg bg-white/[0.03] border border-white/5 text-center">
-                  <p className="font-mono text-xs text-white/30 mb-1">LEAD → INSTALL</p>
-                  <p className="font-display text-xl font-bold text-[#C9A962]">28.6%</p>
-                  <p className="font-mono text-[9px] text-white/20">conversion rate</p>
-                </div>
-                <div className="p-3 rounded-lg bg-white/[0.03] border border-white/5 text-center">
-                  <p className="font-mono text-xs text-white/30 mb-1">AVG DEAL SIZE</p>
-                  <p className="font-display text-xl font-bold text-[#C9A962]">$1,000</p>
-                  <p className="font-mono text-[9px] text-white/20">per unit</p>
-                </div>
-                <div className="p-3 rounded-lg bg-white/[0.03] border border-white/5 text-center">
-                  <p className="font-mono text-xs text-white/30 mb-1">REVENUE GOAL</p>
-                  <p className="font-display text-xl font-bold text-[#C9A962]">$1M</p>
-                  <p className="font-mono text-[9px] text-white/20">2026 target</p>
-                </div>
+            <DarkCard>
+              <p className="font-mono text-[10px] uppercase tracking-[0.15em] mb-4" style={{ color: TEAL }}>Lead Scoring Criteria</p>
+              <div className="space-y-3">
+                {[
+                  { factor: "Segment Match", points: "+3 pts", desc: "B2B club / medical / maritime = high-value segment" },
+                  { factor: "Budget Indicated", points: "+2 pts", desc: "Form response indicates budget ≥ $1,000" },
+                  { factor: "Timeline ≤ 90 Days", points: "+2 pts", desc: "Purchase timeline within current quarter" },
+                  { factor: "FinAI Intent Score", points: "Up to +3 pts", desc: "Intercom AI scores 1–10 based on conversation depth" },
+                  { factor: "Decision-Maker Role", points: "+1 pt", desc: "GM, Owner, Director, VP — not staff-level contact" },
+                  { factor: "Return Visitor", points: "+1 pt", desc: "Second or subsequent website visit before conversion" },
+                ].map((item, i) => (
+                  <div key={i} className="rounded-xl border p-3" style={{ borderColor: `${TEAL}15`, background: `${TEAL}05` }}>
+                    <div className="flex items-center justify-between mb-1">
+                      <p className="font-mono text-[10px] font-semibold text-white/70">{item.factor}</p>
+                      <span className="font-mono text-[10px] px-2 py-0.5 rounded-full" style={{ background: `${TEAL}20`, color: TEAL }}>{item.points}</span>
+                    </div>
+                    <p className="font-body text-[10px] text-white/30">{item.desc}</p>
+                  </div>
+                ))}
               </div>
+            </DarkCard>
+
+            <DarkCard>
+              <p className="font-mono text-[10px] uppercase tracking-[0.15em] mb-4" style={{ color: PURPLE }}>Lead Process Rules</p>
+              <div className="space-y-3">
+                {[
+                  { rule: "1-Hour First Contact SLA", desc: "All new leads must receive first contact within 1 business hour. Overdue leads escalate to manager at 2 hours." },
+                  { rule: "3-Touch Minimum Before Disqualify", desc: "Leads must receive at least 3 documented contact attempts (call + email + FinAI re-engage) before being marked unresponsive." },
+                  { rule: "30-Day Nurture Recycling", desc: "Leads with no activity for 30 days are automatically enrolled in Intercom nurture sequence. Status updated to 'Nurture'." },
+                  { rule: "Disqualification Requires Reason", desc: "Reps must select a disqualification reason before closing a lead. No blank closes. Options: no budget, wrong segment, competitor, timing." },
+                  { rule: "High-Score Leads (≥ 8) — Manager CC", desc: "Any lead scoring 8 or above triggers a manager CC on the rep notification email and a 'High Priority' flag in Salesforce." },
+                ].map((item, i) => (
+                  <div key={i} className="rounded-xl border p-3" style={{ borderColor: `${PURPLE}15`, background: `${PURPLE}05` }}>
+                    <p className="font-mono text-[10px] font-semibold mb-1" style={{ color: PURPLE }}>{item.rule}</p>
+                    <p className="font-body text-[10px] text-white/30 leading-relaxed">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </DarkCard>
+          </div>
+        </div>
+      </section>
+
+      {/* ── ACQUISITION FUNNEL ── */}
+      <section id="funnel" className="py-20 bg-[#0A0A0A]">
+        <div className="container">
+          <Divider />
+          <SectionHeader
+            eyebrow="Acquisition Funnel · 2026 Targets"
+            title="From 48,000 Visitors to 1,000 Installs"
+            description="Every stage of the funnel has a defined conversion rate, a responsible system, and a Salesforce record. The funnel is not aspirational — it is the operational target that drives weekly pipeline reviews and monthly forecasting."
+          />
+
+          <div className="grid lg:grid-cols-[2fr_1fr] gap-10 items-start">
+            {/* Funnel stages */}
+            <DarkCard>
+              <p className="font-mono text-[10px] uppercase tracking-[0.15em] mb-6" style={{ color: GOLD }}>Funnel Stages · YTD Actuals + 2026 Targets</p>
+              <div className="space-y-4">
+                {funnelStages.map((stage, i) => (
+                  <div key={i}>
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center gap-3">
+                        <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: stage.color }} />
+                        <span className="font-body text-sm text-white/70">{stage.label}</span>
+                      </div>
+                      <div className="flex items-center gap-4">
+                        <span className="font-mono text-xs font-bold text-white">{stage.count.toLocaleString()}</span>
+                        {stage.pct && (
+                          <span className="font-mono text-[10px] w-10 text-right" style={{ color: stage.color }}>{stage.pct}</span>
+                        )}
+                      </div>
+                    </div>
+                    <ProgressBar value={stage.count} max={funnelStages[0].count} color={stage.color} />
+                    <p className="font-body text-[10px] text-white/25 mt-1 ml-5">{stage.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </DarkCard>
+
+            {/* Channel mix */}
+            <div className="space-y-4">
+              <DarkCard>
+                <p className="font-mono text-[10px] uppercase tracking-[0.15em] mb-5" style={{ color: GOLD }}>Channel Mix · 2026 Install Targets</p>
+                <div className="space-y-4">
+                  {channelMix.map((ch) => (
+                    <div key={ch.id}>
+                      <div className="flex items-center justify-between mb-1.5">
+                        <span className="font-body text-xs text-white/60">{ch.label}</span>
+                        <div className="flex items-center gap-3">
+                          <span className="font-mono text-[10px]" style={{ color: ch.color }}>{ch.target}</span>
+                          <span className="font-mono text-xs font-bold text-white">{ch.pct}%</span>
+                        </div>
+                      </div>
+                      <ProgressBar value={ch.pct} max={100} color={ch.color} />
+                    </div>
+                  ))}
+                </div>
+              </DarkCard>
+
+              <DarkCard>
+                <p className="font-mono text-[10px] uppercase tracking-[0.15em] mb-4" style={{ color: TEAL }}>Key Conversion Benchmarks</p>
+                <div className="space-y-2">
+                  {[
+                    { label: "Visitor → FinAI Engaged", rate: "20%", note: "Industry avg: 8–12%" },
+                    { label: "FinAI → Typeform Submit", rate: "13%", note: "Qualified intent threshold" },
+                    { label: "Lead → MQL", rate: "42%", note: "Score ≥ 6 + segment match" },
+                    { label: "MQL → SQL (Opportunity)", rate: "66%", note: "BANT confirmed by rep" },
+                    { label: "SQL → Demo", rate: "59%", note: "Demo scheduled + completed" },
+                    { label: "Demo → Proposal", rate: "72%", note: "Proposal sent after demo" },
+                    { label: "Overall: Visitor → Install", rate: "2.1%", note: "Target: 1,000 / 48,000" },
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center justify-between py-1.5 border-b" style={{ borderColor: "rgba(255,255,255,0.04)" }}>
+                      <span className="font-body text-[11px] text-white/40">{item.label}</span>
+                      <div className="text-right">
+                        <span className="font-mono text-xs font-bold" style={{ color: TEAL }}>{item.rate}</span>
+                        <p className="font-mono text-[9px] text-white/20">{item.note}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </DarkCard>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── CHANNEL DETAIL PANEL ── */}
-      <AnimatePresence>
-        {activeChannelData && (
-          <motion.section
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="overflow-hidden bg-[#0D0D0D] border-t border-b border-white/5"
-          >
-            <div className="max-w-6xl mx-auto px-6 py-12">
-              <div className="flex items-start justify-between mb-8">
-                <div>
-                  <p className="font-mono text-[10px] tracking-[0.2em] mb-2" style={{ color: activeChannelData.color }}>CHANNEL DEEP-DIVE</p>
-                  <h3 className="font-display text-2xl font-bold text-white">{activeChannelData.title}</h3>
-                  <p className="font-body text-white/40 text-sm mt-1">{activeChannelData.subtitle}</p>
-                </div>
-                <button onClick={() => setActiveChannel(null)} className="text-white/30 hover:text-white/60 transition-colors">
-                  <ChevronUp className="w-5 h-5" />
-                </button>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {/* Tactics */}
-                <div className="md:col-span-2 space-y-4">
-                  <p className="font-mono text-[10px] tracking-[0.2em] text-white/30">TACTICS</p>
-                  {activeChannelData.tactics.map((t, i) => (
-                    <div key={i} className="p-4 rounded-lg bg-white/[0.02] border border-white/5">
-                      <p className="font-body text-sm font-semibold text-white/80 mb-1">{t.label}</p>
-                      <p className="font-body text-xs text-white/40 leading-relaxed">{t.detail}</p>
-                    </div>
-                  ))}
-                </div>
-                {/* SF Tracking + KPIs */}
-                <div className="space-y-5">
-                  <div>
-                    <p className="font-mono text-[10px] tracking-[0.2em] text-white/30 mb-3">SALESFORCE TRACKING</p>
-                    <div className="space-y-2">
-                      {activeChannelData.sfTracking.map((s, i) => (
-                        <div key={i} className="flex items-start gap-2">
-                          <Database className="w-3 h-3 mt-0.5 flex-shrink-0" style={{ color: activeChannelData.color }} />
-                          <p className="font-body text-xs text-white/40 leading-relaxed">{s}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  <div>
-                    <p className="font-mono text-[10px] tracking-[0.2em] text-white/30 mb-3">KEY METRICS</p>
-                    <div className="space-y-2">
-                      {activeChannelData.kpis.map((k, i) => (
-                        <div key={i} className="flex items-center justify-between p-2 rounded bg-white/[0.03]">
-                          <p className="font-body text-xs text-white/50">{k.label}</p>
-                          <p className="font-mono text-xs font-bold" style={{ color: activeChannelData.color }}>{k.target}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.section>
-        )}
-      </AnimatePresence>
+      {/* ── CHANNEL PLAYBOOKS ── */}
+      <section id="channels" className="py-20 bg-[#0A0A0A]">
+        <div className="container">
+          <Divider />
+          <SectionHeader
+            eyebrow="Channel Playbooks · Execution Detail"
+            title="Six Channels. Six Distinct Playbooks."
+            description="Each channel has a defined owner, specific tactics with named targets, a Salesforce tracking setup, outreach sequences, and measurable KPIs. Select a channel to see the full playbook."
+          />
 
-      {/* ── CHANNEL STRATEGY CARDS ── */}
-      <section id="channels" className="py-20 bg-[#080808]">
-        <div className="max-w-6xl mx-auto px-6">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="mb-12">
-            <p className="font-mono text-xs tracking-[0.2em] text-[#C9A962] mb-3">CHANNEL STRATEGY</p>
-            <h2 className="font-display text-3xl font-bold text-white mb-4">Five Channels. One System.</h2>
-            <p className="font-body text-white/50 max-w-2xl text-base leading-relaxed">
-              Each channel has a distinct motion, ownership, and tracking protocol in Salesforce. Click any channel above to expand the full playbook.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {channelDetails.map((ch, i) => (
+          {/* Channel selector */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-8">
+            {channelPlaybooks.map((ch) => (
               <motion.button
                 key={ch.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.07 }}
-                viewport={{ once: true }}
                 onClick={() => setActiveChannel(activeChannel === ch.id ? null : ch.id)}
-                className="text-left p-5 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group"
+                whileHover={{ y: -2 }}
+                className={`p-4 rounded-2xl border text-left transition-all ${activeChannel === ch.id ? "border-opacity-60" : "border-white/5 bg-white/[0.02] hover:bg-white/[0.04]"}`}
+                style={activeChannel === ch.id ? { borderColor: ch.color, background: `${ch.color}10` } : {}}
               >
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: ch.color + "20" }}>
-                    <ch.icon className="w-5 h-5" style={{ color: ch.color }} />
+                <ch.icon className="w-5 h-5 mb-2" style={{ color: ch.color }} />
+                <p className="font-body text-xs font-semibold text-white/80 leading-tight">{ch.title}</p>
+                <p className="font-mono text-[9px] mt-1" style={{ color: ch.color }}>{ch.target.split("·")[0].trim()}</p>
+              </motion.button>
+            ))}
+          </div>
+
+          {/* Active playbook detail */}
+          <AnimatePresence>
+            {activePlaybook && (
+              <motion.div
+                key={activePlaybook.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+                className="rounded-2xl border p-8"
+                style={{ background: CARD_BG, borderColor: `${activePlaybook.color}25` }}
+              >
+                <div className="flex items-start justify-between mb-6">
+                  <div>
+                    <div className="flex items-center gap-3 mb-2">
+                      <activePlaybook.icon className="w-6 h-6" style={{ color: activePlaybook.color }} />
+                      <h3 className="font-display text-2xl font-semibold text-white">{activePlaybook.title}</h3>
+                    </div>
+                    <p className="font-mono text-[10px] uppercase tracking-wider" style={{ color: activePlaybook.color }}>{activePlaybook.target}</p>
+                    <p className="font-body text-xs text-white/30 mt-1">Owner: {activePlaybook.owner}</p>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-white/20 group-hover:text-white/50 transition-colors" />
                 </div>
-                <h3 className="font-display text-base font-semibold text-white mb-1">{ch.title}</h3>
-                <p className="font-body text-xs text-white/40 leading-relaxed">{ch.subtitle}</p>
-                <div className="mt-4 flex flex-wrap gap-1">
-                  {ch.kpis.slice(0, 2).map((k, j) => (
-                    <span key={j} className="font-mono text-[9px] px-2 py-0.5 rounded-full border" style={{ borderColor: ch.color + "40", color: ch.color }}>
-                      {k.label}
-                    </span>
-                  ))}
+
+                <div className="grid md:grid-cols-2 gap-6 mb-6">
+                  {/* Tactics */}
+                  <div>
+                    <p className="font-mono text-[10px] uppercase tracking-[0.15em] mb-4 text-white/40">Tactics & Execution</p>
+                    <div className="space-y-3">
+                      {activePlaybook.tactics.map((t, i) => (
+                        <div key={i} className="rounded-xl border p-4" style={{ borderColor: `${activePlaybook.color}15`, background: `${activePlaybook.color}05` }}>
+                          <p className="font-mono text-[10px] font-semibold mb-2" style={{ color: activePlaybook.color }}>{t.label}</p>
+                          <p className="font-body text-[11px] text-white/35 leading-relaxed">{t.detail}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="space-y-6">
+                    {/* Outreach Sequence */}
+                    <div>
+                      <p className="font-mono text-[10px] uppercase tracking-[0.15em] mb-4 text-white/40">Outreach Sequence</p>
+                      <div className="space-y-2">
+                        {activePlaybook.sequences.map((seq, i) => (
+                          <div key={i} className="flex items-start gap-3 py-2 border-b" style={{ borderColor: "rgba(255,255,255,0.04)" }}>
+                            <span className="font-mono text-[9px] px-2 py-0.5 rounded-full flex-shrink-0 mt-0.5" style={{ background: `${activePlaybook.color}20`, color: activePlaybook.color }}>{seq.step}</span>
+                            <div className="flex-1">
+                              <p className="font-body text-xs text-white/55">{seq.action}</p>
+                              <p className="font-mono text-[9px] text-white/20">{seq.timing}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* KPIs */}
+                    <div>
+                      <p className="font-mono text-[10px] uppercase tracking-[0.15em] mb-4 text-white/40">KPIs & Targets</p>
+                      <div className="space-y-2">
+                        {activePlaybook.kpis.map((kpi, i) => (
+                          <div key={i} className="flex items-center justify-between py-1.5 border-b" style={{ borderColor: "rgba(255,255,255,0.04)" }}>
+                            <span className="font-body text-xs text-white/45">{kpi.label}</span>
+                            <span className="font-mono text-xs font-semibold" style={{ color: activePlaybook.color }}>{kpi.target}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* SF Tracking */}
+                    <div>
+                      <p className="font-mono text-[10px] uppercase tracking-[0.15em] mb-4 text-white/40">Salesforce Tracking Fields</p>
+                      <div className="space-y-1.5">
+                        {activePlaybook.sfFields.map((field, i) => (
+                          <div key={i} className="flex items-start gap-2">
+                            <Database className="w-3 h-3 mt-0.5 flex-shrink-0" style={{ color: GOLD_DIM }} />
+                            <span className="font-body text-[10px] text-white/30 leading-relaxed">{field}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {!activePlaybook && (
+            <div className="rounded-2xl border border-dashed border-white/10 p-12 text-center">
+              <p className="font-body text-sm text-white/20">Select a channel above to view the full playbook</p>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* ── LOB STRATEGIES ── */}
+      <section id="lob-strategy" className="py-20 bg-[#0A0A0A]">
+        <div className="container">
+          <Divider />
+          <SectionHeader
+            eyebrow="LOB-Specific Strategies · Named Targets"
+            title="8 Macro LOBs. Specific Playbooks for Each."
+            description="Each line of business has a defined priority tier, named target accounts and associations, primary acquisition channel, messaging framework, and 2026 install target. These are not generic segments — they are operational playbooks."
+          />
+
+          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-4 mb-6">
+            {lobStrategies.map((lob, i) => (
+              <motion.button
+                key={i}
+                onClick={() => setActiveLob(activeLob === i ? null : i)}
+                initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}
+                className={`p-5 rounded-2xl border text-left transition-all ${activeLob === i ? "" : "border-white/5 bg-white/[0.02] hover:bg-white/[0.04]"}`}
+                style={activeLob === i ? { borderColor: lob.color, background: `${lob.color}10` } : {}}
+              >
+                <div className="flex items-start justify-between mb-3">
+                  <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: `${lob.color}18` }}>
+                    <lob.icon className="w-5 h-5" style={{ color: lob.color }} />
+                  </div>
+                  <span className="font-mono text-[9px] px-2 py-0.5 rounded-full" style={{ background: `${lob.color}20`, color: lob.color }}>{lob.priority}</span>
+                </div>
+                <p className="font-display text-sm font-semibold text-white mb-1">{lob.name}</p>
+                <p className="font-mono text-[10px] mb-3" style={{ color: lob.color }}>{lob.installs2026} installs · 2026</p>
+                <p className="font-body text-[10px] text-white/30 leading-relaxed line-clamp-2">{lob.primaryChannel}</p>
+                <div className="mt-2 flex items-center gap-1 text-white/20">
+                  {activeLob === i ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+                  <span className="font-mono text-[9px]">{activeLob === i ? "collapse" : "expand"}</span>
                 </div>
               </motion.button>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* ── LOB PLAYBOOKS ── */}
-      <section id="lob-strategy" className="py-20 bg-[#0A0A0A]">
-        <div className="max-w-6xl mx-auto px-6">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="mb-12">
-            <p className="font-mono text-xs tracking-[0.2em] text-[#C9A962] mb-3">LOB PLAYBOOKS</p>
-            <h2 className="font-display text-3xl font-bold text-white mb-4">Line-of-Business Strategies</h2>
-            <p className="font-body text-white/50 max-w-2xl text-base leading-relaxed">
-              Each of the 8 macro LOBs has a distinct entry strategy, key contacts, channel mix, and Salesforce tracking protocol. Priority tiers guide where the team spends its time in Y1.
-            </p>
-          </motion.div>
-
-          {/* Priority legend */}
-          <div className="flex gap-4 mb-8">
-            {(["Primary", "Secondary", "Opportunistic"] as const).map(p => (
-              <div key={p} className="flex items-center gap-2">
-                <div className={`w-2 h-2 rounded-full ${p === "Primary" ? "bg-[#C9A962]" : p === "Secondary" ? "bg-[#00C9A7]" : "bg-white/20"}`} />
-                <span className="font-mono text-[10px] text-white/40">{p}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* LOB grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {lobPlaybooks.map((lob, i) => (
+          <AnimatePresence>
+            {activeLob !== null && (
               <motion.div
-                key={lob.name}
+                key={activeLob}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.06 }}
-                viewport={{ once: true }}
-                className="rounded-xl border border-white/5 bg-white/[0.02] overflow-hidden"
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+                className="rounded-2xl border p-8"
+                style={{ background: CARD_BG, borderColor: `${lobStrategies[activeLob].color}25` }}
               >
-                {/* Header */}
-                <button
-                  onClick={() => setActiveLob(activeLob === i ? null : i)}
-                  className="w-full flex items-center gap-4 p-5 text-left hover:bg-white/[0.03] transition-colors"
-                >
-                  <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: lob.color + "20" }}>
-                    <lob.icon className="w-5 h-5" style={{ color: lob.color }} />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-0.5">
-                      <h3 className="font-display text-base font-semibold text-white">{lob.name}</h3>
-                      <span className={`font-mono text-[9px] px-2 py-0.5 rounded-full ${
-                        lob.priority === "Primary" ? "bg-[#C9A962]/15 text-[#C9A962]" :
-                        lob.priority === "Secondary" ? "bg-[#00C9A7]/15 text-[#00C9A7]" :
-                        "bg-white/5 text-white/30"
-                      }`}>{lob.priority}</span>
-                    </div>
-                    <p className="font-mono text-[10px] text-white/30">{lob.targetUnits} units target · ${(lob.targetUnits * 1000).toLocaleString()} revenue</p>
-                  </div>
-                  <div className="flex-shrink-0">
-                    {activeLob === i ? <ChevronUp className="w-4 h-4 text-white/30" /> : <ChevronDown className="w-4 h-4 text-white/30" />}
-                  </div>
-                </button>
+                {(() => {
+                  const lob = lobStrategies[activeLob];
+                  return (
+                    <div className="grid md:grid-cols-3 gap-8">
+                      <div>
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: `${lob.color}18` }}>
+                            <lob.icon className="w-5 h-5" style={{ color: lob.color }} />
+                          </div>
+                          <div>
+                            <p className="font-display text-lg font-semibold text-white">{lob.name}</p>
+                            <p className="font-mono text-[10px]" style={{ color: lob.color }}>{lob.installs2026} installs · {lob.priority}</p>
+                          </div>
+                        </div>
+                        <p className="font-mono text-[10px] uppercase tracking-[0.15em] mb-2 text-white/30">Sub-LOBs</p>
+                        <div className="flex flex-wrap gap-1.5 mb-5">
+                          {lob.subLobs.map((s, i) => (
+                            <span key={i} className="font-body text-[10px] px-2 py-0.5 rounded-full border" style={{ borderColor: `${lob.color}30`, color: `${lob.color}80` }}>{s}</span>
+                          ))}
+                        </div>
+                        <p className="font-mono text-[10px] uppercase tracking-[0.15em] mb-2 text-white/30">Primary Channel</p>
+                        <p className="font-body text-xs text-white/50 mb-4">{lob.primaryChannel}</p>
+                        <p className="font-mono text-[10px] uppercase tracking-[0.15em] mb-2 text-white/30">Entry Point</p>
+                        <p className="font-body text-xs text-white/50">{lob.entryPoint}</p>
+                      </div>
 
-                {/* Expanded content */}
-                <AnimatePresence>
-                  {activeLob === i && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-5 pb-5 space-y-4 border-t border-white/5 pt-4">
-                        <p className="font-body text-sm text-white/50 leading-relaxed">{lob.strategy}</p>
-                        <div className="grid grid-cols-2 gap-3">
-                          <div>
-                            <p className="font-mono text-[9px] tracking-[0.15em] text-white/25 mb-1">ENTRY POINT</p>
-                            <p className="font-body text-xs text-white/50">{lob.entryPoint}</p>
-                          </div>
-                          <div>
-                            <p className="font-mono text-[9px] tracking-[0.15em] text-white/25 mb-1">KEY CONTACTS</p>
-                            <p className="font-body text-xs text-white/50">{lob.keyContacts}</p>
-                          </div>
+                      <div>
+                        <p className="font-mono text-[10px] uppercase tracking-[0.15em] mb-4 text-white/30">Named Targets & Associations</p>
+                        <div className="space-y-1.5 mb-6">
+                          {lob.namedTargets.map((t, i) => (
+                            <div key={i} className="flex items-start gap-2">
+                              <div className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ background: lob.color }} />
+                              <span className="font-body text-xs text-white/50">{t}</span>
+                            </div>
+                          ))}
                         </div>
-                        <div>
-                          <p className="font-mono text-[9px] tracking-[0.15em] text-white/25 mb-2">CHANNELS</p>
-                          <div className="flex flex-wrap gap-1">
-                            {lob.channels.map((ch, j) => (
-                              <span key={j} className="font-mono text-[9px] px-2 py-0.5 rounded-full border border-white/10 text-white/40">{ch}</span>
-                            ))}
-                          </div>
-                        </div>
-                        <div className="p-3 rounded-lg bg-white/[0.02] border border-white/5">
-                          <p className="font-mono text-[9px] tracking-[0.15em] text-white/25 mb-1">SALESFORCE NOTES</p>
-                          <p className="font-body text-xs text-white/40">{lob.sfNotes}</p>
+                        <p className="font-mono text-[10px] uppercase tracking-[0.15em] mb-3 text-white/30">Messaging Framework</p>
+                        <div className="rounded-xl border p-4" style={{ borderColor: `${lob.color}20`, background: `${lob.color}06` }}>
+                          <p className="font-body text-xs text-white/45 leading-relaxed">{lob.message}</p>
                         </div>
                       </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            ))}
-          </div>
 
-          {/* LOB unit target summary bar */}
-          <div className="mt-10 p-6 rounded-xl border border-white/5 bg-white/[0.02]">
-            <p className="font-mono text-[10px] tracking-[0.2em] text-white/30 mb-5">UNIT TARGET DISTRIBUTION BY LOB</p>
-            <div className="space-y-3">
-              {lobPlaybooks.map((lob) => (
-                <div key={lob.name} className="flex items-center gap-4">
-                  <div className="w-28 flex-shrink-0">
-                    <p className="font-mono text-[10px] text-white/40 truncate">{lob.name}</p>
-                  </div>
-                  <div className="flex-1 h-5 bg-white/[0.03] rounded overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${(lob.targetUnits / 1000) * 100}%` }}
-                      transition={{ duration: 0.8, ease: "easeOut" }}
-                      viewport={{ once: true }}
-                      className="h-full rounded"
-                      style={{ backgroundColor: lob.color }}
-                    />
-                  </div>
-                  <div className="w-20 text-right flex-shrink-0">
-                    <span className="font-mono text-xs font-bold text-white">{lob.targetUnits}</span>
-                    <span className="font-mono text-[9px] text-white/30"> units</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="mt-4 pt-4 border-t border-white/5 flex justify-between items-center">
-              <p className="font-mono text-xs text-white/30">Total 2026 Target</p>
-              <p className="font-display text-xl font-bold text-[#C9A962]">1,000 units · $1,000,000</p>
-            </div>
-          </div>
+                      <div>
+                        <p className="font-mono text-[10px] uppercase tracking-[0.15em] mb-4 text-white/30">Acquisition Sequences</p>
+                        <div className="space-y-3">
+                          {lob.sequence.map((seq, i) => (
+                            <div key={i} className="flex items-start gap-3">
+                              <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: `${lob.color}20` }}>
+                                <span className="font-mono text-[9px] font-bold" style={{ color: lob.color }}>{i + 1}</span>
+                              </div>
+                              <p className="font-body text-xs text-white/45 leading-relaxed">{seq}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })()}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </section>
 
       {/* ── SALESFORCE ARCHITECTURE ── */}
-      <section id="salesforce" className="py-20 bg-[#080808]">
-        <div className="max-w-6xl mx-auto px-6">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="mb-12">
-            <p className="font-mono text-xs tracking-[0.2em] text-[#C9A962] mb-3">SALESFORCE ARCHITECTURE</p>
-            <h2 className="font-display text-3xl font-bold text-white mb-4">The System of Record</h2>
-            <p className="font-body text-white/50 max-w-2xl text-base leading-relaxed">
-              Salesforce is the single source of truth for every lead, account, opportunity, campaign, and partner relationship. Every channel feeds into it. Every rep is accountable to it. Every leadership report comes out of it.
-            </p>
-          </motion.div>
+      <section id="salesforce" className="py-20 bg-[#0A0A0A]">
+        <div className="container">
+          <Divider />
+          <SectionHeader
+            eyebrow="Salesforce CRM Architecture"
+            title="Objects, Fields, and Automation Rules"
+            description="The Salesforce data model that powers ZeroWheel's entire GTM operation. Every lead, account, opportunity, and campaign is structured to support attribution, forecasting, and accountability reporting."
+          />
 
-          {/* SF Objects */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+          {/* Object tabs */}
+          <div className="flex gap-2 mb-8 flex-wrap">
             {sfObjects.map((obj, i) => (
-              <motion.div
-                key={obj.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.07 }}
-                viewport={{ once: true }}
-                className="rounded-xl border border-white/5 bg-white/[0.02] overflow-hidden"
+              <button
+                key={i}
+                onClick={() => setActiveSfObject(i)}
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl border font-mono text-xs transition-all ${activeSfObject === i ? "" : "border-white/5 text-white/40 hover:text-white/60"}`}
+                style={activeSfObject === i ? { borderColor: obj.color, color: obj.color, background: `${obj.color}10` } : {}}
               >
-                <button
-                  onClick={() => setActiveSfObj(activeSfObj === i ? null : i)}
-                  className="w-full flex items-center gap-3 p-4 text-left hover:bg-white/[0.03] transition-colors"
-                >
-                  <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: obj.color + "20" }}>
-                    <obj.icon className="w-4 h-4" style={{ color: obj.color }} />
-                  </div>
-                  <div className="flex-1">
-                    <p className="font-display text-sm font-semibold text-white">{obj.name}</p>
-                    <p className="font-mono text-[9px] text-white/30">{obj.fields.length} tracked fields</p>
-                  </div>
-                  {activeSfObj === i ? <ChevronUp className="w-4 h-4 text-white/30" /> : <ChevronDown className="w-4 h-4 text-white/30" />}
-                </button>
-                <AnimatePresence>
-                  {activeSfObj === i && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-4 pb-4 border-t border-white/5 pt-3 space-y-3">
-                        <div>
-                          <p className="font-mono text-[9px] tracking-[0.15em] text-white/25 mb-2">KEY FIELDS</p>
-                          <div className="space-y-1">
-                            {obj.fields.map((f, j) => (
-                              <div key={j} className="flex items-start gap-2">
-                                <div className="w-1 h-1 rounded-full mt-1.5 flex-shrink-0" style={{ backgroundColor: obj.color }} />
-                                <p className="font-body text-xs text-white/40">{f}</p>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                        <div>
-                          <p className="font-mono text-[9px] tracking-[0.15em] text-white/25 mb-2">AUTOMATIONS</p>
-                          <div className="space-y-1">
-                            {obj.automations.map((a, j) => (
-                              <div key={j} className="flex items-start gap-2">
-                                <Zap className="w-3 h-3 mt-0.5 flex-shrink-0" style={{ color: obj.color }} />
-                                <p className="font-body text-xs text-white/40">{a}</p>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
+                <obj.icon className="w-3.5 h-3.5" />
+                {obj.name}
+              </button>
             ))}
           </div>
 
-          {/* 7-Stage Pipeline */}
-          <div className="p-6 rounded-xl border border-white/5 bg-white/[0.02] mb-6">
-            <p className="font-mono text-[10px] tracking-[0.2em] text-white/30 mb-5">7-STAGE OPPORTUNITY PIPELINE</p>
-            <div className="flex items-center gap-1 overflow-x-auto pb-2">
-              {sfPipeline.map((stage, i) => (
-                <div key={stage.stage} className="flex items-center gap-1 flex-shrink-0">
-                  <div className="text-center">
-                    <div
-                      className="px-3 py-2 rounded-lg text-center min-w-[90px]"
-                      style={{ backgroundColor: stage.color + "20", borderColor: stage.color + "40", border: "1px solid" }}
-                    >
-                      <p className="font-mono text-[9px] font-bold" style={{ color: stage.color }}>{stage.prob}%</p>
-                      <p className="font-body text-[10px] text-white/60 mt-0.5 leading-tight">{stage.stage}</p>
-                    </div>
-                  </div>
-                  {i < sfPipeline.length - 1 && <ArrowRight className="w-3 h-3 text-white/15 flex-shrink-0" />}
-                </div>
-              ))}
-            </div>
-            <p className="font-body text-xs text-white/25 mt-3">Each stage change auto-creates a next-step task. Stale deals (14 days no activity) trigger manager alerts. Loss Reason is required on every Closed Lost deal.</p>
-          </div>
-
-          {/* Required fields table */}
-          <div className="p-6 rounded-xl border border-white/5 bg-white/[0.02]">
-            <div className="flex items-center gap-2 mb-5">
-              <Shield className="w-4 h-4 text-[#C9A962]" />
-              <p className="font-mono text-[10px] tracking-[0.2em] text-white/30">REQUIRED FIELDS — DATA INTEGRITY ENFORCEMENT</p>
+          {/* Active object detail */}
+          <div className="rounded-2xl border p-8 mb-8" style={{ background: CARD_BG, borderColor: `${sfObjects[activeSfObject].color}25` }}>
+            <div className="flex items-start gap-4 mb-6">
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: `${sfObjects[activeSfObject].color}18` }}>
+                {(() => { const Ic = sfObjects[activeSfObject].icon; return <Ic className="w-5 h-5" style={{ color: sfObjects[activeSfObject].color }} />; })()}
+              </div>
+              <div>
+                <p className="font-display text-xl font-semibold text-white mb-1">{sfObjects[activeSfObject].name} Object</p>
+                <p className="font-body text-sm text-white/40 leading-relaxed max-w-2xl">{sfObjects[activeSfObject].description}</p>
+              </div>
             </div>
             <div className="overflow-x-auto">
-              <table className="w-full text-left">
+              <table className="w-full">
                 <thead>
-                  <tr className="border-b border-white/5">
-                    <th className="font-mono text-[9px] tracking-[0.15em] text-white/25 pb-3 pr-4">OBJECT</th>
-                    <th className="font-mono text-[9px] tracking-[0.15em] text-white/25 pb-3 pr-4">REQUIRED FIELD</th>
-                    <th className="font-mono text-[9px] tracking-[0.15em] text-white/25 pb-3">WHY IT MATTERS</th>
+                  <tr className="border-b" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
+                    <th className="text-left font-mono text-[10px] uppercase tracking-wider text-white/30 pb-3 pr-6">Field Name</th>
+                    <th className="text-left font-mono text-[10px] uppercase tracking-wider text-white/30 pb-3 pr-6">Type</th>
+                    <th className="text-left font-mono text-[10px] uppercase tracking-wider text-white/30 pb-3">Values / Logic</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {requiredFields.map((f, i) => (
-                    <tr key={i} className="border-b border-white/[0.03]">
-                      <td className="py-2.5 pr-4">
-                        <span className="font-mono text-[10px] px-2 py-0.5 rounded bg-[#C9A962]/10 text-[#C9A962]">{f.object}</span>
+                  {sfObjects[activeSfObject].fields.map((field, i) => (
+                    <tr key={i} className="border-b" style={{ borderColor: "rgba(255,255,255,0.03)" }}>
+                      <td className="py-3 pr-6">
+                        <span className="font-mono text-xs font-semibold" style={{ color: sfObjects[activeSfObject].color }}>{field.field}</span>
                       </td>
-                      <td className="py-2.5 pr-4">
-                        <p className="font-body text-xs text-white/60">{f.field}</p>
+                      <td className="py-3 pr-6">
+                        <span className="font-mono text-[10px] text-white/30">{field.type}</span>
                       </td>
-                      <td className="py-2.5">
-                        <p className="font-body text-xs text-white/35">{f.reason}</p>
+                      <td className="py-3">
+                        <span className="font-body text-[11px] text-white/40 leading-relaxed">{field.values}</span>
                       </td>
                     </tr>
                   ))}
@@ -908,66 +1216,192 @@ export default function ZWMarketingInfrastructure() {
               </table>
             </div>
           </div>
+
+          {/* Automation rules */}
+          <DarkCard>
+            <p className="font-mono text-[10px] uppercase tracking-[0.15em] mb-6" style={{ color: GOLD }}>Salesforce Automation Rules & Flows</p>
+            <div className="space-y-3">
+              {sfAutomations.map((auto, i) => (
+                <div key={i} className="grid md:grid-cols-[1fr_2fr_auto] gap-4 items-start py-3 border-b" style={{ borderColor: "rgba(255,255,255,0.04)" }}>
+                  <div>
+                    <p className="font-mono text-[10px] font-semibold" style={{ color: GOLD }}>TRIGGER</p>
+                    <p className="font-body text-xs text-white/60 mt-1">{auto.trigger}</p>
+                  </div>
+                  <div>
+                    <p className="font-mono text-[10px] font-semibold text-white/30">ACTION</p>
+                    <p className="font-body text-xs text-white/45 mt-1 leading-relaxed">{auto.action}</p>
+                  </div>
+                  <span className="font-mono text-[9px] px-2 py-1 rounded-full border whitespace-nowrap" style={{ borderColor: `${TEAL}30`, color: `${TEAL}80` }}>{auto.system}</span>
+                </div>
+              ))}
+            </div>
+          </DarkCard>
         </div>
       </section>
 
-      {/* ── TEAM ACCOUNTABILITY ── */}
-      <section id="accountability" className="py-20 bg-[#0A0A0A]">
-        <div className="max-w-6xl mx-auto px-6">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="mb-12">
-            <p className="font-mono text-xs tracking-[0.2em] text-[#C9A962] mb-3">TEAM ACCOUNTABILITY</p>
-            <h2 className="font-display text-3xl font-bold text-white mb-4">Cadence & Accountability Framework</h2>
-            <p className="font-body text-white/50 max-w-2xl text-base leading-relaxed">
-              A system is only as good as the discipline behind it. This cadence ensures every rep, manager, and channel is reviewed at the right frequency — daily for activity, weekly for pipeline, monthly for revenue, quarterly for strategy.
-            </p>
-          </motion.div>
+      {/* ── INFLUENCER & AFFILIATE PROGRAM ── */}
+      <section id="influencer" className="py-20 bg-[#0A0A0A]">
+        <div className="container">
+          <Divider />
+          <SectionHeader
+            eyebrow="Influencer & Affiliate Program"
+            title="$250/Unit Commission. Named Partners. Full Tracking."
+            description="Not a social media campaign. A structured sales partnership program with named anchor influencers, tiered commission bonuses, and full Salesforce tracking from promo code to install."
+          />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {cadenceItems.map((item, i) => (
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
+            {[
+              { name: "Delos — Alfredo Carvajal", category: "Maritime Wellness", color: TEAL, tier: "Anchor", units: "25+ target", detail: "Named WEG relationship. Maritime wellness pioneer with reach across cruise line wellness programs. Co-create in-cabin wellness content. Unique promo code tracked in Salesforce. Target: 25 installs in 2026 via Delos network." },
+              { name: "Blue Zone — Dan Buettner", category: "Longevity & Wellness", color: PURPLE, tier: "Anchor", units: "20+ target", detail: "Named WEG relationship. Blue Zone brand has massive reach in the longevity and aging-athlete space. ZeroWheel's core-strength and longevity positioning is a direct fit. Co-branded content + affiliate arrangement. Target: 20 installs in 2026." },
+              { name: "Dr. Mike Clark / NASM Network", category: "Sports Performance", color: GOLD, tier: "Anchor", units: "15+ target", detail: "NASM founder and sports performance authority. Gateway to TPI-certified trainers, sports performance facilities, and professional athlete networks. Seed ZeroWheel for NASM program integration. Target: 15 installs via NASM/TPI network." },
+            ].map((inf, i) => (
               <motion.div
-                key={item.freq}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.08 }}
-                viewport={{ once: true }}
-                className="p-6 rounded-xl border border-white/5 bg-white/[0.02]"
+                key={i}
+                initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}
+                className="rounded-2xl border p-6"
+                style={{ background: CARD_BG, borderColor: `${inf.color}25` }}
               >
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ backgroundColor: item.color + "20" }}>
-                    <item.icon className="w-4 h-4" style={{ color: item.color }} />
-                  </div>
+                <div className="flex items-start justify-between mb-3">
                   <div>
-                    <p className="font-mono text-xs font-bold" style={{ color: item.color }}>{item.freq}</p>
-                    <p className="font-mono text-[9px] text-white/25">Review Cadence</p>
+                    <p className="font-display text-sm font-semibold text-white">{inf.name}</p>
+                    <p className="font-mono text-[10px] mt-0.5" style={{ color: inf.color }}>{inf.category}</p>
                   </div>
+                  <span className="font-mono text-[9px] px-2 py-0.5 rounded-full" style={{ background: `${inf.color}20`, color: inf.color }}>{inf.tier}</span>
                 </div>
-                <div className="space-y-3">
-                  {item.items.map((point, j) => (
-                    <div key={j} className="flex items-start gap-2">
-                      <CheckCircle2 className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={{ color: item.color }} />
-                      <p className="font-body text-xs text-white/50 leading-relaxed">{point}</p>
-                    </div>
-                  ))}
+                <p className="font-body text-[11px] text-white/35 leading-relaxed mb-4">{inf.detail}</p>
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-[10px] text-white/30">2026 Target</span>
+                  <span className="font-mono text-sm font-bold" style={{ color: inf.color }}>{inf.units}</span>
                 </div>
               </motion.div>
             ))}
           </div>
 
-          {/* Bottom CTA / summary */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-10 p-8 rounded-xl border border-[#C9A962]/20 bg-[#C9A962]/[0.04] text-center"
-          >
-            <p className="font-mono text-[10px] tracking-[0.2em] text-[#C9A962] mb-3">THE BOTTOM LINE</p>
-            <h3 className="font-display text-2xl font-bold text-white mb-3">
-              Every lead is tracked. Every rep is accountable. Every dollar is attributed.
-            </h3>
-            <p className="font-body text-white/40 max-w-2xl mx-auto text-sm leading-relaxed">
-              This infrastructure gives leadership real-time visibility into what's working and what isn't — by channel, by LOB, by rep, and by campaign. The goal is not just to hit 1,000 units in 2026, but to build the data foundation that makes 5,000 units in 2027 a predictable outcome.
-            </p>
-          </motion.div>
+          <div className="grid md:grid-cols-2 gap-6">
+            <DarkCard>
+              <p className="font-mono text-[10px] uppercase tracking-[0.15em] mb-5" style={{ color: GOLD }}>Commission Structure</p>
+              <div className="space-y-3">
+                {[
+                  { tier: "Base Commission", amount: "$250 / unit", condition: "Every install driven via unique promo code", color: GOLD },
+                  { tier: "10-Unit Bonus", amount: "+$500", condition: "Cumulative bonus at 10 installs in a calendar year", color: TEAL },
+                  { tier: "25-Unit Bonus", amount: "+$1,500", condition: "Cumulative bonus at 25 installs in a calendar year", color: PURPLE },
+                  { tier: "50-Unit Bonus", amount: "+$3,500", condition: "Cumulative bonus at 50 installs — top-tier partner status", color: GREEN },
+                ].map((tier, i) => (
+                  <div key={i} className="rounded-xl border p-4 flex items-center justify-between" style={{ borderColor: `${tier.color}20`, background: `${tier.color}06` }}>
+                    <div>
+                      <p className="font-mono text-[10px] font-semibold" style={{ color: tier.color }}>{tier.tier}</p>
+                      <p className="font-body text-[10px] text-white/30 mt-0.5">{tier.condition}</p>
+                    </div>
+                    <span className="font-mono text-lg font-bold" style={{ color: tier.color }}>{tier.amount}</span>
+                  </div>
+                ))}
+              </div>
+            </DarkCard>
+
+            <DarkCard>
+              <p className="font-mono text-[10px] uppercase tracking-[0.15em] mb-5" style={{ color: TEAL }}>Salesforce Tracking Architecture</p>
+              <div className="space-y-3">
+                {[
+                  { label: "Custom Object: Influencer Commission", detail: "Tracks promo code, units driven, commission rate, payment status, and payment date for every influencer partner." },
+                  { label: "Lead Source Field", detail: "'Influencer — [Name] — [Promo Code]' — every lead from an influencer is tagged at creation for full attribution through close." },
+                  { label: "Campaign: Influencer-Program-2026", detail: "All influencer-sourced leads added as Campaign Members. Campaign ROI report shows units, revenue, and commission cost per influencer." },
+                  { label: "Monthly Commission Report", detail: "Auto-generated Salesforce report: units per influencer, commission owed, commission paid, and outstanding balance. Sent to BD Lead on 1st of each month." },
+                  { label: "Tier Review Dashboard", detail: "Real-time dashboard showing each influencer's progress toward 10/25/50-unit bonus thresholds. Visible to BD Lead and management." },
+                ].map((item, i) => (
+                  <div key={i} className="rounded-xl border p-3" style={{ borderColor: `${TEAL}15`, background: `${TEAL}05` }}>
+                    <p className="font-mono text-[10px] font-semibold mb-1" style={{ color: TEAL }}>{item.label}</p>
+                    <p className="font-body text-[10px] text-white/30 leading-relaxed">{item.detail}</p>
+                  </div>
+                ))}
+              </div>
+            </DarkCard>
+          </div>
+        </div>
+      </section>
+
+      {/* ── TEAM ACCOUNTABILITY ── */}
+      <section id="accountability" className="py-20 bg-[#0A0A0A]">
+        <div className="container">
+          <Divider />
+          <SectionHeader
+            eyebrow="Team Accountability & Cadence"
+            title="Weekly Rhythm. Monthly Reviews. Rep-Level KPIs."
+            description="Accountability is not a quarterly check-in. It is a weekly rhythm of pipeline reviews, channel performance checks, and win/loss debriefs — all anchored to Salesforce data, not self-reported numbers."
+          />
+
+          {/* Weekly rhythm */}
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
+            {weeklyRhythm.map((day, i) => (
+              <motion.div
+                key={i}
+                initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}
+                className="rounded-2xl border p-6"
+                style={{ background: CARD_BG, borderColor: `${day.color}25` }}
+              >
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] mb-4" style={{ color: day.color }}>{day.day}</p>
+                {day.meetings.map((mtg, j) => (
+                  <div key={j} className={j > 0 ? "mt-4 pt-4 border-t" : ""} style={{ borderColor: "rgba(255,255,255,0.06)" }}>
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="font-mono text-[9px] px-2 py-0.5 rounded-full" style={{ background: `${day.color}20`, color: day.color }}>{mtg.time}</span>
+                    </div>
+                    <p className="font-display text-sm font-semibold text-white mb-1">{mtg.title}</p>
+                    <p className="font-mono text-[10px] text-white/30 mb-2">{mtg.attendees}</p>
+                    <p className="font-body text-[11px] text-white/35 leading-relaxed">{mtg.agenda}</p>
+                  </div>
+                ))}
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Monthly reviews */}
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            {monthlyReviews.map((review, i) => (
+              <DarkCard key={i}>
+                <p className="font-mono text-[10px] uppercase tracking-[0.15em] mb-1" style={{ color: GOLD }}>Monthly Review</p>
+                <p className="font-display text-sm font-semibold text-white mb-1">{review.title}</p>
+                <p className="font-body text-[10px] text-white/30 mb-4">Owner: {review.owner}</p>
+                <div className="space-y-2">
+                  {review.items.map((item, j) => (
+                    <div key={j} className="flex items-start gap-2">
+                      <CheckCircle2 className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={{ color: GOLD_DIM }} />
+                      <span className="font-body text-xs text-white/40">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </DarkCard>
+            ))}
+          </div>
+
+          {/* Rep KPI table */}
+          <DarkCard>
+            <p className="font-mono text-[10px] uppercase tracking-[0.15em] mb-6" style={{ color: GOLD }}>Rep-Level KPIs — Tracked Weekly in Salesforce</p>
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
+                    <th className="text-left font-mono text-[10px] uppercase tracking-wider text-white/30 pb-3 pr-6">KPI</th>
+                    <th className="text-left font-mono text-[10px] uppercase tracking-wider text-white/30 pb-3 pr-6">Target</th>
+                    <th className="text-left font-mono text-[10px] uppercase tracking-wider text-white/30 pb-3">Salesforce Tracking Method</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {repKPIs.map((kpi, i) => (
+                    <tr key={i} className="border-b" style={{ borderColor: "rgba(255,255,255,0.03)" }}>
+                      <td className="py-3 pr-6">
+                        <span className="font-body text-sm text-white/70">{kpi.kpi}</span>
+                      </td>
+                      <td className="py-3 pr-6">
+                        <span className="font-mono text-xs font-semibold" style={{ color: GOLD }}>{kpi.target}</span>
+                      </td>
+                      <td className="py-3">
+                        <span className="font-body text-xs text-white/35">{kpi.tracking}</span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </DarkCard>
         </div>
       </section>
     </Layout>
