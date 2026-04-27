@@ -5,7 +5,7 @@
  */
 
 import { motion } from "framer-motion";
-import { Target, TrendingUp, Users, BarChart3, ArrowRight, CheckCircle2, Globe, Building2, Dumbbell, Stethoscope, Ship, Shield, Zap, Award, DollarSign, Layers, Store } from "lucide-react";
+import { Target, TrendingUp, Users, BarChart3, ArrowRight, CheckCircle2, Globe, Building2, Dumbbell, Stethoscope, Ship, Shield, Zap, Award, DollarSign, Layers, Store, Star, Package } from "lucide-react";
 import Layout from "@/components/Layout";
 import LightHero from "@/components/LightHero";
 import { fadeInUp, staggerContainer, scaleIn } from "@/lib/animations";
@@ -59,29 +59,33 @@ export default function ZWOverview() {
               Market Opportunity
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-5 text-black">
-              One Device, Five Markets
+              One Device, Nine Markets
             </motion.h2>
             <motion.p variants={fadeInUp} className="font-body text-base text-black/55 max-w-2xl mx-auto">
               A motorized core training device with scalable difficulty has a unique advantage — 
               it serves everyone from rehabilitation patients to elite athletes, creating 
-              simultaneous market entry across five distinct verticals.
+              simultaneous market entry across nine distinct verticals.
             </motion.p>
           </motion.div>
 
-          {/* 5 Market Segments */}
+          {/* 9 Market Segments */}
           <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 max-w-6xl mx-auto"
+            className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-4 max-w-5xl mx-auto"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
             {[
-              { icon: Dumbbell, label: "Premium Clubs", description: "Private clubs, fitness centers, and group fitness studios" },
-              { icon: Award, label: "Pro & College Athletics", description: "Professional teams, collegiate programs, and youth training" },
-              { icon: Stethoscope, label: "Medical & Rehab", description: "Physical therapy clinics, hospitals, and longevity centers" },
-              { icon: Shield, label: "Military & Government", description: "Armed forces, law enforcement, and GSA-compliant procurement" },
-              { icon: Building2, label: "Corporate & Hospitality", description: "Corporate wellness, hotels, resorts, and maritime vessels" },
+              { icon: Star, label: "Private Clubs", description: "Golf, country, city, and leisure clubs" },
+              { icon: Dumbbell, label: "Commercial Fitness", description: "Health clubs, boutique studios, and fitness chains" },
+              { icon: Stethoscope, label: "Medical & Rehab", description: "Physical therapy, sports medicine, and longevity centers" },
+              { icon: Package, label: "Direct-to-Consumer", description: "E-commerce, social commerce, and retail" },
+              { icon: Target, label: "Corporate Wellness", description: "Fortune 500 wellness programs and corporate fitness" },
+              { icon: Award, label: "Professional Sports", description: "Pro teams, collegiate athletics, and performance training" },
+              { icon: Building2, label: "Hospitality & Amenities", description: "Luxury hotels, resorts, and premium residential" },
+              { icon: Shield, label: "Military & Government", description: "DoD, VA rehab, and GSA-compliant procurement" },
+              { icon: Ship, label: "Cruise & Maritime", description: "Cruise lines, superyachts, and marine fitness" },
             ].map((touchpoint, i) => (
               <motion.div
                 key={i}
