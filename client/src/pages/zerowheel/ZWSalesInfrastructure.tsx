@@ -15,11 +15,10 @@ import {
 } from "recharts";
 import {
   TrendingUp, Users, Target, DollarSign,
-  CheckCircle2, XCircle, AlertCircle, Activity, BarChart3,
-  Zap, MessageSquare, Database, Globe, ArrowRight, ArrowDown,
-  Layers, Settings, Filter, Mail, Phone, Calendar, Award,
-  GitBranch, Cpu, BarChart2, RefreshCw, ShoppingCart, Link2,
-  Workflow, Bot, FormInput, CloudCog,
+  CheckCircle2, XCircle, Activity, BarChart3,
+  Zap, Database, ArrowRight, ArrowDown,
+  Mail, Phone, Calendar,
+  Bot,
 } from "lucide-react";
 import Layout from "@/components/Layout";
 import { SectionNav } from "@/components/SectionNav";
@@ -28,8 +27,6 @@ import { fadeInUp, staggerContainer } from "@/lib/animations";
 // ─── Section Nav ────────────────────────────────────────────────────────────
 const sections = [
   { id: "hero", label: "Overview" },
-  { id: "tech-stack", label: "Tech Stack" },
-  { id: "lead-intake", label: "Lead Intake" },
   { id: "lead-to-opp", label: "Lead → Opp" },
   { id: "opp-to-close", label: "Opp → Close" },
   { id: "lead-funnel", label: "Funnel Data" },
@@ -271,213 +268,30 @@ export default function ZWSalesInfrastructure() {
               <span style={{ color: GOLD }}>Infrastructure</span>
             </motion.h1>
             <motion.p variants={fadeInUp} className="font-body text-lg text-white/40 max-w-2xl leading-relaxed mb-10">
-              A fully integrated sales and marketing infrastructure for ZeroWheel — from first website visit to closed install.
-              Built on Salesforce CRM, Typeform lead intake, and Intercom AI, this system tracks every lead, opportunity, and
-              revenue dollar across all channels and sales team members.
+              Revenue operations execution for ZeroWheel — pipeline management, opportunity tracking, rep performance,
+              and revenue forecasting. For the full GTM strategy, systems architecture, channel playbooks, and lead funnel
+              design, see the <a href="/gtm/zerowheel/marketing-infrastructure" className="underline" style={{ color: '#C9A962' }}>Marketing Plan</a>.
             </motion.p>
 
           </motion.div>
         </div>
       </section>
 
-      {/* ── TECH STACK ───────────────────────────────────────────────────── */}
-      <section id="tech-stack" className="py-20 bg-[#0A0A0A]">
+      {/* ── CROSS-REFERENCE TO MARKETING PLAN ─────────────────────────── */}
+      <section className="py-12 bg-[#0A0A0A]">
         <div className="container">
-          <div className="h-px mb-16" style={{ background: "linear-gradient(to right, transparent, rgba(201,169,98,0.2), transparent)" }} />
-          <SectionHeader
-            eyebrow="Technology Stack"
-            title="Three Platforms. One Unified System."
-            description="The ZeroWheel revenue infrastructure is built on three best-in-class platforms that integrate seamlessly — Salesforce as the CRM backbone, Typeform for intelligent lead capture, and Intercom with FinAI for AI-powered lead qualification and real-time engagement."
-          />
-
-          <motion.div className="grid md:grid-cols-3 gap-6 mb-12" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
-            {/* Salesforce */}
-            <motion.div variants={fadeInUp} className="rounded-2xl border p-8" style={{ background: CARD_BG, borderColor: `${GOLD}25` }}>
-              <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-5" style={{ background: `${GOLD}15` }}>
-                <Database className="w-6 h-6" style={{ color: GOLD }} />
-              </div>
-              <div className="flex items-center gap-2 mb-1">
-                <p className="font-display text-xl font-semibold text-white">Salesforce CRM</p>
-                <span className="text-[9px] font-mono px-2 py-0.5 rounded-full" style={{ background: `${GOLD}20`, color: GOLD }}>CORE</span>
-              </div>
-              <p className="font-mono text-[10px] uppercase tracking-wider mb-4" style={{ color: GOLD_DIM }}>Lead & Opportunity Management</p>
-              <p className="font-body text-sm text-white/40 leading-relaxed mb-5">
-                Central CRM for all lead records, opportunity tracking, pipeline management, and revenue forecasting. Every lead from every channel flows into Salesforce with full campaign attribution, rep assignment, and stage tracking.
-              </p>
-              <ul className="space-y-2">
-                {[
-                  "Lead & Contact records with source attribution",
-                  "Opportunity stages: Discovery → Contract",
-                  "Campaign tracking with ROI reporting",
-                  "Sales team activity logging (calls, emails, tasks)",
-                  "Revenue forecasting and pipeline analytics",
-                  "Win/loss reason capture and reporting",
-                  "Automated lead routing and rep assignment",
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={{ color: GOLD }} />
-                    <span className="font-body text-xs text-white/45">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            {/* Typeform */}
-            <motion.div variants={fadeInUp} className="rounded-2xl border p-8" style={{ background: CARD_BG, borderColor: `${TEAL}25` }}>
-              <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-5" style={{ background: `${TEAL}15` }}>
-                <FormInput className="w-6 h-6" style={{ color: TEAL }} />
-              </div>
-              <div className="flex items-center gap-2 mb-1">
-                <p className="font-display text-xl font-semibold text-white">Typeform</p>
-                <span className="text-[9px] font-mono px-2 py-0.5 rounded-full" style={{ background: `${TEAL}20`, color: TEAL }}>INTAKE</span>
-              </div>
-              <p className="font-mono text-[10px] uppercase tracking-wider mb-4" style={{ color: `${TEAL}80` }}>Lead Capture & Qualification</p>
-              <p className="font-body text-sm text-white/40 leading-relaxed mb-5">
-                Conversational lead intake forms embedded on the ZeroWheel website and landing pages. Typeform's conditional logic routes prospects through tailored question flows based on their segment (club, medical, corporate, consumer), capturing rich qualification data before the lead ever reaches a rep.
-              </p>
-              <ul className="space-y-2">
-                {[
-                  "Segment-specific intake forms (B2B vs. consumer)",
-                  "Conditional logic for intelligent branching",
-                  "UTM parameter capture for campaign attribution",
-                  "Automatic Salesforce lead creation via Zapier/API",
-                  "Lead scoring based on form responses",
-                  "Multi-step forms with progress indicators",
-                  "Mobile-optimized for consumer direct channel",
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={{ color: TEAL }} />
-                    <span className="font-body text-xs text-white/45">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            {/* Intercom / FinAI */}
-            <motion.div variants={fadeInUp} className="rounded-2xl border p-8" style={{ background: CARD_BG, borderColor: `${PURPLE}25` }}>
-              <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-5" style={{ background: `${PURPLE}15` }}>
-                <Bot className="w-6 h-6" style={{ color: PURPLE }} />
-              </div>
-              <div className="flex items-center gap-2 mb-1">
-                <p className="font-display text-xl font-semibold text-white">Intercom + FinAI</p>
-                <span className="text-[9px] font-mono px-2 py-0.5 rounded-full" style={{ background: `${PURPLE}20`, color: PURPLE }}>AI</span>
-              </div>
-              <p className="font-mono text-[10px] uppercase tracking-wider mb-4" style={{ color: `${PURPLE}80` }}>AI-Enabled Engagement & Qualification</p>
-              <p className="font-body text-sm text-white/40 leading-relaxed mb-5">
-                Intercom's FinAI layer provides 24/7 AI-powered chat on the ZeroWheel website and post-form experience. FinAI answers product questions, qualifies intent, books demos, and routes high-intent leads directly to the right sales rep — all in real time, without human intervention.
-              </p>
-              <ul className="space-y-2">
-                {[
-                  "AI chat for instant lead response (24/7)",
-                  "Product Q&A from ZeroWheel knowledge base",
-                  "Intent scoring and lead qualification",
-                  "Automated demo booking via calendar integration",
-                  "Lead routing to correct rep by segment/territory",
-                  "Handoff to live rep with full conversation context",
-                  "Re-engagement sequences for dormant leads",
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={{ color: PURPLE }} />
-                    <span className="font-body text-xs text-white/45">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          </motion.div>
-
-          {/* Integration Architecture */}
-          <DarkCard>
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] mb-2" style={{ color: GOLD }}>Integration Architecture</p>
-            <p className="font-display text-lg font-semibold text-white mb-6">How the Three Systems Connect</p>
-            <div className="grid md:grid-cols-5 gap-2 items-center">
-              <div className="rounded-xl border p-4 text-center" style={{ borderColor: `${TEAL}30`, background: `${TEAL}08` }}>
-                <Globe className="w-5 h-5 mx-auto mb-2" style={{ color: TEAL }} />
-                <p className="font-mono text-[10px] text-white/50 uppercase tracking-wider">Website</p>
-                <p className="font-body text-xs text-white/30 mt-1">Typeform embed + Intercom widget</p>
-              </div>
-              <FlowArrow label="webhook" />
-              <div className="rounded-xl border p-4 text-center" style={{ borderColor: `${PURPLE}30`, background: `${PURPLE}08` }}>
-                <Bot className="w-5 h-5 mx-auto mb-2" style={{ color: PURPLE }} />
-                <p className="font-mono text-[10px] text-white/50 uppercase tracking-wider">Intercom FinAI</p>
-                <p className="font-body text-xs text-white/30 mt-1">Qualify, route, book demo</p>
-              </div>
-              <FlowArrow label="API / Zapier" />
-              <div className="rounded-xl border p-4 text-center" style={{ borderColor: `${GOLD}30`, background: `${GOLD}08` }}>
-                <Database className="w-5 h-5 mx-auto mb-2" style={{ color: GOLD }} />
-                <p className="font-mono text-[10px] text-white/50 uppercase tracking-wider">Salesforce</p>
-                <p className="font-body text-xs text-white/30 mt-1">Lead → Opp → Close</p>
-              </div>
+          <div className="h-px mb-8" style={{ background: "linear-gradient(to right, transparent, rgba(201,169,98,0.2), transparent)" }} />
+          <div className="rounded-2xl border p-6 flex items-center justify-between flex-wrap gap-4" style={{ background: CARD_BG, borderColor: `${GOLD}20` }}>
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-[0.15em] mb-1" style={{ color: GOLD }}>Systems, Channels, and Lead Funnel</p>
+              <p className="font-body text-sm text-white/40">Full systems architecture (Salesforce + Typeform + Intercom + Klaviyo + Zapier), lead funnel, channel playbooks, LOB strategies, and email nurture sequences are documented in the GTM Marketing Plan.</p>
             </div>
-            <div className="mt-6 grid md:grid-cols-3 gap-4">
-              {[
-                { title: "Typeform → Salesforce", desc: "Form submission triggers Zapier webhook → creates Lead record in Salesforce with all form fields, UTM source, and lead score mapped to custom fields.", color: TEAL },
-                { title: "Intercom → Salesforce", desc: "FinAI conversation data syncs to Salesforce contact/lead record. Demo bookings create Tasks. Rep handoffs create Activities with full chat transcript.", color: PURPLE },
-                { title: "Salesforce → Reporting", desc: "All pipeline, activity, and revenue data flows into Salesforce Reports & Dashboards, with custom BI views for leadership on channel ROI and team performance.", color: GOLD },
-              ].map((item, i) => (
-                <div key={i} className="rounded-xl border p-4" style={{ borderColor: `${item.color}20`, background: `${item.color}06` }}>
-                  <div className="flex items-center gap-2 mb-2">
-                    <Link2 className="w-3.5 h-3.5 flex-shrink-0" style={{ color: item.color }} />
-                    <p className="font-mono text-[10px] font-semibold" style={{ color: item.color }}>{item.title}</p>
-                  </div>
-                  <p className="font-body text-[11px] text-white/35 leading-relaxed">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-          </DarkCard>
-        </div>
-      </section>
-
-      {/* ── LEAD INTAKE FLOW ─────────────────────────────────────────────── */}
-      <section id="lead-intake" className="py-20 bg-[#0A0A0A]">
-        <div className="container">
-          <div className="h-px mb-16" style={{ background: "linear-gradient(to right, transparent, rgba(201,169,98,0.2), transparent)" }} />
-          <SectionHeader
-            eyebrow="Lead Intake Flow"
-            title="Website Visitor → Salesforce Lead"
-            description="Every lead starts with a touchpoint — a website visit, a social click, a trade show scan, or a referral. This flow captures, qualifies, and routes that lead into Salesforce with full attribution before a human ever gets involved."
-          />
-
-
-          {/* Row 1: Website Visit → UTM Capture → FinAI Engagement → Typeform Intake */}
-          <motion.div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-2 items-start mb-10" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
-            <FlowNode icon={Globe} title="Website Visit" subtitle="Organic, paid, referral, or direct traffic lands on ZeroWheel site" color={TEAL} badge="Entry" />
-            <FlowArrow />
-            <FlowNode icon={Cpu} title="UTM Capture" subtitle="Source, medium, campaign, and content parameters captured automatically" color={TEAL} system="Typeform" />
-            <FlowArrow />
-            <FlowNode icon={Bot} title="FinAI Engagement" subtitle="Intercom AI responds instantly, answers questions, and scores visitor intent" color={PURPLE} system="Intercom" />
-            <FlowArrow />
-            <FlowNode icon={FormInput} title="Typeform Intake" subtitle="Segment-specific form: B2B (club/medical/corporate) or consumer direct" color={GOLD} system="Typeform" />
-          </motion.div>
-          {/* Row 2: SF Lead Created → Rep Notified → Sales Team Reachout */}
-          <motion.div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2 items-start" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
-            <FlowNode icon={Database} title="SF Lead Created" subtitle="Zapier/API creates Lead record in Salesforce with all fields, score, and source — routed to the right rep" color={GOLD} system="Salesforce" />
-            <FlowArrow />
-            <FlowNode icon={Mail} title="Rep Notified" subtitle="Assigned rep receives email + Salesforce task within 5 minutes of lead creation" color={GOLD} system="Salesforce" />
-            <FlowArrow />
-            <FlowNode icon={Phone} title="Sales Team Reachout" subtitle="Rep calls or emails within SLA. All activity logged in Salesforce automatically" color={GREEN} system="Salesforce" badge="SLA: 1hr" />
-          </motion.div>
-
-          <div className="mt-8 grid md:grid-cols-3 gap-4">
-            {[
-              { title: "Lead Source Delineation", items: ["Direct Sales outreach (rep-initiated)", "E-Commerce (website purchase / inquiry)", "Partner & Referral (gym, clinic, facility)", "Inbound Marketing (SEO, content, email)", "Trade Show & Events", "Social Media & Paid Ads"], color: GOLD },
-              { title: "Campaign Tracking Fields", items: ["UTM Source (google, instagram, partner)", "UTM Medium (cpc, email, organic, referral)", "UTM Campaign (spring-launch, trade-show-2026)", "UTM Content (ad variant / creative ID)", "Landing Page URL at time of conversion", "Typeform form ID (segment identifier)"], color: TEAL },
-              { title: "Lead Scoring Criteria", items: ["Segment match (B2B club/medical = high)", "Budget indicated in form (>$1K = qualified)", "Timeline (within 90 days = hot)", "Decision-maker role (owner/GM = priority)", "FinAI intent score (1–10)", "Prior engagement (return visitor, email open)"], color: PURPLE },
-            ].map((col, i) => (
-              <DarkCard key={i}>
-                <p className="font-mono text-[10px] uppercase tracking-[0.15em] mb-3" style={{ color: col.color }}>{col.title}</p>
-                <ul className="space-y-2">
-                  {col.items.map((item, j) => (
-                    <li key={j} className="flex items-start gap-2">
-                      <div className="w-1 h-1 rounded-full mt-1.5 flex-shrink-0" style={{ background: col.color }} />
-                      <span className="font-body text-xs text-white/45">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </DarkCard>
-            ))}
+            <a href="/gtm/zerowheel/marketing-infrastructure" className="font-mono text-xs px-4 py-2 rounded-xl border transition-colors hover:bg-white/5" style={{ borderColor: `${GOLD}40`, color: GOLD }}>View Marketing Plan →</a>
           </div>
         </div>
       </section>
+
+
 
       {/* ── LEAD → OPPORTUNITY FLOW ──────────────────────────────────────── */}
       <section id="lead-to-opp" className="py-20 bg-[#0A0A0A]">
@@ -850,8 +664,8 @@ export default function ZWSalesInfrastructure() {
           <div className="h-px mb-16" style={{ background: "linear-gradient(to right, transparent, rgba(201,169,98,0.2), transparent)" }} />
           <SectionHeader
             eyebrow="Channel Attribution"
-            title="Which Channels Are Working"
-            description="Compare lead volume, conversion rates, and revenue contribution across all six go-to-market channels. Identify where to double down and where to cut."
+            title="Revenue by Channel"
+            description="Pipeline and closed revenue attribution by acquisition channel. Full channel strategy, playbooks, and LOB-specific execution plans are documented in the Marketing Plan."
           />
 
           <div className="grid lg:grid-cols-3 gap-6">
