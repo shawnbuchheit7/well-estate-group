@@ -1,7 +1,7 @@
 /*
  * LightHero - Premium luxury light hero section
  * Clean white background with subtle warm gradient, gold accents, serif typography
- * Replaces DarkHero for a cohesive luxury-brand aesthetic
+ * Supports optional brand logo display above the eyebrow
  */
 
 import { motion } from "framer-motion";
@@ -20,9 +20,15 @@ interface LightHeroProps {
   description: string;
   stats?: LightHeroStat[];
   children?: ReactNode;
+  /** Optional brand logo URL displayed above the eyebrow */
+  logoSrc?: string;
+  /** Alt text for the logo */
+  logoAlt?: string;
+  /** Optional brand name displayed next to the logo */
+  brandName?: string;
 }
 
-export default function LightHero({ eyebrow, title, description, stats, children }: LightHeroProps) {
+export default function LightHero({ eyebrow, title, description, stats, children, logoSrc, logoAlt, brandName }: LightHeroProps) {
   return (
     <section className="relative overflow-hidden bg-white">
       {/* Subtle warm gradient overlay — pearl/cream tones */}
@@ -56,7 +62,26 @@ export default function LightHero({ eyebrow, title, description, stats, children
             animate="visible"
             variants={staggerContainer}
           >
-            {/* Eyebrow with gold dot accents */}
+            {/* Brand Logo + Name (optional) */}
+            {logoSrc && (
+              <motion.div variants={fadeInUp} className="flex items-center justify-center gap-3 mb-6">
+                <motion.img
+                  src={logoSrc}
+                  alt={logoAlt || "Brand"}
+                  className="h-14 w-auto object-contain"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6 }}
+                />
+                {brandName && (
+                  <span className="font-display text-2xl font-semibold tracking-wide text-black">
+                    {brandName}
+                  </span>
+                )}
+              </motion.div>
+            )}
+
+            {/* Eyebrow with gold line accents */}
             <motion.div variants={fadeInUp} className="flex items-center justify-center gap-3 mb-5">
               <span className="w-8 h-[1px] bg-[#C9A962]/40" />
               <span className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.25em] uppercase">

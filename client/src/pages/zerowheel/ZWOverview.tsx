@@ -28,6 +28,9 @@ export default function ZWOverview() {
       {/* Hero Section — Premium Light */}
       <div id="hero">
         <LightHero
+          logoSrc="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/VgVkPihMTEChPvmp.png"
+          logoAlt="ZeroWheel"
+          brandName="ZeroWheel"
           eyebrow="Go-To-Market Strategy"
           title="Connected Fitness Device — Market Entry"
           description="A comprehensive go-to-market strategy for a next-generation motorized core training device — from premium club placement and professional sports adoption to medical rehabilitation, government procurement, and global hospitality distribution."

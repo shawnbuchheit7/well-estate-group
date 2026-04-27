@@ -40,6 +40,8 @@ const ZWStrategicMarkets = lazy(() => import("./pages/zerowheel/ZWStrategicMarke
 const ZWGlobalMarkets = lazy(() => import("./pages/zerowheel/ZWGlobalMarkets"));
 const ZWSalesInfrastructure = lazy(() => import("./pages/zerowheel/ZWSalesInfrastructure"));
 const ZWBusinessIntelligence = lazy(() => import("./pages/zerowheel/ZWBusinessIntelligence"));
+const ZWProductAnalysis = lazy(() => import("./pages/zerowheel/ZWProductAnalysis"));
+const ZWCommercialStrategy = lazy(() => import("./pages/zerowheel/ZWCommercialStrategy"));
 
 const ProductIntelligence = lazy(() => import("./pages/ProductIntelligence"));
 const VentureCapital = lazy(() => import("./pages/VentureCapital"));
@@ -107,8 +109,10 @@ function App() {
                   
                   {/* ZeroWheel GTM Project */}
                   <Route path="/gtm/zerowheel" component={ZWOverview} />
+                  <Route path="/gtm/zerowheel/product-analysis" component={ZWProductAnalysis} />
                   <Route path="/gtm/zerowheel/lines-of-business" component={ZWLinesOfBusiness} />
                   <Route path="/gtm/zerowheel/sales" component={ZWSales} />
+                  <Route path="/gtm/zerowheel/commercial-strategy" component={ZWCommercialStrategy} />
                   <Route path="/gtm/zerowheel/strategic-markets" component={ZWStrategicMarkets} />
                   <Route path="/gtm/zerowheel/global-markets" component={ZWGlobalMarkets} />
                   <Route path="/gtm/zerowheel/sales-infrastructure" component={ZWSalesInfrastructure} />
