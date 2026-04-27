@@ -5,7 +5,7 @@
  */
 
 import { motion } from "framer-motion";
-import { Target, TrendingUp, Users, BarChart3, ArrowRight, CheckCircle2, Globe, Building2, Dumbbell, Stethoscope, Ship, Shield, Zap, Award } from "lucide-react";
+import { Target, TrendingUp, Users, BarChart3, ArrowRight, CheckCircle2, Globe, Building2, Dumbbell, Stethoscope, Ship, Shield, Zap, Award, DollarSign, Layers, Store } from "lucide-react";
 import Layout from "@/components/Layout";
 import { fadeInUp, staggerContainer, scaleIn } from "@/lib/animations";
 import { SectionNav } from "@/components/SectionNav";
@@ -15,6 +15,7 @@ const sections = [
   { id: "opportunity", label: "Opportunity" },
   { id: "channel-strategy", label: "Channel Strategy" },
   { id: "immediate-focus", label: "Go-To-Market Plan" },
+  { id: "pricing-strategy", label: "Pricing Strategy" },
   { id: "why-weg", label: "Why WEG" },
 ];
 
@@ -195,11 +196,28 @@ export default function ZWOverview() {
             <motion.div 
               variants={fadeInUp} 
               whileHover={{ scale: 1.02 }}
-              className="text-center p-7 rounded-2xl border-2 border-[#C9A962]/30 bg-[#C9A962]/[0.03] flex-1 shadow-[0_4px_20px_rgba(201,169,98,0.08)]"
+              className="text-center p-7 rounded-2xl border border-black/[0.15] bg-white flex-1 shadow-[0_2px_12px_rgba(0,0,0,0.03)]"
             >
               <p className="font-mono text-[10px] text-[#C9A962] uppercase tracking-[0.2em] mb-2">With WEG</p>
               <p className="font-display text-xl font-semibold text-black">Full B2B Distribution</p>
               <p className="font-body text-xs text-black/50 mt-2">8 verticals, 4 global regions, 30+ channel partners</p>
+            </motion.div>
+            <motion.div variants={fadeInUp}>
+              <motion.div
+                animate={{ x: [0, 4, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <ArrowRight className="w-8 h-8 text-[#C9A962] rotate-90 md:rotate-0" />
+              </motion.div>
+            </motion.div>
+            <motion.div 
+              variants={fadeInUp} 
+              whileHover={{ scale: 1.02 }}
+              className="text-center p-7 rounded-2xl border-2 border-[#C9A962]/30 bg-[#C9A962]/[0.03] flex-1 shadow-[0_4px_20px_rgba(201,169,98,0.08)]"
+            >
+              <p className="font-mono text-[10px] text-[#C9A962] uppercase tracking-[0.2em] mb-2">Scale</p>
+              <p className="font-display text-xl font-semibold text-black">Dealers & Resellers</p>
+              <p className="font-body text-xs text-black/50 mt-2">Authorized dealer network, regional resellers, white-label partners</p>
             </motion.div>
           </motion.div>
         </div>
@@ -353,6 +371,162 @@ export default function ZWOverview() {
                 </div>
               </motion.div>
             ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* GTM Pricing Strategy */}
+      <section id="pricing-strategy" className="py-18 bg-[#FAFAF8]">
+        <div className="container">
+          <div className="h-px bg-gradient-to-r from-transparent via-black/8 to-transparent mb-18" />
+          
+          <motion.div
+            className="text-center mb-14"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
+            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+              Pricing Strategy
+            </motion.span>
+            <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-5 text-black">
+              Go-To-Market Pricing Framework
+            </motion.h2>
+            <motion.p variants={fadeInUp} className="font-body text-base text-black/55 max-w-2xl mx-auto">
+              A tiered pricing architecture designed to maximize revenue per unit while maintaining 
+              competitive positioning across B2B, B2C, and dealer/reseller channels.
+            </motion.p>
+          </motion.div>
+
+          {/* Pricing Tiers */}
+          <motion.div
+            className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-14"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
+            {[
+              {
+                tier: "Direct-to-Consumer",
+                price: "$995",
+                unit: "per unit",
+                description: "Full retail pricing through e-commerce, social, and organic channels. Highest margin per unit with complete brand control.",
+                features: ["E-commerce storefront", "Social media direct", "Influencer partnerships", "Full margin capture"],
+                highlight: false,
+              },
+              {
+                tier: "B2B Institutional",
+                price: "$750–$895",
+                unit: "per unit (volume-tiered)",
+                description: "Volume-based pricing for clubs, facilities, sports programs, and corporate wellness. Tiered discounts incentivize fleet deployment.",
+                features: ["5–24 units: $895/unit", "25–99 units: $825/unit", "100+ units: $750/unit", "Custom fleet pricing available"],
+                highlight: true,
+              },
+              {
+                tier: "Dealer & Reseller",
+                price: "$595–$695",
+                unit: "wholesale per unit",
+                description: "Wholesale pricing for authorized dealers and regional resellers. Enables third-party distribution while protecting brand positioning.",
+                features: ["Authorized dealer program", "MAP pricing enforced", "Regional exclusivity options", "Co-op marketing support"],
+                highlight: false,
+              },
+            ].map((tier, i) => (
+              <motion.div
+                key={i}
+                variants={fadeInUp}
+                whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(0,0,0,0.06)" }}
+                className={`relative p-8 rounded-2xl border transition-all duration-300 ${
+                  tier.highlight
+                    ? "border-2 border-[#C9A962]/30 bg-white shadow-[0_4px_20px_rgba(201,169,98,0.08)]"
+                    : "border-black/[0.12] bg-white shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
+                }`}
+              >
+                {tier.highlight && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-[#C9A962] text-white text-[10px] font-mono tracking-wider uppercase">
+                    Primary Channel
+                  </div>
+                )}
+                <p className="font-mono text-[10px] text-[#C9A962] uppercase tracking-[0.2em] mb-3">{tier.tier}</p>
+                <div className="flex items-baseline gap-1 mb-1">
+                  <span className="font-display text-3xl font-semibold text-black">{tier.price}</span>
+                </div>
+                <p className="font-mono text-[10px] text-black/40 uppercase tracking-wider mb-4">{tier.unit}</p>
+                <p className="font-body text-sm text-black/55 leading-relaxed mb-6">{tier.description}</p>
+                <div className="space-y-2">
+                  {tier.features.map((feature, j) => (
+                    <div key={j} className="flex items-center gap-2">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#C9A962] flex-shrink-0" />
+                      <span className="font-body text-xs text-black/60">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Revenue Model Summary */}
+          <motion.div
+            className="max-w-5xl mx-auto"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
+            <motion.div variants={fadeInUp} className="rounded-2xl border border-black/[0.12] bg-white p-8 shadow-[0_2px_12px_rgba(0,0,0,0.03)]">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-full bg-[#C9A962]/10 flex items-center justify-center">
+                  <DollarSign className="w-5 h-5 text-[#C9A962]" />
+                </div>
+                <h3 className="font-display text-xl font-semibold text-black">Revenue Model Assumptions</h3>
+              </div>
+              <div className="grid md:grid-cols-4 gap-6">
+                {[
+                  { label: "Blended ASP", value: "$850", sub: "across all channels" },
+                  { label: "Year 1 Target", value: "1,000", sub: "units sold" },
+                  { label: "Year 1 Revenue", value: "$850K", sub: "gross revenue" },
+                  { label: "Gross Margin", value: "55–65%", sub: "target range" },
+                ].map((metric, i) => (
+                  <div key={i} className="text-center">
+                    <p className="font-display text-2xl font-semibold text-black">{metric.value}</p>
+                    <p className="font-mono text-[10px] text-black/40 uppercase tracking-wider mt-1">{metric.label}</p>
+                    <p className="font-body text-xs text-black/45 mt-0.5">{metric.sub}</p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Additional Pricing Strategies */}
+            <motion.div variants={fadeInUp} className="grid md:grid-cols-3 gap-4 mt-6">
+              {[
+                {
+                  icon: Layers,
+                  title: "Subscription Add-Ons",
+                  description: "Connected app subscription at $19.99/mo per device. Includes performance tracking, coaching content, and facility management dashboard.",
+                },
+                {
+                  icon: Store,
+                  title: "Accessory Revenue",
+                  description: "Replacement parts, premium attachments, and branded accessories. Target 15–20% of hardware revenue in Year 2+.",
+                },
+                {
+                  icon: Globe,
+                  title: "International Pricing",
+                  description: "Region-adjusted pricing for LATAM, EMEA, and Asia markets. Local currency billing with centralized revenue recognition.",
+                },
+              ].map((strategy, i) => (
+                <div key={i} className="flex gap-3 items-start p-5 rounded-xl bg-white border border-black/[0.12] shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
+                  <div className="w-9 h-9 rounded-full bg-[#C9A962]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <strategy.icon className="w-4.5 h-4.5 text-[#C9A962]" />
+                  </div>
+                  <div>
+                    <h4 className="font-display text-sm font-semibold text-black mb-1">{strategy.title}</h4>
+                    <p className="font-body text-xs text-black/55 leading-relaxed">{strategy.description}</p>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
           </motion.div>
         </div>
       </section>
