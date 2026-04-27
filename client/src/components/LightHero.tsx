@@ -84,7 +84,7 @@ export default function LightHero({ eyebrow, title, description, stats, children
             {/* Description */}
             <motion.p
               variants={fadeInUp}
-              className="font-body text-base md:text-lg text-black/55 leading-relaxed max-w-3xl mx-auto"
+              className="font-body text-base md:text-lg text-black/65 leading-relaxed max-w-3xl mx-auto"
             >
               {description}
             </motion.p>
@@ -108,7 +108,7 @@ export default function LightHero({ eyebrow, title, description, stats, children
                   >
                     <AnimatedCounter valueStr={stat.value} duration={1.8} />
                   </motion.div>
-                  <p className="font-mono text-[10px] text-black/40 tracking-wider uppercase mt-1">
+                  <p className="font-mono text-[10px] text-black/50 tracking-wider uppercase mt-1">
                     {stat.label}
                   </p>
                 </motion.div>

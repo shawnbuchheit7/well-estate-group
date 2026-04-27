@@ -8,7 +8,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Building2, Users, Dumbbell, Stethoscope, Home, Landmark, Briefcase, Trophy, UserCircle, ChevronRight } from "lucide-react";
 import Layout from "@/components/Layout";
-import DarkHero from "@/components/DarkHero";
+import LightHero from "@/components/LightHero";
 import { fadeInUp, staggerContainer, scaleIn, staggerContainerFast } from "@/lib/animations";
 import { SectionNav } from "@/components/SectionNav";
 
@@ -91,7 +91,7 @@ export default function GTMLinesOfBusiness() {
 
       {/* Hero */}
       <div id="hero">
-        <DarkHero
+        <LightHero
           eyebrow="Organizational Sales Structure"
           title="Lines of Business"
           description="A comprehensive organizational sales framework spanning 15+ lines of business, organized into 8 macro verticals with detailed sub-segment targeting for maximum market coverage."

@@ -159,7 +159,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                 <ChevronLeft className="w-4 h-4" />
               </Link>
             )}
-            <Link href={homeLink} className="flex items-center gap-3 group" onClick={closeMobileMenu}>
+            <Link href="/" className="flex items-center gap-3 group" onClick={closeMobileMenu}>
               <motion.img 
                 src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/LHselcWIkeWDRNuE.png" 
                 alt="Well Estate Group" 

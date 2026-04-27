@@ -7,7 +7,7 @@
 import { motion } from "framer-motion";
 import { Target, Users, Building2, Stethoscope, Trophy, Briefcase, UserCircle, Dumbbell, Landmark, ArrowRight } from "lucide-react";
 import Layout from "@/components/Layout";
-import DarkHero from "@/components/DarkHero";
+import LightHero from "@/components/LightHero";
 import { fadeInUp, staggerContainer, scaleIn } from "@/lib/animations";
 import { SectionNav } from "@/components/SectionNav";
 
@@ -125,7 +125,7 @@ export default function GTMSales() {
 
       {/* Hero */}
       <div id="hero">
-        <DarkHero
+        <LightHero
           eyebrow="Sales Enablement"
           title="Business Development"
           description="Detailed sales enablement strategy with focus and drive markets, specific targeting per line of business, and an extensive network of industry partnerships."
@@ -222,7 +222,7 @@ export default function GTMSales() {
                 whileHover={{ y: -3, boxShadow: "0 12px 30px rgba(0,0,0,0.06)" }}
                 className="bg-white border border-black/[0.12] rounded-xl overflow-hidden hover:border-[#C9A962]/30 transition-all duration-300"
               >
-                <div className="flex items-center gap-3 px-5 py-3.5 border-b border-black/[0.10] bg-[#FAFAF8]">
+                <div className="flex items-center gap-3 px-5 py-3.5 border-b border-black/[0.15] bg-[#FAFAF8]">
                   <div className="w-9 h-9 rounded-lg bg-[#C9A962]/10 flex items-center justify-center flex-shrink-0">
                     <lob.icon className="w-4.5 h-4.5 text-[#C9A962]" />
                   </div>
@@ -280,7 +280,7 @@ export default function GTMSales() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.02 }}
                 whileHover={{ scale: 1.05, y: -2, boxShadow: "0 8px 20px rgba(0,0,0,0.06)" }}
-                className="px-4 py-2 rounded-full bg-white border border-black/[0.10] text-sm font-body font-medium text-black/60 hover:border-[#C9A962]/40 hover:text-black hover:bg-[#C9A962]/[0.03] transition-all cursor-default shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
+                className="px-4 py-2 rounded-full bg-white border border-black/[0.15] text-sm font-body font-medium text-black/60 hover:border-[#C9A962]/40 hover:text-black hover:bg-[#C9A962]/[0.03] transition-all cursor-default shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
               >
                 {partner}
               </motion.span>

@@ -9,7 +9,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Target, TrendingUp, Zap, Eye, ArrowRight, ArrowUpRight, ArrowDownRight } from "lucide-react";
 import Layout from "@/components/Layout";
-import DarkHero from "@/components/DarkHero";
+import LightHero from "@/components/LightHero";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { SectionNav } from "@/components/SectionNav";
 
@@ -206,7 +206,7 @@ function MatrixGrid({ quadrants, year }: { quadrants: Quadrant[]; year: number }
                     className={`px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-medium tracking-wide transition-all cursor-default ${
                       item.highlighted
                         ? "bg-black text-white shadow-md"
-                        : "bg-white text-black/70 border border-black/[0.10] hover:border-[#C9A962]/30"
+                        : "bg-white text-black/70 border border-black/[0.15] hover:border-[#C9A962]/30"
                     }`}
                   >
                     {item.name}
@@ -236,7 +236,7 @@ export default function GTMStrategicMarkets() {
 
       {/* Hero */}
       <div id="hero">
-        <DarkHero
+        <LightHero
           eyebrow="Strategic Markets"
           title="Where to Play"
           description="A strategic market prioritization framework mapping each line of business against market attractiveness and ease of access — evolving from Year 1 to Year 2 as relationships mature and market intelligence deepens."

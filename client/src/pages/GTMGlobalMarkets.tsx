@@ -8,7 +8,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Globe, MapPin, Users, ChevronDown } from "lucide-react";
 import Layout from "@/components/Layout";
-import DarkHero from "@/components/DarkHero";
+import LightHero from "@/components/LightHero";
 import { fadeInUp, staggerContainer, scaleIn } from "@/lib/animations";
 import { SectionNav } from "@/components/SectionNav";
 
@@ -96,7 +96,7 @@ export default function GTMGlobalMarkets() {
 
       {/* Hero */}
       <div id="hero">
-        <DarkHero
+        <LightHero
           eyebrow="Global Presence"
           title="Global Markets & Organization"
           description="Lines of business mapped across 4 countries with a regional organizational structure spanning 5 global territories — from North America to Asia."
@@ -142,7 +142,7 @@ export default function GTMGlobalMarkets() {
                 whileHover={{ y: -4, boxShadow: "0 16px 40px rgba(0,0,0,0.08)" }}
                 className="bg-white border border-black/[0.12] rounded-xl overflow-hidden hover:border-[#C9A962]/30 transition-all duration-300"
               >
-                <div className="px-6 py-4 border-b border-black/[0.10] bg-[#FAFAF8]">
+                <div className="px-6 py-4 border-b border-black/[0.15] bg-[#FAFAF8]">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <span className="text-2xl">{region.flag}</span>
@@ -192,7 +192,7 @@ export default function GTMGlobalMarkets() {
                           <motion.span
                             key={j}
                             whileHover={{ scale: 1.05 }}
-                            className="px-3 py-1 rounded-full border border-black/[0.10] text-xs font-body text-black/50 hover:border-[#C9A962]/30 transition-colors"
+                            className="px-3 py-1 rounded-full border border-black/[0.15] text-xs font-body text-black/50 hover:border-[#C9A962]/30 transition-colors"
                           >
                             {partner}
                           </motion.span>
@@ -293,7 +293,7 @@ export default function GTMGlobalMarkets() {
                         {region.cities.map((city, j) => (
                           <motion.div 
                             key={j} 
-                            className="px-2.5 py-1.5 rounded-md bg-white border border-black/[0.10] hover:border-[#C9A962]/20 transition-colors"
+                            className="px-2.5 py-1.5 rounded-md bg-white border border-black/[0.15] hover:border-[#C9A962]/20 transition-colors"
                             whileHover={{ x: 2 }}
                           >
                             <div className="flex items-center justify-center gap-1">

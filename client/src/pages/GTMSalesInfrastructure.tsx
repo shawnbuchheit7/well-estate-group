@@ -7,7 +7,7 @@
 import { motion } from "framer-motion";
 import { Database, Mail, BarChart, FileText, Workflow, Megaphone, ArrowRight, Layers, Cloud, MessageSquare, Calendar, Users } from "lucide-react";
 import Layout from "@/components/Layout";
-import DarkHero from "@/components/DarkHero";
+import LightHero from "@/components/LightHero";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { SectionNav } from "@/components/SectionNav";
 
@@ -88,7 +88,7 @@ export default function GTMSalesInfrastructure() {
 
       {/* Hero */}
       <div id="hero">
-        <DarkHero
+        <LightHero
           eyebrow="Sales Infrastructure"
           title="Technology & Platform Stack"
           description="A fully integrated sales technology ecosystem to manage pipeline, automate outreach, track performance, and scale operations across all verticals and regions."
@@ -137,7 +137,7 @@ export default function GTMSalesInfrastructure() {
                 whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(0,0,0,0.06)" }}
                 className="bg-white border border-black/[0.12] rounded-xl overflow-hidden hover:border-[#C9A962]/30 transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
               >
-                <div className="flex items-center gap-3 px-5 py-4 border-b border-black/[0.10] bg-[#FAFAF8]">
+                <div className="flex items-center gap-3 px-5 py-4 border-b border-black/[0.15] bg-[#FAFAF8]">
                   <div className="w-10 h-10 rounded-lg bg-[#C9A962]/10 flex items-center justify-center flex-shrink-0">
                     <platform.icon className="w-5 h-5 text-[#C9A962]" />
                   </div>

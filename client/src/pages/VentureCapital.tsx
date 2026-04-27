@@ -7,7 +7,7 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Target, BarChart3, Briefcase, Globe, Lightbulb } from "lucide-react";
-import DarkHero from "@/components/DarkHero";
+import LightHero from "@/components/LightHero";
 import Layout from "@/components/Layout";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 
@@ -73,7 +73,7 @@ export default function VentureCapital() {
   return (
     <Layout>
       {/* Hero */}
-      <DarkHero
+      <LightHero
         eyebrow="Pillar IV"
         title="Venture & Product Capital"
         description="Strategic investment in emerging fitness and wellness products poised to disrupt the consumer health market. We combine deep industry expertise with capital to accelerate the next generation of health innovation."
@@ -166,7 +166,7 @@ export default function VentureCapital() {
               <div
                 key={i}
                 className={`grid grid-cols-12 gap-4 px-5 sm:px-6 py-4 items-start ${
-                  i !== focusAreas.length - 1 ? "border-b border-black/[0.10]" : ""
+                  i !== focusAreas.length - 1 ? "border-b border-black/[0.15]" : ""
                 } ${i % 2 === 0 ? "bg-white" : "bg-[#FAFAF8]"}`}
               >
                 <div className="col-span-4">
@@ -224,7 +224,7 @@ export default function VentureCapital() {
       </section>
 
       {/* CTA */}
-      <section className="py-14 sm:py-18 bg-[#FAFAF8] border-t border-black/[0.10]">
+      <section className="py-14 sm:py-18 bg-[#FAFAF8] border-t border-black/[0.15]">
         <div className="container px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

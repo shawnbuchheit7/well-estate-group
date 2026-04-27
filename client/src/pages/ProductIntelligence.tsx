@@ -8,7 +8,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ChevronRight, Package, Ruler, Shield, Wrench, Dumbbell, Zap, Eye, CheckCircle2 } from "lucide-react";
-import DarkHero from "@/components/DarkHero";
+import LightHero from "@/components/LightHero";
 import { Link } from "wouter";
 import Layout from "@/components/Layout";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
@@ -103,7 +103,7 @@ export default function ProductIntelligence() {
 
       {/* Hero */}
       <div id="hero">
-        <DarkHero
+        <LightHero
           eyebrow="Pillar III"
           title="Product Intelligence"
           description="Independent product development, testing, and evaluation for next-generation fitness and wellness equipment. Identifying market gaps and engineering solutions that meet the highest standards of performance and design."
@@ -163,7 +163,7 @@ export default function ProductIntelligence() {
                       className="w-full h-auto object-contain mx-auto"
                     />
                   </div>
-                  <div className="border-t border-black/[0.10] px-4 py-3 bg-[#FAFAF8]">
+                  <div className="border-t border-black/[0.15] px-4 py-3 bg-[#FAFAF8]">
                     <p className="font-mono text-[10px] sm:text-[11px] font-semibold text-black/60 tracking-wider text-center uppercase mb-0.5">
                       {view.label}
                     </p>
@@ -218,7 +218,7 @@ export default function ProductIntelligence() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="bg-white rounded-xl p-5 sm:p-6 border border-black/[0.10] shadow-[0_2px_12px_rgba(0,0,0,0.03)]"
+                  className="bg-white rounded-xl p-5 sm:p-6 border border-black/[0.15] shadow-[0_2px_12px_rgba(0,0,0,0.03)]"
                 >
                   <div className="w-8 h-8 rounded-lg bg-[#C9A962]/10 flex items-center justify-center mb-4">
                     <span className="font-mono text-xs font-bold text-[#C9A962]">0{i + 1}</span>
@@ -258,7 +258,7 @@ export default function ProductIntelligence() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="bg-[#FAFAF8] rounded-xl p-5 sm:p-6 border border-black/[0.10] shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] transition-shadow duration-300"
+                className="bg-[#FAFAF8] rounded-xl p-5 sm:p-6 border border-black/[0.15] shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] transition-shadow duration-300"
               >
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-9 h-9 rounded-lg bg-black/[0.04] flex items-center justify-center flex-shrink-0">
@@ -298,13 +298,13 @@ export default function ProductIntelligence() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-3xl mx-auto bg-white rounded-2xl border border-black/[0.10] shadow-[0_4px_16px_rgba(0,0,0,0.04)] overflow-hidden"
+            className="max-w-3xl mx-auto bg-white rounded-2xl border border-black/[0.15] shadow-[0_4px_16px_rgba(0,0,0,0.04)] overflow-hidden"
           >
             {specs.map((spec, i) => (
               <div
                 key={i}
                 className={`flex items-center justify-between px-5 sm:px-6 py-3.5 sm:py-4 ${
-                  i !== specs.length - 1 ? "border-b border-black/[0.08]" : ""
+                  i !== specs.length - 1 ? "border-b border-black/[0.15]" : ""
                 } ${i % 2 === 0 ? "bg-white" : "bg-[#FAFAF8]"}`}
               >
                 <span className="font-body text-xs sm:text-sm text-black/50">{spec.label}</span>
@@ -347,7 +347,7 @@ export default function ProductIntelligence() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
-                  className="flex items-start gap-4 p-4 sm:p-5 rounded-xl bg-[#FAFAF8] border border-black/[0.10] shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
+                  className="flex items-start gap-4 p-4 sm:p-5 rounded-xl bg-[#FAFAF8] border border-black/[0.15] shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
                 >
                   <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-black flex items-center justify-center flex-shrink-0">
                     <span className="font-mono text-[10px] sm:text-xs font-bold text-white">{item.item}</span>
