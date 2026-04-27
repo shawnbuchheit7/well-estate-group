@@ -62,22 +62,25 @@ export default function LightHero({ eyebrow, title, description, stats, children
             animate="visible"
             variants={staggerContainer}
           >
-            {/* Brand Logo + Name (optional) */}
+            {/* Brand Logo + Name (optional) — dark pill for visibility */}
             {logoSrc && (
-              <motion.div variants={fadeInUp} className="flex items-center justify-center gap-3 mb-6">
-                <motion.img
-                  src={logoSrc}
-                  alt={logoAlt || "Brand"}
-                  className="h-14 w-auto object-contain"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6 }}
-                />
-                {brandName && (
-                  <span className="font-display text-2xl font-semibold tracking-wide text-black">
-                    {brandName}
-                  </span>
-                )}
+              <motion.div variants={fadeInUp} className="flex items-center justify-center mb-8">
+                <div className="inline-flex items-center gap-4 bg-[#0A0A0A] rounded-2xl px-8 py-4 shadow-lg">
+                  <motion.img
+                    src={logoSrc}
+                    alt={logoAlt || "Brand"}
+                    className="h-10 w-auto object-contain brightness-[2] invert-0"
+                    style={{ filter: "brightness(2) contrast(1.2)" }}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6 }}
+                  />
+                  {brandName && (
+                    <span className="font-display text-xl font-semibold tracking-wider text-white uppercase">
+                      {brandName}
+                    </span>
+                  )}
+                </div>
               </motion.div>
             )}
 
