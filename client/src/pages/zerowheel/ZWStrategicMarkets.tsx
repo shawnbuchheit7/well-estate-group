@@ -9,7 +9,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Target, TrendingUp, Zap, Eye, ArrowRight, ArrowUpRight, ArrowDownRight } from "lucide-react";
 import Layout from "@/components/Layout";
-import DarkHero from "@/components/DarkHero";
+import LightHero from "@/components/LightHero";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { SectionNav } from "@/components/SectionNav";
 
@@ -236,7 +236,7 @@ export default function ZWStrategicMarkets() {
 
       {/* Hero */}
       <div id="hero">
-        <DarkHero
+        <LightHero
           eyebrow="Strategic Markets"
           title="Where to Play"
           description="A strategic market prioritization framework mapping each line of business against market attractiveness and ease of access — evolving from Year 1 to Year 2 as relationships mature and market intelligence deepens."

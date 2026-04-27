@@ -1,6 +1,6 @@
 /*
  * ZeroWheel Sales Infrastructure
- * Design: Dark premium — #0A0A0A bg, gold (#C9A962) accents, teal highlights
+ * Design: Light premium — white bg, gold (#C9A962) accents, teal highlights
  * Data: $1,000/unit, 1,000 unit / $1M revenue target for 2026
  * Sections: Hero → Tech Stack → Lead Intake Flow → Lead→Opp Flow → Opp→Close Flow
  *           → Funnel Data → Pipeline → Sales Team → Channels → Forecasting → Win/Loss
@@ -23,7 +23,7 @@ import {
 } from "lucide-react";
 import Layout from "@/components/Layout";
 import { SectionNav } from "@/components/SectionNav";
-import DarkHero from "@/components/DarkHero";
+import LightHero from "@/components/LightHero";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 
 // ─── Section Nav ────────────────────────────────────────────────────────────
@@ -49,8 +49,8 @@ const RED = "#F87171";
 const PURPLE = "#A78BFA";
 const ORANGE = "#FB923C";
 const GREEN = "#4ADE80";
-const CARD_BG = "#111111";
-const CARD_BORDER = "rgba(201,169,98,0.12)";
+const CARD_BG = "#FFFFFF";
+const CARD_BORDER = "rgba(0,0,0,0.10)";
 
 // ─── Data ($1,000/unit, 1,000 unit / $1M target for 2026) ───────────────────
 const funnelStages = [
@@ -134,12 +134,12 @@ const DarkTooltip = ({ active, payload, label }: any) => {
   if (!active || !payload?.length) return null;
   return (
     <div className="bg-[#1A1A1A] border border-[rgba(201,169,98,0.2)] rounded-xl px-4 py-3 shadow-2xl min-w-[140px]">
-      <p className="font-mono text-[10px] text-white/40 uppercase tracking-wider mb-2">{label}</p>
+      <p className="font-mono text-[10px] text-black/40 uppercase tracking-wider mb-2">{label}</p>
       {payload.map((p: any, i: number) => (
         <div key={i} className="flex items-center gap-2 mb-1">
           <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: p.color || p.fill }} />
-          <span className="font-body text-xs text-white/60">{p.name}:</span>
-          <span className="font-mono text-xs text-white font-semibold">
+          <span className="font-body text-xs text-black/50">{p.name}:</span>
+          <span className="font-mono text-xs text-black font-semibold">
             {typeof p.value === "number" && (p.name?.toLowerCase().includes("rev") || p.name?.toLowerCase().includes("budget"))
               ? fmt$(p.value) : p.value ?? "—"}
           </span>
@@ -162,8 +162,8 @@ function SectionHeader({ eyebrow, title, description }: { eyebrow: string; title
   return (
     <div className="mb-12">
       <p className="font-mono text-[10px] uppercase tracking-[0.2em] mb-3" style={{ color: GOLD }}>{eyebrow}</p>
-      <h2 className="font-display text-3xl md:text-4xl font-semibold text-white mb-4">{title}</h2>
-      <p className="font-body text-white/40 max-w-2xl leading-relaxed">{description}</p>
+      <h2 className="font-display text-3xl md:text-4xl font-semibold text-black mb-4">{title}</h2>
+      <p className="font-body text-black/40 max-w-2xl leading-relaxed">{description}</p>
     </div>
   );
 }
@@ -171,7 +171,7 @@ function SectionHeader({ eyebrow, title, description }: { eyebrow: string; title
 function ProgressBar({ value, max, color = GOLD }: { value: number; max: number; color?: string }) {
   const pct = Math.min(100, (value / max) * 100);
   return (
-    <div className="h-1.5 rounded-full bg-white/5 overflow-hidden">
+    <div className="h-1.5 rounded-full bg-black/5 overflow-hidden">
       <motion.div
         className="h-full rounded-full"
         style={{ background: color }}
@@ -195,20 +195,20 @@ function FlowNode({ icon: Icon, title, subtitle, color = GOLD, badge, system }: 
       style={{ background: CARD_BG, borderColor: `${color}30` }}
     >
       {badge && (
-        <span className="absolute -top-2.5 left-4 text-[9px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full" style={{ background: color, color: "#0A0A0A" }}>
+        <span className="absolute -top-2.5 left-4 text-[9px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full" style={{ background: color, color: "#FFFFFF" }}>
           {badge}
         </span>
       )}
       {system && (
-        <span className="absolute -top-2.5 right-4 text-[9px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full border" style={{ borderColor: `${color}40`, color: `${color}80`, background: "#0A0A0A" }}>
+        <span className="absolute -top-2.5 right-4 text-[9px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full border" style={{ borderColor: `${color}40`, color: `${color}80`, background: "#FFFFFF" }}>
           {system}
         </span>
       )}
       <div className="w-8 h-8 rounded-xl flex items-center justify-center" style={{ background: `${color}18` }}>
         <Icon className="w-4 h-4" style={{ color }} />
       </div>
-      <p className="font-display text-sm font-semibold text-white leading-tight">{title}</p>
-      <p className="font-body text-[11px] text-white/40 leading-relaxed">{subtitle}</p>
+      <p className="font-display text-sm font-semibold text-black leading-tight">{title}</p>
+      <p className="font-body text-[11px] text-black/40 leading-relaxed">{subtitle}</p>
     </motion.div>
   );
 }
@@ -219,7 +219,7 @@ function FlowArrow({ vertical = false, label }: { vertical?: boolean; label?: st
       {vertical
         ? <ArrowDown className="w-4 h-4" style={{ color: GOLD_DIM }} />
         : <ArrowRight className="w-4 h-4" style={{ color: GOLD_DIM }} />}
-      {label && <span className="font-mono text-[8px] text-white/20 uppercase tracking-wider">{label}</span>}
+      {label && <span className="font-mono text-[8px] text-black/15 uppercase tracking-wider">{label}</span>}
     </div>
   );
 }
@@ -234,7 +234,7 @@ function StageStep({ number, title, owner, actions, color = GOLD }: {
           {number}
         </div>
         <div>
-          <p className="font-display text-sm font-semibold text-white">{title}</p>
+          <p className="font-display text-sm font-semibold text-black">{title}</p>
           <p className="font-mono text-[9px] uppercase tracking-wider mt-0.5" style={{ color: `${color}90` }}>{owner}</p>
         </div>
       </div>
@@ -242,7 +242,7 @@ function StageStep({ number, title, owner, actions, color = GOLD }: {
         {actions.map((a, i) => (
           <li key={i} className="flex items-start gap-2">
             <div className="w-1 h-1 rounded-full mt-1.5 flex-shrink-0" style={{ background: color }} />
-            <span className="font-body text-[11px] text-white/45 leading-relaxed">{a}</span>
+            <span className="font-body text-[11px] text-black/40 leading-relaxed">{a}</span>
           </li>
         ))}
       </ul>
@@ -257,8 +257,8 @@ export default function ZWSalesInfrastructure() {
       <SectionNav sections={sections} />
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <div id="hero" style={{ background: "#0A0A0A" }}>
-        <DarkHero
+      <div id="hero" >
+        <LightHero
           eyebrow="ZeroWheel · Sales Infrastructure"
           title="Revenue Operations Infrastructure"
           description="A fully integrated sales and marketing infrastructure for ZeroWheel — from first website visit to closed install. Built on Salesforce CRM, Typeform lead intake, and Intercom AI, this system tracks every lead, opportunity, and revenue dollar across all channels and sales team members."
@@ -268,12 +268,11 @@ export default function ZWSalesInfrastructure() {
             { value: "$245K", label: "Revenue YTD" },
             { value: "42%", label: "Win Rate" },
           ]}
-          darkFade
         />
       </div>
 
       {/* ── TECH STACK ───────────────────────────────────────────────────── */}
-      <section id="tech-stack" className="py-20 bg-[#0A0A0A]">
+      <section id="tech-stack" className="py-20 bg-white">
         <div className="container">
           <div className="h-px mb-16" style={{ background: "linear-gradient(to right, transparent, rgba(201,169,98,0.2), transparent)" }} />
           <SectionHeader
@@ -289,11 +288,11 @@ export default function ZWSalesInfrastructure() {
                 <Database className="w-6 h-6" style={{ color: GOLD }} />
               </div>
               <div className="flex items-center gap-2 mb-1">
-                <p className="font-display text-xl font-semibold text-white">Salesforce CRM</p>
+                <p className="font-display text-xl font-semibold text-black">Salesforce CRM</p>
                 <span className="text-[9px] font-mono px-2 py-0.5 rounded-full" style={{ background: `${GOLD}20`, color: GOLD }}>CORE</span>
               </div>
               <p className="font-mono text-[10px] uppercase tracking-wider mb-4" style={{ color: GOLD_DIM }}>Lead & Opportunity Management</p>
-              <p className="font-body text-sm text-white/40 leading-relaxed mb-5">
+              <p className="font-body text-sm text-black/40 leading-relaxed mb-5">
                 Central CRM for all lead records, opportunity tracking, pipeline management, and revenue forecasting. Every lead from every channel flows into Salesforce with full campaign attribution, rep assignment, and stage tracking.
               </p>
               <ul className="space-y-2">
@@ -308,7 +307,7 @@ export default function ZWSalesInfrastructure() {
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={{ color: GOLD }} />
-                    <span className="font-body text-xs text-white/45">{item}</span>
+                    <span className="font-body text-xs text-black/40">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -320,11 +319,11 @@ export default function ZWSalesInfrastructure() {
                 <FormInput className="w-6 h-6" style={{ color: TEAL }} />
               </div>
               <div className="flex items-center gap-2 mb-1">
-                <p className="font-display text-xl font-semibold text-white">Typeform</p>
+                <p className="font-display text-xl font-semibold text-black">Typeform</p>
                 <span className="text-[9px] font-mono px-2 py-0.5 rounded-full" style={{ background: `${TEAL}20`, color: TEAL }}>INTAKE</span>
               </div>
               <p className="font-mono text-[10px] uppercase tracking-wider mb-4" style={{ color: `${TEAL}80` }}>Lead Capture & Qualification</p>
-              <p className="font-body text-sm text-white/40 leading-relaxed mb-5">
+              <p className="font-body text-sm text-black/40 leading-relaxed mb-5">
                 Conversational lead intake forms embedded on the ZeroWheel website and landing pages. Typeform's conditional logic routes prospects through tailored question flows based on their segment (club, medical, corporate, consumer), capturing rich qualification data before the lead ever reaches a rep.
               </p>
               <ul className="space-y-2">
@@ -339,7 +338,7 @@ export default function ZWSalesInfrastructure() {
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={{ color: TEAL }} />
-                    <span className="font-body text-xs text-white/45">{item}</span>
+                    <span className="font-body text-xs text-black/40">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -351,11 +350,11 @@ export default function ZWSalesInfrastructure() {
                 <Bot className="w-6 h-6" style={{ color: PURPLE }} />
               </div>
               <div className="flex items-center gap-2 mb-1">
-                <p className="font-display text-xl font-semibold text-white">Intercom + FinAI</p>
+                <p className="font-display text-xl font-semibold text-black">Intercom + FinAI</p>
                 <span className="text-[9px] font-mono px-2 py-0.5 rounded-full" style={{ background: `${PURPLE}20`, color: PURPLE }}>AI</span>
               </div>
               <p className="font-mono text-[10px] uppercase tracking-wider mb-4" style={{ color: `${PURPLE}80` }}>AI-Enabled Engagement & Qualification</p>
-              <p className="font-body text-sm text-white/40 leading-relaxed mb-5">
+              <p className="font-body text-sm text-black/40 leading-relaxed mb-5">
                 Intercom's FinAI layer provides 24/7 AI-powered chat on the ZeroWheel website and post-form experience. FinAI answers product questions, qualifies intent, books demos, and routes high-intent leads directly to the right sales rep — all in real time, without human intervention.
               </p>
               <ul className="space-y-2">
@@ -370,7 +369,7 @@ export default function ZWSalesInfrastructure() {
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={{ color: PURPLE }} />
-                    <span className="font-body text-xs text-white/45">{item}</span>
+                    <span className="font-body text-xs text-black/40">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -380,24 +379,24 @@ export default function ZWSalesInfrastructure() {
           {/* Integration Architecture */}
           <DarkCard>
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] mb-2" style={{ color: GOLD }}>Integration Architecture</p>
-            <p className="font-display text-lg font-semibold text-white mb-6">How the Three Systems Connect</p>
+            <p className="font-display text-lg font-semibold text-black mb-6">How the Three Systems Connect</p>
             <div className="grid md:grid-cols-5 gap-2 items-center">
               <div className="rounded-xl border p-4 text-center" style={{ borderColor: `${TEAL}30`, background: `${TEAL}08` }}>
                 <Globe className="w-5 h-5 mx-auto mb-2" style={{ color: TEAL }} />
-                <p className="font-mono text-[10px] text-white/50 uppercase tracking-wider">Website</p>
-                <p className="font-body text-xs text-white/45 mt-1">Typeform embed + Intercom widget</p>
+                <p className="font-mono text-[10px] text-black/45 uppercase tracking-wider">Website</p>
+                <p className="font-body text-xs text-black/40 mt-1">Typeform embed + Intercom widget</p>
               </div>
               <FlowArrow label="webhook" />
               <div className="rounded-xl border p-4 text-center" style={{ borderColor: `${PURPLE}30`, background: `${PURPLE}08` }}>
                 <Bot className="w-5 h-5 mx-auto mb-2" style={{ color: PURPLE }} />
-                <p className="font-mono text-[10px] text-white/50 uppercase tracking-wider">Intercom FinAI</p>
-                <p className="font-body text-xs text-white/45 mt-1">Qualify, route, book demo</p>
+                <p className="font-mono text-[10px] text-black/45 uppercase tracking-wider">Intercom FinAI</p>
+                <p className="font-body text-xs text-black/40 mt-1">Qualify, route, book demo</p>
               </div>
               <FlowArrow label="API / Zapier" />
               <div className="rounded-xl border p-4 text-center" style={{ borderColor: `${GOLD}30`, background: `${GOLD}08` }}>
                 <Database className="w-5 h-5 mx-auto mb-2" style={{ color: GOLD }} />
-                <p className="font-mono text-[10px] text-white/50 uppercase tracking-wider">Salesforce</p>
-                <p className="font-body text-xs text-white/45 mt-1">Lead → Opp → Close</p>
+                <p className="font-mono text-[10px] text-black/45 uppercase tracking-wider">Salesforce</p>
+                <p className="font-body text-xs text-black/40 mt-1">Lead → Opp → Close</p>
               </div>
             </div>
             <div className="mt-6 grid md:grid-cols-3 gap-4">
@@ -411,7 +410,7 @@ export default function ZWSalesInfrastructure() {
                     <Link2 className="w-3.5 h-3.5 flex-shrink-0" style={{ color: item.color }} />
                     <p className="font-mono text-[10px] font-semibold" style={{ color: item.color }}>{item.title}</p>
                   </div>
-                  <p className="font-body text-[11px] text-white/35 leading-relaxed">{item.desc}</p>
+                  <p className="font-body text-[11px] text-black/30 leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -420,7 +419,7 @@ export default function ZWSalesInfrastructure() {
       </section>
 
       {/* ── LEAD INTAKE FLOW ─────────────────────────────────────────────── */}
-      <section id="lead-intake" className="py-20 bg-[#0A0A0A]">
+      <section id="lead-intake" className="py-20 bg-white">
         <div className="container">
           <div className="h-px mb-16" style={{ background: "linear-gradient(to right, transparent, rgba(201,169,98,0.2), transparent)" }} />
           <SectionHeader
@@ -461,7 +460,7 @@ export default function ZWSalesInfrastructure() {
                   {col.items.map((item, j) => (
                     <li key={j} className="flex items-start gap-2">
                       <div className="w-1 h-1 rounded-full mt-1.5 flex-shrink-0" style={{ background: col.color }} />
-                      <span className="font-body text-xs text-white/45">{item}</span>
+                      <span className="font-body text-xs text-black/40">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -472,7 +471,7 @@ export default function ZWSalesInfrastructure() {
       </section>
 
       {/* ── LEAD → OPPORTUNITY FLOW ──────────────────────────────────────── */}
-      <section id="lead-to-opp" className="py-20 bg-[#0A0A0A]">
+      <section id="lead-to-opp" className="py-20 bg-white">
         <div className="container">
           <div className="h-px mb-16" style={{ background: "linear-gradient(to right, transparent, rgba(201,169,98,0.2), transparent)" }} />
           <SectionHeader
@@ -541,7 +540,7 @@ export default function ZWSalesInfrastructure() {
                 ].map((item, i) => (
                   <div key={i} className="rounded-xl border p-3" style={{ borderColor: `${GOLD}15`, background: `${GOLD}05` }}>
                     <p className="font-mono text-[10px] font-semibold mb-1" style={{ color: GOLD }}>{item.rule}</p>
-                    <p className="font-body text-[11px] text-white/35 leading-relaxed">{item.desc}</p>
+                    <p className="font-body text-[11px] text-black/30 leading-relaxed">{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -557,11 +556,11 @@ export default function ZWSalesInfrastructure() {
                   { activity: "Proposal Sent", tracked: "Document version, value, expiry date", icon: Activity },
                   { activity: "Follow-Up Task", tracked: "Due date, priority, completion status", icon: CheckCircle2 },
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 py-2 border-b" style={{ borderColor: "rgba(255,255,255,0.04)" }}>
+                  <div key={i} className="flex items-center gap-3 py-2 border-b" style={{ borderColor: "rgba(0,0,0,0.06)" }}>
                     <item.icon className="w-3.5 h-3.5 flex-shrink-0" style={{ color: TEAL }} />
                     <div className="flex-1 min-w-0">
-                      <p className="font-body text-xs text-white/60">{item.activity}</p>
-                      <p className="font-body text-[10px] text-white/40">{item.tracked}</p>
+                      <p className="font-body text-xs text-black/50">{item.activity}</p>
+                      <p className="font-body text-[10px] text-black/40">{item.tracked}</p>
                     </div>
                   </div>
                 ))}
@@ -572,7 +571,7 @@ export default function ZWSalesInfrastructure() {
       </section>
 
       {/* ── OPPORTUNITY → CLOSE FLOW ─────────────────────────────────────── */}
-      <section id="opp-to-close" className="py-20 bg-[#0A0A0A]">
+      <section id="opp-to-close" className="py-20 bg-white">
         <div className="container">
           <div className="h-px mb-16" style={{ background: "linear-gradient(to right, transparent, rgba(201,169,98,0.2), transparent)" }} />
           <SectionHeader
@@ -591,14 +590,14 @@ export default function ZWSalesInfrastructure() {
             ].map((s, i) => (
               <motion.div key={i} variants={fadeInUp} className="rounded-2xl border p-5" style={{ background: CARD_BG, borderColor: `${s.color}25` }}>
                 <div className="flex items-center justify-between mb-3">
-                  <p className="font-display text-sm font-semibold text-white">{s.stage}</p>
+                  <p className="font-display text-sm font-semibold text-black">{s.stage}</p>
                   <span className="font-mono text-[10px] px-2 py-0.5 rounded-full" style={{ background: `${s.color}20`, color: s.color }}>{s.prob}</span>
                 </div>
                 <ul className="space-y-1.5">
                   {s.actions.map((a, j) => (
                     <li key={j} className="flex items-start gap-2">
                       <div className="w-1 h-1 rounded-full mt-1.5 flex-shrink-0" style={{ background: s.color }} />
-                      <span className="font-body text-[11px] text-white/40 leading-relaxed">{a}</span>
+                      <span className="font-body text-[11px] text-black/40 leading-relaxed">{a}</span>
                     </li>
                   ))}
                 </ul>
@@ -621,7 +620,7 @@ export default function ZWSalesInfrastructure() {
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={{ color: GREEN }} />
-                    <span className="font-body text-xs text-white/45">{item}</span>
+                    <span className="font-body text-xs text-black/40">{item}</span>
                   </div>
                 ))}
               </div>
@@ -640,7 +639,7 @@ export default function ZWSalesInfrastructure() {
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-2">
                     <XCircle className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={{ color: RED }} />
-                    <span className="font-body text-xs text-white/45">{item}</span>
+                    <span className="font-body text-xs text-black/40">{item}</span>
                   </div>
                 ))}
               </div>
@@ -650,7 +649,7 @@ export default function ZWSalesInfrastructure() {
       </section>
 
       {/* ── LEAD FUNNEL ─────────────────────────────────────────────────── */}
-      <section id="lead-funnel" className="py-20 bg-[#0A0A0A]">
+      <section id="lead-funnel" className="py-20 bg-white">
         <div className="container">
           <div className="h-px mb-16" style={{ background: "linear-gradient(to right, transparent, rgba(201,169,98,0.2), transparent)" }} />
           <SectionHeader
@@ -662,17 +661,17 @@ export default function ZWSalesInfrastructure() {
           <div className="grid lg:grid-cols-3 gap-6 mb-8">
             {/* Funnel */}
             <DarkCard className="lg:col-span-1">
-              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Funnel Stages</p>
-              <p className="font-display text-lg font-medium text-white mb-6">Lead → Install</p>
+              <p className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em] mb-1">Funnel Stages</p>
+              <p className="font-display text-lg font-medium text-black mb-6">Lead → Install</p>
               <div className="space-y-3">
                 {funnelStages.map((stage, i) => (
                   <div key={i}>
                     <div className="flex justify-between items-center mb-1.5">
-                      <span className="font-body text-xs text-white/50">{stage.name}</span>
+                      <span className="font-body text-xs text-black/45">{stage.name}</span>
                       <div className="flex items-center gap-3">
-                        <span className="font-mono text-xs text-white font-semibold">{stage.value.toLocaleString()}</span>
+                        <span className="font-mono text-xs text-black font-semibold">{stage.value.toLocaleString()}</span>
                         {i > 0 && (
-                          <span className="font-mono text-[10px] text-white/40">
+                          <span className="font-mono text-[10px] text-black/40">
                             {Math.round((stage.value / funnelStages[i - 1].value) * 100)}%
                           </span>
                         )}
@@ -686,30 +685,30 @@ export default function ZWSalesInfrastructure() {
 
             {/* Source Pie */}
             <DarkCard className="lg:col-span-1">
-              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Lead Source Mix</p>
-              <p className="font-display text-lg font-medium text-white mb-4">YTD Distribution</p>
+              <p className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em] mb-1">Lead Source Mix</p>
+              <p className="font-display text-lg font-medium text-black mb-4">YTD Distribution</p>
               <ResponsiveContainer width="100%" height={260}>
                 <PieChart margin={{ top: 10, right: 30, bottom: 10, left: 30 }}>
                   <Pie data={sourceData} dataKey="value" nameKey="name" cx="50%" cy="45%" outerRadius={75} innerRadius={38} paddingAngle={3}>
                     {sourceData.map((s, i) => <Cell key={i} fill={s.fill} />)}
                   </Pie>
                   <Tooltip content={<DarkTooltip />} />
-                  <Legend wrapperStyle={{ fontSize: 10, color: "rgba(255,255,255,0.4)", fontFamily: "monospace" }} />
+                  <Legend wrapperStyle={{ fontSize: 10, color: "rgba(0,0,0,0.45)", fontFamily: "monospace" }} />
                 </PieChart>
               </ResponsiveContainer>
             </DarkCard>
 
             {/* Monthly Leads */}
             <DarkCard className="lg:col-span-1">
-              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Lead Volume</p>
-              <p className="font-display text-lg font-medium text-white mb-4">Monthly Leads & Opps</p>
+              <p className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em] mb-1">Lead Volume</p>
+              <p className="font-display text-lg font-medium text-black mb-4">Monthly Leads & Opps</p>
               <ResponsiveContainer width="100%" height={200}>
                 <BarChart data={monthlyData.slice(0, 4)} barSize={14} barGap={4}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" vertical={false} />
-                  <XAxis dataKey="month" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
-                  <YAxis tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" vertical={false} />
+                  <XAxis dataKey="month" tick={{ fill: "rgba(0,0,0,0.40)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
+                  <YAxis tick={{ fill: "rgba(0,0,0,0.40)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
                   <Tooltip content={<DarkTooltip />} />
-                  <Legend wrapperStyle={{ fontSize: 10, color: "rgba(255,255,255,0.4)", fontFamily: "monospace" }} />
+                  <Legend wrapperStyle={{ fontSize: 10, color: "rgba(0,0,0,0.45)", fontFamily: "monospace" }} />
                   <Bar dataKey="leads" fill={GOLD} radius={[3, 3, 0, 0]} />
                   <Bar dataKey="opps" fill={TEAL} radius={[3, 3, 0, 0]} />
                 </BarChart>
@@ -720,7 +719,7 @@ export default function ZWSalesInfrastructure() {
       </section>
 
       {/* ── OPPORTUNITY PIPELINE ─────────────────────────────────────────── */}
-      <section id="opportunity-pipeline" className="py-20 bg-[#0A0A0A]">
+      <section id="opportunity-pipeline" className="py-20 bg-white">
         <div className="container">
           <div className="h-px mb-16" style={{ background: "linear-gradient(to right, transparent, rgba(201,169,98,0.2), transparent)" }} />
           <SectionHeader
@@ -731,18 +730,18 @@ export default function ZWSalesInfrastructure() {
 
           <div className="grid lg:grid-cols-2 gap-6">
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Pipeline Stages</p>
-              <p className="font-display text-lg font-medium text-white mb-6">Open Opportunities</p>
+              <p className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em] mb-1">Pipeline Stages</p>
+              <p className="font-display text-lg font-medium text-black mb-6">Open Opportunities</p>
               <div className="space-y-4">
                 {pipelineStages.map((stage, i) => (
                   <div key={i}>
                     <div className="flex justify-between items-center mb-1.5">
                       <div className="flex items-center gap-2">
                         <div className="w-2 h-2 rounded-full" style={{ background: stage.color }} />
-                        <span className="font-body text-sm text-white/60">{stage.stage}</span>
+                        <span className="font-body text-sm text-black/50">{stage.stage}</span>
                       </div>
                       <div className="flex items-center gap-4">
-                        <span className="font-mono text-xs text-white/45">{stage.count} deals</span>
+                        <span className="font-mono text-xs text-black/40">{stage.count} deals</span>
                         <span className="font-mono text-sm font-semibold" style={{ color: stage.color }}>{fmt$(stage.value)}</span>
                       </div>
                     </div>
@@ -750,26 +749,26 @@ export default function ZWSalesInfrastructure() {
                   </div>
                 ))}
               </div>
-              <div className="mt-6 pt-4 border-t flex justify-between" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
+              <div className="mt-6 pt-4 border-t flex justify-between" style={{ borderColor: "rgba(0,0,0,0.08)" }}>
                 <div>
-                  <p className="font-mono text-[9px] text-white/40 uppercase tracking-wider">Total Pipeline</p>
+                  <p className="font-mono text-[9px] text-black/40 uppercase tracking-wider">Total Pipeline</p>
                   <p className="font-display text-2xl font-semibold mt-1" style={{ color: GOLD }}>{fmt$(pipelineStages.reduce((s, d) => s + d.value, 0))}</p>
                 </div>
                 <div>
-                  <p className="font-mono text-[9px] text-white/40 uppercase tracking-wider">Weighted Value</p>
-                  <p className="font-display text-2xl font-semibold mt-1 text-white">{fmt$(Math.round(pipelineStages.reduce((s, d, i) => s + d.value * [0.2, 0.4, 0.6, 0.8, 1][i], 0)))}</p>
+                  <p className="font-mono text-[9px] text-black/40 uppercase tracking-wider">Weighted Value</p>
+                  <p className="font-display text-2xl font-semibold mt-1 text-black">{fmt$(Math.round(pipelineStages.reduce((s, d, i) => s + d.value * [0.2, 0.4, 0.6, 0.8, 1][i], 0)))}</p>
                 </div>
               </div>
             </DarkCard>
 
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Pipeline Value</p>
-              <p className="font-display text-lg font-medium text-white mb-4">Value by Stage ($)</p>
+              <p className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em] mb-1">Pipeline Value</p>
+              <p className="font-display text-lg font-medium text-black mb-4">Value by Stage ($)</p>
               <ResponsiveContainer width="100%" height={280}>
                 <BarChart data={pipelineStages} layout="vertical" barSize={18}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" horizontal={false} />
-                  <XAxis type="number" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} tickFormatter={v => `$${(v / 1000).toFixed(0)}K`} />
-                  <YAxis type="category" dataKey="stage" tick={{ fill: "rgba(255,255,255,0.35)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} width={80} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" horizontal={false} />
+                  <XAxis type="number" tick={{ fill: "rgba(0,0,0,0.40)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} tickFormatter={v => `$${(v / 1000).toFixed(0)}K`} />
+                  <YAxis type="category" dataKey="stage" tick={{ fill: "rgba(0,0,0,0.45)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} width={80} />
                   <Tooltip content={<DarkTooltip />} />
                   <Bar dataKey="value" name="Pipeline Value" radius={[0, 4, 4, 0]}>
                     {pipelineStages.map((s, i) => <Cell key={i} fill={s.color} />)}
@@ -782,7 +781,7 @@ export default function ZWSalesInfrastructure() {
       </section>
 
       {/* ── SALES TEAM ───────────────────────────────────────────────────── */}
-      <section id="sales-team" className="py-20 bg-[#0A0A0A]">
+      <section id="sales-team" className="py-20 bg-white">
         <div className="container">
           <div className="h-px mb-16" style={{ background: "linear-gradient(to right, transparent, rgba(201,169,98,0.2), transparent)" }} />
           <SectionHeader
@@ -793,19 +792,19 @@ export default function ZWSalesInfrastructure() {
 
           <div className="grid lg:grid-cols-2 gap-6">
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Team Leaderboard</p>
-              <p className="font-display text-lg font-medium text-white mb-6">YTD Installs</p>
+              <p className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em] mb-1">Team Leaderboard</p>
+              <p className="font-display text-lg font-medium text-black mb-6">YTD Installs</p>
               <div className="space-y-4">
                 {repData.map((rep, i) => (
                   <div key={i} className="flex items-center gap-3">
-                    <div className="w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold font-mono flex-shrink-0" style={{ background: i === 0 ? `${GOLD}20` : "rgba(255,255,255,0.05)", color: i === 0 ? GOLD : "rgba(255,255,255,0.3)" }}>
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold font-mono flex-shrink-0" style={{ background: i === 0 ? `${GOLD}20` : "rgba(0,0,0,0.04)", color: i === 0 ? GOLD : "rgba(0,0,0,0.35)" }}>
                       {i + 1}
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex justify-between mb-1">
-                        <span className="font-body text-sm text-white/70">{rep.rep}</span>
+                        <span className="font-body text-sm text-black/55">{rep.rep}</span>
                         <div className="flex items-center gap-4">
-                          <span className="font-mono text-xs text-white/45">{rep.leads} leads</span>
+                          <span className="font-mono text-xs text-black/40">{rep.leads} leads</span>
                           <span className="font-mono text-xs" style={{ color: TEAL }}>{rep.installs} units</span>
                           <span className="font-mono text-xs" style={{ color: GOLD }}>{fmt$(rep.revenue)}</span>
                         </div>
@@ -818,15 +817,15 @@ export default function ZWSalesInfrastructure() {
             </DarkCard>
 
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Activity Tracking</p>
-              <p className="font-display text-lg font-medium text-white mb-4">Calls & Installs by Rep</p>
+              <p className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em] mb-1">Activity Tracking</p>
+              <p className="font-display text-lg font-medium text-black mb-4">Calls & Installs by Rep</p>
               <ResponsiveContainer width="100%" height={280}>
                 <BarChart data={repData} barSize={16} barGap={4}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" vertical={false} />
-                  <XAxis dataKey="rep" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 9, fontFamily: "monospace" }} axisLine={false} tickLine={false} tickFormatter={v => v.split(".")[1]?.trim() ?? v} />
-                  <YAxis tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" vertical={false} />
+                  <XAxis dataKey="rep" tick={{ fill: "rgba(0,0,0,0.40)", fontSize: 9, fontFamily: "monospace" }} axisLine={false} tickLine={false} tickFormatter={v => v.split(".")[1]?.trim() ?? v} />
+                  <YAxis tick={{ fill: "rgba(0,0,0,0.40)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
                   <Tooltip content={<DarkTooltip />} />
-                  <Legend wrapperStyle={{ fontSize: 10, color: "rgba(255,255,255,0.4)", fontFamily: "monospace" }} />
+                  <Legend wrapperStyle={{ fontSize: 10, color: "rgba(0,0,0,0.45)", fontFamily: "monospace" }} />
                   <Bar dataKey="installs" name="Installs" fill={GOLD} radius={[3, 3, 0, 0]} />
                   <Bar dataKey="calls" name="Calls" fill={GOLD_DIM} radius={[3, 3, 0, 0]} opacity={0.5} />
                 </BarChart>
@@ -837,7 +836,7 @@ export default function ZWSalesInfrastructure() {
       </section>
 
       {/* ── CHANNEL PERFORMANCE ──────────────────────────────────────────── */}
-      <section id="channel-performance" className="py-20 bg-[#0A0A0A]">
+      <section id="channel-performance" className="py-20 bg-white">
         <div className="container">
           <div className="h-px mb-16" style={{ background: "linear-gradient(to right, transparent, rgba(201,169,98,0.2), transparent)" }} />
           <SectionHeader
@@ -848,13 +847,13 @@ export default function ZWSalesInfrastructure() {
 
           <div className="grid lg:grid-cols-3 gap-6">
             <DarkCard className="lg:col-span-2">
-              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Channel Performance</p>
-              <p className="font-display text-lg font-medium text-white mb-4">Installs by Channel — YTD</p>
+              <p className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em] mb-1">Channel Performance</p>
+              <p className="font-display text-lg font-medium text-black mb-4">Installs by Channel — YTD</p>
               <ResponsiveContainer width="100%" height={260}>
                 <BarChart data={sourceData} barSize={32}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" vertical={false} />
-                  <XAxis dataKey="name" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 9, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
-                  <YAxis tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" vertical={false} />
+                  <XAxis dataKey="name" tick={{ fill: "rgba(0,0,0,0.40)", fontSize: 9, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
+                  <YAxis tick={{ fill: "rgba(0,0,0,0.40)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
                   <Tooltip content={<DarkTooltip />} />
                   <Bar dataKey="value" name="Installs" radius={[4, 4, 0, 0]}>
                     {sourceData.map((s, i) => <Cell key={i} fill={s.fill} />)}
@@ -864,13 +863,13 @@ export default function ZWSalesInfrastructure() {
             </DarkCard>
 
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Channel Scorecard</p>
-              <p className="font-display text-lg font-medium text-white mb-4">Revenue Share</p>
+              <p className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em] mb-1">Channel Scorecard</p>
+              <p className="font-display text-lg font-medium text-black mb-4">Revenue Share</p>
               <div className="space-y-3">
                 {sourceData.map((s, i) => (
                   <div key={i}>
                     <div className="flex justify-between mb-1">
-                      <span className="font-body text-xs text-white/50">{s.name}</span>
+                      <span className="font-body text-xs text-black/45">{s.name}</span>
                       <span className="font-mono text-xs font-semibold" style={{ color: s.fill }}>{s.value} units</span>
                     </div>
                     <ProgressBar value={s.value} max={sourceData[0].value} color={s.fill} />
@@ -883,7 +882,7 @@ export default function ZWSalesInfrastructure() {
       </section>
 
       {/* ── REVENUE FORECAST ─────────────────────────────────────────────── */}
-      <section id="revenue-forecast" className="py-20 bg-[#0A0A0A]">
+      <section id="revenue-forecast" className="py-20 bg-white">
         <div className="container">
           <div className="h-px mb-16" style={{ background: "linear-gradient(to right, transparent, rgba(201,169,98,0.2), transparent)" }} />
           <SectionHeader
@@ -894,8 +893,8 @@ export default function ZWSalesInfrastructure() {
 
           <div className="grid lg:grid-cols-2 gap-6 mb-6">
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Revenue vs Budget</p>
-              <p className="font-display text-lg font-medium text-white mb-4">Monthly — Actual vs Target ($)</p>
+              <p className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em] mb-1">Revenue vs Budget</p>
+              <p className="font-display text-lg font-medium text-black mb-4">Monthly — Actual vs Target ($)</p>
               <ResponsiveContainer width="100%" height={260}>
                 <ComposedChart data={monthlyData}>
                   <defs>
@@ -904,31 +903,31 @@ export default function ZWSalesInfrastructure() {
                       <stop offset="95%" stopColor={GOLD} stopOpacity={0} />
                     </linearGradient>
                   </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" vertical={false} />
-                  <XAxis dataKey="month" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
-                  <YAxis tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} tickFormatter={v => `$${(v / 1000).toFixed(0)}K`} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" vertical={false} />
+                  <XAxis dataKey="month" tick={{ fill: "rgba(0,0,0,0.40)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
+                  <YAxis tick={{ fill: "rgba(0,0,0,0.40)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} tickFormatter={v => `$${(v / 1000).toFixed(0)}K`} />
                   <Tooltip content={<DarkTooltip />} />
-                  <Legend wrapperStyle={{ fontSize: 10, color: "rgba(255,255,255,0.4)", fontFamily: "monospace" }} />
+                  <Legend wrapperStyle={{ fontSize: 10, color: "rgba(0,0,0,0.45)", fontFamily: "monospace" }} />
                   <Area type="monotone" dataKey="revenue" name="Revenue" stroke={GOLD} strokeWidth={2.5} fill="url(#revGrad2)" dot={{ fill: GOLD, r: 4 }} connectNulls={false} />
-                  <Line type="monotone" dataKey="budget" name="Budget" stroke="rgba(255,255,255,0.2)" strokeWidth={1.5} strokeDasharray="6 3" dot={false} />
+                  <Line type="monotone" dataKey="budget" name="Budget" stroke="rgba(0,0,0,0.15)" strokeWidth={1.5} strokeDasharray="6 3" dot={false} />
                 </ComposedChart>
               </ResponsiveContainer>
             </DarkCard>
 
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Forward Forecast</p>
-              <p className="font-display text-lg font-medium text-white mb-4">Units — Low / Mid / High vs Budget</p>
+              <p className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em] mb-1">Forward Forecast</p>
+              <p className="font-display text-lg font-medium text-black mb-4">Units — Low / Mid / High vs Budget</p>
               <ResponsiveContainer width="100%" height={260}>
                 <BarChart data={forecastData} barSize={14} barGap={3}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" vertical={false} />
-                  <XAxis dataKey="period" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
-                  <YAxis tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" vertical={false} />
+                  <XAxis dataKey="period" tick={{ fill: "rgba(0,0,0,0.40)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
+                  <YAxis tick={{ fill: "rgba(0,0,0,0.40)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
                   <Tooltip content={<DarkTooltip />} />
-                  <Legend wrapperStyle={{ fontSize: 10, color: "rgba(255,255,255,0.4)", fontFamily: "monospace" }} />
+                  <Legend wrapperStyle={{ fontSize: 10, color: "rgba(0,0,0,0.45)", fontFamily: "monospace" }} />
                   <Bar dataKey="low" name="Low" fill={RED} radius={[3, 3, 0, 0]} opacity={0.7} />
                   <Bar dataKey="mid" name="Mid" fill={GOLD} radius={[3, 3, 0, 0]} />
                   <Bar dataKey="high" name="High" fill={TEAL} radius={[3, 3, 0, 0]} />
-                  <Bar dataKey="budget" name="Budget" fill="rgba(255,255,255,0.15)" radius={[3, 3, 0, 0]} />
+                  <Bar dataKey="budget" name="Budget" fill="rgba(0,0,0,0.10)" radius={[3, 3, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </DarkCard>
@@ -943,18 +942,18 @@ export default function ZWSalesInfrastructure() {
               { period: "Full Year 2026", low: "$764K", mid: "$864K", high: "$954K", color: GREEN },
             ].map((f, i) => (
               <DarkCard key={i}>
-                <p className="font-mono text-[9px] text-white/40 uppercase tracking-wider mb-3">{f.period}</p>
+                <p className="font-mono text-[9px] text-black/40 uppercase tracking-wider mb-3">{f.period}</p>
                 <div className="space-y-1.5">
                   <div className="flex justify-between">
-                    <span className="font-body text-xs text-white/45">Low</span>
+                    <span className="font-body text-xs text-black/40">Low</span>
                     <span className="font-mono text-xs text-red-400">{f.low}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="font-body text-xs text-white/60">Mid</span>
+                    <span className="font-body text-xs text-black/50">Mid</span>
                     <span className="font-mono text-sm font-semibold" style={{ color: f.color }}>{f.mid}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="font-body text-xs text-white/45">High</span>
+                    <span className="font-body text-xs text-black/40">High</span>
                     <span className="font-mono text-xs" style={{ color: TEAL }}>{f.high}</span>
                   </div>
                 </div>
@@ -965,7 +964,7 @@ export default function ZWSalesInfrastructure() {
       </section>
 
       {/* ── WIN / LOSS ───────────────────────────────────────────────────── */}
-      <section id="win-loss" className="py-20 pb-32 bg-[#0A0A0A]">
+      <section id="win-loss" className="py-20 pb-32 bg-white">
         <div className="container">
           <div className="h-px mb-16" style={{ background: "linear-gradient(to right, transparent, rgba(201,169,98,0.2), transparent)" }} />
           <SectionHeader
@@ -976,13 +975,13 @@ export default function ZWSalesInfrastructure() {
 
           <div className="grid lg:grid-cols-2 gap-6">
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Win Reasons</p>
-              <p className="font-display text-lg font-medium text-white mb-6">Why Customers Choose ZeroWheel</p>
+              <p className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em] mb-1">Win Reasons</p>
+              <p className="font-display text-lg font-medium text-black mb-6">Why Customers Choose ZeroWheel</p>
               <div className="space-y-3">
                 {winLossReasons.filter(r => r.won > 0).map((r, i) => (
                   <div key={i}>
                     <div className="flex justify-between mb-1.5">
-                      <span className="font-body text-sm text-white/60">{r.reason}</span>
+                      <span className="font-body text-sm text-black/50">{r.reason}</span>
                       <span className="font-mono text-xs font-semibold" style={{ color: r.color }}>{r.won} wins</span>
                     </div>
                     <ProgressBar value={r.won} max={Math.max(...winLossReasons.map(x => x.won))} color={r.color} />
@@ -992,13 +991,13 @@ export default function ZWSalesInfrastructure() {
             </DarkCard>
 
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Loss Reasons</p>
-              <p className="font-display text-lg font-medium text-white mb-6">Why Deals Are Lost</p>
+              <p className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em] mb-1">Loss Reasons</p>
+              <p className="font-display text-lg font-medium text-black mb-6">Why Deals Are Lost</p>
               <div className="space-y-3">
                 {winLossReasons.filter(r => r.lost > 0).map((r, i) => (
                   <div key={i}>
                     <div className="flex justify-between mb-1.5">
-                      <span className="font-body text-sm text-white/60">{r.reason}</span>
+                      <span className="font-body text-sm text-black/50">{r.reason}</span>
                       <span className="font-mono text-xs font-semibold" style={{ color: r.color }}>{r.lost} losses</span>
                     </div>
                     <ProgressBar value={r.lost} max={Math.max(...winLossReasons.map(x => x.lost))} color={r.color} />

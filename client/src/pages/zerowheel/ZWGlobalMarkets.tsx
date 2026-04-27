@@ -8,7 +8,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Globe, MapPin, Users, ChevronDown } from "lucide-react";
 import Layout from "@/components/Layout";
-import DarkHero from "@/components/DarkHero";
+import LightHero from "@/components/LightHero";
 import { fadeInUp, staggerContainer, scaleIn } from "@/lib/animations";
 import { SectionNav } from "@/components/SectionNav";
 
@@ -96,7 +96,7 @@ export default function ZWGlobalMarkets() {
 
       {/* Hero */}
       <div id="hero">
-        <DarkHero
+        <LightHero
           eyebrow="Global Presence"
           title="Global Markets & Organization"
           description="Lines of business mapped across 4 countries with a regional organizational structure spanning 5 global territories — from North America to Asia."

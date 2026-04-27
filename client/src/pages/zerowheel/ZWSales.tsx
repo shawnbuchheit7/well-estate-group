@@ -7,7 +7,7 @@
 import { motion } from "framer-motion";
 import { Target, Users, Building2, Trophy, ShoppingCart, Dumbbell, ArrowRight, Globe, Handshake } from "lucide-react";
 import Layout from "@/components/Layout";
-import DarkHero from "@/components/DarkHero";
+import LightHero from "@/components/LightHero";
 import { fadeInUp, staggerContainer, scaleIn } from "@/lib/animations";
 import { SectionNav } from "@/components/SectionNav";
 
@@ -117,7 +117,7 @@ export default function ZWSales() {
 
       {/* Hero */}
       <div id="hero">
-        <DarkHero
+        <LightHero
           eyebrow="Sales Enablement"
           title="Business Development Strategy"
           description="Five macro lines of business define ZeroWheel's go-to-market attack surface — from premium private clubs to direct-to-consumer e-commerce. Each LOB has dedicated targeting, partnerships, and sales playbooks."

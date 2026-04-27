@@ -1,6 +1,6 @@
 /*
  * ZeroWheel Business Intelligence Dashboard
- * Design: Dark premium — #0A0A0A bg, gold (#C9A962) accents, teal highlights
+ * Design: Light premium — white bg, gold (#C9A962) accents, teal highlights
  * Features: Date range picker, rep filter, line-of-business filter, dynamic charts
  * Data: $1,000/unit product, 1,000 unit / $1M revenue target for 2026
  */
@@ -20,7 +20,7 @@ import {
   ShoppingCart, Zap, RefreshCw,
 } from "lucide-react";
 import Layout from "@/components/Layout";
-import DarkHero from "@/components/DarkHero";
+import LightHero from "@/components/LightHero";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 
 // ─── Color Palette ───────────────────────────────────────────────────────────
@@ -31,8 +31,8 @@ const RED = "#F87171";
 const PURPLE = "#A78BFA";
 const ORANGE = "#FB923C";
 const GREEN = "#4ADE80";
-const CARD_BG = "#111111";
-const CARD_BORDER = "rgba(201,169,98,0.12)";
+const CARD_BG = "#FFFFFF";
+const CARD_BORDER = "rgba(0,0,0,0.10)";
 
 // ─── Filter Options ───────────────────────────────────────────────────────────
 const DATE_RANGES = ["MTD", "QTD", "YTD", "Last 30 Days", "Last 90 Days", "Last 12 Months"];
@@ -102,12 +102,12 @@ const DarkTooltip = ({ active, payload, label }: any) => {
   if (!active || !payload?.length) return null;
   return (
     <div className="bg-[#1A1A1A] border border-[rgba(201,169,98,0.2)] rounded-xl px-4 py-3 shadow-2xl min-w-[140px]">
-      <p className="font-mono text-[10px] text-white/40 uppercase tracking-wider mb-2">{label}</p>
+      <p className="font-mono text-[10px] text-black/40 uppercase tracking-wider mb-2">{label}</p>
       {payload.map((p: any, i: number) => (
         <div key={i} className="flex items-center gap-2 mb-1">
           <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: p.color || p.fill }} />
-          <span className="font-body text-xs text-white/60">{p.name}:</span>
-          <span className="font-mono text-xs text-white font-semibold">
+          <span className="font-body text-xs text-black/50">{p.name}:</span>
+          <span className="font-mono text-xs text-black font-semibold">
             {typeof p.value === "number" && (p.name?.toLowerCase().includes("rev") || p.name?.toLowerCase().includes("budget"))
               ? fmt$(p.value) : p.value ?? "—"}
           </span>
@@ -130,12 +130,12 @@ function KPICard({ label, value, sub, trend, trendVal, color = GOLD }: {
   label: string; value: string; sub?: string; trend?: "up" | "down" | "flat"; trendVal?: string; color?: string;
 }) {
   const TrendIcon = trend === "up" ? ArrowUpRight : trend === "down" ? ArrowDownRight : Minus;
-  const trendColor = trend === "up" ? GREEN : trend === "down" ? RED : "rgba(255,255,255,0.3)";
+  const trendColor = trend === "up" ? GREEN : trend === "down" ? RED : "rgba(0,0,0,0.35)";
   return (
     <DarkCard>
-      <p className="font-mono text-[9px] text-white/40 uppercase tracking-wider mb-2">{label}</p>
+      <p className="font-mono text-[9px] text-black/40 uppercase tracking-wider mb-2">{label}</p>
       <p className="font-display text-3xl font-semibold mb-1" style={{ color }}>{value}</p>
-      {sub && <p className="font-body text-xs text-white/45 mb-2">{sub}</p>}
+      {sub && <p className="font-body text-xs text-black/40 mb-2">{sub}</p>}
       {trendVal && (
         <div className="flex items-center gap-1">
           <TrendIcon className="w-3 h-3" style={{ color: trendColor }} />
@@ -149,7 +149,7 @@ function KPICard({ label, value, sub, trend, trendVal, color = GOLD }: {
 function ProgressBar({ value, max, color = GOLD }: { value: number; max: number; color?: string }) {
   const pct2 = Math.min(100, (value / max) * 100);
   return (
-    <div className="h-1.5 rounded-full bg-white/5 overflow-hidden">
+    <div className="h-1.5 rounded-full bg-black/5 overflow-hidden">
       <motion.div
         className="h-full rounded-full"
         style={{ background: color }}
@@ -172,11 +172,11 @@ function FilterDropdown({ label, options, value, onChange, color = GOLD }: {
       <button
         onClick={() => setOpen(!open)}
         className="flex items-center gap-2 rounded-xl border px-3 py-2 text-xs font-mono transition-colors"
-        style={{ background: CARD_BG, borderColor: open ? `${color}50` : CARD_BORDER, color: value === options[0] ? "rgba(255,255,255,0.4)" : color }}
+        style={{ background: CARD_BG, borderColor: open ? `${color}50` : CARD_BORDER, color: value === options[0] ? "rgba(0,0,0,0.40)" : color }}
       >
-        <span className="text-white/45">{label}:</span>
+        <span className="text-black/40">{label}:</span>
         <span>{value}</span>
-        <ChevronDown className="w-3 h-3 ml-1" style={{ color: "rgba(255,255,255,0.3)" }} />
+        <ChevronDown className="w-3 h-3 ml-1" style={{ color: "rgba(0,0,0,0.40)" }} />
       </button>
       {open && (
         <div className="absolute top-full mt-1 left-0 z-50 rounded-xl border shadow-2xl overflow-hidden min-w-[180px]" style={{ background: "#1A1A1A", borderColor: `${color}30` }}>
@@ -184,8 +184,8 @@ function FilterDropdown({ label, options, value, onChange, color = GOLD }: {
             <button
               key={opt}
               onClick={() => { onChange(opt); setOpen(false); }}
-              className="w-full flex items-center justify-between px-4 py-2.5 text-xs font-mono text-left hover:bg-white/5 transition-colors"
-              style={{ color: opt === value ? color : "rgba(255,255,255,0.5)" }}
+              className="w-full flex items-center justify-between px-4 py-2.5 text-xs font-mono text-left hover:bg-black/5 transition-colors"
+              style={{ color: opt === value ? color : "rgba(0,0,0,0.45)" }}
             >
               {opt}
               {opt === value && <Check className="w-3 h-3" />}
@@ -257,8 +257,8 @@ export default function ZWBusinessIntelligence() {
   return (
     <Layout section="gtm-zerowheel">
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <div style={{ background: "#0A0A0A" }}>
-        <DarkHero
+      <div >
+        <LightHero
           eyebrow="ZeroWheel · Business Intelligence"
           title="Revenue Operations Dashboard"
           description="Real-time visibility into every lead, opportunity, and revenue dollar across all channels, reps, and lines of business. Filter by period, rep, or channel to drill into performance."
@@ -268,7 +268,6 @@ export default function ZWBusinessIntelligence() {
             { value: "1,208", label: "Total Leads" },
             { value: "20.3%", label: "Conversion Rate" },
           ]}
-          darkFade
         />
       </div>
 
@@ -279,17 +278,17 @@ export default function ZWBusinessIntelligence() {
             <div className="flex items-center gap-3">
               <BarChart3 className="w-5 h-5" style={{ color: GOLD }} />
               <div>
-                <p className="font-display text-base font-semibold text-white leading-none">Business Intelligence</p>
-                <p className="font-mono text-[9px] text-white/45 uppercase tracking-wider mt-0.5">ZeroWheel · Revenue Operations</p>
+                <p className="font-display text-base font-semibold text-black leading-none">Business Intelligence</p>
+                <p className="font-mono text-[9px] text-black/40 uppercase tracking-wider mt-0.5">ZeroWheel · Revenue Operations</p>
               </div>
             </div>
             <div className="flex flex-wrap items-center gap-2">
-              <Filter className="w-3.5 h-3.5" style={{ color: "rgba(255,255,255,0.3)" }} />
+              <Filter className="w-3.5 h-3.5" style={{ color: "rgba(0,0,0,0.40)" }} />
               <FilterDropdown label="Period" options={DATE_RANGES} value={dateRange} onChange={setDateRange} />
               <FilterDropdown label="Rep" options={REPS} value={selectedRep} onChange={setSelectedRep} color={TEAL} />
               <FilterDropdown label="Channel" options={LINES_OF_BUSINESS} value={selectedLOB} onChange={setSelectedLOB} color={PURPLE} />
               {isFiltered && (
-                <button onClick={resetFilters} className="flex items-center gap-1.5 rounded-xl border px-3 py-2 text-xs font-mono transition-colors hover:bg-white/5" style={{ borderColor: "rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.35)" }}>
+                <button onClick={resetFilters} className="flex items-center gap-1.5 rounded-xl border px-3 py-2 text-xs font-mono transition-colors hover:bg-black/5" style={{ borderColor: "rgba(0,0,0,0.10)", color: "rgba(0,0,0,0.40)" }}>
                   <X className="w-3 h-3" />
                   Reset
                 </button>
@@ -299,7 +298,7 @@ export default function ZWBusinessIntelligence() {
         </div>
       </div>
 
-      <div className="bg-[#0A0A0A] min-h-screen pb-32">
+      <div className="bg-white min-h-screen pb-32">
         <div className="container py-10 space-y-10">
 
           {/* ── KPI SUMMARY ──────────────────────────────────────────────── */}
@@ -320,7 +319,7 @@ export default function ZWBusinessIntelligence() {
               <KPICard label="Open Pipeline" value={fmt$(kpis.pipeline)} trend="up" trendVal="+18%" color={GREEN} />
             </motion.div>
             <motion.div variants={fadeInUp} className="lg:col-span-1">
-              <KPICard label="Avg Deal Size" value={fmt$(kpis.avgDeal)} sub="per unit" color="rgba(255,255,255,0.6)" />
+              <KPICard label="Avg Deal Size" value={fmt$(kpis.avgDeal)} sub="per unit" color="rgba(0,0,0,0.50)" />
             </motion.div>
           </motion.div>
 
@@ -328,17 +327,17 @@ export default function ZWBusinessIntelligence() {
           <DarkCard>
             <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
               <div>
-                <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Revenue Performance</p>
-                <p className="font-display text-xl font-semibold text-white">Revenue vs Budget — {dateRange}</p>
+                <p className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em] mb-1">Revenue Performance</p>
+                <p className="font-display text-xl font-semibold text-black">Revenue vs Budget — {dateRange}</p>
               </div>
               <div className="flex items-center gap-6">
                 <div>
-                  <p className="font-mono text-[9px] text-white/40 uppercase tracking-wider">Actual</p>
+                  <p className="font-mono text-[9px] text-black/40 uppercase tracking-wider">Actual</p>
                   <p className="font-display text-xl font-semibold" style={{ color: GOLD }}>{fmt$(kpis.revenue)}</p>
                 </div>
                 <div>
-                  <p className="font-mono text-[9px] text-white/40 uppercase tracking-wider">Budget</p>
-                  <p className="font-display text-xl font-semibold text-white/50">{fmt$(Math.round(monthlySlice.reduce((s, d) => s + d.budget, 0) * (selectedRep !== "All Reps" ? 0.17 : 1) * (selectedLOB !== "All Channels" ? 0.2 : 1)))}</p>
+                  <p className="font-mono text-[9px] text-black/40 uppercase tracking-wider">Budget</p>
+                  <p className="font-display text-xl font-semibold text-black/45">{fmt$(Math.round(monthlySlice.reduce((s, d) => s + d.budget, 0) * (selectedRep !== "All Reps" ? 0.17 : 1) * (selectedLOB !== "All Channels" ? 0.2 : 1)))}</p>
                 </div>
               </div>
             </div>
@@ -350,13 +349,13 @@ export default function ZWBusinessIntelligence() {
                     <stop offset="95%" stopColor={GOLD} stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" vertical={false} />
-                <XAxis dataKey="month" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
-                <YAxis tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} tickFormatter={v => `$${(v / 1000).toFixed(0)}K`} />
+                <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" vertical={false} />
+                <XAxis dataKey="month" tick={{ fill: "rgba(0,0,0,0.40)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
+                <YAxis tick={{ fill: "rgba(0,0,0,0.40)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} tickFormatter={v => `$${(v / 1000).toFixed(0)}K`} />
                 <Tooltip content={<DarkTooltip />} />
-                <Legend wrapperStyle={{ fontSize: 10, color: "rgba(255,255,255,0.4)", fontFamily: "monospace" }} />
+                <Legend wrapperStyle={{ fontSize: 10, color: "rgba(0,0,0,0.45)", fontFamily: "monospace" }} />
                 <Area type="monotone" dataKey="revenue" name="Revenue" stroke={GOLD} strokeWidth={2.5} fill="url(#revGradBI)" dot={{ fill: GOLD, r: 3 }} />
-                <Line type="monotone" dataKey="budget" name="Budget" stroke="rgba(255,255,255,0.2)" strokeWidth={1.5} strokeDasharray="6 3" dot={false} />
+                <Line type="monotone" dataKey="budget" name="Budget" stroke="rgba(0,0,0,0.15)" strokeWidth={1.5} strokeDasharray="6 3" dot={false} />
               </ComposedChart>
             </ResponsiveContainer>
           </DarkCard>
@@ -364,15 +363,15 @@ export default function ZWBusinessIntelligence() {
           {/* ── LEADS + INSTALLS TREND ───────────────────────────────────── */}
           <div className="grid lg:grid-cols-2 gap-6">
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Lead Volume</p>
-              <p className="font-display text-lg font-semibold text-white mb-4">Leads & Opportunities — {dateRange}</p>
+              <p className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em] mb-1">Lead Volume</p>
+              <p className="font-display text-lg font-semibold text-black mb-4">Leads & Opportunities — {dateRange}</p>
               <ResponsiveContainer width="100%" height={220}>
                 <BarChart data={monthlySlice} barSize={14} barGap={4}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" vertical={false} />
-                  <XAxis dataKey="month" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
-                  <YAxis tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" vertical={false} />
+                  <XAxis dataKey="month" tick={{ fill: "rgba(0,0,0,0.40)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
+                  <YAxis tick={{ fill: "rgba(0,0,0,0.40)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
                   <Tooltip content={<DarkTooltip />} />
-                  <Legend wrapperStyle={{ fontSize: 10, color: "rgba(255,255,255,0.4)", fontFamily: "monospace" }} />
+                  <Legend wrapperStyle={{ fontSize: 10, color: "rgba(0,0,0,0.45)", fontFamily: "monospace" }} />
                   <Bar dataKey="leads" name="Leads" fill={GOLD} radius={[3, 3, 0, 0]} />
                   <Bar dataKey="opps" name="Opportunities" fill={TEAL} radius={[3, 3, 0, 0]} />
                 </BarChart>
@@ -380,8 +379,8 @@ export default function ZWBusinessIntelligence() {
             </DarkCard>
 
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Install Velocity</p>
-              <p className="font-display text-lg font-semibold text-white mb-4">Monthly Installs — {dateRange}</p>
+              <p className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em] mb-1">Install Velocity</p>
+              <p className="font-display text-lg font-semibold text-black mb-4">Monthly Installs — {dateRange}</p>
               <ResponsiveContainer width="100%" height={220}>
                 <AreaChart data={monthlySlice}>
                   <defs>
@@ -390,9 +389,9 @@ export default function ZWBusinessIntelligence() {
                       <stop offset="95%" stopColor={TEAL} stopOpacity={0} />
                     </linearGradient>
                   </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" vertical={false} />
-                  <XAxis dataKey="month" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
-                  <YAxis tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" vertical={false} />
+                  <XAxis dataKey="month" tick={{ fill: "rgba(0,0,0,0.40)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
+                  <YAxis tick={{ fill: "rgba(0,0,0,0.40)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
                   <Tooltip content={<DarkTooltip />} />
                   <Area type="monotone" dataKey="installs" name="Installs" stroke={TEAL} strokeWidth={2.5} fill="url(#installGrad)" dot={{ fill: TEAL, r: 3 }} />
                   <ReferenceLine y={Math.round(1000 / 12)} stroke={GOLD} strokeDasharray="4 2" strokeWidth={1} label={{ value: "Monthly Target", fill: "rgba(201,169,98,0.5)", fontSize: 9, fontFamily: "monospace" }} />
@@ -405,8 +404,8 @@ export default function ZWBusinessIntelligence() {
           <DarkCard>
             <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
               <div>
-                <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Channel Attribution</p>
-                <p className="font-display text-xl font-semibold text-white">
+                <p className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em] mb-1">Channel Attribution</p>
+                <p className="font-display text-xl font-semibold text-black">
                   {selectedLOB === "All Channels" ? "All Channels" : selectedLOB} — Performance Breakdown
                 </p>
               </div>
@@ -415,11 +414,11 @@ export default function ZWBusinessIntelligence() {
               <div>
                 <ResponsiveContainer width="100%" height={240}>
                   <BarChart data={filteredChannels} barSize={28}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" vertical={false} />
-                    <XAxis dataKey="name" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 9, fontFamily: "monospace" }} axisLine={false} tickLine={false} tickFormatter={v => v.split(" ")[0]} />
-                    <YAxis tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
+                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" vertical={false} />
+                    <XAxis dataKey="name" tick={{ fill: "rgba(0,0,0,0.40)", fontSize: 9, fontFamily: "monospace" }} axisLine={false} tickLine={false} tickFormatter={v => v.split(" ")[0]} />
+                    <YAxis tick={{ fill: "rgba(0,0,0,0.40)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
                     <Tooltip content={<DarkTooltip />} />
-                    <Legend wrapperStyle={{ fontSize: 10, color: "rgba(255,255,255,0.4)", fontFamily: "monospace" }} />
+                    <Legend wrapperStyle={{ fontSize: 10, color: "rgba(0,0,0,0.45)", fontFamily: "monospace" }} />
                     <Bar dataKey="leads" name="Leads" fill={GOLD_DIM} radius={[3, 3, 0, 0]} opacity={0.7} />
                     <Bar dataKey="installs" name="Installs" radius={[3, 3, 0, 0]}>
                       {filteredChannels.map((c, i) => <Cell key={i} fill={c.color} />)}
@@ -433,13 +432,13 @@ export default function ZWBusinessIntelligence() {
                     <div className="flex items-center justify-between mb-1.5">
                       <div className="flex items-center gap-2">
                         <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: c.color }} />
-                        <span className="font-body text-sm text-white/60">{c.name}</span>
+                        <span className="font-body text-sm text-black/50">{c.name}</span>
                       </div>
                       <div className="flex items-center gap-4">
-                        <span className="font-mono text-xs text-white/45">{c.leads} leads</span>
+                        <span className="font-mono text-xs text-black/40">{c.leads} leads</span>
                         <span className="font-mono text-xs" style={{ color: TEAL }}>{c.installs} installs</span>
                         <span className="font-mono text-xs" style={{ color: GOLD }}>{fmt$(c.revenue)}</span>
-                        <span className="font-mono text-xs text-white/40">{pct(c.convRate)} CR</span>
+                        <span className="font-mono text-xs text-black/40">{pct(c.convRate)} CR</span>
                       </div>
                     </div>
                     <ProgressBar value={c.installs} max={filteredChannels[0].installs} color={c.color} />
@@ -453,32 +452,32 @@ export default function ZWBusinessIntelligence() {
           <DarkCard>
             <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
               <div>
-                <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Sales Team</p>
-                <p className="font-display text-xl font-semibold text-white">
+                <p className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em] mb-1">Sales Team</p>
+                <p className="font-display text-xl font-semibold text-black">
                   {selectedRep === "All Reps" ? "All Reps" : selectedRep} — Activity & Results
                 </p>
               </div>
               <div className="flex items-center gap-2">
                 <Award className="w-4 h-4" style={{ color: GOLD }} />
-                <span className="font-mono text-xs text-white/45">Top Rep: A. Torres — 68 installs</span>
+                <span className="font-mono text-xs text-black/40">Top Rep: A. Torres — 68 installs</span>
               </div>
             </div>
             <div className="grid lg:grid-cols-2 gap-8">
               <div className="space-y-4">
                 {filteredReps.map((rep, i) => (
                   <div key={i} className="flex items-center gap-3">
-                    <div className="w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold font-mono flex-shrink-0" style={{ background: i === 0 && selectedRep === "All Reps" ? `${GOLD}20` : "rgba(255,255,255,0.05)", color: i === 0 && selectedRep === "All Reps" ? GOLD : "rgba(255,255,255,0.3)" }}>
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold font-mono flex-shrink-0" style={{ background: i === 0 && selectedRep === "All Reps" ? `${GOLD}20` : "rgba(0,0,0,0.04)", color: i === 0 && selectedRep === "All Reps" ? GOLD : "rgba(0,0,0,0.35)" }}>
                       {i + 1}
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex justify-between mb-1">
-                        <span className="font-body text-sm text-white/70">{rep.rep}</span>
+                        <span className="font-body text-sm text-black/55">{rep.rep}</span>
                         <div className="flex items-center gap-3">
-                          <span className="font-mono text-xs text-white/40">{rep.calls} calls</span>
-                          <span className="font-mono text-xs text-white/40">{rep.demos} demos</span>
+                          <span className="font-mono text-xs text-black/40">{rep.calls} calls</span>
+                          <span className="font-mono text-xs text-black/40">{rep.demos} demos</span>
                           <span className="font-mono text-xs" style={{ color: TEAL }}>{rep.installs} units</span>
                           <span className="font-mono text-xs" style={{ color: GOLD }}>{fmt$(rep.revenue)}</span>
-                          <span className="font-mono text-xs text-white/40">{pct(rep.winRate)} WR</span>
+                          <span className="font-mono text-xs text-black/40">{pct(rep.winRate)} WR</span>
                         </div>
                       </div>
                       <ProgressBar value={rep.installs} max={filteredReps[0].installs} color={i === 0 ? GOLD : GOLD_DIM} />
@@ -488,11 +487,11 @@ export default function ZWBusinessIntelligence() {
               </div>
               <ResponsiveContainer width="100%" height={240}>
                 <BarChart data={filteredReps} barSize={14} barGap={4}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" vertical={false} />
-                  <XAxis dataKey="rep" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 9, fontFamily: "monospace" }} axisLine={false} tickLine={false} tickFormatter={v => v.split(".")[1]?.trim() ?? v} />
-                  <YAxis tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" vertical={false} />
+                  <XAxis dataKey="rep" tick={{ fill: "rgba(0,0,0,0.40)", fontSize: 9, fontFamily: "monospace" }} axisLine={false} tickLine={false} tickFormatter={v => v.split(".")[1]?.trim() ?? v} />
+                  <YAxis tick={{ fill: "rgba(0,0,0,0.40)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
                   <Tooltip content={<DarkTooltip />} />
-                  <Legend wrapperStyle={{ fontSize: 10, color: "rgba(255,255,255,0.4)", fontFamily: "monospace" }} />
+                  <Legend wrapperStyle={{ fontSize: 10, color: "rgba(0,0,0,0.45)", fontFamily: "monospace" }} />
                   <Bar dataKey="installs" name="Installs" fill={GOLD} radius={[3, 3, 0, 0]} />
                   <Bar dataKey="demos" name="Demos" fill={TEAL} radius={[3, 3, 0, 0]} />
                 </BarChart>
@@ -503,8 +502,8 @@ export default function ZWBusinessIntelligence() {
           {/* ── PIPELINE ─────────────────────────────────────────────────── */}
           <div className="grid lg:grid-cols-2 gap-6">
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Pipeline Stages</p>
-              <p className="font-display text-lg font-semibold text-white mb-6">Open Opportunities</p>
+              <p className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em] mb-1">Pipeline Stages</p>
+              <p className="font-display text-lg font-semibold text-black mb-6">Open Opportunities</p>
               <div className="space-y-4">
                 {ALL_DATA.pipeline.map((stage, i) => {
                   const colors = [GOLD, "#B8963E", TEAL, PURPLE, GREEN];
@@ -513,10 +512,10 @@ export default function ZWBusinessIntelligence() {
                       <div className="flex justify-between items-center mb-1.5">
                         <div className="flex items-center gap-2">
                           <div className="w-2 h-2 rounded-full" style={{ background: colors[i] }} />
-                          <span className="font-body text-sm text-white/60">{stage.stage}</span>
+                          <span className="font-body text-sm text-black/50">{stage.stage}</span>
                         </div>
                         <div className="flex items-center gap-4">
-                          <span className="font-mono text-xs text-white/45">{stage.count} deals</span>
+                          <span className="font-mono text-xs text-black/40">{stage.count} deals</span>
                           <span className="font-mono text-sm font-semibold" style={{ color: colors[i] }}>{fmt$(stage.value)}</span>
                         </div>
                       </div>
@@ -525,28 +524,28 @@ export default function ZWBusinessIntelligence() {
                   );
                 })}
               </div>
-              <div className="mt-6 pt-4 border-t flex justify-between" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
+              <div className="mt-6 pt-4 border-t flex justify-between" style={{ borderColor: "rgba(0,0,0,0.08)" }}>
                 <div>
-                  <p className="font-mono text-[9px] text-white/40 uppercase tracking-wider">Total Pipeline</p>
+                  <p className="font-mono text-[9px] text-black/40 uppercase tracking-wider">Total Pipeline</p>
                   <p className="font-display text-2xl font-semibold mt-1" style={{ color: GOLD }}>{fmt$(ALL_DATA.pipeline.reduce((s, d) => s + d.value, 0))}</p>
                 </div>
                 <div>
-                  <p className="font-mono text-[9px] text-white/40 uppercase tracking-wider">Weighted Value</p>
-                  <p className="font-display text-2xl font-semibold mt-1 text-white">{fmt$(Math.round(ALL_DATA.pipeline.reduce((s, d, i) => s + d.value * [0.2, 0.4, 0.6, 0.8, 1][i], 0)))}</p>
+                  <p className="font-mono text-[9px] text-black/40 uppercase tracking-wider">Weighted Value</p>
+                  <p className="font-display text-2xl font-semibold mt-1 text-black">{fmt$(Math.round(ALL_DATA.pipeline.reduce((s, d, i) => s + d.value * [0.2, 0.4, 0.6, 0.8, 1][i], 0)))}</p>
                 </div>
               </div>
             </DarkCard>
 
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Activity Metrics</p>
-              <p className="font-display text-lg font-semibold text-white mb-4">Calls & Demos — {dateRange}</p>
+              <p className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em] mb-1">Activity Metrics</p>
+              <p className="font-display text-lg font-semibold text-black mb-4">Calls & Demos — {dateRange}</p>
               <ResponsiveContainer width="100%" height={260}>
                 <LineChart data={monthlySlice}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" vertical={false} />
-                  <XAxis dataKey="month" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
-                  <YAxis tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" vertical={false} />
+                  <XAxis dataKey="month" tick={{ fill: "rgba(0,0,0,0.40)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
+                  <YAxis tick={{ fill: "rgba(0,0,0,0.40)", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
                   <Tooltip content={<DarkTooltip />} />
-                  <Legend wrapperStyle={{ fontSize: 10, color: "rgba(255,255,255,0.4)", fontFamily: "monospace" }} />
+                  <Legend wrapperStyle={{ fontSize: 10, color: "rgba(0,0,0,0.45)", fontFamily: "monospace" }} />
                   <Line type="monotone" dataKey="calls" name="Calls" stroke={GOLD} strokeWidth={2} dot={{ fill: GOLD, r: 3 }} />
                   <Line type="monotone" dataKey="demos" name="Demos" stroke={TEAL} strokeWidth={2} dot={{ fill: TEAL, r: 3 }} />
                 </LineChart>
@@ -557,22 +556,22 @@ export default function ZWBusinessIntelligence() {
           {/* ── CHANNEL PIE + FORECAST SUMMARY ──────────────────────────── */}
           <div className="grid lg:grid-cols-3 gap-6">
             <DarkCard>
-              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Revenue Mix</p>
-              <p className="font-display text-lg font-semibold text-white mb-4">By Channel</p>
+              <p className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em] mb-1">Revenue Mix</p>
+              <p className="font-display text-lg font-semibold text-black mb-4">By Channel</p>
               <ResponsiveContainer width="100%" height={200}>
                 <PieChart>
                   <Pie data={filteredChannels} dataKey="revenue" nameKey="name" cx="50%" cy="50%" outerRadius={80} innerRadius={40} paddingAngle={3}>
                     {filteredChannels.map((c, i) => <Cell key={i} fill={c.color} />)}
                   </Pie>
                   <Tooltip content={<DarkTooltip />} />
-                  <Legend wrapperStyle={{ fontSize: 9, color: "rgba(255,255,255,0.4)", fontFamily: "monospace" }} />
+                  <Legend wrapperStyle={{ fontSize: 9, color: "rgba(0,0,0,0.45)", fontFamily: "monospace" }} />
                 </PieChart>
               </ResponsiveContainer>
             </DarkCard>
 
             <DarkCard className="lg:col-span-2">
-              <p className="font-mono text-[10px] text-white/45 uppercase tracking-[0.15em] mb-1">Revenue Forecast</p>
-              <p className="font-display text-lg font-semibold text-white mb-4">Forward-Looking Projections</p>
+              <p className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em] mb-1">Revenue Forecast</p>
+              <p className="font-display text-lg font-semibold text-black mb-4">Forward-Looking Projections</p>
               <div className="grid grid-cols-2 gap-4 mb-4">
                 {[
                   { period: "Next 30 Days", low: "$78K", mid: "$92K", high: "$108K", color: GOLD },
@@ -581,18 +580,18 @@ export default function ZWBusinessIntelligence() {
                   { period: "Full Year 2026", low: "$764K", mid: "$864K", high: "$954K", color: GREEN },
                 ].map((f, i) => (
                   <div key={i} className="rounded-xl border p-4" style={{ borderColor: `${f.color}20`, background: `${f.color}06` }}>
-                    <p className="font-mono text-[9px] text-white/40 uppercase tracking-wider mb-2">{f.period}</p>
+                    <p className="font-mono text-[9px] text-black/40 uppercase tracking-wider mb-2">{f.period}</p>
                     <div className="space-y-1">
                       <div className="flex justify-between">
-                        <span className="font-body text-xs text-white/45">Low</span>
+                        <span className="font-body text-xs text-black/40">Low</span>
                         <span className="font-mono text-xs text-red-400">{f.low}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="font-body text-xs text-white/60">Mid</span>
+                        <span className="font-body text-xs text-black/50">Mid</span>
                         <span className="font-mono text-sm font-semibold" style={{ color: f.color }}>{f.mid}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="font-body text-xs text-white/45">High</span>
+                        <span className="font-body text-xs text-black/40">High</span>
                         <span className="font-mono text-xs" style={{ color: TEAL }}>{f.high}</span>
                       </div>
                     </div>
