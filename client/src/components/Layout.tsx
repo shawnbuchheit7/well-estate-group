@@ -82,8 +82,6 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
   const isProductRoute = location.startsWith("/product-intelligence");
   const isVentureRoute = location.startsWith("/venture-capital");
   
-  // Dark layout pages — fully dark-themed pages that need dark nav/footer
-  const isDarkLayout = location === "/gtm/zerowheel/sales-infrastructure" || location === "/gtm/zerowheel/business-intelligence";
   
   let navLinks: typeof longevityNavLinks;
   let homeLink: string;
@@ -141,23 +139,23 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
     : null;
 
   return (
-    <div className={`min-h-screen overflow-x-hidden ${isDarkLayout ? 'bg-[#0A0A0A] text-white' : 'bg-white text-black'}`}>
+    <div className="min-h-screen overflow-x-hidden bg-white text-black">
       {/* Scroll Progress Indicator */}
       <ScrollProgressBar />
       
       {/* Navigation */}
       <motion.nav 
-        className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b ${isDarkLayout ? 'bg-[#0A0A0A]/95 border-white/[0.12]' : 'bg-white/95 border-black/[0.12]'}`}
+        className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b bg-white/95 border-black/[0.12]"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] }}
-        style={{ boxShadow: isDarkLayout ? '0 1px 24px rgba(0,0,0,0.3)' : '0 1px 24px rgba(0,0,0,0.05)' }}
+        style={{ boxShadow: '0 1px 24px rgba(0,0,0,0.05)' }}
       >
         <div className="w-full px-6 lg:px-10 xl:px-16 flex items-center justify-between h-20">
           {/* Logo - Far Left with back button */}
           <div className="flex items-center gap-3 flex-shrink-0">
             {showBackButton && (
-              <Link href={backLink} className={`flex items-center gap-1 transition-colors mr-2 ${isDarkLayout ? 'text-white/40 hover:text-white' : 'text-black/40 hover:text-black'}`} onClick={closeMobileMenu}>
+              <Link href={backLink} className="flex items-center gap-1 transition-colors mr-2 text-black/40 hover:text-black" onClick={closeMobileMenu}>
                 <ChevronLeft className="w-4 h-4" />
               </Link>
             )}
@@ -169,7 +167,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                 whileHover={{ rotate: 360, scale: 1.1 }}
                 transition={{ duration: 0.6 }}
               />
-              <span className={`font-display text-lg font-semibold tracking-wide group-hover:text-[#C9A962] transition-colors whitespace-nowrap ${isDarkLayout ? 'text-white' : 'text-black'}`}>
+              <span className="font-display text-lg font-semibold tracking-wide group-hover:text-[#C9A962] transition-colors whitespace-nowrap text-black">
                 WELL ESTATE GROUP
               </span>
             </Link>
@@ -191,12 +189,8 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                       href={link.href}
                       className={`relative px-3 py-1.5 rounded-md border transition-all whitespace-nowrap ${
                         isActive
-                          ? isDarkLayout
-                            ? "text-black font-semibold border-white bg-white shadow-sm"
-                            : "text-white font-semibold border-black bg-black shadow-sm"
-                          : isDarkLayout
-                            ? "text-white/60 border-transparent hover:text-white hover:border-white/15 hover:bg-white/[0.06]"
-                            : "text-black/60 border-transparent hover:text-black hover:border-black/15 hover:bg-black/[0.03]"
+                          ? "text-white font-semibold border-black bg-black shadow-sm"
+                          : "text-black/60 border-transparent hover:text-black hover:border-black/15 hover:bg-black/[0.03]"
                       }`}
                     >
                       {link.label}
@@ -222,7 +216,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                 </motion.div>
               </Link>
             ) : sectionLabel ? (
-              <span className={`hidden sm:block font-mono text-[11px] tracking-wider uppercase ${isDarkLayout ? 'text-white/35' : 'text-black/35'}`}>
+              <span className="hidden sm:block font-mono text-[11px] tracking-wider uppercase text-black/35">
                 {sectionLabel}
               </span>
             ) : null}
@@ -230,7 +224,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
             {/* Mobile Menu Button */}
             <motion.button
               onClick={toggleMobileMenu}
-              className={`lg:hidden p-2 hover:text-[#C9A962] transition-colors ${isDarkLayout ? 'text-white' : 'text-black'}`}
+              className="lg:hidden p-2 hover:text-[#C9A962] transition-colors text-black"
               aria-label="Toggle menu"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -341,33 +335,33 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
 
       {/* Cross-Pillar Navigation */}
       {currentPillarIndex >= 0 && (
-        <section className={`py-12 border-t ${isDarkLayout ? 'bg-[#0A0A0A] border-white/[0.12]' : 'bg-white border-black/[0.12]'}`}>
+        <section className="py-12 border-t bg-white border-black/[0.12]">
           <div className="container px-6">
             <div className="flex items-center justify-between max-w-4xl mx-auto">
               {prevPillar ? (
                 <Link href={prevPillar.href} className="group flex items-center gap-3 text-left">
-                  <div className={`w-10 h-10 rounded-full border flex items-center justify-center group-hover:border-[#C9A962]/50 group-hover:bg-[#C9A962]/[0.04] transition-all ${isDarkLayout ? 'border-white/20' : 'border-black/20'}`}>
-                    <ChevronLeft className={`w-4 h-4 group-hover:text-[#C9A962] transition-colors ${isDarkLayout ? 'text-white/40' : 'text-black/40'}`} />
+                  <div className="w-10 h-10 rounded-full border flex items-center justify-center group-hover:border-[#C9A962]/50 group-hover:bg-[#C9A962]/[0.04] transition-all border-black/20">
+                    <ChevronLeft className="w-4 h-4 group-hover:text-[#C9A962] transition-colors text-black/40" />
                   </div>
                   <div>
-                    <p className={`font-mono text-[10px] tracking-wider uppercase ${isDarkLayout ? 'text-white/35' : 'text-black/35'}`}>Pillar {prevPillar.num}</p>
-                    <p className={`font-body text-sm transition-colors ${isDarkLayout ? 'text-white/70 group-hover:text-white' : 'text-black/70 group-hover:text-black'}`}>{prevPillar.label}</p>
+                    <p className="font-mono text-[10px] tracking-wider uppercase text-black/35">Pillar {prevPillar.num}</p>
+                    <p className="font-body text-sm transition-colors text-black/70 group-hover:text-black">{prevPillar.label}</p>
                   </div>
                 </Link>
               ) : <div />}
               
-              <Link href="/" className={`font-mono text-[10px] tracking-wider uppercase hover:text-[#C9A962] transition-colors ${isDarkLayout ? 'text-white/30' : 'text-black/30'}`}>
+              <Link href="/" className="font-mono text-[10px] tracking-wider uppercase hover:text-[#C9A962] transition-colors text-black/30">
                 All Pillars
               </Link>
               
               {nextPillar ? (
                 <Link href={nextPillar.href} className="group flex items-center gap-3 text-right">
                   <div>
-                    <p className={`font-mono text-[10px] tracking-wider uppercase ${isDarkLayout ? 'text-white/35' : 'text-black/35'}`}>Pillar {nextPillar.num}</p>
-                    <p className={`font-body text-sm transition-colors ${isDarkLayout ? 'text-white/70 group-hover:text-white' : 'text-black/70 group-hover:text-black'}`}>{nextPillar.label}</p>
+                    <p className="font-mono text-[10px] tracking-wider uppercase text-black/35">Pillar {nextPillar.num}</p>
+                    <p className="font-body text-sm transition-colors text-black/70 group-hover:text-black">{nextPillar.label}</p>
                   </div>
-                  <div className={`w-10 h-10 rounded-full border flex items-center justify-center group-hover:border-[#C9A962]/50 group-hover:bg-[#C9A962]/[0.04] transition-all ${isDarkLayout ? 'border-white/20' : 'border-black/20'}`}>
-                    <ArrowRight className={`w-4 h-4 group-hover:text-[#C9A962] transition-colors ${isDarkLayout ? 'text-white/40' : 'text-black/40'}`} />
+                  <div className="w-10 h-10 rounded-full border flex items-center justify-center group-hover:border-[#C9A962]/50 group-hover:bg-[#C9A962]/[0.04] transition-all border-black/20">
+                    <ArrowRight className="w-4 h-4 group-hover:text-[#C9A962] transition-colors text-black/40" />
                   </div>
                 </Link>
               ) : <div />}
@@ -380,7 +374,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
       <BackToTop />
 
       {/* Enhanced Footer with Contact CTA */}
-      <footer className={`py-16 border-t ${isDarkLayout ? 'border-white/[0.12] bg-[#0A0A0A]' : 'border-black/[0.12] bg-[#FAFAF8]'}`}>
+      <footer className="py-16 border-t border-black/[0.12] bg-[#FAFAF8]">
         <div className="container px-6">
           <div className="max-w-6xl mx-auto">
             {/* Footer Top */}
@@ -395,11 +389,11 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   />
-                  <span className={`font-display text-base font-semibold tracking-wide group-hover:text-[#C9A962] transition-colors ${isDarkLayout ? 'text-white' : 'text-black'}`}>
+                  <span className="font-display text-base font-semibold tracking-wide group-hover:text-[#C9A962] transition-colors text-black">
                     WELL ESTATE GROUP
                   </span>
                 </Link>
-                <p className={`font-body text-sm leading-relaxed ${isDarkLayout ? 'text-white/50' : 'text-black/50'}`}>
+                <p className="font-body text-sm leading-relaxed text-black/50">
                   Consulting Services in Fitness, Wellness & Longevity. Delivering end-to-end strategy from market entry to global expansion.
                 </p>
               </div>
@@ -408,9 +402,9 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
               <div className="flex flex-col md:flex-row gap-12">
                 {/* Pillar Links */}
                 <div className="flex flex-col gap-3">
-                  <p className={`font-mono text-[10px] tracking-wider uppercase mb-1 ${isDarkLayout ? 'text-white/40' : 'text-black/40'}`}>Pillars</p>
+                  <p className="font-mono text-[10px] tracking-wider uppercase mb-1 text-black/40">Pillars</p>
                   {pillarOrder.map((pillar) => (
-                    <Link key={pillar.href} href={pillar.href} className={`font-body text-sm hover:text-[#C9A962] transition-colors ${isDarkLayout ? 'text-white/60' : 'text-black/60'}`}>
+                    <Link key={pillar.href} href={pillar.href} className="font-body text-sm hover:text-[#C9A962] transition-colors text-black/60">
                       {pillar.label}
                     </Link>
                   ))}
@@ -418,17 +412,17 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
 
                 {/* Contact CTA */}
                 <div className="flex flex-col gap-3">
-                  <p className={`font-mono text-[10px] tracking-wider uppercase mb-1 ${isDarkLayout ? 'text-white/40' : 'text-black/40'}`}>Get in Touch</p>
+                  <p className="font-mono text-[10px] tracking-wider uppercase mb-1 text-black/40">Get in Touch</p>
                   <a 
                     href="mailto:info@wellestategroup.com" 
-                    className={`group flex items-center gap-3 px-5 py-3 rounded-xl border hover:border-[#C9A962]/50 transition-all ${isDarkLayout ? 'border-white/20 bg-white/[0.06] hover:bg-[#C9A962]/[0.08]' : 'border-black/20 bg-white hover:bg-[#C9A962]/[0.04]'}`}
+                    className="group flex items-center gap-3 px-5 py-3 rounded-xl border hover:border-[#C9A962]/50 transition-all border-black/20 bg-white hover:bg-[#C9A962]/[0.04]"
                   >
                     <div className="w-9 h-9 rounded-full bg-black flex items-center justify-center group-hover:bg-[#C9A962] transition-colors">
                       <Mail className="w-4 h-4 text-white" />
                     </div>
                     <div>
-                      <p className={`font-body text-sm font-semibold ${isDarkLayout ? 'text-white' : 'text-black'}`}>Inquire</p>
-                      <p className={`font-body text-xs ${isDarkLayout ? 'text-white/45' : 'text-black/45'}`}>info@wellestategroup.com</p>
+                      <p className="font-body text-sm font-semibold text-black">Inquire</p>
+                      <p className="font-body text-xs text-black/45">info@wellestategroup.com</p>
                     </div>
                   </a>
                 </div>
@@ -436,15 +430,15 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
             </div>
 
             {/* Footer Divider */}
-            <div className={`h-px bg-gradient-to-r from-transparent to-transparent mb-8 ${isDarkLayout ? 'via-white/[0.10]' : 'via-black/[0.10]'}`} />
+            <div className="h-px bg-gradient-to-r from-transparent to-transparent mb-8 via-black/[0.10]" />
 
             {/* Footer Bottom */}
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className={`font-body text-[11px] tracking-wider ${isDarkLayout ? 'text-white/35' : 'text-black/35'}`}>
+              <p className="font-body text-[11px] tracking-wider text-black/35">
                 &copy; 2026 Well Estate Group. All rights reserved.
               </p>
               <div className="flex items-center gap-6">
-                <span className={`font-mono text-[10px] tracking-wider ${isDarkLayout ? 'text-white/25' : 'text-black/25'}`}>
+                <span className="font-mono text-[10px] tracking-wider text-black/25">
                   CONFIDENTIAL
                 </span>
               </div>
