@@ -4,7 +4,7 @@
  */
 
 import { motion } from "framer-motion";
-import { DollarSign, TrendingUp, Store, Users, Percent, Calculator, FileText, ArrowRight, CheckCircle2, Lightbulb, BarChart3, Layers } from "lucide-react";
+import { DollarSign, TrendingUp, Store, Users, Percent, Calculator, FileText, ArrowRight, CheckCircle2, Lightbulb, BarChart3, Layers, Building2 } from "lucide-react";
 import Layout from "@/components/Layout";
 import LightHero from "@/components/LightHero";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
