@@ -169,8 +169,8 @@ const macroLOBs = [
     name: "Cruise & Maritime",
     icon: Ship,
     color: "#C9A962",
-    category: "Commercial",
-    pricing: "$695 (max 40% off list)",
+    category: "Vertical",
+    pricing: "$825 (max 25% off list)",
     description: "Cruise lines and superyachts — zero-maintenance magnetic resistance in the smallest footprint, ideal for space-constrained marine environments.",
     targets: [
       "Seatrade Cruise Global Conference",
