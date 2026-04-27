@@ -60,7 +60,7 @@ export default function ZWCommercialStrategy() {
               Margin-Off-List Pricing Strategy
             </motion.h2>
             <motion.p variants={fadeInUp} className="font-body text-base text-black/60 max-w-2xl mx-auto">
-              All pricing is anchored to the $1,095 MSRP. Two distinct market categories — Commercial and Vertical — each with structured discount points off list. Absolute price floor: $695.
+              All pricing is anchored to the $1,095 MSRP. Two distinct market categories — Commercial and Vertical — each with structured discount points off list. Maximum discount thresholds — do not exceed. GSA best pricing: $694.
             </motion.p>
           </motion.div>
 
@@ -85,19 +85,19 @@ export default function ZWCommercialStrategy() {
                 <div>
                   <span className="font-mono text-[10px] text-black/40 tracking-wider uppercase block">DTC Retail</span>
                   <span className="font-display text-lg font-bold text-black">$1,095</span>
-                  <span className="font-body text-xs text-black/40 block">0% off list</span>
+                  <span className="font-body text-xs text-black/40 block">0% off list (full MSRP)</span>
                 </div>
                 <div className="w-px h-10 bg-black/10" />
                 <div>
                   <span className="font-mono text-[10px] text-black/40 tracking-wider uppercase block">Vertical Markets</span>
                   <span className="font-display text-lg font-bold text-black">$825</span>
-                  <span className="font-body text-xs text-black/40 block">25% off list</span>
+                  <span className="font-body text-xs text-black/40 block">max 25% off list (do not exceed)</span>
                 </div>
                 <div className="w-px h-10 bg-black/10" />
                 <div>
                   <span className="font-mono text-[10px] text-black/40 tracking-wider uppercase block">Commercial Markets</span>
                   <span className="font-display text-lg font-bold text-black">$695</span>
-                  <span className="font-body text-xs text-black/40 block">40% off list (floor)</span>
+                  <span className="font-body text-xs text-black/40 block">max 40% off list (do not exceed)</span>
                 </div>
               </div>
               <div className="flex items-center gap-2 bg-black/5 px-4 py-2 rounded-full">
@@ -114,7 +114,7 @@ export default function ZWCommercialStrategy() {
                 tier: "Direct-to-Consumer",
                 price: "$1,095",
                 unit: "full list price",
-                discount: "0% off list",
+                discount: "0% off list (full MSRP)",
                 icon: Users,
                 highlight: true,
                 features: [
@@ -130,8 +130,8 @@ export default function ZWCommercialStrategy() {
               {
                 tier: "Vertical Markets",
                 price: "$825",
-                unit: "25 points off list",
-                discount: "25% off MSRP",
+                unit: "max 25 points off list",
+                discount: "max 25% off MSRP",
                 icon: Building2,
                 highlight: false,
                 features: [
@@ -142,13 +142,13 @@ export default function ZWCommercialStrategy() {
                   "Corporate wellness programs",
                   "Net 30 terms · Dedicated account mgr",
                 ],
-                note: "Max discount: 25% off list — specialized verticals with high brand alignment",
+                note: "Max discount: 25% off list (do not exceed) — specialized verticals with high brand alignment",
               },
               {
                 tier: "Commercial Markets",
                 price: "$695",
-                unit: "40 points off list (floor)",
-                discount: "40% off MSRP",
+                unit: "max 40 points off list",
+                discount: "max 40% off MSRP",
                 icon: Store,
                 highlight: false,
                 features: [
@@ -266,7 +266,7 @@ export default function ZWCommercialStrategy() {
             {[
               {
                 title: "Vertical Market Partners",
-                subtitle: "25% off list — $825/unit",
+                subtitle: "max 25% off list (do not exceed) — $825/unit",
                 icon: Building2,
                 items: [
                   { label: "Partner Price", value: "$825/unit" },
@@ -279,7 +279,7 @@ export default function ZWCommercialStrategy() {
               },
               {
                 title: "Authorized Dealer Program",
-                subtitle: "40% off list — $695/unit (floor)",
+                subtitle: "max 40% off list (do not exceed) — $695/unit (floor)",
                 icon: Store,
                 items: [
                   { label: "Wholesale Price", value: "$695/unit" },
@@ -292,7 +292,7 @@ export default function ZWCommercialStrategy() {
               },
               {
                 title: "Regional Distributors & Resellers",
-                subtitle: "40% off list — $695/unit (floor)",
+                subtitle: "max 40% off list (do not exceed) — $695/unit (floor)",
                 icon: Layers,
                 items: [
                   { label: "Wholesale Price", value: "$695/unit" },

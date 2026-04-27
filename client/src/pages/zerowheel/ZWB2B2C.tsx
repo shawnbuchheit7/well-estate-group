@@ -20,7 +20,7 @@ export default function ZWB2B2C() {
         description="A hybrid distribution model that leverages B2B partnerships to reach end consumers — combining institutional placement with consumer engagement for maximum market penetration."
         stats={[
           { value: "3", label: "Distribution Tiers" },
-          { value: "8", label: "Vertical Markets" },
+          { value: "9", label: "Macro LOBs" },
           { value: "2x", label: "Revenue per Unit" },
           { value: "85%", label: "Retention Target" },
         ]}
@@ -101,11 +101,11 @@ export default function ZWB2B2C() {
                   <span className="font-semibold text-black">$1,095</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-black/60">Vertical (25% off list)</span>
+                  <span className="text-black/60">Vertical (max 25% off list)</span>
                   <span className="font-semibold text-black">$825</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-black/60">Commercial (40% off list)</span>
+                  <span className="text-black/60">Commercial (max 40% off list)</span>
                   <span className="font-semibold text-black">$695 (floor)</span>
                 </div>
                 <div className="flex justify-between text-sm">

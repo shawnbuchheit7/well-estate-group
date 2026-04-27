@@ -1,7 +1,7 @@
 /*
  * ZeroWheel Product Analysis & GTM Playbook
  * Three Pillars of Superiority, Product Deep Dive, LOB-specific marketing strategies, and strategic recommendations
- * Pricing: $1,095 MSRP | $825 Vertical (25% off) | $695 Commercial (40% off) | $694 Military/Gov (GSA best)
+ * Pricing: $1,095 MSRP | $825 Vertical (max 25% off) | $695 Commercial (max 40% off) | $694 Military/Gov (GSA best)
  */
 
 import { useState } from "react";
@@ -156,7 +156,7 @@ const lobPlaybooks = [
     tier: "Tier 1 — Launch Priority",
     tierColor: "#C9A962",
     marketCategory: "Vertical",
-    pricing: "$825/unit (25% off list)",
+    pricing: "$825/unit (max 25% off list)",
     buyerPersona: "The Premium Member Experience Director at luxury private clubs (country clubs, athletic clubs, social clubs). Decision-maker focused on member retention, exclusivity, and delivering personalized, technology-driven experiences.",
     positioning: "A bespoke, data-driven core training experience exclusive to the club. ZeroWheel reinforces the club's technology-forward brand identity while enabling personal trainers to offer premium one-on-one sessions with real-time performance tracking.",
     painPoints: ["Members expect personalized, technology-driven experiences", "Traditional equipment fails to deliver novelty or exclusivity", "Retention depends on continuously elevating the member experience"],
@@ -181,7 +181,7 @@ const lobPlaybooks = [
     tier: "Tier 1 — Launch Priority",
     tierColor: "#C9A962",
     marketCategory: "Commercial",
-    pricing: "$695/unit (40% off list)",
+    pricing: "$695/unit (max 40% off list)",
     buyerPersona: "The Fitness Director at commercial fitness chains (Equinox, Life Time, Bay Club, Rochester Athletic Club). Decision-maker focused on equipment durability, member engagement, group class programming, and revenue per square foot.",
     positioning: "A durable, motorized core training station that integrates into HIIT classes, personal training, and open floor use. Rochester Athletic Club expanded to 6 units serving 16,000+ members, with plans for fee-based 'core clinics' as a new revenue source.",
     painPoints: ["Traditional ab wheels break frequently under heavy commercial use", "Members are intimidated by complex machines", "Group class programming needs constant refreshing"],
@@ -206,7 +206,7 @@ const lobPlaybooks = [
     tier: "Tier 1 — Launch Priority",
     tierColor: "#C9A962",
     marketCategory: "Vertical",
-    pricing: "$825/unit (25% off list)",
+    pricing: "$825/unit (max 25% off list)",
     buyerPersona: "The Clinical Rehabilitation Director / Lead Physical Therapist at sports medicine clinics and rehabilitation centers. Decision-maker focused on patient safety, clinical efficacy, objective data tracking, and insurance reimbursement potential.",
     positioning: "Clinical-grade core rehabilitation through CKC exercise science. Springback Mode provides graduated assistance for safe core exercise entry, while the connected app tracks every rep for patient progress reports and insurance documentation.",
     painPoints: ["Patients lack strength for traditional core exercises", "Need graduated assistance for safe exercise entry", "Require objective data tracking for progress reports and insurance documentation"],
@@ -256,7 +256,7 @@ const lobPlaybooks = [
     tier: "Tier 2 — Growth Phase",
     tierColor: "#888",
     marketCategory: "Vertical",
-    pricing: "$825/unit (25% off list)",
+    pricing: "$825/unit (max 25% off list)",
     buyerPersona: "The Corporate Wellness Program Manager / HR Benefits Director at Fortune 500 companies. Focused on employee engagement, health outcomes ROI, program utilization metrics, and reducing lower back pain costs.",
     positioning: "The antidote to the desk chair. Lower back pain costs US employers over $100 billion annually — core strength directly combats it. ZeroWheel is portable enough for office gyms and break rooms, and the app's gamification features (streaks, goals, competitions) drive sustained employee engagement while providing HR with participation data.",
     painPoints: ["Lower back pain costs US employers over $100 billion annually", "Employees are intimidated by complex gym equipment", "Wellness programs struggle with low participation rates"],
@@ -280,7 +280,7 @@ const lobPlaybooks = [
     tier: "Tier 2 — Growth Phase",
     tierColor: "#888",
     marketCategory: "Vertical",
-    pricing: "$825/unit (25% off list)",
+    pricing: "$825/unit (max 25% off list)",
     buyerPersona: "The Director of Strength and Conditioning at professional teams, D1 programs, and elite training facilities. Obsessed with marginal gains, eccentric overload capability, and sport-specific movement patterns.",
     positioning: "Elite athletes use ZeroWheel for rotational power and eccentric overload training. Burn and Quicksand modes deliver advanced eccentric overload that challenges the most elite athletes. Wall-based exercises mimic rotational patterns critical for baseball (swing mechanics) and golf (torso rotation). The LA Rams and Aroldis Chapman (8x MLB All-Star) actively use ZeroWheel in their training programs.",
     painPoints: ["Need tools that provide meaningful eccentric overload beyond body weight", "Require portability from weight room to sideline", "Must serve diverse sport-specific movement patterns (rotational, linear, lateral)"],
@@ -304,7 +304,7 @@ const lobPlaybooks = [
     tier: "Tier 2 — Growth Phase",
     tierColor: "#888",
     marketCategory: "Vertical",
-    pricing: "$825/unit (25% off list)",
+    pricing: "$825/unit (max 25% off list)",
     buyerPersona: "The Luxury Property Manager / Wellness Concierge / Director of Wellness at 5-star hotels, luxury resorts, wellness retreats, and premium residential buildings. Focused on guest/resident experience differentiation, limited space optimization, and self-guided wellness amenities.",
     positioning: "The premium wellness amenity that elevates the guest fitness experience in a compact footprint (18\" x 8.4\" x 8.4\"). QR code onboarding and intuitive app enable safe, unassisted use — no dedicated staff required. Elevates the property's wellness brand without consuming valuable floor space.",
     painPoints: ["Limited gym space in luxury buildings and hotel fitness centers", "Equipment must serve beginners and advanced users alike without staff", "Residents and guests expect premium, self-guided experiences"],
@@ -352,7 +352,7 @@ const lobPlaybooks = [
     tier: "Tier 3 — Scale Phase",
     tierColor: "#555",
     marketCategory: "Commercial",
-    pricing: "$695/unit (40% off list)",
+    pricing: "$695/unit (max 40% off list)",
     buyerPersona: "VP of Onboard Experience / Cruise Line Fitness Director / Superyacht Interior Designer. Focused on space efficiency, guest experience, and premium amenity differentiation in space-constrained marine environments.",
     positioning: "The compact, connected core training solution designed for space-constrained marine environments. Premium guest experience in a footprint that fits anywhere on board. No hydraulics, no cables, no consumable parts — magnetic resistance motor requires zero maintenance, ideal for maritime environments.",
     painPoints: ["Extremely limited fitness center space on ships", "Equipment must withstand maritime conditions with minimal maintenance", "Need to serve diverse passenger demographics"],
@@ -742,8 +742,8 @@ export default function ZWProductAnalysis() {
               <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-black/[0.06]">
                 {[
                   { label: "DTC / MSRP", price: "$1,095", note: "full list" },
-                  { label: "Vertical", price: "$825", note: "25% off list" },
-                  { label: "Commercial", price: "$695", note: "40% off list" },
+                  { label: "Vertical", price: "$825", note: "max 25% off list" },
+                  { label: "Commercial", price: "$695", note: "max 40% off list" },
                   { label: "GSA (Mil/Gov)", price: "$694", note: "best pricing" },
                 ].map((tier, i) => (
                   <div key={i} className="p-4 text-center">

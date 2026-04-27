@@ -35,9 +35,9 @@ export default function ZWOverview() {
           title="Connected Fitness Device — Market Entry"
           description="A comprehensive go-to-market strategy for a next-generation motorized core training device — from premium club placement and professional sports adoption to medical rehabilitation, government procurement, and global hospitality distribution."
           stats={[
-            { value: "8", label: "Macro Lines of Business" },
+            { value: "9", label: "Macro Lines of Business" },
             { value: "4", label: "Global Regions" },
-            { value: "5", label: "Addressable Segments" },
+            { value: "4", label: "Pricing Tiers" },
             { value: "$6.7T", label: "Wellness Market Size" },
           ]}
         />
@@ -329,7 +329,7 @@ export default function ZWOverview() {
               Go-To-Market Pricing Framework
             </motion.h2>
             <motion.p variants={fadeInUp} className="font-body text-base text-black/55 max-w-2xl mx-auto">
-              All pricing anchored to the $1,095 MSRP — structured as margin points off list across two distinct market categories: Commercial and Vertical. Price floor: $695.
+              All pricing anchored to the $1,095 MSRP — structured as maximum discount thresholds (do not exceed) across three distinct market categories: DTC, Vertical, and Commercial. GSA best pricing: $694.
             </motion.p>
           </motion.div>
 
@@ -353,16 +353,16 @@ export default function ZWOverview() {
               {
                 tier: "Vertical Markets",
                 price: "$825",
-                unit: "25 points off list",
-                description: "Specialized verticals with high brand alignment — medical, sports performance, hospitality, government, and corporate wellness.",
+                unit: "max 25% off list (do not exceed)",
+                description: "Specialized verticals with high brand alignment — medical, sports performance, hospitality, and corporate wellness. Maximum discount threshold — do not exceed.",
                 features: ["Medical & longevity clinics", "Sports performance facilities", "Hospitality & luxury resorts", "Government & corporate wellness"],
                 highlight: true,
               },
               {
                 tier: "Commercial Markets",
                 price: "$695",
-                unit: "40 points off list (floor)",
-                description: "Health clubs, authorized dealers, and reseller partners. Price floor — no channel goes below $695 under any circumstance.",
+                unit: "max 40% off list (do not exceed)",
+                description: "Health clubs, authorized dealers, cruise/maritime, and reseller partners. Maximum discount threshold — no channel goes below $695 under any circumstance.",
                 features: ["Health clubs & fitness centers", "Authorized dealers & retailers", "Regional distributors", "MAP pricing strictly enforced"],
                 highlight: false,
               },
@@ -419,7 +419,7 @@ export default function ZWOverview() {
                 {[
                   { label: "MSRP", value: "$1,095", sub: "list price anchor" },
                   { label: "Year 1 Target", value: "1,000", sub: "units sold" },
-                  { label: "Price Floor", value: "$695", sub: "no channel below" },
+                  { label: "Max Discount Floor", value: "$695", sub: "do not exceed" },
                   { label: "Gross Margin", value: "55–68%", sub: "target range" },
                 ].map((metric, i) => (
                   <div key={i} className="text-center">

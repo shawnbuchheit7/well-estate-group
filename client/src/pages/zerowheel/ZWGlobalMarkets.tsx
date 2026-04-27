@@ -22,8 +22,8 @@ const globalRegions = [
   {
     country: "United States",
     flag: "🇺🇸",
-    description: "Full 15 lines of business active across all macro categories. Primary focus markets highlighted.",
-    lobCount: "15 LOBs",
+    description: "Full 9 macro lines of business active across all macro categories. Primary focus markets highlighted.",
+    lobCount: "9 LOBs",
     focusMarkets: ["Golf & Country Clubs", "Live/Work/Play", "Influencer", "Health Care"],
     allActive: true,
   },
