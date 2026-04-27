@@ -32,11 +32,11 @@ export default function ZWCommercialStrategy() {
           brandName="ZeroWheel"
           eyebrow="Commercial Strategy"
           title="Pricing, Terms & Revenue Architecture"
-          description="The commercial framework for ZeroWheel market entry — anchored to a $1,099 MSRP with structured margin-off-list pricing across Commercial and Vertical market categories. Price floor: $699."
+          description="The commercial framework for ZeroWheel market entry — anchored to a $1,095 MSRP with structured margin-off-list pricing across Commercial and Vertical market categories. Price floor: $695."
           stats={[
-            { value: "$1,099", label: "MSRP / List Price" },
+            { value: "$1,095", label: "MSRP / List Price" },
             { value: "55%+", label: "Target Gross Margin" },
-            { value: "$699", label: "Price Floor" },
+            { value: "$695", label: "Price Floor" },
           ]}
         />
       </div>
@@ -60,7 +60,7 @@ export default function ZWCommercialStrategy() {
               Margin-Off-List Pricing Strategy
             </motion.h2>
             <motion.p variants={fadeInUp} className="font-body text-base text-black/60 max-w-2xl mx-auto">
-              All pricing is anchored to the $1,099 MSRP. Two distinct market categories — Commercial and Vertical — each with structured discount points off list. Absolute price floor: $699.
+              All pricing is anchored to the $1,095 MSRP. Two distinct market categories — Commercial and Vertical — each with structured discount points off list. Absolute price floor: $695.
             </motion.p>
           </motion.div>
 
@@ -78,31 +78,31 @@ export default function ZWCommercialStrategy() {
                 </div>
                 <div>
                   <span className="font-mono text-[10px] text-[#C9A962] tracking-wider uppercase">MSRP / List Price</span>
-                  <div className="font-display text-3xl font-bold text-black">$1,099</div>
+                  <div className="font-display text-3xl font-bold text-black">$1,095</div>
                 </div>
               </div>
               <div className="flex items-center gap-6 text-center">
                 <div>
                   <span className="font-mono text-[10px] text-black/40 tracking-wider uppercase block">DTC Retail</span>
-                  <span className="font-display text-lg font-bold text-black">$1,099</span>
+                  <span className="font-display text-lg font-bold text-black">$1,095</span>
                   <span className="font-body text-xs text-black/40 block">0% off list</span>
                 </div>
                 <div className="w-px h-10 bg-black/10" />
                 <div>
                   <span className="font-mono text-[10px] text-black/40 tracking-wider uppercase block">Vertical Markets</span>
-                  <span className="font-display text-lg font-bold text-black">$824</span>
+                  <span className="font-display text-lg font-bold text-black">$825</span>
                   <span className="font-body text-xs text-black/40 block">25% off list</span>
                 </div>
                 <div className="w-px h-10 bg-black/10" />
                 <div>
                   <span className="font-mono text-[10px] text-black/40 tracking-wider uppercase block">Commercial Markets</span>
-                  <span className="font-display text-lg font-bold text-black">$699</span>
+                  <span className="font-display text-lg font-bold text-black">$695</span>
                   <span className="font-body text-xs text-black/40 block">40% off list (floor)</span>
                 </div>
               </div>
               <div className="flex items-center gap-2 bg-black/5 px-4 py-2 rounded-full">
                 <ShieldCheck className="w-4 h-4 text-[#C9A962]" />
-                <span className="font-mono text-xs text-black/60">Floor: $699</span>
+                <span className="font-mono text-xs text-black/60">Floor: $695</span>
               </div>
             </div>
           </motion.div>
@@ -112,7 +112,7 @@ export default function ZWCommercialStrategy() {
             {[
               {
                 tier: "Direct-to-Consumer",
-                price: "$1,099",
+                price: "$1,095",
                 unit: "full list price",
                 discount: "0% off list",
                 icon: Users,
@@ -125,11 +125,11 @@ export default function ZWCommercialStrategy() {
                   "1-year warranty included",
                   "Free app subscription (3 months)",
                 ],
-                note: "MAP pricing enforced across all channels at $1,099",
+                note: "MAP pricing enforced across all channels at $1,095",
               },
               {
                 tier: "Vertical Markets",
-                price: "$824",
+                price: "$825",
                 unit: "25 points off list",
                 discount: "25% off MSRP",
                 icon: Building2,
@@ -146,7 +146,7 @@ export default function ZWCommercialStrategy() {
               },
               {
                 tier: "Commercial Markets",
-                price: "$699",
+                price: "$695",
                 unit: "40 points off list (floor)",
                 discount: "40% off MSRP",
                 icon: Store,
@@ -159,7 +159,7 @@ export default function ZWCommercialStrategy() {
                   "Minimum order: 10 units",
                   "MAP pricing strictly enforced",
                 ],
-                note: "Price floor — no channel goes below $699 under any circumstance",
+                note: "Price floor — no channel goes below $695 under any circumstance",
               },
             ].map((tier, i) => (
               <motion.div
@@ -220,9 +220,9 @@ export default function ZWCommercialStrategy() {
                 </thead>
                 <tbody>
                   {[
-                    { category: "DTC / Full Retail", points: "0%", net: "$1,099", savings: "—", highlight: true },
-                    { category: "Vertical Markets (Medical, Sports, Hospitality, Gov)", points: "25%", net: "$824", savings: "$275", highlight: false },
-                    { category: "Commercial Markets (Clubs, Dealers, Resellers)", points: "40%", net: "$699", savings: "$400", highlight: false },
+                    { category: "DTC / Full Retail", points: "0%", net: "$1,095", savings: "—", highlight: true },
+                    { category: "Vertical Markets (Medical, Sports, Hospitality, Gov)", points: "25%", net: "$825", savings: "$275", highlight: false },
+                    { category: "Commercial Markets (Clubs, Dealers, Resellers)", points: "40%", net: "$695", savings: "$400", highlight: false },
                   ].map((row, i) => (
                     <tr key={i} className={`border-b border-black/[0.06] last:border-0 ${row.highlight ? "bg-[#C9A962]/5" : ""}`}>
                       <td className="p-4 font-body text-sm text-black/80 font-medium">{row.category}</td>
@@ -235,7 +235,7 @@ export default function ZWCommercialStrategy() {
               </table>
             </div>
             <p className="font-body text-xs text-black/35 mt-3 text-center italic">
-              All pricing expressed as margin points off the $1,099 MSRP. Price floor of $699 applies to all channels — no exceptions.
+              All pricing expressed as margin points off the $1,095 MSRP. Price floor of $695 applies to all channels — no exceptions.
             </p>
           </motion.div>
         </div>
@@ -258,7 +258,7 @@ export default function ZWCommercialStrategy() {
               Commercial & Vertical Partner Programs
             </motion.h2>
             <motion.p variants={fadeInUp} className="font-body text-base text-black/60 max-w-2xl mx-auto">
-              Structured partner programs for both market categories — each with distinct pricing, terms, and margin structures anchored to the $1,099 list price.
+              Structured partner programs for both market categories — each with distinct pricing, terms, and margin structures anchored to the $1,095 list price.
             </motion.p>
           </motion.div>
 
@@ -266,12 +266,12 @@ export default function ZWCommercialStrategy() {
             {[
               {
                 title: "Vertical Market Partners",
-                subtitle: "25% off list — $824/unit",
+                subtitle: "25% off list — $825/unit",
                 icon: Building2,
                 items: [
-                  { label: "Partner Price", value: "$824/unit" },
+                  { label: "Partner Price", value: "$825/unit" },
                   { label: "Discount Off List", value: "25% (275 pts)" },
-                  { label: "MAP Retail Price", value: "$1,099" },
+                  { label: "MAP Retail Price", value: "$1,095" },
                   { label: "Partner Margin at MAP", value: "~25%" },
                   { label: "Payment Terms", value: "Net 30" },
                   { label: "Verticals", value: "Medical, Sports, Hospitality, Gov" },
@@ -279,12 +279,12 @@ export default function ZWCommercialStrategy() {
               },
               {
                 title: "Authorized Dealer Program",
-                subtitle: "40% off list — $699/unit (floor)",
+                subtitle: "40% off list — $695/unit (floor)",
                 icon: Store,
                 items: [
-                  { label: "Wholesale Price", value: "$699/unit" },
+                  { label: "Wholesale Price", value: "$695/unit" },
                   { label: "Discount Off List", value: "40% (400 pts)" },
-                  { label: "MAP Retail Price", value: "$1,099" },
+                  { label: "MAP Retail Price", value: "$1,095" },
                   { label: "Dealer Margin at MAP", value: "~36%" },
                   { label: "Payment Terms", value: "Net 30" },
                   { label: "Minimum Order", value: "10 units" },
@@ -292,10 +292,10 @@ export default function ZWCommercialStrategy() {
               },
               {
                 title: "Regional Distributors & Resellers",
-                subtitle: "40% off list — $699/unit (floor)",
+                subtitle: "40% off list — $695/unit (floor)",
                 icon: Layers,
                 items: [
-                  { label: "Wholesale Price", value: "$699/unit" },
+                  { label: "Wholesale Price", value: "$695/unit" },
                   { label: "Discount Off List", value: "40% (400 pts)" },
                   { label: "Minimum Order", value: "25 units" },
                   { label: "Annual Commitment", value: "100+ units" },
@@ -382,13 +382,13 @@ export default function ZWCommercialStrategy() {
                 </thead>
                 <tbody>
                   {[
-                    { channel: "DTC (Full Retail)", offList: "0%", revenue: "$1,099", cogs: "$350", profit: "$749", margin: "68.2%", highlight: true },
-                    { channel: "Vertical — Medical / Longevity", offList: "25%", revenue: "$824", cogs: "$350", profit: "$474", margin: "57.5%", highlight: false },
-                    { channel: "Vertical — Sports Performance", offList: "25%", revenue: "$824", cogs: "$350", profit: "$474", margin: "57.5%", highlight: false },
-                    { channel: "Vertical — Hospitality / Gov", offList: "25%", revenue: "$824", cogs: "$340", profit: "$484", margin: "58.7%", highlight: false },
-                    { channel: "Commercial — Clubs & Fitness", offList: "40%", revenue: "$699", cogs: "$330", profit: "$369", margin: "52.8%", highlight: false },
-                    { channel: "Commercial — Authorized Dealers", offList: "40%", revenue: "$699", cogs: "$330", profit: "$369", margin: "52.8%", highlight: false },
-                    { channel: "Commercial — Distributors / Resellers", offList: "40%", revenue: "$699", cogs: "$320", profit: "$379", margin: "54.2%", highlight: false },
+                    { channel: "DTC (Full Retail)", offList: "0%", revenue: "$1,095", cogs: "$350", profit: "$745", margin: "68.0%", highlight: true },
+                    { channel: "Vertical — Medical / Longevity", offList: "25%", revenue: "$825", cogs: "$350", profit: "$475", margin: "57.6%", highlight: false },
+                    { channel: "Vertical — Sports Performance", offList: "25%", revenue: "$825", cogs: "$350", profit: "$475", margin: "57.6%", highlight: false },
+                    { channel: "Vertical — Hospitality / Gov", offList: "25%", revenue: "$825", cogs: "$340", profit: "$485", margin: "58.8%", highlight: false },
+                    { channel: "Commercial — Clubs & Fitness", offList: "40%", revenue: "$695", cogs: "$330", profit: "$365", margin: "52.5%", highlight: false },
+                    { channel: "Commercial — Authorized Dealers", offList: "40%", revenue: "$695", cogs: "$330", profit: "$365", margin: "52.5%", highlight: false },
+                    { channel: "Commercial — Distributors / Resellers", offList: "40%", revenue: "$695", cogs: "$320", profit: "$375", margin: "54.0%", highlight: false },
                   ].map((row, i) => (
                     <tr key={i} className={`border-b border-black/[0.06] last:border-0 ${row.highlight ? "bg-[#C9A962]/5" : ""}`}>
                       <td className="p-4 font-body text-sm text-black/80 font-medium">{row.channel}</td>
@@ -403,7 +403,7 @@ export default function ZWCommercialStrategy() {
               </table>
             </div>
             <p className="font-body text-xs text-black/35 mt-3 text-center italic">
-              COGS estimates include manufacturing, packaging, and shipping. All pricing anchored to $1,099 MSRP. Floor price: $699.
+              COGS estimates include manufacturing, packaging, and shipping. All pricing anchored to $1,095 MSRP. Floor price: $695.
             </p>
           </div>
         </div>
@@ -429,7 +429,7 @@ export default function ZWCommercialStrategy() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {[
-              { title: "Hardware Sales", icon: DollarSign, value: "Primary", desc: "Unit sales across DTC ($1,099), Vertical ($824), and Commercial ($699) market categories." },
+              { title: "Hardware Sales", icon: DollarSign, value: "Primary", desc: "Unit sales across DTC ($1,095), Vertical ($825), and Commercial ($695) market categories." },
               { title: "Subscription Revenue", icon: TrendingUp, value: "$19.99/mo", desc: "Connected app subscription for workout programs, progress tracking, and virtual classes." },
               { title: "Accessory Revenue", icon: Layers, value: "15–20%", desc: "Complementary accessories and replacement parts — estimated at 15–20% of hardware revenue." },
               { title: "Content Licensing", icon: BarChart3, value: "B2B Add-on", desc: "Licensed content packages for institutional buyers — custom programming and branded experiences." },

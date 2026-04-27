@@ -1,6 +1,7 @@
 /*
  * ZeroWheel Product Analysis & GTM Playbook
- * Three Pillars of Superiority, LOB-specific marketing strategies, and strategic recommendations
+ * Three Pillars of Superiority, Product Deep Dive, LOB-specific marketing strategies, and strategic recommendations
+ * Pricing: $1,095 MSRP | $825 Vertical (25% off) | $695 Commercial (40% off) | $694 Military/Gov (GSA best)
  */
 
 import { useState } from "react";
@@ -9,7 +10,8 @@ import {
   Package, Target, Dumbbell, Building2, Stethoscope, Ship, Shield, Users,
   Zap, CheckCircle2, ArrowRight, Star, Lightbulb, TrendingUp, ChevronDown,
   ChevronUp, Crosshair, MessageSquare, BarChart3, Globe, Layers, Award,
-  BookOpen, Megaphone, UserCheck, AlertTriangle, Activity, DollarSign
+  BookOpen, Megaphone, UserCheck, AlertTriangle, Activity, DollarSign,
+  Cpu, Battery, Ruler, Weight, Quote, Heart, Flame, Wind, Waves
 } from "lucide-react";
 import Layout from "@/components/Layout";
 import LightHero from "@/components/LightHero";
@@ -18,13 +20,95 @@ import { SectionNav } from "@/components/SectionNav";
 
 const sections = [
   { id: "hero", label: "Overview" },
+  { id: "product-deep-dive", label: "Product Deep Dive" },
   { id: "three-pillars", label: "Three Pillars" },
   { id: "competitive-matrix", label: "Competitive Matrix" },
+  { id: "validation", label: "Validation" },
   { id: "lob-navigator", label: "LOB Navigator" },
   { id: "lob-playbooks", label: "LOB Playbooks" },
   { id: "leverage-points", label: "Leverage Points" },
   { id: "cross-lob", label: "Cross-LOB Synergies" },
   { id: "recommendations", label: "Recommendations" },
+];
+
+/* ─── Product Specs ─── */
+const specs = [
+  { label: "Weight", value: "12.2 lbs", sub: "5.5 kg", icon: Weight },
+  { label: "Dimensions", value: "18\" x 8.4\" x 8.4\"", sub: "L x W x H", icon: Ruler },
+  { label: "Max Torque", value: "10.5 N·m", sub: "magnetic resistance", icon: Zap },
+  { label: "Battery Life", value: "1 week", sub: "4 hrs continuous", icon: Battery },
+  { label: "Technology", value: "CARE", sub: "Connected Adaptive Resistance", icon: Cpu },
+  { label: "Compliance", value: "GSA", sub: "Made in USA", icon: Shield },
+];
+
+/* ─── Four Intelligent Modes ─── */
+const modes = [
+  {
+    name: "Springback",
+    type: "Assistance",
+    icon: Heart,
+    color: "#4CAF50",
+    description: "Braces body weight and springs the user back to starting position. Ideal for beginners and rehabilitation patients who need graduated assistance to safely perform core exercises.",
+    audience: "Beginners, rehabilitation patients, deconditioned populations",
+  },
+  {
+    name: "Aero",
+    type: "Assistance",
+    icon: Wind,
+    color: "#2196F3",
+    description: "Propels the user through the motion for aerobic, high-volume core training. Enables sustained cardiovascular-focused core work with reduced fatigue accumulation.",
+    audience: "Cardio-focused users, group fitness classes, endurance athletes",
+  },
+  {
+    name: "Quicksand",
+    type: "Resistance",
+    icon: Waves,
+    color: "#FF9800",
+    description: "Fights against user velocity — the faster you move, the harder it resists. Delivers low-impact, velocity-dependent resistance ideal for seasoned athletes seeking controlled eccentric loading.",
+    audience: "Intermediate to advanced athletes, sports performance training",
+  },
+  {
+    name: "Burn",
+    type: "Resistance",
+    icon: Flame,
+    color: "#F44336",
+    description: "Generates maximum torque at 10.5 N·m for the most demanding core strength development. The ultimate challenge mode for elite athletes and tactical operators.",
+    audience: "Elite athletes, tactical operators, advanced strength training",
+  },
+];
+
+/* ─── Testimonials ─── */
+const testimonials = [
+  {
+    name: "Aroldis Chapman",
+    title: "Boston Red Sox, 8x MLB All-Star Pitcher",
+    quote: "One of the best devices I've been able to try, and it's the one I choose to use.",
+    category: "Sports Performance",
+  },
+  {
+    name: "James Mathis",
+    title: "US Army, Chief of Sports, Fitness & Aquatics",
+    quote: "An exceptional piece of equipment for a diverse population.",
+    category: "Military & Government",
+  },
+  {
+    name: "Justin Lovett",
+    title: "Los Angeles Rams, Director of S&C",
+    quote: "A must-have in any gym setting.",
+    category: "Sports Performance",
+  },
+  {
+    name: "Steve Boring, PhD",
+    title: "Rochester Athletic Club, Fitness Director",
+    quote: "A natural fit for members who don't fit traditional machines.",
+    category: "Commercial Clubs",
+  },
+  {
+    name: "Carl Hardwick",
+    title: "proof3, Co-founder",
+    quote: "Scalable, functional core training better than anything else.",
+    category: "Industry Expert",
+  },
 ];
 
 /* ─── Three Pillars Data ─── */
@@ -67,25 +151,52 @@ const pillars = [
 /* ─── LOB Playbook Data ─── */
 const lobPlaybooks = [
   {
+    icon: Star,
+    lob: "Private Clubs",
+    tier: "Tier 1 — Launch Priority",
+    tierColor: "#C9A962",
+    marketCategory: "Vertical",
+    pricing: "$825/unit (25% off list)",
+    buyerPersona: "The Premium Member Experience Director at luxury private clubs (country clubs, athletic clubs, social clubs). Decision-maker focused on member retention, exclusivity, and delivering personalized, technology-driven experiences.",
+    positioning: "A bespoke, data-driven core training experience exclusive to the club. ZeroWheel reinforces the club's technology-forward brand identity while enabling personal trainers to offer premium one-on-one sessions with real-time performance tracking.",
+    painPoints: ["Members expect personalized, technology-driven experiences", "Traditional equipment fails to deliver novelty or exclusivity", "Retention depends on continuously elevating the member experience"],
+    keySellingPoints: ["Sleek design and premium aesthetic", "App-driven personalization", "Exclusivity factor for member retention", "Trainer-led programming potential"],
+    messaging: [
+      { pillar: "Rollout Mechanism", angle: "\"Offer your members the most effective core exercise in science — guided, motorized, and exclusive to your club.\"" },
+      { pillar: "Progressive Overload", angle: "\"From your newest member to your most elite athlete — one device scales to every level with real-time tracking.\"" },
+      { pillar: "Exercise Variance", angle: "\"Keep your programming fresh and exclusive. New exercises, new challenges — a core experience they can't get anywhere else.\"" },
+    ],
+    channels: ["Direct outreach to club membership directors", "Private club industry events (CMAA, NCA)", "Luxury fitness equipment dealer network", "Trainer certification and programming partnerships", "Exclusive member experience showcase events"],
+    salesMotion: "Relationship-led. 60–90 day cycle. Club visit → Trainer demo → 30-day member trial → Fleet order. Target: Membership directors and head trainers.",
+    objections: [
+      { objection: "\"Our members expect exclusivity, not mass-market equipment.\"", response: "ZeroWheel is the only motorized core device in existence — it's not available at commercial gyms. Position it as a members-only experience with branded programming." },
+      { objection: "\"We already have premium core equipment.\"", response: "No existing core equipment offers motorized resistance with connected tracking. This is a category upgrade that drives engagement and creates trainer-led revenue opportunities." },
+      { objection: "\"Our trainers won't adopt it.\"", response: "Trainers love it because it gives them a premium tool that justifies higher session rates. Real-time data makes every session measurable and results-driven." },
+    ],
+    kpis: ["Member engagement rate per unit", "Trainer session revenue uplift", "Member retention impact", "Net Promoter Score from members", "Units per club location"],
+  },
+  {
     icon: Dumbbell,
-    lob: "Premium Fitness Clubs",
+    lob: "Commercial Fitness Clubs",
     tier: "Tier 1 — Launch Priority",
     tierColor: "#C9A962",
     marketCategory: "Commercial",
-    pricing: "$699/unit (40% off list)",
-    buyerPersona: "VP of Fitness / Club Operations Director at premium fitness chains (Equinox, Life Time, Bay Club). Decision-maker focused on member retention, floor differentiation, and revenue per square foot.",
-    positioning: "The flagship core training station that transforms dead floor space into a high-engagement, high-retention zone. The only motorized core device on the market — a visual and functional centerpiece.",
+    pricing: "$695/unit (40% off list)",
+    buyerPersona: "The Fitness Director at commercial fitness chains (Equinox, Life Time, Bay Club, Rochester Athletic Club). Decision-maker focused on equipment durability, member engagement, group class programming, and revenue per square foot.",
+    positioning: "A durable, motorized core training station that integrates into HIIT classes, personal training, and open floor use. Rochester Athletic Club expanded to 6 units serving 16,000+ members, with plans for fee-based 'core clinics' as a new revenue source.",
+    painPoints: ["Traditional ab wheels break frequently under heavy commercial use", "Members are intimidated by complex machines", "Group class programming needs constant refreshing"],
+    keySellingPoints: ["Durability and cost savings vs. replaceable equipment", "Group class versatility (HIIT, core clinics)", "New revenue potential (fee-based core sessions)", "Connected app provides anti-theft and remote device management"],
     messaging: [
       { pillar: "Rollout Mechanism", angle: "\"Give your members the #1 EMG-proven core exercise — guided, motorized, and impossible to do wrong.\"" },
       { pillar: "Progressive Overload", angle: "\"40 lbs of magnetic resistance means your advanced members never outgrow it. From beginners to elite — one device.\"" },
       { pillar: "Exercise Variance", angle: "\"Rollouts, planks, pikes, oblique rotations — one compact station replaces an entire core corner.\"" },
     ],
     channels: ["Direct outreach to club operations leadership", "IHRSA / FIBO trade show demos", "Demo day partnerships with top 50 clubs", "Fitness equipment dealer network", "Revenue-share placement model"],
-    salesMotion: "Outbound-led. 60–90 day cycle. Demo unit placement → 30-day trial → fleet order. Target: S&C directors and club GMs.",
+    salesMotion: "Outbound-led. 60–90 day cycle. Demo unit placement → 30-day trial → Fleet order. Target: Fitness directors and club GMs.",
     objections: [
       { objection: "\"We already have core equipment.\"", response: "No existing core equipment offers motorized resistance with progressive overload. This isn't a replacement — it's a category upgrade that drives member engagement metrics." },
-      { objection: "\"Our members won't use it.\"", response: "Connected tracking and guided programs drive 3x engagement vs. passive equipment. Demo data shows 85%+ trial-to-repeat usage." },
-      { objection: "\"Price is too high for a core device.\"", response: "At $699/unit with revenue-share options, the ROI per square foot exceeds any traditional core equipment. One device replaces 3–4 pieces." },
+      { objection: "\"Our members won't use it.\"", response: "Rochester Athletic Club expanded to 6 units serving 16,000+ members. Connected tracking and guided programs drive 3x engagement vs. passive equipment." },
+      { objection: "\"Price is too high for a core device.\"", response: "At $695/unit with revenue-share options, the ROI per square foot exceeds any traditional core equipment. One device replaces 3–4 pieces and creates new revenue streams." },
     ],
     kpis: ["Units placed per quarter", "Member engagement rate per unit", "Repeat usage (sessions/week)", "Revenue per square foot improvement", "Net Promoter Score from club operators"],
   },
@@ -95,9 +206,11 @@ const lobPlaybooks = [
     tier: "Tier 1 — Launch Priority",
     tierColor: "#C9A962",
     marketCategory: "Vertical",
-    pricing: "$824/unit (25% off list)",
-    buyerPersona: "Medical Director / Physical Therapy Clinic Owner / Sports Medicine Physician. Decision-maker focused on patient outcomes, clinical efficacy, and insurance reimbursement potential.",
-    positioning: "Clinical-grade core strengthening with precise progressive resistance and measurable outcomes. The only core device that enables prescribed rehab protocols with data-tracked progression.",
+    pricing: "$825/unit (25% off list)",
+    buyerPersona: "The Clinical Rehabilitation Director / Lead Physical Therapist at sports medicine clinics and rehabilitation centers. Decision-maker focused on patient safety, clinical efficacy, objective data tracking, and insurance reimbursement potential.",
+    positioning: "Clinical-grade core rehabilitation through CKC exercise science. Springback Mode provides graduated assistance for safe core exercise entry, while the connected app tracks every rep for patient progress reports and insurance documentation.",
+    painPoints: ["Patients lack strength for traditional core exercises", "Need graduated assistance for safe exercise entry", "Require objective data tracking for progress reports and insurance documentation"],
+    keySellingPoints: ["CKC exercise science (Closed Kinetic Chain)", "Graduated assistance via Springback Mode", "Compact clinical footprint", "Data-driven progress tracking for insurance documentation"],
     messaging: [
       { pillar: "Rollout Mechanism", angle: "\"The anti-extension pattern is the gold standard for spinal stabilization rehab — now with motorized guidance for patient safety.\"" },
       { pillar: "Progressive Overload", angle: "\"Precise resistance increments from 0–40 lbs allow clinicians to prescribe exact load progressions — documented and trackable.\"" },
@@ -106,9 +219,9 @@ const lobPlaybooks = [
     channels: ["KOL partnerships with sports medicine physicians", "Medical conference presence (APTA, ACSM)", "Clinical validation study program", "Physical therapy distributor network", "EMR/EHR integration partnerships"],
     salesMotion: "Relationship-led. 90–120 day cycle. Clinical champion identification → Pilot study → Department adoption → Multi-location rollout.",
     objections: [
-      { objection: "\"We need clinical evidence.\"", response: "The rollout mechanism has extensive EMG validation. We're launching a clinical outcomes study program — early adopters get co-authorship opportunities." },
+      { objection: "\"We need clinical evidence.\"", response: "The rollout mechanism has extensive EMG validation. CKC movements enhance proprioception and minimize harmful joint shear forces. We're launching a clinical outcomes study program — early adopters get co-authorship opportunities." },
       { objection: "\"Insurance won't cover it.\"", response: "The device supports CPT-code-aligned protocols. We provide billing guidance for core stabilization therapy codes." },
-      { objection: "\"Our patients are too deconditioned.\"", response: "Resistance starts at zero and increases in micro-increments. The motorized assist actually makes it safer than bodyweight for deconditioned patients." },
+      { objection: "\"Our patients are too deconditioned.\"", response: "Springback Mode provides graduated assistance — resistance starts at zero. The motorized assist actually makes it safer than bodyweight for deconditioned patients." },
     ],
     kpis: ["Clinical pilot programs launched", "Patient outcome improvement scores", "Clinician adoption rate", "Units per multi-location system", "Insurance reimbursement success rate"],
   },
@@ -118,9 +231,11 @@ const lobPlaybooks = [
     tier: "Tier 1 — Launch Priority",
     tierColor: "#C9A962",
     marketCategory: "DTC",
-    pricing: "$1,099/unit (full MSRP)",
-    buyerPersona: "High-net-worth fitness enthusiast (HHI $200K+), home gym builder, Peloton/Tonal owner. Values premium design, connected features, and science-backed training.",
-    positioning: "The luxury home fitness centerpiece for core training. Connected, motorized, and backed by exercise science — filling the one gap in the premium home gym ecosystem.",
+    pricing: "$1,095/unit (full MSRP)",
+    buyerPersona: "The Fitness Tech Enthusiast / Home Gym Optimizer (HHI $200K+). Values premium design, connected features, and science-backed training. Currently owns or has considered Peloton, Tonal, or Mirror.",
+    positioning: "The smartest, most versatile home fitness equipment at its price point. Replaces an entire core and resistance training setup in a single 12.2-pound device. At $1,095, significantly more affordable and space-efficient than competitors like Tonal ($3,995) or Mirror ($1,495+).",
+    painPoints: ["Home gym space is limited", "Existing smart home gym equipment is expensive ($2,000–$5,000+) and bulky", "Consumers want variety and progression without buying multiple devices"],
+    keySellingPoints: ["Price-to-value ratio vs. Tonal/Mirror", "Connected fitness ecosystem with app", "Compact footprint (fits under a bed)", "Progressive difficulty across 4 intelligent modes"],
     messaging: [
       { pillar: "Rollout Mechanism", angle: "\"The exercise scientists call it the most effective core movement. We made it perfect for your home.\"" },
       { pillar: "Progressive Overload", angle: "\"Your Peloton builds your legs. Your Tonal builds your upper body. ZeroWheel builds the core that powers everything.\"" },
@@ -129,7 +244,7 @@ const lobPlaybooks = [
     channels: ["Premium e-commerce storefront", "Instagram/YouTube fitness influencer partnerships", "Podcast sponsorships (Huberman, Attia)", "Facebook/Google performance marketing", "Affiliate program for fitness creators"],
     salesMotion: "Inbound-led. 7–21 day cycle. Content marketing → Social proof → Purchase. Retargeting and email nurture for consideration phase.",
     objections: [
-      { objection: "\"$1,099 for a core device?\"", response: "This isn't an ab roller — it's a motorized, connected training system with 40 lbs of resistance and unlimited exercise variety. Compare to $2,500 Tonal or $1,500 Peloton." },
+      { objection: "\"$1,095 for a core device?\"", response: "This isn't an ab roller — it's a motorized, connected training system with 40 lbs of resistance, 4 intelligent modes, and unlimited exercise variety. Compare to $3,995 Tonal or $1,495 Mirror." },
       { objection: "\"I can do core exercises for free.\"", response: "You can — but science shows bodyweight core training plateaus quickly. Progressive overload is the only path to real strength and definition." },
       { objection: "\"Will I actually use it?\"", response: "Connected app with guided programs, progress tracking, and new workouts weekly. Our data shows 4.2 sessions/week average usage." },
     ],
@@ -141,19 +256,21 @@ const lobPlaybooks = [
     tier: "Tier 2 — Growth Phase",
     tierColor: "#888",
     marketCategory: "Vertical",
-    pricing: "$824/unit (25% off list)",
-    buyerPersona: "VP of Human Resources / Corporate Wellness Director at Fortune 500 companies. Focused on employee engagement, health outcomes ROI, and program utilization metrics.",
-    positioning: "The connected core training solution that proves wellness program ROI. Usage analytics and engagement data give HR leaders the metrics they need to justify and expand wellness budgets.",
+    pricing: "$825/unit (25% off list)",
+    buyerPersona: "The Corporate Wellness Program Manager / HR Benefits Director at Fortune 500 companies. Focused on employee engagement, health outcomes ROI, program utilization metrics, and reducing lower back pain costs.",
+    positioning: "The antidote to the desk chair. Lower back pain costs US employers over $100 billion annually — core strength directly combats it. ZeroWheel is portable enough for office gyms and break rooms, and the app's gamification features (streaks, goals, competitions) drive sustained employee engagement while providing HR with participation data.",
+    painPoints: ["Lower back pain costs US employers over $100 billion annually", "Employees are intimidated by complex gym equipment", "Wellness programs struggle with low participation rates"],
+    keySellingPoints: ["Addresses #1 workplace injury (lower back pain)", "App gamification drives sustained engagement", "Portable for office environments and break rooms", "Measurable ROI with usage analytics for HR"],
     messaging: [
       { pillar: "Rollout Mechanism", angle: "\"Give your employees access to the most effective core exercise in existence — right in your office fitness center.\"" },
       { pillar: "Progressive Overload", angle: "\"From the intern to the CEO — one device scales to every fitness level. No intimidation, no learning curve.\"" },
-      { pillar: "Exercise Variance", angle: "\"Keep your wellness program fresh. New exercises, new challenges, new engagement — all from one compact device.\"" },
+      { pillar: "Exercise Variance", angle: "\"Keep your wellness program fresh. Gamified challenges, team competitions, and new exercises keep participation rates high.\"" },
     ],
     channels: ["Corporate wellness platform partnerships (Virgin Pulse, Wellable)", "HR/Benefits conference presence", "Direct outreach to Fortune 500 wellness directors", "Corporate fitness center design firms", "Employee engagement case studies"],
     salesMotion: "Outbound + partner-led. 60–90 day cycle. Wellness director meeting → Pilot in 1 location → Usage data review → Enterprise rollout.",
     objections: [
-      { objection: "\"We already have a full gym.\"", response: "ZeroWheel isn't replacing your gym — it's adding the one piece of equipment that drives the highest engagement. Connected tracking proves utilization to leadership." },
-      { objection: "\"Budget is tight for wellness.\"", response: "At $824/unit, one ZeroWheel replaces multiple core pieces and provides the usage analytics that justify your entire wellness budget to the CFO." },
+      { objection: "\"We already have a full gym.\"", response: "ZeroWheel isn't replacing your gym — it's adding the one piece that addresses the #1 workplace injury. Connected tracking proves utilization to leadership." },
+      { objection: "\"Budget is tight for wellness.\"", response: "At $825/unit, one ZeroWheel replaces multiple core pieces and provides the usage analytics that justify your entire wellness budget to the CFO. Lower back pain costs $100B+ annually — prevention is the ROI." },
     ],
     kpis: ["Enterprise accounts signed", "Employee utilization rate", "Program renewal rate", "Units per corporate location", "Wellness ROI metrics delivered"],
   },
@@ -163,9 +280,11 @@ const lobPlaybooks = [
     tier: "Tier 2 — Growth Phase",
     tierColor: "#888",
     marketCategory: "Vertical",
-    pricing: "$824/unit (25% off list)",
-    buyerPersona: "Head Strength & Conditioning Coach / Director of Sports Performance at professional teams, D1 programs, and elite training facilities. Obsessed with marginal gains and performance data.",
-    positioning: "The performance edge for elite core training. Precise resistance control, data tracking, and exercise variance give S&C coaches the tool they need to optimize athlete core development.",
+    pricing: "$825/unit (25% off list)",
+    buyerPersona: "The Director of Strength and Conditioning at professional teams, D1 programs, and elite training facilities. Obsessed with marginal gains, eccentric overload capability, and sport-specific movement patterns.",
+    positioning: "Elite athletes use ZeroWheel for rotational power and eccentric overload training. Burn and Quicksand modes deliver advanced eccentric overload that challenges the most elite athletes. Wall-based exercises mimic rotational patterns critical for baseball (swing mechanics) and golf (torso rotation). The LA Rams and Aroldis Chapman (8x MLB All-Star) actively use ZeroWheel in their training programs.",
+    painPoints: ["Need tools that provide meaningful eccentric overload beyond body weight", "Require portability from weight room to sideline", "Must serve diverse sport-specific movement patterns (rotational, linear, lateral)"],
+    keySellingPoints: ["Eccentric overload capability (Burn + Quicksand modes)", "Sport-specific movement patterns", "Elite endorsements (LA Rams, Aroldis Chapman)", "Portability — weight room to sideline for game-day warm-ups"],
     messaging: [
       { pillar: "Rollout Mechanism", angle: "\"The anti-extension pattern builds the functional core stability that prevents injuries and powers athletic performance.\"" },
       { pillar: "Progressive Overload", angle: "\"Track every rep, every resistance level, every progression. Give your athletes the data-driven core training they deserve.\"" },
@@ -174,42 +293,46 @@ const lobPlaybooks = [
     channels: ["S&C coach direct outreach program", "NSCA / CSCCa conference presence", "Team sponsorship and equipment deals", "Athlete ambassador partnerships", "Performance data case studies"],
     salesMotion: "Relationship-led. 30–60 day cycle. S&C coach demo → Team trial → Performance data review → Full adoption. One team adoption creates cascading demand.",
     objections: [
-      { objection: "\"We have everything we need.\"", response: "No existing equipment combines motorized resistance with the rollout pattern. Ask your athletes to compare one session on ZeroWheel to their current core routine." },
-      { objection: "\"Our athletes are too advanced.\"", response: "40 lbs of magnetic resistance at full extension will humble any athlete. The progressive overload ceiling is higher than any bodyweight core exercise." },
+      { objection: "\"We have everything we need.\"", response: "The LA Rams and Aroldis Chapman didn't think they needed it either — until they tried it. No existing equipment combines motorized resistance with the rollout pattern." },
+      { objection: "\"Our athletes are too advanced.\"", response: "Burn mode at 10.5 N·m of torque at full extension will humble any athlete. The progressive overload ceiling is higher than any bodyweight core exercise." },
     ],
     kpis: ["Teams/programs adopted", "Athlete performance improvement metrics", "Social media mentions by athletes", "Cascading referrals from S&C network", "Content/case study generation"],
   },
   {
     icon: Building2,
-    lob: "Hospitality & Resorts",
+    lob: "Hospitality & Amenities",
     tier: "Tier 2 — Growth Phase",
     tierColor: "#888",
     marketCategory: "Vertical",
-    pricing: "$824/unit (25% off list)",
-    buyerPersona: "Director of Wellness / GM at 5-star hotels, luxury resorts, and wellness retreats. Focused on guest experience differentiation and wellness amenity upgrades.",
-    positioning: "The premium wellness amenity that elevates the guest fitness experience. Connected, guided, and visually stunning — a conversation piece that drives guest engagement and social sharing.",
+    pricing: "$825/unit (25% off list)",
+    buyerPersona: "The Luxury Property Manager / Wellness Concierge / Director of Wellness at 5-star hotels, luxury resorts, wellness retreats, and premium residential buildings. Focused on guest/resident experience differentiation, limited space optimization, and self-guided wellness amenities.",
+    positioning: "The premium wellness amenity that elevates the guest fitness experience in a compact footprint (18\" x 8.4\" x 8.4\"). QR code onboarding and intuitive app enable safe, unassisted use — no dedicated staff required. Elevates the property's wellness brand without consuming valuable floor space.",
+    painPoints: ["Limited gym space in luxury buildings and hotel fitness centers", "Equipment must serve beginners and advanced users alike without staff", "Residents and guests expect premium, self-guided experiences"],
+    keySellingPoints: ["Compact design — smallest footprint of any core equipment", "Self-guided onboarding via QR code and app", "Broad demographic appeal (all fitness levels)", "Premium aesthetic that elevates property brand"],
     messaging: [
       { pillar: "Rollout Mechanism", angle: "\"Offer your guests the most effective core workout in exercise science — guided and personalized to any fitness level.\"" },
       { pillar: "Progressive Overload", angle: "\"From the casual guest to the fitness enthusiast — one device delivers a challenging, satisfying workout for everyone.\"" },
       { pillar: "Exercise Variance", angle: "\"New guests, new workouts. The variety keeps your fitness center feeling fresh and cutting-edge.\"" },
     ],
-    channels: ["Hospitality trade shows (HITEC, ALIS, BDNY)", "Luxury hotel chain procurement teams", "Wellness resort design consultants", "White-label branding partnerships", "Guest engagement analytics platform"],
-    salesMotion: "Outbound-led. 90–120 day cycle. Property visit → Pilot installation → Guest feedback data → Chain-wide rollout.",
+    channels: ["Hospitality trade shows (HITEC, ALIS, BDNY)", "Luxury hotel chain procurement teams", "Wellness resort design consultants", "Premium residential property management firms", "White-label branding partnerships"],
+    salesMotion: "Outbound-led. 90–120 day cycle. Property visit → Pilot installation → Guest/resident feedback data → Chain-wide or portfolio-wide rollout.",
     objections: [
-      { objection: "\"Our fitness center is already equipped.\"", response: "ZeroWheel isn't replacing equipment — it's adding a premium, Instagram-worthy piece that guests talk about. It's a wellness amenity, not just gym equipment." },
-      { objection: "\"Guests won't know how to use it.\"", response: "Built-in guided programs and QR-code onboarding mean any guest can start a workout in 30 seconds. Zero learning curve." },
+      { objection: "\"Our fitness center is already equipped.\"", response: "ZeroWheel isn't replacing equipment — it's adding a premium, Instagram-worthy piece that guests talk about. At 18\" x 8.4\", it fits anywhere." },
+      { objection: "\"Guests won't know how to use it.\"", response: "Built-in guided programs and QR-code onboarding mean any guest can start a workout in 30 seconds. Zero learning curve, zero staff required." },
     ],
-    kpis: ["Properties installed", "Guest usage sessions per week", "Social media mentions/shares", "Guest satisfaction score impact", "Chain-wide expansion rate"],
+    kpis: ["Properties installed", "Guest/resident usage sessions per week", "Social media mentions/shares", "Guest satisfaction score impact", "Chain-wide expansion rate"],
   },
   {
     icon: Shield,
     lob: "Military & Government",
     tier: "Tier 3 — Scale Phase",
     tierColor: "#555",
-    marketCategory: "Vertical",
-    pricing: "$824/unit (25% off list)",
-    buyerPersona: "Installation Fitness Director / DoD Procurement Officer / VA Rehabilitation Program Manager. Values durability, scalability, data tracking, and compliance with federal procurement standards.",
-    positioning: "Durable, data-driven core training for military fitness programs and VA rehabilitation. Built to withstand high-volume institutional use with the tracking and reporting government buyers require.",
+    marketCategory: "GSA",
+    pricing: "$694/unit (GSA best pricing)",
+    buyerPersona: "The Tactical Strength and Conditioning Facilitator (TSAC-F) / Installation Fitness Director / DoD Procurement Officer / VA Rehabilitation Program Manager. Values durability, portability, GSA compliance, and dual-use capability (training + rehabilitation).",
+    positioning: "GSA compliant, portable at 12.2 lbs, and endorsed by James Mathis, Chief of Sports, Fitness & Aquatics for the US Army. Burn mode delivers high-intensity resistance for tactical athletes, while Springback aids in injury rehabilitation. Compact enough for deployment and rugged enough for field conditions.",
+    painPoints: ["Need equipment that deploys anywhere — base, field, ship", "Must serve diverse population from recruits to seasoned operators", "Procurement requires GSA compliance and Made in USA"],
+    keySellingPoints: ["GSA compliant, Made in USA", "US Army endorsement (James Mathis)", "Portability at 12.2 lbs for field deployment", "Dual-use: tactical training (Burn) + rehabilitation (Springback)"],
     messaging: [
       { pillar: "Rollout Mechanism", angle: "\"The anti-extension pattern builds the combat-ready core stability that prevents injuries in the field.\"" },
       { pillar: "Progressive Overload", angle: "\"Standardized resistance levels enable consistent PT scoring and rehabilitation protocols across installations.\"" },
@@ -218,8 +341,8 @@ const lobPlaybooks = [
     channels: ["GSA Schedule listing", "IDIQ contract pursuit", "Military fitness conference presence", "VA rehabilitation program partnerships", "Defense contractor fitness facility programs"],
     salesMotion: "Government procurement-led. 120–180 day cycle. RFI response → Pilot at 2–3 installations → Performance review → Contract award.",
     objections: [
-      { objection: "\"Not on GSA Schedule.\"", response: "GSA Schedule listing is in progress. In the interim, we can fulfill through existing micro-purchase thresholds or BPA agreements." },
-      { objection: "\"Durability concerns for military use.\"", response: "Industrial-grade construction with no exposed moving parts. Designed for 50,000+ session lifecycle. We'll provide durability testing data." },
+      { objection: "\"Not on GSA Schedule.\"", response: "GSA Schedule listing is in progress. In the interim, we can fulfill through existing micro-purchase thresholds or BPA agreements. GSA compliant and Made in USA." },
+      { objection: "\"Durability concerns for military use.\"", response: "Industrial-grade construction with no exposed moving parts. Magnetic resistance motor requires zero maintenance. Designed for 50,000+ session lifecycle." },
     ],
     kpis: ["Installations deployed", "Soldiers/veterans served", "Contract value secured", "Fitness test score improvements", "Rehabilitation outcome metrics"],
   },
@@ -229,9 +352,11 @@ const lobPlaybooks = [
     tier: "Tier 3 — Scale Phase",
     tierColor: "#555",
     marketCategory: "Commercial",
-    pricing: "$699/unit (40% off list)",
-    buyerPersona: "VP of Onboard Experience / Cruise Line Fitness Director / Superyacht Interior Designer. Focused on space efficiency, guest experience, and premium amenity differentiation.",
-    positioning: "The compact, connected core training solution designed for space-constrained marine environments. Premium guest experience in a footprint that fits anywhere on board.",
+    pricing: "$695/unit (40% off list)",
+    buyerPersona: "VP of Onboard Experience / Cruise Line Fitness Director / Superyacht Interior Designer. Focused on space efficiency, guest experience, and premium amenity differentiation in space-constrained marine environments.",
+    positioning: "The compact, connected core training solution designed for space-constrained marine environments. Premium guest experience in a footprint that fits anywhere on board. No hydraulics, no cables, no consumable parts — magnetic resistance motor requires zero maintenance, ideal for maritime environments.",
+    painPoints: ["Extremely limited fitness center space on ships", "Equipment must withstand maritime conditions with minimal maintenance", "Need to serve diverse passenger demographics"],
+    keySellingPoints: ["Smallest footprint of any comparable core equipment", "Zero-maintenance magnetic resistance (no hydraulics/cables)", "Self-guided for diverse passenger demographics", "Premium amenity differentiation"],
     messaging: [
       { pillar: "Rollout Mechanism", angle: "\"The most effective core exercise in the smallest possible footprint — perfect for onboard fitness centers.\"" },
       { pillar: "Progressive Overload", angle: "\"One device serves every passenger — from first-time exercisers to elite athletes. No need for multiple core machines.\"" },
@@ -262,20 +387,143 @@ export default function ZWProductAnalysis() {
           brandName="ZeroWheel"
           eyebrow="Product Analysis & GTM Playbook"
           title="Three Pillars of Superiority"
-          description="A science-backed product analysis anchored to the three pillars of core training superiority — with systematic, LOB-specific go-to-market playbooks for each macro line of business."
+          description="A science-backed product analysis anchored to the three pillars of core training superiority — with systematic, LOB-specific go-to-market playbooks for each macro line of business. Invented by Dr. Neil Singer (PhD, MIT), ZeroWheel is the first portable device with Connected Adaptive Resistance Exercise (CARE) technology."
           stats={[
             { value: "3", label: "Pillars of Superiority" },
-            { value: "8", label: "LOB Playbooks" },
-            { value: "40 lbs", label: "Magnetic Resistance" },
+            { value: "9", label: "LOB Playbooks" },
+            { value: "4", label: "Intelligent Modes" },
           ]}
         />
       </div>
 
-      {/* ═══ THREE PILLARS OF SUPERIORITY ═══ */}
-      <section id="three-pillars" className="py-18 bg-white">
+      {/* ═══ PRODUCT DEEP DIVE ═══ */}
+      <section id="product-deep-dive" className="py-18 bg-white">
         <div className="container">
           <div className="h-px bg-gradient-to-r from-transparent via-black/8 to-transparent mb-18" />
 
+          <motion.div
+            className="text-center mb-14"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
+            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+              Product Intelligence
+            </motion.span>
+            <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-5 text-black">
+              CARE Technology & Specifications
+            </motion.h2>
+            <motion.p variants={fadeInUp} className="font-body text-base text-black/60 max-w-3xl mx-auto">
+              Invented by Dr. Neil Singer (PhD, MIT), ZeroWheel is the first portable device with Connected Adaptive Resistance Exercise (CARE) technology — delivering dynamic, real-time assistance or resistance via an onboard motor and computer.
+            </motion.p>
+          </motion.div>
+
+          {/* Specs Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-5xl mx-auto mb-16">
+            {specs.map((spec, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.06 }}
+                className="p-4 rounded-2xl border border-black/[0.15] bg-white text-center hover:border-[#C9A962]/40 hover:shadow-md transition-all duration-300"
+              >
+                <spec.icon className="w-5 h-5 text-[#C9A962] mx-auto mb-2" />
+                <p className="font-display text-lg font-bold text-black">{spec.value}</p>
+                <p className="font-mono text-[9px] text-black/40 tracking-wider uppercase">{spec.label}</p>
+                <p className="font-body text-[10px] text-black/35 mt-0.5">{spec.sub}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Four Intelligent Modes */}
+          <motion.div
+            className="text-center mb-10"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
+            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+              Four Intelligent Modes
+            </motion.span>
+            <motion.h3 variants={fadeInUp} className="font-display text-2xl md:text-3xl font-medium mt-4 mb-3 text-black">
+              Adaptive Training for Every User
+            </motion.h3>
+            <motion.p variants={fadeInUp} className="font-body text-sm text-black/60 max-w-2xl mx-auto">
+              Two assistance modes and two resistance modes — from rehabilitation patients to elite athletes, ZeroWheel adapts to every user and every training goal.
+            </motion.p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+            {modes.map((mode, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="p-6 rounded-2xl border border-black/[0.15] bg-white hover:shadow-lg transition-all duration-300"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: `${mode.color}15` }}>
+                    <mode.icon className="w-5 h-5" style={{ color: mode.color }} />
+                  </div>
+                  <div>
+                    <h4 className="font-display text-base font-semibold text-black">{mode.name}</h4>
+                    <span
+                      className="font-mono text-[9px] tracking-wider uppercase px-2 py-0.5 rounded-full"
+                      style={{ backgroundColor: `${mode.color}15`, color: mode.color }}
+                    >
+                      {mode.type}
+                    </span>
+                  </div>
+                </div>
+                <p className="font-body text-sm text-black/60 leading-relaxed mb-3">{mode.description}</p>
+                <div className="pt-3 border-t border-black/[0.06]">
+                  <p className="font-mono text-[9px] text-black/35 tracking-wider uppercase mb-1">Ideal For</p>
+                  <p className="font-body text-xs text-black/50">{mode.audience}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Science Foundation */}
+          <div className="mt-16 max-w-5xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="rounded-2xl border border-black/[0.15] overflow-hidden"
+            >
+              <div className="bg-[#0A0A0A] p-6">
+                <h3 className="font-display text-xl font-semibold text-white mb-1">Core Strength: The Foundation</h3>
+                <p className="font-body text-sm text-white/50">Why core training is the single most impactful investment in human performance and longevity</p>
+              </div>
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-0 divide-y md:divide-y-0 md:divide-x divide-black/[0.06]">
+                {[
+                  { title: "Injury Prevention", desc: "Core strength enhances balance, stability, and power transfer — the foundation of injury prevention across all populations.", source: "Harvard Health" },
+                  { title: "Eccentric Overload", desc: "Muscles handle 20–30% more weight eccentrically, leading to greater hypertrophy and lower injury rates. ZeroWheel's motorized resistance enables true eccentric overload.", source: "Exercise Science" },
+                  { title: "CKC Exercise Science", desc: "Closed Kinetic Chain movements enhance proprioception and minimize harmful joint shear forces — the safest, most effective training modality.", source: "Clinical Research" },
+                  { title: "Longevity Impact", desc: "Strength training significantly lowers mortality risk in older adults. Core strength is the foundation that enables all other movement and independence.", source: "Longevity Research" },
+                ].map((item, i) => (
+                  <div key={i} className="p-6">
+                    <h4 className="font-display text-sm font-semibold text-black mb-2">{item.title}</h4>
+                    <p className="font-body text-xs text-black/55 leading-relaxed mb-2">{item.desc}</p>
+                    <span className="font-mono text-[9px] text-[#C9A962] tracking-wider uppercase">{item.source}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ THREE PILLARS OF SUPERIORITY ═══ */}
+      <section id="three-pillars" className="py-18 bg-[#FAFAF8]">
+        <div className="container">
           <motion.div
             className="text-center mb-14"
             initial="hidden"
@@ -305,34 +553,25 @@ export default function ZWProductAnalysis() {
                 className="rounded-2xl border border-black/[0.15] bg-white overflow-hidden hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex flex-col md:flex-row">
-                  {/* Pillar Number Sidebar */}
                   <div className="md:w-24 bg-[#0A0A0A] flex items-center justify-center py-6 md:py-0">
                     <span className="font-display text-4xl font-bold text-[#C9A962]">{pillar.number}</span>
                   </div>
-
-                  {/* Content */}
                   <div className="flex-1 p-8">
                     <div className="flex items-center gap-3 mb-1">
                       <pillar.icon className="w-6 h-6 text-[#C9A962]" />
                       <h3 className="font-display text-xl font-semibold text-black">{pillar.title}</h3>
                     </div>
                     <p className="font-mono text-[10px] text-[#C9A962] tracking-wider uppercase mb-4">{pillar.subtitle}</p>
-
                     <div className="grid md:grid-cols-2 gap-6">
-                      {/* The Science */}
                       <div>
                         <p className="font-mono text-[10px] text-black/40 tracking-wider uppercase mb-2">The Science</p>
                         <p className="font-body text-sm text-black/65 leading-relaxed">{pillar.science}</p>
                         <div className="flex flex-wrap gap-2 mt-3">
                           {pillar.citations.map((cite, j) => (
-                            <span key={j} className="font-mono text-[9px] text-black/35 bg-black/[0.04] px-2 py-1 rounded">
-                              {cite}
-                            </span>
+                            <span key={j} className="font-mono text-[9px] text-black/35 bg-black/[0.04] px-2 py-1 rounded">{cite}</span>
                           ))}
                         </div>
                       </div>
-
-                      {/* The Why + Marketing Angle */}
                       <div>
                         <p className="font-mono text-[10px] text-black/40 tracking-wider uppercase mb-2">Why It Matters</p>
                         <p className="font-body text-sm text-black/65 leading-relaxed mb-4">{pillar.why}</p>
@@ -351,8 +590,10 @@ export default function ZWProductAnalysis() {
       </section>
 
       {/* ═══ COMPETITIVE MATRIX ═══ */}
-      <section id="competitive-matrix" className="py-18 bg-[#FAFAF8]">
+      <section id="competitive-matrix" className="py-18 bg-white">
         <div className="container">
+          <div className="h-px bg-gradient-to-r from-transparent via-black/8 to-transparent mb-18" />
+
           <motion.div
             className="text-center mb-14"
             initial="hidden"
@@ -417,6 +658,52 @@ export default function ZWProductAnalysis() {
         </div>
       </section>
 
+      {/* ═══ VALIDATION & TESTIMONIALS ═══ */}
+      <section id="validation" className="py-18 bg-[#FAFAF8]">
+        <div className="container">
+          <motion.div
+            className="text-center mb-14"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
+            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+              Market Validation
+            </motion.span>
+            <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-5 text-black">
+              Endorsed by Elite Performers
+            </motion.h2>
+            <motion.p variants={fadeInUp} className="font-body text-base text-black/60 max-w-2xl mx-auto">
+              From professional athletes to military leadership to clinical experts — ZeroWheel is validated by the most demanding users across every target LOB.
+            </motion.p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+            {testimonials.map((t, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="p-6 rounded-2xl border border-black/[0.15] bg-white hover:shadow-lg transition-all duration-300"
+              >
+                <Quote className="w-6 h-6 text-[#C9A962]/30 mb-3" />
+                <p className="font-body text-sm text-black/75 italic leading-relaxed mb-4">"{t.quote}"</p>
+                <div className="pt-3 border-t border-black/[0.06]">
+                  <p className="font-display text-sm font-semibold text-black">{t.name}</p>
+                  <p className="font-body text-xs text-black/50 mt-0.5">{t.title}</p>
+                  <span className="inline-block mt-2 font-mono text-[9px] text-[#C9A962] tracking-wider uppercase px-2 py-0.5 rounded-full bg-[#C9A962]/10">
+                    {t.category}
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ═══ LOB NAVIGATOR ═══ */}
       <section id="lob-navigator" className="py-18 bg-white">
         <div className="container">
@@ -433,17 +720,46 @@ export default function ZWProductAnalysis() {
               Go-To-Market Playbook
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-5 text-black">
-              8 Lines of Business — Systematic Approach
+              9 Lines of Business — Systematic Approach
             </motion.h2>
             <motion.p variants={fadeInUp} className="font-body text-base text-black/60 max-w-3xl mx-auto">
-              Each LOB has a complete playbook: buyer persona, positioning, pillar-specific messaging, marketing channels, sales motion, objection handling, and KPIs. Organized by launch priority tier.
+              Each LOB has a complete playbook: buyer persona, pain points, positioning, pillar-specific messaging, marketing channels, sales motion, objection handling, and KPIs. Organized by launch priority tier.
             </motion.p>
           </motion.div>
+
+          {/* Pricing Anchor */}
+          <div className="max-w-3xl mx-auto mb-10">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="rounded-2xl border border-black/[0.15] overflow-hidden"
+            >
+              <div className="bg-[#0A0A0A] px-6 py-4 flex items-center justify-between">
+                <span className="font-display text-sm font-semibold text-white">Pricing Structure</span>
+                <span className="font-mono text-xs text-[#C9A962]">MSRP $1,095 — All prices end in 5</span>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-black/[0.06]">
+                {[
+                  { label: "DTC / MSRP", price: "$1,095", note: "full list" },
+                  { label: "Vertical", price: "$825", note: "25% off list" },
+                  { label: "Commercial", price: "$695", note: "40% off list" },
+                  { label: "GSA (Mil/Gov)", price: "$694", note: "best pricing" },
+                ].map((tier, i) => (
+                  <div key={i} className="p-4 text-center">
+                    <p className="font-mono text-[9px] text-black/40 tracking-wider uppercase mb-1">{tier.label}</p>
+                    <p className="font-display text-xl font-bold text-black">{tier.price}</p>
+                    <p className="font-body text-[10px] text-black/35">{tier.note}</p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
 
           {/* Priority Tier Legend */}
           <div className="flex flex-wrap justify-center gap-4 mb-10 max-w-5xl mx-auto">
             {[
-              { label: "Tier 1 — Launch Priority", color: "#C9A962", count: 3 },
+              { label: "Tier 1 — Launch Priority", color: "#C9A962", count: 4 },
               { label: "Tier 2 — Growth Phase", color: "#888", count: 3 },
               { label: "Tier 3 — Scale Phase", color: "#555", count: 2 },
             ].map((tier, i) => (
@@ -456,7 +772,7 @@ export default function ZWProductAnalysis() {
           </div>
 
           {/* LOB Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-3 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
             {lobPlaybooks.map((lob, i) => (
               <motion.button
                 key={i}
@@ -514,7 +830,7 @@ export default function ZWProductAnalysis() {
               LOB-Specific Marketing Strategies
             </motion.h2>
             <motion.p variants={fadeInUp} className="font-body text-base text-black/60 max-w-2xl mx-auto">
-              Click any LOB to expand its complete go-to-market playbook — including buyer persona, pillar-specific messaging, channels, sales motion, objection handling, and success metrics.
+              Click any LOB to expand its complete go-to-market playbook — including buyer persona, pain points, key selling points, pillar-specific messaging, channels, sales motion, objection handling, and success metrics.
             </motion.p>
           </motion.div>
 
@@ -587,6 +903,38 @@ export default function ZWProductAnalysis() {
                               <p className="font-mono text-[10px] text-[#C9A962] tracking-wider uppercase">Core Positioning</p>
                             </div>
                             <p className="font-body text-sm text-black/70 leading-relaxed">{lob.positioning}</p>
+                          </div>
+                        </div>
+
+                        {/* Row 1.5: Pain Points + Key Selling Points */}
+                        <div className="grid md:grid-cols-2 gap-6 mt-6">
+                          <div className="p-5 rounded-xl bg-[#FAFAF8] border border-black/[0.08]">
+                            <div className="flex items-center gap-2 mb-3">
+                              <AlertTriangle className="w-4 h-4 text-[#C9A962]" />
+                              <p className="font-mono text-[10px] text-[#C9A962] tracking-wider uppercase">Pain Points</p>
+                            </div>
+                            <div className="space-y-2">
+                              {lob.painPoints.map((point, j) => (
+                                <div key={j} className="flex items-start gap-2 text-sm text-black/65">
+                                  <span className="text-[#C9A962] mt-1 flex-shrink-0">•</span>
+                                  {point}
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                          <div className="p-5 rounded-xl bg-[#FAFAF8] border border-black/[0.08]">
+                            <div className="flex items-center gap-2 mb-3">
+                              <Star className="w-4 h-4 text-[#C9A962]" />
+                              <p className="font-mono text-[10px] text-[#C9A962] tracking-wider uppercase">Key Selling Points</p>
+                            </div>
+                            <div className="space-y-2">
+                              {lob.keySellingPoints.map((point, j) => (
+                                <div key={j} className="flex items-start gap-2 text-sm text-black/65">
+                                  <CheckCircle2 className="w-3.5 h-3.5 text-[#C9A962] mt-0.5 flex-shrink-0" />
+                                  {point}
+                                </div>
+                              ))}
+                            </div>
                           </div>
                         </div>
 
@@ -690,7 +1038,7 @@ export default function ZWProductAnalysis() {
               Product Leverage Points
             </motion.h2>
             <motion.p variants={fadeInUp} className="font-body text-base text-black/60 max-w-2xl mx-auto">
-              Six core advantages that apply across every LOB — the foundation of every sales conversation and marketing message.
+              Seven core advantages that apply across every LOB — the foundation of every sales conversation and marketing message.
             </motion.p>
           </motion.div>
 
@@ -699,8 +1047,9 @@ export default function ZWProductAnalysis() {
               { title: "Only Motorized Core Device", desc: "No direct competitor exists. ZeroWheel creates and owns a new category — motorized progressive resistance core training. First-mover advantage is absolute.", icon: Award },
               { title: "Science-Backed Positioning", desc: "Every marketing claim is anchored to peer-reviewed research. The Three Pillars framework gives sales teams a credible, repeatable story that resonates with clinical and performance buyers.", icon: BookOpen },
               { title: "Universal Scalability", desc: "From rehabilitation patients at 0 lbs to elite athletes at 40 lbs — the same device serves the full spectrum. One SKU covers every LOB and every user.", icon: Users },
+              { title: "Four Intelligent Modes", desc: "Springback, Aero, Quicksand, and Burn — two assistance and two resistance modes that adapt to every user, from rehabilitation to elite performance.", icon: Cpu },
               { title: "Connected Data Platform", desc: "Usage tracking, progress analytics, and engagement metrics enable subscription revenue, prove ROI to institutional buyers, and create switching costs.", icon: BarChart3 },
-              { title: "Compact Form Factor", desc: "Smaller footprint than any comparable core equipment. Enables placement in space-constrained environments — cruise ships, hotel rooms, corporate offices, home gyms.", icon: Package },
+              { title: "Compact Form Factor", desc: "At 12.2 lbs and 18\" x 8.4\" x 8.4\", ZeroWheel has the smallest footprint of any comparable core equipment. Enables placement in space-constrained environments.", icon: Package },
               { title: "Multi-Stream Revenue", desc: "Hardware + subscription + accessories + content licensing = four revenue streams per unit sold. Recurring revenue transforms the business model from transactional to SaaS-like.", icon: DollarSign },
             ].map((point, i) => (
               <motion.div
@@ -750,23 +1099,23 @@ export default function ZWProductAnalysis() {
             {[
               {
                 from: "Professional Sports",
-                to: "Premium Fitness Clubs → DTC",
-                effect: "Pro team adoption creates aspirational demand. When members see their favorite team using ZeroWheel, clubs want it on their floor — and consumers want it at home.",
+                to: "Fitness Clubs → DTC",
+                effect: "Pro team adoption creates aspirational demand. When members see their favorite team using ZeroWheel, clubs want it on their floor — and consumers want it at home. The LA Rams and Aroldis Chapman are already active users.",
               },
               {
                 from: "Medical & Rehabilitation",
                 to: "Corporate Wellness → Military/Gov",
-                effect: "Clinical validation studies provide the evidence base that institutional buyers require. A published outcomes study unlocks corporate wellness budgets and government procurement.",
+                effect: "Clinical validation studies provide the evidence base that institutional buyers require. A published outcomes study unlocks corporate wellness budgets and government procurement. CKC science credibility cascades across all verticals.",
               },
               {
-                from: "Premium Fitness Clubs",
+                from: "Private & Commercial Clubs",
                 to: "Hospitality → Cruise/Maritime",
-                effect: "Club floor presence creates brand awareness and user familiarity. Hotels and cruise lines adopt equipment their guests already know and trust from their home gym.",
+                effect: "Club floor presence creates brand awareness and user familiarity. Hotels and cruise lines adopt equipment their guests already know and trust from their home gym or club.",
               },
               {
                 from: "DTC Success",
                 to: "All B2B Channels",
-                effect: "Strong DTC sales and social proof (reviews, influencer content, user testimonials) de-risk the purchase decision for every institutional buyer.",
+                effect: "Strong DTC sales and social proof (reviews, influencer content, user testimonials) de-risk the purchase decision for every institutional buyer. Consumer demand validates the product for commercial procurement.",
               },
             ].map((synergy, i) => (
               <motion.div
@@ -829,23 +1178,29 @@ export default function ZWProductAnalysis() {
               {
                 priority: "02",
                 title: "Launch Tier 1 LOBs Simultaneously — Clubs, Medical, DTC",
-                description: "These three LOBs create a reinforcing triangle. Club placements drive brand awareness. Medical validation builds credibility. DTC sales generate revenue and social proof. Launching all three in parallel maximizes cross-LOB synergies from day one.",
-                action: "Allocate 70% of launch resources to Tier 1. Target 25 club placements, 10 clinical pilots, and 500 DTC units in the first 90 days.",
+                description: "These four Tier 1 LOBs create a reinforcing square. Private club placements drive exclusivity. Commercial club placements drive brand awareness. Medical validation builds credibility. DTC sales generate revenue and social proof. Launching all four in parallel maximizes cross-LOB synergies from day one.",
+                action: "Allocate 70% of launch resources to Tier 1. Target 15 private clubs, 25 commercial club placements, 10 clinical pilots, and 500 DTC units in the first 90 days.",
               },
               {
                 priority: "03",
-                title: "Invest in Clinical Validation Early",
-                description: "A published clinical outcomes study is the single highest-leverage asset for unlocking Tier 2 and Tier 3 LOBs. Corporate wellness, government, and military buyers all require evidence-based justification. Start the study now — it takes 6–12 months to publish.",
-                action: "Partner with 2–3 sports medicine clinics for a prospective outcomes study. Budget for IRB approval and publication fees.",
+                title: "Leverage the Four Intelligent Modes in Every LOB Pitch",
+                description: "Each mode maps directly to a buyer persona. Springback for medical/rehab. Burn for sports performance and military. Aero for group fitness and corporate wellness. Quicksand for advanced athletes. The mode-to-persona mapping is the bridge between product capability and buyer need.",
+                action: "Create a mode-to-LOB mapping one-pager. Train sales reps to lead with the specific mode that resonates with each buyer persona.",
               },
               {
                 priority: "04",
-                title: "Build the Athlete Ambassador Pipeline",
-                description: "One professional athlete posting a ZeroWheel workout creates more demand than $100K in paid advertising. The cascading effect — pro team → club floor → consumer — is the most capital-efficient growth engine available.",
-                action: "Identify 10 target athletes across NFL, NBA, and MLB. Offer equipment + content collaboration deals. Prioritize athletes with strong social media presence.",
+                title: "Invest in Clinical Validation Early",
+                description: "A published clinical outcomes study is the single highest-leverage asset for unlocking Tier 2 and Tier 3 LOBs. Corporate wellness, government, and military buyers all require evidence-based justification. CKC exercise science and graduated assistance via Springback Mode provide the clinical foundation.",
+                action: "Partner with 2–3 sports medicine clinics for a prospective outcomes study. Budget for IRB approval and publication fees. Target 6–12 month timeline.",
               },
               {
                 priority: "05",
+                title: "Build the Athlete Ambassador Pipeline",
+                description: "One professional athlete posting a ZeroWheel workout creates more demand than $100K in paid advertising. The LA Rams and Aroldis Chapman are already active users — leverage these relationships and expand. The cascading effect — pro team → club floor → consumer — is the most capital-efficient growth engine available.",
+                action: "Formalize the LA Rams and Chapman relationships into ambassador deals. Identify 10 additional target athletes across NFL, NBA, and MLB with strong social media presence.",
+              },
+              {
+                priority: "06",
                 title: "Systematize the LOB Playbooks into Sales Enablement",
                 description: "The playbook data on this page should be converted into actionable sales tools — battle cards, objection handling cheat sheets, buyer persona profiles, and LOB-specific pitch decks. Every sales rep should be able to execute any LOB playbook independently.",
                 action: "Create a Sales Enablement Kit with one battle card per LOB. Include in the Sales Enablement tab and distribute to all channel partners.",

@@ -329,7 +329,7 @@ export default function ZWOverview() {
               Go-To-Market Pricing Framework
             </motion.h2>
             <motion.p variants={fadeInUp} className="font-body text-base text-black/55 max-w-2xl mx-auto">
-              All pricing anchored to the $1,099 MSRP — structured as margin points off list across two distinct market categories: Commercial and Vertical. Price floor: $699.
+              All pricing anchored to the $1,095 MSRP — structured as margin points off list across two distinct market categories: Commercial and Vertical. Price floor: $695.
             </motion.p>
           </motion.div>
 
@@ -344,15 +344,15 @@ export default function ZWOverview() {
             {[
               {
                 tier: "Direct-to-Consumer",
-                price: "$1,099",
+                price: "$1,095",
                 unit: "full list price (0% off)",
                 description: "Full MSRP through e-commerce, social, and organic channels. Highest margin per unit with complete brand control.",
-                features: ["E-commerce storefront", "Social media direct", "Influencer partnerships", "Full margin capture at $1,099"],
+                features: ["E-commerce storefront", "Social media direct", "Influencer partnerships", "Full margin capture at $1,095"],
                 highlight: false,
               },
               {
                 tier: "Vertical Markets",
-                price: "$824",
+                price: "$825",
                 unit: "25 points off list",
                 description: "Specialized verticals with high brand alignment — medical, sports performance, hospitality, government, and corporate wellness.",
                 features: ["Medical & longevity clinics", "Sports performance facilities", "Hospitality & luxury resorts", "Government & corporate wellness"],
@@ -360,9 +360,9 @@ export default function ZWOverview() {
               },
               {
                 tier: "Commercial Markets",
-                price: "$699",
+                price: "$695",
                 unit: "40 points off list (floor)",
-                description: "Health clubs, authorized dealers, and reseller partners. Price floor — no channel goes below $699 under any circumstance.",
+                description: "Health clubs, authorized dealers, and reseller partners. Price floor — no channel goes below $695 under any circumstance.",
                 features: ["Health clubs & fitness centers", "Authorized dealers & retailers", "Regional distributors", "MAP pricing strictly enforced"],
                 highlight: false,
               },
@@ -417,9 +417,9 @@ export default function ZWOverview() {
               </div>
               <div className="grid md:grid-cols-4 gap-6">
                 {[
-                  { label: "MSRP", value: "$1,099", sub: "list price anchor" },
+                  { label: "MSRP", value: "$1,095", sub: "list price anchor" },
                   { label: "Year 1 Target", value: "1,000", sub: "units sold" },
-                  { label: "Price Floor", value: "$699", sub: "no channel below" },
+                  { label: "Price Floor", value: "$695", sub: "no channel below" },
                   { label: "Gross Margin", value: "55–68%", sub: "target range" },
                 ].map((metric, i) => (
                   <div key={i} className="text-center">
