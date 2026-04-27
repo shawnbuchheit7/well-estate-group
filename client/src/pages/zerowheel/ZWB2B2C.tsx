@@ -94,15 +94,23 @@ export default function ZWB2B2C() {
                 <span className="text-[#C9A962] text-xl">⬡</span>
               </div>
               <h3 className="font-display text-xl text-black mb-2">Hardware Sales</h3>
-              <p className="text-black/50 text-sm mb-4">Direct unit sales to B2B partners at institutional pricing</p>
+              <p className="text-black/50 text-sm mb-4">Unit sales across Vertical ($824) and Commercial ($699) market categories</p>
               <div className="space-y-3">
                 <div className="flex justify-between text-sm">
-                  <span className="text-black/60">Avg. Unit Price (B2B)</span>
-                  <span className="font-semibold text-black">$750–$895</span>
+                  <span className="text-black/60">MSRP / List Price</span>
+                  <span className="font-semibold text-black">$1,099</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-black/60">Vertical (25% off list)</span>
+                  <span className="font-semibold text-black">$824</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-black/60">Commercial (40% off list)</span>
+                  <span className="font-semibold text-black">$699 (floor)</span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-black/60">Gross Margin</span>
-                  <span className="font-semibold text-black">55–65%</span>
+                  <span className="font-semibold text-black">55–68%</span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-black/60">Year 1 Target</span>

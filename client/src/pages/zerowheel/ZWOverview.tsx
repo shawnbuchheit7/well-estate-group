@@ -329,8 +329,7 @@ export default function ZWOverview() {
               Go-To-Market Pricing Framework
             </motion.h2>
             <motion.p variants={fadeInUp} className="font-body text-base text-black/55 max-w-2xl mx-auto">
-              A tiered pricing architecture designed to maximize revenue per unit while maintaining 
-              competitive positioning across B2B, B2C, and dealer/reseller channels.
+              All pricing anchored to the $1,099 MSRP — structured as margin points off list across two distinct market categories: Commercial and Vertical. Price floor: $699.
             </motion.p>
           </motion.div>
 
@@ -345,26 +344,26 @@ export default function ZWOverview() {
             {[
               {
                 tier: "Direct-to-Consumer",
-                price: "$995",
-                unit: "per unit",
-                description: "Full retail pricing through e-commerce, social, and organic channels. Highest margin per unit with complete brand control.",
-                features: ["E-commerce storefront", "Social media direct", "Influencer partnerships", "Full margin capture"],
+                price: "$1,099",
+                unit: "full list price (0% off)",
+                description: "Full MSRP through e-commerce, social, and organic channels. Highest margin per unit with complete brand control.",
+                features: ["E-commerce storefront", "Social media direct", "Influencer partnerships", "Full margin capture at $1,099"],
                 highlight: false,
               },
               {
-                tier: "B2B Institutional",
-                price: "$750–$895",
-                unit: "per unit (volume-tiered)",
-                description: "Volume-based pricing for clubs, facilities, sports programs, and corporate wellness. Tiered discounts incentivize fleet deployment.",
-                features: ["5–24 units: $895/unit", "25–99 units: $825/unit", "100+ units: $750/unit", "Custom fleet pricing available"],
+                tier: "Vertical Markets",
+                price: "$824",
+                unit: "25 points off list",
+                description: "Specialized verticals with high brand alignment — medical, sports performance, hospitality, government, and corporate wellness.",
+                features: ["Medical & longevity clinics", "Sports performance facilities", "Hospitality & luxury resorts", "Government & corporate wellness"],
                 highlight: true,
               },
               {
-                tier: "Dealer & Reseller",
-                price: "$595–$695",
-                unit: "wholesale per unit",
-                description: "Wholesale pricing for authorized dealers and regional resellers. Enables third-party distribution while protecting brand positioning.",
-                features: ["Authorized dealer program", "MAP pricing enforced", "Regional exclusivity options", "Co-op marketing support"],
+                tier: "Commercial Markets",
+                price: "$699",
+                unit: "40 points off list (floor)",
+                description: "Health clubs, authorized dealers, and reseller partners. Price floor — no channel goes below $699 under any circumstance.",
+                features: ["Health clubs & fitness centers", "Authorized dealers & retailers", "Regional distributors", "MAP pricing strictly enforced"],
                 highlight: false,
               },
             ].map((tier, i) => (
@@ -418,10 +417,10 @@ export default function ZWOverview() {
               </div>
               <div className="grid md:grid-cols-4 gap-6">
                 {[
-                  { label: "Blended ASP", value: "$850", sub: "across all channels" },
+                  { label: "MSRP", value: "$1,099", sub: "list price anchor" },
                   { label: "Year 1 Target", value: "1,000", sub: "units sold" },
-                  { label: "Year 1 Revenue", value: "$850K", sub: "gross revenue" },
-                  { label: "Gross Margin", value: "55–65%", sub: "target range" },
+                  { label: "Price Floor", value: "$699", sub: "no channel below" },
+                  { label: "Gross Margin", value: "55–68%", sub: "target range" },
                 ].map((metric, i) => (
                   <div key={i} className="text-center">
                     <p className="font-display text-2xl font-semibold text-black">{metric.value}</p>

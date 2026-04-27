@@ -1,10 +1,10 @@
-/*
+/**
  * ZeroWheel Commercial Strategy Page
  * Pricing strategy, dealer terms, margin analysis, and commercial framework
  */
 
 import { motion } from "framer-motion";
-import { DollarSign, TrendingUp, Store, Users, Percent, Calculator, FileText, ArrowRight, CheckCircle2, Lightbulb, BarChart3, Layers, Building2 } from "lucide-react";
+import { DollarSign, TrendingUp, Store, Users, Percent, Calculator, FileText, ArrowRight, CheckCircle2, Lightbulb, BarChart3, Layers, Building2, ShieldCheck, Tag } from "lucide-react";
 import Layout from "@/components/Layout";
 import LightHero from "@/components/LightHero";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
@@ -12,8 +12,8 @@ import { SectionNav } from "@/components/SectionNav";
 
 const sections = [
   { id: "hero", label: "Overview" },
-  { id: "pricing-tiers", label: "Pricing Tiers" },
-  { id: "dealer-terms", label: "Dealer & Reseller" },
+  { id: "pricing-tiers", label: "Pricing Architecture" },
+  { id: "dealer-terms", label: "Channel Partners" },
   { id: "margin-analysis", label: "Margin Analysis" },
   { id: "revenue-model", label: "Revenue Model" },
   { id: "commercial-terms", label: "Commercial Terms" },
@@ -32,16 +32,16 @@ export default function ZWCommercialStrategy() {
           brandName="ZeroWheel"
           eyebrow="Commercial Strategy"
           title="Pricing, Terms & Revenue Architecture"
-          description="The commercial framework for ZeroWheel market entry — covering multi-tier pricing strategy, dealer and reseller terms, margin analysis, and recurring revenue model design."
+          description="The commercial framework for ZeroWheel market entry — anchored to a $1,099 MSRP with structured margin-off-list pricing across Commercial and Vertical market categories. Price floor: $699."
           stats={[
-            { value: "3", label: "Pricing Tiers" },
+            { value: "$1,099", label: "MSRP / List Price" },
             { value: "55%+", label: "Target Gross Margin" },
-            { value: "$850", label: "Blended ASP" },
+            { value: "$699", label: "Price Floor" },
           ]}
         />
       </div>
 
-      {/* Pricing Tiers */}
+      {/* Pricing Architecture */}
       <section id="pricing-tiers" className="py-18 bg-white">
         <div className="container">
           <div className="h-px bg-gradient-to-r from-transparent via-black/8 to-transparent mb-18" />
@@ -57,62 +57,109 @@ export default function ZWCommercialStrategy() {
               Pricing Architecture
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-5 text-black">
-              Multi-Tier Pricing Strategy
+              Margin-Off-List Pricing Strategy
             </motion.h2>
             <motion.p variants={fadeInUp} className="font-body text-base text-black/60 max-w-2xl mx-auto">
-              Three distinct pricing tiers designed to maximize revenue across channels while protecting brand positioning and dealer margins.
+              All pricing is anchored to the $1,099 MSRP. Two distinct market categories — Commercial and Vertical — each with structured discount points off list. Absolute price floor: $699.
             </motion.p>
           </motion.div>
 
+          {/* MSRP Anchor */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-5xl mx-auto mb-8"
+          >
+            <div className="p-6 rounded-2xl border-2 border-[#C9A962] bg-[#C9A962]/5 flex flex-col md:flex-row items-center justify-between gap-6">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-[#C9A962]/15 flex items-center justify-center">
+                  <Tag className="w-6 h-6 text-[#C9A962]" />
+                </div>
+                <div>
+                  <span className="font-mono text-[10px] text-[#C9A962] tracking-wider uppercase">MSRP / List Price</span>
+                  <div className="font-display text-3xl font-bold text-black">$1,099</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-6 text-center">
+                <div>
+                  <span className="font-mono text-[10px] text-black/40 tracking-wider uppercase block">DTC Retail</span>
+                  <span className="font-display text-lg font-bold text-black">$1,099</span>
+                  <span className="font-body text-xs text-black/40 block">0% off list</span>
+                </div>
+                <div className="w-px h-10 bg-black/10" />
+                <div>
+                  <span className="font-mono text-[10px] text-black/40 tracking-wider uppercase block">Vertical Markets</span>
+                  <span className="font-display text-lg font-bold text-black">$824</span>
+                  <span className="font-body text-xs text-black/40 block">25% off list</span>
+                </div>
+                <div className="w-px h-10 bg-black/10" />
+                <div>
+                  <span className="font-mono text-[10px] text-black/40 tracking-wider uppercase block">Commercial Markets</span>
+                  <span className="font-display text-lg font-bold text-black">$699</span>
+                  <span className="font-body text-xs text-black/40 block">40% off list (floor)</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 bg-black/5 px-4 py-2 rounded-full">
+                <ShieldCheck className="w-4 h-4 text-[#C9A962]" />
+                <span className="font-mono text-xs text-black/60">Floor: $699</span>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Three Tier Cards */}
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {[
               {
                 tier: "Direct-to-Consumer",
-                price: "$995",
-                unit: "per unit",
+                price: "$1,099",
+                unit: "full list price",
+                discount: "0% off list",
                 icon: Users,
                 highlight: true,
                 features: [
-                  "Full retail price — highest margin",
+                  "Full MSRP — highest margin channel",
                   "Premium unboxing experience",
                   "White-glove delivery option (+$149)",
                   "30-day satisfaction guarantee",
                   "1-year warranty included",
                   "Free app subscription (3 months)",
                 ],
-                note: "MAP pricing enforced across all channels",
+                note: "MAP pricing enforced across all channels at $1,099",
               },
               {
-                tier: "B2B Institutional",
-                price: "$750–$895",
-                unit: "volume-tiered",
+                tier: "Vertical Markets",
+                price: "$824",
+                unit: "25 points off list",
+                discount: "25% off MSRP",
                 icon: Building2,
                 highlight: false,
                 features: [
-                  "5–24 units: $895/unit",
-                  "25–99 units: $825/unit",
-                  "100+ units: $750/unit",
-                  "Net 30 payment terms",
-                  "Dedicated account manager",
-                  "Custom branding available",
+                  "Medical & longevity clinics",
+                  "Sports performance facilities",
+                  "Hospitality & luxury resorts",
+                  "Government & military",
+                  "Corporate wellness programs",
+                  "Net 30 terms · Dedicated account mgr",
                 ],
-                note: "Clubs, hotels, medical facilities, corporate",
+                note: "Max discount: 25% off list — specialized verticals with high brand alignment",
               },
               {
-                tier: "Dealer & Reseller",
-                price: "$595–$695",
-                unit: "wholesale",
+                tier: "Commercial Markets",
+                price: "$699",
+                unit: "40 points off list (floor)",
+                discount: "40% off MSRP",
                 icon: Store,
                 highlight: false,
                 features: [
-                  "Authorized dealers: $695/unit",
-                  "Regional distributors: $645/unit",
-                  "White-label partners: $595/unit",
+                  "Health clubs & fitness centers",
+                  "Authorized dealers & retailers",
+                  "Regional distributors",
+                  "Reseller partners",
                   "Minimum order: 10 units",
-                  "MAP pricing enforced ($995 retail)",
-                  "Co-op marketing fund (2%)",
+                  "MAP pricing strictly enforced",
                 ],
-                note: "Dealer margin: 30–40% at MAP",
+                note: "Price floor — no channel goes below $699 under any circumstance",
               },
             ].map((tier, i) => (
               <motion.div
@@ -134,10 +181,13 @@ export default function ZWCommercialStrategy() {
                 )}
                 <tier.icon className="w-8 h-8 text-[#C9A962] mb-4" />
                 <h3 className="font-display text-lg font-semibold text-black mb-1">{tier.tier}</h3>
-                <div className="flex items-baseline gap-2 mb-4">
+                <div className="flex items-baseline gap-2 mb-1">
                   <span className="font-display text-3xl font-bold text-black">{tier.price}</span>
                   <span className="font-body text-sm text-black/40">{tier.unit}</span>
                 </div>
+                <span className="inline-block font-mono text-[10px] text-[#C9A962] tracking-wider bg-[#C9A962]/10 px-2 py-0.5 rounded-full mb-4">
+                  {tier.discount}
+                </span>
                 <ul className="space-y-2 mb-4">
                   {tier.features.map((f, j) => (
                     <li key={j} className="flex items-start gap-2 text-sm text-black/65">
@@ -150,10 +200,48 @@ export default function ZWCommercialStrategy() {
               </motion.div>
             ))}
           </div>
+
+          {/* Discount Structure Summary */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-5xl mx-auto mt-8"
+          >
+            <div className="rounded-2xl border border-black/[0.15] overflow-hidden">
+              <table className="w-full">
+                <thead>
+                  <tr className="bg-[#FAFAF8] border-b border-black/[0.10]">
+                    <th className="text-left p-4 font-mono text-xs text-black/50 tracking-wider uppercase">Market Category</th>
+                    <th className="text-right p-4 font-mono text-xs text-black/50 tracking-wider uppercase">Points Off List</th>
+                    <th className="text-right p-4 font-mono text-xs text-black/50 tracking-wider uppercase">Net Price</th>
+                    <th className="text-right p-4 font-mono text-xs text-black/50 tracking-wider uppercase">Discount $</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { category: "DTC / Full Retail", points: "0%", net: "$1,099", savings: "—", highlight: true },
+                    { category: "Vertical Markets (Medical, Sports, Hospitality, Gov)", points: "25%", net: "$824", savings: "$275", highlight: false },
+                    { category: "Commercial Markets (Clubs, Dealers, Resellers)", points: "40%", net: "$699", savings: "$400", highlight: false },
+                  ].map((row, i) => (
+                    <tr key={i} className={`border-b border-black/[0.06] last:border-0 ${row.highlight ? "bg-[#C9A962]/5" : ""}`}>
+                      <td className="p-4 font-body text-sm text-black/80 font-medium">{row.category}</td>
+                      <td className="p-4 text-right font-display text-sm font-semibold text-black">{row.points}</td>
+                      <td className="p-4 text-right font-display text-sm font-bold text-[#C9A962]">{row.net}</td>
+                      <td className="p-4 text-right font-body text-sm text-black/50">{row.savings}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="font-body text-xs text-black/35 mt-3 text-center italic">
+              All pricing expressed as margin points off the $1,099 MSRP. Price floor of $699 applies to all channels — no exceptions.
+            </p>
+          </motion.div>
         </div>
       </section>
 
-      {/* Dealer & Reseller Terms */}
+      {/* Channel Partners */}
       <section id="dealer-terms" className="py-18 bg-[#FAFAF8]">
         <div className="container">
           <motion.div
@@ -167,50 +255,57 @@ export default function ZWCommercialStrategy() {
               Channel Partners
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-5 text-black">
-              Dealer & Reseller Program
+              Commercial & Vertical Partner Programs
             </motion.h2>
+            <motion.p variants={fadeInUp} className="font-body text-base text-black/60 max-w-2xl mx-auto">
+              Structured partner programs for both market categories — each with distinct pricing, terms, and margin structures anchored to the $1,099 list price.
+            </motion.p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {[
               {
+                title: "Vertical Market Partners",
+                subtitle: "25% off list — $824/unit",
+                icon: Building2,
+                items: [
+                  { label: "Partner Price", value: "$824/unit" },
+                  { label: "Discount Off List", value: "25% (275 pts)" },
+                  { label: "MAP Retail Price", value: "$1,099" },
+                  { label: "Partner Margin at MAP", value: "~25%" },
+                  { label: "Payment Terms", value: "Net 30" },
+                  { label: "Verticals", value: "Medical, Sports, Hospitality, Gov" },
+                ],
+              },
+              {
                 title: "Authorized Dealer Program",
+                subtitle: "40% off list — $699/unit (floor)",
                 icon: Store,
                 items: [
-                  { label: "Wholesale Price", value: "$695/unit" },
-                  { label: "Minimum Order", value: "10 units" },
-                  { label: "MAP Retail Price", value: "$995" },
-                  { label: "Dealer Margin", value: "~30%" },
+                  { label: "Wholesale Price", value: "$699/unit" },
+                  { label: "Discount Off List", value: "40% (400 pts)" },
+                  { label: "MAP Retail Price", value: "$1,099" },
+                  { label: "Dealer Margin at MAP", value: "~36%" },
                   { label: "Payment Terms", value: "Net 30" },
-                  { label: "Territory Protection", value: "Available" },
+                  { label: "Minimum Order", value: "10 units" },
                 ],
               },
               {
-                title: "Regional Distributor Program",
+                title: "Regional Distributors & Resellers",
+                subtitle: "40% off list — $699/unit (floor)",
                 icon: Layers,
                 items: [
-                  { label: "Wholesale Price", value: "$645/unit" },
-                  { label: "Minimum Order", value: "50 units" },
-                  { label: "Annual Commitment", value: "200+ units" },
-                  { label: "Distributor Margin", value: "~35%" },
+                  { label: "Wholesale Price", value: "$699/unit" },
+                  { label: "Discount Off List", value: "40% (400 pts)" },
+                  { label: "Minimum Order", value: "25 units" },
+                  { label: "Annual Commitment", value: "100+ units" },
                   { label: "Payment Terms", value: "Net 45" },
-                  { label: "Exclusive Territory", value: "Negotiable" },
-                ],
-              },
-              {
-                title: "White-Label Partners",
-                icon: FileText,
-                items: [
-                  { label: "Wholesale Price", value: "$595/unit" },
-                  { label: "Minimum Order", value: "100 units" },
-                  { label: "Custom Branding", value: "Included" },
-                  { label: "Partner Margin", value: "~40%" },
-                  { label: "Payment Terms", value: "Net 30" },
-                  { label: "Marketing Support", value: "Co-op fund" },
+                  { label: "Territory Protection", value: "Negotiable" },
                 ],
               },
               {
                 title: "Program Requirements",
+                subtitle: "All partner tiers",
                 icon: CheckCircle2,
                 items: [
                   { label: "Application Process", value: "Required" },
@@ -230,10 +325,11 @@ export default function ZWCommercialStrategy() {
                 transition={{ delay: i * 0.1 }}
                 className="p-8 rounded-2xl border border-black/[0.15] bg-white hover:shadow-lg transition-all duration-300"
               >
-                <div className="flex items-center gap-3 mb-5">
+                <div className="flex items-center gap-3 mb-1">
                   <card.icon className="w-6 h-6 text-[#C9A962]" />
                   <h3 className="font-display text-lg font-semibold text-black">{card.title}</h3>
                 </div>
+                <p className="font-mono text-[10px] text-[#C9A962] tracking-wider uppercase mb-5">{card.subtitle}</p>
                 <div className="space-y-3">
                   {card.items.map((item, j) => (
                     <div key={j} className="flex items-center justify-between py-2 border-b border-black/[0.06] last:border-0">
@@ -266,6 +362,9 @@ export default function ZWCommercialStrategy() {
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-5 text-black">
               Margin Analysis by Channel
             </motion.h2>
+            <motion.p variants={fadeInUp} className="font-body text-base text-black/60 max-w-2xl mx-auto">
+              Gross margin analysis across all market categories — from full-retail DTC through Commercial floor pricing.
+            </motion.p>
           </motion.div>
 
           <div className="max-w-4xl mx-auto">
@@ -274,6 +373,7 @@ export default function ZWCommercialStrategy() {
                 <thead>
                   <tr className="bg-[#FAFAF8] border-b border-black/[0.10]">
                     <th className="text-left p-4 font-mono text-xs text-black/50 tracking-wider uppercase">Channel</th>
+                    <th className="text-right p-4 font-mono text-xs text-black/50 tracking-wider uppercase">Off List</th>
                     <th className="text-right p-4 font-mono text-xs text-black/50 tracking-wider uppercase">Revenue</th>
                     <th className="text-right p-4 font-mono text-xs text-black/50 tracking-wider uppercase">COGS</th>
                     <th className="text-right p-4 font-mono text-xs text-black/50 tracking-wider uppercase">Gross Profit</th>
@@ -282,16 +382,17 @@ export default function ZWCommercialStrategy() {
                 </thead>
                 <tbody>
                   {[
-                    { channel: "DTC (Full Retail)", revenue: "$995", cogs: "$350", profit: "$645", margin: "64.8%", highlight: true },
-                    { channel: "B2B (5–24 units)", revenue: "$895", cogs: "$350", profit: "$545", margin: "60.9%", highlight: false },
-                    { channel: "B2B (25–99 units)", revenue: "$825", cogs: "$340", profit: "$485", margin: "58.8%", highlight: false },
-                    { channel: "B2B (100+ units)", revenue: "$750", cogs: "$330", profit: "$420", margin: "56.0%", highlight: false },
-                    { channel: "Dealer (Authorized)", revenue: "$695", cogs: "$330", profit: "$365", margin: "52.5%", highlight: false },
-                    { channel: "Distributor (Regional)", revenue: "$645", cogs: "$320", profit: "$325", margin: "50.4%", highlight: false },
-                    { channel: "White-Label", revenue: "$595", cogs: "$310", profit: "$285", margin: "47.9%", highlight: false },
+                    { channel: "DTC (Full Retail)", offList: "0%", revenue: "$1,099", cogs: "$350", profit: "$749", margin: "68.2%", highlight: true },
+                    { channel: "Vertical — Medical / Longevity", offList: "25%", revenue: "$824", cogs: "$350", profit: "$474", margin: "57.5%", highlight: false },
+                    { channel: "Vertical — Sports Performance", offList: "25%", revenue: "$824", cogs: "$350", profit: "$474", margin: "57.5%", highlight: false },
+                    { channel: "Vertical — Hospitality / Gov", offList: "25%", revenue: "$824", cogs: "$340", profit: "$484", margin: "58.7%", highlight: false },
+                    { channel: "Commercial — Clubs & Fitness", offList: "40%", revenue: "$699", cogs: "$330", profit: "$369", margin: "52.8%", highlight: false },
+                    { channel: "Commercial — Authorized Dealers", offList: "40%", revenue: "$699", cogs: "$330", profit: "$369", margin: "52.8%", highlight: false },
+                    { channel: "Commercial — Distributors / Resellers", offList: "40%", revenue: "$699", cogs: "$320", profit: "$379", margin: "54.2%", highlight: false },
                   ].map((row, i) => (
                     <tr key={i} className={`border-b border-black/[0.06] last:border-0 ${row.highlight ? "bg-[#C9A962]/5" : ""}`}>
                       <td className="p-4 font-body text-sm text-black/80 font-medium">{row.channel}</td>
+                      <td className="p-4 text-right font-mono text-xs text-black/50">{row.offList}</td>
                       <td className="p-4 text-right font-display text-sm font-semibold text-black">{row.revenue}</td>
                       <td className="p-4 text-right font-body text-sm text-black/50">{row.cogs}</td>
                       <td className="p-4 text-right font-display text-sm font-semibold text-emerald-600">{row.profit}</td>
@@ -302,7 +403,7 @@ export default function ZWCommercialStrategy() {
               </table>
             </div>
             <p className="font-body text-xs text-black/35 mt-3 text-center italic">
-              COGS estimates include manufacturing, packaging, and shipping. Actual costs may vary with volume.
+              COGS estimates include manufacturing, packaging, and shipping. All pricing anchored to $1,099 MSRP. Floor price: $699.
             </p>
           </div>
         </div>
@@ -328,7 +429,7 @@ export default function ZWCommercialStrategy() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {[
-              { title: "Hardware Sales", icon: DollarSign, value: "Primary", desc: "Unit sales across all 3 pricing tiers — DTC, B2B, and dealer/reseller channels." },
+              { title: "Hardware Sales", icon: DollarSign, value: "Primary", desc: "Unit sales across DTC ($1,099), Vertical ($824), and Commercial ($699) market categories." },
               { title: "Subscription Revenue", icon: TrendingUp, value: "$19.99/mo", desc: "Connected app subscription for workout programs, progress tracking, and virtual classes." },
               { title: "Accessory Revenue", icon: Layers, value: "15–20%", desc: "Complementary accessories and replacement parts — estimated at 15–20% of hardware revenue." },
               { title: "Content Licensing", icon: BarChart3, value: "B2B Add-on", desc: "Licensed content packages for institutional buyers — custom programming and branded experiences." },
