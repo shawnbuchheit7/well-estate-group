@@ -42,6 +42,7 @@ const ZWSalesInfrastructure = lazy(() => import("./pages/zerowheel/ZWSalesInfras
 const ZWBusinessIntelligence = lazy(() => import("./pages/zerowheel/ZWBusinessIntelligence"));
 const ZWProductAnalysis = lazy(() => import("./pages/zerowheel/ZWProductAnalysis"));
 const ZWCommercialStrategy = lazy(() => import("./pages/zerowheel/ZWCommercialStrategy"));
+const ZWB2B2C = lazy(() => import("./pages/zerowheel/ZWB2B2C"));
 
 const ProductIntelligence = lazy(() => import("./pages/ProductIntelligence"));
 const VentureCapital = lazy(() => import("./pages/VentureCapital"));
@@ -113,6 +114,7 @@ function App() {
                   <Route path="/gtm/zerowheel/lines-of-business" component={ZWLinesOfBusiness} />
                   <Route path="/gtm/zerowheel/sales" component={ZWSales} />
                   <Route path="/gtm/zerowheel/commercial-strategy" component={ZWCommercialStrategy} />
+                  <Route path="/gtm/zerowheel/b2b2c" component={ZWB2B2C} />
                   <Route path="/gtm/zerowheel/strategic-markets" component={ZWStrategicMarkets} />
                   <Route path="/gtm/zerowheel/global-markets" component={ZWGlobalMarkets} />
                   <Route path="/gtm/zerowheel/sales-infrastructure" component={ZWSalesInfrastructure} />

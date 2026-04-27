@@ -39,6 +39,7 @@ const zwNavLinks = [
   { href: "/gtm/zerowheel/lines-of-business", label: "Lines of Business" },
   { href: "/gtm/zerowheel/sales", label: "Sales Enablement" },
   { href: "/gtm/zerowheel/commercial-strategy", label: "Commercial Strategy" },
+  { href: "/gtm/zerowheel/b2b2c", label: "B2B2C" },
   { href: "/gtm/zerowheel/strategic-markets", label: "Strategic Markets" },
   { href: "/gtm/zerowheel/global-markets", label: "Global Markets" },
   { href: "/gtm/zerowheel/sales-infrastructure", label: "Infrastructure" },
