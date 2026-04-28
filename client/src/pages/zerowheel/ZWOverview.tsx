@@ -139,7 +139,7 @@ export default function ZWOverview() {
             >
               <p className="font-mono text-[10px] text-[#C9A962] uppercase tracking-[0.2em] mb-2">With WEG</p>
               <p className="font-display text-xl font-semibold text-black">Full B2B Distribution</p>
-              <p className="font-body text-xs text-black/50 mt-2">8 verticals, 4 global regions, 30+ channel partners</p>
+              <p className="font-body text-xs text-black/50 mt-2">9 macro LOBs, 4 global regions, 30+ channel partners</p>
             </motion.div>
             <motion.div variants={fadeInUp}>
               <motion.div
@@ -384,14 +384,14 @@ export default function ZWOverview() {
                 price: "$825",
                 unit: "max 25% off list (do not exceed)",
                 description: "Specialized verticals with high brand alignment — medical, sports performance, hospitality, and corporate wellness. Maximum discount threshold — do not exceed.",
-                features: ["Medical & longevity clinics", "Sports performance facilities", "Hospitality & luxury resorts", "Government & corporate wellness"],
+                features: ["Medical & longevity clinics", "Sports performance facilities", "Hospitality & luxury resorts", "Cruise & maritime"],
                 highlight: true,
               },
               {
                 tier: "Commercial Markets",
                 price: "$695",
                 unit: "max 40% off list (do not exceed)",
-                description: "Health clubs, authorized dealers, cruise/maritime, and reseller partners. Maximum discount threshold — no channel goes below $695 under any circumstance.",
+                description: "Health clubs, authorized dealers, and reseller partners. Maximum discount threshold — no channel goes below $695 under any circumstance.",
                 features: ["Health clubs & fitness centers", "Authorized dealers & retailers", "Regional distributors", "MAP pricing strictly enforced"],
                 highlight: false,
               },
@@ -582,7 +582,7 @@ export default function ZWOverview() {
               },
               {
                 title: "Proven Multi-Vertical Framework",
-                description: "Our organizational sales structure spans 8 macro lines of business with detailed sub-segment targeting. We've successfully brought products to market across private clubs, amenities, commercial, public, medical, sports, corporate, and influencer channels.",
+                description: "Our organizational sales structure spans 9 macro lines of business with detailed sub-segment targeting. We've successfully brought products to market across private clubs, commercial fitness, medical, DTC, corporate wellness, professional sports, hospitality, military/government, and cruise/maritime channels.",
               },
               {
                 title: "Global Reach, Local Execution",

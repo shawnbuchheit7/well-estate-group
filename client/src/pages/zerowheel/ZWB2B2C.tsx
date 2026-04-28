@@ -27,7 +27,7 @@ export default function ZWB2B2C() {
       />
 
       {/* B2B2C Model Overview */}
-      <section className="py-20 px-6">
+      <section className="py-18 px-6">
         <motion.div
           className="max-w-6xl mx-auto"
           initial="hidden"
@@ -74,7 +74,7 @@ export default function ZWB2B2C() {
       </section>
 
       {/* Revenue Streams per Tier */}
-      <section className="py-20 px-6 bg-[#FAFAF8]">
+      <section className="py-18 px-6 bg-[#FAFAF8]">
         <motion.div
           className="max-w-6xl mx-auto"
           initial="hidden"
@@ -169,7 +169,7 @@ export default function ZWB2B2C() {
       </section>
 
       {/* B2B2C by Vertical */}
-      <section className="py-20 px-6">
+      <section className="py-18 px-6">
         <motion.div
           className="max-w-6xl mx-auto"
           initial="hidden"
@@ -198,14 +198,15 @@ export default function ZWB2B2C() {
               </thead>
               <tbody>
                 {[
-                  { vertical: "Private Clubs", buyer: "Club GM / Fitness Director", consumer: "Club Members", model: "Hardware + Member Subscription", ltv: "$600+" },
-                  { vertical: "Commercial Fitness", buyer: "Franchise Owner / Regional Mgr", consumer: "Gym Members", model: "Hardware + Content License", ltv: "$400+" },
-                  { vertical: "Sports Performance", buyer: "Team S&C Director", consumer: "Athletes", model: "Hardware + Data Analytics", ltv: "$800+" },
-                  { vertical: "Medical Rehab", buyer: "Clinic Director / PT Lead", consumer: "Patients", model: "Hardware + Rx Subscription", ltv: "$1,200+" },
-                  { vertical: "Hospitality", buyer: "Hotel/Resort GM", consumer: "Guests", model: "Hardware + Experience Fee", ltv: "$200+" },
-                  { vertical: "Government / Military", buyer: "Procurement Officer", consumer: "Service Members", model: "Hardware + Maintenance Contract", ltv: "$500+" },
-                  { vertical: "Education", buyer: "Athletic Director", consumer: "Student Athletes", model: "Hardware + Campus License", ltv: "$350+" },
-                  { vertical: "Consumer DTC", buyer: "Direct (E-commerce)", consumer: "Home User", model: "Hardware + Subscription + Accessories", ltv: "$700+" },
+                  { vertical: "Private Clubs", buyer: "Fitness Director (Golf Pro, GM, Board)", consumer: "Club Members", model: "Hardware + Member Subscription", ltv: "$600+" },
+                  { vertical: "Commercial Fitness", buyer: "Corporate Procurement / Owner-Operators", consumer: "Gym Members", model: "Hardware + Content License", ltv: "$400+" },
+                  { vertical: "Medical & Rehab", buyer: "Clinical Rehab Director / Owner-Operators", consumer: "Patients", model: "Hardware + Rx Subscription", ltv: "$1,200+" },
+                  { vertical: "Direct-to-Consumer", buyer: "Direct (E-commerce)", consumer: "Home User", model: "Hardware + Subscription + Accessories", ltv: "$700+" },
+                  { vertical: "Corporate Wellness", buyer: "Wellness Program Manager / HR Director", consumer: "Employees", model: "Hardware + Engagement Platform", ltv: "$500+" },
+                  { vertical: "Professional Sports", buyer: "Director of S&C", consumer: "Athletes", model: "Hardware + Data Analytics", ltv: "$800+" },
+                  { vertical: "Hospitality & Amenities", buyer: "Management Co / Fitness & Spa Directors", consumer: "Guests & Residents", model: "Hardware + In-Room Wellness", ltv: "$300+" },
+                  { vertical: "Military & Government", buyer: "TSAC-F / Police & Fire Chiefs / Dir. of Rec", consumer: "Service Members & Community", model: "Hardware + Maintenance Contract", ltv: "$500+" },
+                  { vertical: "Cruise & Maritime", buyer: "VP Onboard / VP Newbuild / Mgmt Co", consumer: "Passengers & Crew", model: "Hardware + In-Cabin Wellness", ltv: "$250+" },
                 ].map((row, i) => (
                   <tr key={i} className="border-b border-black/8 hover:bg-[#FAFAF8] transition-colors">
                     <td className="py-4 pr-6 font-semibold text-black text-sm">{row.vertical}</td>
@@ -222,7 +223,7 @@ export default function ZWB2B2C() {
       </section>
 
       {/* Consumer Engagement Flywheel */}
-      <section className="py-20 px-6 bg-[#FAFAF8]">
+      <section className="py-18 px-6 bg-[#FAFAF8]">
         <motion.div
           className="max-w-5xl mx-auto"
           initial="hidden"
@@ -256,7 +257,7 @@ export default function ZWB2B2C() {
       </section>
 
       {/* Key Metrics */}
-      <section className="py-20 px-6">
+      <section className="py-18 px-6">
         <motion.div
           className="max-w-5xl mx-auto"
           initial="hidden"
