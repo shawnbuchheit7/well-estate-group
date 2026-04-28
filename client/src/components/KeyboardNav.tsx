@@ -9,8 +9,11 @@ import { useLocation } from "wouter";
 
 const zwRoutes = [
   "/gtm/zerowheel",
+  "/gtm/zerowheel/product-analysis",
   "/gtm/zerowheel/lines-of-business",
   "/gtm/zerowheel/sales",
+  "/gtm/zerowheel/commercial-strategy",
+  "/gtm/zerowheel/b2b2c",
   "/gtm/zerowheel/strategic-markets",
   "/gtm/zerowheel/sales-infrastructure",
   "/gtm/zerowheel/business-intelligence",
