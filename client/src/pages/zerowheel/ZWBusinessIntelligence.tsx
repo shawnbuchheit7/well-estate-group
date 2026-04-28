@@ -74,6 +74,9 @@ const ALL_DATA = {
     { rep: "S. Patel",    installs: 33, revenue: 36135,  leads: 159, calls: 248, demos: 21, winRate: 0.51, lob: "Sports Performance" },
     { rep: "R. Davis",    installs: 28, revenue: 30660,  leads: 134, calls: 211, demos: 18, winRate: 0.49, lob: "Healthcare / Rehab" },
     { rep: "K. Johnson",  installs: 21, revenue: 22995,  leads: 102, calls: 162, demos: 14, winRate: 0.45, lob: "Consumer DTC" },
+    { rep: "A. Torres",   installs: 12, revenue: 13140,  leads: 58,  calls: 91,  demos: 8,  winRate: 0.55, lob: "Senior Living" },
+    { rep: "S. Patel",    installs: 9,  revenue: 9855,   leads: 43,  calls: 68,  demos: 6,  winRate: 0.50, lob: "Corporate Wellness" },
+    { rep: "R. Davis",    installs: 6,  revenue: 6570,   leads: 28,  calls: 44,  demos: 4,  winRate: 0.48, lob: "Government / Military" },
   ],
   channels: [
     { name: "Private Clubs",       leads: 458, installs: 93, revenue: 101835, convRate: 0.203, color: GOLD },
@@ -82,6 +85,9 @@ const ALL_DATA = {
     { name: "Sports Performance",  leads: 145, installs: 29, revenue: 31755,  convRate: 0.200, color: ORANGE },
     { name: "Healthcare / Rehab",  leads: 72,  installs: 15, revenue: 16425,  convRate: 0.208, color: GREEN },
     { name: "Consumer DTC",        leads: 50,  installs: 10, revenue: 10950,  convRate: 0.200, color: RED },
+    { name: "Senior Living",        leads: 38,  installs: 8,  revenue: 8760,   convRate: 0.211, color: "#60A5FA" },
+    { name: "Corporate Wellness",   leads: 29,  installs: 6,  revenue: 6570,   convRate: 0.207, color: "#F472B6" },
+    { name: "Government / Military",leads: 18,  installs: 4,  revenue: 4380,   convRate: 0.222, color: "#34D399" },
   ],
   pipeline: [
     { stage: "Discovery",   count: 142, value: 142000 },
@@ -243,19 +249,19 @@ export default function ZWBusinessIntelligence() {
 
   const filteredReps = useMemo(() => {
     if (selectedRep !== "All Reps") return ALL_DATA.reps.filter(r => r.rep === selectedRep);
-    if (selectedLOB !== "All Channels") return ALL_DATA.reps.filter(r => r.lob === selectedLOB);
+    if (selectedLOB !== "All LOBs") return ALL_DATA.reps.filter(r => r.lob === selectedLOB);
     return ALL_DATA.reps;
   }, [selectedRep, selectedLOB]);
 
   const filteredChannels = useMemo(() => {
-    if (selectedLOB !== "All Channels") return ALL_DATA.channels.filter(c => c.name === selectedLOB);
+    if (selectedLOB !== "All LOBs") return ALL_DATA.channels.filter(c => c.name === selectedLOB);
     return ALL_DATA.channels;
   }, [selectedLOB]);
 
   function resetFilters() {
     setDateRange("YTD");
     setSelectedRep("All Reps");
-    setSelectedLOB("All Channels");
+    setSelectedLOB("All LOBs");
   }
 
   return (
@@ -341,7 +347,7 @@ export default function ZWBusinessIntelligence() {
                 </div>
                 <div>
                   <p className="font-mono text-[9px] text-black/40 uppercase tracking-wider">Budget</p>
-                  <p className="font-display text-xl font-semibold text-black/45">{fmt$(Math.round(monthlySlice.reduce((s, d) => s + d.budget, 0) * (selectedRep !== "All Reps" ? 0.17 : 1) * (selectedLOB !== "All Channels" ? 0.2 : 1)))}</p>
+                  <p className="font-display text-xl font-semibold text-black/45">{fmt$(Math.round(monthlySlice.reduce((s, d) => s + d.budget, 0) * (selectedRep !== "All Reps" ? 0.17 : 1) * (selectedLOB !== "All LOBs" ? 0.2 : 1)))}</p>
                 </div>
               </div>
             </div>
@@ -410,7 +416,7 @@ export default function ZWBusinessIntelligence() {
               <div>
                 <p className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em] mb-1">Channel Attribution</p>
                 <p className="font-display text-xl font-semibold text-black">
-                  {selectedLOB === "All Channels" ? "All Channels" : selectedLOB} — Performance Breakdown
+                  {selectedLOB === "All LOBs" ? "All LOBs" : selectedLOB} — Performance Breakdown
                 </p>
               </div>
             </div>

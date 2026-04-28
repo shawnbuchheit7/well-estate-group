@@ -155,7 +155,8 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
         transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] }}
         style={{ boxShadow: '0 1px 24px rgba(0,0,0,0.05)' }}
       >
-        <div className="w-full px-6 lg:px-10 xl:px-16 flex items-center justify-between h-20">
+        <div className="w-full px-6 lg:px-10 xl:px-16 flex flex-col">
+          <div className="flex items-center justify-between h-16">
           {/* Logo - Far Left with back button */}
           <div className="flex items-center gap-3 flex-shrink-0">
             {showBackButton && (
@@ -177,33 +178,35 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
             </Link>
           </div>
           
-          {/* Desktop Navigation - Visible tabs across the top */}
-          <div className="hidden lg:flex items-center justify-center flex-1 mx-4">
-            <div className="flex items-center gap-1 font-body text-xs">
-              {navLinks.map((link, index) => {
-                const isActive = location === link.href;
-                return (
-                  <motion.div
-                    key={link.href}
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.05 }}
-                  >
-                    <Link
-                      href={link.href}
-                      className={`relative px-3 py-1.5 rounded-md border transition-all whitespace-nowrap ${
-                        isActive
-                          ? "text-white font-semibold border-black bg-black shadow-sm"
-                          : "text-black/60 border-transparent hover:text-black hover:border-black/15 hover:bg-black/[0.03]"
-                      }`}
+          {/* Desktop Navigation - only shown inline when few tabs */}
+          {navLinks.length <= 6 && (
+            <div className="hidden lg:flex items-center justify-center flex-1 mx-4">
+              <div className="flex items-center gap-1 font-body text-xs">
+                {navLinks.map((link, index) => {
+                  const isActive = location === link.href;
+                  return (
+                    <motion.div
+                      key={link.href}
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.05 }}
                     >
-                      {link.label}
-                    </Link>
-                  </motion.div>
-                );
-              })}
+                      <Link
+                        href={link.href}
+                        className={`relative px-3 py-1.5 rounded-md border transition-all whitespace-nowrap ${
+                          isActive
+                            ? "text-white font-semibold border-black bg-black shadow-sm"
+                            : "text-black/60 border-transparent hover:text-black hover:border-black/15 hover:bg-black/[0.03]"
+                        }`}
+                      >
+                        {link.label}
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+              </div>
             </div>
-          </div>
+          )}
           
           {/* Section Label, Dark Mode Toggle, or Data Room Button - Far Right */}
           <div className="flex items-center gap-3 flex-shrink-0">
@@ -236,6 +239,40 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </motion.button>
           </div>
+          </div>
+          {/* Second row: scrollable tab strip — only shown when many tabs */}
+          {navLinks.length > 6 && (
+            <div className="hidden lg:block relative border-t border-black/[0.06]">
+              <div className="overflow-x-auto scrollbar-hide pb-0" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
+                <div className="flex items-center gap-0.5 px-4 py-1.5 font-body text-xs min-w-max">
+                  {navLinks.map((link, index) => {
+                    const isActive = location === link.href;
+                    return (
+                      <motion.div
+                        key={link.href}
+                        initial={{ opacity: 0, y: -6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.04 }}
+                      >
+                        <Link
+                          href={link.href}
+                          className={`relative px-3 py-1 rounded-md border transition-all whitespace-nowrap text-[11px] ${
+                            isActive
+                              ? "text-white font-semibold border-black bg-black shadow-sm"
+                              : "text-black/55 border-transparent hover:text-black hover:border-black/15 hover:bg-black/[0.03]"
+                          }`}
+                        >
+                          {link.label}
+                        </Link>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </div>
+              {/* Right fade mask to hint at more tabs */}
+              <div className="absolute right-0 top-0 bottom-0 w-12 pointer-events-none" style={{ background: "linear-gradient(to left, rgba(255,255,255,0.95), transparent)" }} />
+            </div>
+          )}
         </div>
       </motion.nav>
 
@@ -333,7 +370,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
       </AnimatePresence>
 
       {/* Main Content */}
-      <main className="pt-20">
+      <main className={navLinks.length > 6 ? "pt-28" : "pt-20"}>
         {children}
       </main>
 
