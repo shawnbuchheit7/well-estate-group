@@ -80,12 +80,12 @@ function AccordionCard({ title, subtitle, icon: Icon, color, children }: {
 
 // ── Data ───────────────────────────────────────────────────────────────────
 const techStack = [
-  { name: "Salesforce CRM", role: "Pipeline & Relationship Hub", detail: "Custom ZeroWheel objects: Lead, Account, Opportunity, Campaign, Partner Commission. LOB picklists, UTM capture fields, SLA timers, and automated stage-progression rules. Every lead, contact, and deal tracked with owner assignment and activity logging.", icon: Database, color: "#0070D2" },
-  { name: "Typeform", role: "Lead Capture — B2B & DTC", detail: "Two form variants: (1) B2B Facility Inquiry — captures facility name, LOB, unit volume estimate, decision timeline, and budget authority. (2) Consumer Interest — captures use case, fitness level, and referral source. Both push to Salesforce via Zapier within 60 seconds of submission.", icon: MessageSquare, color: "#262627" },
-  { name: "Klaviyo", role: "Email Nurture & Drip Automation", detail: "Native Salesforce sync maps Leads and Contacts to Klaviyo profiles. Separate flows for B2B (facility buyers) and DTC (consumer). Behavioral triggers: form fill, demo booked, demo no-show, quote sent, deal stalled 14+ days. $150/mo for up to 10K subscribers — purpose-built for hybrid B2B/DTC brands at ZeroWheel's stage.", icon: Mail, color: "#1B9B6F" },
-  { name: "Zapier", role: "Automation Backbone", detail: "10 active Zaps: Typeform → Salesforce Lead (60s), Salesforce Lead Created → Klaviyo Profile, Demo Booked → Slack #new-leads, Deal Won → Klaviyo Customer segment, Affiliate Code Used → Commission Line Item, Stalled Opp (14d) → Rep task + Slack alert, and more.", icon: Zap, color: "#FF4A00" },
-  { name: "Intercom", role: "Live Chat & Qualification", detail: "Embedded on all landing pages and the ZeroWheel website. Qualifies inbound visitors with a 3-question bot (use case, facility type, timeline) before routing to a rep. Syncs conversation history to Salesforce Contact record via Zapier.", icon: MessageSquare, color: "#1F8DED" },
-  { name: "Landing Pages / Website", role: "Traffic Entry Point", detail: "Dedicated landing pages for each LOB and persona — Private Clubs, Maritime/Cruise, Sports Performance, Consumer DTC. Each page features a Typeform embed, UTM parameter capture, and clear call-to-action. All traffic sources (organic, referral, direct outreach, events, influencer links) route through these pages into the lead capture flow.", icon: Target, color: "#1877F2" },
+  { name: "Salesforce CRM", role: "Pipeline & Relationship Hub", cost: "$500/mo", costNote: "5 seats", detail: "Custom ZeroWheel objects: Lead, Account, Opportunity, Campaign, Partner Commission. LOB picklists, UTM capture fields, SLA timers, and automated stage-progression rules. Every lead, contact, and deal tracked with owner assignment and activity logging.", icon: Database, color: "#0070D2" },
+  { name: "Typeform", role: "Lead Capture — B2B & DTC", cost: "$75/mo", costNote: "Business plan", detail: "Two form variants: (1) B2B Facility Inquiry — captures facility name, LOB, unit volume estimate, decision timeline, and budget authority. (2) Consumer Interest — captures use case, fitness level, and referral source. Both push to Salesforce via Zapier within 60 seconds of submission.", icon: MessageSquare, color: "#262627" },
+  { name: "Klaviyo", role: "Email Nurture & Drip Automation", cost: "$150/mo", costNote: "Up to 10K contacts", detail: "Native Salesforce sync maps Leads and Contacts to Klaviyo profiles. Separate flows for B2B (facility buyers) and DTC (consumer). Behavioral triggers: form fill, demo booked, demo no-show, quote sent, deal stalled 14+ days. Purpose-built for hybrid B2B/DTC brands at ZeroWheel's stage.", icon: Mail, color: "#1B9B6F" },
+  { name: "Zapier", role: "Automation Backbone", cost: "$75/mo", costNote: "Professional plan", detail: "10 active Zaps: Typeform → Salesforce Lead (60s), Salesforce Lead Created → Klaviyo Profile, Demo Booked → Slack #new-leads, Deal Won → Klaviyo Customer segment, Affiliate Code Used → Commission Line Item, Stalled Opp (14d) → Rep task + Slack alert, and more.", icon: Zap, color: "#FF4A00" },
+  { name: "Intercom", role: "Live Chat & Qualification", cost: "Included", costNote: "Via Zapier integration", detail: "Embedded on all landing pages and the ZeroWheel website. Qualifies inbound visitors with a 3-question bot (use case, facility type, timeline) before routing to a rep. Syncs conversation history to Salesforce Contact record via Zapier.", icon: MessageSquare, color: "#1F8DED" },
+  { name: "Landing Pages / Website", role: "Traffic Entry Point", cost: "Included", costNote: "Existing infrastructure", detail: "Dedicated landing pages for each LOB and persona — Private Clubs, Maritime/Cruise, Sports Performance, Consumer DTC. Each page features a Typeform embed, UTM parameter capture, and clear call-to-action. All traffic sources (organic, referral, direct outreach, events, influencer links) route through these pages into the lead capture flow.", icon: Target, color: "#1877F2" },
 ];
 
 const funnelStages = [
@@ -395,14 +395,54 @@ export default function ZWMarketingInfrastructure() {
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: `${tool.color}15` }}>
                     <tool.icon className="w-5 h-5" style={{ color: tool.color }} />
                   </div>
-                  <div>
-                    <p className="font-display text-sm font-semibold text-black">{tool.name}</p>
-                    <p className="font-mono text-[10px] text-[#C9A962] uppercase tracking-[0.15em]">{tool.role}</p>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between gap-2">
+                      <p className="font-display text-sm font-semibold text-black">{tool.name}</p>
+                      <span className={`font-mono text-[10px] px-2 py-0.5 rounded-full flex-shrink-0 ${
+                        tool.cost === "Included" ? "bg-black/5 text-black/40" : "bg-[#C9A962]/10 text-[#C9A962]"
+                      }`}>{tool.cost}</span>
+                    </div>
+                    <p className="font-mono text-[10px] text-black/35 uppercase tracking-[0.12em] mt-0.5">{tool.role}</p>
+                    {tool.costNote && <p className="font-mono text-[9px] text-black/30 mt-0.5">{tool.costNote}</p>}
                   </div>
                 </div>
                 <p className="font-body text-xs text-black/55 leading-relaxed">{tool.detail}</p>
               </motion.div>
             ))}
+          </motion.div>
+
+          {/* Cost Summary */}
+          <motion.div
+            className="max-w-6xl mx-auto mt-6 mb-2"
+            initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+          >
+            <div className="bg-[#FAFAF8] border border-[#C9A962]/20 rounded-2xl px-8 py-5 flex flex-wrap items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <Award className="w-5 h-5 text-[#C9A962]" />
+                <div>
+                  <p className="font-mono text-[10px] text-black/35 uppercase tracking-[0.15em]">Estimated Monthly Stack Cost</p>
+                  <p className="font-body text-xs text-black/50 mt-0.5">Based on 5 teammates — scales with team growth</p>
+                </div>
+              </div>
+              <div className="flex flex-wrap items-center gap-6">
+                {[
+                  { label: "Salesforce", value: "$500" },
+                  { label: "Klaviyo",    value: "$150" },
+                  { label: "Zapier",     value: "$75"  },
+                  { label: "Typeform",   value: "$75"  },
+                ].map((item, i) => (
+                  <div key={i} className="text-center">
+                    <p className="font-display text-lg font-semibold text-black">{item.value}</p>
+                    <p className="font-mono text-[9px] text-black/35 uppercase tracking-wider">{item.label}</p>
+                  </div>
+                ))}
+                <div className="h-8 w-px bg-black/10" />
+                <div className="text-center">
+                  <p className="font-display text-xl font-bold text-[#C9A962]">$800<span className="text-sm font-normal text-black/40">/mo</span></p>
+                  <p className="font-mono text-[9px] text-black/35 uppercase tracking-wider">Total</p>
+                </div>
+              </div>
+            </div>
           </motion.div>
 
           {/* Integration flow */}
