@@ -2,7 +2,8 @@
  * ZeroWheel Business Intelligence Dashboard
  * Design: Light premium — white bg, gold (#C9A962) accents, teal highlights
  * Features: Date range picker, rep filter, line-of-business filter, dynamic charts
- * Data: $1,000/unit product, 1,000 unit / $1M revenue target for 2026
+ * Data: $1,095/unit DTC MSRP. 9 macro LOBs per boss's ZeroWheel GTM framework.
+ * Revenue target: $1,095 x 1,000 units = ~$1.095M Year 1
  */
 
 import { useState, useMemo } from "react";
@@ -38,46 +39,49 @@ const CARD_BORDER = "rgba(0,0,0,0.10)";
 const DATE_RANGES = ["MTD", "QTD", "YTD", "Last 30 Days", "Last 90 Days", "Last 12 Months"];
 const REPS = ["All Reps", "A. Torres", "M. Chen", "J. Williams", "S. Patel", "R. Davis", "K. Johnson"];
 const LINES_OF_BUSINESS = [
-  "All Channels",
-  "Direct Sales",
-  "E-Commerce",
-  "Partner / Referral",
-  "Inbound / Marketing",
-  "Trade Show",
-  "Social / Content",
+  "All LOBs",
+  "Private Clubs",
+  "Maritime / Cruise",
+  "Hospitality",
+  "Sports Performance",
+  "Senior Living",
+  "Healthcare / Rehab",
+  "Corporate Wellness",
+  "Government / Military",
+  "Consumer DTC",
 ];
 
 // ─── Full Dataset ─────────────────────────────────────────────────────────────
 const ALL_DATA = {
   monthly: [
-    { month: "Jan", leads: 210, opps: 88, installs: 38, revenue: 38000, budget: 50000, calls: 412, demos: 24 },
-    { month: "Feb", leads: 268, opps: 112, installs: 52, revenue: 52000, budget: 65000, calls: 498, demos: 31 },
-    { month: "Mar", leads: 341, opps: 143, installs: 71, revenue: 71000, budget: 80000, calls: 621, demos: 44 },
-    { month: "Apr", leads: 389, opps: 163, installs: 84, revenue: 84000, budget: 90000, calls: 702, demos: 52 },
-    { month: "May", leads: 421, opps: 178, installs: 98, revenue: 98000, budget: 100000, calls: 754, demos: 61 },
-    { month: "Jun", leads: 398, opps: 167, installs: 91, revenue: 91000, budget: 110000, calls: 698, demos: 57 },
-    { month: "Jul", leads: 312, opps: 131, installs: 72, revenue: 72000, budget: 115000, calls: 541, demos: 45 },
-    { month: "Aug", leads: 344, opps: 144, installs: 79, revenue: 79000, budget: 120000, calls: 588, demos: 49 },
-    { month: "Sep", leads: 401, opps: 168, installs: 92, revenue: 92000, budget: 125000, calls: 712, demos: 58 },
-    { month: "Oct", leads: 456, opps: 191, installs: 105, revenue: 105000, budget: 130000, calls: 801, demos: 66 },
-    { month: "Nov", leads: 489, opps: 205, installs: 113, revenue: 113000, budget: 115000, calls: 842, demos: 71 },
-    { month: "Dec", leads: 412, opps: 173, installs: 95, revenue: 95000, budget: 110000, calls: 698, demos: 60 },
+    { month: "Jan", leads: 210, opps: 88, installs: 38, revenue: 41610, budget: 50000, calls: 412, demos: 24 },
+    { month: "Feb", leads: 268, opps: 112, installs: 52, revenue: 56940, budget: 65000, calls: 498, demos: 31 },
+    { month: "Mar", leads: 341, opps: 143, installs: 71, revenue: 77745, budget: 80000, calls: 621, demos: 44 },
+    { month: "Apr", leads: 389, opps: 163, installs: 84, revenue: 91980, budget: 90000, calls: 702, demos: 52 },
+    { month: "May", leads: 421, opps: 178, installs: 98, revenue: 107310, budget: 100000, calls: 754, demos: 61 },
+    { month: "Jun", leads: 398, opps: 167, installs: 91, revenue: 99645, budget: 110000, calls: 698, demos: 57 },
+    { month: "Jul", leads: 312, opps: 131, installs: 72, revenue: 78840, budget: 115000, calls: 541, demos: 45 },
+    { month: "Aug", leads: 344, opps: 144, installs: 79, revenue: 86505, budget: 120000, calls: 588, demos: 49 },
+    { month: "Sep", leads: 401, opps: 168, installs: 92, revenue: 100740, budget: 125000, calls: 712, demos: 58 },
+    { month: "Oct", leads: 456, opps: 191, installs: 105, revenue: 114975, budget: 130000, calls: 801, demos: 66 },
+    { month: "Nov", leads: 489, opps: 205, installs: 113, revenue: 123735, budget: 115000, calls: 842, demos: 71 },
+    { month: "Dec", leads: 412, opps: 173, installs: 95, revenue: 104025, budget: 110000, calls: 698, demos: 60 },
   ],
   reps: [
-    { rep: "A. Torres",   installs: 68, revenue: 68000, leads: 312, calls: 487, demos: 42, winRate: 0.62, lob: "Direct Sales" },
-    { rep: "M. Chen",     installs: 54, revenue: 54000, leads: 261, calls: 398, demos: 34, winRate: 0.58, lob: "Partner / Referral" },
-    { rep: "J. Williams", installs: 41, revenue: 41000, leads: 198, calls: 312, demos: 26, winRate: 0.54, lob: "Direct Sales" },
-    { rep: "S. Patel",    installs: 33, revenue: 33000, leads: 159, calls: 248, demos: 21, winRate: 0.51, lob: "Inbound / Marketing" },
-    { rep: "R. Davis",    installs: 28, revenue: 28000, leads: 134, calls: 211, demos: 18, winRate: 0.49, lob: "Trade Show" },
-    { rep: "K. Johnson",  installs: 21, revenue: 21000, leads: 102, calls: 162, demos: 14, winRate: 0.45, lob: "Social / Content" },
+    { rep: "A. Torres",   installs: 68, revenue: 74460,  leads: 312, calls: 487, demos: 42, winRate: 0.62, lob: "Private Clubs" },
+    { rep: "M. Chen",     installs: 54, revenue: 59130,  leads: 261, calls: 398, demos: 34, winRate: 0.58, lob: "Maritime / Cruise" },
+    { rep: "J. Williams", installs: 41, revenue: 44895,  leads: 198, calls: 312, demos: 26, winRate: 0.54, lob: "Hospitality" },
+    { rep: "S. Patel",    installs: 33, revenue: 36135,  leads: 159, calls: 248, demos: 21, winRate: 0.51, lob: "Sports Performance" },
+    { rep: "R. Davis",    installs: 28, revenue: 30660,  leads: 134, calls: 211, demos: 18, winRate: 0.49, lob: "Healthcare / Rehab" },
+    { rep: "K. Johnson",  installs: 21, revenue: 22995,  leads: 102, calls: 162, demos: 14, winRate: 0.45, lob: "Consumer DTC" },
   ],
   channels: [
-    { name: "Direct Sales",        leads: 458, installs: 93, revenue: 93000, convRate: 0.203, color: GOLD },
-    { name: "E-Commerce",          leads: 266, installs: 54, revenue: 54000, convRate: 0.203, color: TEAL },
-    { name: "Partner / Referral",  leads: 217, installs: 44, revenue: 44000, convRate: 0.203, color: PURPLE },
-    { name: "Inbound / Marketing", leads: 145, installs: 29, revenue: 29000, convRate: 0.200, color: ORANGE },
-    { name: "Trade Show",          leads: 72,  installs: 15, revenue: 15000, convRate: 0.208, color: GREEN },
-    { name: "Social / Content",    leads: 50,  installs: 10, revenue: 10000, convRate: 0.200, color: RED },
+    { name: "Private Clubs",       leads: 458, installs: 93, revenue: 101835, convRate: 0.203, color: GOLD },
+    { name: "Maritime / Cruise",   leads: 266, installs: 54, revenue: 59130,  convRate: 0.203, color: TEAL },
+    { name: "Hospitality",         leads: 217, installs: 44, revenue: 48180,  convRate: 0.203, color: PURPLE },
+    { name: "Sports Performance",  leads: 145, installs: 29, revenue: 31755,  convRate: 0.200, color: ORANGE },
+    { name: "Healthcare / Rehab",  leads: 72,  installs: 15, revenue: 16425,  convRate: 0.208, color: GREEN },
+    { name: "Consumer DTC",        leads: 50,  installs: 10, revenue: 10950,  convRate: 0.200, color: RED },
   ],
   pipeline: [
     { stage: "Discovery",   count: 142, value: 142000 },
@@ -201,7 +205,7 @@ function FilterDropdown({ label, options, value, onChange, color = GOLD }: {
 export default function ZWBusinessIntelligence() {
   const [dateRange, setDateRange] = useState("YTD");
   const [selectedRep, setSelectedRep] = useState("All Reps");
-  const [selectedLOB, setSelectedLOB] = useState("All Channels");
+  const [selectedLOB, setSelectedLOB] = useState("All LOBs");
 
   // Simulate filtered data based on selections
   const multiplier = useMemo(() => {
@@ -212,12 +216,12 @@ export default function ZWBusinessIntelligence() {
       "All Reps": 1, "A. Torres": 0.28, "M. Chen": 0.22, "J. Williams": 0.17, "S. Patel": 0.14, "R. Davis": 0.11, "K. Johnson": 0.09,
     };
     const lobMultipliers: Record<string, number> = {
-      "All Channels": 1, "Direct Sales": 0.38, "E-Commerce": 0.22, "Partner / Referral": 0.18, "Inbound / Marketing": 0.12, "Trade Show": 0.06, "Social / Content": 0.04,
+      "All LOBs": 1, "Private Clubs": 0.38, "Maritime / Cruise": 0.22, "Hospitality": 0.18, "Sports Performance": 0.12, "Senior Living": 0.05, "Healthcare / Rehab": 0.06, "Corporate Wellness": 0.04, "Government / Military": 0.03, "Consumer DTC": 0.04,
     };
     return (dateMultipliers[dateRange] ?? 1) * (repMultipliers[selectedRep] ?? 1) * (lobMultipliers[selectedLOB] ?? 1);
   }, [dateRange, selectedRep, selectedLOB]);
 
-  const isFiltered = selectedRep !== "All Reps" || selectedLOB !== "All Channels" || dateRange !== "YTD";
+  const isFiltered = selectedRep !== "All Reps" || selectedLOB !== "All LOBs" || dateRange !== "YTD";
 
   const kpis = useMemo(() => ({
     revenue: Math.round(990000 * multiplier),
