@@ -8,7 +8,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Globe, MapPin, Users, ChevronDown } from "lucide-react";
 import Layout from "@/components/Layout";
-import DarkHero from "@/components/DarkHero";
+import LightHero from "@/components/LightHero";
 import { fadeInUp, staggerContainer, scaleIn } from "@/lib/animations";
 import { SectionNav } from "@/components/SectionNav";
 
@@ -22,8 +22,8 @@ const globalRegions = [
   {
     country: "United States",
     flag: "🇺🇸",
-    description: "Full 15 lines of business active across all macro categories. Primary focus markets highlighted.",
-    lobCount: "15 LOBs",
+    description: "Full 9 macro lines of business active across all macro categories. Primary focus markets highlighted.",
+    lobCount: "9 LOBs",
     focusMarkets: ["Golf & Country Clubs", "Live/Work/Play", "Influencer", "Health Care"],
     allActive: true,
   },
@@ -96,7 +96,7 @@ export default function ZWGlobalMarkets() {
 
       {/* Hero */}
       <div id="hero">
-        <DarkHero
+        <LightHero
           eyebrow="Global Presence"
           title="Global Markets & Organization"
           description="Lines of business mapped across 4 countries with a regional organizational structure spanning 5 global territories — from North America to Asia."
@@ -140,9 +140,9 @@ export default function ZWGlobalMarkets() {
                 key={i}
                 variants={scaleIn}
                 whileHover={{ y: -4, boxShadow: "0 16px 40px rgba(0,0,0,0.08)" }}
-                className="bg-white border border-black/[0.08] rounded-xl overflow-hidden hover:border-[#C9A962]/30 transition-all duration-300"
+                className="bg-white border border-black/[0.12] rounded-xl overflow-hidden hover:border-[#C9A962]/30 hover:shadow-lg transition-all duration-300"
               >
-                <div className="px-6 py-4 border-b border-black/[0.06] bg-[#FAFAF8]">
+                <div className="px-6 py-4 border-b border-black/[0.15] bg-[#FAFAF8]">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <span className="text-2xl">{region.flag}</span>
@@ -167,7 +167,7 @@ export default function ZWGlobalMarkets() {
                 <div className="p-6">
                   <p className="font-body text-sm text-black/40 mb-4">{region.description}</p>
                   <div className="mb-4">
-                    <p className="font-mono text-[10px] text-black/30 uppercase tracking-[0.15em] mb-2">Active LOBs</p>
+                    <p className="font-mono text-[10px] text-black/45 uppercase tracking-[0.15em] mb-2">Active LOBs</p>
                     <div className="flex flex-wrap gap-1.5">
                       {region.focusMarkets.map((market, j) => (
                         <motion.span
@@ -186,13 +186,13 @@ export default function ZWGlobalMarkets() {
                   </div>
                   {region.partners && (
                     <div>
-                      <p className="font-mono text-[10px] text-black/30 uppercase tracking-[0.15em] mb-2">Key Partners</p>
+                      <p className="font-mono text-[10px] text-black/45 uppercase tracking-[0.15em] mb-2">Key Partners</p>
                       <div className="flex flex-wrap gap-1.5">
                         {region.partners.map((partner, j) => (
                           <motion.span
                             key={j}
                             whileHover={{ scale: 1.05 }}
-                            className="px-3 py-1 rounded-full border border-black/[0.10] text-xs font-body text-black/50 hover:border-[#C9A962]/30 transition-colors"
+                            className="px-3 py-1 rounded-full border border-black/[0.15] text-xs font-body text-black/50 hover:border-[#C9A962]/30 transition-colors"
                           >
                             {partner}
                           </motion.span>
@@ -271,7 +271,7 @@ export default function ZWGlobalMarkets() {
                     className={`px-3 py-3 rounded-lg bg-white border mb-2 shadow-[0_2px_8px_rgba(0,0,0,0.03)] cursor-pointer transition-all duration-300 ${
                       region.status === "active" 
                         ? "border-[#C9A962]/30 hover:border-[#C9A962]/60" 
-                        : "border-black/[0.08] hover:border-black/[0.15]"
+                        : "border-black/[0.12] hover:border-black/[0.15]"
                     }`}
                     whileHover={{ y: -2, boxShadow: "0 8px 20px rgba(0,0,0,0.06)" }}
                     onClick={() => setExpandedRegion(expandedRegion === i ? null : i)}
@@ -293,7 +293,7 @@ export default function ZWGlobalMarkets() {
                         {region.cities.map((city, j) => (
                           <motion.div 
                             key={j} 
-                            className="px-2.5 py-1.5 rounded-md bg-white border border-black/[0.06] hover:border-[#C9A962]/20 transition-colors"
+                            className="px-2.5 py-1.5 rounded-md bg-white border border-black/[0.15] hover:border-[#C9A962]/20 transition-colors"
                             whileHover={{ x: 2 }}
                           >
                             <div className="flex items-center justify-center gap-1">
@@ -304,7 +304,7 @@ export default function ZWGlobalMarkets() {
                         ))}
                       </motion.div>
                     ) : region.cities.length === 0 ? (
-                      <div className="px-3 py-3 rounded-md border border-dashed border-black/[0.08]">
+                      <div className="px-3 py-3 rounded-md border border-dashed border-black/[0.12]">
                         <span className="font-mono text-[10px] text-black/20 tracking-wider">Expansion planned</span>
                       </div>
                     ) : null}

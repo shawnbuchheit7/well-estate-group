@@ -1,12 +1,14 @@
 /*
  * Sticky Section Navigation for Long Pages
+ * Dark premium design matching the site's #0A0A0A aesthetic
  * Shows a floating sidebar with quick links to page sections
- * Luxury design with strong active state highlighting
  */
 
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { List } from 'lucide-react';
+
+const GOLD = "#C9A962";
 
 interface Section {
   id: string;
@@ -23,10 +25,8 @@ export function SectionNav({ sections }: SectionNavProps) {
   const [isExpanded, setIsExpanded] = useState(true);
 
   const handleScroll = useCallback(() => {
-    // Show nav after scrolling 200px
     setIsVisible(window.scrollY > 200);
 
-    // Find active section based on which section is most visible in viewport
     let bestMatch = sections[0]?.id || '';
     let bestDistance = Infinity;
 
@@ -34,7 +34,6 @@ export function SectionNav({ sections }: SectionNavProps) {
       const el = document.getElementById(s.id);
       if (!el) continue;
       const rect = el.getBoundingClientRect();
-      // Check if the section top is above the middle of the viewport
       const distance = Math.abs(rect.top - 120);
       if (rect.top <= 200 && distance < bestDistance) {
         bestDistance = distance;
@@ -42,12 +41,10 @@ export function SectionNav({ sections }: SectionNavProps) {
       }
     }
 
-    // If we're at the very top, select the first section
     if (window.scrollY < 300 && sections.length > 0) {
       bestMatch = sections[0].id;
     }
 
-    // If we're near the bottom, select the last section
     if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 200 && sections.length > 0) {
       bestMatch = sections[sections.length - 1].id;
     }
@@ -57,8 +54,7 @@ export function SectionNav({ sections }: SectionNavProps) {
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Initial check
-
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
 
@@ -81,13 +77,19 @@ export function SectionNav({ sections }: SectionNavProps) {
           transition={{ duration: 0.3 }}
           className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden xl:block"
         >
-          <div className="bg-white/95 backdrop-blur-xl border border-black/10 rounded-2xl shadow-[0_8px_40px_rgba(0,0,0,0.12)] overflow-hidden">
+          <div
+            className="backdrop-blur-xl border rounded-2xl shadow-[0_8px_40px_rgba(0,0,0,0.4)] overflow-hidden"
+            style={{ background: "rgba(17,17,17,0.95)", borderColor: "rgba(201,169,98,0.12)" }}
+          >
             {/* Toggle button */}
             <button
               onClick={() => setIsExpanded(!isExpanded)}
-              className="w-full p-3 flex items-center justify-center hover:bg-gray-50 transition-colors border-b border-black/5"
+              className="w-full p-3 flex items-center justify-center transition-colors border-b"
+              style={{ borderColor: "rgba(255,255,255,0.06)" }}
+              onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.05)")}
+              onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
             >
-              <List className="w-4 h-4 text-gray-500" />
+              <List className="w-4 h-4" style={{ color: "rgba(255,255,255,0.4)" }} />
             </button>
 
             <AnimatePresence>
@@ -107,17 +109,36 @@ export function SectionNav({ sections }: SectionNavProps) {
                           <li key={section.id}>
                             <button
                               onClick={() => scrollToSection(section.id)}
-                              className={`w-full text-left px-3 py-2 rounded-lg text-xs font-body transition-all duration-200 ${
-                                isActive
-                                  ? 'bg-black text-white font-semibold shadow-sm'
-                                  : 'text-gray-500 hover:text-black hover:bg-gray-50'
-                              }`}
+                              className="w-full text-left px-3 py-2 rounded-lg text-xs font-mono transition-all duration-200"
+                              style={{
+                                background: isActive ? `${GOLD}15` : "transparent",
+                                color: isActive ? GOLD : "rgba(255,255,255,0.35)",
+                                fontWeight: isActive ? 600 : 400,
+                              }}
+                              onMouseEnter={e => {
+                                if (!isActive) {
+                                  e.currentTarget.style.background = "rgba(255,255,255,0.05)";
+                                  e.currentTarget.style.color = "rgba(255,255,255,0.6)";
+                                }
+                              }}
+                              onMouseLeave={e => {
+                                if (!isActive) {
+                                  e.currentTarget.style.background = "transparent";
+                                  e.currentTarget.style.color = "rgba(255,255,255,0.35)";
+                                }
+                              }}
                             >
                               <div className="flex items-center gap-2.5">
-                                <span className={`w-1.5 h-1.5 rounded-full transition-all duration-200 flex-shrink-0 ${
-                                  isActive ? 'bg-[#C9A962] scale-125' : 'bg-gray-300'
-                                }`} />
-                                <span className="truncate max-w-[130px]">{section.label}</span>
+                                <span
+                                  className="w-1.5 h-1.5 rounded-full transition-all duration-200 flex-shrink-0"
+                                  style={{
+                                    background: isActive ? GOLD : "rgba(255,255,255,0.15)",
+                                    transform: isActive ? "scale(1.25)" : "scale(1)",
+                                  }}
+                                />
+                                <span className="truncate max-w-[130px] tracking-wide text-[10px] uppercase">
+                                  {section.label}
+                                </span>
                               </div>
                             </button>
                           </li>

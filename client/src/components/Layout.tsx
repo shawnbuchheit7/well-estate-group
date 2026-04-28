@@ -35,11 +35,13 @@ const longevityNavLinks = [
 // ZeroWheel GTM tabs
 const zwNavLinks = [
   { href: "/gtm/zerowheel", label: "Overview" },
+  { href: "/gtm/zerowheel/product-analysis", label: "Product Analysis" },
   { href: "/gtm/zerowheel/lines-of-business", label: "Lines of Business" },
   { href: "/gtm/zerowheel/sales", label: "Sales Enablement" },
+  { href: "/gtm/zerowheel/commercial-strategy", label: "Commercial Strategy" },
+  { href: "/gtm/zerowheel/b2b2c", label: "B2B2C" },
   { href: "/gtm/zerowheel/strategic-markets", label: "Strategic Markets" },
-  { href: "/gtm/zerowheel/global-markets", label: "Global Markets" },
-  { href: "/gtm/zerowheel/sales-infrastructure", label: "RevOps" },
+  { href: "/gtm/zerowheel/sales-infrastructure", label: "Infrastructure" },
   { href: "/gtm/zerowheel/business-intelligence", label: "BI Dashboard" },
   { href: "/gtm/zerowheel/marketing-infrastructure", label: "Marketing Plan" },
   { href: "/gtm/zerowheel/affiliate-program", label: "Affiliate Program" },
@@ -83,6 +85,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
   const isGtmRoute = location.startsWith("/gtm");
   const isProductRoute = location.startsWith("/product-intelligence");
   const isVentureRoute = location.startsWith("/venture-capital");
+  
   
   let navLinks: typeof longevityNavLinks;
   let homeLink: string;
@@ -140,13 +143,13 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
     : null;
 
   return (
-    <div className="min-h-screen bg-white text-black overflow-x-hidden">
+    <div className="min-h-screen overflow-x-hidden bg-white text-black">
       {/* Scroll Progress Indicator */}
       <ScrollProgressBar />
       
       {/* Navigation */}
       <motion.nav 
-        className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-b border-black/[0.10]"
+        className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b bg-white/95 border-black/[0.12]"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] }}
@@ -156,11 +159,11 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
           {/* Logo - Far Left with back button */}
           <div className="flex items-center gap-3 flex-shrink-0">
             {showBackButton && (
-              <Link href={backLink} className="flex items-center gap-1 text-black/40 hover:text-black transition-colors mr-2" onClick={closeMobileMenu}>
+              <Link href={backLink} className="flex items-center gap-1 transition-colors mr-2 text-black/40 hover:text-black" onClick={closeMobileMenu}>
                 <ChevronLeft className="w-4 h-4" />
               </Link>
             )}
-            <Link href={homeLink} className="flex items-center gap-3 group" onClick={closeMobileMenu}>
+            <Link href="/" className="flex items-center gap-3 group" onClick={closeMobileMenu}>
               <motion.img 
                 src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/LHselcWIkeWDRNuE.png" 
                 alt="Well Estate Group" 
@@ -168,7 +171,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                 whileHover={{ rotate: 360, scale: 1.1 }}
                 transition={{ duration: 0.6 }}
               />
-              <span className="font-display text-lg font-semibold tracking-wide text-black group-hover:text-[#C9A962] transition-colors whitespace-nowrap">
+              <span className="font-display text-lg font-semibold tracking-wide group-hover:text-[#C9A962] transition-colors whitespace-nowrap text-black">
                 WELL ESTATE GROUP
               </span>
             </Link>
@@ -217,7 +220,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                 </motion.div>
               </Link>
             ) : sectionLabel ? (
-              <span className="hidden sm:block font-mono text-[11px] text-black/35 tracking-wider uppercase">
+              <span className="hidden sm:block font-mono text-[11px] tracking-wider uppercase text-black/35">
                 {sectionLabel}
               </span>
             ) : null}
@@ -225,7 +228,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
             {/* Mobile Menu Button */}
             <motion.button
               onClick={toggleMobileMenu}
-              className="lg:hidden p-2 text-black hover:text-[#C9A962] transition-colors"
+              className="lg:hidden p-2 hover:text-[#C9A962] transition-colors text-black"
               aria-label="Toggle menu"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -256,7 +259,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-white border-l border-black/10 z-50 lg:hidden shadow-2xl"
+              className="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-white border-l border-black/15 z-50 lg:hidden shadow-2xl"
             >
               <div className="flex flex-col h-full">
                 {/* Mobile Menu Header */}
@@ -336,33 +339,33 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
 
       {/* Cross-Pillar Navigation */}
       {currentPillarIndex >= 0 && (
-        <section className="py-12 bg-white border-t border-black/[0.08]">
+        <section className="py-12 border-t bg-white border-black/[0.12]">
           <div className="container px-6">
             <div className="flex items-center justify-between max-w-4xl mx-auto">
               {prevPillar ? (
                 <Link href={prevPillar.href} className="group flex items-center gap-3 text-left">
-                  <div className="w-10 h-10 rounded-full border border-black/15 flex items-center justify-center group-hover:border-[#C9A962]/50 group-hover:bg-[#C9A962]/[0.04] transition-all">
-                    <ChevronLeft className="w-4 h-4 text-black/40 group-hover:text-[#C9A962] transition-colors" />
+                  <div className="w-10 h-10 rounded-full border flex items-center justify-center group-hover:border-[#C9A962]/50 group-hover:bg-[#C9A962]/[0.04] transition-all border-black/20">
+                    <ChevronLeft className="w-4 h-4 group-hover:text-[#C9A962] transition-colors text-black/40" />
                   </div>
                   <div>
-                    <p className="font-mono text-[10px] text-black/35 tracking-wider uppercase">Pillar {prevPillar.num}</p>
-                    <p className="font-body text-sm text-black/70 group-hover:text-black transition-colors">{prevPillar.label}</p>
+                    <p className="font-mono text-[10px] tracking-wider uppercase text-black/35">Pillar {prevPillar.num}</p>
+                    <p className="font-body text-sm transition-colors text-black/70 group-hover:text-black">{prevPillar.label}</p>
                   </div>
                 </Link>
               ) : <div />}
               
-              <Link href="/" className="font-mono text-[10px] text-black/30 tracking-wider uppercase hover:text-[#C9A962] transition-colors">
+              <Link href="/" className="font-mono text-[10px] tracking-wider uppercase hover:text-[#C9A962] transition-colors text-black/30">
                 All Pillars
               </Link>
               
               {nextPillar ? (
                 <Link href={nextPillar.href} className="group flex items-center gap-3 text-right">
                   <div>
-                    <p className="font-mono text-[10px] text-black/35 tracking-wider uppercase">Pillar {nextPillar.num}</p>
-                    <p className="font-body text-sm text-black/70 group-hover:text-black transition-colors">{nextPillar.label}</p>
+                    <p className="font-mono text-[10px] tracking-wider uppercase text-black/35">Pillar {nextPillar.num}</p>
+                    <p className="font-body text-sm transition-colors text-black/70 group-hover:text-black">{nextPillar.label}</p>
                   </div>
-                  <div className="w-10 h-10 rounded-full border border-black/15 flex items-center justify-center group-hover:border-[#C9A962]/50 group-hover:bg-[#C9A962]/[0.04] transition-all">
-                    <ArrowRight className="w-4 h-4 text-black/40 group-hover:text-[#C9A962] transition-colors" />
+                  <div className="w-10 h-10 rounded-full border flex items-center justify-center group-hover:border-[#C9A962]/50 group-hover:bg-[#C9A962]/[0.04] transition-all border-black/20">
+                    <ArrowRight className="w-4 h-4 group-hover:text-[#C9A962] transition-colors text-black/40" />
                   </div>
                 </Link>
               ) : <div />}
@@ -375,7 +378,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
       <BackToTop />
 
       {/* Enhanced Footer with Contact CTA */}
-      <footer className="py-16 border-t border-black/[0.10] bg-[#FAFAF8]">
+      <footer className="py-16 border-t border-black/[0.12] bg-[#FAFAF8]">
         <div className="container px-6">
           <div className="max-w-6xl mx-auto">
             {/* Footer Top */}
@@ -390,11 +393,11 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   />
-                  <span className="font-display text-base font-semibold tracking-wide text-black group-hover:text-[#C9A962] transition-colors">
+                  <span className="font-display text-base font-semibold tracking-wide group-hover:text-[#C9A962] transition-colors text-black">
                     WELL ESTATE GROUP
                   </span>
                 </Link>
-                <p className="font-body text-sm text-black/50 leading-relaxed">
+                <p className="font-body text-sm leading-relaxed text-black/50">
                   Consulting Services in Fitness, Wellness & Longevity. Delivering end-to-end strategy from market entry to global expansion.
                 </p>
               </div>
@@ -403,9 +406,9 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
               <div className="flex flex-col md:flex-row gap-12">
                 {/* Pillar Links */}
                 <div className="flex flex-col gap-3">
-                  <p className="font-mono text-[10px] text-black/40 tracking-wider uppercase mb-1">Pillars</p>
+                  <p className="font-mono text-[10px] tracking-wider uppercase mb-1 text-black/40">Pillars</p>
                   {pillarOrder.map((pillar) => (
-                    <Link key={pillar.href} href={pillar.href} className="font-body text-sm text-black/60 hover:text-[#C9A962] transition-colors">
+                    <Link key={pillar.href} href={pillar.href} className="font-body text-sm hover:text-[#C9A962] transition-colors text-black/60">
                       {pillar.label}
                     </Link>
                   ))}
@@ -413,10 +416,10 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
 
                 {/* Contact CTA */}
                 <div className="flex flex-col gap-3">
-                  <p className="font-mono text-[10px] text-black/40 tracking-wider uppercase mb-1">Get in Touch</p>
+                  <p className="font-mono text-[10px] tracking-wider uppercase mb-1 text-black/40">Get in Touch</p>
                   <a 
                     href="mailto:info@wellestategroup.com" 
-                    className="group flex items-center gap-3 px-5 py-3 rounded-xl border border-black/15 hover:border-[#C9A962]/50 bg-white hover:bg-[#C9A962]/[0.03] transition-all"
+                    className="group flex items-center gap-3 px-5 py-3 rounded-xl border hover:border-[#C9A962]/50 transition-all border-black/20 bg-white hover:bg-[#C9A962]/[0.04]"
                   >
                     <div className="w-9 h-9 rounded-full bg-black flex items-center justify-center group-hover:bg-[#C9A962] transition-colors">
                       <Mail className="w-4 h-4 text-white" />
@@ -431,15 +434,15 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
             </div>
 
             {/* Footer Divider */}
-            <div className="h-px bg-gradient-to-r from-transparent via-black/[0.10] to-transparent mb-8" />
+            <div className="h-px bg-gradient-to-r from-transparent to-transparent mb-8 via-black/[0.10]" />
 
             {/* Footer Bottom */}
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="font-body text-[11px] text-black/35 tracking-wider">
+              <p className="font-body text-[11px] tracking-wider text-black/35">
                 &copy; 2026 Well Estate Group. All rights reserved.
               </p>
               <div className="flex items-center gap-6">
-                <span className="font-mono text-[10px] text-black/25 tracking-wider">
+                <span className="font-mono text-[10px] tracking-wider text-black/25">
                   CONFIDENTIAL
                 </span>
               </div>
