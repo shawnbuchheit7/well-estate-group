@@ -14,6 +14,9 @@ const zwRoutes = [
   "/gtm/zerowheel/strategic-markets",
   "/gtm/zerowheel/global-markets",
   "/gtm/zerowheel/sales-infrastructure",
+  "/gtm/zerowheel/business-intelligence",
+  "/gtm/zerowheel/marketing-infrastructure",
+  "/gtm/zerowheel/affiliate-program",
 ];
 
 const sampleRoutes = [
