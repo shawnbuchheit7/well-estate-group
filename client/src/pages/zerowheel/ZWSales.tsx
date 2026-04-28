@@ -29,7 +29,7 @@ const macroLOBs = [
     color: "#C9A962",
     category: "Vertical",
     pricing: "$825 (max 25% off list)",
-    description: "Golf, country, city, and leisure clubs — the highest-value B2B channel for premium fitness equipment placement.",
+    description: "Golf, country, city, and leisure clubs — the highest-value B2B channel. Buyer: Fitness Director (influenced by Head Golf Pro, Tennis Pro, GM, Board). Uniquely positioned for golf, tennis, and pickleball-specific routines. Core strength increases drive distance.",
     targets: [
       "CMAA Chapters (National, State & Local)",
       "Platinum Clubs of America",
@@ -49,7 +49,7 @@ const macroLOBs = [
     color: "#C9A962",
     category: "Commercial",
     pricing: "$695 (max 40% off list)",
-    description: "Large-format fitness chains and boutique studios — high-volume placement with revenue-share and group class integration.",
+    description: "Large-format fitness chains and boutique studios. Buyer: Corporate procurement and owner/operators. Pickleball prep, dramatic core results, small footprint allows multiple units on the gym floor.",
     targets: [
       "Industry Trade Shows (IHRSA, Club Industry, FIBO)",
       "National Account Yearly Company Meetings",
@@ -66,7 +66,7 @@ const macroLOBs = [
     color: "#C9A962",
     category: "Vertical",
     pricing: "$825 (max 25% off list)",
-    description: "Sports medicine clinics, physical therapy, and rehabilitation centers — clinical validation channel with CKC science positioning.",
+    description: "Sports medicine clinics, PT, and rehab centers. Buyer: Clinical Rehab Director and owner/operators. Shoulder rehab and ROM improvement. Graduated assistance via Springback Mode.",
     targets: [
       "KOL Partnerships with Sports Medicine Physicians",
       "APTA / ACSM Medical Conferences",
@@ -136,7 +136,7 @@ const macroLOBs = [
     color: "#C9A962",
     category: "Vertical",
     pricing: "$825 (max 25% off list)",
-    description: "5-star hotels, luxury resorts, wellness retreats, and premium residential — compact footprint and self-guided experience for space-constrained environments.",
+    description: "5-star hotels, luxury resorts, wellness retreats, and premium residential. Buyer: Management companies, fitness & spa directors, GMs, Director of Rooms. Major in-room wellness opportunity — next-gen alternative to Technogym, Precor, and Peloton in-room programs.",
     targets: [
       "Luxury Hotel Chain Procurement Teams",
       "Hospitality Trade Shows (HITEC, ALIS, BDNY)",
@@ -154,7 +154,7 @@ const macroLOBs = [
     color: "#C9A962",
     category: "GSA",
     pricing: "$694 (GSA best pricing)",
-    description: "DoD installations, VA rehabilitation, and government fitness programs — GSA compliant, Made in USA, endorsed by US Army leadership.",
+    description: "DoD installations, VA rehab, police & fire departments, community recreation centers. Buyer: TSAC-F, Police & Fire Chiefs, Directors of Recreation. GSA compliant, Made in USA, endorsed by US Army.",
     targets: [
       "GSA Schedule Listing",
       "IDIQ Contract Pursuit",
@@ -171,7 +171,7 @@ const macroLOBs = [
     color: "#C9A962",
     category: "Vertical",
     pricing: "$825 (max 25% off list)",
-    description: "Cruise lines and superyachts — zero-maintenance magnetic resistance in the smallest footprint, ideal for space-constrained marine environments.",
+    description: "Cruise lines and superyachts. Buyer: VP Onboard Experience, VP Newbuild, management companies (e.g., OneSpaWorld). In-cabin wellness is a major emerging opportunity. Cruise lines typically operate through RFP process.",
     targets: [
       "Seatrade Cruise Global Conference",
       "Cruise Line Procurement Partnerships",
