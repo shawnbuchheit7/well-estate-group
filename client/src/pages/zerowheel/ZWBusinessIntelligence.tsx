@@ -259,9 +259,9 @@ export default function ZWBusinessIntelligence() {
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <div >
         <LightHero
-          eyebrow="ZeroWheel · Business Intelligence"
+          eyebrow="WEG Proposed BI Platform"
           title="Revenue Operations Dashboard"
-          description="Real-time visibility into every lead, opportunity, and revenue dollar across all channels, reps, and lines of business. Filter by period, rep, or channel to drill into performance."
+          description="WEG's recommended business intelligence dashboard for ZeroWheel — providing real-time visibility into every lead, opportunity, and revenue dollar across all channels, reps, and lines of business."
           stats={[
             { value: "$990K", label: "Revenue YTD" },
             { value: "245", label: "Installs YTD" },

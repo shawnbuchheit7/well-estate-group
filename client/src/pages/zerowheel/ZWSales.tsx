@@ -203,9 +203,9 @@ export default function ZWSales() {
       {/* Hero */}
       <div id="hero">
         <LightHero
-          eyebrow="Sales Enablement"
+          eyebrow="WEG Sales Enablement Plan"
           title="Business Development Strategy"
-          description="Nine macro lines of business define ZeroWheel's go-to-market attack surface — from premium private clubs to direct-to-consumer e-commerce. Each LOB has dedicated targeting, partnerships, and sales playbooks with maximum discount thresholds that must not be exceeded."
+          description="WEG's proposed business development strategy for ZeroWheel — nine macro lines of business define the go-to-market attack surface, from premium private clubs to direct-to-consumer e-commerce. Each LOB includes dedicated targeting, partnerships, and sales playbooks with maximum discount thresholds that must not be exceeded."
           stats={[
             { value: "9", label: "Macro LOBs" },
             { value: "16,500+", label: "Target Accounts" },

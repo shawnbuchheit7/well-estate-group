@@ -237,9 +237,9 @@ export default function ZWStrategicMarkets() {
       {/* Hero */}
       <div id="hero">
         <LightHero
-          eyebrow="Strategic Markets"
+          eyebrow="WEG Market Prioritization"
           title="Where to Play"
-          description="A strategic market prioritization framework mapping each line of business against market attractiveness and ease of access — evolving from Year 1 to Year 2 as relationships mature and market intelligence deepens."
+          description="WEG's recommended market prioritization framework for ZeroWheel — mapping each line of business against market attractiveness and ease of access, evolving from Year 1 to Year 2 as relationships mature and market intelligence deepens."
         />
       </div>
 

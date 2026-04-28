@@ -31,9 +31,9 @@ export default function ZWOverview() {
           logoSrc="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/VgVkPihMTEChPvmp.png"
           logoAlt="ZeroWheel"
           brandName="ZeroWheel"
-          eyebrow="Go-To-Market Strategy"
-          title="Connected Fitness Device — Market Entry"
-          description="A comprehensive go-to-market strategy for a next-generation motorized core training device — from premium club placement and professional sports adoption to medical rehabilitation, government procurement, and global hospitality distribution."
+          eyebrow="WEG Consulting Proposal"
+          title="Go-To-Market Strategy & Execution"
+          description="Well Estate Group's proposed consulting engagement for ZeroWheel — a comprehensive go-to-market strategy spanning 9 macro lines of business, from premium club placement and professional sports adoption to medical rehabilitation, government procurement, and global hospitality distribution. This presentation outlines the strategic framework, pricing architecture, and sales infrastructure WEG recommends to accelerate ZeroWheel's market entry."
           stats={[
             { value: "9", label: "Macro Lines of Business" },
             { value: "4", label: "Global Regions" },

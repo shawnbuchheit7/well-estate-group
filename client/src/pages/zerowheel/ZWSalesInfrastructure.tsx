@@ -259,9 +259,9 @@ export default function ZWSalesInfrastructure() {
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <div id="hero" >
         <LightHero
-          eyebrow="ZeroWheel · Sales Infrastructure"
+          eyebrow="WEG Proposed Infrastructure"
           title="Revenue Operations Infrastructure"
-          description="A fully integrated sales and marketing infrastructure for ZeroWheel — from first website visit to closed install. Built on Salesforce CRM, Typeform lead intake, and Intercom AI, this system tracks every lead, opportunity, and revenue dollar across all channels and sales team members."
+          description="WEG's recommended sales and marketing infrastructure for ZeroWheel — a fully integrated system from first website visit to closed install. Built on Salesforce CRM, Typeform lead intake, and Intercom AI, this system tracks every lead, opportunity, and revenue dollar across all channels and sales team members."
           stats={[
             { value: "3", label: "Core Platforms" },
             { value: "245", label: "Installs YTD" },

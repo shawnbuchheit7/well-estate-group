@@ -245,9 +245,9 @@ export default function ZWLinesOfBusiness() {
       {/* Hero */}
       <div id="hero">
         <LightHero
-          eyebrow="Organizational Sales Structure"
+          eyebrow="WEG Recommended Sales Structure"
           title="Lines of Business"
-          description="A systematic go-to-market framework spanning 9 macro lines of business — each with defined buyer personas, pain points, positioning, and sub-segment targeting. All discount pricing represents the maximum discount threshold — do not exceed."
+          description="WEG's proposed organizational sales framework for ZeroWheel — spanning 9 macro lines of business, each with defined buyer personas, pain points, positioning, and sub-segment targeting. All discount pricing represents the maximum discount threshold — do not exceed."
           stats={[
             { value: "9", label: "Macro LOBs" },
             { value: "40+", label: "Sub-Segments" },

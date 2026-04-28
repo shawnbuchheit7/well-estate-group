@@ -15,9 +15,9 @@ export default function ZWB2B2C() {
   return (
     <div className="min-h-screen bg-white">
       <LightHero
-        eyebrow="B2B2C Strategy"
-        title="Business-to-Business-to-Consumer"
-        description="A hybrid distribution model that leverages B2B partnerships to reach end consumers — combining institutional placement with consumer engagement for maximum market penetration."
+        eyebrow="WEG Recommended Framework"
+        title="B2B2C Distribution Strategy"
+        description="WEG's recommended hybrid distribution model for ZeroWheel — leveraging B2B partnerships to reach end consumers by combining institutional placement with consumer engagement for maximum market penetration."
         stats={[
           { value: "3", label: "Distribution Tiers" },
           { value: "9", label: "Macro LOBs" },

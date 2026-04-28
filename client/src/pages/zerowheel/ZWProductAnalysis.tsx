@@ -385,9 +385,9 @@ export default function ZWProductAnalysis() {
           logoSrc="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/VgVkPihMTEChPvmp.png"
           logoAlt="ZeroWheel"
           brandName="ZeroWheel"
-          eyebrow="Product Analysis & GTM Playbook"
-          title="Three Pillars of Superiority"
-          description="A science-backed product analysis anchored to the three pillars of core training superiority — with systematic, LOB-specific go-to-market playbooks for each macro line of business. Invented by Dr. Neil Singer (PhD, MIT), ZeroWheel is the first portable device with Connected Adaptive Resistance Exercise (CARE) technology."
+          eyebrow="WEG Product Assessment"
+          title="Product Analysis & Market Positioning"
+          description="After extensive hands-on evaluation and market research, this is Well Estate Group's independent assessment of ZeroWheel's product differentiation, competitive positioning, and go-to-market potential. Anchored to three science-backed pillars of core training superiority, this analysis maps the product's unique capabilities to 9 macro lines of business — each with a dedicated GTM playbook."
           stats={[
             { value: "3", label: "Pillars of Superiority" },
             { value: "9", label: "LOB Playbooks" },
