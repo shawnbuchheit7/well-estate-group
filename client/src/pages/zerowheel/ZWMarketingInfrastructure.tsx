@@ -359,7 +359,7 @@ export default function ZWMarketingInfrastructure() {
         <LightHero
           logoSrc="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/VgVkPihMTEChPvmp.png"
           logoAlt="ZeroWheel"
-          brandName="ZeroWheel"
+          
           eyebrow="WEG Marketing Execution Plan"
           title="Go-To-Market Systems & Channel Strategy"
           description="WEG's proposed marketing infrastructure for ZeroWheel — covering the full lead funnel from awareness to closed won, the tech stack that powers it (Salesforce, Klaviyo, Typeform, Zapier), channel-by-channel execution playbooks across all 9 macro LOBs, and the accountability framework that keeps the team on track."

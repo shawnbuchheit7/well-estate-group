@@ -29,7 +29,7 @@ export default function ZWCommercialStrategy() {
         <LightHero
           logoSrc="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/VgVkPihMTEChPvmp.png"
           logoAlt="ZeroWheel"
-          brandName="ZeroWheel"
+          
           eyebrow="WEG Proposed Commercial Framework"
           title="Pricing, Terms & Revenue Architecture"
           description="WEG's recommended commercial framework for ZeroWheel market entry — anchored to a $1,095 MSRP with structured margin-off-list pricing across Commercial and Vertical market categories. Price floor: $695."

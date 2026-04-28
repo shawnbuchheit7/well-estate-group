@@ -82,18 +82,18 @@ function AccordionCard({ title, subtitle, icon: Icon, color, children }: {
 
 // ── Data ───────────────────────────────────────────────────────────────────
 const tiers = [
-  { tier: "Base",     range: "1–4 units/mo",   rate: "$250",  pct: "22.8%", monthly: "$250–$1,000",   color: "#C9A962", icon: Star    },
-  { tier: "Silver",   range: "5–9 units/mo",   rate: "$275",  pct: "25.1%", monthly: "$1,375–$2,475", color: "#94A3B8", icon: Award   },
-  { tier: "Gold",     range: "10–24 units/mo", rate: "$300",  pct: "27.4%", monthly: "$3,000–$7,200", color: "#F59E0B", icon: Trophy  },
-  { tier: "Platinum", range: "25+ units/mo",   rate: "$325",  pct: "29.7%", monthly: "$8,125+",       color: "#8B5CF6", icon: Mic2    },
+  { tier: "Base",     range: "1–4 units/mo",   rate: "$150",  pct: "13.7%", monthly: "$150–$600",    color: "#C9A962", icon: Star    },
+  { tier: "Silver",   range: "5–9 units/mo",   rate: "$175",  pct: "16.0%", monthly: "$875–$1,575",  color: "#94A3B8", icon: Award   },
+  { tier: "Gold",     range: "10–24 units/mo", rate: "$200",  pct: "18.3%", monthly: "$2,000–$4,800", color: "#F59E0B", icon: Trophy  },
+  { tier: "Platinum", range: "25+ units/mo",   rate: "$250",  pct: "22.8%", monthly: "$6,250+",       color: "#8B5CF6", icon: Mic2    },
 ];
 
 const earningScenarios = [
-  { units: 1,   monthly: "$250",    annual: "$3,000",    tier: "Base"     },
-  { units: 5,   monthly: "$1,375",  annual: "$16,500",   tier: "Silver"   },
-  { units: 10,  monthly: "$3,000",  annual: "$36,000",   tier: "Gold"     },
-  { units: 25,  monthly: "$8,125",  annual: "$97,500",   tier: "Platinum" },
-  { units: 50,  monthly: "$16,250", annual: "$195,000",  tier: "Platinum" },
+  { units: 1,   monthly: "$150",   annual: "$1,800",   tier: "Base"     },
+  { units: 5,   monthly: "$875",   annual: "$10,500",  tier: "Silver"   },
+  { units: 10,  monthly: "$2,000", annual: "$24,000",  tier: "Gold"     },
+  { units: 25,  monthly: "$6,250", annual: "$75,000",  tier: "Platinum" },
+  { units: 50,  monthly: "$12,500",annual: "$150,000", tier: "Platinum" },
 ];
 
 const trackingMethods = [
@@ -149,12 +149,12 @@ export default function ZWAffiliateProgram() {
         <LightHero
           logoSrc="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/VgVkPihMTEChPvmp.png"
           logoAlt="ZeroWheel"
-          brandName="ZeroWheel"
+          
           eyebrow="WEG Proposed Program"
           title="Affiliate & Commission Program"
-          description="A structured, commission-based partner program for influencers, trainers, and athletes to earn on every ZeroWheel DTC sale they drive. Built on Salesforce for full tracking and accountability. $250/unit base — tiered bonuses for volume."
+          description="A structured, commission-based partner program for influencers, trainers, and athletes to earn on every ZeroWheel DTC sale they drive. Built on Salesforce for full tracking and accountability. $150–$250/unit based on volume tier."
           stats={[
-            { value: "$250",  label: "Base Commission/Unit" },
+            { value: "$150–$250",  label: "Commission/Unit" },
             { value: "4",     label: "Earning Tiers"        },
             { value: "30d",   label: "Cookie Window"        },
             { value: "$1,095",label: "DTC MSRP"             },
@@ -181,7 +181,7 @@ export default function ZWAffiliateProgram() {
                 badge: "This Program",
                 badgeColor: GOLD,
                 price: "$1,095 DTC MSRP",
-                commission: "$250–$325/unit (22.8–29.7%)",
+                commission: "$150–$250/unit (13.7–22.8%)",
                 audience: "Fitness influencers, golf/pickleball trainers, wellness athletes, social media creators",
                 mechanism: "Unique promo code + UTM link + 30-day cookie",
                 salesforce: "Commission__c object — fully tracked per sale",
