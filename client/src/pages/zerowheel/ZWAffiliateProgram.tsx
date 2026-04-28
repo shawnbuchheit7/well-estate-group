@@ -1,39 +1,31 @@
-/**
+/*
  * ZeroWheel Affiliate & Influencer Program — WEG Proposed
+ * Design: Boss's exact light mode system
+ *   - bg-white / bg-[#FAFAF8] alternating sections
+ *   - text-black primary, text-black/55 body, text-black/40 muted
+ *   - #C9A962 gold for all accents, eyebrows, icons
+ *   - border-black/[0.12] cards, rounded-2xl
+ *   - font-mono labels, font-display headings, font-body body
+ *   - LightHero + SectionNav + fadeInUp/staggerContainer/scaleIn
  *
- * ALIGNMENT NOTES:
- * - MSRP: $1,095 (DTC channel only — this program applies to DTC sales exclusively)
- * - Affiliates earn % commission on DTC sales at $1,095 ONLY
- * - B2B facility accounts are Sales pipeline accounts at $825 or $695 — NOT affiliates
- * - WEG framing: WEG is the consulting advisor proposing this program
- * - Commercial Strategy page owns: channel partner tiers, margin analysis
- * - Marketing Plan page owns: channel mix, content strategy, influencer seeding
- * - THIS PAGE owns: affiliate program terms, commission structure, tracking, onboarding, SF schema
- *
- * Design: Dark luxury, #0A0A0A bg, gold/teal/purple accents
+ * ALIGNMENT:
+ *   - DTC only: $1,095 MSRP — affiliates do NOT touch B2B pricing
+ *   - B2B pricing ($825 vertical / $695 commercial) is Sales team territory
+ *   - WEG is the consulting advisor proposing this program
  */
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   DollarSign, Users, Award, CheckCircle2, ArrowRight,
-  ChevronDown, ChevronUp, Bell, Zap, Database, Mail,
-  Hash, Link2, Clock, Shield, TrendingUp, Star,
-  Mic2, Trophy, Dumbbell, Stethoscope,
-  BarChart3, FileText,
+  ChevronDown, Zap, Database, Hash, Link2, Clock,
+  Shield, Star, Mic2, Trophy, FileText,
 } from "lucide-react";
 import Layout from "@/components/Layout";
-import DarkHero from "@/components/DarkHero";
+import LightHero from "@/components/LightHero";
 import { SectionNav } from "@/components/SectionNav";
-import { fadeInUp, staggerContainer } from "@/lib/animations";
+import { fadeInUp, staggerContainer, scaleIn } from "@/lib/animations";
 
-const GOLD     = "#C9A962";
-const GOLD_DIM = "#8B7D3C";
-const TEAL     = "#2DD4BF";
-const PURPLE   = "#A78BFA";
-const GREEN    = "#4ADE80";
-const ORANGE   = "#FB923C";
-const CARD_BG  = "#111111";
-const CARD_BORDER = "rgba(201,169,98,0.12)";
+const GOLD = "#C9A962";
 
 const sections = [
   { id: "hero",       label: "Overview"   },
@@ -45,478 +37,467 @@ const sections = [
   { id: "terms",      label: "Terms"      },
 ];
 
-function DarkCard({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+function SectionHeader({ eyebrow, title, body }: { eyebrow: string; title: string; body?: string }) {
   return (
-    <div className={`rounded-2xl border p-6 ${className}`} style={{ background: CARD_BG, borderColor: CARD_BORDER }}>
-      {children}
-    </div>
-  );
-}
-
-function SectionHeader({ eyebrow, title, description }: { eyebrow: string; title: string; description: string }) {
-  return (
-    <div className="mb-12">
-      <p className="font-mono text-[10px] uppercase tracking-[0.2em] mb-3" style={{ color: GOLD }}>{eyebrow}</p>
-      <h2 className="font-display text-3xl md:text-4xl font-semibold text-white mb-4">{title}</h2>
-      <p className="font-body text-white/40 max-w-3xl leading-relaxed">{description}</p>
-    </div>
+    <motion.div className="text-center mb-14" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer}>
+      <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">{eyebrow}</motion.span>
+      <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-5 text-black">{title}</motion.h2>
+      {body && <motion.p variants={fadeInUp} className="font-body text-base text-black/55 max-w-2xl mx-auto">{body}</motion.p>}
+    </motion.div>
   );
 }
 
 function Divider() {
-  return <div className="h-px mb-16" style={{ background: "linear-gradient(to right, transparent, rgba(201,169,98,0.2), transparent)" }} />;
+  return <div className="h-px bg-gradient-to-r from-transparent via-black/8 to-transparent mb-18" />;
 }
 
-function Tag({ label, color = GOLD }: { label: string; color?: string }) {
-  return (
-    <span className="font-mono text-[9px] uppercase tracking-[0.15em] px-2 py-0.5 rounded-full"
-      style={{ background: `${color}18`, color }}>
-      {label}
-    </span>
-  );
-}
-
-function FAQ({ q, a }: { q: string; a: string }) {
+function AccordionCard({ title, subtitle, icon: Icon, color, children }: {
+  title: string; subtitle: string; icon: React.ElementType; color: string; children: React.ReactNode;
+}) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="rounded-xl border overflow-hidden" style={{ background: CARD_BG, borderColor: CARD_BORDER }}>
-      <button onClick={() => setOpen(o => !o)}
-        className="w-full flex items-center justify-between p-4 text-left hover:bg-white/[0.02] transition-colors">
-        <p className="font-display text-sm font-semibold text-white pr-4">{q}</p>
-        {open ? <ChevronUp className="w-4 h-4 flex-shrink-0 text-white/30" /> : <ChevronDown className="w-4 h-4 flex-shrink-0 text-white/30" />}
+    <motion.div variants={fadeInUp} className="bg-white border border-black/[0.12] rounded-2xl overflow-hidden hover:border-[#C9A962]/30 hover:shadow-lg transition-all duration-300">
+      <button onClick={() => setOpen(o => !o)} className="w-full flex items-center justify-between px-6 py-5 text-left">
+        <div className="flex items-center gap-4">
+          <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: `${color}15` }}>
+            <Icon className="w-5 h-5" style={{ color }} />
+          </div>
+          <div>
+            <p className="font-display text-base font-semibold text-black">{title}</p>
+            <p className="font-body text-xs text-black/45 mt-0.5">{subtitle}</p>
+          </div>
+        </div>
+        <ChevronDown className={`w-5 h-5 text-black/30 transition-transform duration-300 flex-shrink-0 ${open ? "rotate-180" : ""}`} />
       </button>
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         {open && (
-          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2 }}>
-            <div className="px-4 pb-4 border-t" style={{ borderColor: CARD_BORDER }}>
-              <p className="font-body text-sm text-white/45 leading-relaxed pt-3">{a}</p>
-            </div>
+          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3, ease: "easeInOut" }} className="overflow-hidden">
+            <div className="px-6 pb-6 border-t border-black/[0.06]">{children}</div>
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 }
 
+// ── Data ───────────────────────────────────────────────────────────────────
+const tiers = [
+  { tier: "Base",     range: "1–4 units/mo",   rate: "$250",  pct: "22.8%", monthly: "$250–$1,000",   color: "#C9A962", icon: Star    },
+  { tier: "Silver",   range: "5–9 units/mo",   rate: "$275",  pct: "25.1%", monthly: "$1,375–$2,475", color: "#94A3B8", icon: Award   },
+  { tier: "Gold",     range: "10–24 units/mo", rate: "$300",  pct: "27.4%", monthly: "$3,000–$7,200", color: "#F59E0B", icon: Trophy  },
+  { tier: "Platinum", range: "25+ units/mo",   rate: "$325",  pct: "29.7%", monthly: "$8,125+",       color: "#8B5CF6", icon: Mic2    },
+];
+
+const earningScenarios = [
+  { units: 1,   monthly: "$250",    annual: "$3,000",    tier: "Base"     },
+  { units: 5,   monthly: "$1,375",  annual: "$16,500",   tier: "Silver"   },
+  { units: 10,  monthly: "$3,000",  annual: "$36,000",   tier: "Gold"     },
+  { units: 25,  monthly: "$8,125",  annual: "$97,500",   tier: "Platinum" },
+  { units: 50,  monthly: "$16,250", annual: "$195,000",  tier: "Platinum" },
+];
+
+const trackingMethods = [
+  { method: "Unique Promo Code",   detail: "Every affiliate receives a personal code (e.g., DRMIKE20). Applied at DTC checkout. Captured in Salesforce Commission__c object within 60 seconds via Zapier.", icon: Hash,   color: GOLD         },
+  { method: "UTM Tracking Link",   detail: "Personalized URL with utm_source=affiliate&utm_medium=referral&utm_campaign={partner_code}. Captures traffic source even if promo code not used at checkout.", icon: Link2,  color: "#1877F2"    },
+  { method: "30-Day Cookie",       detail: "Browser cookie tracks visitors from affiliate link for 30 days. If they purchase within 30 days without using the code, commission is still attributed.", icon: Clock,  color: "#22C55E"    },
+  { method: "Salesforce Commission Object", detail: "Custom SF object Commission__c with fields: Partner_Code__c, Units_Sold__c, Commission_Rate__c, Payout_Status__c, Payout_Date__c. Monthly report auto-generated.", icon: Database, color: "#0070D2" },
+];
+
+const onboardingSteps = [
+  { step: 1, title: "Application",        detail: "Partner submits application via Typeform. WEG reviews within 5 business days. Criteria: audience alignment, content quality, minimum 5K engaged followers or active client base." },
+  { step: 2, title: "Agreement Signed",   detail: "Digital affiliate agreement signed via DocuSign. Covers commission structure, payout terms, content guidelines, exclusivity restrictions, and code of conduct." },
+  { step: 3, title: "Salesforce Record",  detail: "WEG creates Partner Account in Salesforce. Unique promo code generated and assigned. UTM tracking link created. Partner added to Klaviyo Partner segment." },
+  { step: 4, title: "Onboarding Kit",     detail: "Partner receives: product unit (shipped within 5 days), brand asset kit (logos, product photos, video clips), messaging guide (key claims, prohibited claims), and training program PDFs." },
+  { step: 5, title: "Content Review",     detail: "First 2 posts reviewed by WEG before publishing. Ensures FTC compliance, accurate product claims, and brand alignment. Ongoing spot-checks quarterly." },
+  { step: 6, title: "Monthly Reporting",  detail: "Automated Salesforce report emailed to partner on the 1st of each month: units sold, commission earned, payout date. Payout via ACH or PayPal within 30 days of month close." },
+];
+
+const sfFields = [
+  { object: "Commission__c",          field: "Partner_Code__c",        type: "Text(20)",    desc: "Unique affiliate promo code"                },
+  { object: "Commission__c",          field: "Partner_Account__c",     type: "Lookup(Account)", desc: "Links to partner's Account record"      },
+  { object: "Commission__c",          field: "Units_Sold__c",          type: "Number",      desc: "Units sold using this partner's code"       },
+  { object: "Commission__c",          field: "Commission_Rate__c",     type: "Currency",    desc: "Per-unit rate based on tier"                },
+  { object: "Commission__c",          field: "Total_Commission__c",    type: "Formula",     desc: "Units_Sold__c × Commission_Rate__c"         },
+  { object: "Commission__c",          field: "Payout_Status__c",       type: "Picklist",    desc: "Pending / Processing / Paid"                },
+  { object: "Commission__c",          field: "Payout_Date__c",         type: "Date",        desc: "Date payment was issued"                    },
+  { object: "Commission__c",          field: "Month__c",               type: "Date",        desc: "Commission period (first of month)"         },
+  { object: "Account (Partner)",      field: "Partner_Tier__c",        type: "Picklist",    desc: "Base / Silver / Gold / Platinum"            },
+  { object: "Account (Partner)",      field: "Lifetime_Units__c",      type: "Roll-Up",     desc: "Total units sold all time"                  },
+  { object: "Account (Partner)",      field: "Lifetime_Commission__c", type: "Roll-Up",     desc: "Total commissions paid all time"            },
+  { object: "Opportunity",            field: "Affiliate_Code__c",      type: "Text(20)",    desc: "Code used on this DTC order"                },
+];
+
+const termsHighlights = [
+  { title: "Eligible Sales",         detail: "Commission applies to DTC consumer sales at $1,095 MSRP only. B2B facility sales, bulk orders, and institutional pricing are excluded from the affiliate program." },
+  { title: "Payout Hold",            detail: "30-day hold on all commissions to allow for returns and chargebacks. Payouts processed on the 1st of each month for the prior month's confirmed sales." },
+  { title: "Promo Code Stacking",    detail: "Affiliate codes cannot be combined with other discount codes or promotions. One code per transaction." },
+  { title: "Content Requirements",   detail: "All content featuring ZeroWheel must include FTC-compliant disclosure (#ad or #sponsored). Claims must align with WEG-approved messaging guide. No comparative claims against competitors." },
+  { title: "Exclusivity",            detail: "Affiliates may not simultaneously promote direct competing motorized core training devices. Category exclusivity reviewed annually." },
+  { title: "Termination",            detail: "WEG may terminate affiliate agreement with 30 days notice. Earned commissions for completed sales will be paid out. Pending sales at termination are forfeited." },
+];
+
+// ── Page ───────────────────────────────────────────────────────────────────
 export default function ZWAffiliateProgram() {
+  const [activeScenario, setActiveScenario] = useState<number | null>(null);
+
   return (
-    <Layout>
+    <Layout section="gtm-zerowheel">
       <SectionNav sections={sections} />
 
+      {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <div id="hero">
-        <DarkHero
+        <LightHero
+          logoSrc="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/VgVkPihMTEChPvmp.png"
+          logoAlt="ZeroWheel"
+          brandName="ZeroWheel"
           eyebrow="WEG Proposed Program"
-          title="ZeroWheel Affiliate & Influencer Program"
-          description="WEG's proposed commission-based affiliate program for ZeroWheel's Direct-to-Consumer channel. This program is exclusively for individual influencers, trainers, and athletes who drive consumer sales at the full DTC MSRP of $1,095. B2B facility accounts and channel partners are managed separately through the Sales pipeline at Vertical ($825) or Commercial ($695) pricing — see the Commercial Strategy page."
+          title="Affiliate & Commission Program"
+          description="A structured, commission-based partner program for influencers, trainers, and athletes to earn on every ZeroWheel DTC sale they drive. Built on Salesforce for full tracking and accountability. $250/unit base — tiered bonuses for volume."
           stats={[
-            { value: "$1,095", label: "DTC MSRP" },
-            { value: "10-18%", label: "Commission Rate" },
-            { value: "30-day", label: "Cookie Window" },
-            { value: "60-day", label: "Payout Hold" },
+            { value: "$250",  label: "Base Commission/Unit" },
+            { value: "4",     label: "Earning Tiers"        },
+            { value: "30d",   label: "Cookie Window"        },
+            { value: "$1,095",label: "DTC MSRP"             },
           ]}
         />
       </div>
 
-      {/* STRUCTURE */}
-      <section id="structure" className="py-20 bg-[#0A0A0A]">
+      {/* ── STRUCTURE ────────────────────────────────────────────────────── */}
+      <section id="structure" className="py-18 bg-white">
         <div className="container">
           <Divider />
           <SectionHeader
             eyebrow="Program Architecture"
-            title="Two Tracks. One Program."
-            description="WEG recommends two affiliate tracks based on audience type and content focus. Both tracks earn commission on DTC consumer sales at $1,095 MSRP. Neither track applies to B2B facility sales — those go through the Sales pipeline at negotiated pricing."
+            title="Two Tracks, One System"
+            body="WEG recommends separating the affiliate program into two distinct tracks — Influencer/Athlete (DTC-focused) and Facility Partner (B2B-focused) — to protect pricing integrity across channels."
           />
-
-          <div className="rounded-2xl border p-5 mb-8 flex items-start gap-4"
-            style={{ borderColor: `${GOLD}30`, background: `${GOLD}08` }}>
-            <Bell className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: GOLD }} />
-            <div>
-              <p className="font-display text-sm font-semibold text-white mb-1">Affiliate Program vs. Channel Partner Program</p>
-              <p className="font-body text-sm text-white/50 leading-relaxed">
-                This affiliate program is for individual influencers and trainers who promote ZeroWheel to their personal audiences for DTC consumer purchases at $1,095. It is entirely separate from the B2B channel partner program (Authorized Dealers at $695, Vertical Partners at $825) documented in the Commercial Strategy page. A trainer who seeds a unit with their private club members is an affiliate. A club that buys 10 units for their fitness center is a B2B account in the Sales pipeline.
-              </p>
-            </div>
-          </div>
-
-          <motion.div className="grid md:grid-cols-2 gap-6"
-            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
+          <motion.div
+            className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto"
+            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer}
+          >
             {[
               {
-                track: "Track 1: Influencer / Creator",
+                track: "Track 1: Influencer & Athlete",
+                badge: "This Program",
+                badgeColor: GOLD,
+                price: "$1,095 DTC MSRP",
+                commission: "$250–$325/unit (22.8–29.7%)",
+                audience: "Fitness influencers, golf/pickleball trainers, wellness athletes, social media creators",
+                mechanism: "Unique promo code + UTM link + 30-day cookie",
+                salesforce: "Commission__c object — fully tracked per sale",
+                items: ["Drives consumer awareness and DTC sales", "Leverages trainer networks for organic reach", "Commission based on actual completed sales", "Monthly automated payout reporting"],
                 color: GOLD,
                 icon: Mic2,
-                who: "Social media creators, fitness influencers, YouTube/Instagram/TikTok personalities with audiences in golf, pickleball, fitness, longevity, or wellness.",
-                examples: ["Golf fitness creators (50K-500K followers)", "Pickleball coaches and instructors on social", "Longevity/wellness creators (Blue Zone angle)", "Fitness trainers with strong personal brand", "Physical therapists with clinical social presence"],
-                howTheyEarn: "Unique promo code (e.g., MIKE20) shared in content. Followers use code at checkout on ZeroWheel.com. Commission paid on completed sales after 60-day hold.",
-                contentExpectation: "Minimum 2 organic posts per month featuring ZeroWheel. Content brief provided. Brand approval required before posting.",
-                unitSeeding: "Top-tier creators (10K+ engaged followers) receive a complimentary ZeroWheel unit for content creation. Unit must be featured in at least 3 pieces of content.",
               },
               {
-                track: "Track 2: Trainer / Athlete Ambassador",
-                color: TEAL,
-                icon: Trophy,
-                who: "Certified trainers, coaches, and athletes who recommend ZeroWheel directly to their clients and networks — not necessarily through social media posts.",
-                examples: ["TPI-certified golf fitness trainers", "AMPD Golf Performance coaches", "NASM/NSCA-certified personal trainers", "Physical therapists and sports medicine professionals", "Collegiate or professional athletes with personal networks"],
-                howTheyEarn: "Unique referral link and promo code. Commission earned when a client purchases using their code or link. Works for in-person recommendations, text messages, and email referrals.",
-                contentExpectation: "No mandatory social posting requirement. Encouraged to share with clients and professional networks. Optional content support provided.",
-                unitSeeding: "All Trainer/Athlete Ambassadors receive a complimentary ZeroWheel unit. This is the primary tool for demonstrating to clients and generating organic referrals.",
+                track: "Track 2: Facility & Channel Partner",
+                badge: "See Commercial Strategy",
+                badgeColor: "#64748B",
+                price: "$825 Vertical / $695 Commercial",
+                commission: "Volume-based pricing tiers (not commission)",
+                audience: "Management companies, distributors, equipment dealers, wellness program operators",
+                mechanism: "Salesforce Partner Account + named rep ownership",
+                salesforce: "Account + Opportunity pipeline — managed by WEG sales team",
+                items: ["Bulk purchase agreements at institutional pricing", "Co-marketing and co-branding opportunities", "Dedicated WEG rep for relationship management", "Quarterly business reviews"],
+                color: "#64748B",
+                icon: Users,
               },
-            ].map((t, i) => (
-              <motion.div key={i} variants={fadeInUp}
-                className="rounded-2xl border p-6" style={{ background: CARD_BG, borderColor: `${t.color}25` }}>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: `${t.color}18` }}>
-                    <t.icon className="w-5 h-5" style={{ color: t.color }} />
+            ].map((track, i) => (
+              <motion.div
+                key={i} variants={scaleIn}
+                className="bg-white border-2 rounded-2xl p-6 hover:shadow-lg transition-all duration-300"
+                style={{ borderColor: i === 0 ? `${GOLD}40` : "rgba(0,0,0,0.12)" }}
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: `${track.color}15` }}>
+                    <track.icon className="w-5 h-5" style={{ color: track.color }} />
                   </div>
-                  <p className="font-display text-base font-semibold text-white">{t.track}</p>
+                  <span className="font-mono text-[9px] px-2.5 py-1 rounded-full" style={{ background: `${track.badgeColor}15`, color: track.badgeColor }}>{track.badge}</span>
                 </div>
-                <p className="font-body text-xs text-white/40 leading-relaxed mb-4">{t.who}</p>
-                <p className="font-mono text-[9px] uppercase tracking-[0.15em] mb-2" style={{ color: t.color }}>Who Qualifies</p>
-                <ul className="space-y-1.5 mb-4">
-                  {t.examples.map((e, j) => (
-                    <li key={j} className="flex items-start gap-2">
-                      <div className="w-1 h-1 rounded-full mt-1.5 flex-shrink-0" style={{ background: t.color }} />
-                      <span className="font-body text-xs text-white/40">{e}</span>
-                    </li>
+                <p className="font-display text-base font-semibold text-black mb-1">{track.track}</p>
+                <p className="font-mono text-[10px] mb-3" style={{ color: track.color }}>{track.price}</p>
+                <div className="space-y-2 mb-4">
+                  {[
+                    { label: "Commission", value: track.commission },
+                    { label: "Audience",   value: track.audience   },
+                    { label: "Mechanism",  value: track.mechanism  },
+                    { label: "Salesforce", value: track.salesforce },
+                  ].map((row, j) => (
+                    <div key={j} className="flex gap-2">
+                      <span className="font-mono text-[9px] text-black/35 uppercase tracking-wider w-20 flex-shrink-0 pt-0.5">{row.label}</span>
+                      <span className="font-body text-xs text-black/60">{row.value}</span>
+                    </div>
                   ))}
-                </ul>
-                <p className="font-mono text-[9px] uppercase tracking-[0.15em] mb-2" style={{ color: GOLD }}>How They Earn</p>
-                <p className="font-body text-xs text-white/40 leading-relaxed mb-3">{t.howTheyEarn}</p>
-                <p className="font-mono text-[9px] uppercase tracking-[0.15em] mb-2" style={{ color: PURPLE }}>Content Expectation</p>
-                <p className="font-body text-xs text-white/40 leading-relaxed mb-3">{t.contentExpectation}</p>
-                <p className="font-mono text-[9px] uppercase tracking-[0.15em] mb-2" style={{ color: GREEN }}>Unit Seeding</p>
-                <p className="font-body text-xs text-white/40 leading-relaxed">{t.unitSeeding}</p>
+                </div>
+                <div className="pt-3 border-t border-black/[0.06] space-y-1.5">
+                  {track.items.map((item, j) => (
+                    <div key={j} className="flex items-start gap-2">
+                      <CheckCircle2 className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={{ color: track.color }} />
+                      <span className="font-body text-xs text-black/55">{item}</span>
+                    </div>
+                  ))}
+                </div>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
 
-      {/* COMMISSION TIERS */}
-      <section id="tiers" className="py-20 bg-[#0A0A0A]">
+      {/* ── COMMISSION TIERS ─────────────────────────────────────────────── */}
+      <section id="tiers" className="py-18 bg-[#FAFAF8]">
         <div className="container">
           <Divider />
           <SectionHeader
             eyebrow="Commission Structure"
             title="Earn More as You Sell More"
-            description="WEG recommends a percentage-based commission on the DTC MSRP of $1,095. Percentage-based aligns incentives with the price point and scales cleanly if MSRP changes. Commission rates are tiered by monthly unit volume, resetting each calendar month."
+            body="Tiered commissions reward volume. Tier is calculated monthly based on units sold in the prior 30 days. All sales are tracked via unique promo code in Salesforce."
           />
 
-          <DarkCard className="mb-8">
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] mb-6" style={{ color: GOLD }}>Commission Tiers — Based on $1,095 DTC MSRP</p>
-            <div className="overflow-x-auto">
-              <table className="w-full text-left">
+          {/* Tier cards */}
+          <motion.div
+            className="grid md:grid-cols-4 gap-4 max-w-5xl mx-auto mb-10"
+            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer}
+          >
+            {tiers.map((t, i) => (
+              <motion.div
+                key={i} variants={scaleIn}
+                whileHover={{ y: -4, boxShadow: "0 16px 40px rgba(0,0,0,0.07)" }}
+                className="bg-white border border-black/[0.12] rounded-2xl p-5 text-center hover:border-[#C9A962]/30 transition-all duration-300"
+              >
+                <div className="w-12 h-12 rounded-full mx-auto mb-3 flex items-center justify-center" style={{ background: `${t.color}15` }}>
+                  <t.icon className="w-6 h-6" style={{ color: t.color }} />
+                </div>
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] mb-1" style={{ color: t.color }}>{t.tier}</p>
+                <p className="font-display text-3xl font-bold text-black">{t.rate}</p>
+                <p className="font-mono text-[9px] text-black/35 mt-0.5">per unit</p>
+                <p className="font-body text-xs text-black/50 mt-2">{t.range}</p>
+                <div className="mt-3 pt-3 border-t border-black/[0.08]">
+                  <p className="font-mono text-[9px] text-black/35 uppercase tracking-wider">Monthly Potential</p>
+                  <p className="font-display text-sm font-semibold text-black mt-1">{t.monthly}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Earning scenarios table */}
+          <motion.div
+            className="max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+          >
+            <div className="bg-white border border-black/[0.12] rounded-2xl overflow-hidden">
+              <div className="bg-black px-6 py-3">
+                <p className="font-mono text-xs text-white">Earning Scenarios — Based on $1,095 DTC MSRP</p>
+              </div>
+              <table className="w-full">
                 <thead>
-                  <tr className="border-b" style={{ borderColor: CARD_BORDER }}>
-                    {["Tier", "Monthly Units", "Rate", "Per Unit", "Monthly at Tier Min", "Hold"].map((h) => (
-                      <th key={h} className="pb-3 pr-6 font-mono text-[9px] uppercase tracking-[0.15em] text-white/30">{h}</th>
+                  <tr className="border-b border-black/[0.08]">
+                    {["Units/Month", "Tier", "Commission/Unit", "Monthly Earnings", "Annual Earnings"].map(h => (
+                      <th key={h} className="px-4 py-3 text-left font-mono text-[9px] text-black/35 uppercase tracking-wider">{h}</th>
                     ))}
                   </tr>
                 </thead>
-                <tbody className="divide-y" style={{ borderColor: CARD_BORDER }}>
-                  {[
-                    { tier: "Standard", range: "1-9 units",   rate: "10%", per: "$109.50", monthly: "$109.50+",  color: GOLD_DIM },
-                    { tier: "Silver",   range: "10-24 units", rate: "12%", per: "$131.40", monthly: "$1,314+",   color: GOLD    },
-                    { tier: "Gold",     range: "25-49 units", rate: "15%", per: "$164.25", monthly: "$4,106+",   color: TEAL    },
-                    { tier: "Platinum", range: "50+ units",   rate: "18%", per: "$197.10", monthly: "$9,855+",   color: PURPLE  },
-                  ].map((row) => (
-                    <tr key={row.tier}>
-                      <td className="py-3 pr-6"><span className="font-mono text-xs font-semibold" style={{ color: row.color }}>{row.tier}</span></td>
-                      <td className="py-3 pr-6 font-body text-sm text-white">{row.range}</td>
-                      <td className="py-3 pr-6"><span className="font-display text-lg font-semibold" style={{ color: row.color }}>{row.rate}</span></td>
-                      <td className="py-3 pr-6 font-mono text-sm text-white/70">{row.per}</td>
-                      <td className="py-3 pr-6 font-mono text-sm text-white/50">{row.monthly}</td>
-                      <td className="py-3 font-mono text-[10px] text-white/30">60 days</td>
+                <tbody>
+                  {earningScenarios.map((row, i) => (
+                    <tr
+                      key={i}
+                      onClick={() => setActiveScenario(activeScenario === i ? null : i)}
+                      className={`border-b border-black/[0.06] cursor-pointer transition-colors ${activeScenario === i ? "bg-[#C9A962]/5" : "hover:bg-[#FAFAF8]"}`}
+                    >
+                      <td className="px-4 py-3 font-display text-base font-bold text-black">{row.units}</td>
+                      <td className="px-4 py-3">
+                        <span className="font-mono text-[9px] px-2 py-1 rounded-full bg-[#C9A962]/10 text-[#C9A962]">{row.tier}</span>
+                      </td>
+                      <td className="px-4 py-3 font-body text-sm text-black/70">
+                        {tiers.find(t => t.tier === row.tier)?.rate}/unit
+                      </td>
+                      <td className="px-4 py-3 font-display text-sm font-semibold text-black">{row.monthly}</td>
+                      <td className="px-4 py-3 font-display text-sm font-bold" style={{ color: GOLD }}>{row.annual}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
-            <div className="mt-4 flex items-center gap-3 rounded-xl border p-3" style={{ borderColor: `${GOLD}20`, background: `${GOLD}06` }}>
-              <Bell className="w-4 h-4 flex-shrink-0" style={{ color: GOLD }} />
-              <p className="font-body text-xs text-white/40">MAP ($1,095) is strictly enforced. Affiliates may not advertise ZeroWheel below MSRP. Commission is calculated on the final sale price after any authorized promotional discounts.</p>
-            </div>
-          </DarkCard>
-
-          <DarkCard>
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] mb-2" style={{ color: TEAL }}>Earnings Scenarios</p>
-            <p className="font-display text-lg font-semibold text-white mb-6">What Affiliates Can Realistically Earn</p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {[
-                { persona: "Golf Trainer",        desc: "TPI-certified trainer with 50 active clients. Recommends ZeroWheel to 1-2 clients per month.",                                          units: "2/month",  annual: "$2,628/yr",   rate: "10%", color: GOLD    },
-                { persona: "Fitness Influencer",  desc: "Instagram creator with 75K followers in golf/fitness niche. Posts 2x/month, 1% conversion.",                                           units: "12/month", annual: "$18,921/yr",  rate: "12%", color: TEAL    },
-                { persona: "Wellness Creator",    desc: "YouTube longevity channel with 200K subscribers. Monthly dedicated video plus story mentions.",                                         units: "30/month", annual: "$59,130/yr",  rate: "15%", color: PURPLE  },
-                { persona: "Elite Ambassador",    desc: "Professional athlete or high-profile trainer with 500K+ followers and strong conversion history.",                                      units: "60/month", annual: "$142,272/yr", rate: "18%", color: ORANGE  },
-              ].map((s) => (
-                <div key={s.persona} className="rounded-2xl border p-5 text-center"
-                  style={{ borderColor: `${s.color}25`, background: `${s.color}06` }}>
-                  <Tag label={s.persona} color={s.color} />
-                  <p className="font-body text-xs text-white/40 leading-relaxed mt-3 mb-4">{s.desc}</p>
-                  <p className="font-mono text-[10px] text-white/30 mb-1">{s.units} at {s.rate}</p>
-                  <p className="font-display text-xl font-semibold" style={{ color: s.color }}>{s.annual}</p>
-                  <p className="font-mono text-[9px] text-white/25 mt-1">estimated annual earnings</p>
-                </div>
-              ))}
-            </div>
-          </DarkCard>
+          </motion.div>
         </div>
       </section>
 
-      {/* TRACKING */}
-      <section id="tracking" className="py-20 bg-[#0A0A0A]">
+      {/* ── TRACKING ─────────────────────────────────────────────────────── */}
+      <section id="tracking" className="py-18 bg-white">
         <div className="container">
           <Divider />
           <SectionHeader
             eyebrow="Attribution & Tracking"
-            title="Three-Layer Attribution"
-            description="WEG recommends a three-layer attribution system to ensure every affiliate sale is accurately tracked and credited. Promo codes are the primary method — they work even when cookies are blocked or the customer purchases on a different device."
+            title="Three-Layer Attribution System"
+            body="WEG recommends a three-layer approach to ensure every sale is correctly attributed — promo code, UTM link, and 30-day cookie. All three feed into Salesforce as the single source of truth."
           />
-
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
-            {[
-              {
-                layer: "Layer 1: Promo Code",
-                color: GOLD, icon: Hash,
-                how: "Each affiliate receives a unique promo code (e.g., MIKE20). Customer enters code at checkout. Code is tied to affiliate record in Salesforce.",
-                why: "Works across devices, not blocked by iOS privacy changes, visible to customer, and provides clean attribution even for offline/in-person recommendations.",
-                example: "Trainer tells client in person: 'Use code MIKE20 at ZeroWheel.com.' Client purchases 3 days later on mobile. Commission credited to Mike.",
-              },
-              {
-                layer: "Layer 2: Referral Link",
-                color: TEAL, icon: Link2,
-                how: "Each affiliate also receives a unique UTM-tagged referral link. 30-day cookie set on click. Commission credited if customer purchases within 30 days.",
-                why: "Captures sales where customer does not use the promo code but clicked the affiliate's link. Provides additional attribution coverage.",
-                example: "Follower clicks affiliate's Instagram bio link, closes the tab. Returns directly 2 weeks later and purchases without a code. Commission still credited via cookie.",
-              },
-              {
-                layer: "Layer 3: UTM Attribution",
-                color: PURPLE, icon: BarChart3,
-                how: "All affiliate links tagged with utm_source=influencer, utm_medium=affiliate, utm_campaign=[affiliate-name]. Captured in Salesforce Lead Source field.",
-                why: "Provides channel-level data for marketing team to measure affiliate program ROI, top-performing affiliates, and content type performance.",
-                example: "Monthly report shows: 45 units sold via affiliate channel, top 3 affiliates by revenue, average order value from affiliate traffic vs. direct.",
-              },
-            ].map((l) => (
-              <DarkCard key={l.layer}>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: `${l.color}18` }}>
-                    <l.icon className="w-4 h-4" style={{ color: l.color }} />
+          <motion.div
+            className="grid md:grid-cols-2 gap-5 max-w-4xl mx-auto"
+            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer}
+          >
+            {trackingMethods.map((method, i) => (
+              <motion.div
+                key={i} variants={scaleIn}
+                whileHover={{ y: -4, boxShadow: "0 16px 40px rgba(0,0,0,0.07)" }}
+                className="bg-white border border-black/[0.12] rounded-2xl p-6 hover:border-[#C9A962]/30 transition-all duration-300"
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: `${method.color}15` }}>
+                    <method.icon className="w-4 h-4" style={{ color: method.color }} />
                   </div>
-                  <p className="font-display text-sm font-semibold text-white">{l.layer}</p>
+                  <p className="font-display text-sm font-semibold text-black">{method.method}</p>
                 </div>
-                <p className="font-mono text-[9px] uppercase tracking-[0.15em] mb-2" style={{ color: l.color }}>How It Works</p>
-                <p className="font-body text-xs text-white/40 leading-relaxed mb-3">{l.how}</p>
-                <p className="font-mono text-[9px] uppercase tracking-[0.15em] mb-2" style={{ color: GOLD }}>Why This Layer Matters</p>
-                <p className="font-body text-xs text-white/40 leading-relaxed mb-3">{l.why}</p>
-                <div className="rounded-xl border p-3" style={{ borderColor: `${l.color}20`, background: `${l.color}06` }}>
-                  <p className="font-mono text-[9px] uppercase tracking-[0.12em] mb-1" style={{ color: l.color }}>Example</p>
-                  <p className="font-body text-[11px] text-white/35 leading-relaxed italic">{l.example}</p>
-                </div>
-              </DarkCard>
+                <p className="font-body text-xs text-black/55 leading-relaxed">{method.detail}</p>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
-          <DarkCard>
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] mb-2" style={{ color: GOLD }}>Payout Process</p>
-            <p className="font-display text-lg font-semibold text-white mb-6">From Sale to Commission Payment</p>
-            <div className="flex flex-wrap gap-3 items-center mb-6">
-              {[
-                { step: "Sale Confirmed",    sub: "Order placed at $1,095",  color: TEAL   },
-                { step: "60-Day Hold",       sub: "Fraud + return window",   color: ORANGE },
-                { step: "Commission Approved", sub: "Salesforce updated",    color: GOLD   },
-                { step: "Monthly Payout",    sub: "ACH or PayPal",           color: GREEN  },
-              ].map((s, i, arr) => (
-                <div key={s.step} className="flex items-center gap-3">
-                  <div className="rounded-xl border px-4 py-3 text-center"
-                    style={{ borderColor: `${s.color}30`, background: `${s.color}08` }}>
-                    <p className="font-mono text-[10px] font-semibold" style={{ color: s.color }}>{s.step}</p>
-                    <p className="font-body text-[10px] text-white/30 mt-0.5">{s.sub}</p>
+          {/* Attribution priority */}
+          <motion.div
+            className="max-w-4xl mx-auto mt-8 p-6 bg-[#FAFAF8] border border-black/[0.08] rounded-2xl"
+            initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
+          >
+            <p className="font-mono text-[10px] text-[#C9A962] uppercase tracking-[0.2em] mb-3">Attribution Priority Order</p>
+            <div className="flex flex-col md:flex-row items-center gap-3">
+              {["1. Promo Code Used at Checkout", "2. UTM Link Click (30-day window)", "3. Cookie Attribution (30-day window)"].map((step, i, arr) => (
+                <div key={i} className="flex items-center gap-3">
+                  <div className="text-center px-4 py-2.5 bg-white border border-black/[0.12] rounded-xl shadow-sm">
+                    <p className="font-body text-xs text-black/70">{step}</p>
                   </div>
-                  {i < arr.length - 1 && <ArrowRight className="w-3 h-3 text-white/20 flex-shrink-0" />}
+                  {i < arr.length - 1 && <ArrowRight className="w-4 h-4 text-[#C9A962] flex-shrink-0" />}
                 </div>
               ))}
             </div>
-            <div className="grid md:grid-cols-3 gap-4">
-              {[
-                { title: "60-Day Hold Rationale",      desc: "ZeroWheel's return window is 30 days. The 60-day hold provides a buffer for returns, chargebacks, and fraud detection. Consistent with Eight Sleep's structure for high-ticket products.", color: ORANGE },
-                { title: "Minimum Payout Threshold",   desc: "$100 minimum balance required to trigger monthly payout. Balances below $100 roll over to the following month. No maximum payout limit.",                                                  color: GOLD   },
-                { title: "Tax Documentation",          desc: "US affiliates earning over $600/year receive a 1099-NEC. International affiliates complete a W-8BEN form. All payouts reported to IRS as required by law.",                                 color: TEAL   },
-              ].map((item) => (
-                <div key={item.title} className="rounded-xl border p-4" style={{ borderColor: `${item.color}20`, background: `${item.color}06` }}>
-                  <p className="font-mono text-[10px] uppercase tracking-[0.15em] mb-2" style={{ color: item.color }}>{item.title}</p>
-                  <p className="font-body text-xs text-white/40 leading-relaxed">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-          </DarkCard>
+            <p className="font-body text-xs text-black/45 mt-3">If multiple attribution signals are present, promo code takes priority. No double-attribution — one commission per sale.</p>
+          </motion.div>
         </div>
       </section>
 
-      {/* ONBOARDING */}
-      <section id="onboarding" className="py-20 bg-[#0A0A0A]">
+      {/* ── ONBOARDING ───────────────────────────────────────────────────── */}
+      <section id="onboarding" className="py-18 bg-[#FAFAF8]">
         <div className="container">
           <Divider />
           <SectionHeader
-            eyebrow="Affiliate Onboarding"
-            title="From Application to First Commission"
-            description="WEG recommends a structured 5-step onboarding process that gets affiliates earning within 7 days of approval. The onboarding kit is designed to make content creation easy — affiliates should not need to figure out how to talk about ZeroWheel."
+            eyebrow="Partner Onboarding"
+            title="From Application to First Sale"
+            body="WEG manages the full onboarding process. Partners go from application to first sale in under 2 weeks. Every step is tracked in Salesforce."
           />
-
-          <div className="grid md:grid-cols-5 gap-3 mb-8">
-            {[
-              { step: "1", title: "Apply",         desc: "Typeform application: audience size, platform, content niche, why ZeroWheel fits. WEG reviews within 48 hours.",                                                                    color: GOLD   },
-              { step: "2", title: "Approved",      desc: "Approval email with program agreement. Affiliate signs digitally. Salesforce Partner record created.",                                                                                color: TEAL   },
-              { step: "3", title: "Kit Shipped",   desc: "ZeroWheel unit shipped (for qualifying affiliates). Onboarding kit emailed: promo code, referral link, content brief.",                                                               color: PURPLE },
-              { step: "4", title: "First Content", desc: "Affiliate posts first piece of content within 14 days of kit receipt. ZeroWheel team reviews and approves.",                                                                         color: ORANGE },
-              { step: "5", title: "First Commission", desc: "First sale tracked. Commission logged in Salesforce. Affiliate dashboard updated. Klaviyo welcome sequence complete.",                                                            color: GREEN  },
-            ].map((s) => (
-              <div key={s.step} className="rounded-2xl border p-5 text-center"
-                style={{ background: CARD_BG, borderColor: `${s.color}25` }}>
-                <div className="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-3"
-                  style={{ background: `${s.color}18` }}>
-                  <span className="font-display text-base font-semibold" style={{ color: s.color }}>{s.step}</span>
+          <div className="max-w-3xl mx-auto space-y-3">
+            {onboardingSteps.map((step, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+                className="bg-white border border-black/[0.12] rounded-2xl p-5 hover:border-[#C9A962]/20 hover:shadow-md transition-all duration-300"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center text-white font-display text-sm font-bold flex-shrink-0" style={{ background: GOLD }}>
+                    {step.step}
+                  </div>
+                  <div>
+                    <p className="font-display text-sm font-semibold text-black">{step.title}</p>
+                    <p className="font-body text-xs text-black/55 mt-1 leading-relaxed">{step.detail}</p>
+                  </div>
                 </div>
-                <p className="font-display text-sm font-semibold text-white mb-2">{s.title}</p>
-                <p className="font-body text-[11px] text-white/40 leading-relaxed">{s.desc}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
-
-          <DarkCard>
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] mb-2" style={{ color: GOLD }}>Affiliate Onboarding Kit</p>
-            <p className="font-display text-lg font-semibold text-white mb-6">Everything an Affiliate Needs to Start Earning</p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {[
-                { item: "ZeroWheel Unit",    desc: "Complimentary unit for qualifying affiliates (Track 1: 10K+ engaged followers; Track 2: all Trainer/Athlete Ambassadors). The product must be experienced to be authentically promoted.",                                                                                                                                                color: GOLD,   icon: Dumbbell  },
-                { item: "Unique Promo Code", desc: "Personalized code (e.g., MIKE20) that affiliates share with their audience. Code is for tracking only — no discount by default. ZeroWheel may authorize limited-time discount codes for specific campaigns.",                                                                                                                          color: TEAL,   icon: Hash      },
-                { item: "Referral Link",     desc: "UTM-tagged unique URL for bio links, email signatures, and digital content. 30-day cookie window. Tracks clicks and conversions in Salesforce.",                                                                                                                                                                                       color: PURPLE, icon: Link2     },
-                { item: "Content Brief",     desc: "3 approved talking points per content pillar (Golf Performance, Pickleball/Racquet, Longevity/Rehab). Brand voice guide. Approved hashtags (#ZeroWheel #CoreStrength #ZWCommunity). What NOT to say (no medical claims, no competitor comparisons).",                                                                                  color: ORANGE, icon: FileText  },
-                { item: "Brand Assets",      desc: "Logo files, product photos, approved lifestyle imagery, and video clips for use in content. All assets pre-cleared for affiliate use.",                                                                                                                                                                                                 color: GREEN,  icon: Star      },
-                { item: "Klaviyo Sequence",  desc: "Affiliates enrolled in a dedicated Klaviyo sequence: welcome email, monthly performance update, new product/campaign announcements, and top-performer recognition emails.",                                                                                                                                                              color: TEAL,   icon: Mail      },
-              ].map((k) => (
-                <div key={k.item} className="rounded-xl border p-4" style={{ borderColor: `${k.color}20`, background: `${k.color}06` }}>
-                  <div className="flex items-center gap-2 mb-2">
-                    <k.icon className="w-4 h-4 flex-shrink-0" style={{ color: k.color }} />
-                    <p className="font-display text-sm font-semibold text-white">{k.item}</p>
-                  </div>
-                  <p className="font-body text-xs text-white/40 leading-relaxed">{k.desc}</p>
-                </div>
-              ))}
-            </div>
-          </DarkCard>
         </div>
       </section>
 
-      {/* SALESFORCE */}
-      <section id="salesforce" className="py-20 bg-[#0A0A0A]">
+      {/* ── SALESFORCE ───────────────────────────────────────────────────── */}
+      <section id="salesforce" className="py-18 bg-white">
         <div className="container">
           <Divider />
           <SectionHeader
             eyebrow="Salesforce Architecture"
-            title="Tracking Every Commission in Salesforce"
-            description="WEG recommends a dedicated Partner Commission object in Salesforce to track all affiliate program activity. This keeps affiliate data separate from the B2B sales pipeline while maintaining full visibility into program performance."
+            title="Commission Object Schema"
+            body="WEG will configure a custom Commission__c object in Salesforce to track every affiliate sale, commission calculation, and payout. Full field reference below."
           />
-
-          <div className="grid md:grid-cols-2 gap-6 mb-6">
-            <DarkCard>
-              <p className="font-mono text-[10px] uppercase tracking-[0.2em] mb-4" style={{ color: GOLD }}>Partner Record (Custom Object)</p>
-              <p className="font-body text-xs text-white/40 mb-4">One record per affiliate. Tracks their profile, tier, lifetime earnings, and active status.</p>
-              <div className="space-y-2">
-                {[
-                  { field: "Partner_Name__c",              type: "Text",        desc: "Full name of influencer/trainer"                                   },
-                  { field: "Partner_Track__c",             type: "Picklist",    desc: "Influencer/Creator | Trainer/Ambassador"                           },
-                  { field: "Promo_Code__c",                type: "Text (unique)",desc: "Unique promo code (e.g., MIKE20)"                                 },
-                  { field: "Referral_URL__c",              type: "URL",         desc: "UTM-tagged referral link"                                          },
-                  { field: "Commission_Tier__c",           type: "Formula",     desc: "Standard/Silver/Gold/Platinum (based on MTD units)"                },
-                  { field: "Commission_Rate__c",           type: "Formula",     desc: "10% / 12% / 15% / 18% (based on tier)"                            },
-                  { field: "MTD_Units_Sold__c",            type: "Roll-up",     desc: "Month-to-date units sold (resets monthly)"                         },
-                  { field: "LTD_Units_Sold__c",            type: "Roll-up",     desc: "Lifetime units sold"                                               },
-                  { field: "LTD_Commissions_Earned__c",   type: "Currency",    desc: "Total commissions earned (all time)"                               },
-                  { field: "Pending_Payout__c",            type: "Currency",    desc: "Commissions approved but not yet paid"                             },
-                  { field: "Partner_Status__c",            type: "Picklist",    desc: "Active | Inactive | Suspended | Pending Approval"                 },
-                  { field: "Klaviyo_Enrolled__c",          type: "Checkbox",    desc: "Enrolled in affiliate Klaviyo sequence"                            },
-                ].map((f) => (
-                  <div key={f.field} className="flex items-start gap-3 py-1.5 border-b" style={{ borderColor: CARD_BORDER }}>
-                    <code className="font-mono text-[10px] text-white/60 flex-shrink-0 w-52">{f.field}</code>
-                    <span className="font-mono text-[9px] flex-shrink-0 w-20" style={{ color: GOLD }}>{f.type}</span>
-                    <span className="font-body text-[11px] text-white/30">{f.desc}</span>
-                  </div>
-                ))}
+          <motion.div
+            className="max-w-5xl mx-auto"
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+          >
+            <div className="bg-white border border-black/[0.12] rounded-2xl overflow-hidden">
+              <div className="bg-black px-6 py-3 flex items-center gap-2">
+                <Database className="w-4 h-4 text-[#C9A962]" />
+                <span className="font-mono text-xs text-white">Salesforce Custom Object: Commission__c</span>
               </div>
-            </DarkCard>
-
-            <DarkCard>
-              <p className="font-mono text-[10px] uppercase tracking-[0.2em] mb-4" style={{ color: TEAL }}>Commission Line Item (Child Object)</p>
-              <p className="font-body text-xs text-white/40 mb-4">One record per sale. Links to the parent Partner record and the Opportunity.</p>
-              <div className="space-y-2 mb-6">
-                {[
-                  { field: "Partner__c",                  type: "Lookup",      desc: "Parent Partner record"                                             },
-                  { field: "Opportunity__c",              type: "Lookup",      desc: "Linked Salesforce Opportunity"                                     },
-                  { field: "Sale_Date__c",                type: "Date",        desc: "Date of customer purchase"                                         },
-                  { field: "Sale_Amount__c",              type: "Currency",    desc: "Final sale price (should be $1,095)"                               },
-                  { field: "Commission_Rate_Applied__c",  type: "Percent",     desc: "Rate at time of sale (10/12/15/18%)"                               },
-                  { field: "Commission_Amount__c",        type: "Formula",     desc: "Sale_Amount__c x Commission_Rate_Applied__c"                       },
-                  { field: "Hold_Release_Date__c",        type: "Formula",     desc: "Sale_Date__c + 60 days"                                            },
-                  { field: "Payout_Status__c",            type: "Picklist",    desc: "Pending Hold | Approved | Paid | Reversed"                        },
-                  { field: "Payout_Date__c",              type: "Date",        desc: "Date commission was paid"                                          },
-                  { field: "Attribution_Method__c",       type: "Picklist",    desc: "Promo Code | Referral Link | UTM Cookie"                           },
-                  { field: "Promo_Code_Used__c",          type: "Text",        desc: "Actual code entered at checkout"                                   },
-                ].map((f) => (
-                  <div key={f.field} className="flex items-start gap-3 py-1.5 border-b" style={{ borderColor: CARD_BORDER }}>
-                    <code className="font-mono text-[10px] text-white/60 flex-shrink-0 w-52">{f.field}</code>
-                    <span className="font-mono text-[9px] flex-shrink-0 w-20" style={{ color: TEAL }}>{f.type}</span>
-                    <span className="font-body text-[11px] text-white/30">{f.desc}</span>
-                  </div>
-                ))}
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b border-black/[0.08]">
+                      {["Object", "Field", "Type", "Description"].map(h => (
+                        <th key={h} className="px-4 py-3 text-left font-mono text-[9px] text-black/35 uppercase tracking-wider">{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {sfFields.map((row, i) => (
+                      <tr key={i} className={`border-b border-black/[0.06] hover:bg-[#FAFAF8] transition-colors ${i % 2 === 0 ? "" : "bg-[#FAFAF8]/40"}`}>
+                        <td className="px-4 py-2.5 font-mono text-[10px] text-[#C9A962]">{row.object}</td>
+                        <td className="px-4 py-2.5 font-mono text-[10px] text-black/70">{row.field}</td>
+                        <td className="px-4 py-2.5 font-mono text-[9px] text-black/40">{row.type}</td>
+                        <td className="px-4 py-2.5 font-body text-xs text-black/55">{row.desc}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.2em] mb-3" style={{ color: PURPLE }}>Salesforce Automations</p>
-              <ul className="space-y-2">
-                {[
-                  "On Opportunity Close Won: create Commission Line Item, set Hold Release Date = Close Date + 60 days",
-                  "On Hold Release Date: update Payout_Status__c to Approved, add to monthly payout batch",
-                  "On MTD Units crossing 10/25/50: update Commission_Tier__c and notify rep via Chatter",
-                  "Monthly: auto-generate payout report for finance team, reset MTD_Units_Sold__c",
-                  "On Partner_Status__c = Inactive: deactivate promo code, send Klaviyo offboarding email",
-                ].map((a, i) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <Zap className="w-3 h-3 mt-0.5 flex-shrink-0" style={{ color: PURPLE }} />
-                    <span className="font-body text-xs text-white/40 leading-relaxed">{a}</span>
-                  </li>
-                ))}
-              </ul>
-            </DarkCard>
-          </div>
+            </div>
+
+            {/* Automation */}
+            <div className="mt-6 grid md:grid-cols-2 gap-4">
+              {[
+                { title: "Zapier: Code Used → Commission Record", detail: "When a promo code is used at DTC checkout, Zapier creates a Commission__c record in Salesforce within 60 seconds. Fields populated: Partner_Code__c, Units_Sold__c, Commission_Rate__c, Month__c.", icon: Zap, color: "#FF4A00" },
+                { title: "Salesforce Flow: Monthly Payout Report", detail: "On the 1st of each month, a Salesforce Flow runs to aggregate all Commission__c records for the prior month, calculate totals, and email a payout summary to each partner and the WEG finance team.", icon: FileText, color: GOLD },
+              ].map((auto, i) => (
+                <div key={i} className="bg-[#FAFAF8] border border-black/[0.08] rounded-2xl p-5">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: `${auto.color}15` }}>
+                      <auto.icon className="w-4 h-4" style={{ color: auto.color }} />
+                    </div>
+                    <p className="font-display text-sm font-semibold text-black">{auto.title}</p>
+                  </div>
+                  <p className="font-body text-xs text-black/55 leading-relaxed">{auto.detail}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* TERMS */}
-      <section id="terms" className="py-20 bg-[#0A0A0A]">
+      {/* ── TERMS ────────────────────────────────────────────────────────── */}
+      <section id="terms" className="py-18 bg-[#FAFAF8]">
         <div className="container">
           <Divider />
           <SectionHeader
             eyebrow="Program Terms"
-            title="Rules of the Road"
-            description="WEG recommends clear, simple terms that protect ZeroWheel's brand and pricing integrity while making it easy for affiliates to participate. These terms are informed by Rogue Fitness and Eight Sleep affiliate program structures."
+            title="Key Terms & Conditions"
+            body="WEG recommends clear, enforceable terms to protect ZeroWheel's pricing architecture and brand integrity. Full legal agreement drafted separately."
           />
-          <div className="space-y-3">
-            {[
-              { q: "Can affiliates offer discounts to their audience?", a: "No. Affiliates may not advertise or offer ZeroWheel below the MAP price of $1,095. The promo code is for tracking purposes only and does not provide a discount unless ZeroWheel specifically authorizes a discount code for a campaign. Affiliates who advertise below MAP will have their account suspended." },
-              { q: "Can a B2B facility use an affiliate code to purchase at $1,095?", a: "No. Affiliate commissions apply to DTC consumer purchases only. If a facility (club, gym, hotel) wants to purchase ZeroWheel units, they must go through the B2B sales process at Vertical ($825) or Commercial ($695) pricing. An affiliate cannot earn commission on a B2B order, and a B2B buyer cannot use a consumer promo code." },
-              { q: "What happens if a customer returns the product?", a: "If a customer returns a ZeroWheel within the 30-day return window, the commission for that sale is reversed. This is why the 60-day hold exists — it covers the return window plus a buffer. If a commission has already been paid and a return occurs, the amount will be deducted from the affiliate's next payout." },
-              { q: "Can affiliates run paid ads using ZeroWheel's brand name?", a: "No. Affiliates may not run paid search or paid social ads using ZeroWheel's brand name, trademark, or product names as keywords or in ad copy. Organic content promotion is permitted and encouraged. Violation of this policy results in immediate account termination." },
-              { q: "How are self-referrals handled?", a: "Affiliates may not use their own promo code or referral link to purchase a ZeroWheel for themselves. Self-referral commissions will be reversed and may result in account suspension. Affiliates who want to purchase additional units should contact ZeroWheel directly." },
-              { q: "What content is prohibited?", a: "Affiliates may not make medical claims, compare ZeroWheel to competitors in a disparaging way, use before/after medical imagery, or make income claims about the affiliate program. All content must comply with FTC disclosure requirements — affiliates must clearly disclose their paid relationship with ZeroWheel (#ad, #sponsored, or equivalent)." },
-              { q: "How does ZeroWheel handle cookie conflicts (two affiliates claiming the same sale)?", a: "Last-click attribution wins. If a customer clicks two different affiliate links, the most recent click within the 30-day window receives credit. However, if a customer uses a promo code, the promo code takes precedence over cookie attribution regardless of click order." },
-              { q: "Can affiliates promote ZeroWheel internationally?", a: "Yes, but commission is only paid on sales completed on ZeroWheel's US e-commerce store. International affiliates must complete a W-8BEN form before receiving payment." },
-            ].map((faq) => (
-              <FAQ key={faq.q} q={faq.q} a={faq.a} />
+          <motion.div
+            className="max-w-4xl mx-auto space-y-3"
+            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer}
+          >
+            {termsHighlights.map((term, i) => (
+              <motion.div
+                key={i} variants={fadeInUp}
+                className="bg-white border border-black/[0.12] rounded-2xl p-5 hover:border-[#C9A962]/20 hover:shadow-md transition-all duration-300"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: `${GOLD}15` }}>
+                    <Shield className="w-4 h-4" style={{ color: GOLD }} />
+                  </div>
+                  <div>
+                    <p className="font-display text-sm font-semibold text-black">{term.title}</p>
+                    <p className="font-body text-xs text-black/55 mt-1 leading-relaxed">{term.detail}</p>
+                  </div>
+                </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
-
     </Layout>
   );
 }
