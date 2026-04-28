@@ -85,11 +85,11 @@ const techStack = [
   { name: "Klaviyo", role: "Email Nurture & Drip Automation", detail: "Native Salesforce sync maps Leads and Contacts to Klaviyo profiles. Separate flows for B2B (facility buyers) and DTC (consumer). Behavioral triggers: form fill, demo booked, demo no-show, quote sent, deal stalled 14+ days. $150/mo for up to 10K subscribers — purpose-built for hybrid B2B/DTC brands at ZeroWheel's stage.", icon: Mail, color: "#1B9B6F" },
   { name: "Zapier", role: "Automation Backbone", detail: "10 active Zaps: Typeform → Salesforce Lead (60s), Salesforce Lead Created → Klaviyo Profile, Demo Booked → Slack #new-leads, Deal Won → Klaviyo Customer segment, Affiliate Code Used → Commission Line Item, Stalled Opp (14d) → Rep task + Slack alert, and more.", icon: Zap, color: "#FF4A00" },
   { name: "Intercom", role: "Live Chat & Qualification", detail: "Embedded on all landing pages and the ZeroWheel website. Qualifies inbound visitors with a 3-question bot (use case, facility type, timeline) before routing to a rep. Syncs conversation history to Salesforce Contact record via Zapier.", icon: MessageSquare, color: "#1F8DED" },
-  { name: "Meta Ads + Landing Pages", role: "Paid Acquisition", detail: "Three persona-specific campaigns: (1) Club Wellness Director — targets CMAA members, 25–54, fitness/wellness interests. (2) Sports Performance Trainer — targets golf/pickleball coaches, TPI-certified trainers. (3) Active Consumer — retargeting warm website visitors. Each campaign routes to a dedicated landing page with a Typeform embed and UTM tracking.", icon: Target, color: "#1877F2" },
+  { name: "Landing Pages / Website", role: "Traffic Entry Point", detail: "Dedicated landing pages for each LOB and persona — Private Clubs, Maritime/Cruise, Sports Performance, Consumer DTC. Each page features a Typeform embed, UTM parameter capture, and clear call-to-action. All traffic sources (organic, referral, direct outreach, events, influencer links) route through these pages into the lead capture flow.", icon: Target, color: "#1877F2" },
 ];
 
 const funnelStages = [
-  { stage: "Awareness", volume: "50,000+", source: "Meta Ads, CMAA events, influencer posts, thought leadership content, LinkedIn outreach", action: "Impression or content view — no action required", color: "#C9A962" },
+  { stage: "Awareness", volume: "50,000+", source: "CMAA events, influencer posts, thought leadership content, LinkedIn outreach, direct referrals, sponsorships", action: "Impression or content view — no action required", color: "#C9A962" },
   { stage: "Interest", volume: "5,000", source: "Landing page visit, Typeform start, Intercom chat initiated", action: "UTM parameters captured, Intercom bot triggered, Klaviyo Awareness flow enrolled", color: "#B8A080" },
   { stage: "Lead Captured", volume: "1,200", source: "Typeform submission (B2B or DTC), trade show badge scan, direct referral", action: "Salesforce Lead created via Zapier within 60s. LOB assigned, UTM fields populated, owner assigned by LOB", color: "#9A8060" },
   { stage: "Qualified", volume: "480", source: "Rep call, Intercom qualification, or Klaviyo engagement score ≥ 60", action: "Lead converted to Contact + Opportunity in Salesforce. Stage = Qualified. Klaviyo flow switches to Nurture sequence", color: "#7A6040" },
@@ -412,23 +412,45 @@ export default function ZWMarketingInfrastructure() {
           >
             <div className="bg-[#FAFAF8] border border-black/[0.08] rounded-2xl p-8">
               <p className="font-mono text-[10px] text-[#C9A962] uppercase tracking-[0.2em] text-center mb-6">Data Flow Architecture</p>
-              <div className="flex flex-col md:flex-row items-center justify-center gap-3 flex-wrap">
+              {/* Row 1: Intake pipeline */}
+              <div className="flex flex-col md:flex-row items-center justify-center gap-3 flex-wrap mb-5">
                 {[
-                  { label: "Meta Ads",      sub: "Paid traffic"    },
-                  { label: "Landing Pages", sub: "Typeform embeds" },
-                  { label: "Typeform",      sub: "Lead capture"    },
-                  { label: "Zapier",        sub: "60s automation"  },
-                  { label: "Salesforce",    sub: "Source of truth" },
-                  { label: "Klaviyo",       sub: "Email nurture"   },
+                  { label: "Landing Pages / Website", sub: "All traffic sources" },
+                  { label: "Typeform",                sub: "Lead capture"        },
+                  { label: "Zapier",                  sub: "60s automation"      },
+                  { label: "Salesforce",              sub: "Source of truth"     },
                 ].map((node, i, arr) => (
                   <div key={i} className="flex items-center gap-3">
-                    <div className="text-center px-4 py-3 bg-white border border-black/[0.12] rounded-xl shadow-sm min-w-[100px]">
+                    <div className="text-center px-4 py-3 bg-white border border-black/[0.12] rounded-xl shadow-sm min-w-[130px]">
                       <p className="font-display text-xs font-semibold text-black">{node.label}</p>
                       <p className="font-mono text-[9px] text-black/35 mt-0.5">{node.sub}</p>
                     </div>
                     {i < arr.length - 1 && <ArrowRight className="w-4 h-4 text-[#C9A962] flex-shrink-0" />}
                   </div>
                 ))}
+              </div>
+              {/* Divider label */}
+              <div className="flex items-center gap-3 mb-5">
+                <div className="flex-1 border-t border-dashed border-black/[0.10]" />
+                <p className="font-mono text-[9px] text-black/30 uppercase tracking-widest px-2">Once in Salesforce — nurture & convert</p>
+                <div className="flex-1 border-t border-dashed border-black/[0.10]" />
+              </div>
+              {/* Row 2: Nurture + conversion engine */}
+              <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+                <div className="text-center px-5 py-4 bg-white border border-[#C9A962]/35 rounded-xl shadow-sm min-w-[150px]">
+                  <p className="font-display text-sm font-semibold text-black">Sales Team</p>
+                  <p className="font-mono text-[9px] text-black/40 mt-0.5">Direct outreach & conversion</p>
+                </div>
+                <span className="font-mono text-xs text-black/30">+</span>
+                <div className="text-center px-5 py-4 bg-white border border-[#C9A962]/35 rounded-xl shadow-sm min-w-[150px]">
+                  <p className="font-display text-sm font-semibold text-black">Klaviyo</p>
+                  <p className="font-mono text-[9px] text-black/40 mt-0.5">Email nurture engine</p>
+                </div>
+                <ArrowRight className="w-4 h-4 text-[#C9A962] flex-shrink-0" />
+                <div className="text-center px-5 py-4 bg-white border-2 border-[#C9A962]/50 rounded-xl shadow-sm min-w-[170px]">
+                  <p className="font-display text-sm font-semibold text-[#C9A962]">Leads → Accounts → Sales</p>
+                  <p className="font-mono text-[9px] text-black/40 mt-0.5">Conversion goal</p>
+                </div>
               </div>
             </div>
           </motion.div>
