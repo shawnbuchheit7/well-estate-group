@@ -89,13 +89,13 @@ const techStack = [
 ];
 
 const funnelStages = [
-  { stage: "Awareness", volume: "50,000+", source: "CMAA events, influencer posts, thought leadership content, LinkedIn outreach, direct referrals, sponsorships", action: "Impression or content view — no action required", color: "#C9A962" },
-  { stage: "Interest", volume: "5,000", source: "Landing page visit, Typeform start, Intercom chat initiated", action: "UTM parameters captured, Intercom bot triggered, Klaviyo Awareness flow enrolled", color: "#B8A080" },
-  { stage: "Lead Captured", volume: "1,200", source: "Typeform submission (B2B or DTC), trade show badge scan, direct referral", action: "Salesforce Lead created via Zapier within 60s. LOB assigned, UTM fields populated, owner assigned by LOB", color: "#9A8060" },
-  { stage: "Qualified", volume: "480", source: "Rep call, Intercom qualification, or Klaviyo engagement score ≥ 60", action: "Lead converted to Contact + Opportunity in Salesforce. Stage = Qualified. Klaviyo flow switches to Nurture sequence", color: "#7A6040" },
-  { stage: "Demo / Proposal", volume: "200", source: "Demo booked via Calendly link in Klaviyo email or rep outreach", action: "Demo completed, proposal sent. Salesforce stage = Proposal Sent. 48-hour follow-up task auto-created", color: "#5A4020" },
-  { stage: "Negotiation", volume: "90", source: "Prospect responds to proposal, requests pricing adjustment or references", action: "Rep logs all activity in Salesforce. Manager notified if deal stalls > 7 days at this stage", color: "#3A2010" },
-  { stage: "Closed Won", volume: "45", source: "PO received, contract signed, or DTC purchase completed", action: "Opportunity marked Closed Won. Klaviyo Customer Onboarding flow triggered. Commission Line Item created if affiliate code used", color: "#1A1008" },
+  { stage: "Awareness", volume: "", source: "CMAA events, influencer posts, thought leadership content, LinkedIn outreach, direct referrals, sponsorships", action: "Impression or content view — no action required", color: "#C9A962" },
+  { stage: "Interest", volume: "", source: "Landing page visit, Typeform start, Intercom chat initiated", action: "UTM parameters captured, Intercom bot triggered, Klaviyo Awareness flow enrolled", color: "#B8A080" },
+  { stage: "Lead Captured", volume: "", source: "Typeform submission (B2B or DTC), trade show badge scan, direct referral", action: "Salesforce Lead created via Zapier within 60s. LOB assigned, UTM fields populated, owner assigned by LOB", color: "#9A8060" },
+  { stage: "Qualified", volume: "", source: "Rep call, Intercom qualification, or Klaviyo engagement score ≥ 60", action: "Lead converted to Contact + Opportunity in Salesforce. Stage = Qualified. Klaviyo flow switches to Nurture sequence", color: "#7A6040" },
+  { stage: "Demo / Proposal", volume: "", source: "Demo booked via Calendly link in Klaviyo email or rep outreach", action: "Demo completed, proposal sent. Salesforce stage = Proposal Sent. 48-hour follow-up task auto-created", color: "#5A4020" },
+  { stage: "Negotiation", volume: "", source: "Prospect responds to proposal, requests pricing adjustment or references", action: "Rep logs all activity in Salesforce. Manager notified if deal stalls > 7 days at this stage", color: "#3A2010" },
+  { stage: "Closed Won", volume: "", source: "PO received, contract signed, or DTC purchase completed", action: "Opportunity marked Closed Won. Klaviyo Customer Onboarding flow triggered. Commission Line Item created if affiliate code used", color: "#1A1008" },
 ];
 
 const channelPlaybooks = [
@@ -481,7 +481,7 @@ export default function ZWMarketingInfrastructure() {
                     </div>
                     <div>
                       <p className="font-display text-sm font-semibold text-black">{stage.stage}</p>
-                      <p className="font-mono text-[10px] text-[#C9A962]">{stage.volume} contacts</p>
+
                     </div>
                   </div>
                   <div className="flex-1 grid md:grid-cols-2 gap-3">
@@ -499,24 +499,7 @@ export default function ZWMarketingInfrastructure() {
             ))}
           </div>
 
-          {/* Funnel summary bar */}
-          <motion.div
-            className="max-w-4xl mx-auto mt-10 p-6 bg-white border-2 border-[#C9A962]/25 rounded-2xl"
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-          >
-            <p className="font-mono text-[10px] text-[#C9A962] uppercase tracking-[0.2em] text-center mb-4">2026 Funnel Conversion Summary</p>
-            <div className="flex flex-wrap items-center justify-center gap-2">
-              {funnelStages.map((s, i) => (
-                <div key={i} className="flex items-center gap-2">
-                  <div className="text-center">
-                    <p className="font-display text-lg font-bold text-black">{s.volume}</p>
-                    <p className="font-mono text-[9px] text-black/40">{s.stage}</p>
-                  </div>
-                  {i < funnelStages.length - 1 && <ArrowRight className="w-4 h-4 text-[#C9A962]" />}
-                </div>
-              ))}
-            </div>
-          </motion.div>
+
         </div>
       </section>
 
@@ -548,9 +531,13 @@ export default function ZWMarketingInfrastructure() {
           <Divider />
           <SectionHeader
             eyebrow="Klaviyo Email Nurture"
-            title="Four Automated Drip Flows"
-            body="WEG recommends Klaviyo as the email platform — native Salesforce sync, $150/mo, and built for hybrid B2B/DTC brands. Four flows cover every lead scenario from first touch to re-engagement."
+            title="Automated Drip Flows"
+            body="WEG recommends Klaviyo as the email platform — native Salesforce sync, $150/mo, and built for hybrid B2B/DTC brands. The examples below illustrate what can be built — actual flows, sequences, and messaging will be developed collaboratively with the ZeroWheel team."
           />
+          <div className="max-w-3xl mx-auto mb-8 px-5 py-4 bg-[#C9A962]/[0.07] border border-[#C9A962]/25 rounded-xl text-center">
+            <p className="font-mono text-[10px] text-[#C9A962] uppercase tracking-[0.15em] mb-1">Note</p>
+            <p className="font-body text-xs text-black/55">The flows shown here are illustrative examples of what can be built in Klaviyo. Specific sequences, copy, timing, and triggers will be defined and refined as part of the WEG engagement.</p>
+          </div>
           <div className="max-w-5xl mx-auto">
             <div className="flex flex-wrap gap-2 mb-8 justify-center">
               {emailFlows.map((flow, i) => (
