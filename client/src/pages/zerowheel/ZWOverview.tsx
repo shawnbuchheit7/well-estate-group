@@ -429,6 +429,58 @@ export default function ZWOverview() {
             ))}
           </motion.div>
 
+          {/* Pricing Discipline */}
+          <motion.div
+            className="max-w-5xl mx-auto mb-10"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
+            <motion.div variants={fadeInUp} className="rounded-2xl border border-black/[0.12] bg-white p-8 shadow-[0_2px_12px_rgba(0,0,0,0.03)]">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-10 h-10 rounded-full bg-[#C9A962]/10 flex items-center justify-center">
+                  <Shield className="w-5 h-5 text-[#C9A962]" />
+                </div>
+                <h3 className="font-display text-xl font-semibold text-black">Pricing Discipline &amp; Negotiation Guidelines</h3>
+              </div>
+              <div className="space-y-4">
+                {[
+                  {
+                    rule: "Retail / DTC is Zero Discount",
+                    detail: "Consumer pricing holds at full MSRP ($1,095) across all direct channels — e-commerce, social, retail, and influencer. No exceptions. This protects brand positioning and establishes the price anchor for all downstream negotiations.",
+                  },
+                  {
+                    rule: "GSA Must Be $1 Below Best Commercial Pricing",
+                    detail: "Federal procurement regulations require that GSA Schedule pricing reflects the best available commercial price. ZeroWheel's GSA price of $694 is set $1 below the commercial floor to satisfy this requirement while maintaining maximum margin.",
+                  },
+                  {
+                    rule: "Discounts Are Floor Thresholds — Not Starting Points",
+                    detail: "The listed discount percentages (25% Vertical, 40% Commercial) represent maximum allowable discounts — do-not-exceed ceilings. Every negotiation should aim to close above the floor. Protect margin in every deal; the floor is the last resort, not the default.",
+                  },
+                  {
+                    rule: "National Account Pricing Requires Margin Protection",
+                    detail: "National accounts typically negotiate the deepest discounts within each LOB. While volume justifies concessions, sales teams must protect margin by leveraging volume commitments, multi-year terms, and bundled services rather than simply lowering unit price.",
+                  },
+                  {
+                    rule: "Factor Extended Warranties Into National Account Negotiations",
+                    detail: "Large accounts and brand-standard partners often require extended warranty coverage beyond the standard term. Build warranty cost into the deal structure upfront — do not offer best pricing and then absorb warranty obligations separately. Failure to account for this erodes margin and creates unsustainable precedent.",
+                  },
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-3 items-start">
+                    <div className="w-6 h-6 rounded-full bg-[#C9A962]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="font-mono text-[10px] font-bold text-[#C9A962]">{i + 1}</span>
+                    </div>
+                    <div>
+                      <p className="font-display text-sm font-semibold text-black mb-0.5">{item.rule}</p>
+                      <p className="font-body text-xs text-black/55 leading-relaxed">{item.detail}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </motion.div>
+
           {/* Revenue Model Summary */}
           <motion.div
             className="max-w-5xl mx-auto"
