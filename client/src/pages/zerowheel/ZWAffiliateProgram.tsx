@@ -99,8 +99,7 @@ const earningScenarios = [
 const trackingMethods = [
   { method: "Unique Promo Code",   detail: "Every affiliate receives a personal code (e.g., DRMIKE20). Applied at DTC checkout. Captured in Salesforce Commission__c object within 60 seconds via Zapier.", icon: Hash,   color: GOLD         },
   { method: "UTM Tracking Link",   detail: "Personalized URL with utm_source=affiliate&utm_medium=referral&utm_campaign={partner_code}. Captures traffic source even if promo code not used at checkout.", icon: Link2,  color: "#1877F2"    },
-  { method: "30-Day Cookie",       detail: "Browser cookie tracks visitors from affiliate link for 30 days. If they purchase within 30 days without using the code, commission is still attributed.", icon: Clock,  color: "#22C55E"    },
-  { method: "Salesforce Commission Object", detail: "Custom SF object Commission__c with fields: Partner_Code__c, Units_Sold__c, Commission_Rate__c, Payout_Status__c, Payout_Date__c. Monthly report auto-generated.", icon: Database, color: "#0070D2" },
+
 ];
 
 const onboardingSteps = [
