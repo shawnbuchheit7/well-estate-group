@@ -324,15 +324,15 @@ const emailFlows = [
 ];
 
 const lobStrategies = [
-  { name: "Private Clubs", icon: Star, color: GOLD, tier: "Tier 1", price: "$825", entry: "CMAA chapter relationships, Troon/Club Corp enterprise", messaging: "Differentiate your wellness program — ZeroWheel is the only motorized core trainer on the market. Give members a reason to use your fitness center every day." },
-  { name: "Maritime / Cruise", icon: Ship, color: "#0EA5E9", tier: "Tier 1", price: "$695", entry: "One Spa World relationship, Sea Trade conference", messaging: "In-room wellness and spa fitness — ZeroWheel fits in a stateroom, requires no floor space, and delivers a premium amenity guests will remember." },
-  { name: "Hospitality", icon: Building2, color: "#8B5CF6", tier: "Tier 1", price: "$825", entry: "Delos relationship, luxury hotel wellness directors", messaging: "Elevate your in-room wellness offering. ZeroWheel is compact, silent, and positions your property as a leader in guest wellness." },
-  { name: "Sports Performance", icon: Dumbbell, color: "#22C55E", tier: "Tier 1", price: "$825", entry: "TPI trainers, NASM/Dr. Mike Clark, club sports programs", messaging: "Core strength and rotational power are the foundation of every sport. ZeroWheel gives trainers a programmable, measurable tool for athlete development." },
-  { name: "Healthcare / Rehab", icon: Stethoscope, color: "#EF4444", tier: "Tier 2", price: "$825", entry: "Physical therapy networks, hospital wellness programs", messaging: "Controlled resistance and motorized assistance make ZeroWheel ideal for core rehabilitation. Programmable difficulty supports progressive recovery protocols." },
-  { name: "Senior Living", icon: Users, color: "#60A5FA", tier: "Tier 2", price: "$825", entry: "Senior living wellness directors, CCRC networks", messaging: "Low-impact core training for longevity. ZeroWheel's motorized assistance makes it accessible for older adults focused on balance, stability, and independence." },
-  { name: "Corporate Wellness", icon: Building2, color: "#F472B6", tier: "Tier 2", price: "$825", entry: "HR wellness program directors, corporate gym operators", messaging: "Give employees a reason to use the corporate gym. ZeroWheel is compact, engaging, and supports the core strength that desk workers need most." },
-  { name: "Government / Military", icon: Shield, color: "#34D399", tier: "Tier 3", price: "$695", entry: "GSA schedule, military fitness program contacts", messaging: "GSA-eligible at $694. ZeroWheel supports the functional core strength requirements of military fitness standards and government wellness programs." },
-  { name: "Consumer DTC", icon: Store, color: "#F59E0B", tier: "Tier 3", price: "$1,095", entry: "Meta ads, affiliate/influencer program, organic search", messaging: "Train like a professional athlete from home. ZeroWheel delivers motorized core resistance that no other home fitness device can match." },
+  { name: "Private Clubs", icon: Star, color: GOLD, entry: "CMAA chapter relationships, Troon/Club Corp enterprise", messaging: "Differentiate your wellness program — ZeroWheel is the only motorized core trainer on the market. Give members a reason to use your fitness center every day." },
+  { name: "Maritime / Cruise", icon: Ship, color: "#0EA5E9", entry: "One Spa World relationship, Sea Trade conference", messaging: "In-room wellness and spa fitness — ZeroWheel fits in a stateroom, requires no floor space, and delivers a premium amenity guests will remember." },
+  { name: "Hospitality", icon: Building2, color: "#8B5CF6", entry: "Delos relationship, luxury hotel wellness directors", messaging: "Elevate your in-room wellness offering. ZeroWheel is compact, silent, and positions your property as a leader in guest wellness." },
+  { name: "Sports Performance", icon: Dumbbell, color: "#22C55E", entry: "TPI trainers, NASM/Dr. Mike Clark, club sports programs", messaging: "Core strength and rotational power are the foundation of every sport. ZeroWheel gives trainers a programmable, measurable tool for athlete development." },
+  { name: "Healthcare / Rehab", icon: Stethoscope, color: "#EF4444", entry: "Physical therapy networks, hospital wellness programs", messaging: "Controlled resistance and motorized assistance make ZeroWheel ideal for core rehabilitation. Programmable difficulty supports progressive recovery protocols." },
+  { name: "Senior Living", icon: Users, color: "#60A5FA", entry: "Senior living wellness directors, CCRC networks", messaging: "Low-impact core training for longevity. ZeroWheel's motorized assistance makes it accessible for older adults focused on balance, stability, and independence." },
+  { name: "Corporate Wellness", icon: Building2, color: "#F472B6", entry: "HR wellness program directors, corporate gym operators", messaging: "Give employees a reason to use the corporate gym. ZeroWheel is compact, engaging, and supports the core strength that desk workers need most." },
+  { name: "Government / Military", icon: Shield, color: "#34D399", entry: "GSA schedule, military fitness program contacts", messaging: "ZeroWheel supports the functional core strength requirements of military fitness standards and government wellness programs." },
+  { name: "Consumer DTC", icon: Store, color: "#F59E0B", entry: "Affiliate/influencer program, organic search, thought leadership", messaging: "Train like a professional athlete from home. ZeroWheel delivers motorized core resistance that no other home fitness device can match." },
 ];
 
 const accountabilityKPIs = [
@@ -650,10 +650,7 @@ export default function ZWMarketingInfrastructure() {
                   </div>
                   <div>
                     <p className="font-display text-sm font-semibold text-black">{lob.name}</p>
-                    <div className="flex items-center gap-2 mt-0.5">
-                      <span className="font-mono text-[9px] px-1.5 py-0.5 rounded-full bg-[#C9A962]/10 text-[#C9A962]">{lob.tier}</span>
-                      <span className="font-mono text-[9px] text-black/40">{lob.price}</span>
-                    </div>
+
                   </div>
                 </div>
                 <p className="font-mono text-[9px] text-black/35 uppercase tracking-wider mb-1">Entry Point</p>
