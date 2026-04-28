@@ -185,7 +185,7 @@ export default function ZWOverview() {
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-2 gap-4 max-w-5xl mx-auto"
+            className="grid md:grid-cols-3 gap-4 max-w-6xl mx-auto"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -193,49 +193,74 @@ export default function ZWOverview() {
           >
             {[
               {
-                title: "Private Clubs & Fitness Centers",
-                description: "Platinum Clubs of America, Troon-managed properties, CMAA network, and premium fitness facilities. Position as a flagship core training station within club floor plans.",
+                title: "Private Clubs",
+                description: "Platinum Clubs of America, Troon-managed properties, CMAA network, and luxury athletic clubs. Position as a flagship core training station within premium club floor plans.",
+                icon: Star,
+                tag: "Vertical · $825",
+              },
+              {
+                title: "Commercial Fitness Clubs",
+                description: "Large-format fitness chains and boutique studios — high-volume placement with revenue-share, group class integration, and new premium member tier creation.",
                 icon: Dumbbell,
+                tag: "Commercial · $695",
               },
               {
-                title: "Professional & Collegiate Sports",
-                description: "Direct relationships with NFL, MLB, PGA, and NCAA strength & conditioning programs. Leverage existing athlete endorsements to drive institutional adoption.",
-                icon: Award,
-              },
-              {
-                title: "Medical, Rehab & Longevity",
+                title: "Medical & Rehabilitation",
                 description: "Physical therapy clinics, physician-led longevity centers, and hospital wellness programs. Scalable difficulty makes it ideal for progressive rehabilitation protocols.",
                 icon: Stethoscope,
+                tag: "Vertical · $825",
+              },
+              {
+                title: "Direct-to-Consumer",
+                description: "Premium e-commerce and retail — the broadest reach channel for brand awareness, full margin capture, and social proof generation via influencer and affiliate programs.",
+                icon: Package,
+                tag: "DTC · $1,095",
+              },
+              {
+                title: "Corporate Wellness",
+                description: "Fortune 500 wellness programs addressing the #1 workplace injury (lower back pain) with gamified engagement, measurable ROI, and executive wellness positioning.",
+                icon: Target,
+                tag: "Vertical · $825",
+              },
+              {
+                title: "Professional Sports",
+                description: "Direct relationships with NFL, MLB, PGA, and NCAA strength & conditioning programs. Leverage existing athlete endorsements to drive institutional adoption.",
+                icon: Award,
+                tag: "Vertical · $825",
+              },
+              {
+                title: "Hospitality & Amenities",
+                description: "5-star hotels, luxury resorts, wellness retreats, and premium residential amenity centers. Compact footprint and self-guided experience for space-constrained environments.",
+                icon: Building2,
+                tag: "Vertical · $825",
               },
               {
                 title: "Military & Government",
                 description: "GSA-compliant procurement pathway. Target Army MWR, Air Force fitness centers, and law enforcement tactical fitness programs through established government channels.",
                 icon: Shield,
+                tag: "GSA · $694",
               },
               {
-                title: "Hospitality & Maritime",
-                description: "One Spa World partnership across 144 vessels at sea. Premium hotel fitness centers, destination resorts, and cruise ship wellness programs — compact footprint is ideal.",
+                title: "Cruise & Maritime",
+                description: "One Spa World partnership across 144 vessels at sea. Cruise ship wellness programs and superyacht installations — zero-maintenance magnetic resistance in the smallest footprint.",
                 icon: Ship,
-              },
-              {
-                title: "Corporate Wellness & Amenities",
-                description: "Multi-family residential amenity centers, corporate headquarters fitness facilities, and executive wellness programs. Scalable from single-unit to fleet deployment.",
-                icon: Building2,
+                tag: "Vertical · $825",
               },
             ].map((channel, i) => (
               <motion.div
                 key={i}
                 variants={fadeInUp}
                 whileHover={{ y: -3, boxShadow: "0 8px 24px rgba(0,0,0,0.06)" }}
-                className="flex gap-4 items-start p-6 rounded-xl bg-white border border-black/[0.12] hover:border-[#C9A962]/25 hover:shadow-lg transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
+                className="flex flex-col p-5 rounded-xl bg-white border border-black/[0.12] hover:border-[#C9A962]/25 hover:shadow-lg transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
               >
-                <div className="w-10 h-10 rounded-full bg-[#C9A962]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <channel.icon className="w-5 h-5 text-[#C9A962]" />
+                <div className="flex items-center justify-between mb-3">
+                  <div className="w-9 h-9 rounded-full bg-[#C9A962]/10 flex items-center justify-center flex-shrink-0">
+                    <channel.icon className="w-4.5 h-4.5 text-[#C9A962]" />
+                  </div>
+                  <span className="font-mono text-[10px] tracking-wider text-black/40 bg-black/[0.04] px-2 py-0.5 rounded-full">{channel.tag}</span>
                 </div>
-                <div>
-                  <h3 className="font-display text-base font-semibold text-black mb-1.5">{channel.title}</h3>
-                  <p className="font-body text-sm text-black/55 leading-relaxed">{channel.description}</p>
-                </div>
+                <h3 className="font-display text-sm font-semibold text-black mb-1.5">{channel.title}</h3>
+                <p className="font-body text-xs text-black/55 leading-relaxed">{channel.description}</p>
               </motion.div>
             ))}
           </motion.div>
