@@ -8,7 +8,7 @@
 import { motion } from "framer-motion";
 import {
   Star, Dumbbell, Stethoscope, Package, Target, Users, Building2, Shield, Ship,
-  ArrowRight, Globe, Handshake,
+  ArrowRight, Globe, Handshake, UserCheck,
 } from "lucide-react";
 import Layout from "@/components/Layout";
 import LightHero from "@/components/LightHero";
@@ -22,7 +22,27 @@ const sections = [
   { id: "partnerships", label: "Key Partnerships" },
 ];
 
-const macroLOBs = [
+interface Contact {
+  name: string;
+  title: string;
+  org: string;
+  note?: string;
+}
+
+interface MacroLOB {
+  name: string;
+  icon: typeof Star;
+  color: string;
+  category: string;
+  pricing: string;
+  description: string;
+  targets: string[];
+  metrics: { accounts: string; avgDeal: string; cycle: string };
+  contacts?: Contact[];
+  contactNote?: string;
+}
+
+const macroLOBs: MacroLOB[] = [
   {
     name: "Private Clubs",
     icon: Star,
@@ -42,6 +62,14 @@ const macroLOBs = [
       "Kopplin Kuebler & Wallace Network",
     ],
     metrics: { accounts: "2,500+", avgDeal: "$3K–$15K", cycle: "60–90 days" },
+    contacts: [
+      { name: "David Pillsbury", title: "CEO", org: "Invited (formerly ClubCorp)", note: "Largest private club operator in North America" },
+      { name: "Michele Meleski", title: "SVP, National Fitness & Wellness", org: "Invited", note: "29+ years at Invited; oversees fitness across 200+ clubs" },
+      { name: "Cindy Anderson", title: "SVP, Clubhouse Design & Development", org: "Troon", note: "At Troon since 1994; leads all clubhouse design" },
+      { name: "Dr. Kathy Hoeft, DPT", title: "Director of Fitness", org: "Port Royal Club (Naples, FL)", note: "30+ years in PT and athletic training" },
+      { name: "Luis Bracamonte", title: "Director of Fitness & Wellness", org: "Ocean Reef Club (Key Largo, FL)", note: "26 years coaching; Senior Staff since 2024" },
+      { name: "Brett Morris, ECM, CMAA Fellow", title: "General Manager / COO", org: "The Club at Admirals Cove (Jupiter, FL)", note: "FLCMAA Vice President; 2022 CMAA Club Executive of the Year" },
+    ],
   },
   {
     name: "Commercial Fitness Clubs",
@@ -59,6 +87,12 @@ const macroLOBs = [
       "Rochester Athletic Club (6 units, 16,000+ members)",
     ],
     metrics: { accounts: "1,200+", avgDeal: "$5K–$25K", cycle: "60–90 days" },
+    contacts: [
+      { name: "Bahram Akradi", title: "Founder, Chairman & CEO", org: "Life Time (NYSE: LTH)", note: "Founded 1992; largest luxury fitness club operator in North America" },
+      { name: "Jay Megna", title: "Sales Leader", org: "Technogym", note: "#1 sales rep; ~$25M average annual sales" },
+      { name: "Jonathan H. Owsley", title: "Managing Partner, Growth Fund", org: "L Catterton", note: "Investors in Equinox, eGym, Peloton, ClassPass, CorePower Yoga, Pure Barre" },
+      { name: "John Macdonald", title: "Vice President, Middle Market Fund", org: "L Catterton", note: "Harvard Business School; consumer-focused PE" },
+    ],
   },
   {
     name: "Medical & Rehabilitation",
@@ -76,6 +110,9 @@ const macroLOBs = [
       "VA Rehabilitation Programs",
     ],
     metrics: { accounts: "3,000+", avgDeal: "$2K–$10K", cycle: "90–120 days" },
+    contacts: [
+      { name: "Dr. Mike Clark, DPT, MS", title: "Founder, Chairman & CEO", org: "Fusionetics", note: "Founder/former CEO of NASM; created OPT Model; serves 1,200+ pro/college teams, 250K+ athletes" },
+    ],
   },
   {
     name: "Direct-to-Consumer",
@@ -94,6 +131,7 @@ const macroLOBs = [
       "Podcast Sponsorships (Huberman, Attia)",
     ],
     metrics: { accounts: "Unlimited", avgDeal: "$1,095", cycle: "Instant–7 days" },
+    contactNote: "Accelerated through robust B2B2C programs — members and users of commercial channels become individual buyers at full MSRP.",
   },
   {
     name: "Corporate Wellness",
@@ -110,6 +148,7 @@ const macroLOBs = [
       "Employee Engagement Case Studies",
     ],
     metrics: { accounts: "2,000+", avgDeal: "$5K–$20K", cycle: "60–90 days" },
+    contactNote: "Target accounts include KKR, PGA TOUR Global Home, and other premium corporate HQ fitness amenities.",
   },
   {
     name: "Professional Sports",
@@ -129,6 +168,11 @@ const macroLOBs = [
       "Dr. Mike Clark & Performance Expert Network",
     ],
     metrics: { accounts: "800+", avgDeal: "$2K–$10K", cycle: "30–60 days" },
+    contacts: [
+      { name: "Dr. Mike Clark, DPT, MS", title: "Founder, Chairman & CEO", org: "Fusionetics / NASM", note: "Sports Medicine Consultant — Utah Jazz & New Orleans Pelicans; former PT — Phoenix Suns; clients across NFL, NBA, MLB, NHL, MLS" },
+      { name: "Brandon Marshall", title: "Founder & CEO", org: "House of Athlete (Weston, FL)", note: "Former NFL WR, 6x Pro Bowl, 13 seasons; lifestyle wellness brand for pro and everyday athletes" },
+      { name: "Mo Wells, CSCS", title: "Director of Pro & Elite Sports", org: "Elite Performance Training (Frisco, TX)", note: "11+ years in sports performance; trains NFL draft prospects and pro athletes" },
+    ],
   },
   {
     name: "Hospitality & Amenities",
@@ -147,6 +191,10 @@ const macroLOBs = [
       "White-Label Branding Partnerships",
     ],
     metrics: { accounts: "5,000+", avgDeal: "$1K–$8K", cycle: "90–120 days" },
+    contacts: [
+      { name: "Suzanne Holbrook", title: "Senior Director, Global Spa, Fitness & Wellness", org: "Marriott International", note: "40+ years in wellness; Global Leader for Marriott Spa/Fitness/Wellness Division" },
+      { name: "James Willoughby", title: "VP & General Manager, Customer Operations", org: "Virgin Galactic", note: "30+ years in luxury hospitality; overseeing astronaut campus and training facility" },
+    ],
   },
   {
     name: "Military & Government",
@@ -181,6 +229,11 @@ const macroLOBs = [
       "Maritime Fitness Design Consultants",
     ],
     metrics: { accounts: "500+", avgDeal: "$5K–$25K", cycle: "120–180 days" },
+    contacts: [
+      { name: "Byron Blackwood", title: "Senior Director, Product Strategy & Innovation", org: "OneSpaWorld", note: "Joined 2011; leads product strategy across 144+ vessels" },
+      { name: "Tim Dux", title: "EVP, Maritime Operations", org: "OneSpaWorld", note: "20+ years in fitness; oversees all maritime operations" },
+      { name: "Ozer Balli", title: "SVP, Hotel Operations", org: "Disney Cruise Line", note: "Forbes Travel Guide Cruise Advisory Committee; promoted to SVP 2023" },
+    ],
   },
 ];
 
@@ -248,7 +301,7 @@ export default function ZWSales() {
             >
               <div className="bg-[#0A0A0A] px-6 py-3 flex items-center justify-between">
                 <span className="font-display text-sm font-semibold text-white">Pricing Structure</span>
-                <span className="font-mono text-xs text-[#C9A962]">MSRP $1,095 — Max Discounts (Do Not Exceed)</span>
+                <span className="font-mono text-[9px] text-white/40 tracking-wider uppercase">Max Discount Thresholds — Do Not Exceed</span>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-black/[0.06]">
                 {[
@@ -379,6 +432,33 @@ export default function ZWSales() {
                       </div>
                     </div>
                   </div>
+
+                  {/* Key Contacts & Influencers */}
+                  {(lob.contacts || lob.contactNote) && (
+                    <div className="mt-6 pt-5 border-t border-black/[0.08]">
+                      <div className="flex items-center gap-2 mb-3">
+                        <UserCheck className="w-4 h-4 text-[#C9A962]" />
+                        <p className="font-mono text-[10px] text-[#C9A962] uppercase tracking-[0.15em] font-semibold">Key Contacts & Influencers</p>
+                      </div>
+                      {lob.contactNote && (
+                        <p className="font-body text-sm text-black/50 italic">{lob.contactNote}</p>
+                      )}
+                      {lob.contacts && (
+                        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                          {lob.contacts.map((contact, j) => (
+                            <div key={j} className="rounded-lg border border-black/[0.08] bg-[#FAFAF8] p-3 hover:border-[#C9A962]/30 transition-colors">
+                              <p className="font-display text-sm font-semibold text-black leading-tight">{contact.name}</p>
+                              <p className="font-body text-xs text-black/55 mt-0.5">{contact.title}</p>
+                              <p className="font-body text-xs text-[#C9A962] font-medium mt-0.5">{contact.org}</p>
+                              {contact.note && (
+                                <p className="font-body text-[11px] text-black/35 mt-1.5 leading-relaxed">{contact.note}</p>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
               </motion.div>
             ))}
