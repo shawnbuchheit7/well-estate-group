@@ -2,6 +2,9 @@
  * Password Gate - Requires password to access the site
  * Stores authentication in sessionStorage so it persists during the browser session
  * but requires re-entry when the browser is closed
+ *
+ * ZeroWheel routes (/gtm/zerowheel/*) bypass this gate entirely —
+ * ZWPasswordGate handles authentication for those routes.
  */
 
 import { useState, useEffect } from 'react';
@@ -15,21 +18,40 @@ interface PasswordGateProps {
   children: React.ReactNode;
 }
 
+// Check if the current path is a ZeroWheel route — evaluated once at module level
+// and re-checked on each render via window.location so navigation changes are caught
+function isZeroWheelRoute() {
+  return window.location.pathname.startsWith('/gtm/zerowheel');
+}
+
 export default function PasswordGate({ children }: PasswordGateProps) {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // Skip all gate logic immediately if on a ZeroWheel route
+  const onZWRoute = isZeroWheelRoute();
+
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    // If on a ZW route, treat as authenticated so we never block rendering
+    if (onZWRoute) return true;
+    return sessionStorage.getItem(STORAGE_KEY) === 'true';
+  });
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  // Skip loading state entirely on ZW routes
+  const [isLoading, setIsLoading] = useState(!onZWRoute);
 
   useEffect(() => {
-    // Check if already authenticated in this session
+    if (onZWRoute) return; // Nothing to check on ZW routes
     const auth = sessionStorage.getItem(STORAGE_KEY);
     if (auth === 'true') {
       setIsAuthenticated(true);
     }
     setIsLoading(false);
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Always pass through on ZeroWheel routes — ZWPasswordGate handles auth there
+  if (onZWRoute) {
+    return <>{children}</>;
+  }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -40,7 +62,6 @@ export default function PasswordGate({ children }: PasswordGateProps) {
     } else {
       setError(true);
       setPassword('');
-      // Clear error after 3 seconds
       setTimeout(() => setError(false), 3000);
     }
   };
@@ -50,11 +71,6 @@ export default function PasswordGate({ children }: PasswordGateProps) {
       handleSubmit(e);
     }
   };
-
-  // If on a ZeroWheel route, skip the WEG gate entirely — ZWPasswordGate handles auth there
-  if (window.location.pathname.startsWith('/gtm/zerowheel')) {
-    return <>{children}</>;
-  }
 
   if (isLoading) {
     return (
