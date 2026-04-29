@@ -51,6 +51,11 @@ export default function PasswordGate({ children }: PasswordGateProps) {
     }
   };
 
+  // If on a ZeroWheel route, skip the WEG gate entirely — ZWPasswordGate handles auth there
+  if (window.location.pathname.startsWith('/gtm/zerowheel')) {
+    return <>{children}</>;
+  }
+
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white">
