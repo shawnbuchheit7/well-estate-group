@@ -1,13 +1,16 @@
 /*
  * GTM Strategic Markets Page - Where to Play Matrix
- * Shows: Y1 and Y2 strategic market positioning matrices
+ * Shows: Y1 and Y2 strategic market positioning using the 9 Macro LOBs
  * Design: Luxury black/grey/gold palette, fully responsive
  * OPTIMIZED: Interactive matrix, animated transitions, enhanced hover states
  */
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Target, TrendingUp, Zap, Eye, ArrowRight, ArrowUpRight, ArrowDownRight } from "lucide-react";
+import {
+  Target, TrendingUp, Zap, Eye, ArrowRight, ArrowUpRight, ArrowDownRight,
+  Star, Dumbbell, Stethoscope, Package, Users, Building2, Shield, Ship,
+} from "lucide-react";
 import Layout from "@/components/Layout";
 import LightHero from "@/components/LightHero";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
@@ -22,7 +25,9 @@ const sections = [
 
 interface MarketItem {
   name: string;
+  icon: typeof Star;
   highlighted?: boolean;
+  category?: string;
 }
 
 interface Quadrant {
@@ -42,9 +47,9 @@ const y1Quadrants: Quadrant[] = [
     bg: "bg-white",
     iconBg: "bg-[#C9A962]/15",
     items: [
-      { name: "Health Care", highlighted: true },
-      { name: "Golf & Country Clubs", highlighted: true },
-      { name: "Live/Work/Play", highlighted: true },
+      { name: "Private Clubs", icon: Star, highlighted: true, category: "Vertical" },
+      { name: "Medical & Rehabilitation", icon: Stethoscope, highlighted: true, category: "Vertical" },
+      { name: "Professional Sports", icon: Users, highlighted: true, category: "Vertical" },
     ],
   },
   {
@@ -54,8 +59,9 @@ const y1Quadrants: Quadrant[] = [
     bg: "bg-[#FAFAF8]",
     iconBg: "bg-black/[0.06]",
     items: [
-      { name: "Corporate" },
-      { name: "Maritime" },
+      { name: "Commercial Fitness Clubs", icon: Dumbbell, category: "Commercial" },
+      { name: "Cruise & Maritime", icon: Ship, category: "Vertical" },
+      { name: "Corporate Wellness", icon: Target, category: "Vertical" },
     ],
   },
   {
@@ -65,8 +71,8 @@ const y1Quadrants: Quadrant[] = [
     bg: "bg-[#FAFAF8]",
     iconBg: "bg-black/[0.06]",
     items: [
-      { name: "Sports Agents" },
-      { name: "Residential Multi-Family BTR" },
+      { name: "Direct-to-Consumer", icon: Package, category: "DTC" },
+      { name: "Hospitality & Amenities", icon: Building2, category: "Vertical" },
     ],
   },
   {
@@ -76,15 +82,7 @@ const y1Quadrants: Quadrant[] = [
     bg: "bg-[#F7F7F5]",
     iconBg: "bg-black/[0.06]",
     items: [
-      { name: "Yacht Clubs" },
-      { name: "City Clubs" },
-      { name: "Destination Resorts" },
-      { name: "City Hotels" },
-      { name: "Athletic Clubs" },
-      { name: "Boutique Studios" },
-      { name: "Parks & Rec" },
-      { name: "Residential Condo BTO" },
-      { name: "Sports Performance Centers" },
+      { name: "Military & Government", icon: Shield, category: "GSA" },
     ],
   },
 ];
@@ -97,10 +95,11 @@ const y2Quadrants: Quadrant[] = [
     bg: "bg-white",
     iconBg: "bg-[#C9A962]/15",
     items: [
-      { name: "Health Care", highlighted: true },
-      { name: "Golf & Country Clubs", highlighted: true },
-      { name: "Live/Work/Play", highlighted: true },
-      { name: "Residential Multi-Family BTR" },
+      { name: "Private Clubs", icon: Star, highlighted: true, category: "Vertical" },
+      { name: "Medical & Rehabilitation", icon: Stethoscope, highlighted: true, category: "Vertical" },
+      { name: "Professional Sports", icon: Users, highlighted: true, category: "Vertical" },
+      { name: "Commercial Fitness Clubs", icon: Dumbbell, highlighted: true, category: "Commercial" },
+      { name: "Hospitality & Amenities", icon: Building2, category: "Vertical" },
     ],
   },
   {
@@ -110,8 +109,8 @@ const y2Quadrants: Quadrant[] = [
     bg: "bg-[#FAFAF8]",
     iconBg: "bg-black/[0.06]",
     items: [
-      { name: "Corporate" },
-      { name: "Parks & Rec" },
+      { name: "Corporate Wellness", icon: Target, category: "Vertical" },
+      { name: "Cruise & Maritime", icon: Ship, category: "Vertical" },
     ],
   },
   {
@@ -121,8 +120,8 @@ const y2Quadrants: Quadrant[] = [
     bg: "bg-[#FAFAF8]",
     iconBg: "bg-black/[0.06]",
     items: [
-      { name: "Sports Agents" },
-      { name: "Boutique Studios" },
+      { name: "Direct-to-Consumer", icon: Package, category: "DTC" },
+      { name: "Military & Government", icon: Shield, category: "GSA" },
     ],
   },
   {
@@ -131,16 +130,7 @@ const y2Quadrants: Quadrant[] = [
     icon: TrendingUp,
     bg: "bg-[#F7F7F5]",
     iconBg: "bg-black/[0.06]",
-    items: [
-      { name: "Yacht Clubs" },
-      { name: "City Clubs" },
-      { name: "Destination Resorts" },
-      { name: "City Hotels" },
-      { name: "Athletic Clubs" },
-      { name: "Maritime" },
-      { name: "Residential Condo BTO" },
-      { name: "Sports Performance Centers" },
-    ],
+    items: [],
   },
 ];
 
@@ -193,25 +183,33 @@ function MatrixGrid({ quadrants, year }: { quadrants: Quadrant[]; year: number }
               {/* Divider */}
               <div className={`h-px w-full mb-3 sm:mb-4 ${i === 0 ? 'bg-[#C9A962]/25' : 'bg-black/[0.06]'}`} />
 
-              {/* Pills */}
-              <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-auto">
-                {q.items.map((item, j) => (
-                  <motion.span
+              {/* LOB Pills */}
+              <div className="flex flex-wrap gap-2 mt-auto">
+                {q.items.length > 0 ? q.items.map((item, j) => (
+                  <motion.div
                     key={j}
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.3 + j * 0.04 }}
-                    whileHover={{ scale: 1.05, y: -1 }}
-                    className={`px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-medium tracking-wide transition-all cursor-default ${
+                    transition={{ delay: 0.3 + j * 0.06 }}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    className={`flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-[11px] sm:text-xs font-medium tracking-wide transition-all cursor-default ${
                       item.highlighted
                         ? "bg-black text-white shadow-md"
                         : "bg-white text-black/70 border border-black/[0.15] hover:border-[#C9A962]/30"
                     }`}
                   >
-                    {item.name}
-                  </motion.span>
-                ))}
+                    <item.icon className={`w-3.5 h-3.5 flex-shrink-0 ${item.highlighted ? 'text-[#C9A962]' : 'text-black/40'}`} />
+                    <span>{item.name}</span>
+                    {item.category && (
+                      <span className={`font-mono text-[8px] tracking-wider uppercase ml-1 ${item.highlighted ? 'text-white/50' : 'text-black/30'}`}>
+                        {item.category}
+                      </span>
+                    )}
+                  </motion.div>
+                )) : (
+                  <span className="font-body text-xs text-black/30 italic">All LOBs promoted to higher quadrants</span>
+                )}
               </div>
             </motion.div>
           ))}
@@ -228,8 +226,6 @@ function MatrixGrid({ quadrants, year }: { quadrants: Quadrant[]; year: number }
 }
 
 export default function ZWStrategicMarkets() {
-  const [activeYear, setActiveYear] = useState<1 | 2>(1);
-
   return (
     <Layout section="gtm-zerowheel">
       <SectionNav sections={sections} />
@@ -239,7 +235,13 @@ export default function ZWStrategicMarkets() {
         <LightHero
           eyebrow="WEG Market Prioritization"
           title="Where to Play"
-          description="WEG's recommended market prioritization framework for ZeroWheel — mapping each line of business against market attractiveness and ease of access, evolving from Year 1 to Year 2 as relationships mature and market intelligence deepens."
+          description="WEG's recommended market prioritization framework for ZeroWheel — mapping each of the nine macro lines of business against market attractiveness and ease of access, evolving from Year 1 to Year 2 as relationships mature and market intelligence deepens."
+          stats={[
+            { value: "9", label: "Macro LOBs" },
+            { value: "4", label: "Quadrants" },
+            { value: "Y1→Y2", label: "Evolution" },
+            { value: "3", label: "Focus Markets" },
+          ]}
         />
       </div>
 
@@ -260,7 +262,7 @@ export default function ZWStrategicMarkets() {
               Initial Market Positioning
             </motion.h2>
             <motion.p variants={fadeInUp} className="font-body text-xs sm:text-sm text-black/40 mt-3 max-w-xl mx-auto">
-              Gold-highlighted segments represent the primary focus and drive markets for initial market entry.
+              Gold-highlighted LOBs represent the primary focus and drive markets for initial market entry. These are the highest-conviction verticals with existing relationships and fastest path to revenue.
             </motion.p>
           </motion.div>
 
@@ -290,7 +292,7 @@ export default function ZWStrategicMarkets() {
               Evolved Market Positioning
             </motion.h2>
             <motion.p variants={fadeInUp} className="font-body text-xs sm:text-sm text-black/40 mt-3 max-w-xl mx-auto">
-              Segments shift between quadrants as market intelligence matures and relationships deepen.
+              LOBs shift between quadrants as market intelligence matures, relationships deepen, and early wins create momentum for adjacent verticals.
             </motion.p>
           </motion.div>
 
@@ -319,10 +321,9 @@ export default function ZWStrategicMarkets() {
 
             <motion.div variants={fadeInUp} className="space-y-3">
               {[
-                { from: "Learn & Drive", to: "Focus & Drive", segment: "Residential Multi-Family BTR", direction: "up" as const },
-                { from: "Opportunistic", to: "Crack the Code", segment: "Parks & Recreation", direction: "up" as const },
-                { from: "Opportunistic", to: "Learn & Drive", segment: "Boutique Studios", direction: "up" as const },
-                { from: "Crack the Code", to: "Opportunistic", segment: "Maritime", direction: "down" as const },
+                { from: "Crack the Code", to: "Focus & Drive", segment: "Commercial Fitness Clubs", icon: Dumbbell, direction: "up" as const },
+                { from: "Learn & Drive", to: "Focus & Drive", segment: "Hospitality & Amenities", icon: Building2, direction: "up" as const },
+                { from: "Opportunistic", to: "Learn & Drive", segment: "Military & Government", icon: Shield, direction: "up" as const },
               ].map((shift, i) => (
                 <motion.div
                   key={i}
@@ -334,7 +335,7 @@ export default function ZWStrategicMarkets() {
                   className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-4 sm:p-5 rounded-xl bg-white border border-black/[0.12] shadow-[0_2px_8px_rgba(0,0,0,0.03)] transition-all duration-300"
                 >
                   {/* Direction indicator + Segment name */}
-                  <div className="flex items-center gap-3 sm:min-w-[220px]">
+                  <div className="flex items-center gap-3 sm:min-w-[260px]">
                     <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${
                       shift.direction === "up" ? "bg-emerald-50" : "bg-red-50"
                     }`}>
@@ -343,7 +344,10 @@ export default function ZWStrategicMarkets() {
                         : <ArrowDownRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-red-500" />
                       }
                     </div>
-                    <span className="font-body text-xs sm:text-sm font-semibold text-black">{shift.segment}</span>
+                    <div className="flex items-center gap-2">
+                      <shift.icon className="w-4 h-4 text-[#C9A962]" />
+                      <span className="font-body text-xs sm:text-sm font-semibold text-black">{shift.segment}</span>
+                    </div>
                   </div>
                   
                   {/* From → To */}
@@ -354,6 +358,16 @@ export default function ZWStrategicMarkets() {
                   </div>
                 </motion.div>
               ))}
+            </motion.div>
+
+            {/* Summary note */}
+            <motion.div
+              variants={fadeInUp}
+              className="mt-8 p-5 rounded-xl border border-[#C9A962]/20 bg-[#C9A962]/[0.03]"
+            >
+              <p className="font-body text-sm text-black/60 leading-relaxed">
+                <span className="font-semibold text-black">Year 2 Strategy:</span> By Year 2, all 9 LOBs have moved up or maintained position — no LOB moves down. The "Opportunistic" quadrant empties entirely as market intelligence and relationships mature across all verticals. Commercial Fitness and Hospitality graduate to Focus & Drive based on Year 1 wins with L Catterton portfolio companies and Marriott.
+              </p>
             </motion.div>
           </motion.div>
         </div>
