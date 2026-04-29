@@ -240,7 +240,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
           {navLinks.length > 6 && (
             <div className="hidden lg:block relative border-t border-black/[0.06]">
               <div className="overflow-x-auto scrollbar-hide pb-0" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
-                <div className="flex items-center gap-0.5 px-4 py-1.5 font-body text-xs min-w-max">
+                <div className="flex items-center justify-center gap-1 px-4 py-1.5 font-body text-xs w-full">
                   {navLinks.map((link) => {
                     const isActive = location === link.href;
                     return (
@@ -262,8 +262,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                   })}
                 </div>
               </div>
-              {/* Right fade mask to hint at more tabs */}
-              <div className="absolute right-0 top-0 bottom-0 w-12 pointer-events-none" style={{ background: "linear-gradient(to left, rgba(255,255,255,0.95), transparent)" }} />
+
             </div>
           )}
         </div>
