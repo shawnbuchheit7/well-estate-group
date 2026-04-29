@@ -1,6 +1,7 @@
 import { Suspense, lazy } from "react";
 import { motion } from "framer-motion";
 import PasswordGate from "./components/PasswordGate";
+import ZWPasswordGate from "./components/ZWPasswordGate";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Route, Switch, Router } from "wouter";
@@ -109,18 +110,18 @@ function App() {
                   {/* GTM Projects Landing — Shows client tiles */}
                   <Route path="/gtm" component={GTMProjects} />
                   
-                  {/* ZeroWheel GTM Project */}
-                  <Route path="/gtm/zerowheel" component={ZWOverview} />
-                  <Route path="/gtm/zerowheel/product-analysis" component={ZWProductAnalysis} />
-                  <Route path="/gtm/zerowheel/lines-of-business" component={ZWLinesOfBusiness} />
-                  <Route path="/gtm/zerowheel/sales" component={ZWSales} />
-                  <Route path="/gtm/zerowheel/commercial-strategy" component={ZWCommercialStrategy} />
-                  <Route path="/gtm/zerowheel/b2b2c" component={ZWB2B2C} />
-                  <Route path="/gtm/zerowheel/strategic-markets" component={ZWStrategicMarkets} />
-                  <Route path="/gtm/zerowheel/sales-infrastructure" component={ZWSalesInfrastructure} />
-                  <Route path="/gtm/zerowheel/business-intelligence" component={ZWBusinessIntelligence} />
-                  <Route path="/gtm/zerowheel/marketing-infrastructure" component={ZWMarketingInfrastructure} />
-                  <Route path="/gtm/zerowheel/affiliate-program" component={ZWAffiliateProgram} />
+                  {/* ZeroWheel GTM Project — protected by separate ZW password */}
+                  <Route path="/gtm/zerowheel" component={() => <ZWPasswordGate><ZWOverview /></ZWPasswordGate>} />
+                  <Route path="/gtm/zerowheel/product-analysis" component={() => <ZWPasswordGate><ZWProductAnalysis /></ZWPasswordGate>} />
+                  <Route path="/gtm/zerowheel/lines-of-business" component={() => <ZWPasswordGate><ZWLinesOfBusiness /></ZWPasswordGate>} />
+                  <Route path="/gtm/zerowheel/sales" component={() => <ZWPasswordGate><ZWSales /></ZWPasswordGate>} />
+                  <Route path="/gtm/zerowheel/commercial-strategy" component={() => <ZWPasswordGate><ZWCommercialStrategy /></ZWPasswordGate>} />
+                  <Route path="/gtm/zerowheel/b2b2c" component={() => <ZWPasswordGate><ZWB2B2C /></ZWPasswordGate>} />
+                  <Route path="/gtm/zerowheel/strategic-markets" component={() => <ZWPasswordGate><ZWStrategicMarkets /></ZWPasswordGate>} />
+                  <Route path="/gtm/zerowheel/sales-infrastructure" component={() => <ZWPasswordGate><ZWSalesInfrastructure /></ZWPasswordGate>} />
+                  <Route path="/gtm/zerowheel/business-intelligence" component={() => <ZWPasswordGate><ZWBusinessIntelligence /></ZWPasswordGate>} />
+                  <Route path="/gtm/zerowheel/marketing-infrastructure" component={() => <ZWPasswordGate><ZWMarketingInfrastructure /></ZWPasswordGate>} />
+                  <Route path="/gtm/zerowheel/affiliate-program" component={() => <ZWPasswordGate><ZWAffiliateProgram /></ZWPasswordGate>} />
                   
                   {/* Sample GTM Project (original generic content) */}
                   <Route path="/gtm/sample" component={GTMHome} />
