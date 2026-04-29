@@ -405,7 +405,7 @@ export default function ZWSales() {
                   <div className="grid md:grid-cols-[1fr_auto] gap-6">
                     {/* Targets */}
                     <div>
-                      <p className="font-mono text-[10px] text-black/45 uppercase tracking-[0.15em] mb-3">Target Accounts & Channels</p>
+                      <p className="font-mono text-[10px] text-black/45 uppercase tracking-[0.15em] mb-3">Industry Events & Associations</p>
                       <ul className="space-y-2">
                         {lob.targets.map((target, j) => (
                           <li key={j} className="flex items-start gap-2.5">
