@@ -182,14 +182,11 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
           {navLinks.length <= 6 && (
             <div className="hidden lg:flex items-center justify-center flex-1 mx-4">
               <div className="flex items-center gap-1 font-body text-xs">
-                {navLinks.map((link, index) => {
+                {navLinks.map((link) => {
                   const isActive = location === link.href;
                   return (
-                    <motion.div
+                    <div
                       key={link.href}
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.05 }}
                     >
                       <Link
                         href={link.href}
@@ -201,7 +198,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                       >
                         {link.label}
                       </Link>
-                    </motion.div>
+                    </div>
                   );
                 })}
               </div>
@@ -245,14 +242,11 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
             <div className="hidden lg:block relative border-t border-black/[0.06]">
               <div className="overflow-x-auto scrollbar-hide pb-0" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
                 <div className="flex items-center gap-0.5 px-4 py-1.5 font-body text-xs min-w-max">
-                  {navLinks.map((link, index) => {
+                  {navLinks.map((link) => {
                     const isActive = location === link.href;
                     return (
-                      <motion.div
+                      <div
                         key={link.href}
-                        initial={{ opacity: 0, y: -6 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.04 }}
                       >
                         <Link
                           href={link.href}
@@ -264,7 +258,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                         >
                           {link.label}
                         </Link>
-                      </motion.div>
+                      </div>
                     );
                   })}
                 </div>
@@ -330,12 +324,9 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                 {/* Mobile Menu Links */}
                 <div className="flex-1 overflow-y-auto py-6">
                   <div className="flex flex-col gap-1 px-4">
-                    {navLinks.map((link, index) => (
-                      <motion.div
+                    {navLinks.map((link) => (
+                      <div
                         key={link.href}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.05 }}
                       >
                         <Link
                           href={link.href}
@@ -348,7 +339,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                         >
                           {link.label}
                         </Link>
-                      </motion.div>
+                      </div>
                     ))}
                   </div>
                 </div>
