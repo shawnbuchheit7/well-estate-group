@@ -1,15 +1,15 @@
 /*
  * GTM Strategic Markets Page - Where to Play Matrix
  * Shows: Y1 and Y2 strategic market positioning using the 9 Macro LOBs
+ * INTERACTIVE: Drag-and-drop LOBs between quadrants
  * Design: Luxury black/grey/gold palette, fully responsive
- * OPTIMIZED: Interactive matrix, animated transitions, enhanced hover states
  */
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useCallback, useRef } from "react";
+import { motion } from "framer-motion";
 import {
   Target, TrendingUp, Zap, Eye, ArrowRight, ArrowUpRight, ArrowDownRight,
-  Star, Dumbbell, Stethoscope, Package, Users, Building2, Shield, Ship,
+  Star, Dumbbell, Stethoscope, Package, Users, Building2, Shield, Ship, GripVertical,
 } from "lucide-react";
 import Layout from "@/components/Layout";
 import LightHero from "@/components/LightHero";
@@ -23,122 +23,158 @@ const sections = [
   { id: "shifts", label: "Key Shifts" },
 ];
 
-interface MarketItem {
+interface LOBItem {
+  id: string;
   name: string;
   icon: typeof Star;
-  highlighted?: boolean;
-  category?: string;
+  category: string;
 }
 
-interface Quadrant {
+const allLOBs: LOBItem[] = [
+  { id: "private-clubs", name: "Private Clubs", icon: Star, category: "Vertical" },
+  { id: "commercial-fitness", name: "Commercial Fitness Clubs", icon: Dumbbell, category: "Commercial" },
+  { id: "medical-rehab", name: "Medical & Rehabilitation", icon: Stethoscope, category: "Vertical" },
+  { id: "dtc", name: "Direct-to-Consumer", icon: Package, category: "DTC" },
+  { id: "corporate-wellness", name: "Corporate Wellness", icon: Target, category: "Vertical" },
+  { id: "pro-sports", name: "Professional Sports", icon: Users, category: "Vertical" },
+  { id: "hospitality", name: "Hospitality & Amenities", icon: Building2, category: "Vertical" },
+  { id: "military-gov", name: "Military & Government", icon: Shield, category: "GSA" },
+  { id: "cruise-maritime", name: "Cruise & Maritime", icon: Ship, category: "Vertical" },
+];
+
+interface QuadrantDef {
+  id: string;
   title: string;
   subtitle: string;
   icon: typeof Target;
   bg: string;
   iconBg: string;
-  items: MarketItem[];
+  highlightColor: boolean;
 }
 
-const y1Quadrants: Quadrant[] = [
+const quadrantDefs: QuadrantDef[] = [
   {
+    id: "focus-drive",
     title: "Focus & Drive",
     subtitle: "High Attractiveness / High Ease of Access",
     icon: Target,
     bg: "bg-white",
     iconBg: "bg-[#C9A962]/15",
-    items: [
-      { name: "Private Clubs", icon: Star, highlighted: true, category: "Vertical" },
-      { name: "Medical & Rehabilitation", icon: Stethoscope, highlighted: true, category: "Vertical" },
-      { name: "Professional Sports", icon: Users, highlighted: true, category: "Vertical" },
-    ],
+    highlightColor: true,
   },
   {
+    id: "crack-code",
     title: "Crack the Code",
     subtitle: "High Attractiveness / Low Ease of Access",
     icon: Zap,
     bg: "bg-[#FAFAF8]",
     iconBg: "bg-black/[0.06]",
-    items: [
-      { name: "Commercial Fitness Clubs", icon: Dumbbell, category: "Commercial" },
-      { name: "Cruise & Maritime", icon: Ship, category: "Vertical" },
-      { name: "Corporate Wellness", icon: Target, category: "Vertical" },
-    ],
+    highlightColor: false,
   },
   {
+    id: "learn-drive",
     title: "Learn & Drive",
     subtitle: "Low Attractiveness / High Ease of Access",
     icon: Eye,
     bg: "bg-[#FAFAF8]",
     iconBg: "bg-black/[0.06]",
-    items: [
-      { name: "Direct-to-Consumer", icon: Package, category: "DTC" },
-      { name: "Hospitality & Amenities", icon: Building2, category: "Vertical" },
-    ],
+    highlightColor: false,
   },
   {
+    id: "opportunistic",
     title: "Opportunistic",
     subtitle: "Low Attractiveness / Low Ease of Access",
     icon: TrendingUp,
     bg: "bg-[#F7F7F5]",
     iconBg: "bg-black/[0.06]",
-    items: [
-      { name: "Military & Government", icon: Shield, category: "GSA" },
-    ],
+    highlightColor: false,
   },
 ];
 
-const y2Quadrants: Quadrant[] = [
-  {
-    title: "Focus & Drive",
-    subtitle: "High Attractiveness / High Ease of Access",
-    icon: Target,
-    bg: "bg-white",
-    iconBg: "bg-[#C9A962]/15",
-    items: [
-      { name: "Private Clubs", icon: Star, highlighted: true, category: "Vertical" },
-      { name: "Medical & Rehabilitation", icon: Stethoscope, highlighted: true, category: "Vertical" },
-      { name: "Professional Sports", icon: Users, highlighted: true, category: "Vertical" },
-      { name: "Commercial Fitness Clubs", icon: Dumbbell, highlighted: true, category: "Commercial" },
-      { name: "Hospitality & Amenities", icon: Building2, category: "Vertical" },
-    ],
-  },
-  {
-    title: "Crack the Code",
-    subtitle: "High Attractiveness / Low Ease of Access",
-    icon: Zap,
-    bg: "bg-[#FAFAF8]",
-    iconBg: "bg-black/[0.06]",
-    items: [
-      { name: "Corporate Wellness", icon: Target, category: "Vertical" },
-      { name: "Cruise & Maritime", icon: Ship, category: "Vertical" },
-    ],
-  },
-  {
-    title: "Learn & Drive",
-    subtitle: "Low Attractiveness / High Ease of Access",
-    icon: Eye,
-    bg: "bg-[#FAFAF8]",
-    iconBg: "bg-black/[0.06]",
-    items: [
-      { name: "Direct-to-Consumer", icon: Package, category: "DTC" },
-      { name: "Military & Government", icon: Shield, category: "GSA" },
-    ],
-  },
-  {
-    title: "Opportunistic",
-    subtitle: "Low Attractiveness / Low Ease of Access",
-    icon: TrendingUp,
-    bg: "bg-[#F7F7F5]",
-    iconBg: "bg-black/[0.06]",
-    items: [],
-  },
-];
+// Default placements
+const defaultY1Placement: Record<string, string[]> = {
+  "focus-drive": ["private-clubs", "medical-rehab", "pro-sports"],
+  "crack-code": ["commercial-fitness", "cruise-maritime", "corporate-wellness"],
+  "learn-drive": ["dtc", "hospitality"],
+  "opportunistic": ["military-gov"],
+};
 
-function MatrixGrid({ quadrants, year }: { quadrants: Quadrant[]; year: number }) {
-  const [hoveredQuadrant, setHoveredQuadrant] = useState<number | null>(null);
+const defaultY2Placement: Record<string, string[]> = {
+  "focus-drive": ["private-clubs", "medical-rehab", "pro-sports", "commercial-fitness", "hospitality"],
+  "crack-code": ["corporate-wellness", "cruise-maritime"],
+  "learn-drive": ["dtc", "military-gov"],
+  "opportunistic": [],
+};
+
+function DraggableMatrix({ defaultPlacements, year }: { defaultPlacements: Record<string, string[]>; year: number }) {
+  const [placements, setPlacements] = useState<Record<string, string[]>>(defaultPlacements);
+  const [draggedItem, setDraggedItem] = useState<string | null>(null);
+  const [dragOverQuadrant, setDragOverQuadrant] = useState<string | null>(null);
+
+  const handleDragStart = useCallback((e: React.DragEvent, lobId: string) => {
+    setDraggedItem(lobId);
+    e.dataTransfer.effectAllowed = "move";
+    e.dataTransfer.setData("text/plain", lobId);
+    // Make the drag image slightly transparent
+    if (e.currentTarget instanceof HTMLElement) {
+      e.currentTarget.style.opacity = "0.5";
+    }
+  }, []);
+
+  const handleDragEnd = useCallback((e: React.DragEvent) => {
+    setDraggedItem(null);
+    setDragOverQuadrant(null);
+    if (e.currentTarget instanceof HTMLElement) {
+      e.currentTarget.style.opacity = "1";
+    }
+  }, []);
+
+  const handleDragOver = useCallback((e: React.DragEvent, quadrantId: string) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = "move";
+    setDragOverQuadrant(quadrantId);
+  }, []);
+
+  const handleDragLeave = useCallback(() => {
+    setDragOverQuadrant(null);
+  }, []);
+
+  const handleDrop = useCallback((e: React.DragEvent, targetQuadrantId: string) => {
+    e.preventDefault();
+    const lobId = e.dataTransfer.getData("text/plain");
+    if (!lobId) return;
+
+    setPlacements(prev => {
+      const newPlacements = { ...prev };
+      // Remove from current quadrant
+      for (const qId of Object.keys(newPlacements)) {
+        newPlacements[qId] = newPlacements[qId].filter(id => id !== lobId);
+      }
+      // Add to target quadrant
+      newPlacements[targetQuadrantId] = [...newPlacements[targetQuadrantId], lobId];
+      return newPlacements;
+    });
+
+    setDraggedItem(null);
+    setDragOverQuadrant(null);
+  }, []);
+
+  const handleReset = useCallback(() => {
+    setPlacements(defaultPlacements);
+  }, [defaultPlacements]);
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-0">
+      {/* Reset button */}
+      <div className="flex justify-end mb-3">
+        <button
+          onClick={handleReset}
+          className="font-mono text-[10px] text-black/40 hover:text-[#C9A962] tracking-wider uppercase px-3 py-1.5 rounded-lg border border-black/[0.08] hover:border-[#C9A962]/30 transition-all"
+        >
+          Reset to Default
+        </button>
+      </div>
+
       {/* Axis Labels */}
       <div className="relative">
         {/* Y-axis label */}
@@ -149,70 +185,78 @@ function MatrixGrid({ quadrants, year }: { quadrants: Quadrant[]; year: number }
 
         {/* 2x2 Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-          {quadrants.map((q, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
-              onMouseEnter={() => setHoveredQuadrant(i)}
-              onMouseLeave={() => setHoveredQuadrant(null)}
-              className={`${q.bg} rounded-xl sm:rounded-2xl p-4 sm:p-6 flex flex-col border transition-all duration-300 shadow-[0_2px_12px_rgba(0,0,0,0.04)] ${
-                hoveredQuadrant === i 
-                  ? "border-[#C9A962]/40 shadow-[0_8px_30px_rgba(0,0,0,0.08)]" 
-                  : "border-black/[0.12]"
-              }`}
-              style={{ minHeight: '200px' }}
-            >
-              {/* Header */}
-              <div className="flex items-start gap-3 mb-4">
-                <motion.div 
-                  className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl ${q.iconBg} flex items-center justify-center flex-shrink-0`}
-                  animate={hoveredQuadrant === i ? { scale: 1.1 } : { scale: 1 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <q.icon className={`w-4 h-4 sm:w-[18px] sm:h-[18px] ${i === 0 ? 'text-[#C9A962]' : 'text-black/50'}`} />
-                </motion.div>
-                <div className="min-w-0">
-                  <h3 className="font-display text-base sm:text-lg font-semibold text-black leading-tight">{q.title}</h3>
-                  <p className="font-mono text-[9px] sm:text-[10px] text-black/50 tracking-wide mt-0.5 leading-snug">{q.subtitle}</p>
+          {quadrantDefs.map((q, i) => {
+            const lobIds = placements[q.id] || [];
+            const lobs = lobIds.map(id => allLOBs.find(l => l.id === id)).filter(Boolean) as LOBItem[];
+            const isDropTarget = dragOverQuadrant === q.id;
+
+            return (
+              <motion.div
+                key={q.id}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.5 }}
+                onDragOver={(e) => handleDragOver(e as unknown as React.DragEvent, q.id)}
+                onDragLeave={handleDragLeave}
+                onDrop={(e) => handleDrop(e as unknown as React.DragEvent, q.id)}
+                className={`rounded-xl sm:rounded-2xl p-4 sm:p-6 flex flex-col border transition-all duration-300 ${q.bg} ${
+                  isDropTarget
+                    ? "border-[#C9A962] shadow-[0_8px_30px_rgba(201,169,98,0.15)] scale-[1.01]"
+                    : "border-black/[0.12] shadow-[0_2px_12px_rgba(0,0,0,0.04)]"
+                }`}
+                style={{ minHeight: '220px' }}
+              >
+                {/* Header */}
+                <div className="flex items-start gap-3 mb-4">
+                  <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl ${q.iconBg} flex items-center justify-center flex-shrink-0`}>
+                    <q.icon className={`w-4 h-4 sm:w-[18px] sm:h-[18px] ${q.highlightColor ? 'text-[#C9A962]' : 'text-black/50'}`} />
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="font-display text-base sm:text-lg font-semibold text-black leading-tight">{q.title}</h3>
+                    <p className="font-mono text-[9px] sm:text-[10px] text-black/50 tracking-wide mt-0.5 leading-snug">{q.subtitle}</p>
+                  </div>
                 </div>
-              </div>
 
-              {/* Divider */}
-              <div className={`h-px w-full mb-3 sm:mb-4 ${i === 0 ? 'bg-[#C9A962]/25' : 'bg-black/[0.06]'}`} />
+                {/* Divider */}
+                <div className={`h-px w-full mb-3 sm:mb-4 ${q.highlightColor ? 'bg-[#C9A962]/25' : 'bg-black/[0.06]'}`} />
 
-              {/* LOB Pills */}
-              <div className="flex flex-wrap gap-2 mt-auto">
-                {q.items.length > 0 ? q.items.map((item, j) => (
-                  <motion.div
-                    key={j}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.3 + j * 0.06 }}
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    className={`flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-[11px] sm:text-xs font-medium tracking-wide transition-all cursor-default ${
-                      item.highlighted
-                        ? "bg-black text-white shadow-md"
-                        : "bg-white text-black/70 border border-black/[0.15] hover:border-[#C9A962]/30"
-                    }`}
-                  >
-                    <item.icon className={`w-3.5 h-3.5 flex-shrink-0 ${item.highlighted ? 'text-[#C9A962]' : 'text-black/40'}`} />
-                    <span>{item.name}</span>
-                    {item.category && (
-                      <span className={`font-mono text-[8px] tracking-wider uppercase ml-1 ${item.highlighted ? 'text-white/50' : 'text-black/30'}`}>
-                        {item.category}
-                      </span>
-                    )}
-                  </motion.div>
-                )) : (
-                  <span className="font-body text-xs text-black/30 italic">All LOBs promoted to higher quadrants</span>
+                {/* Drop zone indicator */}
+                {isDropTarget && lobs.length === 0 && (
+                  <div className="flex-1 flex items-center justify-center border-2 border-dashed border-[#C9A962]/40 rounded-xl mb-2">
+                    <span className="font-body text-xs text-[#C9A962]/60">Drop here</span>
+                  </div>
                 )}
-              </div>
-            </motion.div>
-          ))}
+
+                {/* LOB Pills - Draggable */}
+                <div className="flex flex-wrap gap-2 mt-auto">
+                  {lobs.map((lob) => (
+                    <div
+                      key={lob.id}
+                      draggable
+                      onDragStart={(e) => handleDragStart(e, lob.id)}
+                      onDragEnd={handleDragEnd}
+                      className={`flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-[11px] sm:text-xs font-medium tracking-wide transition-all cursor-grab active:cursor-grabbing select-none ${
+                        q.highlightColor
+                          ? "bg-black text-white shadow-md hover:shadow-lg hover:scale-[1.03]"
+                          : "bg-white text-black/70 border border-black/[0.15] hover:border-[#C9A962]/40 hover:shadow-md hover:scale-[1.03]"
+                      } ${draggedItem === lob.id ? "opacity-50 scale-95" : ""}`}
+                    >
+                      <GripVertical className={`w-3 h-3 flex-shrink-0 ${q.highlightColor ? 'text-white/40' : 'text-black/25'}`} />
+                      <lob.icon className={`w-3.5 h-3.5 flex-shrink-0 ${q.highlightColor ? 'text-[#C9A962]' : 'text-black/40'}`} />
+                      <span>{lob.name}</span>
+                      <span className={`font-mono text-[8px] tracking-wider uppercase ml-1 ${q.highlightColor ? 'text-white/50' : 'text-black/30'}`}>
+                        {lob.category}
+                      </span>
+                    </div>
+                  ))}
+                  {lobs.length === 0 && !isDropTarget && (
+                    <span className="font-body text-xs text-black/30 italic">Drag LOBs here</span>
+                  )}
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* X-axis label */}
@@ -235,12 +279,12 @@ export default function ZWStrategicMarkets() {
         <LightHero
           eyebrow="WEG Market Prioritization"
           title="Where to Play"
-          description="WEG's recommended market prioritization framework for ZeroWheel — mapping each of the nine macro lines of business against market attractiveness and ease of access, evolving from Year 1 to Year 2 as relationships mature and market intelligence deepens."
+          description="WEG's recommended market prioritization framework for ZeroWheel — mapping each of the nine macro lines of business against market attractiveness and ease of access. Drag and drop LOBs between quadrants to explore positioning scenarios."
           stats={[
             { value: "9", label: "Macro LOBs" },
             { value: "4", label: "Quadrants" },
             { value: "Y1→Y2", label: "Evolution" },
-            { value: "3", label: "Focus Markets" },
+            { value: "Drag & Drop", label: "Interactive" },
           ]}
         />
       </div>
@@ -262,11 +306,11 @@ export default function ZWStrategicMarkets() {
               Initial Market Positioning
             </motion.h2>
             <motion.p variants={fadeInUp} className="font-body text-xs sm:text-sm text-black/40 mt-3 max-w-xl mx-auto">
-              Gold-highlighted LOBs represent the primary focus and drive markets for initial market entry. These are the highest-conviction verticals with existing relationships and fastest path to revenue.
+              Drag LOBs between quadrants to adjust positioning. The "Focus & Drive" quadrant represents highest-conviction markets with existing relationships.
             </motion.p>
           </motion.div>
 
-          <MatrixGrid quadrants={y1Quadrants} year={1} />
+          <DraggableMatrix defaultPlacements={defaultY1Placement} year={1} />
         </div>
       </section>
 
@@ -292,11 +336,11 @@ export default function ZWStrategicMarkets() {
               Evolved Market Positioning
             </motion.h2>
             <motion.p variants={fadeInUp} className="font-body text-xs sm:text-sm text-black/40 mt-3 max-w-xl mx-auto">
-              LOBs shift between quadrants as market intelligence matures, relationships deepen, and early wins create momentum for adjacent verticals.
+              LOBs shift between quadrants as market intelligence matures. Drag to reposition based on evolving strategy.
             </motion.p>
           </motion.div>
 
-          <MatrixGrid quadrants={y2Quadrants} year={2} />
+          <DraggableMatrix defaultPlacements={defaultY2Placement} year={2} />
         </div>
       </section>
 
