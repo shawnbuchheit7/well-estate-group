@@ -7,6 +7,7 @@
 import { motion } from "framer-motion";
 import { Target, TrendingUp, Users, BarChart3, ArrowRight, CheckCircle2, Globe, Building2, Dumbbell, Stethoscope, Ship, Shield, Zap, Award } from "lucide-react";
 import Layout from "@/components/Layout";
+import LightHero from "@/components/LightHero";
 import { fadeInUp, staggerContainer, scaleIn } from "@/lib/animations";
 import { SectionNav } from "@/components/SectionNav";
 
@@ -23,89 +24,19 @@ export default function GTMHome() {
     <Layout section="gtm-sample">
       <SectionNav sections={sections} />
 
-      {/* Hero Section — Immersive Dark Gradient */}
-      <section id="hero" className="py-24 md:py-32 relative overflow-hidden bg-[#0A0A0A]">
-        {/* Abstract gradient mesh */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,rgba(201,169,98,0.15),transparent)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_80%_80%,rgba(201,169,98,0.08),transparent)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_40%_40%_at_10%_60%,rgba(255,255,255,0.03),transparent)]" />
-          {/* Animated grid lines */}
-          <svg className="absolute inset-0 w-full h-full opacity-[0.04]" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="hero-grid" width="80" height="80" patternUnits="userSpaceOnUse">
-                <path d="M 80 0 L 0 0 0 80" fill="none" stroke="#C9A962" strokeWidth="0.5"/>
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#hero-grid)" />
-          </svg>
-        </div>
-        {/* Bottom fade to white */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent" />
-        
-        <div className="container relative z-10">
-          <motion.div
-            className="text-center max-w-4xl mx-auto"
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
-              Go-To-Market Strategy
-            </motion.span>
-            <motion.h1 variants={fadeInUp} className="font-display text-4xl md:text-6xl lg:text-7xl font-medium mt-4 mb-6 text-white leading-[1.1]">
-              Connected Fitness Device — Market Entry
-            </motion.h1>
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="h-[2px] w-16 mx-auto bg-[#C9A962] mb-6"
-            />
-            <motion.p variants={fadeInUp} className="font-body text-base md:text-lg text-white/55 leading-relaxed max-w-3xl mx-auto">
-              A comprehensive go-to-market strategy for a next-generation motorized core training device — 
-              from premium club placement and professional sports adoption to medical rehabilitation, 
-              government procurement, and global hospitality distribution.
-            </motion.p>
-          </motion.div>
-
-          {/* Key Metrics Row */}
-          <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto mt-14"
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
-            {[
-              { icon: Target, label: "Target Verticals", value: "8", suffix: "Channels" },
-              { icon: Globe, label: "Global Regions", value: "4", suffix: "Markets" },
-              { icon: Users, label: "Addressable Segments", value: "5", suffix: "Categories" },
-              { icon: BarChart3, label: "Market Size", value: "$6.7T", suffix: "Wellness" },
-            ].map((metric, i) => (
-              <motion.div
-                key={i}
-                variants={fadeInUp}
-                whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(0,0,0,0.06)" }}
-                className="text-center p-6 rounded-2xl bg-white/[0.06] backdrop-blur-sm border border-white/[0.10] hover:border-[#C9A962]/40 transition-all duration-300"
-              >
-                <metric.icon className="w-7 h-7 text-[#C9A962] mx-auto mb-3" />
-                <div className="flex items-baseline justify-center gap-1.5">
-                  <motion.p 
-                    className="font-display text-2xl font-semibold text-white"
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.8 + i * 0.12, duration: 0.5, ease: [0.34, 1.56, 0.64, 1] as [number, number, number, number] }}
-                  >
-                    {metric.value}
-                  </motion.p>
-                  <span className="font-body text-sm text-white/40">{metric.suffix}</span>
-                </div>
-                <p className="font-body text-xs text-white/35 mt-1">{metric.label}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+      <div id="hero">
+        <LightHero
+          eyebrow="Go-To-Market Strategy"
+          title="Connected Fitness Device — Market Entry"
+          description="A comprehensive go-to-market strategy for a next-generation motorized core training device — from premium club placement and professional sports adoption to medical rehabilitation, government procurement, and global hospitality distribution."
+          stats={[
+            { label: "Macro LOBs", value: "9" },
+            { label: "Pricing Tiers", value: "4" },
+            { label: "Market Categories", value: "3" },
+            { label: "Market Size", value: "$6.7T" },
+          ]}
+        />
+      </div>
 
       {/* Market Opportunity */}
       <section id="opportunity" className="py-18 bg-white">
@@ -123,12 +54,12 @@ export default function GTMHome() {
               Market Opportunity
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-5 text-black">
-              One Device, Five Markets
+              One Device, Nine Markets
             </motion.h2>
             <motion.p variants={fadeInUp} className="font-body text-base text-black/55 max-w-2xl mx-auto">
               A motorized core training device with scalable difficulty has a unique advantage — 
               it serves everyone from rehabilitation patients to elite athletes, creating 
-              simultaneous market entry across five distinct verticals.
+              simultaneous market entry across nine distinct verticals.
             </motion.p>
           </motion.div>
 

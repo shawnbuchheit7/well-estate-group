@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Plus } from "lucide-react";
 import { Link } from "wouter";
 import Layout from "@/components/Layout";
+import LightHero from "@/components/LightHero";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 
 interface ProjectTile {
@@ -33,9 +34,9 @@ const projects: ProjectTile[] = [
     logoAlt: "ZeroWheel",
     status: "active",
     stats: [
-      { label: "Verticals", value: "8" },
-      { label: "Regions", value: "4" },
-      { label: "Segments", value: "5" },
+      { label: "LOBs", value: "9" },
+      { label: "Pricing Tiers", value: "4" },
+      { label: "Channels", value: "5" },
     ],
     accentColor: "#000000",
   },
@@ -57,51 +58,11 @@ const projects: ProjectTile[] = [
 export default function GTMProjects() {
   return (
     <Layout section="gtm">
-      {/* Hero Section — Dark */}
-      <section className="py-24 md:py-32 relative overflow-hidden bg-[#0A0A0A]">
-        {/* Abstract gradient mesh */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,rgba(201,169,98,0.15),transparent)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_80%_80%,rgba(201,169,98,0.08),transparent)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_40%_40%_at_10%_60%,rgba(255,255,255,0.03),transparent)]" />
-          <svg className="absolute inset-0 w-full h-full opacity-[0.04]" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="hero-grid" width="80" height="80" patternUnits="userSpaceOnUse">
-                <path d="M 80 0 L 0 0 0 80" fill="none" stroke="#C9A962" strokeWidth="0.5"/>
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#hero-grid)" />
-          </svg>
-        </div>
-        {/* Bottom fade to white */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent" />
-        
-        <div className="container relative z-10">
-          <motion.div
-            className="text-center max-w-4xl mx-auto"
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
-              Pillar I
-            </motion.span>
-            <motion.h1 variants={fadeInUp} className="font-display text-4xl md:text-6xl lg:text-7xl font-medium mt-4 mb-6 text-white leading-[1.1]">
-              Go-To-Market
-            </motion.h1>
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="h-[2px] w-16 mx-auto bg-[#C9A962] mb-6"
-            />
-            <motion.p variants={fadeInUp} className="font-body text-base md:text-lg text-white/55 leading-relaxed max-w-3xl mx-auto">
-              Client-specific go-to-market strategies powered by WEG's multi-vertical distribution framework, 
-              established channel relationships, and proven sales infrastructure.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
+      <LightHero
+        eyebrow="Pillar I"
+        title="Go-To-Market"
+        description="Client-specific go-to-market strategies powered by WEG's multi-vertical distribution framework, established channel relationships, and proven sales infrastructure."
+      />
 
       {/* Project Tiles */}
       <section className="py-20 bg-white">
