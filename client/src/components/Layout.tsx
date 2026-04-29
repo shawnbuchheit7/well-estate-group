@@ -363,8 +363,8 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
         {children}
       </main>
 
-      {/* Cross-Pillar Navigation */}
-      {currentPillarIndex >= 0 && (
+      {/* Cross-Pillar Navigation — hidden on ZeroWheel project pages */}
+      {currentPillarIndex >= 0 && !isZWRoute && (
         <section className="py-12 border-t bg-white border-black/[0.12]">
           <div className="container px-6">
             <div className="flex items-center justify-between max-w-4xl mx-auto">
@@ -430,15 +430,17 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
 
               {/* Footer Links + Contact */}
               <div className="flex flex-col md:flex-row gap-12">
-                {/* Pillar Links */}
-                <div className="flex flex-col gap-3">
-                  <p className="font-mono text-[10px] tracking-wider uppercase mb-1 text-black/40">Pillars</p>
-                  {pillarOrder.map((pillar) => (
-                    <Link key={pillar.href} href={pillar.href} className="font-body text-sm hover:text-[#C9A962] transition-colors text-black/60">
-                      {pillar.label}
-                    </Link>
-                  ))}
-                </div>
+                {/* Pillar Links — hidden on ZeroWheel project pages */}
+                {!isZWRoute && (
+                  <div className="flex flex-col gap-3">
+                    <p className="font-mono text-[10px] tracking-wider uppercase mb-1 text-black/40">Pillars</p>
+                    {pillarOrder.map((pillar) => (
+                      <Link key={pillar.href} href={pillar.href} className="font-body text-sm hover:text-[#C9A962] transition-colors text-black/60">
+                        {pillar.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
 
                 {/* Contact CTA */}
                 <div className="flex flex-col gap-3">
