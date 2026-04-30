@@ -15,12 +15,15 @@ import {
 import Layout from "@/components/Layout";
 import NextPageCTA from "@/components/NextPageCTA";
 import LightHero from "@/components/LightHero";
+import BlendedGMModeler from "@/components/BlendedGMModeler";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { SectionNav } from "@/components/SectionNav";
 
 const sections = [
   { id: "hero", label: "Overview" },
-  { id: "exercise", label: "Exercise" },
+  { id: "exercise", label: "Market Positioning" },
+  { id: "gm-modeler", label: "GM Modeler" },
+  { id: "exercise-3", label: "Coming Soon" },
 ];
 
 interface LOBItem {
@@ -354,11 +357,11 @@ export default function ZWStrategicMarkets() {
         <LightHero
           eyebrow="WEG Market Prioritization"
           title="Where to Play"
-          description="A collaborative strategic prioritization exercise for WEG and ZeroWheel — drag each of the nine macro lines of business into the quadrant that best represents its market attractiveness and ease of access to align on Year 1 focus."
+          description="Interactive strategic exercises for WEG and ZeroWheel — market positioning, financial modeling, and collaborative planning tools to align on strategy and execution."
           stats={[
+            { value: "3", label: "Interactive Exercises" },
             { value: "9", label: "Macro LOBs" },
-            { value: "4", label: "Quadrants" },
-            { value: "2", label: "Axes" },
+            { value: "55%+", label: "GM Target" },
           ]}
         />
       </div>
@@ -387,6 +390,53 @@ export default function ZWStrategicMarkets() {
           <DraggableExercise />
         </div>
       </section>
+      {/* Blended GM Modeler */}
+      <section id="gm-modeler" className="py-12 sm:py-16 bg-[#FAFAF8]">
+        <div className="container px-4 sm:px-6">
+          <motion.div
+            className="text-center mb-10"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
+            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black text-white text-[11px] sm:text-xs font-mono tracking-wider uppercase mb-4">
+              Interactive Modeler
+            </motion.div>
+            <motion.h2 variants={fadeInUp} className="font-display text-2xl sm:text-3xl md:text-4xl font-medium text-black">
+              Blended Gross Margin Analysis
+            </motion.h2>
+            <motion.p variants={fadeInUp} className="font-body text-xs sm:text-sm text-black/40 mt-3 max-w-xl mx-auto">
+              Model manufacturing costs, channel pricing, and volume mix to find the optimal blended gross margin across Consumer, Vertical, and Commercial markets.
+            </motion.p>
+          </motion.div>
+
+          <BlendedGMModeler />
+        </div>
+      </section>
+
+      {/* Exercise 3 — Coming Soon */}
+      <section id="exercise-3" className="py-12 sm:py-16 bg-white">
+        <div className="container px-4 sm:px-6">
+          <motion.div
+            className="text-center py-12"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/[0.04] text-black/30 text-[11px] sm:text-xs font-mono tracking-wider uppercase mb-4">
+              Coming Soon
+            </div>
+            <h2 className="font-display text-2xl sm:text-3xl font-medium text-black/20">
+              Exercise 3
+            </h2>
+            <p className="font-body text-sm text-black/25 mt-3 max-w-md mx-auto">
+              An additional interactive exercise will be added here.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       <NextPageCTA label="Infrastructure & Analytics" href="/gtm/zerowheel/sales-infrastructure" />
     </Layout>
   );
