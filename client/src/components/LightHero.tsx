@@ -12,6 +12,7 @@ import { AnimatedCounter } from "@/components/AnimatedCounter";
 interface LightHeroStat {
   value: string;
   label: string;
+  sublabel?: string;
 }
 
 interface LightHeroProps {
@@ -139,6 +140,9 @@ export default function LightHero({ eyebrow, title, description, stats, children
                   <p className="font-mono text-[10px] text-black/50 tracking-wider uppercase mt-1">
                     {stat.label}
                   </p>
+                  {stat.sublabel && (
+                    <p className="font-body text-[9px] text-black/30 mt-1 italic">{stat.sublabel}</p>
+                  )}
                 </motion.div>
               ))}
             </motion.div>

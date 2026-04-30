@@ -519,6 +519,11 @@ export default function BlendedGMModeler() {
               />
             </div>
           </div>
+
+          {/* Target context note */}
+          <p className="font-body text-[11px] text-black/35 mt-3 text-center italic leading-relaxed">
+            The {gmTarget}% blended GM is an idealized target achieved through scale and optimization — not a Day 1 expectation. Use this modeler to explore the levers that close the gap over time.
+          </p>
         </div>
       </motion.div>
 
@@ -603,7 +608,7 @@ export default function BlendedGMModeler() {
               onChange={(v) => { setGmTarget(v); setActivePreset(null); }}
               formatDisplay={(v) => v + "%"}
               label="GM Target"
-              sublabel="Set the desired blended gross margin threshold"
+              sublabel="Idealized target achieved through scale and optimization"
               accentColor="#C9A962"
             />
             <div className="mt-4 pt-3 border-t border-black/[0.04]">
