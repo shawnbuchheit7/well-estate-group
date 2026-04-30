@@ -202,7 +202,7 @@ function CustomSlider({
         <span className="font-mono text-[10px] text-black/45 uppercase tracking-[0.15em]">{label}</span>
         <span className="font-display text-xl font-bold text-black tabular-nums">{formatDisplay(value)}</span>
       </div>
-      {sublabel && <p className="font-body text-[10px] text-black/30 mb-2.5 leading-relaxed">{sublabel}</p>}
+      {sublabel && <p className="font-body text-[10px] text-black/40 mb-2.5 leading-relaxed">{sublabel}</p>}
       <div className="relative h-8 flex items-center">
         <div className="absolute inset-x-0 h-1.5 rounded-full bg-black/[0.06]" />
         <div
@@ -229,8 +229,8 @@ function CustomSlider({
         />
       </div>
       <div className="flex justify-between mt-1.5">
-        <span className="font-mono text-[9px] text-black/20">{formatDisplay(min)}</span>
-        <span className="font-mono text-[9px] text-black/20">{formatDisplay(max)}</span>
+        <span className="font-mono text-[9px] text-black/30">{formatDisplay(min)}</span>
+        <span className="font-mono text-[9px] text-black/30">{formatDisplay(max)}</span>
       </div>
     </div>
   );
@@ -442,8 +442,8 @@ export default function BlendedGMModeler() {
       >
         <div className="px-4 py-3 border-b border-black/[0.05]">
           <div className="flex items-center gap-2.5">
-            <Tag className="w-3.5 h-3.5 text-[#C9A962]" />
-            <span className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em]">Proposed Floor Pricing by Segment</span>
+            <Tag className="w-4 h-4 text-[#C9A962]" />
+            <span className="font-mono text-[11px] text-black/60 uppercase tracking-[0.15em] font-semibold">Proposed Floor Pricing by Segment</span>
           </div>
         </div>
         <div className="p-4">
@@ -462,8 +462,8 @@ export default function BlendedGMModeler() {
               </div>
             ))}
           </div>
-          <p className="font-body text-[9px] text-black/25 italic mt-3 text-center">
-            Floor prices represent the maximum allowable discount per segment — the lowest price any deal should close at. MSRP: {fmtCurrency(msrp)}
+          <p className="font-body text-[9px] text-black/30 italic mt-3 text-center">
+            Floor prices represent the maximum allowable discount per segment — the lowest any deal should close at. GSA pricing is contractual and not modeled interactively below.
           </p>
         </div>
       </motion.div>
@@ -477,7 +477,7 @@ export default function BlendedGMModeler() {
       >
         <div className="flex items-center gap-3 mb-2.5">
           <Zap className="w-4 h-4 text-[#C9A962]" />
-          <span className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em]">Quick Scenarios</span>
+          <span className="font-mono text-[11px] text-black/60 uppercase tracking-[0.15em] font-semibold">Quick Scenarios</span>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5">
           {presets.map((preset) => (
@@ -495,7 +495,7 @@ export default function BlendedGMModeler() {
               }`}>
                 {preset.name}
               </p>
-              <p className="font-body text-[10px] text-black/40 leading-relaxed">{preset.description}</p>
+              <p className="font-body text-[10px] text-black/50 leading-relaxed">{preset.description}</p>
             </button>
           ))}
         </div>
@@ -510,8 +510,8 @@ export default function BlendedGMModeler() {
       >
         <div className="p-3.5">
           <div className="flex items-center gap-2.5 mb-2.5">
-            <BarChart3 className="w-3.5 h-3.5 text-[#C9A962]" />
-            <span className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em]">Pricing Assumption</span>
+            <BarChart3 className="w-4 h-4 text-[#C9A962]" />
+            <span className="font-mono text-[11px] text-black/60 uppercase tracking-[0.15em] font-semibold">Pricing Assumption</span>
           </div>
 
           <div className="grid grid-cols-2 gap-2">
@@ -533,14 +533,10 @@ export default function BlendedGMModeler() {
                   Floor Pricing
                 </span>
               </div>
-              <p className="font-body text-[9px] text-black/35 leading-relaxed">
+              <p className="font-body text-[9px] text-black/45 leading-relaxed">
                 Every deal at max discount — worst-case margin scenario.
               </p>
-              {pricingMode === "floor" && (
-                <div className="mt-2 pt-2 border-t border-red-200/50">
-                  <p className="font-mono text-[9px] text-[#DC2626]/70 uppercase tracking-wider">Active — conservative scenario</p>
-                </div>
-              )}
+
             </button>
 
             <button
@@ -561,19 +557,15 @@ export default function BlendedGMModeler() {
                   Expected ASP
                 </span>
               </div>
-              <p className="font-body text-[9px] text-black/35 leading-relaxed">
+              <p className="font-body text-[9px] text-black/45 leading-relaxed">
                 Realistic avg discount per LOB — not every deal hits floor.
               </p>
-              {pricingMode === "expected" && (
-                <div className="mt-2 pt-2 border-t border-[#C9A962]/20">
-                  <p className="font-mono text-[9px] text-[#C9A962]/70 uppercase tracking-wider">Active — realistic scenario</p>
-                </div>
-              )}
+
             </button>
           </div>
 
           {/* Context note */}
-          <p className="mt-2.5 font-body text-[9px] text-black/35 italic leading-relaxed">
+          <p className="mt-2.5 font-body text-[9px] text-black/40 italic leading-relaxed">
             {pricingMode === "floor"
               ? "Assumes max discount on every deal — realistic margins will be higher. Switch to Expected ASP to model average deal pricing."
               : "Avg discount per LOB is editable below. Max discount (floor) remains the ceiling — no deal exceeds it."
@@ -643,7 +635,7 @@ export default function BlendedGMModeler() {
                 { label: "Profit / 1K Units", value: fmtCurrency(blended.totalProfit) },
               ].map((m) => (
                 <div key={m.label} className="text-center">
-                  <p className="font-mono text-[9px] text-black/30 uppercase tracking-[0.12em] mb-0.5">{m.label}</p>
+                  <p className="font-mono text-[9px] text-black/40 uppercase tracking-[0.12em] mb-0.5">{m.label}</p>
                   <p className="font-display text-lg font-bold text-black tabular-nums">{m.value}</p>
                 </div>
               ))}
@@ -670,7 +662,7 @@ export default function BlendedGMModeler() {
           </div>
 
           {/* Target context note */}
-          <p className="font-body text-[9px] text-black/25 mt-2 text-center italic">
+          <p className="font-body text-[9px] text-black/35 mt-2 text-center italic">
             {gmTarget}% is an idealized target at scale — not a Day 1 expectation.
           </p>
         </div>
@@ -734,7 +726,7 @@ export default function BlendedGMModeler() {
             </div>
             <div>
               <h3 className="font-display text-sm font-semibold text-black">Global Pricing & Cost Controls</h3>
-              <p className="font-body text-[10px] text-black/35">Adjust list price and manufacturing cost — channel prices update automatically</p>
+              <p className="font-body text-[10px] text-black/45">Adjust list price and manufacturing cost — channel prices update automatically</p>
             </div>
           </div>
           <button
@@ -762,12 +754,12 @@ export default function BlendedGMModeler() {
             />
             <div className="mt-4 pt-3 border-t border-black/[0.04]">
               <div className="flex items-center justify-between">
-                <span className="font-mono text-[9px] text-black/30 tracking-wider uppercase">Required MSRP at Target</span>
+                <span className="font-mono text-[9px] text-black/40 tracking-wider uppercase">Required MSRP at Target</span>
                 <span className="font-display text-sm font-bold text-black tabular-nums">
                   {fmtCurrency(Math.round(cogs / (1 - gmTarget / 100)))}
                 </span>
               </div>
-              <p className="font-mono text-[8px] text-black/20 mt-1">Min list price to hit target at full-list only</p>
+              <p className="font-mono text-[8px] text-black/30 mt-1">Min list price to hit target at full-list only</p>
             </div>
           </div>
 
@@ -788,9 +780,9 @@ export default function BlendedGMModeler() {
             <div className="mt-4 pt-3 border-t border-black/[0.04] grid grid-cols-3 gap-3">
               {channelDefs.map((ch, i) => (
                 <div key={i} className="text-center">
-                  <span className="font-mono text-[8px] text-black/30 tracking-wider uppercase block">{ch.shortName}</span>
+                  <span className="font-mono text-[9px] text-black/40 tracking-wider uppercase block">{ch.shortName}</span>
                   <span className="font-display text-sm font-bold text-black tabular-nums">{fmtCurrency(prices[i])}</span>
-                  <span className="font-mono text-[8px] text-black/20 block">
+                  <span className="font-mono text-[8px] text-black/30 block">
                     {ch.locked ? "full list" : `${activeDiscounts[i]}% off`}
                   </span>
                 </div>
@@ -818,7 +810,7 @@ export default function BlendedGMModeler() {
                 <span className="font-display text-sm font-bold tabular-nums" style={{ color: ((msrp - cogs) / msrp * 100) >= gmTarget ? "#C9A962" : "#D97706" }}>
                   {fmtPct((msrp - cogs) / msrp * 100)}
                 </span>
-                <span className="font-mono text-[9px] text-black/20">({fmtCurrency(msrp - cogs)} margin)</span>
+                <span className="font-mono text-[9px] text-black/30">({fmtCurrency(msrp - cogs)} margin)</span>
               </div>
             </div>
           </div>
@@ -838,13 +830,13 @@ export default function BlendedGMModeler() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
-              className={`rounded-xl border ${ch.accentBorder} bg-white overflow-hidden`}
+              className={`rounded-xl border ${ch.accentBorder} bg-white overflow-hidden hover:shadow-md transition-shadow duration-200`}
             >
               {/* Card header */}
               <div className={`px-4 pt-4 pb-3 ${ch.accentBg}`}>
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2.5">
-                    <ch.icon className="w-4 h-4" style={{ color: ch.accentColor, opacity: 0.6 }} />
+                    <ch.icon className="w-4 h-4" style={{ color: ch.accentColor, opacity: 0.8 }} />
                     <h4 className="font-display text-sm font-semibold text-black">{ch.name}</h4>
                   </div>
                   {ch.locked && (
@@ -854,7 +846,7 @@ export default function BlendedGMModeler() {
                     </div>
                   )}
                 </div>
-                <p className="font-body text-[10px] text-black/35 leading-relaxed">{ch.description}</p>
+                <p className="font-body text-[10px] text-black/50 leading-relaxed">{ch.description}</p>
               </div>
 
               {/* GM Ring + Price */}
@@ -862,9 +854,9 @@ export default function BlendedGMModeler() {
                 <div className="flex items-center gap-3 mb-3">
                   <GMRing value={m.gmPct} target={gmTarget} size={60} strokeWidth={4} />
                   <div>
-                    <p className="font-mono text-[9px] text-black/30 uppercase tracking-[0.12em]">Channel GM</p>
+                    <p className="font-mono text-[9px] text-black/40 uppercase tracking-[0.12em]">Channel GM</p>
                     <p className="font-display text-xl font-bold tabular-nums" style={{ color: gmColor }}>{fmtPct(m.gmPct)}</p>
-                    <p className="font-mono text-[9px] text-black/25 mt-0.5">{fmtCurrency(m.margin)} margin/unit</p>
+                    <p className="font-mono text-[9px] text-black/35 mt-0.5">{fmtCurrency(m.margin)} margin/unit</p>
                   </div>
                 </div>
 
@@ -934,12 +926,12 @@ export default function BlendedGMModeler() {
       >
         <button
           onClick={() => setShowBreakdown(!showBreakdown)}
-          className="w-full px-5 py-4 flex items-center justify-between hover:bg-black/[0.01] transition-colors"
+          className="w-full px-5 py-4 flex items-center justify-between hover:bg-black/[0.02] transition-all duration-200"
         >
           <div className="flex items-center gap-2.5">
             <BarChart3 className="w-4 h-4 text-[#C9A962]" />
             <h3 className="font-display text-sm font-semibold text-black">Revenue & Margin Breakdown</h3>
-            <span className="font-mono text-[9px] text-black/25 tracking-wider ml-2">PER 1,000 UNITS</span>
+            <span className="font-mono text-[9px] text-black/35 tracking-wider ml-2">PER 1,000 UNITS</span>
           </div>
           <div className="flex items-center gap-3">
             <span className="font-display text-sm font-bold tabular-nums" style={{ color: statusColor }}>
@@ -961,7 +953,7 @@ export default function BlendedGMModeler() {
               <div className="px-6 pb-6 border-t border-black/[0.05]">
                 <div className="pt-5">
                   {/* Stacked bar */}
-                  <div className="h-8 rounded-lg overflow-hidden flex mb-6">
+                  <div className="h-8 rounded-full overflow-hidden flex mb-6">
                     {channelMetrics.map((m, i) => (
                       <motion.div
                         key={i}
@@ -995,20 +987,20 @@ export default function BlendedGMModeler() {
                           </div>
                           <div className="space-y-2.5">
                             <div>
-                              <span className="font-mono text-[9px] text-black/25 block uppercase tracking-wider">Price / Unit</span>
+                              <span className="font-mono text-[9px] text-black/35 block uppercase tracking-wider">Price / Unit</span>
                               <span className="font-display text-base font-bold text-black tabular-nums">{fmtCurrency(m.price)}</span>
-                              {m.discountPct > 0 && <span className="font-mono text-[9px] text-black/20 ml-1">({m.discountPct}% off)</span>}
+                              {m.discountPct > 0 && <span className="font-mono text-[9px] text-black/30 ml-1">({m.discountPct}% off)</span>}
                             </div>
                             <div>
-                              <span className="font-mono text-[9px] text-black/25 block uppercase tracking-wider">Units</span>
+                              <span className="font-mono text-[9px] text-black/35 block uppercase tracking-wider">Units</span>
                               <span className="font-display text-base font-bold text-black tabular-nums">{m.units.toLocaleString()}</span>
                             </div>
                             <div>
-                              <span className="font-mono text-[9px] text-black/25 block uppercase tracking-wider">Revenue</span>
+                              <span className="font-mono text-[9px] text-black/35 block uppercase tracking-wider">Revenue</span>
                               <span className="font-display text-base font-bold text-black tabular-nums">{fmtCurrency(m.revenue)}</span>
                             </div>
                             <div>
-                              <span className="font-mono text-[9px] text-black/25 block uppercase tracking-wider">Gross Profit</span>
+                              <span className="font-mono text-[9px] text-black/35 block uppercase tracking-wider">Gross Profit</span>
                               <span className="font-display text-base font-bold tabular-nums" style={{ color: gmColor }}>
                                 {fmtCurrency(m.profit)}
                               </span>
@@ -1023,18 +1015,18 @@ export default function BlendedGMModeler() {
                   <div className="mt-5 pt-5 border-t border-black/[0.06] flex items-end justify-between">
                     <div className="flex items-center gap-8">
                       <div>
-                        <span className="font-mono text-[9px] text-black/25 block uppercase tracking-wider">Total Revenue</span>
+                        <span className="font-mono text-[9px] text-black/35 block uppercase tracking-wider">Total Revenue</span>
                         <span className="font-display text-xl font-bold text-black tabular-nums">{fmtCurrency(blended.totalRevenue)}</span>
                       </div>
                       <div>
-                        <span className="font-mono text-[9px] text-black/25 block uppercase tracking-wider">Total Gross Profit</span>
+                        <span className="font-mono text-[9px] text-black/35 block uppercase tracking-wider">Total Gross Profit</span>
                         <span className="font-display text-xl font-bold tabular-nums" style={{ color: statusColor }}>
                           {fmtCurrency(blended.totalProfit)}
                         </span>
                       </div>
                     </div>
                     <div className="text-right">
-                      <span className="font-mono text-[9px] text-black/25 block uppercase tracking-wider">Blended GM</span>
+                      <span className="font-mono text-[9px] text-black/35 block uppercase tracking-wider">Blended GM</span>
                       <span className="font-display text-3xl font-bold tabular-nums" style={{ color: statusColor }}>
                         {fmtPct(blended.blendedGMPct)}
                       </span>
