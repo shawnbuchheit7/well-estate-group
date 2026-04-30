@@ -65,7 +65,7 @@ const presets: Scenario[] = [
   },
   {
     name: "Premium Repositioned",
-    description: "MSRP increase to $1,295 — WEG recommendation",
+    description: "MSRP increase to $1,295 — premium positioning",
     msrp: 1295,
     cogs: 440,
     gmTarget: 60,
