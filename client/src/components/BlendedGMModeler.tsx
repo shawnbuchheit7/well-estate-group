@@ -24,7 +24,9 @@ const MAX_MSRP = 1595;
 const DEFAULT_COGS = 440;
 const MIN_COGS = 250;
 const MAX_COGS = 600;
-const GM_TARGET = 60;
+const DEFAULT_GM_TARGET = 60;
+const MIN_GM_TARGET = 40;
+const MAX_GM_TARGET = 75;
 
 /* ─── Channel Definitions ─── */
 
@@ -167,15 +169,15 @@ function CustomSlider({
 
 /* ─── GM Indicator Ring ─── */
 
-function GMRing({ value, size = 80, strokeWidth = 6 }: { value: number; size?: number; strokeWidth?: number }) {
+function GMRing({ value, target = 60, size = 80, strokeWidth = 6 }: { value: number; target?: number; size?: number; strokeWidth?: number }) {
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
   const clampedValue = Math.min(Math.max(value, 0), 100);
   const offset = circumference - (clampedValue / 100) * circumference;
 
   const getColor = (v: number) => {
-    if (v >= GM_TARGET) return "#C9A962";
-    if (v >= 50) return "#D97706";
+    if (v >= target) return "#C9A962";
+    if (v >= (target - 10)) return "#D97706";
     return "#DC2626";
   };
 
@@ -203,6 +205,7 @@ function GMRing({ value, size = 80, strokeWidth = 6 }: { value: number; size?: n
 export default function BlendedGMModeler() {
   const [msrp, setMsrp] = useState(DEFAULT_MSRP);
   const [cogs, setCogs] = useState(DEFAULT_COGS);
+  const [gmTarget, setGmTarget] = useState(DEFAULT_GM_TARGET);
   // Store discount percentages instead of absolute prices — they stay stable when MSRP changes
   const [discounts, setDiscounts] = useState(channelDefs.map((c) => c.defaultDiscountPct));
   const [volumes, setVolumes] = useState(channelDefs.map((c) => c.defaultVolume));
@@ -237,6 +240,7 @@ export default function BlendedGMModeler() {
   const handleReset = useCallback(() => {
     setMsrp(DEFAULT_MSRP);
     setCogs(DEFAULT_COGS);
+    setGmTarget(DEFAULT_GM_TARGET);
     setDiscounts(channelDefs.map((c) => c.defaultDiscountPct));
     setVolumes(channelDefs.map((c) => c.defaultVolume));
   }, []);
@@ -278,8 +282,8 @@ export default function BlendedGMModeler() {
     return { blendedASP, blendedMarginPerUnit, blendedGMPct, totalRevenue: weightedPrice, totalProfit: weightedMargin };
   }, [channelMetrics]);
 
-  const isHealthy = blended.blendedGMPct >= GM_TARGET;
-  const isWarning = blended.blendedGMPct >= 50 && blended.blendedGMPct < GM_TARGET;
+  const isHealthy = blended.blendedGMPct >= gmTarget;
+  const isWarning = blended.blendedGMPct >= (gmTarget - 10) && blended.blendedGMPct < gmTarget;
 
   const statusColor = isHealthy ? "#C9A962" : isWarning ? "#D97706" : "#DC2626";
   const statusBg = isHealthy ? "bg-[#C9A962]/[0.06]" : isWarning ? "bg-amber-50" : "bg-red-50";
@@ -321,9 +325,9 @@ export default function BlendedGMModeler() {
               </motion.div>
               <p className={`font-body text-sm mt-2 ${isHealthy ? "text-[#C9A962]/70" : isWarning ? "text-amber-600/70" : "text-red-600/70"}`}>
                 {isHealthy
-                  ? "Above 60% target — healthy margin structure"
+                  ? `Above ${gmTarget}% target — healthy margin structure`
                   : isWarning
-                  ? "Below 60% target — review pricing, volume mix, or COGS"
+                  ? `Below ${gmTarget}% target — review pricing, volume mix, or COGS`
                   : "Margin compression — adjust MSRP, COGS, or channel mix"}
               </p>
             </div>
@@ -351,11 +355,11 @@ export default function BlendedGMModeler() {
           <div className="mt-6 pt-5 border-t border-black/[0.05]">
             <div className="flex items-center justify-between text-[10px] font-mono text-black/30 mb-1.5">
               <span>0%</span>
-              <span className="text-[#C9A962] font-semibold">60% TARGET</span>
+                <span className="text-[#C9A962] font-semibold">{gmTarget}% TARGET</span>
               <span>100%</span>
             </div>
             <div className="relative h-3 rounded-full bg-black/[0.04] overflow-hidden">
-              <div className="absolute top-0 bottom-0 w-0.5 bg-[#C9A962]/60 z-10" style={{ left: "60%" }} />
+              <div className="absolute top-0 bottom-0 w-0.5 bg-[#C9A962]/60 z-10" style={{ left: `${gmTarget}%` }} />
               <motion.div
                 className="absolute left-0 top-0 bottom-0 rounded-full"
                 style={{ backgroundColor: statusColor }}
@@ -395,7 +399,31 @@ export default function BlendedGMModeler() {
           </button>
         </div>
 
-        <div className="p-6 grid md:grid-cols-2 gap-8">
+        <div className="p-6 grid md:grid-cols-3 gap-8">
+          {/* GM Target Slider */}
+          <div>
+            <CustomSlider
+              value={gmTarget}
+              min={MIN_GM_TARGET}
+              max={MAX_GM_TARGET}
+              step={1}
+              onChange={setGmTarget}
+              formatDisplay={(v) => v + "%"}
+              label="GM Target"
+              sublabel="Set the desired blended gross margin threshold"
+              accentColor="#C9A962"
+            />
+            <div className="mt-4 pt-3 border-t border-black/[0.04]">
+              <div className="flex items-center justify-between">
+                <span className="font-mono text-[9px] text-black/30 tracking-wider uppercase">Required MSRP at Current Mix</span>
+                <span className="font-display text-sm font-bold text-black tabular-nums">
+                  {fmtCurrency(Math.round(cogs / (1 - gmTarget / 100)))}
+                </span>
+              </div>
+              <p className="font-mono text-[8px] text-black/20 mt-1">Min list price to hit target at full-list only</p>
+            </div>
+          </div>
+
           {/* MSRP Slider */}
           <div>
             <CustomSlider
@@ -440,7 +468,7 @@ export default function BlendedGMModeler() {
             <div className="mt-4 pt-3 border-t border-black/[0.04] flex items-center justify-between">
               <span className="font-mono text-[9px] text-black/30 tracking-wider uppercase">GM at Full List</span>
               <div className="flex items-center gap-2">
-                <span className="font-display text-sm font-bold tabular-nums" style={{ color: ((msrp - cogs) / msrp * 100) >= GM_TARGET ? "#C9A962" : "#D97706" }}>
+                <span className="font-display text-sm font-bold tabular-nums" style={{ color: ((msrp - cogs) / msrp * 100) >= gmTarget ? "#C9A962" : "#D97706" }}>
                   {fmtPct((msrp - cogs) / msrp * 100)}
                 </span>
                 <span className="font-mono text-[9px] text-black/20">({fmtCurrency(msrp - cogs)} margin)</span>
@@ -485,7 +513,7 @@ export default function BlendedGMModeler() {
               {/* GM Ring + Price */}
               <div className="px-5 py-4">
                 <div className="flex items-center gap-4 mb-4">
-                  <GMRing value={m.gmPct} size={72} strokeWidth={5} />
+                  <GMRing value={m.gmPct} target={gmTarget} size={72} strokeWidth={5} />
                   <div>
                     <p className="font-mono text-[9px] text-black/30 uppercase tracking-[0.12em]">Channel GM</p>
                     <p className="font-display text-2xl font-bold tabular-nums" style={{ color: gmColor }}>{fmtPct(m.gmPct)}</p>
@@ -573,7 +601,7 @@ export default function BlendedGMModeler() {
           <div className="grid grid-cols-3 gap-0 divide-x divide-black/[0.05]">
             {channelDefs.map((ch, i) => {
               const m = channelMetrics[i];
-              const gmColor = m.gmPct >= GM_TARGET ? "#C9A962" : m.gmPct >= 50 ? "#D97706" : "#DC2626";
+              const gmColor = m.gmPct >= gmTarget ? "#C9A962" : m.gmPct >= (gmTarget - 10) ? "#D97706" : "#DC2626";
               return (
                 <div key={i} className="px-4 first:pl-0 last:pr-0">
                   <div className="flex items-center gap-2 mb-3">
