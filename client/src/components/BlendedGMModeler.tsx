@@ -1,5 +1,5 @@
 /**
- * Blended Gross Margin Modeler — v4
+ * Blended Gross Margin Modeler — v5
  * Interactive tool to model MSRP, COGS, volume mix, and discounts across 3 channels
  * Shows real-time blended gross margin with visual feedback
  * 
@@ -9,6 +9,7 @@
  * - Preset Scenarios (one-click load)
  * - Sensitivity Highlight (which lever has most impact)
  * - Collapsible Revenue Breakdown
+ * - Pricing Mode Toggle: Floor Pricing (worst case) vs Expected ASP (realistic per-LOB avg discount)
  * 
  * Design: Brand-aligned (black/gold/white), luxury aesthetic, clean typography
  */
@@ -17,7 +18,7 @@ import { useState, useMemo, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   RotateCcw, DollarSign, BarChart3, Package, Building2, Store,
-  AlertTriangle, CheckCircle2, Lock, Tag, ChevronDown, Lightbulb, Zap,
+  AlertTriangle, CheckCircle2, Lock, Tag, ChevronDown, Lightbulb, Zap, ToggleLeft, ToggleRight,
 } from "lucide-react";
 
 /* ─── Constants ─── */
@@ -32,6 +33,10 @@ const DEFAULT_GM_TARGET = 60;
 const MIN_GM_TARGET = 40;
 const MAX_GM_TARGET = 75;
 
+/* ─── Pricing Mode ─── */
+
+type PricingMode = "floor" | "expected";
+
 /* ─── Preset Scenarios ─── */
 
 interface Scenario {
@@ -40,7 +45,8 @@ interface Scenario {
   msrp: number;
   cogs: number;
   gmTarget: number;
-  discounts: number[];
+  discounts: number[];       // max/floor discounts per channel
+  avgDiscounts: number[];    // expected average discounts per channel
   volumes: number[];
 }
 
@@ -51,16 +57,18 @@ const presets: Scenario[] = [
     msrp: 1095,
     cogs: 440,
     gmTarget: 60,
-    discounts: [0, 20, 32],
+    discounts: [0, 25, 40],
+    avgDiscounts: [0, 18, 30],
     volumes: [30, 40, 30],
   },
   {
     name: "Conservative",
-    description: "Heavy commercial mix, max discounts",
+    description: "Heavy commercial mix, max discounts assumed",
     msrp: 1095,
     cogs: 440,
     gmTarget: 60,
     discounts: [0, 25, 40],
+    avgDiscounts: [0, 25, 40],
     volumes: [15, 35, 50],
   },
   {
@@ -69,7 +77,8 @@ const presets: Scenario[] = [
     msrp: 1295,
     cogs: 440,
     gmTarget: 60,
-    discounts: [0, 20, 32],
+    discounts: [0, 25, 40],
+    avgDiscounts: [0, 16, 28],
     volumes: [25, 40, 35],
   },
   {
@@ -78,7 +87,8 @@ const presets: Scenario[] = [
     msrp: 1195,
     cogs: 360,
     gmTarget: 60,
-    discounts: [0, 18, 28],
+    discounts: [0, 25, 40],
+    avgDiscounts: [0, 15, 25],
     volumes: [20, 45, 35],
   },
 ];
@@ -95,6 +105,7 @@ interface ChannelDef {
   barColor: string;
   maxDiscountPct: number;
   defaultDiscountPct: number;
+  defaultAvgDiscountPct: number;
   defaultVolume: number;
   description: string;
   locked: boolean;
@@ -111,6 +122,7 @@ const channelDefs: ChannelDef[] = [
     barColor: "#C9A962",
     maxDiscountPct: 0,
     defaultDiscountPct: 0,
+    defaultAvgDiscountPct: 0,
     defaultVolume: 30,
     description: "Full MSRP — no discounts. Margin floor anchor.",
     locked: true,
@@ -124,7 +136,8 @@ const channelDefs: ChannelDef[] = [
     accentBorder: "border-black/[0.10]",
     barColor: "#1A1A1A",
     maxDiscountPct: 25,
-    defaultDiscountPct: 20,
+    defaultDiscountPct: 25,
+    defaultAvgDiscountPct: 18,
     defaultVolume: 40,
     description: "Medical, clubs, hospitality, sports, corporate.",
     locked: false,
@@ -138,7 +151,8 @@ const channelDefs: ChannelDef[] = [
     accentBorder: "border-black/[0.08]",
     barColor: "#9CA3AF",
     maxDiscountPct: 40,
-    defaultDiscountPct: 32,
+    defaultDiscountPct: 40,
+    defaultAvgDiscountPct: 30,
     defaultVolume: 30,
     description: "Health clubs, dealers, distributors, resellers.",
     locked: false,
@@ -262,13 +276,20 @@ export default function BlendedGMModeler() {
   const [cogs, setCogs] = useState(DEFAULT_COGS);
   const [gmTarget, setGmTarget] = useState(DEFAULT_GM_TARGET);
   const [discounts, setDiscounts] = useState(channelDefs.map((c) => c.defaultDiscountPct));
+  const [avgDiscounts, setAvgDiscounts] = useState(channelDefs.map((c) => c.defaultAvgDiscountPct));
   const [volumes, setVolumes] = useState(channelDefs.map((c) => c.defaultVolume));
   const [activePreset, setActivePreset] = useState<string | null>("ZeroWheel Deck");
   const [showBreakdown, setShowBreakdown] = useState(false);
+  const [pricingMode, setPricingMode] = useState<PricingMode>("floor");
 
   const setDiscount = useCallback((idx: number, val: number) => {
     setActivePreset(null);
     setDiscounts((prev) => { const n = [...prev]; n[idx] = val; return n; });
+  }, []);
+
+  const setAvgDiscount = useCallback((idx: number, val: number) => {
+    setActivePreset(null);
+    setAvgDiscounts((prev) => { const n = [...prev]; n[idx] = val; return n; });
   }, []);
 
   const setVolume = useCallback((idx: number, val: number) => {
@@ -300,21 +321,26 @@ export default function BlendedGMModeler() {
     setCogs(preset.cogs);
     setGmTarget(preset.gmTarget);
     setDiscounts([...preset.discounts]);
+    setAvgDiscounts([...preset.avgDiscounts]);
     setVolumes([...preset.volumes]);
     setActivePreset(preset.name);
   }, []);
 
   const handleReset = useCallback(() => {
     loadPreset(presets[0]);
+    setPricingMode("floor");
   }, [loadPreset]);
 
-  // Compute selling prices from MSRP and discount %
+  // Active discounts based on pricing mode
+  const activeDiscounts = pricingMode === "floor" ? discounts : avgDiscounts;
+
+  // Compute selling prices from MSRP and active discount %
   const prices = useMemo(() => {
     return channelDefs.map((ch, i) => {
       if (ch.locked) return msrp;
-      return Math.round(msrp * (1 - discounts[i] / 100));
+      return Math.round(msrp * (1 - activeDiscounts[i] / 100));
     });
-  }, [msrp, discounts]);
+  }, [msrp, activeDiscounts]);
 
   // Per-channel metrics
   const channelMetrics = useMemo(() => {
@@ -326,9 +352,9 @@ export default function BlendedGMModeler() {
       const units = Math.round((vol / 100) * 1000);
       const revenue = units * price;
       const profit = units * margin;
-      return { price, vol, margin, gmPct, units, revenue, profit, discountPct: ch.locked ? 0 : discounts[i] };
+      return { price, vol, margin, gmPct, units, revenue, profit, discountPct: ch.locked ? 0 : activeDiscounts[i] };
     });
-  }, [prices, volumes, cogs, discounts]);
+  }, [prices, volumes, cogs, activeDiscounts]);
 
   // Blended metrics
   const blended = useMemo(() => {
@@ -352,7 +378,7 @@ export default function BlendedGMModeler() {
 
     // Test: what if MSRP +$100?
     const testMsrp = msrp + 100;
-    const testPricesMsrp = channelDefs.map((ch, i) => ch.locked ? testMsrp : Math.round(testMsrp * (1 - discounts[i] / 100)));
+    const testPricesMsrp = channelDefs.map((ch, i) => ch.locked ? testMsrp : Math.round(testMsrp * (1 - activeDiscounts[i] / 100)));
     let wpMsrp = 0, wmMsrp = 0;
     channelMetrics.forEach((m, i) => {
       const p = testPricesMsrp[i];
@@ -397,7 +423,7 @@ export default function BlendedGMModeler() {
     ].sort((a, b) => b.impact - a.impact);
 
     return { gap, levers };
-  }, [blended, gmTarget, msrp, cogs, discounts, volumes, channelMetrics]);
+  }, [blended, gmTarget, msrp, cogs, activeDiscounts, volumes, channelMetrics]);
 
   const isHealthy = blended.blendedGMPct >= gmTarget;
   const isWarning = blended.blendedGMPct >= (gmTarget - 10) && blended.blendedGMPct < gmTarget;
@@ -440,6 +466,96 @@ export default function BlendedGMModeler() {
         </div>
       </motion.div>
 
+      {/* ─── Pricing Mode Toggle ─── */}
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mb-6 rounded-2xl border border-black/[0.10] bg-white overflow-hidden"
+      >
+        <div className="p-5">
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2.5">
+              <BarChart3 className="w-4 h-4 text-[#C9A962]" />
+              <span className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em]">Pricing Assumption</span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-3">
+            <button
+              onClick={() => setPricingMode("floor")}
+              className={`p-4 rounded-xl border text-left transition-all duration-200 ${
+                pricingMode === "floor"
+                  ? "border-[#DC2626]/40 bg-red-50/50 shadow-sm"
+                  : "border-black/[0.06] bg-white hover:border-black/[0.12]"
+              }`}
+            >
+              <div className="flex items-center gap-2 mb-2">
+                {pricingMode === "floor" ? (
+                  <ToggleRight className="w-5 h-5 text-[#DC2626]" />
+                ) : (
+                  <ToggleLeft className="w-5 h-5 text-black/20" />
+                )}
+                <span className={`font-display text-sm font-semibold ${pricingMode === "floor" ? "text-[#DC2626]" : "text-black/50"}`}>
+                  Floor Pricing
+                </span>
+              </div>
+              <p className="font-body text-[10px] text-black/40 leading-relaxed">
+                Worst case — assumes every deal closes at maximum discount (floor price). No deal closes above floor.
+              </p>
+              {pricingMode === "floor" && (
+                <div className="mt-2 pt-2 border-t border-red-200/50">
+                  <p className="font-mono text-[9px] text-[#DC2626]/70 uppercase tracking-wider">Active — conservative scenario</p>
+                </div>
+              )}
+            </button>
+
+            <button
+              onClick={() => setPricingMode("expected")}
+              className={`p-4 rounded-xl border text-left transition-all duration-200 ${
+                pricingMode === "expected"
+                  ? "border-[#C9A962]/40 bg-[#C9A962]/[0.04] shadow-sm"
+                  : "border-black/[0.06] bg-white hover:border-black/[0.12]"
+              }`}
+            >
+              <div className="flex items-center gap-2 mb-2">
+                {pricingMode === "expected" ? (
+                  <ToggleRight className="w-5 h-5 text-[#C9A962]" />
+                ) : (
+                  <ToggleLeft className="w-5 h-5 text-black/20" />
+                )}
+                <span className={`font-display text-sm font-semibold ${pricingMode === "expected" ? "text-[#C9A962]" : "text-black/50"}`}>
+                  Expected ASP
+                </span>
+              </div>
+              <p className="font-body text-[10px] text-black/40 leading-relaxed">
+                Realistic — uses average discount per LOB. Not every deal closes at floor; many close above it.
+              </p>
+              {pricingMode === "expected" && (
+                <div className="mt-2 pt-2 border-t border-[#C9A962]/20">
+                  <p className="font-mono text-[9px] text-[#C9A962]/70 uppercase tracking-wider">Active — realistic scenario</p>
+                </div>
+              )}
+            </button>
+          </div>
+
+          {/* Context note */}
+          <div className="mt-4 p-3 rounded-xl bg-black/[0.02] border border-black/[0.04]">
+            <p className="font-body text-[11px] text-black/45 leading-relaxed">
+              {pricingMode === "floor" ? (
+                <>
+                  <strong className="text-black/60">Note:</strong> This model currently assumes every deal in each LOB closes at the maximum allowable discount (floor price). In practice, many deals — especially in Vertical markets — will close above floor, resulting in higher realized ASPs and better margins than shown here.
+                </>
+              ) : (
+                <>
+                  <strong className="text-black/60">Note:</strong> This model uses an estimated average discount per LOB based on expected deal mix. Adjust each channel's average discount below to reflect your assumptions. The max discount (floor) remains the ceiling — no deal exceeds it.
+                </>
+              )}
+            </p>
+          </div>
+        </div>
+      </motion.div>
+
       {/* ─── Hero Metric ─── */}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
@@ -462,9 +578,16 @@ export default function BlendedGMModeler() {
                 <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/35">
                   Blended Gross Margin
                 </span>
+                <span className={`font-mono text-[9px] px-2 py-0.5 rounded-full ${
+                  pricingMode === "floor" 
+                    ? "bg-red-100 text-red-600" 
+                    : "bg-[#C9A962]/10 text-[#C9A962]"
+                }`}>
+                  {pricingMode === "floor" ? "FLOOR" : "EXPECTED"}
+                </span>
               </div>
               <motion.div
-                key={blended.blendedGMPct.toFixed(1)}
+                key={blended.blendedGMPct.toFixed(1) + pricingMode}
                 initial={{ scale: 1.05, opacity: 0.7 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.3 }}
@@ -642,7 +765,7 @@ export default function BlendedGMModeler() {
                   <span className="font-mono text-[8px] text-black/30 tracking-wider uppercase block">{ch.shortName}</span>
                   <span className="font-display text-sm font-bold text-black tabular-nums">{fmtCurrency(prices[i])}</span>
                   <span className="font-mono text-[8px] text-black/20 block">
-                    {ch.locked ? "full list" : `${discounts[i]}% off`}
+                    {ch.locked ? "full list" : `${activeDiscounts[i]}% off`}
                   </span>
                 </div>
               ))}
@@ -730,17 +853,31 @@ export default function BlendedGMModeler() {
                   </div>
                 ) : (
                   <div className="mb-4">
-                    <CustomSlider
-                      value={discounts[i]}
-                      min={0}
-                      max={ch.maxDiscountPct}
-                      step={1}
-                      onChange={(v) => setDiscount(i, v)}
-                      formatDisplay={(v) => `${v}% off → ${fmtCurrency(Math.round(msrp * (1 - v / 100)))}`}
-                      label="Discount Off List"
-                      sublabel={`Max allowed: ${ch.maxDiscountPct}% off (floor: ${fmtCurrency(Math.round(msrp * (1 - ch.maxDiscountPct / 100)))})`}
-                      accentColor={ch.accentColor}
-                    />
+                    {pricingMode === "floor" ? (
+                      <CustomSlider
+                        value={discounts[i]}
+                        min={0}
+                        max={ch.maxDiscountPct}
+                        step={1}
+                        onChange={(v) => setDiscount(i, v)}
+                        formatDisplay={(v) => `${v}% off → ${fmtCurrency(Math.round(msrp * (1 - v / 100)))}`}
+                        label="Max Discount (Floor)"
+                        sublabel={`Floor price: ${fmtCurrency(Math.round(msrp * (1 - ch.maxDiscountPct / 100)))} — assumes every deal at max`}
+                        accentColor={ch.accentColor}
+                      />
+                    ) : (
+                      <CustomSlider
+                        value={avgDiscounts[i]}
+                        min={0}
+                        max={ch.maxDiscountPct}
+                        step={1}
+                        onChange={(v) => setAvgDiscount(i, v)}
+                        formatDisplay={(v) => `${v}% off → ${fmtCurrency(Math.round(msrp * (1 - v / 100)))}`}
+                        label="Avg Discount (Expected)"
+                        sublabel={`Realistic avg — max allowed: ${ch.maxDiscountPct}% (floor: ${fmtCurrency(Math.round(msrp * (1 - ch.maxDiscountPct / 100)))})`}
+                        accentColor="#C9A962"
+                      />
+                    )}
                   </div>
                 )}
 
