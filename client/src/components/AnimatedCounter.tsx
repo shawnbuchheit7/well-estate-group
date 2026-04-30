@@ -3,6 +3,9 @@
  * Supports both:
  *   1. Explicit props: value (number), prefix, suffix, decimals
  *   2. String-based: valueStr (e.g., "$6.7T", "30+", "144+") with auto-parsing
+ * 
+ * FIX: Handles elements already visible on page load (hero stats)
+ * FIX: Adds comma formatting for numbers >= 1,000
  */
 
 import { useEffect, useState, useRef } from 'react';
@@ -17,7 +20,7 @@ interface AnimatedCounterProps {
   className?: string;
 }
 
-function parseValueStr(str: string): { prefix: string; number: number; suffix: string; decimals: number } {
+function parseValueStr(str: string): { prefix: string; number: number; suffix: string; decimals: number; useCommas: boolean } {
   const prefixMatch = str.match(/^([^0-9]*)/);
   const prefix = prefixMatch ? prefixMatch[1] : "";
   const numMatch = str.match(/([0-9]+\.?[0-9]*)/);
@@ -26,7 +29,9 @@ function parseValueStr(str: string): { prefix: string; number: number; suffix: s
   const decimals = numStr.includes(".") ? numStr.split(".")[1].length : 0;
   const suffixMatch = str.match(/[0-9]+\.?[0-9]*(.*)/);
   const suffix = suffixMatch ? suffixMatch[1] : "";
-  return { prefix, number, suffix, decimals };
+  // Detect if original string uses commas (e.g., "$1,095")
+  const useCommas = str.includes(",");
+  return { prefix, number, suffix, decimals, useCommas };
 }
 
 export function AnimatedCounter({
@@ -48,28 +53,54 @@ export function AnimatedCounter({
   const prefix = parsed ? parsed.prefix : propPrefix;
   const suffix = parsed ? parsed.suffix : propSuffix;
   const decimals = propDecimals ?? (parsed ? parsed.decimals : 0);
+  const useCommas = parsed ? parsed.useCommas : false;
 
   // Format a number for display
   const formatValue = (val: number) => {
-    return val.toFixed(decimals);
+    const fixed = val.toFixed(decimals);
+    if (useCommas) {
+      const parts = fixed.split(".");
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      return parts.join(".");
+    }
+    return fixed;
   };
 
   // Intersection Observer to trigger animation when in view
+  // Also checks if element is already visible on mount
   useEffect(() => {
     const el = elementRef.current;
-    if (!el) return;
+    if (!el || hasStarted) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasStarted) {
           setHasStarted(true);
+          observer.disconnect();
         }
       },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+      { threshold: 0.01 }
     );
 
     observer.observe(el);
     return () => observer.disconnect();
+  }, [hasStarted]);
+
+  // Fallback: if element is in viewport on mount but observer didn't fire,
+  // start after a short delay
+  useEffect(() => {
+    if (hasStarted) return;
+    const timer = setTimeout(() => {
+      const el = elementRef.current;
+      if (el) {
+        const rect = el.getBoundingClientRect();
+        const inViewport = rect.top < window.innerHeight && rect.bottom > 0;
+        if (inViewport) {
+          setHasStarted(true);
+        }
+      }
+    }, 300);
+    return () => clearTimeout(timer);
   }, [hasStarted]);
 
   // Animate the counter
