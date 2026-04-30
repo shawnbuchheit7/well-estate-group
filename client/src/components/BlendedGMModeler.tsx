@@ -1,38 +1,49 @@
 /**
- * Blended Gross Margin Modeler — v2 Optimized
- * Interactive tool to model COGS, volume mix, and discounts across 3 channels
+ * Blended Gross Margin Modeler — v3
+ * Interactive tool to model MSRP, COGS, volume mix, and discounts across 3 channels
  * Shows real-time blended gross margin with visual feedback
  * 
+ * NEW: Global MSRP slider — adjusting list price cascades to all channel selling prices
+ * based on their max discount percentages (Consumer: 0%, Vertical: 25%, Commercial: 40%)
+ * 
  * Design: Brand-aligned (black/gold/white), luxury aesthetic, clean typography
- * Function: Smooth volume normalization, custom styled sliders, scenario defaults
  */
 
 import { useState, useMemo, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   RotateCcw, DollarSign, BarChart3, Package, Building2, Store,
-  AlertTriangle, CheckCircle2, Lock, TrendingUp, Minus,
+  AlertTriangle, CheckCircle2, Lock, Tag,
 } from "lucide-react";
 
-/* ─── Channel Configuration ─── */
+/* ─── Constants ─── */
 
-interface ChannelConfig {
+const DEFAULT_MSRP = 1095;
+const MIN_MSRP = 895;
+const MAX_MSRP = 1595;
+const DEFAULT_COGS = 440;
+const MIN_COGS = 250;
+const MAX_COGS = 600;
+const GM_TARGET = 60;
+
+/* ─── Channel Definitions ─── */
+
+interface ChannelDef {
   name: string;
   shortName: string;
   icon: typeof DollarSign;
   accentColor: string;
   accentBg: string;
   accentBorder: string;
-  accentLight: string;
-  defaultPrice: number;
-  minPrice: number;
-  maxPrice: number;
+  barColor: string;
+  maxDiscountPct: number; // 0 = full list, 25 = 25% off, 40 = 40% off
+  defaultDiscountPct: number; // starting discount within allowed range
   defaultVolume: number;
   description: string;
-  locked: boolean;
+  locked: boolean; // if true, price is always full MSRP
 }
 
-const channels: ChannelConfig[] = [
+const channelDefs: ChannelDef[] = [
   {
     name: "Consumer (DTC)",
     shortName: "Consumer",
@@ -40,10 +51,9 @@ const channels: ChannelConfig[] = [
     accentColor: "#C9A962",
     accentBg: "bg-[#C9A962]/[0.06]",
     accentBorder: "border-[#C9A962]/20",
-    accentLight: "bg-[#C9A962]/[0.08]",
-    defaultPrice: 1095,
-    minPrice: 1095,
-    maxPrice: 1095,
+    barColor: "#C9A962",
+    maxDiscountPct: 0,
+    defaultDiscountPct: 0,
     defaultVolume: 30,
     description: "Full MSRP — no discounts. Margin floor anchor.",
     locked: true,
@@ -55,10 +65,9 @@ const channels: ChannelConfig[] = [
     accentColor: "#1A1A1A",
     accentBg: "bg-black/[0.02]",
     accentBorder: "border-black/[0.10]",
-    accentLight: "bg-black/[0.04]",
-    defaultPrice: 875,
-    minPrice: 695,
-    maxPrice: 1095,
+    barColor: "#1A1A1A",
+    maxDiscountPct: 25,
+    defaultDiscountPct: 20,
     defaultVolume: 40,
     description: "Medical, clubs, hospitality, sports, corporate.",
     locked: false,
@@ -70,21 +79,14 @@ const channels: ChannelConfig[] = [
     accentColor: "#6B7280",
     accentBg: "bg-black/[0.01]",
     accentBorder: "border-black/[0.08]",
-    accentLight: "bg-black/[0.03]",
-    defaultPrice: 750,
-    minPrice: 695,
-    maxPrice: 1095,
+    barColor: "#9CA3AF",
+    maxDiscountPct: 40,
+    defaultDiscountPct: 32,
     defaultVolume: 30,
     description: "Health clubs, dealers, distributors, resellers.",
     locked: false,
   },
 ];
-
-const MSRP = 1095;
-const DEFAULT_COGS = 440;
-const MIN_COGS = 250;
-const MAX_COGS = 600;
-const GM_TARGET = 60;
 
 /* ─── Formatters ─── */
 
@@ -94,11 +96,6 @@ function fmtCurrency(val: number): string {
 
 function fmtPct(val: number): string {
   return val.toFixed(1) + "%";
-}
-
-function fmtDiscount(price: number): string {
-  const pct = ((MSRP - price) / MSRP) * 100;
-  return pct > 0 ? `${pct.toFixed(0)}% off list` : "Full list";
 }
 
 /* ─── Custom Slider ─── */
@@ -126,7 +123,7 @@ function CustomSlider({
   accentColor?: string;
   disabled?: boolean;
 }) {
-  const pct = ((value - min) / (max - min)) * 100;
+  const pct = max > min ? ((value - min) / (max - min)) * 100 : 0;
 
   return (
     <div className={disabled ? "opacity-50 pointer-events-none" : ""}>
@@ -136,14 +133,11 @@ function CustomSlider({
       </div>
       {sublabel && <p className="font-body text-[10px] text-black/30 mb-2.5 leading-relaxed">{sublabel}</p>}
       <div className="relative h-8 flex items-center">
-        {/* Track background */}
         <div className="absolute inset-x-0 h-1.5 rounded-full bg-black/[0.06]" />
-        {/* Active fill */}
         <div
           className="absolute left-0 h-1.5 rounded-full transition-all duration-150"
           style={{ width: `${pct}%`, backgroundColor: accentColor }}
         />
-        {/* Native input (invisible but functional) */}
         <input
           type="range"
           min={min}
@@ -154,7 +148,6 @@ function CustomSlider({
           disabled={disabled}
           className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
         />
-        {/* Custom thumb */}
         <div
           className="absolute w-5 h-5 rounded-full bg-white border-2 shadow-md transition-all duration-150 pointer-events-none"
           style={{
@@ -208,19 +201,20 @@ function GMRing({ value, size = 80, strokeWidth = 6 }: { value: number; size?: n
 /* ─── Main Component ─── */
 
 export default function BlendedGMModeler() {
+  const [msrp, setMsrp] = useState(DEFAULT_MSRP);
   const [cogs, setCogs] = useState(DEFAULT_COGS);
-  const [prices, setPrices] = useState(channels.map((c) => c.defaultPrice));
-  const [volumes, setVolumes] = useState(channels.map((c) => c.defaultVolume));
+  // Store discount percentages instead of absolute prices — they stay stable when MSRP changes
+  const [discounts, setDiscounts] = useState(channelDefs.map((c) => c.defaultDiscountPct));
+  const [volumes, setVolumes] = useState(channelDefs.map((c) => c.defaultVolume));
 
-  const setPrice = useCallback((idx: number, val: number) => {
-    setPrices((prev) => { const n = [...prev]; n[idx] = val; return n; });
+  const setDiscount = useCallback((idx: number, val: number) => {
+    setDiscounts((prev) => { const n = [...prev]; n[idx] = val; return n; });
   }, []);
 
   const setVolume = useCallback((idx: number, val: number) => {
     setVolumes((prev) => {
       const newVols = [...prev];
       newVols[idx] = val;
-      // Proportionally redistribute remaining volume to other channels
       const othersTotal = prev.reduce((s, v, i) => (i === idx ? s : s + v), 0);
       const remaining = 100 - val;
       if (othersTotal > 0) {
@@ -230,11 +224,9 @@ export default function BlendedGMModeler() {
           }
         }
       }
-      // Ensure sum is exactly 100
       const sum = newVols.reduce((s, v) => s + v, 0);
       if (sum !== 100) {
         const diff = 100 - sum;
-        // Add/subtract diff from the largest non-adjusted channel
         const adjustIdx = newVols.reduce((maxI, v, i) => (i !== idx && v > newVols[maxI] ? i : maxI), idx === 0 ? 1 : 0);
         newVols[adjustIdx] += diff;
       }
@@ -243,25 +235,33 @@ export default function BlendedGMModeler() {
   }, []);
 
   const handleReset = useCallback(() => {
+    setMsrp(DEFAULT_MSRP);
     setCogs(DEFAULT_COGS);
-    setPrices(channels.map((c) => c.defaultPrice));
-    setVolumes(channels.map((c) => c.defaultVolume));
+    setDiscounts(channelDefs.map((c) => c.defaultDiscountPct));
+    setVolumes(channelDefs.map((c) => c.defaultVolume));
   }, []);
+
+  // Compute selling prices from MSRP and discount %
+  const prices = useMemo(() => {
+    return channelDefs.map((ch, i) => {
+      if (ch.locked) return msrp; // Consumer always at full list
+      return Math.round(msrp * (1 - discounts[i] / 100));
+    });
+  }, [msrp, discounts]);
 
   // Per-channel metrics
   const channelMetrics = useMemo(() => {
-    return channels.map((ch, i) => {
+    return channelDefs.map((ch, i) => {
       const price = prices[i];
       const vol = volumes[i];
       const margin = price - cogs;
       const gmPct = price > 0 ? (margin / price) * 100 : 0;
-      const discountPct = ((MSRP - price) / MSRP) * 100;
       const units = Math.round((vol / 100) * 1000);
       const revenue = units * price;
       const profit = units * margin;
-      return { price, vol, margin, gmPct, discountPct, units, revenue, profit };
+      return { price, vol, margin, gmPct, units, revenue, profit, discountPct: ch.locked ? 0 : discounts[i] };
     });
-  }, [prices, volumes, cogs]);
+  }, [prices, volumes, cogs, discounts]);
 
   // Blended metrics
   const blended = useMemo(() => {
@@ -284,7 +284,6 @@ export default function BlendedGMModeler() {
   const statusColor = isHealthy ? "#C9A962" : isWarning ? "#D97706" : "#DC2626";
   const statusBg = isHealthy ? "bg-[#C9A962]/[0.06]" : isWarning ? "bg-amber-50" : "bg-red-50";
   const statusBorder = isHealthy ? "border-[#C9A962]/25" : isWarning ? "border-amber-200" : "border-red-200";
-  const statusText = isHealthy ? "text-[#C9A962]" : isWarning ? "text-amber-700" : "text-red-700";
 
   return (
     <div className="max-w-6xl mx-auto">
@@ -324,8 +323,8 @@ export default function BlendedGMModeler() {
                 {isHealthy
                   ? "Above 60% target — healthy margin structure"
                   : isWarning
-                  ? "Below 60% target — review volume mix or pricing"
-                  : "Margin compression — adjust COGS, pricing, or mix"}
+                  ? "Below 60% target — review pricing, volume mix, or COGS"
+                  : "Margin compression — adjust MSRP, COGS, or channel mix"}
               </p>
             </div>
 
@@ -335,9 +334,9 @@ export default function BlendedGMModeler() {
             {/* Right: Key metrics grid */}
             <div className="flex-1 grid grid-cols-2 md:grid-cols-4 gap-6">
               {[
+                { label: "List Price (MSRP)", value: fmtCurrency(msrp) },
                 { label: "Blended ASP", value: fmtCurrency(blended.blendedASP) },
                 { label: "Margin / Unit", value: fmtCurrency(blended.blendedMarginPerUnit) },
-                { label: "COGS / Unit", value: fmtCurrency(cogs) },
                 { label: "Profit / 1K Units", value: fmtCurrency(blended.totalProfit) },
               ].map((m) => (
                 <div key={m.label} className="text-center">
@@ -356,9 +355,7 @@ export default function BlendedGMModeler() {
               <span>100%</span>
             </div>
             <div className="relative h-3 rounded-full bg-black/[0.04] overflow-hidden">
-              {/* Target marker */}
               <div className="absolute top-0 bottom-0 w-0.5 bg-[#C9A962]/60 z-10" style={{ left: "60%" }} />
-              {/* Current value bar */}
               <motion.div
                 className="absolute left-0 top-0 bottom-0 rounded-full"
                 style={{ backgroundColor: statusColor }}
@@ -371,21 +368,22 @@ export default function BlendedGMModeler() {
         </div>
       </motion.div>
 
-      {/* ─── COGS Control ─── */}
+      {/* ─── Global Controls: MSRP + COGS ─── */}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="mb-6 p-6 rounded-2xl border border-black/[0.10] bg-white"
+        className="mb-6 rounded-2xl border border-black/[0.10] bg-white overflow-hidden"
       >
-        <div className="flex items-center justify-between mb-5">
+        {/* Header */}
+        <div className="px-6 py-4 border-b border-black/[0.05] flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-black/[0.03] flex items-center justify-center">
-              <DollarSign className="w-5 h-5 text-black/40" />
+            <div className="w-10 h-10 rounded-xl bg-[#C9A962]/[0.08] flex items-center justify-center">
+              <Tag className="w-5 h-5 text-[#C9A962]" />
             </div>
             <div>
-              <h3 className="font-display text-base font-semibold text-black">Manufacturing Cost (COGS)</h3>
-              <p className="font-body text-[11px] text-black/35">Current estimate: ~$440 per unit at 60% GM on list price</p>
+              <h3 className="font-display text-base font-semibold text-black">Global Pricing & Cost Controls</h3>
+              <p className="font-body text-[11px] text-black/35">Adjust list price and manufacturing cost — channel prices update automatically</p>
             </div>
           </div>
           <button
@@ -396,22 +394,65 @@ export default function BlendedGMModeler() {
             Reset All
           </button>
         </div>
-        <CustomSlider
-          value={cogs}
-          min={MIN_COGS}
-          max={MAX_COGS}
-          step={10}
-          onChange={setCogs}
-          formatDisplay={fmtCurrency}
-          label="Unit COGS"
-          sublabel="Model manufacturing efficiencies at scale or supply chain changes"
-          accentColor="#C9A962"
-        />
+
+        <div className="p-6 grid md:grid-cols-2 gap-8">
+          {/* MSRP Slider */}
+          <div>
+            <CustomSlider
+              value={msrp}
+              min={MIN_MSRP}
+              max={MAX_MSRP}
+              step={5}
+              onChange={setMsrp}
+              formatDisplay={fmtCurrency}
+              label="List Price (MSRP)"
+              sublabel="Anchor price — all channel discounts calculated from this"
+              accentColor="#C9A962"
+            />
+            {/* Show cascading prices preview */}
+            <div className="mt-4 pt-3 border-t border-black/[0.04] grid grid-cols-3 gap-3">
+              {channelDefs.map((ch, i) => (
+                <div key={i} className="text-center">
+                  <span className="font-mono text-[8px] text-black/30 tracking-wider uppercase block">{ch.shortName}</span>
+                  <span className="font-display text-sm font-bold text-black tabular-nums">{fmtCurrency(prices[i])}</span>
+                  <span className="font-mono text-[8px] text-black/20 block">
+                    {ch.locked ? "full list" : `max ${ch.maxDiscountPct}% off`}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* COGS Slider */}
+          <div>
+            <CustomSlider
+              value={cogs}
+              min={MIN_COGS}
+              max={MAX_COGS}
+              step={10}
+              onChange={setCogs}
+              formatDisplay={fmtCurrency}
+              label="Manufacturing Cost (COGS)"
+              sublabel="Model manufacturing efficiencies at scale or supply chain changes"
+              accentColor="#1A1A1A"
+            />
+            {/* Show GM at list price */}
+            <div className="mt-4 pt-3 border-t border-black/[0.04] flex items-center justify-between">
+              <span className="font-mono text-[9px] text-black/30 tracking-wider uppercase">GM at Full List</span>
+              <div className="flex items-center gap-2">
+                <span className="font-display text-sm font-bold tabular-nums" style={{ color: ((msrp - cogs) / msrp * 100) >= GM_TARGET ? "#C9A962" : "#D97706" }}>
+                  {fmtPct((msrp - cogs) / msrp * 100)}
+                </span>
+                <span className="font-mono text-[9px] text-black/20">({fmtCurrency(msrp - cogs)} margin)</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </motion.div>
 
       {/* ─── Channel Cards ─── */}
       <div className="grid md:grid-cols-3 gap-5 mb-8">
-        {channels.map((ch, i) => {
+        {channelDefs.map((ch, i) => {
           const m = channelMetrics[i];
           const gmColor = m.gmPct >= GM_TARGET ? "#C9A962" : m.gmPct >= 50 ? "#D97706" : "#DC2626";
 
@@ -452,26 +493,26 @@ export default function BlendedGMModeler() {
                   </div>
                 </div>
 
-                {/* Price control */}
+                {/* Price / Discount control */}
                 {ch.locked ? (
                   <div className="p-3 rounded-xl bg-black/[0.02] border border-black/[0.04] mb-4">
                     <div className="flex items-center justify-between">
                       <span className="font-mono text-[10px] text-black/40 uppercase tracking-[0.12em]">Selling Price</span>
-                      <span className="font-display text-xl font-bold text-black">{fmtCurrency(prices[i])}</span>
+                      <span className="font-display text-xl font-bold text-black tabular-nums">{fmtCurrency(prices[i])}</span>
                     </div>
                     <p className="font-body text-[10px] text-[#C9A962]/70 mt-1">Full MSRP — no discounts permitted</p>
                   </div>
                 ) : (
                   <div className="mb-4">
                     <CustomSlider
-                      value={prices[i]}
-                      min={ch.minPrice}
-                      max={ch.maxPrice}
-                      step={5}
-                      onChange={(v) => setPrice(i, v)}
-                      formatDisplay={fmtCurrency}
-                      label="Selling Price"
-                      sublabel={fmtDiscount(prices[i])}
+                      value={discounts[i]}
+                      min={0}
+                      max={ch.maxDiscountPct}
+                      step={1}
+                      onChange={(v) => setDiscount(i, v)}
+                      formatDisplay={(v) => `${v}% off → ${fmtCurrency(Math.round(msrp * (1 - v / 100)))}`}
+                      label="Discount Off List"
+                      sublabel={`Max allowed: ${ch.maxDiscountPct}% off (floor: ${fmtCurrency(Math.round(msrp * (1 - ch.maxDiscountPct / 100)))})`}
                       accentColor={ch.accentColor}
                     />
                   </div>
@@ -486,7 +527,7 @@ export default function BlendedGMModeler() {
                   onChange={(v) => setVolume(i, v)}
                   formatDisplay={(v) => Math.round(v) + "%"}
                   label="Volume Mix"
-                  sublabel={`${m.units.toLocaleString()} units per 1,000`}
+                  sublabel={`${channelMetrics[i].units.toLocaleString()} units per 1,000`}
                   accentColor={ch.accentColor}
                 />
               </div>
@@ -516,7 +557,7 @@ export default function BlendedGMModeler() {
                 key={i}
                 className="h-full flex items-center justify-center font-mono text-[10px] tracking-wider"
                 style={{
-                  backgroundColor: i === 0 ? "#C9A962" : i === 1 ? "#1A1A1A" : "#9CA3AF",
+                  backgroundColor: channelDefs[i].barColor,
                   color: "white",
                   width: `${volumes[i]}%`,
                 }}
@@ -530,7 +571,7 @@ export default function BlendedGMModeler() {
 
           {/* Channel breakdown table */}
           <div className="grid grid-cols-3 gap-0 divide-x divide-black/[0.05]">
-            {channels.map((ch, i) => {
+            {channelDefs.map((ch, i) => {
               const m = channelMetrics[i];
               const gmColor = m.gmPct >= GM_TARGET ? "#C9A962" : m.gmPct >= 50 ? "#D97706" : "#DC2626";
               return (
@@ -538,11 +579,16 @@ export default function BlendedGMModeler() {
                   <div className="flex items-center gap-2 mb-3">
                     <div
                       className="w-2.5 h-2.5 rounded-sm"
-                      style={{ backgroundColor: i === 0 ? "#C9A962" : i === 1 ? "#1A1A1A" : "#9CA3AF" }}
+                      style={{ backgroundColor: ch.barColor }}
                     />
                     <span className="font-mono text-[10px] text-black/45 tracking-wider">{ch.shortName}</span>
                   </div>
                   <div className="space-y-2.5">
+                    <div>
+                      <span className="font-mono text-[9px] text-black/25 block uppercase tracking-wider">Price / Unit</span>
+                      <span className="font-display text-base font-bold text-black tabular-nums">{fmtCurrency(m.price)}</span>
+                      {m.discountPct > 0 && <span className="font-mono text-[9px] text-black/20 ml-1">({m.discountPct}% off)</span>}
+                    </div>
                     <div>
                       <span className="font-mono text-[9px] text-black/25 block uppercase tracking-wider">Units</span>
                       <span className="font-display text-base font-bold text-black tabular-nums">{m.units.toLocaleString()}</span>
