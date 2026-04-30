@@ -24,9 +24,9 @@ const sections = [
 ];
 
 const views = [
-  { id: "top", label: "Top View", src: "/tspine-top-view.webp", desc: "Universal Fit — 5 LB to 100 LB" },
-  { id: "front", label: "Front Elevation", src: "/tspine-front-view.webp", desc: "T-Spine Dumbbell Rest (Optimized)" },
-  { id: "side", label: "Side View", src: "/tspine-side-view.webp", desc: "10° Decline with Gusset Support" },
+  { id: "top", label: "Top View", src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/gyJwWuTXAVsgGYpG.webp", desc: "Universal Fit — 5 LB to 100 LB" },
+  { id: "front", label: "Front Elevation", src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/JfhWDSbPCOpvLyfH.webp", desc: "T-Spine Dumbbell Rest (Optimized)" },
+  { id: "side", label: "Side View", src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/PUQEaFzOArUZAjsP.webp", desc: "10° Decline with Gusset Support" },
 ];
 
 const features = [
