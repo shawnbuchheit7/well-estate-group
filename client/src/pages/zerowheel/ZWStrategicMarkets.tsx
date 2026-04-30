@@ -23,7 +23,6 @@ const sections = [
   { id: "hero", label: "Overview" },
   { id: "exercise", label: "Market Positioning" },
   { id: "gm-modeler", label: "GM Modeler" },
-  { id: "exercise-3", label: "Coming Soon" },
 ];
 
 interface LOBItem {
@@ -412,28 +411,6 @@ export default function ZWStrategicMarkets() {
           </motion.div>
 
           <BlendedGMModeler />
-        </div>
-      </section>
-
-      {/* Exercise 3 — Coming Soon */}
-      <section id="exercise-3" className="py-12 sm:py-16 bg-white">
-        <div className="container px-4 sm:px-6">
-          <motion.div
-            className="text-center py-12"
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/[0.04] text-black/30 text-[11px] sm:text-xs font-mono tracking-wider uppercase mb-4">
-              Coming Soon
-            </div>
-            <h2 className="font-display text-2xl sm:text-3xl font-medium text-black/20">
-              Exercise 3
-            </h2>
-            <p className="font-body text-sm text-black/25 mt-3 max-w-md mx-auto">
-              An additional interactive exercise will be added here.
-            </p>
-          </motion.div>
         </div>
       </section>
 

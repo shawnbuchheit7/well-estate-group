@@ -1,19 +1,23 @@
 /**
- * Blended Gross Margin Modeler — v3
+ * Blended Gross Margin Modeler — v4
  * Interactive tool to model MSRP, COGS, volume mix, and discounts across 3 channels
  * Shows real-time blended gross margin with visual feedback
  * 
- * NEW: Global MSRP slider — adjusting list price cascades to all channel selling prices
- * based on their max discount percentages (Consumer: 0%, Vertical: 25%, Commercial: 40%)
+ * Features:
+ * - Global MSRP slider cascading to channel selling prices
+ * - Adjustable GM Target
+ * - Preset Scenarios (one-click load)
+ * - Sensitivity Highlight (which lever has most impact)
+ * - Collapsible Revenue Breakdown
  * 
  * Design: Brand-aligned (black/gold/white), luxury aesthetic, clean typography
  */
 
 import { useState, useMemo, useCallback } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   RotateCcw, DollarSign, BarChart3, Package, Building2, Store,
-  AlertTriangle, CheckCircle2, Lock, Tag,
+  AlertTriangle, CheckCircle2, Lock, Tag, ChevronDown, Lightbulb, Zap,
 } from "lucide-react";
 
 /* ─── Constants ─── */
@@ -28,6 +32,57 @@ const DEFAULT_GM_TARGET = 60;
 const MIN_GM_TARGET = 40;
 const MAX_GM_TARGET = 75;
 
+/* ─── Preset Scenarios ─── */
+
+interface Scenario {
+  name: string;
+  description: string;
+  msrp: number;
+  cogs: number;
+  gmTarget: number;
+  discounts: number[];
+  volumes: number[];
+}
+
+const presets: Scenario[] = [
+  {
+    name: "ZeroWheel Deck",
+    description: "Current pricing per seed raise deck",
+    msrp: 1095,
+    cogs: 440,
+    gmTarget: 60,
+    discounts: [0, 20, 32],
+    volumes: [30, 40, 30],
+  },
+  {
+    name: "Conservative",
+    description: "Heavy commercial mix, max discounts",
+    msrp: 1095,
+    cogs: 440,
+    gmTarget: 60,
+    discounts: [0, 25, 40],
+    volumes: [15, 35, 50],
+  },
+  {
+    name: "Premium Repositioned",
+    description: "MSRP increase to $1,295 — WEG recommendation",
+    msrp: 1295,
+    cogs: 440,
+    gmTarget: 60,
+    discounts: [0, 20, 32],
+    volumes: [25, 40, 35],
+  },
+  {
+    name: "Scale (Year 3)",
+    description: "Volume at scale, COGS reduction from manufacturing efficiency",
+    msrp: 1195,
+    cogs: 360,
+    gmTarget: 60,
+    discounts: [0, 18, 28],
+    volumes: [20, 45, 35],
+  },
+];
+
 /* ─── Channel Definitions ─── */
 
 interface ChannelDef {
@@ -38,11 +93,11 @@ interface ChannelDef {
   accentBg: string;
   accentBorder: string;
   barColor: string;
-  maxDiscountPct: number; // 0 = full list, 25 = 25% off, 40 = 40% off
-  defaultDiscountPct: number; // starting discount within allowed range
+  maxDiscountPct: number;
+  defaultDiscountPct: number;
   defaultVolume: number;
   description: string;
-  locked: boolean; // if true, price is always full MSRP
+  locked: boolean;
 }
 
 const channelDefs: ChannelDef[] = [
@@ -206,15 +261,18 @@ export default function BlendedGMModeler() {
   const [msrp, setMsrp] = useState(DEFAULT_MSRP);
   const [cogs, setCogs] = useState(DEFAULT_COGS);
   const [gmTarget, setGmTarget] = useState(DEFAULT_GM_TARGET);
-  // Store discount percentages instead of absolute prices — they stay stable when MSRP changes
   const [discounts, setDiscounts] = useState(channelDefs.map((c) => c.defaultDiscountPct));
   const [volumes, setVolumes] = useState(channelDefs.map((c) => c.defaultVolume));
+  const [activePreset, setActivePreset] = useState<string | null>("ZeroWheel Deck");
+  const [showBreakdown, setShowBreakdown] = useState(false);
 
   const setDiscount = useCallback((idx: number, val: number) => {
+    setActivePreset(null);
     setDiscounts((prev) => { const n = [...prev]; n[idx] = val; return n; });
   }, []);
 
   const setVolume = useCallback((idx: number, val: number) => {
+    setActivePreset(null);
     setVolumes((prev) => {
       const newVols = [...prev];
       newVols[idx] = val;
@@ -237,18 +295,23 @@ export default function BlendedGMModeler() {
     });
   }, []);
 
-  const handleReset = useCallback(() => {
-    setMsrp(DEFAULT_MSRP);
-    setCogs(DEFAULT_COGS);
-    setGmTarget(DEFAULT_GM_TARGET);
-    setDiscounts(channelDefs.map((c) => c.defaultDiscountPct));
-    setVolumes(channelDefs.map((c) => c.defaultVolume));
+  const loadPreset = useCallback((preset: Scenario) => {
+    setMsrp(preset.msrp);
+    setCogs(preset.cogs);
+    setGmTarget(preset.gmTarget);
+    setDiscounts([...preset.discounts]);
+    setVolumes([...preset.volumes]);
+    setActivePreset(preset.name);
   }, []);
+
+  const handleReset = useCallback(() => {
+    loadPreset(presets[0]);
+  }, [loadPreset]);
 
   // Compute selling prices from MSRP and discount %
   const prices = useMemo(() => {
     return channelDefs.map((ch, i) => {
-      if (ch.locked) return msrp; // Consumer always at full list
+      if (ch.locked) return msrp;
       return Math.round(msrp * (1 - discounts[i] / 100));
     });
   }, [msrp, discounts]);
@@ -282,22 +345,109 @@ export default function BlendedGMModeler() {
     return { blendedASP, blendedMarginPerUnit, blendedGMPct, totalRevenue: weightedPrice, totalProfit: weightedMargin };
   }, [channelMetrics]);
 
+  // Sensitivity analysis — which lever has the most impact?
+  const sensitivity = useMemo(() => {
+    const gap = gmTarget - blended.blendedGMPct;
+    if (gap <= 0) return null; // already at target
+
+    // Test: what if MSRP +$100?
+    const testMsrp = msrp + 100;
+    const testPricesMsrp = channelDefs.map((ch, i) => ch.locked ? testMsrp : Math.round(testMsrp * (1 - discounts[i] / 100)));
+    let wpMsrp = 0, wmMsrp = 0;
+    channelMetrics.forEach((m, i) => {
+      const p = testPricesMsrp[i];
+      wpMsrp += p * m.units;
+      wmMsrp += (p - cogs) * m.units;
+    });
+    const gmIfMsrpUp = wpMsrp > 0 ? (wmMsrp / wpMsrp) * 100 : 0;
+    const msrpImpact = gmIfMsrpUp - blended.blendedGMPct;
+
+    // Test: what if COGS -$50?
+    const testCogs = Math.max(250, cogs - 50);
+    let wpCogs = 0, wmCogs = 0;
+    channelMetrics.forEach((m) => {
+      wpCogs += m.price * m.units;
+      wmCogs += (m.price - testCogs) * m.units;
+    });
+    const gmIfCogsDown = wpCogs > 0 ? (wmCogs / wpCogs) * 100 : 0;
+    const cogsImpact = gmIfCogsDown - blended.blendedGMPct;
+
+    // Test: what if Consumer volume +15%?
+    const testVols = [...volumes];
+    testVols[0] = Math.min(80, volumes[0] + 15);
+    const remaining = 100 - testVols[0];
+    const othersTotal = volumes[1] + volumes[2];
+    if (othersTotal > 0) {
+      testVols[1] = Math.max(1, Math.round((volumes[1] / othersTotal) * remaining));
+      testVols[2] = 100 - testVols[0] - testVols[1];
+    }
+    let wpVol = 0, wmVol = 0;
+    channelMetrics.forEach((m, i) => {
+      const u = Math.round((testVols[i] / 100) * 1000);
+      wpVol += m.price * u;
+      wmVol += m.margin * u;
+    });
+    const gmIfVolShift = wpVol > 0 ? (wmVol / wpVol) * 100 : 0;
+    const volImpact = gmIfVolShift - blended.blendedGMPct;
+
+    const levers = [
+      { lever: "Increase MSRP by $100", impact: msrpImpact, icon: "msrp" },
+      { lever: "Reduce COGS by $50", impact: cogsImpact, icon: "cogs" },
+      { lever: "Shift +15% to Consumer", impact: volImpact, icon: "volume" },
+    ].sort((a, b) => b.impact - a.impact);
+
+    return { gap, levers };
+  }, [blended, gmTarget, msrp, cogs, discounts, volumes, channelMetrics]);
+
   const isHealthy = blended.blendedGMPct >= gmTarget;
   const isWarning = blended.blendedGMPct >= (gmTarget - 10) && blended.blendedGMPct < gmTarget;
 
   const statusColor = isHealthy ? "#C9A962" : isWarning ? "#D97706" : "#DC2626";
-  const statusBg = isHealthy ? "bg-[#C9A962]/[0.06]" : isWarning ? "bg-amber-50" : "bg-red-50";
-  const statusBorder = isHealthy ? "border-[#C9A962]/25" : isWarning ? "border-amber-200" : "border-red-200";
 
   return (
     <div className="max-w-6xl mx-auto">
+
+      {/* ─── Preset Scenarios ─── */}
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mb-6"
+      >
+        <div className="flex items-center gap-3 mb-3">
+          <Zap className="w-4 h-4 text-[#C9A962]" />
+          <span className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em]">Quick Scenarios</span>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          {presets.map((preset) => (
+            <button
+              key={preset.name}
+              onClick={() => loadPreset(preset)}
+              className={`text-left p-4 rounded-xl border transition-all duration-200 ${
+                activePreset === preset.name
+                  ? "border-[#C9A962] bg-[#C9A962]/[0.04] shadow-sm"
+                  : "border-black/[0.08] bg-white hover:border-[#C9A962]/40 hover:bg-[#C9A962]/[0.02]"
+              }`}
+            >
+              <p className={`font-display text-sm font-semibold mb-1 ${
+                activePreset === preset.name ? "text-[#C9A962]" : "text-black"
+              }`}>
+                {preset.name}
+              </p>
+              <p className="font-body text-[10px] text-black/40 leading-relaxed">{preset.description}</p>
+            </button>
+          ))}
+        </div>
+      </motion.div>
 
       {/* ─── Hero Metric ─── */}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className={`mb-8 rounded-2xl border-2 ${statusBorder} ${statusBg} overflow-hidden`}
+        className={`mb-6 rounded-2xl border bg-white overflow-hidden ${
+          isHealthy ? "border-[#C9A962]/25" : isWarning ? "border-amber-200" : "border-red-200"
+        }`}
       >
         <div className="p-8 md:p-10">
           <div className="flex flex-col md:flex-row items-center gap-8">
@@ -355,7 +505,7 @@ export default function BlendedGMModeler() {
           <div className="mt-6 pt-5 border-t border-black/[0.05]">
             <div className="flex items-center justify-between text-[10px] font-mono text-black/30 mb-1.5">
               <span>0%</span>
-                <span className="text-[#C9A962] font-semibold">{gmTarget}% TARGET</span>
+              <span className="text-[#C9A962] font-semibold">{gmTarget}% TARGET</span>
               <span>100%</span>
             </div>
             <div className="relative h-3 rounded-full bg-black/[0.04] overflow-hidden">
@@ -372,7 +522,50 @@ export default function BlendedGMModeler() {
         </div>
       </motion.div>
 
-      {/* ─── Global Controls: MSRP + COGS ─── */}
+      {/* ─── Sensitivity Highlight ─── */}
+      <AnimatePresence>
+        {sensitivity && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="mb-6 rounded-2xl border border-amber-200 bg-amber-50/50 overflow-hidden"
+          >
+            <div className="p-5">
+              <div className="flex items-center gap-2.5 mb-3">
+                <Lightbulb className="w-4 h-4 text-amber-600" />
+                <span className="font-display text-sm font-semibold text-black">
+                  Gap to Target: {sensitivity.gap.toFixed(1)} pts — Highest-Impact Levers
+                </span>
+              </div>
+              <div className="grid md:grid-cols-3 gap-3">
+                {sensitivity.levers.map((l, i) => (
+                  <div
+                    key={l.lever}
+                    className={`p-3 rounded-xl border ${
+                      i === 0 ? "border-[#C9A962]/30 bg-[#C9A962]/[0.04]" : "border-black/[0.06] bg-white"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="font-mono text-[9px] text-black/40 uppercase tracking-wider">
+                        {i === 0 ? "Best Lever" : `Option ${i + 1}`}
+                      </span>
+                      <span className={`font-display text-sm font-bold tabular-nums ${
+                        i === 0 ? "text-[#C9A962]" : "text-black/60"
+                      }`}>
+                        +{l.impact.toFixed(1)} pts
+                      </span>
+                    </div>
+                    <p className="font-body text-xs text-black/60">{l.lever}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ─── Global Controls: GM Target + MSRP + COGS ─── */}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -407,7 +600,7 @@ export default function BlendedGMModeler() {
               min={MIN_GM_TARGET}
               max={MAX_GM_TARGET}
               step={1}
-              onChange={setGmTarget}
+              onChange={(v) => { setGmTarget(v); setActivePreset(null); }}
               formatDisplay={(v) => v + "%"}
               label="GM Target"
               sublabel="Set the desired blended gross margin threshold"
@@ -415,7 +608,7 @@ export default function BlendedGMModeler() {
             />
             <div className="mt-4 pt-3 border-t border-black/[0.04]">
               <div className="flex items-center justify-between">
-                <span className="font-mono text-[9px] text-black/30 tracking-wider uppercase">Required MSRP at Current Mix</span>
+                <span className="font-mono text-[9px] text-black/30 tracking-wider uppercase">Required MSRP at Target</span>
                 <span className="font-display text-sm font-bold text-black tabular-nums">
                   {fmtCurrency(Math.round(cogs / (1 - gmTarget / 100)))}
                 </span>
@@ -431,7 +624,7 @@ export default function BlendedGMModeler() {
               min={MIN_MSRP}
               max={MAX_MSRP}
               step={5}
-              onChange={setMsrp}
+              onChange={(v) => { setMsrp(v); setActivePreset(null); }}
               formatDisplay={fmtCurrency}
               label="List Price (MSRP)"
               sublabel="Anchor price — all channel discounts calculated from this"
@@ -444,7 +637,7 @@ export default function BlendedGMModeler() {
                   <span className="font-mono text-[8px] text-black/30 tracking-wider uppercase block">{ch.shortName}</span>
                   <span className="font-display text-sm font-bold text-black tabular-nums">{fmtCurrency(prices[i])}</span>
                   <span className="font-mono text-[8px] text-black/20 block">
-                    {ch.locked ? "full list" : `max ${ch.maxDiscountPct}% off`}
+                    {ch.locked ? "full list" : `${discounts[i]}% off`}
                   </span>
                 </div>
               ))}
@@ -458,7 +651,7 @@ export default function BlendedGMModeler() {
               min={MIN_COGS}
               max={MAX_COGS}
               step={10}
-              onChange={setCogs}
+              onChange={(v) => { setCogs(v); setActivePreset(null); }}
               formatDisplay={fmtCurrency}
               label="Manufacturing Cost (COGS)"
               sublabel="Model manufacturing efficiencies at scale or supply chain changes"
@@ -479,7 +672,7 @@ export default function BlendedGMModeler() {
       </motion.div>
 
       {/* ─── Channel Cards ─── */}
-      <div className="grid md:grid-cols-3 gap-5 mb-8">
+      <div className="grid md:grid-cols-3 gap-5 mb-6">
         {channelDefs.map((ch, i) => {
           const m = channelMetrics[i];
           const gmColor = m.gmPct >= gmTarget ? "#C9A962" : m.gmPct >= (gmTarget - 10) ? "#D97706" : "#DC2626";
@@ -564,101 +757,126 @@ export default function BlendedGMModeler() {
         })}
       </div>
 
-      {/* ─── Revenue Breakdown ─── */}
+      {/* ─── Revenue Breakdown (Collapsible) ─── */}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         className="rounded-2xl border border-black/[0.10] bg-white overflow-hidden"
       >
-        <div className="px-6 py-5 border-b border-black/[0.05] flex items-center gap-2.5">
-          <BarChart3 className="w-4 h-4 text-[#C9A962]" />
-          <h3 className="font-display text-sm font-semibold text-black">Revenue & Margin Breakdown</h3>
-          <span className="font-mono text-[9px] text-black/25 tracking-wider ml-auto">PER 1,000 UNITS</span>
-        </div>
-
-        <div className="p-6">
-          {/* Stacked bar */}
-          <div className="h-8 rounded-lg overflow-hidden flex mb-6">
-            {channelMetrics.map((m, i) => (
-              <motion.div
-                key={i}
-                className="h-full flex items-center justify-center font-mono text-[10px] tracking-wider"
-                style={{
-                  backgroundColor: channelDefs[i].barColor,
-                  color: "white",
-                  width: `${volumes[i]}%`,
-                }}
-                animate={{ width: `${volumes[i]}%` }}
-                transition={{ duration: 0.3 }}
-              >
-                {volumes[i] > 14 && `${volumes[i]}%`}
-              </motion.div>
-            ))}
+        <button
+          onClick={() => setShowBreakdown(!showBreakdown)}
+          className="w-full px-6 py-5 flex items-center justify-between hover:bg-black/[0.01] transition-colors"
+        >
+          <div className="flex items-center gap-2.5">
+            <BarChart3 className="w-4 h-4 text-[#C9A962]" />
+            <h3 className="font-display text-sm font-semibold text-black">Revenue & Margin Breakdown</h3>
+            <span className="font-mono text-[9px] text-black/25 tracking-wider ml-2">PER 1,000 UNITS</span>
           </div>
+          <div className="flex items-center gap-3">
+            <span className="font-display text-sm font-bold tabular-nums" style={{ color: statusColor }}>
+              {fmtCurrency(blended.totalProfit)} profit
+            </span>
+            <ChevronDown className={`w-4 h-4 text-black/30 transition-transform duration-200 ${showBreakdown ? "rotate-180" : ""}`} />
+          </div>
+        </button>
 
-          {/* Channel breakdown table */}
-          <div className="grid grid-cols-3 gap-0 divide-x divide-black/[0.05]">
-            {channelDefs.map((ch, i) => {
-              const m = channelMetrics[i];
-              const gmColor = m.gmPct >= gmTarget ? "#C9A962" : m.gmPct >= (gmTarget - 10) ? "#D97706" : "#DC2626";
-              return (
-                <div key={i} className="px-4 first:pl-0 last:pr-0">
-                  <div className="flex items-center gap-2 mb-3">
-                    <div
-                      className="w-2.5 h-2.5 rounded-sm"
-                      style={{ backgroundColor: ch.barColor }}
-                    />
-                    <span className="font-mono text-[10px] text-black/45 tracking-wider">{ch.shortName}</span>
+        <AnimatePresence>
+          {showBreakdown && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="overflow-hidden"
+            >
+              <div className="px-6 pb-6 border-t border-black/[0.05]">
+                <div className="pt-5">
+                  {/* Stacked bar */}
+                  <div className="h-8 rounded-lg overflow-hidden flex mb-6">
+                    {channelMetrics.map((m, i) => (
+                      <motion.div
+                        key={i}
+                        className="h-full flex items-center justify-center font-mono text-[10px] tracking-wider"
+                        style={{
+                          backgroundColor: channelDefs[i].barColor,
+                          color: "white",
+                          width: `${volumes[i]}%`,
+                        }}
+                        animate={{ width: `${volumes[i]}%` }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        {volumes[i] > 14 && `${volumes[i]}%`}
+                      </motion.div>
+                    ))}
                   </div>
-                  <div className="space-y-2.5">
-                    <div>
-                      <span className="font-mono text-[9px] text-black/25 block uppercase tracking-wider">Price / Unit</span>
-                      <span className="font-display text-base font-bold text-black tabular-nums">{fmtCurrency(m.price)}</span>
-                      {m.discountPct > 0 && <span className="font-mono text-[9px] text-black/20 ml-1">({m.discountPct}% off)</span>}
+
+                  {/* Channel breakdown table */}
+                  <div className="grid grid-cols-3 gap-0 divide-x divide-black/[0.05]">
+                    {channelDefs.map((ch, i) => {
+                      const m = channelMetrics[i];
+                      const gmColor = m.gmPct >= gmTarget ? "#C9A962" : m.gmPct >= (gmTarget - 10) ? "#D97706" : "#DC2626";
+                      return (
+                        <div key={i} className="px-4 first:pl-0 last:pr-0">
+                          <div className="flex items-center gap-2 mb-3">
+                            <div
+                              className="w-2.5 h-2.5 rounded-sm"
+                              style={{ backgroundColor: ch.barColor }}
+                            />
+                            <span className="font-mono text-[10px] text-black/45 tracking-wider">{ch.shortName}</span>
+                          </div>
+                          <div className="space-y-2.5">
+                            <div>
+                              <span className="font-mono text-[9px] text-black/25 block uppercase tracking-wider">Price / Unit</span>
+                              <span className="font-display text-base font-bold text-black tabular-nums">{fmtCurrency(m.price)}</span>
+                              {m.discountPct > 0 && <span className="font-mono text-[9px] text-black/20 ml-1">({m.discountPct}% off)</span>}
+                            </div>
+                            <div>
+                              <span className="font-mono text-[9px] text-black/25 block uppercase tracking-wider">Units</span>
+                              <span className="font-display text-base font-bold text-black tabular-nums">{m.units.toLocaleString()}</span>
+                            </div>
+                            <div>
+                              <span className="font-mono text-[9px] text-black/25 block uppercase tracking-wider">Revenue</span>
+                              <span className="font-display text-base font-bold text-black tabular-nums">{fmtCurrency(m.revenue)}</span>
+                            </div>
+                            <div>
+                              <span className="font-mono text-[9px] text-black/25 block uppercase tracking-wider">Gross Profit</span>
+                              <span className="font-display text-base font-bold tabular-nums" style={{ color: gmColor }}>
+                                {fmtCurrency(m.profit)}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {/* Totals */}
+                  <div className="mt-5 pt-5 border-t border-black/[0.06] flex items-end justify-between">
+                    <div className="flex items-center gap-8">
+                      <div>
+                        <span className="font-mono text-[9px] text-black/25 block uppercase tracking-wider">Total Revenue</span>
+                        <span className="font-display text-xl font-bold text-black tabular-nums">{fmtCurrency(blended.totalRevenue)}</span>
+                      </div>
+                      <div>
+                        <span className="font-mono text-[9px] text-black/25 block uppercase tracking-wider">Total Gross Profit</span>
+                        <span className="font-display text-xl font-bold tabular-nums" style={{ color: statusColor }}>
+                          {fmtCurrency(blended.totalProfit)}
+                        </span>
+                      </div>
                     </div>
-                    <div>
-                      <span className="font-mono text-[9px] text-black/25 block uppercase tracking-wider">Units</span>
-                      <span className="font-display text-base font-bold text-black tabular-nums">{m.units.toLocaleString()}</span>
-                    </div>
-                    <div>
-                      <span className="font-mono text-[9px] text-black/25 block uppercase tracking-wider">Revenue</span>
-                      <span className="font-display text-base font-bold text-black tabular-nums">{fmtCurrency(m.revenue)}</span>
-                    </div>
-                    <div>
-                      <span className="font-mono text-[9px] text-black/25 block uppercase tracking-wider">Gross Profit</span>
-                      <span className="font-display text-base font-bold tabular-nums" style={{ color: gmColor }}>
-                        {fmtCurrency(m.profit)}
+                    <div className="text-right">
+                      <span className="font-mono text-[9px] text-black/25 block uppercase tracking-wider">Blended GM</span>
+                      <span className="font-display text-3xl font-bold tabular-nums" style={{ color: statusColor }}>
+                        {fmtPct(blended.blendedGMPct)}
                       </span>
                     </div>
                   </div>
                 </div>
-              );
-            })}
-          </div>
-
-          {/* Totals */}
-          <div className="mt-5 pt-5 border-t border-black/[0.06] flex items-end justify-between">
-            <div className="flex items-center gap-8">
-              <div>
-                <span className="font-mono text-[9px] text-black/25 block uppercase tracking-wider">Total Revenue</span>
-                <span className="font-display text-xl font-bold text-black tabular-nums">{fmtCurrency(blended.totalRevenue)}</span>
               </div>
-              <div>
-                <span className="font-mono text-[9px] text-black/25 block uppercase tracking-wider">Total Gross Profit</span>
-                <span className="font-display text-xl font-bold tabular-nums" style={{ color: statusColor }}>
-                  {fmtCurrency(blended.totalProfit)}
-                </span>
-              </div>
-            </div>
-            <div className="text-right">
-              <span className="font-mono text-[9px] text-black/25 block uppercase tracking-wider">Blended GM</span>
-              <span className="font-display text-3xl font-bold tabular-nums" style={{ color: statusColor }}>
-                {fmtPct(blended.blendedGMPct)}
-              </span>
-            </div>
-          </div>
-        </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
     </div>
   );
