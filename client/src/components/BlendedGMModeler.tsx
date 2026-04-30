@@ -455,10 +455,10 @@ export default function BlendedGMModeler() {
               { segment: "GSA / Government", price: fmtCurrency(Math.round(msrp * 0.63)), discount: "~37% off list", note: "Contractual / schedule pricing", color: "#4B5563" },
             ].map((seg) => (
               <div key={seg.segment} className="px-4 first:pl-0 last:pr-0 text-center">
-                <span className="font-mono text-[9px] text-black/35 tracking-wider uppercase block mb-1">{seg.segment}</span>
+                <span className="font-mono text-[10px] text-black/70 tracking-wider uppercase block mb-1.5 font-semibold">{seg.segment}</span>
                 <span className="font-display text-xl font-bold text-black tabular-nums block">{seg.price}</span>
-                <span className="font-mono text-[9px] block mt-1" style={{ color: seg.color }}>{seg.discount}</span>
-                <span className="font-body text-[9px] text-black/30 block mt-0.5">{seg.note}</span>
+                <span className="font-mono text-[10px] font-medium block mt-1.5" style={{ color: seg.color }}>{seg.discount}</span>
+                <span className="font-body text-[10px] text-black/50 block mt-1">{seg.note}</span>
               </div>
             ))}
           </div>
