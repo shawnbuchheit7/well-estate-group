@@ -433,6 +433,41 @@ export default function BlendedGMModeler() {
   return (
     <div className="max-w-6xl mx-auto">
 
+      {/* ─── Proposed Floor Pricing by Segment ─── */}
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mb-5 rounded-xl border border-black/[0.08] bg-white overflow-hidden"
+      >
+        <div className="px-4 py-3 border-b border-black/[0.05]">
+          <div className="flex items-center gap-2.5">
+            <Tag className="w-3.5 h-3.5 text-[#C9A962]" />
+            <span className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em]">Proposed Floor Pricing by Segment</span>
+          </div>
+        </div>
+        <div className="p-4">
+          <div className="grid grid-cols-4 gap-0 divide-x divide-black/[0.06]">
+            {[
+              { segment: "DTC / Consumer", price: fmtCurrency(msrp), discount: "0% off list", note: "Full MSRP — margin anchor", color: "#C9A962" },
+              { segment: "Vertical Markets", price: fmtCurrency(Math.round(msrp * 0.75)), discount: "Max 25% off list", note: "Clubs, medical, hospitality, sports", color: "#1A1A1A" },
+              { segment: "Commercial Markets", price: fmtCurrency(Math.round(msrp * 0.60)), discount: "Max 40% off list", note: "Health clubs, dealers, distributors", color: "#6B7280" },
+              { segment: "GSA / Government", price: fmtCurrency(Math.round(msrp * 0.63)), discount: "~37% off list", note: "Contractual / schedule pricing", color: "#4B5563" },
+            ].map((seg) => (
+              <div key={seg.segment} className="px-4 first:pl-0 last:pr-0 text-center">
+                <span className="font-mono text-[9px] text-black/35 tracking-wider uppercase block mb-1">{seg.segment}</span>
+                <span className="font-display text-xl font-bold text-black tabular-nums block">{seg.price}</span>
+                <span className="font-mono text-[9px] block mt-1" style={{ color: seg.color }}>{seg.discount}</span>
+                <span className="font-body text-[9px] text-black/30 block mt-0.5">{seg.note}</span>
+              </div>
+            ))}
+          </div>
+          <p className="font-body text-[9px] text-black/25 italic mt-3 text-center">
+            Floor prices represent the maximum allowable discount per segment — the lowest price any deal should close at. MSRP: {fmtCurrency(msrp)}
+          </p>
+        </div>
+      </motion.div>
+
       {/* ─── Preset Scenarios ─── */}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
