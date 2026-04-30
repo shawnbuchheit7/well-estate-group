@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import Layout from "@/components/Layout";
 import LightHero from "@/components/LightHero";
+import NextPageCTA from "@/components/NextPageCTA";
 import { fadeInUp, staggerContainer, scaleIn } from "@/lib/animations";
 import { SectionNav } from "@/components/SectionNav";
 
@@ -512,6 +513,7 @@ export default function ZWSales() {
           </motion.div>
         </div>
       </section>
+      <NextPageCTA label="Commercial Strategy" href="/gtm/zerowheel/commercial-strategy" />
     </Layout>
   );
 }

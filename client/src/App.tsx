@@ -4,7 +4,7 @@ import PasswordGate from "./components/PasswordGate";
 import ZWPasswordGate from "./components/ZWPasswordGate";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { Route, Switch, Router } from "wouter";
+import { Route, Switch, Router, Redirect } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { DarkThemeProvider } from "./components/PresentationMode";
@@ -116,12 +116,13 @@ function App() {
                   <Route path="/gtm/zerowheel/lines-of-business" component={() => <ZWPasswordGate><ZWLinesOfBusiness /></ZWPasswordGate>} />
                   <Route path="/gtm/zerowheel/sales" component={() => <ZWPasswordGate><ZWSales /></ZWPasswordGate>} />
                   <Route path="/gtm/zerowheel/commercial-strategy" component={() => <ZWPasswordGate><ZWCommercialStrategy /></ZWPasswordGate>} />
-                  <Route path="/gtm/zerowheel/b2b2c" component={() => <ZWPasswordGate><ZWB2B2C /></ZWPasswordGate>} />
-                  <Route path="/gtm/zerowheel/strategic-markets" component={() => <ZWPasswordGate><ZWStrategicMarkets /></ZWPasswordGate>} />
                   <Route path="/gtm/zerowheel/sales-infrastructure" component={() => <ZWPasswordGate><ZWSalesInfrastructure /></ZWPasswordGate>} />
-                  <Route path="/gtm/zerowheel/business-intelligence" component={() => <ZWPasswordGate><ZWBusinessIntelligence /></ZWPasswordGate>} />
                   <Route path="/gtm/zerowheel/marketing-infrastructure" component={() => <ZWPasswordGate><ZWMarketingInfrastructure /></ZWPasswordGate>} />
-                  <Route path="/gtm/zerowheel/affiliate-program" component={() => <ZWPasswordGate><ZWAffiliateProgram /></ZWPasswordGate>} />
+                  {/* Redirects for consolidated tabs */}
+                  <Route path="/gtm/zerowheel/strategic-markets">{() => <Redirect to="/gtm/zerowheel/commercial-strategy" />}</Route>
+                  <Route path="/gtm/zerowheel/business-intelligence">{() => <Redirect to="/gtm/zerowheel/sales-infrastructure" />}</Route>
+                  <Route path="/gtm/zerowheel/affiliate-program">{() => <Redirect to="/gtm/zerowheel/marketing-infrastructure" />}</Route>
+                  <Route path="/gtm/zerowheel/b2b2c">{() => <Redirect to="/gtm/zerowheel/sales" />}</Route>
                   
                   {/* Sample GTM Project (original generic content) */}
                   <Route path="/gtm/sample" component={GTMHome} />

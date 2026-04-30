@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import Layout from "@/components/Layout";
 import LightHero from "@/components/LightHero";
+import NextPageCTA from "@/components/NextPageCTA";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { SectionNav } from "@/components/SectionNav";
 
@@ -1233,6 +1234,7 @@ export default function ZWProductAnalysis() {
           </div>
         </div>
       </section>
+      <NextPageCTA label="Lines of Business" href="/gtm/zerowheel/lines-of-business" />
     </Layout>
   );
 }

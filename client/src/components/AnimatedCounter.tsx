@@ -65,7 +65,7 @@ export function AnimatedCounter({
           setHasStarted(true);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
     );
 
     observer.observe(el);

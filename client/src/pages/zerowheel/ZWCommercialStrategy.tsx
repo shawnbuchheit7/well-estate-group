@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { DollarSign, TrendingUp, Store, Users, Percent, Calculator, FileText, ArrowRight, CheckCircle2, Lightbulb, BarChart3, Layers, Building2, ShieldCheck, Tag } from "lucide-react";
 import Layout from "@/components/Layout";
 import LightHero from "@/components/LightHero";
+import NextPageCTA from "@/components/NextPageCTA";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { SectionNav } from "@/components/SectionNav";
 
@@ -489,6 +490,7 @@ export default function ZWCommercialStrategy() {
           </motion.div>
         </div>
       </section>
+      <NextPageCTA label="Infrastructure & Analytics" href="/gtm/zerowheel/sales-infrastructure" />
     </Layout>
   );
 }

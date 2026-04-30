@@ -34,16 +34,13 @@ const longevityNavLinks = [
 
 // ZeroWheel GTM tabs
 const zwNavLinks = [
-  { href: "/gtm/zerowheel", label: "Overview" },
-  { href: "/gtm/zerowheel/product-analysis", label: "Product Analysis" },
-  { href: "/gtm/zerowheel/lines-of-business", label: "Lines of Business" },
-  { href: "/gtm/zerowheel/sales", label: "Sales Enablement" },
-  { href: "/gtm/zerowheel/commercial-strategy", label: "Commercial Strategy" },
-  { href: "/gtm/zerowheel/strategic-markets", label: "Strategic Markets" },
-  { href: "/gtm/zerowheel/sales-infrastructure", label: "Infrastructure" },
-  { href: "/gtm/zerowheel/business-intelligence", label: "BI Dashboard" },
-  { href: "/gtm/zerowheel/marketing-infrastructure", label: "Marketing Plan" },
-  { href: "/gtm/zerowheel/affiliate-program", label: "Affiliate Program" },
+  { href: "/gtm/zerowheel", label: "1. Overview" },
+  { href: "/gtm/zerowheel/product-analysis", label: "2. Product Analysis" },
+  { href: "/gtm/zerowheel/lines-of-business", label: "3. Lines of Business" },
+  { href: "/gtm/zerowheel/sales", label: "4. Sales Enablement" },
+  { href: "/gtm/zerowheel/commercial-strategy", label: "5. Commercial Strategy" },
+  { href: "/gtm/zerowheel/sales-infrastructure", label: "6. Infrastructure & Analytics" },
+  { href: "/gtm/zerowheel/marketing-infrastructure", label: "7. Marketing & Growth" },
 ];
 
 // Sample GTM tabs (original generic)
