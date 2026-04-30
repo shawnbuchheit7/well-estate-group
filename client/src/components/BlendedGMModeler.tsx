@@ -482,7 +482,7 @@ export default function BlendedGMModeler() {
       <div className="grid md:grid-cols-3 gap-5 mb-8">
         {channelDefs.map((ch, i) => {
           const m = channelMetrics[i];
-          const gmColor = m.gmPct >= GM_TARGET ? "#C9A962" : m.gmPct >= 50 ? "#D97706" : "#DC2626";
+          const gmColor = m.gmPct >= gmTarget ? "#C9A962" : m.gmPct >= (gmTarget - 10) ? "#D97706" : "#DC2626";
 
           return (
             <motion.div
