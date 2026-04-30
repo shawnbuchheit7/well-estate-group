@@ -18,6 +18,8 @@ const sections = [
   { id: "margin-analysis", label: "Margin Analysis" },
   { id: "revenue-model", label: "Revenue Model" },
   { id: "commercial-terms", label: "Commercial Terms" },
+  { id: "negotiation-rules", label: "Negotiation Rules" },
+  { id: "gtm-priorities", label: "Phase 1 Priorities" },
 ];
 
 export default function ZWCommercialStrategy() {
@@ -490,6 +492,151 @@ export default function ZWCommercialStrategy() {
           </motion.div>
         </div>
       </section>
+      {/* Pricing Discipline & Negotiation Rules */}
+      <section id="negotiation-rules" className="py-18 bg-white">
+        <div className="container">
+          <div className="h-px bg-gradient-to-r from-transparent via-black/8 to-transparent mb-18" />
+
+          <motion.div
+            className="text-center mb-14"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
+            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+              Pricing Discipline
+            </motion.span>
+            <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-5 text-black">
+              Negotiation Guidelines
+            </motion.h2>
+            <motion.p variants={fadeInUp} className="font-body text-base text-black/55 max-w-2xl mx-auto">
+              Five non-negotiable rules that protect brand value, margin integrity, and channel harmony across all market categories.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="rounded-2xl border border-black/[0.12] bg-white p-8 shadow-[0_2px_12px_rgba(0,0,0,0.03)] max-w-5xl mx-auto"
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 rounded-full bg-[#C9A962]/10 flex items-center justify-center">
+                <ShieldCheck className="w-5 h-5 text-[#C9A962]" />
+              </div>
+              <h3 className="font-display text-xl font-semibold text-black">5 Rules of Pricing Discipline</h3>
+            </div>
+            <div className="space-y-5">
+              {[
+                {
+                  rule: "Retail / DTC is Zero Discount",
+                  detail: "Consumer pricing holds at full MSRP ($1,095) across all direct channels — e-commerce, social, retail, and influencer. No exceptions. This protects brand positioning and establishes the price anchor for all downstream negotiations.",
+                },
+                {
+                  rule: "GSA Must Be $1 Below Best Commercial Pricing",
+                  detail: "Federal procurement regulations require that GSA Schedule pricing reflects the best available commercial price. ZeroWheel's GSA price of $694 is set $1 below the commercial floor to satisfy this requirement while maintaining maximum margin.",
+                },
+                {
+                  rule: "Discounts Are Floor Thresholds — Not Starting Points",
+                  detail: "The listed discount percentages (25% Vertical, 40% Commercial) represent maximum allowable discounts — do-not-exceed ceilings. Every negotiation should aim to close above the floor. The floor is the last resort, not the default.",
+                },
+                {
+                  rule: "National Account Pricing Requires Margin Protection",
+                  detail: "National accounts typically negotiate the deepest discounts. While volume justifies concessions, sales teams must protect margin by leveraging volume commitments, multi-year terms, and bundled services rather than simply lowering unit price.",
+                },
+                {
+                  rule: "Factor Extended Warranties Into National Account Negotiations",
+                  detail: "Large accounts often require extended warranty coverage beyond the standard term. Build warranty cost into the deal structure upfront — do not offer best pricing and then absorb warranty obligations separately.",
+                },
+              ].map((item, i) => (
+                <div key={i} className="flex gap-3 items-start">
+                  <div className="w-7 h-7 rounded-full bg-[#C9A962]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="font-mono text-xs font-bold text-[#C9A962]">{i + 1}</span>
+                  </div>
+                  <div>
+                    <p className="font-display text-sm font-semibold text-black mb-0.5">{item.rule}</p>
+                    <p className="font-body text-xs text-black/55 leading-relaxed">{item.detail}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Phase 1 GTM Priorities */}
+      <section id="gtm-priorities" className="py-18 bg-[#FAFAF8]">
+        <div className="container">
+          <div className="h-px bg-gradient-to-r from-transparent via-black/8 to-transparent mb-18" />
+
+          <motion.div
+            className="text-center mb-14"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
+            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+              Go-To-Market Plan
+            </motion.span>
+            <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 text-black">
+              Phase 1 Priorities
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className="grid md:grid-cols-2 gap-4 max-w-5xl mx-auto"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
+            {[
+              {
+                title: "Anchor Placement in Premium Clubs",
+                description: "Secure flagship placements in 10–15 top-tier private clubs and fitness centers to establish credibility, generate case studies, and create organic demand from member exposure.",
+              },
+              {
+                title: "Leverage Pro Sports Validation",
+                description: "Activate existing relationships with professional teams and athletes. Athlete endorsements and team adoption create top-down demand across every downstream channel.",
+              },
+              {
+                title: "Medical Channel Development",
+                description: "Position the device as a clinical-grade rehabilitation tool. Partner with physical therapy networks and longevity centers to build medical credibility that unlocks institutional procurement.",
+              },
+              {
+                title: "Hospitality & Maritime Expansion",
+                description: "Deploy through OneSpaWorld's 144-vessel network and premium hotel partnerships. Small footprint and connected technology make it ideal for space-constrained environments.",
+              },
+              {
+                title: "Build Sales Infrastructure",
+                description: "Develop dedicated sales personnel and channel partner training programs. Create product demonstration kits, ROI calculators, and facility integration guides for each vertical.",
+              },
+              {
+                title: "Activate Corporate Wellness Pipeline",
+                description: "Target Fortune 500 wellness programs addressing the #1 workplace injury (lower back pain). Gamified engagement and measurable ROI position ZeroWheel as the antidote to the desk chair.",
+              },
+            ].map((focus, i) => (
+              <motion.div
+                key={i}
+                variants={fadeInUp}
+                whileHover={{ y: -3, boxShadow: "0 8px 24px rgba(0,0,0,0.06)" }}
+                className="flex gap-4 items-start p-5 rounded-xl bg-white border border-black/[0.12] hover:border-[#C9A962]/25 hover:shadow-lg transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
+              >
+                <div className="w-7 h-7 rounded-full bg-[#C9A962]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#C9A962]" />
+                </div>
+                <div>
+                  <h3 className="font-display text-base font-semibold text-black mb-1.5">{focus.title}</h3>
+                  <p className="font-body text-sm text-black/55 leading-relaxed">{focus.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       <NextPageCTA label="Infrastructure & Analytics" href="/gtm/zerowheel/sales-infrastructure" />
     </Layout>
   );
