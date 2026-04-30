@@ -1,66 +1,82 @@
 /**
- * Blended Gross Margin Modeler
+ * Blended Gross Margin Modeler — v2 Optimized
  * Interactive tool to model COGS, volume mix, and discounts across 3 channels
  * Shows real-time blended gross margin with visual feedback
+ * 
+ * Design: Brand-aligned (black/gold/white), luxury aesthetic, clean typography
+ * Function: Smooth volume normalization, custom styled sliders, scenario defaults
  */
 
-import { useState, useMemo } from "react";
-import { motion } from "framer-motion";
-import { Info, RotateCcw, DollarSign, BarChart3, Percent, TrendingUp, Package, Building2, Store, AlertTriangle, CheckCircle2 } from "lucide-react";
+import { useState, useMemo, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  RotateCcw, DollarSign, BarChart3, Package, Building2, Store,
+  AlertTriangle, CheckCircle2, Lock, TrendingUp, Minus,
+} from "lucide-react";
+
+/* ─── Channel Configuration ─── */
 
 interface ChannelConfig {
   name: string;
+  shortName: string;
   icon: typeof DollarSign;
-  color: string;
-  bgColor: string;
-  borderColor: string;
+  accentColor: string;
+  accentBg: string;
+  accentBorder: string;
+  accentLight: string;
   defaultPrice: number;
   minPrice: number;
   maxPrice: number;
   defaultVolume: number;
-  priceLabel: string;
   description: string;
+  locked: boolean;
 }
 
 const channels: ChannelConfig[] = [
   {
     name: "Consumer (DTC)",
+    shortName: "Consumer",
     icon: Package,
-    color: "text-emerald-600",
-    bgColor: "bg-emerald-50",
-    borderColor: "border-emerald-200",
+    accentColor: "#C9A962",
+    accentBg: "bg-[#C9A962]/[0.06]",
+    accentBorder: "border-[#C9A962]/20",
+    accentLight: "bg-[#C9A962]/[0.08]",
     defaultPrice: 1095,
     minPrice: 1095,
     maxPrice: 1095,
-    defaultVolume: 25,
-    priceLabel: "Full List — $1,095",
-    description: "Full MSRP, highest margin channel. No discounts.",
+    defaultVolume: 30,
+    description: "Full MSRP — no discounts. Margin floor anchor.",
+    locked: true,
   },
   {
     name: "Vertical Markets",
+    shortName: "Vertical",
     icon: Building2,
-    color: "text-[#C9A962]",
-    bgColor: "bg-[#C9A962]/[0.06]",
-    borderColor: "border-[#C9A962]/25",
-    defaultPrice: 825,
+    accentColor: "#1A1A1A",
+    accentBg: "bg-black/[0.02]",
+    accentBorder: "border-black/[0.10]",
+    accentLight: "bg-black/[0.04]",
+    defaultPrice: 875,
     minPrice: 695,
     maxPrice: 1095,
     defaultVolume: 40,
-    priceLabel: "Max 25% off list — $825",
     description: "Medical, clubs, hospitality, sports, corporate.",
+    locked: false,
   },
   {
     name: "Commercial Markets",
+    shortName: "Commercial",
     icon: Store,
-    color: "text-blue-600",
-    bgColor: "bg-blue-50",
-    borderColor: "border-blue-200",
-    defaultPrice: 695,
+    accentColor: "#6B7280",
+    accentBg: "bg-black/[0.01]",
+    accentBorder: "border-black/[0.08]",
+    accentLight: "bg-black/[0.03]",
+    defaultPrice: 750,
     minPrice: 695,
     maxPrice: 1095,
-    defaultVolume: 35,
-    priceLabel: "Max 40% off list — $695",
+    defaultVolume: 30,
     description: "Health clubs, dealers, distributors, resellers.",
+    locked: false,
   },
 ];
 
@@ -68,414 +84,505 @@ const MSRP = 1095;
 const DEFAULT_COGS = 440;
 const MIN_COGS = 250;
 const MAX_COGS = 600;
+const GM_TARGET = 55;
 
-function formatCurrency(val: number): string {
-  return "$" + val.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+/* ─── Formatters ─── */
+
+function fmtCurrency(val: number): string {
+  return "$" + Math.round(val).toLocaleString("en-US");
 }
 
-function formatPct(val: number): string {
+function fmtPct(val: number): string {
   return val.toFixed(1) + "%";
 }
 
-function SliderInput({
-  label,
+function fmtDiscount(price: number): string {
+  const pct = ((MSRP - price) / MSRP) * 100;
+  return pct > 0 ? `${pct.toFixed(0)}% off list` : "Full list";
+}
+
+/* ─── Custom Slider ─── */
+
+function CustomSlider({
   value,
   min,
   max,
   step,
   onChange,
-  format,
+  formatDisplay,
+  label,
   sublabel,
-  accentClass = "accent-[#C9A962]",
+  accentColor = "#C9A962",
+  disabled = false,
 }: {
-  label: string;
   value: number;
   min: number;
   max: number;
   step: number;
   onChange: (v: number) => void;
-  format: (v: number) => string;
+  formatDisplay: (v: number) => string;
+  label: string;
   sublabel?: string;
-  accentClass?: string;
+  accentColor?: string;
+  disabled?: boolean;
 }) {
+  const pct = ((value - min) / (max - min)) * 100;
+
   return (
-    <div>
-      <div className="flex items-center justify-between mb-1.5">
-        <span className="font-mono text-[10px] text-black/50 uppercase tracking-wider">{label}</span>
-        <span className="font-display text-lg font-bold text-black">{format(value)}</span>
+    <div className={disabled ? "opacity-50 pointer-events-none" : ""}>
+      <div className="flex items-baseline justify-between mb-2">
+        <span className="font-mono text-[10px] text-black/45 uppercase tracking-[0.15em]">{label}</span>
+        <span className="font-display text-xl font-bold text-black tabular-nums">{formatDisplay(value)}</span>
       </div>
-      {sublabel && <p className="font-body text-[10px] text-black/35 mb-2">{sublabel}</p>}
-      <input
-        type="range"
-        min={min}
-        max={max}
-        step={step}
-        value={value}
-        onChange={(e) => onChange(Number(e.target.value))}
-        className={`w-full h-2 rounded-full appearance-none cursor-pointer bg-black/[0.08] ${accentClass}`}
-        style={{ accentColor: accentClass.includes("emerald") ? "#059669" : accentClass.includes("blue") ? "#2563eb" : "#C9A962" }}
-      />
-      <div className="flex justify-between mt-1">
-        <span className="font-mono text-[9px] text-black/25">{format(min)}</span>
-        <span className="font-mono text-[9px] text-black/25">{format(max)}</span>
+      {sublabel && <p className="font-body text-[10px] text-black/30 mb-2.5 leading-relaxed">{sublabel}</p>}
+      <div className="relative h-8 flex items-center">
+        {/* Track background */}
+        <div className="absolute inset-x-0 h-1.5 rounded-full bg-black/[0.06]" />
+        {/* Active fill */}
+        <div
+          className="absolute left-0 h-1.5 rounded-full transition-all duration-150"
+          style={{ width: `${pct}%`, backgroundColor: accentColor }}
+        />
+        {/* Native input (invisible but functional) */}
+        <input
+          type="range"
+          min={min}
+          max={max}
+          step={step}
+          value={value}
+          onChange={(e) => onChange(Number(e.target.value))}
+          disabled={disabled}
+          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+        />
+        {/* Custom thumb */}
+        <div
+          className="absolute w-5 h-5 rounded-full bg-white border-2 shadow-md transition-all duration-150 pointer-events-none"
+          style={{
+            left: `calc(${pct}% - 10px)`,
+            borderColor: accentColor,
+            boxShadow: `0 2px 8px ${accentColor}30`,
+          }}
+        />
+      </div>
+      <div className="flex justify-between mt-1.5">
+        <span className="font-mono text-[9px] text-black/20">{formatDisplay(min)}</span>
+        <span className="font-mono text-[9px] text-black/20">{formatDisplay(max)}</span>
       </div>
     </div>
   );
 }
 
+/* ─── GM Indicator Ring ─── */
+
+function GMRing({ value, size = 80, strokeWidth = 6 }: { value: number; size?: number; strokeWidth?: number }) {
+  const radius = (size - strokeWidth) / 2;
+  const circumference = 2 * Math.PI * radius;
+  const clampedValue = Math.min(Math.max(value, 0), 100);
+  const offset = circumference - (clampedValue / 100) * circumference;
+
+  const getColor = (v: number) => {
+    if (v >= GM_TARGET) return "#C9A962";
+    if (v >= 45) return "#D97706";
+    return "#DC2626";
+  };
+
+  return (
+    <div className="relative inline-flex items-center justify-center" style={{ width: size, height: size }}>
+      <svg width={size} height={size} className="-rotate-90">
+        <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="rgba(0,0,0,0.04)" strokeWidth={strokeWidth} />
+        <circle
+          cx={size / 2} cy={size / 2} r={radius} fill="none"
+          stroke={getColor(value)} strokeWidth={strokeWidth}
+          strokeDasharray={circumference} strokeDashoffset={offset}
+          strokeLinecap="round"
+          className="transition-all duration-500"
+        />
+      </svg>
+      <div className="absolute inset-0 flex flex-col items-center justify-center">
+        <span className="font-display text-lg font-bold text-black tabular-nums">{fmtPct(value)}</span>
+      </div>
+    </div>
+  );
+}
+
+/* ─── Main Component ─── */
+
 export default function BlendedGMModeler() {
   const [cogs, setCogs] = useState(DEFAULT_COGS);
-  const [prices, setPrices] = useState(channels.map(c => c.defaultPrice));
-  const [volumes, setVolumes] = useState(channels.map(c => c.defaultVolume));
+  const [prices, setPrices] = useState(channels.map((c) => c.defaultPrice));
+  const [volumes, setVolumes] = useState(channels.map((c) => c.defaultVolume));
 
-  const setPrice = (idx: number, val: number) => {
-    setPrices(prev => { const n = [...prev]; n[idx] = val; return n; });
-  };
+  const setPrice = useCallback((idx: number, val: number) => {
+    setPrices((prev) => { const n = [...prev]; n[idx] = val; return n; });
+  }, []);
 
-  const setVolume = (idx: number, val: number) => {
-    // Normalize volumes so they sum to 100
-    const others = volumes.reduce((s, v, i) => i === idx ? s : s + v, 0);
-    const maxForThis = 100 - (channels.length - 1); // at least 1% for each other
-    const clamped = Math.min(val, maxForThis);
-    
-    if (others === 0) {
-      setVolumes(prev => { const n = [...prev]; n[idx] = clamped; return n; });
-      return;
-    }
-    
-    const scale = (100 - clamped) / others;
-    setVolumes(prev => prev.map((v, i) => i === idx ? clamped : Math.max(1, Math.round(v * scale))));
-  };
+  const setVolume = useCallback((idx: number, val: number) => {
+    setVolumes((prev) => {
+      const newVols = [...prev];
+      newVols[idx] = val;
+      // Proportionally redistribute remaining volume to other channels
+      const othersTotal = prev.reduce((s, v, i) => (i === idx ? s : s + v), 0);
+      const remaining = 100 - val;
+      if (othersTotal > 0) {
+        for (let i = 0; i < newVols.length; i++) {
+          if (i !== idx) {
+            newVols[i] = Math.max(1, Math.round((prev[i] / othersTotal) * remaining));
+          }
+        }
+      }
+      // Ensure sum is exactly 100
+      const sum = newVols.reduce((s, v) => s + v, 0);
+      if (sum !== 100) {
+        const diff = 100 - sum;
+        // Add/subtract diff from the largest non-adjusted channel
+        const adjustIdx = newVols.reduce((maxI, v, i) => (i !== idx && v > newVols[maxI] ? i : maxI), idx === 0 ? 1 : 0);
+        newVols[adjustIdx] += diff;
+      }
+      return newVols;
+    });
+  }, []);
 
-  const handleReset = () => {
+  const handleReset = useCallback(() => {
     setCogs(DEFAULT_COGS);
-    setPrices(channels.map(c => c.defaultPrice));
-    setVolumes(channels.map(c => c.defaultVolume));
-  };
+    setPrices(channels.map((c) => c.defaultPrice));
+    setVolumes(channels.map((c) => c.defaultVolume));
+  }, []);
 
-  // Normalize volumes to exactly 100
-  const totalVol = volumes.reduce((s, v) => s + v, 0);
-  const normVolumes = volumes.map(v => v / totalVol * 100);
-
-  // Calculate per-channel metrics
+  // Per-channel metrics
   const channelMetrics = useMemo(() => {
     return channels.map((ch, i) => {
       const price = prices[i];
-      const vol = normVolumes[i];
+      const vol = volumes[i];
       const margin = price - cogs;
       const gmPct = price > 0 ? (margin / price) * 100 : 0;
       const discountPct = ((MSRP - price) / MSRP) * 100;
-      return { price, vol, margin, gmPct, discountPct };
+      const units = Math.round((vol / 100) * 1000);
+      const revenue = units * price;
+      const profit = units * margin;
+      return { price, vol, margin, gmPct, discountPct, units, revenue, profit };
     });
-  }, [prices, normVolumes, cogs]);
+  }, [prices, volumes, cogs]);
 
-  // Calculate blended metrics
+  // Blended metrics
   const blended = useMemo(() => {
+    const totalUnits = 1000;
     let weightedPrice = 0;
     let weightedMargin = 0;
-    let totalUnits = 1000; // model on 1,000 units
-    
-    channelMetrics.forEach((m, i) => {
-      const units = (normVolumes[i] / 100) * totalUnits;
-      weightedPrice += m.price * units;
-      weightedMargin += m.margin * units;
+    channelMetrics.forEach((m) => {
+      weightedPrice += m.price * m.units;
+      weightedMargin += m.margin * m.units;
     });
-    
     const blendedASP = weightedPrice / totalUnits;
     const blendedMarginPerUnit = weightedMargin / totalUnits;
     const blendedGMPct = blendedASP > 0 ? (blendedMarginPerUnit / blendedASP) * 100 : 0;
-    const totalRevenue = weightedPrice;
-    const totalProfit = weightedMargin;
-    
-    return { blendedASP, blendedMarginPerUnit, blendedGMPct, totalRevenue, totalProfit, totalUnits };
-  }, [channelMetrics, normVolumes]);
+    return { blendedASP, blendedMarginPerUnit, blendedGMPct, totalRevenue: weightedPrice, totalProfit: weightedMargin };
+  }, [channelMetrics]);
 
-  const gmHealthy = blended.blendedGMPct >= 55;
-  const gmWarning = blended.blendedGMPct >= 45 && blended.blendedGMPct < 55;
-  const gmDanger = blended.blendedGMPct < 45;
+  const isHealthy = blended.blendedGMPct >= GM_TARGET;
+  const isWarning = blended.blendedGMPct >= 45 && blended.blendedGMPct < GM_TARGET;
+
+  const statusColor = isHealthy ? "#C9A962" : isWarning ? "#D97706" : "#DC2626";
+  const statusBg = isHealthy ? "bg-[#C9A962]/[0.06]" : isWarning ? "bg-amber-50" : "bg-red-50";
+  const statusBorder = isHealthy ? "border-[#C9A962]/25" : isWarning ? "border-amber-200" : "border-red-200";
+  const statusText = isHealthy ? "text-[#C9A962]" : isWarning ? "text-amber-700" : "text-red-700";
 
   return (
     <div className="max-w-6xl mx-auto">
-      {/* Exercise Note */}
+
+      {/* ─── Hero Metric ─── */}
       <motion.div
-        initial={{ opacity: 0, y: 10 }}
+        initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="mb-8 p-5 rounded-xl border border-[#C9A962]/25 bg-[#C9A962]/[0.03]"
+        className={`mb-8 rounded-2xl border-2 ${statusBorder} ${statusBg} overflow-hidden`}
       >
-        <div className="flex items-start gap-3">
-          <Info className="w-5 h-5 text-[#C9A962] flex-shrink-0 mt-0.5" />
-          <div>
-            <p className="font-display text-sm font-semibold text-black mb-1">Blended Gross Margin Modeler</p>
-            <p className="font-body text-sm text-black/55 leading-relaxed">
-              Adjust manufacturing costs, selling prices, and volume mix across the three market categories to see how the blended gross margin shifts in real time. Consumer (DTC) pricing remains at full list ($1,095) to protect the margin floor. Target: 55%+ blended GM.
-            </p>
+        <div className="p-8 md:p-10">
+          <div className="flex flex-col md:flex-row items-center gap-8">
+            {/* Left: Big GM number */}
+            <div className="text-center md:text-left flex-shrink-0">
+              <div className="flex items-center gap-2 mb-2">
+                {isHealthy ? (
+                  <CheckCircle2 className="w-4 h-4" style={{ color: statusColor }} />
+                ) : (
+                  <AlertTriangle className="w-4 h-4" style={{ color: statusColor }} />
+                )}
+                <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/35">
+                  Blended Gross Margin
+                </span>
+              </div>
+              <motion.div
+                key={blended.blendedGMPct.toFixed(1)}
+                initial={{ scale: 1.05, opacity: 0.7 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.3 }}
+                className="font-display text-7xl md:text-8xl font-bold tabular-nums"
+                style={{ color: statusColor }}
+              >
+                {fmtPct(blended.blendedGMPct)}
+              </motion.div>
+              <p className={`font-body text-sm mt-2 ${isHealthy ? "text-[#C9A962]/70" : isWarning ? "text-amber-600/70" : "text-red-600/70"}`}>
+                {isHealthy
+                  ? "Above 55% target — healthy margin structure"
+                  : isWarning
+                  ? "Below 55% target — review volume mix or pricing"
+                  : "Margin compression — adjust COGS, pricing, or mix"}
+              </p>
+            </div>
+
+            {/* Divider */}
+            <div className="hidden md:block w-px h-28 bg-black/[0.06]" />
+
+            {/* Right: Key metrics grid */}
+            <div className="flex-1 grid grid-cols-2 md:grid-cols-4 gap-6">
+              {[
+                { label: "Blended ASP", value: fmtCurrency(blended.blendedASP) },
+                { label: "Margin / Unit", value: fmtCurrency(blended.blendedMarginPerUnit) },
+                { label: "COGS / Unit", value: fmtCurrency(cogs) },
+                { label: "Profit / 1K Units", value: fmtCurrency(blended.totalProfit) },
+              ].map((m) => (
+                <div key={m.label} className="text-center">
+                  <p className="font-mono text-[9px] text-black/30 uppercase tracking-[0.15em] mb-1">{m.label}</p>
+                  <p className="font-display text-xl font-bold text-black tabular-nums">{m.value}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Target line indicator */}
+          <div className="mt-6 pt-5 border-t border-black/[0.05]">
+            <div className="flex items-center justify-between text-[10px] font-mono text-black/30 mb-1.5">
+              <span>0%</span>
+              <span className="text-[#C9A962] font-semibold">55% TARGET</span>
+              <span>100%</span>
+            </div>
+            <div className="relative h-3 rounded-full bg-black/[0.04] overflow-hidden">
+              {/* Target marker */}
+              <div className="absolute top-0 bottom-0 w-0.5 bg-[#C9A962]/60 z-10" style={{ left: "55%" }} />
+              {/* Current value bar */}
+              <motion.div
+                className="absolute left-0 top-0 bottom-0 rounded-full"
+                style={{ backgroundColor: statusColor }}
+                initial={{ width: 0 }}
+                animate={{ width: `${Math.min(blended.blendedGMPct, 100)}%` }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              />
+            </div>
           </div>
         </div>
       </motion.div>
 
-      {/* Blended GM Hero Metric */}
+      {/* ─── COGS Control ─── */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        className={`mb-8 p-6 rounded-2xl border-2 text-center transition-all duration-500 ${
-          gmHealthy ? "border-emerald-300 bg-emerald-50/50" :
-          gmWarning ? "border-amber-300 bg-amber-50/50" :
-          "border-red-300 bg-red-50/50"
-        }`}
-      >
-        <div className="flex items-center justify-center gap-2 mb-2">
-          {gmHealthy && <CheckCircle2 className="w-5 h-5 text-emerald-600" />}
-          {gmWarning && <AlertTriangle className="w-5 h-5 text-amber-600" />}
-          {gmDanger && <AlertTriangle className="w-5 h-5 text-red-600" />}
-          <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/40">
-            Blended Gross Margin
-          </span>
-        </div>
-        <motion.div
-          key={blended.blendedGMPct.toFixed(1)}
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          className={`font-display text-6xl font-bold ${
-            gmHealthy ? "text-emerald-700" :
-            gmWarning ? "text-amber-700" :
-            "text-red-700"
-          }`}
-        >
-          {formatPct(blended.blendedGMPct)}
-        </motion.div>
-        <p className={`font-body text-sm mt-1 ${
-          gmHealthy ? "text-emerald-600/70" :
-          gmWarning ? "text-amber-600/70" :
-          "text-red-600/70"
-        }`}>
-          {gmHealthy ? "Above 55% target — healthy margin structure" :
-           gmWarning ? "Below 55% target — review volume mix or pricing" :
-           "Margin compression — adjust COGS, pricing, or volume mix"}
-        </p>
-        <div className="flex items-center justify-center gap-6 mt-4">
-          <div className="text-center">
-            <p className="font-mono text-[9px] text-black/35 uppercase tracking-wider">Blended ASP</p>
-            <p className="font-display text-lg font-bold text-black">{formatCurrency(Math.round(blended.blendedASP))}</p>
-          </div>
-          <div className="w-px h-8 bg-black/10" />
-          <div className="text-center">
-            <p className="font-mono text-[9px] text-black/35 uppercase tracking-wider">Margin / Unit</p>
-            <p className="font-display text-lg font-bold text-black">{formatCurrency(Math.round(blended.blendedMarginPerUnit))}</p>
-          </div>
-          <div className="w-px h-8 bg-black/10" />
-          <div className="text-center">
-            <p className="font-mono text-[9px] text-black/35 uppercase tracking-wider">COGS / Unit</p>
-            <p className="font-display text-lg font-bold text-black">{formatCurrency(cogs)}</p>
-          </div>
-          <div className="w-px h-8 bg-black/10" />
-          <div className="text-center">
-            <p className="font-mono text-[9px] text-black/35 uppercase tracking-wider">Profit / 1K Units</p>
-            <p className="font-display text-lg font-bold text-black">{formatCurrency(Math.round(blended.totalProfit))}</p>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* COGS Slider */}
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
+        initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="mb-8 p-6 rounded-2xl border border-black/[0.12] bg-white"
+        className="mb-6 p-6 rounded-2xl border border-black/[0.10] bg-white"
       >
-        <div className="flex items-center gap-3 mb-4">
-          <div className="w-9 h-9 rounded-xl bg-black/[0.04] flex items-center justify-center">
-            <DollarSign className="w-5 h-5 text-black/50" />
-          </div>
-          <div>
-            <h3 className="font-display text-base font-semibold text-black">Manufacturing Cost (COGS)</h3>
-            <p className="font-body text-[11px] text-black/40">Cost to manufacture one ZeroWheel device. Current estimate: ~$440 (60% GM at list).</p>
+        <div className="flex items-center justify-between mb-5">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-black/[0.03] flex items-center justify-center">
+              <DollarSign className="w-5 h-5 text-black/40" />
+            </div>
+            <div>
+              <h3 className="font-display text-base font-semibold text-black">Manufacturing Cost (COGS)</h3>
+              <p className="font-body text-[11px] text-black/35">Current estimate: ~$440 per unit at 60% GM on list price</p>
+            </div>
           </div>
           <button
             onClick={handleReset}
-            className="ml-auto flex items-center gap-1.5 font-mono text-[10px] text-black/40 hover:text-[#C9A962] tracking-wider uppercase px-3 py-1.5 rounded-lg border border-black/[0.08] hover:border-[#C9A962]/30 transition-all"
+            className="flex items-center gap-1.5 font-mono text-[10px] text-black/35 hover:text-[#C9A962] tracking-[0.12em] uppercase px-3 py-2 rounded-lg border border-black/[0.06] hover:border-[#C9A962]/30 transition-all"
           >
             <RotateCcw className="w-3 h-3" />
             Reset All
           </button>
         </div>
-        <SliderInput
-          label="Unit COGS"
+        <CustomSlider
           value={cogs}
           min={MIN_COGS}
           max={MAX_COGS}
           step={10}
           onChange={setCogs}
-          format={formatCurrency}
-          sublabel="Adjust to model manufacturing efficiencies at scale or supply chain changes"
+          formatDisplay={fmtCurrency}
+          label="Unit COGS"
+          sublabel="Model manufacturing efficiencies at scale or supply chain changes"
+          accentColor="#C9A962"
         />
       </motion.div>
 
-      {/* Channel Cards */}
-      <div className="grid md:grid-cols-3 gap-4 mb-8">
+      {/* ─── Channel Cards ─── */}
+      <div className="grid md:grid-cols-3 gap-5 mb-8">
         {channels.map((ch, i) => {
           const m = channelMetrics[i];
-          const isConsumer = i === 0;
+          const gmColor = m.gmPct >= GM_TARGET ? "#C9A962" : m.gmPct >= 45 ? "#D97706" : "#DC2626";
+
           return (
             <motion.div
               key={ch.name}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className={`p-5 rounded-2xl border transition-all ${ch.borderColor} ${ch.bgColor}`}
+              transition={{ delay: i * 0.08 }}
+              className={`rounded-2xl border ${ch.accentBorder} bg-white overflow-hidden`}
             >
-              <div className="flex items-center gap-2.5 mb-4">
-                <div className={`w-8 h-8 rounded-lg ${ch.bgColor} flex items-center justify-center`}>
-                  <ch.icon className={`w-4.5 h-4.5 ${ch.color}`} />
-                </div>
-                <div>
-                  <h4 className="font-display text-sm font-semibold text-black">{ch.name}</h4>
-                  <p className="font-body text-[10px] text-black/40">{ch.description}</p>
-                </div>
-              </div>
-
-              {/* Channel GM */}
-              <div className={`text-center p-3 rounded-xl mb-4 ${
-                m.gmPct >= 55 ? "bg-emerald-100/50" :
-                m.gmPct >= 45 ? "bg-amber-100/50" :
-                "bg-red-100/50"
-              }`}>
-                <p className="font-mono text-[9px] text-black/35 uppercase tracking-wider">Channel GM</p>
-                <p className={`font-display text-2xl font-bold ${
-                  m.gmPct >= 55 ? "text-emerald-700" :
-                  m.gmPct >= 45 ? "text-amber-700" :
-                  "text-red-700"
-                }`}>{formatPct(m.gmPct)}</p>
-                <p className="font-mono text-[9px] text-black/30">{formatCurrency(Math.round(m.margin))} margin/unit</p>
-              </div>
-
-              {/* Price Slider */}
-              {isConsumer ? (
-                <div className="mb-4 p-3 rounded-lg bg-white/60 border border-black/[0.06]">
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-[10px] text-black/50 uppercase tracking-wider">Selling Price</span>
-                    <span className="font-display text-lg font-bold text-black">{formatCurrency(prices[i])}</span>
+              {/* Card header */}
+              <div className={`px-5 pt-5 pb-4 ${ch.accentBg}`}>
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2.5">
+                    <ch.icon className="w-4 h-4" style={{ color: ch.accentColor, opacity: 0.6 }} />
+                    <h4 className="font-display text-sm font-semibold text-black">{ch.name}</h4>
                   </div>
-                  <p className="font-body text-[10px] text-emerald-600/70 mt-1 italic">Locked at full MSRP — no discounts</p>
+                  {ch.locked && (
+                    <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#C9A962]/10">
+                      <Lock className="w-3 h-3 text-[#C9A962]" />
+                      <span className="font-mono text-[8px] text-[#C9A962] tracking-wider uppercase">Locked</span>
+                    </div>
+                  )}
                 </div>
-              ) : (
-                <div className="mb-4">
-                  <SliderInput
-                    label="Selling Price"
-                    value={prices[i]}
-                    min={ch.minPrice}
-                    max={ch.maxPrice}
-                    step={5}
-                    onChange={(v) => setPrice(i, v)}
-                    format={formatCurrency}
-                    sublabel={`Discount: ${formatPct(m.discountPct)} off list`}
-                  />
-                </div>
-              )}
+                <p className="font-body text-[10px] text-black/35 leading-relaxed">{ch.description}</p>
+              </div>
 
-              {/* Volume Slider */}
-              <SliderInput
-                label="Volume Mix"
-                value={volumes[i]}
-                min={1}
-                max={90}
-                step={1}
-                onChange={(v) => setVolume(i, v)}
-                format={(v) => Math.round(v) + "%"}
-                sublabel={`${Math.round(normVolumes[i] * 10)}  units per 1,000`}
-              />
+              {/* GM Ring + Price */}
+              <div className="px-5 py-4">
+                <div className="flex items-center gap-4 mb-4">
+                  <GMRing value={m.gmPct} size={72} strokeWidth={5} />
+                  <div>
+                    <p className="font-mono text-[9px] text-black/30 uppercase tracking-[0.12em]">Channel GM</p>
+                    <p className="font-display text-2xl font-bold tabular-nums" style={{ color: gmColor }}>{fmtPct(m.gmPct)}</p>
+                    <p className="font-mono text-[9px] text-black/25 mt-0.5">{fmtCurrency(m.margin)} margin/unit</p>
+                  </div>
+                </div>
+
+                {/* Price control */}
+                {ch.locked ? (
+                  <div className="p-3 rounded-xl bg-black/[0.02] border border-black/[0.04] mb-4">
+                    <div className="flex items-center justify-between">
+                      <span className="font-mono text-[10px] text-black/40 uppercase tracking-[0.12em]">Selling Price</span>
+                      <span className="font-display text-xl font-bold text-black">{fmtCurrency(prices[i])}</span>
+                    </div>
+                    <p className="font-body text-[10px] text-[#C9A962]/70 mt-1">Full MSRP — no discounts permitted</p>
+                  </div>
+                ) : (
+                  <div className="mb-4">
+                    <CustomSlider
+                      value={prices[i]}
+                      min={ch.minPrice}
+                      max={ch.maxPrice}
+                      step={5}
+                      onChange={(v) => setPrice(i, v)}
+                      formatDisplay={fmtCurrency}
+                      label="Selling Price"
+                      sublabel={fmtDiscount(prices[i])}
+                      accentColor={ch.accentColor}
+                    />
+                  </div>
+                )}
+
+                {/* Volume control */}
+                <CustomSlider
+                  value={volumes[i]}
+                  min={1}
+                  max={80}
+                  step={1}
+                  onChange={(v) => setVolume(i, v)}
+                  formatDisplay={(v) => Math.round(v) + "%"}
+                  label="Volume Mix"
+                  sublabel={`${m.units.toLocaleString()} units per 1,000`}
+                  accentColor={ch.accentColor}
+                />
+              </div>
             </motion.div>
           );
         })}
       </div>
 
-      {/* Revenue Breakdown Bar */}
+      {/* ─── Revenue Breakdown ─── */}
       <motion.div
-        initial={{ opacity: 0, y: 10 }}
+        initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="p-6 rounded-2xl border border-black/[0.12] bg-white"
+        className="rounded-2xl border border-black/[0.10] bg-white overflow-hidden"
       >
-        <div className="flex items-center gap-2 mb-4">
-          <BarChart3 className="w-5 h-5 text-[#C9A962]" />
-          <h3 className="font-display text-base font-semibold text-black">Revenue & Margin Breakdown (per 1,000 units)</h3>
+        <div className="px-6 py-5 border-b border-black/[0.05] flex items-center gap-2.5">
+          <BarChart3 className="w-4 h-4 text-[#C9A962]" />
+          <h3 className="font-display text-sm font-semibold text-black">Revenue & Margin Breakdown</h3>
+          <span className="font-mono text-[9px] text-black/25 tracking-wider ml-auto">PER 1,000 UNITS</span>
         </div>
 
-        {/* Stacked bar */}
-        <div className="h-10 rounded-full overflow-hidden flex mb-4">
-          {channelMetrics.map((m, i) => (
-            <motion.div
-              key={i}
-              className={`h-full flex items-center justify-center text-white font-mono text-[10px] tracking-wider ${
-                i === 0 ? "bg-emerald-500" : i === 1 ? "bg-[#C9A962]" : "bg-blue-500"
-              }`}
-              style={{ width: `${normVolumes[i]}%` }}
-              initial={{ width: 0 }}
-              animate={{ width: `${normVolumes[i]}%` }}
-              transition={{ duration: 0.3 }}
-            >
-              {normVolumes[i] > 12 && `${Math.round(normVolumes[i])}%`}
-            </motion.div>
-          ))}
-        </div>
+        <div className="p-6">
+          {/* Stacked bar */}
+          <div className="h-8 rounded-lg overflow-hidden flex mb-6">
+            {channelMetrics.map((m, i) => (
+              <motion.div
+                key={i}
+                className="h-full flex items-center justify-center font-mono text-[10px] tracking-wider"
+                style={{
+                  backgroundColor: i === 0 ? "#C9A962" : i === 1 ? "#1A1A1A" : "#9CA3AF",
+                  color: "white",
+                  width: `${volumes[i]}%`,
+                }}
+                animate={{ width: `${volumes[i]}%` }}
+                transition={{ duration: 0.3 }}
+              >
+                {volumes[i] > 14 && `${volumes[i]}%`}
+              </motion.div>
+            ))}
+          </div>
 
-        {/* Legend + metrics table */}
-        <div className="grid grid-cols-3 gap-4">
-          {channels.map((ch, i) => {
-            const m = channelMetrics[i];
-            const units = Math.round((normVolumes[i] / 100) * 1000);
-            const revenue = units * m.price;
-            const profit = units * m.margin;
-            return (
-              <div key={i} className="text-center">
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <div className={`w-3 h-3 rounded-full ${
-                    i === 0 ? "bg-emerald-500" : i === 1 ? "bg-[#C9A962]" : "bg-blue-500"
-                  }`} />
-                  <span className="font-mono text-[10px] text-black/50 tracking-wider">{ch.name}</span>
+          {/* Channel breakdown table */}
+          <div className="grid grid-cols-3 gap-0 divide-x divide-black/[0.05]">
+            {channels.map((ch, i) => {
+              const m = channelMetrics[i];
+              const gmColor = m.gmPct >= GM_TARGET ? "#C9A962" : m.gmPct >= 45 ? "#D97706" : "#DC2626";
+              return (
+                <div key={i} className="px-4 first:pl-0 last:pr-0">
+                  <div className="flex items-center gap-2 mb-3">
+                    <div
+                      className="w-2.5 h-2.5 rounded-sm"
+                      style={{ backgroundColor: i === 0 ? "#C9A962" : i === 1 ? "#1A1A1A" : "#9CA3AF" }}
+                    />
+                    <span className="font-mono text-[10px] text-black/45 tracking-wider">{ch.shortName}</span>
+                  </div>
+                  <div className="space-y-2.5">
+                    <div>
+                      <span className="font-mono text-[9px] text-black/25 block uppercase tracking-wider">Units</span>
+                      <span className="font-display text-base font-bold text-black tabular-nums">{m.units.toLocaleString()}</span>
+                    </div>
+                    <div>
+                      <span className="font-mono text-[9px] text-black/25 block uppercase tracking-wider">Revenue</span>
+                      <span className="font-display text-base font-bold text-black tabular-nums">{fmtCurrency(m.revenue)}</span>
+                    </div>
+                    <div>
+                      <span className="font-mono text-[9px] text-black/25 block uppercase tracking-wider">Gross Profit</span>
+                      <span className="font-display text-base font-bold tabular-nums" style={{ color: gmColor }}>
+                        {fmtCurrency(m.profit)}
+                      </span>
+                    </div>
+                  </div>
                 </div>
-                <div className="space-y-1">
-                  <div>
-                    <span className="font-mono text-[9px] text-black/30 block">Units</span>
-                    <span className="font-display text-sm font-bold text-black">{units.toLocaleString()}</span>
-                  </div>
-                  <div>
-                    <span className="font-mono text-[9px] text-black/30 block">Revenue</span>
-                    <span className="font-display text-sm font-bold text-black">{formatCurrency(revenue)}</span>
-                  </div>
-                  <div>
-                    <span className="font-mono text-[9px] text-black/30 block">Gross Profit</span>
-                    <span className={`font-display text-sm font-bold ${m.gmPct >= 55 ? "text-emerald-700" : m.gmPct >= 45 ? "text-amber-700" : "text-red-700"}`}>
-                      {formatCurrency(profit)}
-                    </span>
-                  </div>
-                </div>
+              );
+            })}
+          </div>
+
+          {/* Totals */}
+          <div className="mt-5 pt-5 border-t border-black/[0.06] flex items-end justify-between">
+            <div className="flex items-center gap-8">
+              <div>
+                <span className="font-mono text-[9px] text-black/25 block uppercase tracking-wider">Total Revenue</span>
+                <span className="font-display text-xl font-bold text-black tabular-nums">{fmtCurrency(blended.totalRevenue)}</span>
               </div>
-            );
-          })}
-        </div>
-
-        {/* Totals row */}
-        <div className="mt-4 pt-4 border-t border-black/[0.08] flex items-center justify-between">
-          <div className="flex items-center gap-6">
-            <div>
-              <span className="font-mono text-[9px] text-black/30 block">Total Revenue</span>
-              <span className="font-display text-lg font-bold text-black">{formatCurrency(Math.round(blended.totalRevenue))}</span>
+              <div>
+                <span className="font-mono text-[9px] text-black/25 block uppercase tracking-wider">Total Gross Profit</span>
+                <span className="font-display text-xl font-bold tabular-nums" style={{ color: statusColor }}>
+                  {fmtCurrency(blended.totalProfit)}
+                </span>
+              </div>
             </div>
-            <div>
-              <span className="font-mono text-[9px] text-black/30 block">Total Gross Profit</span>
-              <span className={`font-display text-lg font-bold ${gmHealthy ? "text-emerald-700" : gmWarning ? "text-amber-700" : "text-red-700"}`}>
-                {formatCurrency(Math.round(blended.totalProfit))}
+            <div className="text-right">
+              <span className="font-mono text-[9px] text-black/25 block uppercase tracking-wider">Blended GM</span>
+              <span className="font-display text-3xl font-bold tabular-nums" style={{ color: statusColor }}>
+                {fmtPct(blended.blendedGMPct)}
               </span>
             </div>
-          </div>
-          <div className="text-right">
-            <span className="font-mono text-[9px] text-black/30 block">Blended GM</span>
-            <span className={`font-display text-2xl font-bold ${gmHealthy ? "text-emerald-700" : gmWarning ? "text-amber-700" : "text-red-700"}`}>
-              {formatPct(blended.blendedGMPct)}
-            </span>
           </div>
         </div>
       </motion.div>
