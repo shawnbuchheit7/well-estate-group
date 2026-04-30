@@ -369,7 +369,7 @@ export default function ZWStrategicMarkets() {
       <section id="exercise" className="py-12 sm:py-16 bg-white">
         <div className="container px-4 sm:px-6">
           <motion.div
-            className="text-center mb-10"
+            className="text-center mb-8"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -390,10 +390,10 @@ export default function ZWStrategicMarkets() {
         </div>
       </section>
       {/* Blended GM Modeler */}
-      <section id="gm-modeler" className="py-12 sm:py-16 bg-[#FAFAF8]">
+      <section id="gm-modeler" className="py-10 sm:py-12 bg-[#FAFAF8]">
         <div className="container px-4 sm:px-6">
           <motion.div
-            className="text-center mb-10"
+            className="text-center mb-8"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}

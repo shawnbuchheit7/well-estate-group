@@ -438,9 +438,9 @@ export default function BlendedGMModeler() {
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="mb-6"
+        className="mb-4"
       >
-        <div className="flex items-center gap-3 mb-3">
+        <div className="flex items-center gap-3 mb-2.5">
           <Zap className="w-4 h-4 text-[#C9A962]" />
           <span className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em]">Quick Scenarios</span>
         </div>
@@ -471,37 +471,35 @@ export default function BlendedGMModeler() {
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="mb-5 rounded-xl border border-black/[0.08] bg-white overflow-hidden"
+        className="mb-4 rounded-xl border border-black/[0.08] bg-white overflow-hidden"
       >
-        <div className="p-4">
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center gap-2.5">
-              <BarChart3 className="w-4 h-4 text-[#C9A962]" />
-              <span className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em]">Pricing Assumption</span>
-            </div>
+        <div className="p-3.5">
+          <div className="flex items-center gap-2.5 mb-2.5">
+            <BarChart3 className="w-3.5 h-3.5 text-[#C9A962]" />
+            <span className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em]">Pricing Assumption</span>
           </div>
 
-          <div className="grid grid-cols-2 gap-2.5">
+          <div className="grid grid-cols-2 gap-2">
             <button
               onClick={() => setPricingMode("floor")}
-              className={`p-3 rounded-lg border text-left transition-all duration-200 ${
+              className={`p-2.5 rounded-lg border text-left transition-all duration-200 ${
                 pricingMode === "floor"
                   ? "border-[#DC2626]/40 bg-red-50/50 shadow-sm"
                   : "border-black/[0.06] bg-white hover:border-black/[0.12]"
               }`}
             >
-              <div className="flex items-center gap-2 mb-2">
+              <div className="flex items-center gap-2 mb-1.5">
                 {pricingMode === "floor" ? (
-                  <ToggleRight className="w-5 h-5 text-[#DC2626]" />
+                  <ToggleRight className="w-4 h-4 text-[#DC2626]" />
                 ) : (
-                  <ToggleLeft className="w-5 h-5 text-black/20" />
+                  <ToggleLeft className="w-4 h-4 text-black/20" />
                 )}
-                <span className={`font-display text-sm font-semibold ${pricingMode === "floor" ? "text-[#DC2626]" : "text-black/50"}`}>
+                <span className={`font-display text-xs font-semibold ${pricingMode === "floor" ? "text-[#DC2626]" : "text-black/50"}`}>
                   Floor Pricing
                 </span>
               </div>
-              <p className="font-body text-[10px] text-black/40 leading-relaxed">
-                Worst case — assumes every deal closes at maximum discount (floor price). No deal closes above floor.
+              <p className="font-body text-[9px] text-black/35 leading-relaxed">
+                Every deal at max discount — worst-case margin scenario.
               </p>
               {pricingMode === "floor" && (
                 <div className="mt-2 pt-2 border-t border-red-200/50">
@@ -512,24 +510,24 @@ export default function BlendedGMModeler() {
 
             <button
               onClick={() => setPricingMode("expected")}
-              className={`p-3 rounded-lg border text-left transition-all duration-200 ${
+              className={`p-2.5 rounded-lg border text-left transition-all duration-200 ${
                 pricingMode === "expected"
                   ? "border-[#C9A962]/40 bg-[#C9A962]/[0.04] shadow-sm"
                   : "border-black/[0.06] bg-white hover:border-black/[0.12]"
               }`}
             >
-              <div className="flex items-center gap-2 mb-2">
+              <div className="flex items-center gap-2 mb-1.5">
                 {pricingMode === "expected" ? (
-                  <ToggleRight className="w-5 h-5 text-[#C9A962]" />
+                  <ToggleRight className="w-4 h-4 text-[#C9A962]" />
                 ) : (
-                  <ToggleLeft className="w-5 h-5 text-black/20" />
+                  <ToggleLeft className="w-4 h-4 text-black/20" />
                 )}
-                <span className={`font-display text-sm font-semibold ${pricingMode === "expected" ? "text-[#C9A962]" : "text-black/50"}`}>
+                <span className={`font-display text-xs font-semibold ${pricingMode === "expected" ? "text-[#C9A962]" : "text-black/50"}`}>
                   Expected ASP
                 </span>
               </div>
-              <p className="font-body text-[10px] text-black/40 leading-relaxed">
-                Realistic — uses average discount per LOB. Not every deal closes at floor; many close above it.
+              <p className="font-body text-[9px] text-black/35 leading-relaxed">
+                Realistic avg discount per LOB — not every deal hits floor.
               </p>
               {pricingMode === "expected" && (
                 <div className="mt-2 pt-2 border-t border-[#C9A962]/20">
@@ -540,19 +538,12 @@ export default function BlendedGMModeler() {
           </div>
 
           {/* Context note */}
-          <div className="mt-3 p-2.5 rounded-lg bg-black/[0.02] border border-black/[0.04]">
-            <p className="font-body text-[10px] text-black/40 leading-relaxed">
-              {pricingMode === "floor" ? (
-                <>
-                  <strong className="text-black/60">Note:</strong> This model currently assumes every deal in each LOB closes at the maximum allowable discount (floor price). In practice, many deals — especially in Vertical markets — will close above floor, resulting in higher realized ASPs and better margins than shown here.
-                </>
-              ) : (
-                <>
-                  <strong className="text-black/60">Note:</strong> This model uses an estimated average discount per LOB based on expected deal mix. Adjust each channel's average discount below to reflect your assumptions. The max discount (floor) remains the ceiling — no deal exceeds it.
-                </>
-              )}
-            </p>
-          </div>
+          <p className="mt-2.5 font-body text-[9px] text-black/35 italic leading-relaxed">
+            {pricingMode === "floor"
+              ? "Assumes max discount on every deal — realistic margins will be higher. Switch to Expected ASP to model average deal pricing."
+              : "Avg discount per LOB is editable below. Max discount (floor) remains the ceiling — no deal exceeds it."
+            }
+          </p>
         </div>
       </motion.div>
 
@@ -561,12 +552,12 @@ export default function BlendedGMModeler() {
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className={`mb-6 rounded-2xl border bg-white overflow-hidden ${
+        className={`mb-4 rounded-xl border bg-white overflow-hidden ${
           isHealthy ? "border-[#C9A962]/25" : isWarning ? "border-amber-200" : "border-red-200"
         }`}
       >
-        <div className="p-6">
-          <div className="flex flex-col md:flex-row items-center gap-6">
+        <div className="p-5">
+          <div className="flex flex-col md:flex-row items-center gap-5">
             {/* Left: GM number — refined sizing */}
             <div className="text-center md:text-left flex-shrink-0">
               <div className="flex items-center gap-2 mb-1.5">
@@ -591,7 +582,7 @@ export default function BlendedGMModeler() {
                 initial={{ scale: 1.03, opacity: 0.7 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.3 }}
-                className="font-display text-5xl md:text-6xl font-bold tabular-nums"
+                className="font-display text-4xl md:text-5xl font-bold tabular-nums"
                 style={{ color: statusColor }}
               >
                 {fmtPct(blended.blendedGMPct)}
@@ -625,7 +616,7 @@ export default function BlendedGMModeler() {
           </div>
 
           {/* Target line indicator */}
-          <div className="mt-5 pt-4 border-t border-black/[0.05]">
+          <div className="mt-4 pt-3 border-t border-black/[0.05]">
             <div className="flex items-center justify-between text-[9px] font-mono text-black/30 mb-1">
               <span>0%</span>
               <span className="text-[#C9A962] font-semibold">{gmTarget}% TARGET</span>
@@ -644,8 +635,8 @@ export default function BlendedGMModeler() {
           </div>
 
           {/* Target context note */}
-          <p className="font-body text-[10px] text-black/30 mt-2.5 text-center italic leading-relaxed">
-            The {gmTarget}% blended GM is an idealized target achieved through scale and optimization — not a Day 1 expectation.
+          <p className="font-body text-[9px] text-black/25 mt-2 text-center italic">
+            {gmTarget}% is an idealized target at scale — not a Day 1 expectation.
           </p>
         </div>
       </motion.div>
@@ -657,9 +648,9 @@ export default function BlendedGMModeler() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="mb-5 rounded-xl border border-amber-200 bg-amber-50/30 overflow-hidden"
+            className="mb-4 rounded-xl border border-amber-200 bg-amber-50/30 overflow-hidden"
           >
-            <div className="p-4">
+            <div className="p-3.5">
               <div className="flex items-center gap-2 mb-2.5">
                 <Lightbulb className="w-4 h-4 text-amber-600" />
                 <span className="font-display text-sm font-semibold text-black">
@@ -698,10 +689,10 @@ export default function BlendedGMModeler() {
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="mb-5 rounded-xl border border-black/[0.08] bg-white overflow-hidden"
+        className="mb-4 rounded-xl border border-black/[0.08] bg-white overflow-hidden"
       >
         {/* Header */}
-        <div className="px-5 py-3.5 border-b border-black/[0.05] flex items-center justify-between">
+        <div className="px-4 py-3 border-b border-black/[0.05] flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 rounded-lg bg-[#C9A962]/[0.08] flex items-center justify-center">
               <Tag className="w-4 h-4 text-[#C9A962]" />
@@ -720,7 +711,7 @@ export default function BlendedGMModeler() {
           </button>
         </div>
 
-        <div className="p-5 grid md:grid-cols-3 gap-6">
+        <div className="p-4 grid md:grid-cols-3 gap-5">
           {/* GM Target Slider */}
           <div>
             <CustomSlider
@@ -800,7 +791,7 @@ export default function BlendedGMModeler() {
       </motion.div>
 
       {/* ─── Channel Cards ─── */}
-      <div className="grid md:grid-cols-3 gap-4 mb-5">
+      <div className="grid md:grid-cols-3 gap-3 mb-4">
         {channelDefs.map((ch, i) => {
           const m = channelMetrics[i];
           const gmColor = m.gmPct >= gmTarget ? "#C9A962" : m.gmPct >= (gmTarget - 10) ? "#D97706" : "#DC2626";
