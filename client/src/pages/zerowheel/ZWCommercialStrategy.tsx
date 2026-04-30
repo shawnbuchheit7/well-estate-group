@@ -35,10 +35,10 @@ export default function ZWCommercialStrategy() {
           
           eyebrow="WEG Proposed Commercial Framework"
           title="Pricing, Terms & Revenue Architecture"
-          description="WEG's recommended commercial framework for ZeroWheel market entry — anchored to a $1,095 MSRP with structured margin-off-list pricing across Commercial and Vertical market categories. The 55%+ target represents the combined blended gross margin across all channels; DTC remains at full list price to protect the margin floor. Price floor: $695."
+          description="WEG's recommended commercial framework for ZeroWheel market entry — anchored to a $1,095 MSRP with structured margin-off-list pricing across Commercial and Vertical market categories. The 60% target represents the combined blended gross margin across all channels; DTC remains at full list price to protect the margin floor. Price floor: $695."
           stats={[
             { value: "$1,095", label: "MSRP / List Price" },
-            { value: "55%+", label: "Blended GM (All Channels)" },
+            { value: "60%", label: "Blended GM (All Channels)" },
             { value: "$695", label: "Price Floor" },
           ]}
         />

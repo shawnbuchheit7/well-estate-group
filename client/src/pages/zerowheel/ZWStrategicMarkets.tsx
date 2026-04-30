@@ -361,7 +361,7 @@ export default function ZWStrategicMarkets() {
           stats={[
             { value: "3", label: "Interactive Exercises" },
             { value: "9", label: "Macro LOBs" },
-            { value: "55%+", label: "GM Target" },
+            { value: "60%", label: "GM Target" },
           ]}
         />
       </div>
