@@ -362,3 +362,43 @@ section + section {
 .rounded-full {
   font-family: 'DM Sans', sans-serif;
 }
+
+/* ========================================
+ * PRESENTATION MODE
+ * Hides all navigation chrome for a clean,
+ * distraction-free client presentation view.
+ * ======================================== */
+
+.present-mode nav[class*="fixed top-0"],
+.present-mode [data-nav="main-nav"] {
+  display: none !important;
+}
+
+.present-mode footer {
+  display: none !important;
+}
+
+/* Hide scroll progress bar */
+.present-mode [class*="fixed top-0 left-0 right-0 h-\\[3px\\]"] {
+  display: none !important;
+}
+
+/* Hide back-to-top button */
+.present-mode [aria-label="Back to top"] {
+  display: none !important;
+}
+
+/* Hide cross-pillar navigation */
+.present-mode section[class*="border-t"][class*="bg-white"]:last-of-type {
+  display: none !important;
+}
+
+/* Remove top padding that compensates for fixed nav */
+.present-mode main {
+  padding-top: 0 !important;
+}
+
+/* Smooth transition for entering/exiting */
+body {
+  transition: padding-top 0.3s ease;
+}

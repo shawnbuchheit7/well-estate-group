@@ -7,6 +7,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { List } from 'lucide-react';
+import { usePresentationMode } from '@/components/PresentationMode';
 
 const GOLD = "#C9A962";
 
@@ -23,6 +24,7 @@ export function SectionNav({ sections }: SectionNavProps) {
   const [activeSection, setActiveSection] = useState<string>(sections[0]?.id || '');
   const [isVisible, setIsVisible] = useState(false);
   const [isExpanded, setIsExpanded] = useState(true);
+  const { isPresentMode } = usePresentationMode();
 
   const handleScroll = useCallback(() => {
     setIsVisible(window.scrollY > 200);
@@ -66,6 +68,9 @@ export function SectionNav({ sections }: SectionNavProps) {
       window.scrollTo({ top, behavior: 'smooth' });
     }
   };
+
+  // Hide section nav in presentation mode
+  if (isPresentMode) return null;
 
   return (
     <AnimatePresence>

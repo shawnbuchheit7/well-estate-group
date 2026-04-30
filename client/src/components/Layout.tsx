@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { ScrollProgressBar, BackToTop } from "@/components/NavigationEnhancements";
-import { DarkModeToggle } from "@/components/PresentationMode";
+import { DarkModeToggle, usePresentationMode } from "@/components/PresentationMode";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -70,6 +70,7 @@ const pillarOrder = [
 export default function Layout({ children, section = "longevity" }: LayoutProps) {
   const [location] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { isPresentMode } = usePresentationMode();
 
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
   const closeMobileMenu = () => setMobileMenuOpen(false);
@@ -141,10 +142,11 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-white text-black">
-      {/* Scroll Progress Indicator */}
-      <ScrollProgressBar />
+      {/* Scroll Progress Indicator — hidden in present mode */}
+      {!isPresentMode && <ScrollProgressBar />}
       
-      {/* Navigation */}
+      {/* Navigation — hidden in present mode */}
+      {!isPresentMode && (
       <motion.nav 
         className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b bg-white/95 border-black/[0.12]"
         initial={{ y: -100 }}
@@ -265,6 +267,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
           )}
         </div>
       </motion.nav>
+      )}
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
@@ -357,12 +360,12 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
       </AnimatePresence>
 
       {/* Main Content */}
-      <main className={navLinks.length > 6 ? "pt-28" : "pt-20"}>
+      <main className={isPresentMode ? "pt-0" : (navLinks.length > 6 ? "pt-28" : "pt-20")}>
         {children}
       </main>
 
-      {/* Cross-Pillar Navigation — hidden on ZeroWheel project pages */}
-      {currentPillarIndex >= 0 && !isZWRoute && (
+      {/* Cross-Pillar Navigation — hidden on ZeroWheel project pages and in present mode */}
+      {!isPresentMode && currentPillarIndex >= 0 && !isZWRoute && (
         <section className="py-12 border-t bg-white border-black/[0.12]">
           <div className="container px-6">
             <div className="flex items-center justify-between max-w-4xl mx-auto">
@@ -398,10 +401,11 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
         </section>
       )}
 
-      {/* Back to Top Button */}
-      <BackToTop />
+      {/* Back to Top Button — hidden in present mode */}
+      {!isPresentMode && <BackToTop />}
 
-      {/* Enhanced Footer with Contact CTA */}
+      {/* Enhanced Footer with Contact CTA — hidden in present mode */}
+      {!isPresentMode && (
       <footer className="py-16 border-t border-black/[0.12] bg-[#FAFAF8]">
         <div className="container px-6">
           <div className="max-w-6xl mx-auto">
@@ -476,6 +480,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
           </div>
         </div>
       </footer>
+      )}
     </div>
   );
 }
