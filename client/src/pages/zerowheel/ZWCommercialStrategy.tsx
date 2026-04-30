@@ -637,7 +637,7 @@ export default function ZWCommercialStrategy() {
         </div>
       </section>
 
-      <NextPageCTA label="Infrastructure & Analytics" href="/gtm/zerowheel/sales-infrastructure" />
+      <NextPageCTA label="Strategic Exercise" href="/gtm/zerowheel/strategic-markets" />
     </Layout>
   );
 }

@@ -13,6 +13,7 @@ import {
   Info,
 } from "lucide-react";
 import Layout from "@/components/Layout";
+import NextPageCTA from "@/components/NextPageCTA";
 import LightHero from "@/components/LightHero";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { SectionNav } from "@/components/SectionNav";
@@ -386,6 +387,7 @@ export default function ZWStrategicMarkets() {
           <DraggableExercise />
         </div>
       </section>
+      <NextPageCTA label="Infrastructure & Analytics" href="/gtm/zerowheel/sales-infrastructure" />
     </Layout>
   );
 }

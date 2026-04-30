@@ -116,10 +116,10 @@ function App() {
                   <Route path="/gtm/zerowheel/lines-of-business" component={() => <ZWPasswordGate><ZWLinesOfBusiness /></ZWPasswordGate>} />
                   <Route path="/gtm/zerowheel/sales" component={() => <ZWPasswordGate><ZWSales /></ZWPasswordGate>} />
                   <Route path="/gtm/zerowheel/commercial-strategy" component={() => <ZWPasswordGate><ZWCommercialStrategy /></ZWPasswordGate>} />
+                  <Route path="/gtm/zerowheel/strategic-markets" component={() => <ZWPasswordGate><ZWStrategicMarkets /></ZWPasswordGate>} />
                   <Route path="/gtm/zerowheel/sales-infrastructure" component={() => <ZWPasswordGate><ZWSalesInfrastructure /></ZWPasswordGate>} />
                   <Route path="/gtm/zerowheel/marketing-infrastructure" component={() => <ZWPasswordGate><ZWMarketingInfrastructure /></ZWPasswordGate>} />
                   {/* Redirects for consolidated tabs */}
-                  <Route path="/gtm/zerowheel/strategic-markets">{() => <Redirect to="/gtm/zerowheel/commercial-strategy" />}</Route>
                   <Route path="/gtm/zerowheel/business-intelligence">{() => <Redirect to="/gtm/zerowheel/sales-infrastructure" />}</Route>
                   <Route path="/gtm/zerowheel/affiliate-program">{() => <Redirect to="/gtm/zerowheel/marketing-infrastructure" />}</Route>
                   <Route path="/gtm/zerowheel/b2b2c">{() => <Redirect to="/gtm/zerowheel/sales" />}</Route>
