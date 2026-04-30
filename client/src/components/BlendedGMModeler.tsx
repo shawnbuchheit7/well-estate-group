@@ -454,11 +454,11 @@ export default function BlendedGMModeler() {
               { segment: "Commercial Markets", price: fmtCurrency(Math.round(msrp * 0.60)), discount: "Max 40% off list", note: "Health clubs, dealers, distributors", color: "#6B7280" },
               { segment: "GSA / Government", price: fmtCurrency(Math.round(msrp * 0.63)), discount: "~37% off list", note: "Contractual / schedule pricing", color: "#4B5563" },
             ].map((seg) => (
-              <div key={seg.segment} className="px-4 first:pl-0 last:pr-0 text-center">
-                <span className="font-mono text-[10px] text-black/70 tracking-wider uppercase block mb-1.5 font-semibold">{seg.segment}</span>
-                <span className="font-display text-xl font-bold text-black tabular-nums block">{seg.price}</span>
-                <span className="font-mono text-[10px] font-medium block mt-1.5" style={{ color: seg.color }}>{seg.discount}</span>
-                <span className="font-body text-[10px] text-black/50 block mt-1">{seg.note}</span>
+              <div key={seg.segment} className="px-4 first:pl-0 last:pr-0 text-center flex flex-col items-center">
+                <span className="inline-block px-3 py-1 rounded-full border border-black/[0.12] bg-black/[0.03] font-mono text-[11px] text-black/80 tracking-wider uppercase font-semibold mb-2">{seg.segment}</span>
+                <span className="font-display text-2xl font-bold text-black tabular-nums block">{seg.price}</span>
+                <span className="inline-block mt-2 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold text-white" style={{ backgroundColor: seg.color }}>{seg.discount}</span>
+                <span className="font-body text-[10px] text-black/50 block mt-1.5">{seg.note}</span>
               </div>
             ))}
           </div>
