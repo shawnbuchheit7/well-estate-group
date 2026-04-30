@@ -22,12 +22,11 @@ export default function ZWOverview() {
           logoAlt="ZeroWheel"
           eyebrow="WEG Consulting Proposal"
           title="Go-To-Market Strategy & Execution"
-          description="Well Estate Group's proposed consulting engagement for ZeroWheel — a comprehensive go-to-market strategy spanning 9 macro lines of business across 4 global regions. This presentation outlines the strategic framework, pricing architecture, and sales infrastructure WEG recommends to accelerate ZeroWheel's market entry."
+          description="Well Estate Group's proposed consulting engagement for ZeroWheel — a comprehensive go-to-market strategy spanning 9 macro lines of business. This presentation outlines the strategic framework, pricing architecture, and sales infrastructure WEG recommends to accelerate ZeroWheel's market entry."
           stats={[
             { value: "9", label: "Lines of Business" },
-            { value: "4", label: "Global Regions" },
             { value: "$1,095", label: "MSRP Anchor" },
-            { value: "$6.7T", label: "Wellness Market" },
+            { value: "$6.7T", label: "Global Wellness Economy" },
           ]}
         />
       </div>
@@ -92,6 +91,46 @@ export default function ZWOverview() {
                 </div>
               </motion.div>
             ))}
+          </motion.div>
+
+          {/* Market Funnel Breakdown */}
+          <motion.div
+            className="max-w-4xl mx-auto mt-14 mb-14"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
+            <motion.div variants={fadeInUp} className="bg-[#FAFAF8] border border-black/[0.08] rounded-2xl p-8">
+              <p className="font-mono text-[10px] text-[#C9A962] uppercase tracking-[0.2em] mb-5">Market Opportunity Funnel</p>
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+                <div className="text-center p-4 rounded-xl bg-white border border-black/[0.06]">
+                  <p className="font-display text-2xl font-bold text-black">$6.7T</p>
+                  <p className="font-mono text-[9px] text-black/45 uppercase tracking-wider mt-1">Global Wellness Economy</p>
+                  <p className="font-body text-[11px] text-black/40 mt-1">GWI 2024 — fitness, wellness, nutrition, longevity</p>
+                </div>
+                <div className="text-center p-4 rounded-xl bg-white border border-black/[0.06]">
+                  <p className="font-display text-2xl font-bold text-black">$24B</p>
+                  <p className="font-mono text-[9px] text-black/45 uppercase tracking-wider mt-1">Core Development TAM</p>
+                  <p className="font-body text-[11px] text-black/40 mt-1">Total addressable market at steady-state adoption</p>
+                </div>
+                <div className="text-center p-4 rounded-xl bg-white border border-black/[0.06]">
+                  <p className="font-display text-2xl font-bold text-black">$18B</p>
+                  <p className="font-mono text-[9px] text-black/45 uppercase tracking-wider mt-1">Serviceable Market (SAM)</p>
+                  <p className="font-body text-[11px] text-black/40 mt-1">Regions ZeroWheel is licensed to serve (US, Canada, EU, Japan)</p>
+                </div>
+                <div className="text-center p-4 rounded-xl bg-[#C9A962]/[0.06] border border-[#C9A962]/20">
+                  <p className="font-display text-2xl font-bold text-[#C9A962]">$300M+</p>
+                  <p className="font-mono text-[9px] text-[#C9A962]/70 uppercase tracking-wider mt-1">5-Year Revenue Target (SOM)</p>
+                  <p className="font-body text-[11px] text-black/40 mt-1">Based on adoption curves of comparable powered fitness devices</p>
+                </div>
+              </div>
+              <div className="flex items-center justify-center gap-2 mt-4">
+                <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#C9A962]/30" />
+                <p className="font-body text-[11px] text-black/40 italic">Source: ZeroWheel Seed Raise Deck (Mar 2026) &amp; Global Wellness Institute</p>
+                <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#C9A962]/30" />
+              </div>
+            </motion.div>
           </motion.div>
 
           {/* Product Positioning Arrow */}
