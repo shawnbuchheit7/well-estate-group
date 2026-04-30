@@ -35,10 +35,10 @@ export default function ZWCommercialStrategy() {
           
           eyebrow="WEG Proposed Commercial Framework"
           title="Pricing, Terms & Revenue Architecture"
-          description="WEG's recommended commercial framework for ZeroWheel market entry — anchored to a $1,095 MSRP with structured margin-off-list pricing across Commercial and Vertical market categories. Price floor: $695."
+          description="WEG's recommended commercial framework for ZeroWheel market entry — anchored to a $1,095 MSRP with structured margin-off-list pricing across Commercial and Vertical market categories. The 55%+ target represents the combined blended gross margin across all channels; DTC remains at full list price to protect the margin floor. Price floor: $695."
           stats={[
             { value: "$1,095", label: "MSRP / List Price" },
-            { value: "55%+", label: "Target Gross Margin" },
+            { value: "55%+", label: "Blended GM (All Channels)" },
             { value: "$695", label: "Price Floor" },
           ]}
         />
@@ -63,7 +63,7 @@ export default function ZWCommercialStrategy() {
               Margin-Off-List Pricing Strategy
             </motion.h2>
             <motion.p variants={fadeInUp} className="font-body text-base text-black/60 max-w-2xl mx-auto">
-              All pricing is anchored to the $1,095 MSRP. Two distinct market categories — Commercial and Vertical — each with structured discount points off list. Maximum discount thresholds — do not exceed. GSA best pricing: $694.
+              All pricing is anchored to the $1,095 MSRP. Three market categories — Consumer (full list), Vertical, and Commercial — each with structured discount points off list. Maximum discount thresholds — do not exceed. GSA best pricing: $694.
             </motion.p>
           </motion.div>
 
