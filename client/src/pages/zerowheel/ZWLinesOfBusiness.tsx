@@ -80,7 +80,7 @@ const macroLobs: MacroLob[] = [
     ],
     gtmPositioning: "Durable, motorized core station for HIIT, PT, and open floor use. Pickleball is a major growth driver at chains like Life Time — ZeroWheel delivers core strength and rotational power that enhances performance. Delivers dramatic ab and core results. Rochester AC expanded to 6 units for 16K+ members. Small footprint allows multiple units on the gym floor.",
     keySelling: ["Dramatic core results", "Pickleball/sport prep", "Small footprint — multiple units", "New revenue (core clinics)", "Connected device management"],
-    subs: ["National Key Accounts", "Regional Key Accounts", "Boutique Studios", "Local Club/Chains"],
+    subs: ["National Key Accounts", "Regional Key Accounts", "Sports Performance Facilities", "Boutique Studios", "Local Club/Chains"],
     testimonial: { quote: "A natural fit for members who don't fit traditional machines.", author: "Steve Boring, PhD", role: "Rochester Athletic Club" },
   },
   {
@@ -144,10 +144,10 @@ const macroLobs: MacroLob[] = [
   {
     name: "Professional Sports",
     icon: Users,
-    category: "VERTICAL",
-    categoryColor: "#C9A962",
-    pricing: "$825/unit (max 25% off list)",
-    priceValue: "$825",
+    category: "COMMERCIAL",
+    categoryColor: "#6B7280",
+    pricing: "$695/unit (max 40% off list)",
+    priceValue: "$695",
     tier: "Tier 2 — Growth",
     persona: "The Director of Strength & Conditioning",
     personaTitle: "Director of S&C",

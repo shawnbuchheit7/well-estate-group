@@ -31,10 +31,9 @@ const allLobs = [
 const macroLobs = [
   { name: "Private Clubs", icon: Building2, count: 5, color: "#C9A962" },
   { name: "Amenities", icon: Home, count: 7, color: "#8B7D3C" },
-  { name: "Commercial Clubs", icon: Dumbbell, count: 4, color: "#A69050" },
+  { name: "Commercial Clubs & Sports Performance", icon: Dumbbell, count: 6, color: "#A69050" },
   { name: "Public Authorities", icon: Landmark, count: 5, color: "#B8963E" },
   { name: "Medical", icon: Stethoscope, count: 3, color: "#C9A962" },
-  { name: "Sports Performance", icon: Trophy, count: 2, color: "#8B7D3C" },
   { name: "Corporate Wellness", icon: Briefcase, count: 1, color: "#A69050" },
   { name: "Consumer", icon: UserCircle, count: 2, color: "#B8963E" },
 ];
@@ -51,9 +50,9 @@ const subMacroData = [
     subs: ["Multi-Family", "Condominium (Condo)", "Homeowners Associations (HOA)", "Destination Resorts", "City Hotels", "Maritime", "Live/Work/Play"],
   },
   {
-    macro: "Commercial Clubs",
+    macro: "Commercial Clubs & Sports Performance",
     icon: Dumbbell,
-    subs: ["National Key Accounts", "Regional Key Accounts", "Boutique Studios", "Local Club/Chains"],
+    subs: ["National Key Accounts", "Regional Key Accounts", "Sports Performance Facilities", "Sports Agencies (NFL/NBA/NHL)", "Boutique Studios", "Local Club/Chains"],
   },
   {
     macro: "Public Authorities",
@@ -64,11 +63,6 @@ const subMacroData = [
     macro: "Medical",
     icon: Stethoscope,
     subs: ["Health Care", "Physical Therapists", "Hospital Supported Wellness Centers"],
-  },
-  {
-    macro: "Sports Performance",
-    icon: Trophy,
-    subs: ["Sports Agencies (NFL/NBA/NHL)", "Sports Performance Facilities (HOA & Exos)"],
   },
   {
     macro: "Corporate Wellness",
@@ -94,10 +88,10 @@ export default function GTMLinesOfBusiness() {
         <LightHero
           eyebrow="Organizational Sales Structure"
           title="Lines of Business"
-          description="A comprehensive organizational sales framework spanning 15+ lines of business, organized into 8 macro verticals with detailed sub-segment targeting for maximum market coverage."
+          description="A comprehensive organizational sales framework spanning 15+ lines of business, organized into 7 macro verticals with detailed sub-segment targeting for maximum market coverage."
           stats={[
             { value: "15+", label: "Lines of Business" },
-            { value: "8", label: "Macro Verticals" },
+            { value: "7", label: "Macro Verticals" },
             { value: "29+", label: "Sub-Segments" },
           ]}
         />

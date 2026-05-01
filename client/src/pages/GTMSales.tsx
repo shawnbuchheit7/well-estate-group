@@ -53,7 +53,6 @@ const lobTargeting = [
     targets: [
       "Appropriate Industry Trade Shows",
       "National Account Yearly Company Meetings",
-      "Define New Premium Member Journey",
     ],
   },
   {
