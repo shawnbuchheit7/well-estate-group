@@ -139,7 +139,7 @@ const channelDefs: ChannelDef[] = [
     defaultDiscountPct: 25,
     defaultAvgDiscountPct: 18,
     defaultVolume: 40,
-    description: "Medical, clubs, hospitality, sports, corporate.",
+    description: "Medical, clubs, hospitality, corporate.",
     locked: false,
   },
   {
@@ -154,7 +154,7 @@ const channelDefs: ChannelDef[] = [
     defaultDiscountPct: 40,
     defaultAvgDiscountPct: 30,
     defaultVolume: 30,
-    description: "Health clubs, dealers, distributors, resellers.",
+    description: "Health clubs, sports performance, dealers, distributors.",
     locked: false,
   },
 ];
@@ -450,8 +450,8 @@ export default function BlendedGMModeler() {
           <div className="grid grid-cols-4 gap-0 divide-x divide-black/[0.06]">
             {[
               { segment: "DTC / Consumer", price: fmtCurrency(msrp), discount: "0% off list", note: "Full MSRP — margin anchor", color: "#C9A962" },
-              { segment: "Vertical Markets", price: fmtCurrency(Math.round(msrp * 0.75)), discount: "Max 25% off list", note: "Clubs, medical, hospitality, sports", color: "#1A1A1A" },
-              { segment: "Commercial Markets", price: fmtCurrency(Math.round(msrp * 0.60)), discount: "Max 40% off list", note: "Health clubs, dealers, distributors", color: "#6B7280" },
+              { segment: "Vertical Markets", price: fmtCurrency(Math.round(msrp * 0.75)), discount: "Max 25% off list", note: "Clubs, medical, hospitality, corporate", color: "#1A1A1A" },
+              { segment: "Commercial Markets", price: fmtCurrency(Math.round(msrp * 0.60)), discount: "Max 40% off list", note: "Health clubs, sports performance, dealers", color: "#6B7280" },
               { segment: "GSA / Government", price: fmtCurrency(Math.round(msrp * 0.63)), discount: "~37% off list", note: "Contractual / schedule pricing", color: "#4B5563" },
             ].map((seg) => (
               <div key={seg.segment} className="px-4 first:pl-0 last:pr-0 text-center flex flex-col items-center">

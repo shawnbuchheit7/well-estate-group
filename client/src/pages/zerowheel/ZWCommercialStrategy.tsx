@@ -139,7 +139,6 @@ export default function ZWCommercialStrategy() {
                 highlight: false,
                 features: [
                   "Medical & longevity clinics",
-                  "Sports performance facilities",
                   "Hospitality & luxury resorts",
                   "Cruise & maritime",
                   "Corporate wellness programs",
@@ -156,6 +155,7 @@ export default function ZWCommercialStrategy() {
                 highlight: false,
                 features: [
                   "Health clubs & fitness centers",
+                  "Sports performance facilities",
                   "Authorized dealers & retailers",
                   "Regional distributors",
                   "Reseller partners",
@@ -224,8 +224,8 @@ export default function ZWCommercialStrategy() {
                 <tbody>
                   {[
                     { category: "DTC / Full Retail", points: "0%", net: "$1,095", savings: "—", highlight: true },
-                    { category: "Vertical Markets (Medical, Sports, Hospitality, Gov)", points: "25%", net: "$825", savings: "$275", highlight: false },
-                    { category: "Commercial Markets (Clubs, Dealers, Resellers)", points: "40%", net: "$695", savings: "$400", highlight: false },
+                    { category: "Vertical Markets (Medical, Hospitality, Corporate, Gov)", points: "25%", net: "$825", savings: "$275", highlight: false },
+                    { category: "Commercial Markets (Clubs, Sports Performance, Dealers)", points: "40%", net: "$695", savings: "$400", highlight: false },
                   ].map((row, i) => (
                     <tr key={i} className={`border-b border-black/[0.06] last:border-0 ${row.highlight ? "bg-[#C9A962]/5" : ""}`}>
                       <td className="p-4 font-body text-sm text-black/80 font-medium">{row.category}</td>
@@ -277,7 +277,7 @@ export default function ZWCommercialStrategy() {
                   { label: "MAP Retail Price", value: "$1,095" },
                   { label: "Partner Margin at MAP", value: "~25%" },
                   { label: "Payment Terms", value: "Net 30" },
-                  { label: "Verticals", value: "Medical, Sports, Hospitality, Gov" },
+                  { label: "Verticals", value: "Medical, Hospitality, Corporate, Gov" },
                 ],
               },
               {
@@ -387,11 +387,12 @@ export default function ZWCommercialStrategy() {
                   {[
                     { channel: "DTC (Full Retail)", offList: "0%", revenue: "$1,095", cogs: "$350", profit: "$745", margin: "68.0%", highlight: true },
                     { channel: "Vertical — Medical / Longevity", offList: "25%", revenue: "$825", cogs: "$350", profit: "$475", margin: "57.6%", highlight: false },
-                    { channel: "Vertical — Sports Performance", offList: "25%", revenue: "$825", cogs: "$350", profit: "$475", margin: "57.6%", highlight: false },
+                    
                     { channel: "Vertical — Hospitality & Amenities", offList: "25%", revenue: "$825", cogs: "$340", profit: "$485", margin: "58.8%", highlight: false },
                     { channel: "Vertical — Cruise & Maritime", offList: "25%", revenue: "$825", cogs: "$340", profit: "$485", margin: "58.8%", highlight: false },
                     { channel: "Vertical — Corporate Wellness", offList: "25%", revenue: "$825", cogs: "$350", profit: "$475", margin: "57.6%", highlight: false },
                     { channel: "GSA — Military & Government", offList: "~37%", revenue: "$694", cogs: "$330", profit: "$364", margin: "52.4%", highlight: false },
+                    { channel: "Commercial — Sports Performance", offList: "40%", revenue: "$695", cogs: "$330", profit: "$365", margin: "52.5%", highlight: false },
                     { channel: "Commercial — Clubs & Fitness", offList: "40%", revenue: "$695", cogs: "$330", profit: "$365", margin: "52.5%", highlight: false },
                     { channel: "Commercial — Authorized Dealers", offList: "40%", revenue: "$695", cogs: "$330", profit: "$365", margin: "52.5%", highlight: false },
                     { channel: "Commercial — Distributors / Resellers", offList: "40%", revenue: "$695", cogs: "$320", profit: "$375", margin: "54.0%", highlight: false },

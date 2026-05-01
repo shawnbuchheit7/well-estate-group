@@ -38,7 +38,7 @@ const allLOBs: LOBItem[] = [
   { id: "medical-rehab", name: "Medical & Rehabilitation", icon: Stethoscope, category: "Vertical" },
   { id: "dtc", name: "Direct-to-Consumer", icon: Package, category: "DTC" },
   { id: "corporate-wellness", name: "Corporate Wellness", icon: Target, category: "Vertical" },
-  { id: "pro-sports", name: "Professional Sports", icon: Users, category: "Vertical" },
+  { id: "pro-sports", name: "Professional Sports", icon: Users, category: "Commercial" },
   { id: "hospitality", name: "Hospitality & Amenities", icon: Building2, category: "Vertical" },
   { id: "military-gov", name: "Military & Government", icon: Shield, category: "GSA" },
   { id: "cruise-maritime", name: "Cruise & Maritime", icon: Ship, category: "Vertical" },
