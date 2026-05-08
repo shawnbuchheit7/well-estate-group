@@ -15,12 +15,12 @@ import { DarkModeToggle, usePresentationMode } from "@/components/PresentationMo
 
 interface LayoutProps {
   children: React.ReactNode;
-  section?: "longevity" | "gtm" | "gtm-zerowheel" | "gtm-sample" | "products";
+  section?: "longevity" | "longevity-performance" | "gtm" | "gtm-zerowheel" | "gtm-sample" | "products";
 }
 
-// Only show pages with real content
+// Longevity Luxury Model nav links
 const longevityNavLinks = [
-  { href: "/longevity", label: "About" },
+  { href: "/longevity/luxury", label: "About" },
   { href: "/longevity/opportunity", label: "Opportunity" },
   { href: "/longevity/memberships", label: "Memberships" },
   { href: "/longevity/therapeutics", label: "Therapeutics" },
@@ -30,6 +30,18 @@ const longevityNavLinks = [
   { href: "/longevity/projections", label: "Projections" },
   { href: "/longevity/hiring", label: "Team" },
   { href: "/longevity/faq", label: "FAQ" },
+];
+
+// Longevity Performance Model nav links
+const longevityPerformanceNavLinks = [
+  { href: "/longevity/performance-model", label: "Overview" },
+  { href: "/longevity/performance-model/about", label: "About" },
+  { href: "/longevity/performance-model/platform", label: "Platform" },
+  { href: "/longevity/performance-model/products", label: "Products" },
+  { href: "/longevity/performance-model/partnerships", label: "Partnerships" },
+  { href: "/longevity/performance-model/diagnostics", label: "Diagnostics" },
+  { href: "/longevity/performance-model/hospitality", label: "Hospitality" },
+  { href: "/longevity/performance-model/academy", label: "Academy" },
 ];
 
 // ZeroWheel GTM tabs
@@ -76,6 +88,8 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
   // Determine which nav links to use based on section and current location
+  const isLongevityPerformanceRoute = location.startsWith("/longevity/performance-model");
+  const isLongevityProjectsRoute = location === "/longevity";
   const isLongevityRoute = location.startsWith("/longevity");
   const isZWRoute = location.startsWith("/gtm/zerowheel");
   const isSampleRoute = location.startsWith("/gtm/sample");
@@ -114,11 +128,22 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
     navLinks = [];
     homeLink = "/";
     sectionLabel = "Venture & Product Capital";
-  } else if (isLongevityRoute) {
-    navLinks = longevityNavLinks;
+  } else if (isLongevityPerformanceRoute || section === "longevity-performance") {
+    navLinks = longevityPerformanceNavLinks;
+    homeLink = "/longevity/performance-model";
+    sectionLabel = "Performance Model";
+    backLink = "/longevity";
+  } else if (isLongevityProjectsRoute) {
+    navLinks = [];
     homeLink = "/longevity";
     sectionLabel = "Longevity Ventures";
+    backLink = "/";
+  } else if (isLongevityRoute) {
+    navLinks = longevityNavLinks;
+    homeLink = "/longevity/luxury";
+    sectionLabel = "Luxury Model";
     showDataRoom = true;
+    backLink = "/longevity";
   } else {
     navLinks = longevityNavLinks;
     homeLink = "/";

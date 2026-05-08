@@ -18,6 +18,10 @@ import Landing from "./pages/Landing";
 // Home page (longevity home) loads immediately for fast initial load
 import Home from "./pages/Home";
 
+// Longevity Projects Landing (multi-model view)
+const LongevityProjects = lazy(() => import("./pages/LongevityProjects"));
+const LongevityPerformanceModel = lazy(() => import("./pages/LongevityPerformanceModel"));
+
 // GTM Projects Landing
 const GTMProjects = lazy(() => import("./pages/GTMProjects"));
 
@@ -142,8 +146,11 @@ function App() {
                   {/* Venture & Product Capital Section */}
                   <Route path="/venture-capital" component={VentureCapital} />
                   
-                  {/* Longevity Section - New prefixed routes */}
-                  <Route path="/longevity" component={Home} />
+                  {/* Longevity Section - Projects Landing (multi-model) */}
+                  <Route path="/longevity" component={LongevityProjects} />
+                  
+                  {/* Longevity Luxury Model (original content) */}
+                  <Route path="/longevity/luxury" component={Home} />
                   <Route path="/longevity/about" component={About} />
                   <Route path="/longevity/opportunity" component={Opportunity} />
                   <Route path="/longevity/memberships" component={Memberships} />
@@ -156,6 +163,9 @@ function App() {
                   <Route path="/longevity/projections" component={Projections} />
                   <Route path="/longevity/hiring" component={Hiring} />
                   <Route path="/longevity/faq" component={FAQ} />
+                  
+                  {/* Longevity Performance Model */}
+                  <Route path="/longevity/performance-model" component={LongevityPerformanceModel} />
                   <Route path="/longevity/data-room" component={DataRoom} />
                   <Route path="/longevity/contact" component={Contact} />
                   
