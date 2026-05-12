@@ -205,7 +205,7 @@ function MatrixGrid({ quadrants, year }: { quadrants: Quadrant[]; year: number }
                     whileHover={{ scale: 1.05, y: -1 }}
                     className={`px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-medium tracking-wide transition-all cursor-default ${
                       item.highlighted
-                        ? "bg-black text-white shadow-md"
+                        ? "bg-[#C9A962] text-white shadow-md"
                         : "bg-white text-black/70 border border-black/[0.15] hover:border-[#C9A962]/30"
                     }`}
                   >
@@ -253,7 +253,7 @@ export default function GTMStrategicMarkets() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black text-white text-[11px] sm:text-xs font-mono tracking-wider uppercase mb-4">
+            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#C9A962] text-white text-[11px] sm:text-xs font-mono tracking-wider uppercase mb-4">
               Year 1 — Q1 through Q4
             </motion.div>
             <motion.h2 variants={fadeInUp} className="font-display text-2xl sm:text-3xl md:text-4xl font-medium text-black">

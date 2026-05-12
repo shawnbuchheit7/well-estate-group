@@ -101,7 +101,7 @@ export default function GTMProjects() {
                       {/* Top row: Logo/Icon + Status */}
                       <div className="flex items-start justify-between mb-6">
                         {project.logoSrc ? (
-                          <div className="w-14 h-14 rounded-xl bg-[#0A0A0A] border border-black/[0.08] flex items-center justify-center shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+                          <div className="w-14 h-14 rounded-xl bg-[#F5F4F1] border border-black/[0.08] flex items-center justify-center shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
                             <img 
                               src={project.logoSrc} 
                               alt={project.logoAlt || project.title}

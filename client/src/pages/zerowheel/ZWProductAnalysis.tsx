@@ -500,9 +500,9 @@ export default function ZWProductAnalysis() {
               viewport={{ once: true }}
               className="rounded-2xl border border-black/[0.15] overflow-hidden"
             >
-              <div className="bg-[#0A0A0A] p-6">
-                <h3 className="font-display text-xl font-semibold text-white mb-1">Core Strength: The Foundation</h3>
-                <p className="font-body text-sm text-white/50">Why core training is the single most impactful investment in human performance and longevity</p>
+              <div className="bg-[#F5F4F1] p-6">
+                <h3 className="font-display text-xl font-semibold text-black mb-1">Core Strength: The Foundation</h3>
+                <p className="font-body text-sm text-black/50">Why core training is the single most impactful investment in human performance and longevity</p>
               </div>
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-0 divide-y md:divide-y-0 md:divide-x divide-black/[0.06]">
                 {[
@@ -555,7 +555,7 @@ export default function ZWProductAnalysis() {
                 className="rounded-2xl border border-black/[0.15] bg-white overflow-hidden hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex flex-col md:flex-row">
-                  <div className="md:w-24 bg-[#0A0A0A] flex items-center justify-center py-6 md:py-0">
+                  <div className="md:w-24 bg-[#F5F4F1] flex items-center justify-center py-6 md:py-0">
                     <span className="font-display text-4xl font-bold text-[#C9A962]">{pillar.number}</span>
                   </div>
                   <div className="flex-1 p-8">
@@ -623,7 +623,7 @@ export default function ZWProductAnalysis() {
             >
               <table className="w-full">
                 <thead>
-                  <tr className="bg-[#0A0A0A] text-white">
+                  <tr className="bg-[#F5F4F1] text-black">
                     <th className="text-left p-4 font-mono text-xs tracking-wider uppercase">Product Category</th>
                     <th className="text-center p-4 font-mono text-xs tracking-wider uppercase">Rollout Mechanism</th>
                     <th className="text-center p-4 font-mono text-xs tracking-wider uppercase">Progressive Overload</th>
@@ -737,8 +737,8 @@ export default function ZWProductAnalysis() {
               viewport={{ once: true }}
               className="rounded-2xl border border-black/[0.15] overflow-hidden"
             >
-              <div className="bg-[#0A0A0A] px-6 py-4 flex items-center justify-between">
-                <span className="font-display text-sm font-semibold text-white">Pricing Structure</span>
+              <div className="bg-[#F5F4F1] px-6 py-4 flex items-center justify-between">
+                <span className="font-display text-sm font-semibold text-black">Pricing Structure</span>
                 <span className="font-mono text-xs text-[#C9A962]">MSRP $1,095 — All prices end in 5</span>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-black/[0.06]">
@@ -972,7 +972,7 @@ export default function ZWProductAnalysis() {
                               ))}
                             </div>
                           </div>
-                          <div className="p-5 rounded-xl bg-[#0A0A0A] text-white">
+                          <div className="p-5 rounded-xl bg-[#F5F4F1] text-black">
                             <div className="flex items-center gap-2 mb-3">
                               <Target className="w-4 h-4 text-[#C9A962]" />
                               <p className="font-mono text-[10px] text-[#C9A962] tracking-wider uppercase">Sales Motion</p>
@@ -1217,7 +1217,7 @@ export default function ZWProductAnalysis() {
                 className="p-8 rounded-2xl border border-black/[0.15] bg-white hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex items-start gap-5">
-                  <div className="w-12 h-12 rounded-xl bg-[#0A0A0A] flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-[#F5F4F1] flex items-center justify-center flex-shrink-0">
                     <span className="font-display text-lg font-bold text-[#C9A962]">{rec.priority}</span>
                   </div>
                   <div className="flex-1">

@@ -212,7 +212,7 @@ export default function GTMLinesOfBusiness() {
                 transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] }}
                 className="max-w-3xl mx-auto overflow-hidden"
               >
-                <div className="bg-black rounded-2xl p-8 text-white">
+                <div className="bg-[#F5F4F1] rounded-2xl p-8 text-black">
                   <div className="flex items-center gap-3 mb-5">
                     {(() => {
                       const Icon = subMacroData[selectedMacro].icon;
@@ -276,9 +276,9 @@ export default function GTMLinesOfBusiness() {
                   whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(0,0,0,0.06)" }}
                   className="bg-white border border-black/[0.12] rounded-xl overflow-hidden hover:border-[#C9A962]/30 transition-all duration-300"
                 >
-                  <div className="bg-black px-5 py-3.5 flex items-center gap-2">
+                  <div className="bg-[#F5F4F1] px-5 py-3.5 flex items-center gap-2">
                     <category.icon className="w-4 h-4 text-[#C9A962]" />
-                    <h3 className="font-display text-sm font-semibold text-white tracking-wider">{category.macro}</h3>
+                    <h3 className="font-display text-sm font-semibold text-black tracking-wider">{category.macro}</h3>
                   </div>
                   <div className="p-5">
                     <ul className="space-y-2.5">

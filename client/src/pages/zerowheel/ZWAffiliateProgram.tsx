@@ -284,8 +284,8 @@ export default function ZWAffiliateProgram() {
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           >
             <div className="bg-white border border-black/[0.12] rounded-2xl overflow-hidden">
-              <div className="bg-black px-6 py-3">
-                <p className="font-mono text-xs text-white">Earning Scenarios — Based on $1,095 DTC MSRP</p>
+              <div className="bg-[#F5F4F1] px-6 py-3">
+                <p className="font-mono text-xs text-black">Earning Scenarios — Based on $1,095 DTC MSRP</p>
               </div>
               <table className="w-full">
                 <thead>
@@ -417,7 +417,7 @@ export default function ZWAffiliateProgram() {
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           >
             <div className="bg-white border border-black/[0.12] rounded-2xl overflow-hidden">
-              <div className="bg-black px-6 py-3 flex items-center gap-2">
+              <div className="bg-[#F5F4F1] px-6 py-3 flex items-center gap-2">
                 <Database className="w-4 h-4 text-[#C9A962]" />
                 <span className="font-mono text-xs text-white">Salesforce Custom Object: Commission__c</span>
               </div>

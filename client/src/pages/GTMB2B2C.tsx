@@ -480,7 +480,7 @@ export default function GTMB2B2C() {
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
           >
-            <a href="/gtm/sales" className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-lg bg-black text-white font-body text-sm font-semibold hover:bg-[#111] shadow-[0_2px_8px_rgba(0,0,0,0.2)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.25)] transition-all">
+            <a href="/gtm/sales" className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-lg bg-[#C9A962] text-white font-body text-sm font-semibold hover:bg-[#B8963E] shadow-[0_2px_8px_rgba(201,169,98,0.3)] hover:shadow-[0_8px_24px_rgba(201,169,98,0.35)] transition-all">
               Explore Sales & Marketing
               <ArrowRight className="w-4 h-4" />
             </a>

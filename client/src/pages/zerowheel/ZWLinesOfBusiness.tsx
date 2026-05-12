@@ -291,7 +291,7 @@ export default function ZWLinesOfBusiness() {
             transition={{ duration: 0.6 }}
           >
             <div className="rounded-2xl border-2 border-black/[0.15] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
-              <div className="bg-[#0A0A0A] px-8 py-4 flex items-center justify-between">
+              <div className="bg-[#F5F4F1] px-8 py-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <Layers className="w-4 h-4 text-[#C9A962]" />
                   <span className="font-display text-sm font-semibold text-white">Pricing Structure</span>
@@ -490,7 +490,7 @@ export default function ZWLinesOfBusiness() {
 
                                 {/* Testimonial */}
                                 {lob.testimonial && (
-                                  <div className="bg-[#0A0A0A] rounded-xl p-4 mt-3">
+                                  <div className="bg-[#F5F4F1] rounded-xl p-4 mt-3">
                                     <p className="font-body text-xs text-white/70 italic leading-relaxed">"{lob.testimonial.quote}"</p>
                                     <div className="mt-2.5 flex items-center gap-2">
                                       <div className="w-5 h-5 rounded-full bg-[#C9A962]/20 flex items-center justify-center">
@@ -548,9 +548,9 @@ export default function ZWLinesOfBusiness() {
             transition={{ duration: 0.6 }}
           >
             <div className="rounded-2xl border-2 border-black/[0.15] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
-              <div className="bg-[#0A0A0A] px-6 py-3 flex items-center gap-3">
+              <div className="bg-[#F5F4F1] px-6 py-3 flex items-center gap-3">
                 <TrendingUp className="w-4 h-4 text-[#C9A962]" />
-                <span className="font-display text-sm font-semibold text-white">Go-To-Market Summary</span>
+                <span className="font-display text-sm font-semibold text-black">Go-To-Market Summary</span>
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full">

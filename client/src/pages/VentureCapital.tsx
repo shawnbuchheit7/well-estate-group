@@ -150,7 +150,7 @@ export default function VentureCapital() {
             className="max-w-4xl mx-auto bg-white rounded-xl border border-black/[0.10] shadow-[0_4px_20px_rgba(0,0,0,0.05)] overflow-hidden"
           >
             {/* Table Header */}
-            <div className="grid grid-cols-12 gap-4 px-6 sm:px-8 py-4 bg-[#0A0A0A] text-white">
+            <div className="grid grid-cols-12 gap-4 px-6 sm:px-8 py-4 bg-[#F5F4F1] border-b border-black/[0.08]">
               <div className="col-span-4">
                 <span className="font-mono text-[10px] sm:text-[11px] tracking-[0.15em] uppercase font-semibold">Category</span>
               </div>
@@ -248,7 +248,7 @@ export default function VentureCapital() {
               <motion.button
                 whileHover={{ scale: 1.02, boxShadow: "0 8px 24px rgba(0,0,0,0.15)" }}
                 whileTap={{ scale: 0.98 }}
-                className="px-10 py-3.5 bg-black text-white font-body text-sm font-semibold rounded-lg shadow-[0_2px_8px_rgba(0,0,0,0.2)] hover:bg-[#111] transition-all"
+                className="px-10 py-3.5 bg-[#C9A962] text-white font-body text-sm font-semibold rounded-lg shadow-[0_2px_8px_rgba(201,169,98,0.3)] hover:bg-[#B8963E] transition-all"
               >
                 Back to Home
               </motion.button>

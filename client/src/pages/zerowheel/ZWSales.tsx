@@ -300,9 +300,9 @@ export default function ZWSales() {
               viewport={{ once: true }}
               className="rounded-2xl border border-black/[0.15] overflow-hidden"
             >
-              <div className="bg-[#0A0A0A] px-6 py-3 flex items-center justify-between">
-                <span className="font-display text-sm font-semibold text-white">Pricing Structure</span>
-                <span className="font-mono text-[9px] text-white/40 tracking-wider uppercase">Max Discount Thresholds — Do Not Exceed</span>
+              <div className="bg-[#F5F4F1] px-6 py-3 flex items-center justify-between">
+                <span className="font-display text-sm font-semibold text-black">Pricing Structure</span>
+                <span className="font-mono text-[9px] text-black/40 tracking-wider uppercase">Max Discount Thresholds — Do Not Exceed</span>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-black/[0.06]">
                 {[

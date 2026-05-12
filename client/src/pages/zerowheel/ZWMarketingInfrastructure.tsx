@@ -583,7 +583,7 @@ export default function ZWMarketingInfrastructure() {
               {emailFlows.map((flow, i) => (
                 <button
                   key={i} onClick={() => setActiveEmail(i)}
-                  className={`px-4 py-2 rounded-full border font-mono text-xs transition-all ${activeEmail === i ? "bg-black text-white border-black" : "border-black/15 text-black/55 hover:border-black/30 hover:text-black"}`}
+                  className={`px-4 py-2 rounded-full border font-mono text-xs transition-all ${activeEmail === i ? "bg-[#C9A962] text-white border-[#C9A962]" : "border-black/15 text-black/55 hover:border-black/30 hover:text-black"}`}
                 >
                   {flow.name}
                 </button>
@@ -742,8 +742,8 @@ export default function ZWMarketingInfrastructure() {
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           >
             <div className="bg-white border border-black/[0.12] rounded-2xl overflow-hidden">
-              <div className="bg-black px-6 py-3 flex items-center justify-between">
-                <span className="font-mono text-xs text-white">KPI Tracking Matrix — Salesforce Field Reference</span>
+              <div className="bg-[#F5F4F1] px-6 py-3 flex items-center justify-between">
+                <span className="font-mono text-xs text-black">KPI Tracking Matrix — Salesforce Field Reference</span>
                 <span className="font-mono text-[10px] text-[#C9A962]">Updated Weekly</span>
               </div>
               <div className="overflow-x-auto">

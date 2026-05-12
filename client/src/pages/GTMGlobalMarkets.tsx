@@ -238,7 +238,7 @@ export default function GTMGlobalMarkets() {
             {/* Top Level */}
             <motion.div variants={fadeInUp} className="text-center mb-10">
               <motion.div 
-                className="inline-flex items-center gap-3 px-7 py-4 rounded-xl bg-black text-white shadow-[0_8px_30px_rgba(0,0,0,0.2)]"
+                className="inline-flex items-center gap-3 px-7 py-4 rounded-xl bg-[#C9A962] text-white shadow-[0_8px_30px_rgba(201,169,98,0.3)]"
                 whileHover={{ scale: 1.03, boxShadow: "0 12px 40px rgba(0,0,0,0.25)" }}
               >
                 <Users className="w-5 h-5 text-[#C9A962]" />

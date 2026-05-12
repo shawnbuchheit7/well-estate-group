@@ -306,7 +306,7 @@ function DraggableExercise() {
                       onDragEnd={handleDragEnd}
                       className={`flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-[11px] sm:text-xs font-medium tracking-wide transition-all cursor-grab active:cursor-grabbing select-none ${
                         isTopLeft
-                          ? "bg-black text-white shadow-md hover:shadow-lg hover:scale-[1.03]"
+                          ? "bg-[#C9A962] text-white shadow-md hover:shadow-lg hover:scale-[1.03]"
                           : "bg-white text-black/70 border border-black/[0.15] hover:border-[#C9A962]/40 hover:shadow-md hover:scale-[1.03]"
                       } ${draggedItem === lob.id ? "opacity-50 scale-95" : ""}`}
                     >

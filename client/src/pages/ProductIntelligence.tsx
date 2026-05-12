@@ -126,7 +126,7 @@ export default function ProductIntelligence() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black text-white text-[11px] sm:text-xs font-mono tracking-wider uppercase mb-4">
+            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#C9A962] text-white text-[11px] sm:text-xs font-mono tracking-wider uppercase mb-4">
               Product 001
             </motion.div>
             <motion.h2 variants={fadeInUp} className="font-display text-2xl sm:text-3xl md:text-4xl font-medium text-black">
@@ -349,7 +349,7 @@ export default function ProductIntelligence() {
                   transition={{ delay: i * 0.08 }}
                   className="flex items-start gap-4 p-5 sm:p-6 rounded-xl bg-white border border-black/[0.10] shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:border-[#C9A962]/20 transition-all duration-300"
                 >
-                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-black flex items-center justify-center flex-shrink-0">
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-[#F5F4F1] flex items-center justify-center flex-shrink-0">
                     <span className="font-mono text-[10px] sm:text-xs font-bold text-white">{item.item}</span>
                   </div>
                   <div className="flex-1 min-w-0">

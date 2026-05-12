@@ -280,7 +280,7 @@ export default function GTMResults() {
               Let's start with a conversation about your product, your market, and your ambitions.
             </motion.p>
             <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/gtm" className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-lg bg-black text-white font-body text-sm font-semibold hover:bg-[#111] shadow-[0_2px_8px_rgba(0,0,0,0.2)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.25)] transition-all">
+              <a href="/gtm" className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-lg bg-[#C9A962] text-white font-body text-sm font-semibold hover:bg-[#B8963E] shadow-[0_2px_8px_rgba(201,169,98,0.3)] hover:shadow-[0_8px_24px_rgba(201,169,98,0.35)] transition-all">
                 Back to GTM Overview
                 <ArrowRight className="w-4 h-4" />
               </a>
