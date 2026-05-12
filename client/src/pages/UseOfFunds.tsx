@@ -586,9 +586,9 @@ export default function UseOfFunds() {
                   className="aspect-[16/10]"
                 />
                 <div className="p-4">
-                  <h4 className="font-display font-medium">Private Consultation Area</h4>
-                  <p className="font-body text-sm text-muted-foreground">
-                    Comfortable seating for consultations and recovery
+<h4 className="font-display font-medium">Imaging</h4>
+                   <p className="font-body text-sm text-muted-foreground">
+                     Canon Aquilion ONE CT scanner for advanced diagnostic imaging
                   </p>
                 </div>
               </div>
