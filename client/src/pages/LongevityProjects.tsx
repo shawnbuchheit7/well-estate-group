@@ -22,6 +22,7 @@ interface ModelTile {
   logoAlt?: string;
   status: "active" | "coming-soon";
   stats?: { label: string; value: string }[];
+  icon: React.ReactNode;
 }
 
 const models: ModelTile[] = [
@@ -38,6 +39,11 @@ const models: ModelTile[] = [
       { label: "Flagship Centers", value: "5" },
       { label: "Exit Potential", value: "$2B+" },
     ],
+    icon: (
+      <svg className="w-7 h-7 text-[#C9A962]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+      </svg>
+    ),
   },
   {
     id: "performance",
@@ -52,6 +58,11 @@ const models: ModelTile[] = [
       { label: "Countries", value: "40+" },
       { label: "Protocols", value: "6" },
     ],
+    icon: (
+      <svg className="w-7 h-7 text-[#C9A962]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+      </svg>
+    ),
   },
 ];
 
@@ -89,7 +100,7 @@ export default function LongevityProjects() {
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto"
+            className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -99,72 +110,50 @@ export default function LongevityProjects() {
               <motion.div key={model.id} variants={fadeInUp}>
                 <Link href={model.href}>
                   <motion.div
-                    whileHover={{ y: -6, boxShadow: "0 24px 48px rgba(0,0,0,0.14), 0 8px 16px rgba(0,0,0,0.08)" }}
-                    className="group relative rounded-xl border border-black/[0.15] bg-white overflow-hidden cursor-pointer hover:border-[#C9A962]/50 transition-all duration-400 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_8px_24px_rgba(0,0,0,0.04)]"
+                    whileHover={{ y: -6, boxShadow: "0 24px 48px rgba(0,0,0,0.10), 0 8px 16px rgba(0,0,0,0.06)" }}
+                    className="group relative rounded-xl border border-black/[0.12] bg-white overflow-hidden cursor-pointer hover:border-[#C9A962]/50 transition-all duration-300 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.03)]"
                   >
-                    {/* Card Header — Dark with icon */}
-                    <div className="relative h-48 bg-[#0A0A0A] flex items-center justify-center overflow-hidden border-b border-black/20">
-                      {/* Subtle gradient */}
-                      <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_50%_50%,rgba(201,169,98,0.06),transparent)]" />
-                      
-                      {model.id === "luxury" ? (
-                        <div className="relative z-10 flex flex-col items-center gap-3">
-                          <div className="w-16 h-16 rounded-full border-2 border-[#C9A962]/40 flex items-center justify-center">
-                            <svg className="w-8 h-8 text-[#C9A962]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                            </svg>
-                          </div>
-                          <span className="font-mono text-[10px] text-white/40 tracking-[0.2em] uppercase">Luxury Model</span>
+                    {/* Card Content — All white, clean */}
+                    <div className="p-8">
+                      {/* Top row: Icon + Status */}
+                      <div className="flex items-start justify-between mb-6">
+                        <div className="w-14 h-14 rounded-xl bg-[#FAFAF8] border border-black/[0.08] flex items-center justify-center shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+                          {model.icon}
                         </div>
-                      ) : (
-                        <div className="relative z-10 flex flex-col items-center gap-3">
-                          <div className="w-16 h-16 rounded-full border-2 border-[#C9A962]/40 flex items-center justify-center">
-                            <svg className="w-8 h-8 text-[#C9A962]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-                            </svg>
-                          </div>
-                          <span className="font-mono text-[10px] text-white/40 tracking-[0.2em] uppercase">Performance & Recovery</span>
-                        </div>
-                      )}
-
-                      {/* Status badge */}
-                      <div className="absolute top-4 right-4">
-                        <span className={`font-mono text-[9px] tracking-[0.15em] uppercase px-3 py-1 rounded-full ${
+                        <span className={`font-mono text-[9px] tracking-[0.15em] uppercase px-3 py-1.5 rounded-full font-medium ${
                           model.status === "active" 
-                            ? "bg-[#C9A962]/20 text-[#C9A962] border border-[#C9A962]/30" 
-                            : "bg-white/5 text-white/30 border border-white/10"
+                            ? "bg-[#C9A962]/10 text-[#C9A962] border border-[#C9A962]/25" 
+                            : "bg-black/[0.03] text-black/30 border border-black/[0.08]"
                         }`}>
                           {model.status === "active" ? "Active" : "Coming Soon"}
                         </span>
                       </div>
-                    </div>
 
-                    {/* Card Body */}
-                    <div className="p-7">
-                      <h3 className="font-display text-xl font-bold text-black mb-1.5 group-hover:text-[#C9A962] transition-colors tracking-tight">
+                      {/* Title */}
+                      <h3 className="font-display text-2xl font-bold text-black mb-2 group-hover:text-[#C9A962] transition-colors tracking-tight leading-tight">
                         {model.titleDisplay || model.title}
                       </h3>
-                      <p className="font-mono text-[10px] text-black/50 tracking-[0.15em] uppercase mb-4 font-medium">
+                      <p className="font-mono text-[10px] text-black/45 tracking-[0.15em] uppercase mb-4 font-medium">
                         {model.subtitle}
                       </p>
-                      <p className="font-body text-sm text-black/60 leading-relaxed mb-6">
+                      <p className="font-body text-sm text-black/55 leading-relaxed mb-7">
                         {model.description}
                       </p>
 
                       {/* Stats Row */}
                       {model.stats && (
-                        <div className="flex gap-3 mb-6">
+                        <div className="flex gap-3 mb-7">
                           {model.stats.map((stat, i) => (
-                            <div key={i} className="flex-1 text-center py-2.5 rounded-lg bg-[#FAFAF8] border border-black/[0.12] shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)]">
-                              <p className="font-display text-lg font-bold text-black">{stat.value}</p>
-                              <p className="font-mono text-[9px] text-black/45 uppercase tracking-[0.12em] font-medium">{stat.label}</p>
+                            <div key={i} className="flex-1 text-center py-3 rounded-lg bg-[#FAFAF8] border border-black/[0.08]">
+                              <p className="font-display text-xl font-bold text-black leading-none">{stat.value}</p>
+                              <p className="font-mono text-[9px] text-black/40 uppercase tracking-[0.12em] font-medium mt-1.5">{stat.label}</p>
                             </div>
                           ))}
                         </div>
                       )}
 
                       {/* CTA */}
-                      <div className="flex items-center gap-2 text-black/60 group-hover:text-[#C9A962] transition-colors pt-2 border-t border-black/[0.06]">
+                      <div className="flex items-center gap-2 text-black/50 group-hover:text-[#C9A962] transition-colors pt-4 border-t border-black/[0.06]">
                         <span className="font-body text-sm font-semibold">View Model</span>
                         <motion.div
                           animate={{ x: [0, 4, 0] }}
@@ -181,13 +170,13 @@ export default function LongevityProjects() {
 
             {/* Add New Model Tile */}
             <motion.div variants={fadeInUp}>
-              <div className="rounded-xl border-2 border-dashed border-black/[0.12] bg-[#FAFAF8]/50 h-full min-h-[380px] flex flex-col items-center justify-center gap-4 cursor-default hover:border-[#C9A962]/30 transition-all duration-300">
-                <div className="w-14 h-14 rounded-full border border-black/10 flex items-center justify-center">
-                  <Plus className="w-6 h-6 text-black/20" />
+              <div className="rounded-xl border-2 border-dashed border-black/[0.08] bg-[#FAFAF8]/30 h-full min-h-[420px] flex flex-col items-center justify-center gap-4 cursor-default hover:border-[#C9A962]/30 transition-all duration-300">
+                <div className="w-14 h-14 rounded-xl border border-black/[0.08] flex items-center justify-center bg-white">
+                  <Plus className="w-5 h-5 text-black/20" />
                 </div>
                 <div className="text-center">
-                  <p className="font-display text-base font-medium text-black/30">Additional Model</p>
-                  <p className="font-body text-xs text-black/20 mt-1">Coming soon</p>
+                  <p className="font-display text-base font-medium text-black/25">Additional Model</p>
+                  <p className="font-body text-xs text-black/15 mt-1">Coming soon</p>
                 </div>
               </div>
             </motion.div>
