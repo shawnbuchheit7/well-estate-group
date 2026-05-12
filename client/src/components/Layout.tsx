@@ -196,7 +196,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                 whileHover={{ rotate: 360, scale: 1.1 }}
                 transition={{ duration: 0.6 }}
               />
-              <span className="font-display text-lg font-bold tracking-[0.04em] group-hover:text-[#C9A962] transition-colors whitespace-nowrap text-black">
+              <span className="font-display text-lg font-bold tracking-[0.04em] group-hover:text-[#B8860B] transition-colors whitespace-nowrap text-black">
                 WELL ESTATE GROUP
               </span>
             </Link>
@@ -252,7 +252,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
             {/* Mobile Menu Button */}
             <motion.button
               onClick={toggleMobileMenu}
-              className="lg:hidden p-2 hover:text-[#C9A962] transition-colors text-black"
+              className="lg:hidden p-2 hover:text-[#B8860B] transition-colors text-black"
               aria-label="Toggle menu"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -314,15 +314,15 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-white border-l border-[#C9A962]/25 z-50 lg:hidden shadow-2xl"
+              className="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-white border-l border-[#B8860B]/55 z-50 lg:hidden shadow-2xl"
             >
               <div className="flex flex-col h-full">
                 {/* Mobile Menu Header */}
-                <div className="flex items-center justify-between h-20 px-6 border-b border-[#C9A962]/20">
+                <div className="flex items-center justify-between h-20 px-6 border-b border-[#B8860B]/50">
                   <span className="font-display text-xl font-semibold text-black">Menu</span>
                   <motion.button
                     onClick={closeMobileMenu}
-                    className="p-2 text-black hover:text-[#C9A962] transition-colors"
+                    className="p-2 text-black hover:text-[#B8860B] transition-colors"
                     aria-label="Close menu"
                     whileHover={{ rotate: 90 }}
                     transition={{ duration: 0.2 }}
@@ -370,7 +370,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                 
                 {/* Mobile Menu Footer */}
                 {showDataRoom && (
-                  <div className="p-6 border-t border-[#C9A962]/20">
+                  <div className="p-6 border-t border-[#B8860B]/50">
                     <Link href="/longevity/data-room" onClick={closeMobileMenu}>
                       <Button className="w-full bg-black hover:bg-black/90 text-white font-body font-medium shadow-md">
                         Data Room
@@ -391,13 +391,13 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
 
       {/* Cross-Pillar Navigation — hidden on ZeroWheel project pages and in present mode */}
       {!isPresentMode && currentPillarIndex >= 0 && !isZWRoute && (
-        <section className="py-12 border-t bg-white border-[#C9A962]/35">
+        <section className="py-12 border-t bg-white border-[#B8860B]/65">
           <div className="container px-6">
             <div className="flex items-center justify-between max-w-4xl mx-auto">
               {prevPillar ? (
                 <Link href={prevPillar.href} className="group flex items-center gap-3 text-left">
-                  <div className="w-10 h-10 rounded-full border flex items-center justify-center group-hover:border-[#C9A962]/50 group-hover:bg-[#C9A962]/[0.04] transition-all border-[#C9A962]/30">
-                    <ChevronLeft className="w-4 h-4 group-hover:text-[#C9A962] transition-colors text-black/40" />
+                  <div className="w-10 h-10 rounded-full border flex items-center justify-center group-hover:border-[#B8860B]/50 group-hover:bg-[#B8860B]/[0.04] transition-all border-[#B8860B]/60">
+                    <ChevronLeft className="w-4 h-4 group-hover:text-[#B8860B] transition-colors text-black/40" />
                   </div>
                   <div>
                     <p className="font-mono text-[10px] tracking-wider uppercase text-black/35">Pillar {prevPillar.num}</p>
@@ -406,7 +406,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                 </Link>
               ) : <div />}
               
-              <Link href="/" className="font-mono text-[10px] tracking-wider uppercase hover:text-[#C9A962] transition-colors text-black/30">
+              <Link href="/" className="font-mono text-[10px] tracking-wider uppercase hover:text-[#B8860B] transition-colors text-black/30">
                 All Pillars
               </Link>
               
@@ -416,8 +416,8 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                     <p className="font-mono text-[10px] tracking-wider uppercase text-black/35">Pillar {nextPillar.num}</p>
                     <p className="font-body text-sm transition-colors text-black/70 group-hover:text-black">{nextPillar.label}</p>
                   </div>
-                  <div className="w-10 h-10 rounded-full border flex items-center justify-center group-hover:border-[#C9A962]/50 group-hover:bg-[#C9A962]/[0.04] transition-all border-[#C9A962]/30">
-                    <ArrowRight className="w-4 h-4 group-hover:text-[#C9A962] transition-colors text-black/40" />
+                  <div className="w-10 h-10 rounded-full border flex items-center justify-center group-hover:border-[#B8860B]/50 group-hover:bg-[#B8860B]/[0.04] transition-all border-[#B8860B]/60">
+                    <ArrowRight className="w-4 h-4 group-hover:text-[#B8860B] transition-colors text-black/40" />
                   </div>
                 </Link>
               ) : <div />}
@@ -431,7 +431,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
 
       {/* Enhanced Footer with Contact CTA — hidden in present mode */}
       {!isPresentMode && (
-      <footer className="py-16 border-t border-[#C9A962]/35 bg-[#FAFAF8]">
+      <footer className="py-16 border-t border-[#B8860B]/65 bg-[#FAFAF8]">
         <div className="container px-6">
           <div className="max-w-6xl mx-auto">
             {/* Footer Top */}
@@ -446,7 +446,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   />
-                  <span className="font-display text-base font-semibold tracking-wide group-hover:text-[#C9A962] transition-colors text-black">
+                  <span className="font-display text-base font-semibold tracking-wide group-hover:text-[#B8860B] transition-colors text-black">
                     WELL ESTATE GROUP
                   </span>
                 </Link>
@@ -462,7 +462,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                   <div className="flex flex-col gap-3">
                     <p className="font-mono text-[10px] tracking-wider uppercase mb-1 text-black/40">Pillars</p>
                     {pillarOrder.map((pillar) => (
-                      <Link key={pillar.href} href={pillar.href} className="font-body text-sm hover:text-[#C9A962] transition-colors text-black/60">
+                      <Link key={pillar.href} href={pillar.href} className="font-body text-sm hover:text-[#B8860B] transition-colors text-black/60">
                         {pillar.label}
                       </Link>
                     ))}
@@ -474,9 +474,9 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                   <p className="font-mono text-[10px] tracking-wider uppercase mb-1 text-black/40">Get in Touch</p>
                   <a 
                     href="mailto:info@wellestategroup.com" 
-                    className="group flex items-center gap-3 px-5 py-3 rounded-xl border hover:border-[#C9A962]/50 transition-all border-[#C9A962]/30 bg-white hover:bg-[#C9A962]/[0.04]"
+                    className="group flex items-center gap-3 px-5 py-3 rounded-xl border hover:border-[#B8860B]/50 transition-all border-[#B8860B]/60 bg-white hover:bg-[#B8860B]/[0.04]"
                   >
-                    <div className="w-9 h-9 rounded-full bg-black flex items-center justify-center group-hover:bg-[#C9A962] transition-colors">
+                    <div className="w-9 h-9 rounded-full bg-black flex items-center justify-center group-hover:bg-[#B8860B] transition-colors">
                       <Mail className="w-4 h-4 text-white" />
                     </div>
                     <div>

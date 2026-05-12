@@ -95,7 +95,7 @@ export default function VentureCapital() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.25em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-[11px] tracking-[0.25em] uppercase">
               Our Approach
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
@@ -112,10 +112,10 @@ export default function VentureCapital() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -4 }}
-                className="bg-white rounded-xl p-7 border border-[#C9A962]/30 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_8px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] hover:border-[#C9A962]/60 transition-all duration-300"
+                className="bg-white rounded-xl p-7 border border-[#B8860B]/60 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_8px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] hover:border-[#B8860B]/60 transition-all duration-300"
               >
-                <div className="w-11 h-11 rounded-lg bg-[#FAFAF8] border border-[#C9A962]/25 flex items-center justify-center mb-5">
-                  <item.icon className="w-5 h-5 text-[#C9A962]" />
+                <div className="w-11 h-11 rounded-lg bg-[#FAFAF8] border border-[#B8860B]/55 flex items-center justify-center mb-5">
+                  <item.icon className="w-5 h-5 text-[#B8860B]" />
                 </div>
                 <h3 className="font-display text-lg font-bold text-black mb-2.5 tracking-tight">{item.title}</h3>
                 <p className="font-body text-sm text-black/55 leading-relaxed">{item.description}</p>
@@ -135,7 +135,7 @@ export default function VentureCapital() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.25em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-[11px] tracking-[0.25em] uppercase">
               Sectors
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
@@ -147,10 +147,10 @@ export default function VentureCapital() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-4xl mx-auto bg-white rounded-xl border border-[#C9A962]/30 shadow-[0_4px_20px_rgba(0,0,0,0.05)] overflow-hidden"
+            className="max-w-4xl mx-auto bg-white rounded-xl border border-[#B8860B]/60 shadow-[0_4px_20px_rgba(0,0,0,0.05)] overflow-hidden"
           >
             {/* Table Header */}
-            <div className="grid grid-cols-12 gap-4 px-6 sm:px-8 py-4 bg-[#F5F4F1] border-b border-[#C9A962]/25">
+            <div className="grid grid-cols-12 gap-4 px-6 sm:px-8 py-4 bg-[#F5F4F1] border-b border-[#B8860B]/55">
               <div className="col-span-4">
                 <span className="font-mono text-[10px] sm:text-[11px] tracking-[0.15em] uppercase font-semibold">Category</span>
               </div>
@@ -167,7 +167,7 @@ export default function VentureCapital() {
               <div
                 key={i}
                 className={`grid grid-cols-12 gap-4 px-6 sm:px-8 py-5 items-center ${
-                  i !== focusAreas.length - 1 ? "border-b border-[#C9A962]/25" : ""
+                  i !== focusAreas.length - 1 ? "border-b border-[#B8860B]/55" : ""
                 } ${i % 2 === 0 ? "bg-white" : "bg-[#FAFAF8]"} hover:bg-[#F5F4F0] transition-colors duration-200`}
               >
                 <div className="col-span-4">
@@ -177,7 +177,7 @@ export default function VentureCapital() {
                   <span className="font-body text-xs text-black/50 leading-relaxed">{area.examples}</span>
                 </div>
                 <div className="col-span-3 text-right">
-                  <span className="inline-block font-mono text-[10px] text-[#C9A962] bg-[#C9A962]/8 border border-[#C9A962]/20 px-2.5 py-1 rounded-md tracking-[0.1em] font-medium">
+                  <span className="inline-block font-mono text-[10px] text-[#B8860B] bg-[#B8860B]/8 border border-[#B8860B]/50 px-2.5 py-1 rounded-md tracking-[0.1em] font-medium">
                     {area.stage}
                   </span>
                 </div>
@@ -197,7 +197,7 @@ export default function VentureCapital() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.25em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-[11px] tracking-[0.25em] uppercase">
               Current Status
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
@@ -214,10 +214,10 @@ export default function VentureCapital() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -3 }}
-                className="text-center p-6 sm:p-7 rounded-xl bg-white border border-[#C9A962]/30 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/60 transition-all duration-300"
+                className="text-center p-6 sm:p-7 rounded-xl bg-white border border-[#B8860B]/60 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#B8860B]/60 transition-all duration-300"
               >
                 <div className="font-display text-3xl sm:text-4xl font-bold text-black mb-2">{item.count}</div>
-                <div className="font-mono text-[10px] text-[#C9A962] tracking-[0.15em] uppercase mb-2 font-semibold">{item.status}</div>
+                <div className="font-mono text-[10px] text-[#B8860B] tracking-[0.15em] uppercase mb-2 font-semibold">{item.status}</div>
                 <div className="font-body text-[11px] text-black/40 leading-relaxed">{item.note}</div>
               </motion.div>
             ))}
@@ -226,7 +226,7 @@ export default function VentureCapital() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 sm:py-24 bg-[#F9F9F7] border-t border-[#C9A962]/25">
+      <section className="py-20 sm:py-24 bg-[#F9F9F7] border-t border-[#B8860B]/55">
         <div className="container px-6 sm:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -234,8 +234,8 @@ export default function VentureCapital() {
             viewport={{ once: true }}
             className="text-center max-w-2xl mx-auto"
           >
-            <div className="w-14 h-14 rounded-xl bg-white border border-[#C9A962]/25 shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex items-center justify-center mx-auto mb-6">
-              <Briefcase className="w-6 h-6 text-[#C9A962]" />
+            <div className="w-14 h-14 rounded-xl bg-white border border-[#B8860B]/55 shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex items-center justify-center mx-auto mb-6">
+              <Briefcase className="w-6 h-6 text-[#B8860B]" />
             </div>
             <h3 className="font-display text-2xl sm:text-3xl font-semibold text-black mb-4 tracking-tight">
               Seeking Innovative Products
@@ -248,7 +248,7 @@ export default function VentureCapital() {
               <motion.button
                 whileHover={{ scale: 1.02, boxShadow: "0 8px 24px rgba(0,0,0,0.15)" }}
                 whileTap={{ scale: 0.98 }}
-                className="px-10 py-3.5 bg-[#C9A962] text-white font-body text-sm font-semibold rounded-lg shadow-[0_2px_8px_rgba(201,169,98,0.3)] hover:bg-[#B8963E] transition-all"
+                className="px-10 py-3.5 bg-[#B8860B] text-white font-body text-sm font-semibold rounded-lg shadow-[0_2px_8px_rgba(201,169,98,0.3)] hover:bg-[#B8963E] transition-all"
               >
                 Back to Home
               </motion.button>

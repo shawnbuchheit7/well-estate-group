@@ -112,7 +112,7 @@ export default function GTMSalesInfrastructure() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Core Stack
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-4 text-black">
@@ -135,11 +135,11 @@ export default function GTMSalesInfrastructure() {
                 key={i}
                 variants={fadeInUp}
                 whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(0,0,0,0.06)" }}
-                className="bg-white border border-[#C9A962]/35 rounded-xl overflow-hidden hover:border-[#C9A962]/60 transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
+                className="bg-white border border-[#B8860B]/65 rounded-xl overflow-hidden hover:border-[#B8860B]/60 transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
               >
-                <div className="flex items-center gap-3 px-5 py-4 border-b border-[#C9A962]/40 bg-[#FAFAF8]">
-                  <div className="w-10 h-10 rounded-lg bg-[#C9A962]/10 flex items-center justify-center flex-shrink-0">
-                    <platform.icon className="w-5 h-5 text-[#C9A962]" />
+                <div className="flex items-center gap-3 px-5 py-4 border-b border-[#B8860B]/70 bg-[#FAFAF8]">
+                  <div className="w-10 h-10 rounded-lg bg-[#B8860B]/10 flex items-center justify-center flex-shrink-0">
+                    <platform.icon className="w-5 h-5 text-[#B8860B]" />
                   </div>
                   <div>
                     <h3 className="font-display text-base font-semibold text-black leading-tight">{platform.name}</h3>
@@ -152,7 +152,7 @@ export default function GTMSalesInfrastructure() {
                     {platform.features.map((feature, j) => (
                       <span
                         key={j}
-                        className="px-2.5 py-1 rounded-full bg-[#C9A962]/[0.06] text-[11px] font-mono text-black/40 tracking-wide"
+                        className="px-2.5 py-1 rounded-full bg-[#B8860B]/[0.06] text-[11px] font-mono text-black/40 tracking-wide"
                       >
                         {feature}
                       </span>
@@ -175,7 +175,7 @@ export default function GTMSalesInfrastructure() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               End-to-End Pipeline
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-4 text-black">
@@ -199,21 +199,21 @@ export default function GTMSalesInfrastructure() {
                 <motion.div key={i} variants={fadeInUp} className="flex items-center gap-2">
                   <motion.div
                     whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(0,0,0,0.06)" }}
-                    className="text-center px-5 py-4 rounded-xl bg-white border border-[#C9A962]/35 shadow-[0_2px_8px_rgba(0,0,0,0.02)] min-w-[140px] hover:border-[#C9A962]/60 transition-all duration-300"
+                    className="text-center px-5 py-4 rounded-xl bg-white border border-[#B8860B]/65 shadow-[0_2px_8px_rgba(0,0,0,0.02)] min-w-[140px] hover:border-[#B8860B]/60 transition-all duration-300"
                   >
-                    <div className="w-8 h-8 rounded-full bg-[#C9A962]/10 flex items-center justify-center mx-auto mb-2">
-                      <span className="font-display text-sm font-bold text-[#C9A962]">{i + 1}</span>
+                    <div className="w-8 h-8 rounded-full bg-[#B8860B]/10 flex items-center justify-center mx-auto mb-2">
+                      <span className="font-display text-sm font-bold text-[#B8860B]">{i + 1}</span>
                     </div>
                     <p className="font-display text-sm font-semibold text-black">{item.step}</p>
                     <p className="font-body text-[10px] text-black/30 mt-0.5">{item.detail}</p>
-                    <p className="font-mono text-[9px] text-[#C9A962]/60 tracking-wider uppercase mt-2">{item.platform}</p>
+                    <p className="font-mono text-[9px] text-[#B8860B]/60 tracking-wider uppercase mt-2">{item.platform}</p>
                   </motion.div>
                   {i < workflowSteps.length - 1 && (
                     <motion.div
                       animate={{ x: [0, 3, 0] }}
                       transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.2 }}
                     >
-                      <ArrowRight className="w-4 h-4 text-[#C9A962] flex-shrink-0" />
+                      <ArrowRight className="w-4 h-4 text-[#B8860B] flex-shrink-0" />
                     </motion.div>
                   )}
                 </motion.div>
@@ -226,14 +226,14 @@ export default function GTMSalesInfrastructure() {
                 <motion.div
                   key={i}
                   variants={fadeInUp}
-                  className="text-center px-4 py-4 rounded-xl bg-white border border-[#C9A962]/35 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
+                  className="text-center px-4 py-4 rounded-xl bg-white border border-[#B8860B]/65 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
                 >
-                  <div className="w-7 h-7 rounded-full bg-[#C9A962]/10 flex items-center justify-center mx-auto mb-2">
-                    <span className="font-display text-xs font-bold text-[#C9A962]">{i + 1}</span>
+                  <div className="w-7 h-7 rounded-full bg-[#B8860B]/10 flex items-center justify-center mx-auto mb-2">
+                    <span className="font-display text-xs font-bold text-[#B8860B]">{i + 1}</span>
                   </div>
                   <p className="font-display text-sm font-semibold text-black">{item.step}</p>
                   <p className="font-body text-[10px] text-black/30 mt-0.5">{item.detail}</p>
-                  <p className="font-mono text-[9px] text-[#C9A962]/60 tracking-wider uppercase mt-1.5">{item.platform}</p>
+                  <p className="font-mono text-[9px] text-[#B8860B]/60 tracking-wider uppercase mt-1.5">{item.platform}</p>
                 </motion.div>
               ))}
             </div>
@@ -253,7 +253,7 @@ export default function GTMSalesInfrastructure() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Supporting Ecosystem
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-4 text-black">
@@ -276,10 +276,10 @@ export default function GTMSalesInfrastructure() {
                 key={i}
                 variants={fadeInUp}
                 whileHover={{ y: -3, boxShadow: "0 8px 24px rgba(0,0,0,0.05)" }}
-                className="flex gap-4 items-start p-5 rounded-xl bg-white border border-[#C9A962]/35 hover:border-[#C9A962]/60 transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
+                className="flex gap-4 items-start p-5 rounded-xl bg-white border border-[#B8860B]/65 hover:border-[#B8860B]/60 transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
               >
-                <div className="w-9 h-9 rounded-lg bg-[#C9A962]/8 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <tool.icon className="w-4.5 h-4.5 text-[#C9A962]" />
+                <div className="w-9 h-9 rounded-lg bg-[#B8860B]/8 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <tool.icon className="w-4.5 h-4.5 text-[#B8860B]" />
                 </div>
                 <div>
                   <h3 className="font-display text-sm font-semibold text-black mb-0.5">{tool.name}</h3>

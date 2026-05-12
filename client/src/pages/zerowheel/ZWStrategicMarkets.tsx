@@ -157,10 +157,10 @@ function DraggableExercise() {
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="mb-8 p-5 rounded-xl border border-[#C9A962]/25 bg-[#C9A962]/[0.03]"
+        className="mb-8 p-5 rounded-xl border border-[#B8860B]/55 bg-[#B8860B]/[0.03]"
       >
         <div className="flex items-start gap-3">
-          <Info className="w-5 h-5 text-[#C9A962] flex-shrink-0 mt-0.5" />
+          <Info className="w-5 h-5 text-[#B8860B] flex-shrink-0 mt-0.5" />
           <div>
             <p className="font-display text-sm font-semibold text-black mb-1">Collaborative Exercise — WEG + ZeroWheel</p>
             <p className="font-body text-sm text-black/55 leading-relaxed">
@@ -175,7 +175,7 @@ function DraggableExercise() {
         <div className="flex items-center gap-3">
           <div className="h-2 w-32 rounded-full bg-black/[0.06] overflow-hidden">
             <motion.div
-              className="h-full bg-[#C9A962] rounded-full"
+              className="h-full bg-[#B8860B] rounded-full"
               initial={{ width: 0 }}
               animate={{ width: `${(placedCount / allLOBs.length) * 100}%` }}
               transition={{ duration: 0.3 }}
@@ -187,7 +187,7 @@ function DraggableExercise() {
         </div>
         <button
           onClick={handleReset}
-          className="font-mono text-[10px] text-black/40 hover:text-[#C9A962] tracking-wider uppercase px-3 py-1.5 rounded-lg border border-[#C9A962]/25 hover:border-[#C9A962]/60 transition-all"
+          className="font-mono text-[10px] text-black/40 hover:text-[#B8860B] tracking-wider uppercase px-3 py-1.5 rounded-lg border border-[#B8860B]/55 hover:border-[#B8860B]/60 transition-all"
         >
           Reset
         </button>
@@ -203,8 +203,8 @@ function DraggableExercise() {
         onDrop={(e) => handleDrop(e as unknown as React.DragEvent, "staging")}
         className={`mb-8 p-5 rounded-2xl border-2 border-dashed transition-all duration-300 min-h-[80px] ${
           dragOverZone === "staging"
-            ? "border-[#C9A962] bg-[#C9A962]/[0.03]"
-            : "border-[#C9A962]/35 bg-[#FAFAF8]"
+            ? "border-[#B8860B] bg-[#B8860B]/[0.03]"
+            : "border-[#B8860B]/65 bg-[#FAFAF8]"
         }`}
       >
         <div className="flex items-center gap-2 mb-3">
@@ -222,12 +222,12 @@ function DraggableExercise() {
               draggable
               onDragStart={(e) => handleDragStart(e, lob.id)}
               onDragEnd={handleDragEnd}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-medium tracking-wide transition-all cursor-grab active:cursor-grabbing select-none bg-white text-black/70 border border-[#C9A962]/40 hover:border-[#C9A962]/40 hover:shadow-md hover:scale-[1.03] hover:-translate-y-0.5 ${
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-medium tracking-wide transition-all cursor-grab active:cursor-grabbing select-none bg-white text-black/70 border border-[#B8860B]/70 hover:border-[#B8860B]/70 hover:shadow-md hover:scale-[1.03] hover:-translate-y-0.5 ${
                 draggedItem === lob.id ? "opacity-50 scale-95" : ""
               }`}
             >
               <GripVertical className="w-3 h-3 flex-shrink-0 text-black/25" />
-              <lob.icon className="w-3.5 h-3.5 flex-shrink-0 text-[#C9A962]" />
+              <lob.icon className="w-3.5 h-3.5 flex-shrink-0 text-[#B8860B]" />
               <span>{lob.name}</span>
               <span className="font-mono text-[8px] tracking-wider uppercase ml-1 text-black/30">
                 {lob.category}
@@ -245,7 +245,7 @@ function DraggableExercise() {
         {/* Y-axis label */}
         <div className="hidden md:flex absolute -left-16 top-1/2 -translate-y-1/2 -rotate-90 items-center gap-2">
           <span className="font-mono text-[10px] text-black/20 tracking-wider uppercase whitespace-nowrap">Market Attractiveness</span>
-          <span className="text-[#C9A962] text-xs">↑</span>
+          <span className="text-[#B8860B] text-xs">↑</span>
         </div>
 
         {/* 2x2 Grid */}
@@ -270,15 +270,15 @@ function DraggableExercise() {
                   isTopLeft ? "bg-white" : i === 3 ? "bg-[#F7F7F5]" : "bg-[#FAFAF8]"
                 } ${
                   isDropTarget
-                    ? "border-[#C9A962] shadow-[0_8px_30px_rgba(201,169,98,0.15)] scale-[1.01]"
-                    : "border-[#C9A962]/35 shadow-[0_2px_12px_rgba(0,0,0,0.04)]"
+                    ? "border-[#B8860B] shadow-[0_8px_30px_rgba(201,169,98,0.15)] scale-[1.01]"
+                    : "border-[#B8860B]/65 shadow-[0_2px_12px_rgba(0,0,0,0.04)]"
                 }`}
                 style={{ minHeight: '200px' }}
               >
                 {/* Header */}
                 <div className="flex items-start gap-3 mb-4">
-                  <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${isTopLeft ? "bg-[#C9A962]/15" : "bg-black/[0.06]"}`}>
-                    <q.icon className={`w-4 h-4 sm:w-[18px] sm:h-[18px] ${isTopLeft ? 'text-[#C9A962]' : 'text-black/50'}`} />
+                  <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${isTopLeft ? "bg-[#B8860B]/15" : "bg-black/[0.06]"}`}>
+                    <q.icon className={`w-4 h-4 sm:w-[18px] sm:h-[18px] ${isTopLeft ? 'text-[#B8860B]' : 'text-black/50'}`} />
                   </div>
                   <div className="min-w-0">
                     <h3 className="font-display text-base sm:text-lg font-semibold text-black leading-tight">{q.title}</h3>
@@ -287,12 +287,12 @@ function DraggableExercise() {
                 </div>
 
                 {/* Divider */}
-                <div className={`h-px w-full mb-3 sm:mb-4 ${isTopLeft ? 'bg-[#C9A962]/25' : 'bg-black/[0.06]'}`} />
+                <div className={`h-px w-full mb-3 sm:mb-4 ${isTopLeft ? 'bg-[#B8860B]/25' : 'bg-black/[0.06]'}`} />
 
                 {/* Drop zone indicator when empty and being dragged over */}
                 {isDropTarget && lobs.length === 0 && (
-                  <div className="flex-1 flex items-center justify-center border-2 border-dashed border-[#C9A962]/40 rounded-xl mb-2 min-h-[60px]">
-                    <span className="font-body text-xs text-[#C9A962]/60">Drop here</span>
+                  <div className="flex-1 flex items-center justify-center border-2 border-dashed border-[#B8860B]/70 rounded-xl mb-2 min-h-[60px]">
+                    <span className="font-body text-xs text-[#B8860B]/60">Drop here</span>
                   </div>
                 )}
 
@@ -306,12 +306,12 @@ function DraggableExercise() {
                       onDragEnd={handleDragEnd}
                       className={`flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-[11px] sm:text-xs font-medium tracking-wide transition-all cursor-grab active:cursor-grabbing select-none ${
                         isTopLeft
-                          ? "bg-[#C9A962] text-white shadow-md hover:shadow-lg hover:scale-[1.03]"
-                          : "bg-white text-black/70 border border-[#C9A962]/40 hover:border-[#C9A962]/40 hover:shadow-md hover:scale-[1.03]"
+                          ? "bg-[#B8860B] text-white shadow-md hover:shadow-lg hover:scale-[1.03]"
+                          : "bg-white text-black/70 border border-[#B8860B]/70 hover:border-[#B8860B]/70 hover:shadow-md hover:scale-[1.03]"
                       } ${draggedItem === lob.id ? "opacity-50 scale-95" : ""}`}
                     >
                       <GripVertical className={`w-3 h-3 flex-shrink-0 ${isTopLeft ? 'text-white/40' : 'text-black/25'}`} />
-                      <lob.icon className={`w-3.5 h-3.5 flex-shrink-0 ${isTopLeft ? 'text-[#C9A962]' : 'text-black/40'}`} />
+                      <lob.icon className={`w-3.5 h-3.5 flex-shrink-0 ${isTopLeft ? 'text-[#B8860B]' : 'text-black/40'}`} />
                       <span>{lob.name}</span>
                     </div>
                   ))}
@@ -327,7 +327,7 @@ function DraggableExercise() {
         {/* X-axis label */}
         <div className="flex justify-center items-center gap-2 mt-6">
           <span className="font-mono text-[10px] text-black/20 tracking-wider uppercase">Ease of Access</span>
-          <span className="text-[#C9A962] text-xs">→</span>
+          <span className="text-[#B8860B] text-xs">→</span>
         </div>
       </div>
 

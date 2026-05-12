@@ -87,7 +87,7 @@ interface LineChartProps {
 export function AnimatedLineChart({
   data,
   height = 200,
-  color = "#C9A962",
+  color = "#B8860B",
   showDots = true,
   showArea = true,
   className = ""
@@ -300,7 +300,7 @@ export function AnimatedProgressRing({
   max = 100,
   size = 120,
   thickness = 8,
-  color = "#C9A962",
+  color = "#B8860B",
   label,
   className = ""
 }: ProgressRingProps) {

@@ -1,6 +1,6 @@
 /*
  * ZeroWheel Sales Infrastructure
- * Design: Light premium — white bg, gold (#C9A962) accents, teal highlights
+ * Design: Light premium — white bg, gold (#B8860B) accents, teal highlights
  * Data: $1,000/unit, 1,000 unit / $1M revenue target for 2026
  * Sections: Hero → Tech Stack → Lead Intake Flow → Lead→Opp Flow → Opp→Close Flow
  *           → Funnel Data → Pipeline → Sales Team → Channels → Forecasting → Win/Loss
@@ -43,7 +43,7 @@ const sections = [
 ];
 
 // ─── Color Palette ───────────────────────────────────────────────────────────
-const GOLD = "#C9A962";
+const GOLD = "#B8860B";
 const GOLD_DIM = "#8B7D3C";
 const TEAL = "#2DD4BF";
 const RED = "#F87171";

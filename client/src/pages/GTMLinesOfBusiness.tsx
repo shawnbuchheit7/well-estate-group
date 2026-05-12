@@ -29,11 +29,11 @@ const allLobs = [
 ];
 
 const macroLobs = [
-  { name: "Private Clubs", icon: Building2, count: 5, color: "#C9A962" },
+  { name: "Private Clubs", icon: Building2, count: 5, color: "#B8860B" },
   { name: "Amenities", icon: Home, count: 7, color: "#8B7D3C" },
   { name: "Commercial Clubs & Sports Performance", icon: Dumbbell, count: 6, color: "#A69050" },
   { name: "Public Authorities", icon: Landmark, count: 5, color: "#B8963E" },
-  { name: "Medical", icon: Stethoscope, count: 3, color: "#C9A962" },
+  { name: "Medical", icon: Stethoscope, count: 3, color: "#B8860B" },
   { name: "Corporate Wellness", icon: Briefcase, count: 1, color: "#A69050" },
   { name: "Consumer", icon: UserCircle, count: 2, color: "#B8963E" },
 ];
@@ -109,7 +109,7 @@ export default function GTMLinesOfBusiness() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Not All Inclusive
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-4 text-black">
@@ -136,7 +136,7 @@ export default function GTMLinesOfBusiness() {
                   y: -4,
                   boxShadow: "0 12px 40px rgba(201,169,98,0.15)",
                 }}
-                className="aspect-square rounded-full border-2 border-[#C9A962]/35 hover:border-[#C9A962]/60 flex items-center justify-center p-4 bg-white hover:bg-[#C9A962]/[0.04] transition-colors duration-300 cursor-default shadow-[0_4px_16px_rgba(0,0,0,0.04)]"
+                className="aspect-square rounded-full border-2 border-[#B8860B]/65 hover:border-[#B8860B]/60 flex items-center justify-center p-4 bg-white hover:bg-[#B8860B]/[0.04] transition-colors duration-300 cursor-default shadow-[0_4px_16px_rgba(0,0,0,0.04)]"
               >
                 <p className="font-body text-xs md:text-sm font-medium text-black/70 text-center leading-tight">{lob}</p>
               </motion.div>
@@ -157,7 +157,7 @@ export default function GTMLinesOfBusiness() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Macro Categories
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-4 text-black">
@@ -183,16 +183,16 @@ export default function GTMLinesOfBusiness() {
                 whileTap={{ scale: 0.97 }}
                 onClick={() => setSelectedMacro(selectedMacro === i ? null : i)}
                 className={`group cursor-pointer transition-all duration-300 ${
-                  selectedMacro === i ? "ring-2 ring-[#C9A962] ring-offset-2" : ""
+                  selectedMacro === i ? "ring-2 ring-[#B8860B] ring-offset-2" : ""
                 }`}
               >
-                <div className="bg-white border border-[#C9A962]/35 rounded-2xl p-7 h-full hover:border-[#C9A962]/40 transition-all duration-300 text-center relative overflow-hidden">
+                <div className="bg-white border border-[#B8860B]/65 rounded-2xl p-7 h-full hover:border-[#B8860B]/70 transition-all duration-300 text-center relative overflow-hidden">
                   {/* Background accent */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#C9A962]/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#B8860B]/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
                   <div className="relative z-10">
-                    <div className="w-14 h-14 rounded-full border-2 border-[#C9A962]/30 flex items-center justify-center mx-auto mb-4 group-hover:border-[#C9A962]/60 group-hover:bg-[#C9A962]/5 transition-all">
-                      <lob.icon className="w-6 h-6 text-[#C9A962]" />
+                    <div className="w-14 h-14 rounded-full border-2 border-[#B8860B]/60 flex items-center justify-center mx-auto mb-4 group-hover:border-[#B8860B]/60 group-hover:bg-[#B8860B]/5 transition-all">
+                      <lob.icon className="w-6 h-6 text-[#B8860B]" />
                     </div>
                     <h3 className="font-display text-base font-semibold text-black mb-2">{lob.name}</h3>
                     <span className="font-mono text-[10px] text-black/25 tracking-wider">{lob.count} sub-segments</span>
@@ -216,7 +216,7 @@ export default function GTMLinesOfBusiness() {
                   <div className="flex items-center gap-3 mb-5">
                     {(() => {
                       const Icon = subMacroData[selectedMacro].icon;
-                      return <Icon className="w-5 h-5 text-[#C9A962]" />;
+                      return <Icon className="w-5 h-5 text-[#B8860B]" />;
                     })()}
                     <h4 className="font-display text-lg font-semibold">{subMacroData[selectedMacro].macro}</h4>
                   </div>
@@ -250,7 +250,7 @@ export default function GTMLinesOfBusiness() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Organizational Sales Structure / Target
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-4 text-black">
@@ -274,17 +274,17 @@ export default function GTMLinesOfBusiness() {
                   key={i}
                   variants={fadeInUp}
                   whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(0,0,0,0.06)" }}
-                  className="bg-white border border-[#C9A962]/35 rounded-xl overflow-hidden hover:border-[#C9A962]/60 transition-all duration-300"
+                  className="bg-white border border-[#B8860B]/65 rounded-xl overflow-hidden hover:border-[#B8860B]/60 transition-all duration-300"
                 >
                   <div className="bg-[#F5F4F1] px-5 py-3.5 flex items-center gap-2">
-                    <category.icon className="w-4 h-4 text-[#C9A962]" />
+                    <category.icon className="w-4 h-4 text-[#B8860B]" />
                     <h3 className="font-display text-sm font-semibold text-black tracking-wider">{category.macro}</h3>
                   </div>
                   <div className="p-5">
                     <ul className="space-y-2.5">
                       {category.subs.map((sub, j) => (
                         <li key={j} className="flex items-start gap-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-[#C9A962] mt-1.5 flex-shrink-0" />
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#B8860B] mt-1.5 flex-shrink-0" />
                           <span className="font-body text-sm text-black/50">{sub}</span>
                         </li>
                       ))}

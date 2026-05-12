@@ -73,13 +73,13 @@ export default function GTMB2B2C() {
                 key={i}
                 variants={scaleIn}
                 whileHover={{ y: -4 }}
-                className="bg-white border border-[#C9A962]/30 rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/60 transition-all duration-300"
+                className="bg-white border border-[#B8860B]/60 rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#B8860B]/60 transition-all duration-300"
               >
-                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-[#C9A962]/20 flex items-center justify-center mb-5">
-                  <model.icon className="w-5 h-5 text-[#C9A962]" />
+                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-[#B8860B]/50 flex items-center justify-center mb-5">
+                  <model.icon className="w-5 h-5 text-[#B8860B]" />
                 </div>
                 <h3 className="font-display text-2xl font-bold text-black mb-1 tracking-tight">{model.title}</h3>
-                <p className="font-mono text-[10px] text-[#C9A962] font-semibold tracking-[0.15em] uppercase mb-4">{model.subtitle}</p>
+                <p className="font-mono text-[10px] text-[#B8860B] font-semibold tracking-[0.15em] uppercase mb-4">{model.subtitle}</p>
                 <p className="font-body text-sm text-black/50 leading-relaxed">{model.description}</p>
               </motion.div>
             ))}
@@ -97,7 +97,7 @@ export default function GTMB2B2C() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.25em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-[11px] tracking-[0.25em] uppercase">
               B2B — Business to Business
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
@@ -137,10 +137,10 @@ export default function GTMB2B2C() {
                 key={i}
                 variants={scaleIn}
                 whileHover={{ y: -4 }}
-                className="bg-white border border-[#C9A962]/30 rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/60 transition-all duration-300"
+                className="bg-white border border-[#B8860B]/60 rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#B8860B]/60 transition-all duration-300"
               >
-                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-[#C9A962]/20 flex items-center justify-center mb-5">
-                  <item.icon className="w-5 h-5 text-[#C9A962]" />
+                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-[#B8860B]/50 flex items-center justify-center mb-5">
+                  <item.icon className="w-5 h-5 text-[#B8860B]" />
                 </div>
                 <h3 className="font-display text-lg font-bold text-black mb-2.5 tracking-tight">{item.title}</h3>
                 <p className="font-body text-sm text-black/50 leading-relaxed">{item.description}</p>
@@ -160,7 +160,7 @@ export default function GTMB2B2C() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.25em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-[11px] tracking-[0.25em] uppercase">
               B2C — Business to Consumer
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
@@ -200,10 +200,10 @@ export default function GTMB2B2C() {
                 key={i}
                 variants={scaleIn}
                 whileHover={{ y: -4 }}
-                className="bg-white border border-[#C9A962]/30 rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/60 transition-all duration-300"
+                className="bg-white border border-[#B8860B]/60 rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#B8860B]/60 transition-all duration-300"
               >
-                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-[#C9A962]/20 flex items-center justify-center mb-5">
-                  <item.icon className="w-5 h-5 text-[#C9A962]" />
+                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-[#B8860B]/50 flex items-center justify-center mb-5">
+                  <item.icon className="w-5 h-5 text-[#B8860B]" />
                 </div>
                 <h3 className="font-display text-lg font-bold text-black mb-2.5 tracking-tight">{item.title}</h3>
                 <p className="font-body text-sm text-black/50 leading-relaxed">{item.description}</p>
@@ -223,7 +223,7 @@ export default function GTMB2B2C() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.25em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-[11px] tracking-[0.25em] uppercase">
               B2B2C — Business to Business to Consumer
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
@@ -263,10 +263,10 @@ export default function GTMB2B2C() {
                 key={i}
                 variants={scaleIn}
                 whileHover={{ y: -4 }}
-                className="bg-white border border-[#C9A962]/30 rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/60 transition-all duration-300"
+                className="bg-white border border-[#B8860B]/60 rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#B8860B]/60 transition-all duration-300"
               >
-                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-[#C9A962]/20 flex items-center justify-center mb-5">
-                  <item.icon className="w-5 h-5 text-[#C9A962]" />
+                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-[#B8860B]/50 flex items-center justify-center mb-5">
+                  <item.icon className="w-5 h-5 text-[#B8860B]" />
                 </div>
                 <h3 className="font-display text-lg font-bold text-black mb-2.5 tracking-tight">{item.title}</h3>
                 <p className="font-body text-sm text-black/50 leading-relaxed">{item.description}</p>
@@ -286,7 +286,7 @@ export default function GTMB2B2C() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.25em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-[11px] tracking-[0.25em] uppercase">
               Synergizing Healthcare & Selfcare
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
@@ -307,9 +307,9 @@ export default function GTMB2B2C() {
             variants={staggerContainer}
           >
             <div className="grid md:grid-cols-3 gap-5 items-center">
-              <motion.div variants={scaleIn} className="bg-white border border-[#C9A962]/30 rounded-xl p-7 text-center shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.04)]">
-                <div className="w-14 h-14 rounded-xl bg-[#F9F9F7] border border-[#C9A962]/20 flex items-center justify-center mx-auto mb-4">
-                  <Heart className="w-6 h-6 text-[#C9A962]" />
+              <motion.div variants={scaleIn} className="bg-white border border-[#B8860B]/60 rounded-xl p-7 text-center shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.04)]">
+                <div className="w-14 h-14 rounded-xl bg-[#F9F9F7] border border-[#B8860B]/50 flex items-center justify-center mx-auto mb-4">
+                  <Heart className="w-6 h-6 text-[#B8860B]" />
                 </div>
                 <h3 className="font-display text-xl font-bold text-black mb-2 tracking-tight">Healthcare</h3>
                 <p className="font-body text-xs text-black/45 leading-relaxed">Physician-led diagnostics, regenerative medicine, executive health</p>
@@ -317,19 +317,19 @@ export default function GTMB2B2C() {
 
               <motion.div variants={fadeInUp} className="text-center py-4">
                 <div className="flex items-center justify-center gap-3">
-                  <div className="h-px w-10 bg-[#C9A962]/40" />
-                  <div className="w-14 h-14 rounded-xl bg-[#C9A962]/10 border border-[#C9A962]/25 flex items-center justify-center">
-                    <ArrowRightLeft className="w-5 h-5 text-[#C9A962]" />
+                  <div className="h-px w-10 bg-[#B8860B]/40" />
+                  <div className="w-14 h-14 rounded-xl bg-[#B8860B]/10 border border-[#B8860B]/55 flex items-center justify-center">
+                    <ArrowRightLeft className="w-5 h-5 text-[#B8860B]" />
                   </div>
-                  <div className="h-px w-10 bg-[#C9A962]/40" />
+                  <div className="h-px w-10 bg-[#B8860B]/40" />
                 </div>
                 <p className="font-display text-sm font-bold text-black mt-3">WEG Bridge</p>
                 <p className="font-body text-[11px] text-black/40 mt-1">Value-driven, not direct selling</p>
               </motion.div>
 
-              <motion.div variants={scaleIn} className="bg-white border border-[#C9A962]/30 rounded-xl p-7 text-center shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.04)]">
-                <div className="w-14 h-14 rounded-xl bg-[#F9F9F7] border border-[#C9A962]/20 flex items-center justify-center mx-auto mb-4">
-                  <Users className="w-6 h-6 text-[#C9A962]" />
+              <motion.div variants={scaleIn} className="bg-white border border-[#B8860B]/60 rounded-xl p-7 text-center shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.04)]">
+                <div className="w-14 h-14 rounded-xl bg-[#F9F9F7] border border-[#B8860B]/50 flex items-center justify-center mx-auto mb-4">
+                  <Users className="w-6 h-6 text-[#B8860B]" />
                 </div>
                 <h3 className="font-display text-xl font-bold text-black mb-2 tracking-tight">Consumer</h3>
                 <p className="font-body text-xs text-black/45 leading-relaxed">Fitness enthusiasts, wellness seekers, health-conscious individuals</p>
@@ -349,7 +349,7 @@ export default function GTMB2B2C() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.25em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-[11px] tracking-[0.25em] uppercase">
               Partner Support
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
@@ -393,10 +393,10 @@ export default function GTMB2B2C() {
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="flex gap-4 items-start p-6 rounded-xl bg-white border border-[#C9A962]/30 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:border-[#C9A962]/50 transition-all duration-300"
+                className="flex gap-4 items-start p-6 rounded-xl bg-white border border-[#B8860B]/60 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:border-[#B8860B]/50 transition-all duration-300"
               >
-                <div className="w-9 h-9 rounded-lg bg-[#C9A962]/10 border border-[#C9A962]/20 flex items-center justify-center flex-shrink-0">
-                  <CheckCircle2 className="w-4 h-4 text-[#C9A962]" />
+                <div className="w-9 h-9 rounded-lg bg-[#B8860B]/10 border border-[#B8860B]/50 flex items-center justify-center flex-shrink-0">
+                  <CheckCircle2 className="w-4 h-4 text-[#B8860B]" />
                 </div>
                 <div>
                   <h3 className="font-display text-base font-bold text-black mb-2 tracking-tight">{diff.title}</h3>
@@ -418,7 +418,7 @@ export default function GTMB2B2C() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.25em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-[11px] tracking-[0.25em] uppercase">
               The Acquisition Flywheel
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
@@ -460,11 +460,11 @@ export default function GTMB2B2C() {
                 key={i}
                 variants={scaleIn}
                 whileHover={{ y: -4 }}
-                className="bg-white border border-[#C9A962]/30 rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/60 transition-all duration-300"
+                className="bg-white border border-[#B8860B]/60 rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#B8860B]/60 transition-all duration-300"
               >
-                <span className="font-display text-4xl font-bold text-[#C9A962]/20">{step.step}</span>
-                <div className="w-10 h-10 rounded-lg bg-[#F9F9F7] border border-[#C9A962]/20 flex items-center justify-center mt-3 mb-4">
-                  <step.icon className="w-5 h-5 text-[#C9A962]" />
+                <span className="font-display text-4xl font-bold text-[#B8860B]/20">{step.step}</span>
+                <div className="w-10 h-10 rounded-lg bg-[#F9F9F7] border border-[#B8860B]/50 flex items-center justify-center mt-3 mb-4">
+                  <step.icon className="w-5 h-5 text-[#B8860B]" />
                 </div>
                 <h3 className="font-display text-lg font-bold text-black mb-2.5 tracking-tight">{step.title}</h3>
                 <p className="font-body text-sm text-black/50 leading-relaxed">{step.description}</p>
@@ -480,7 +480,7 @@ export default function GTMB2B2C() {
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
           >
-            <a href="/gtm/sales" className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-lg bg-[#C9A962] text-white font-body text-sm font-semibold hover:bg-[#B8963E] shadow-[0_2px_8px_rgba(201,169,98,0.3)] hover:shadow-[0_8px_24px_rgba(201,169,98,0.35)] transition-all">
+            <a href="/gtm/sales" className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-lg bg-[#B8860B] text-white font-body text-sm font-semibold hover:bg-[#B8963E] shadow-[0_2px_8px_rgba(201,169,98,0.3)] hover:shadow-[0_8px_24px_rgba(201,169,98,0.35)] transition-all">
               Explore Sales & Marketing
               <ArrowRight className="w-4 h-4" />
             </a>

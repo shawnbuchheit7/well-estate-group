@@ -9,7 +9,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { List } from 'lucide-react';
 import { usePresentationMode } from '@/components/PresentationMode';
 
-const GOLD = "#C9A962";
+const GOLD = "#B8860B";
 
 interface Section {
   id: string;

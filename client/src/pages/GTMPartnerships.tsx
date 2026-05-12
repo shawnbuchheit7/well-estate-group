@@ -48,7 +48,7 @@ export default function GTMPartnerships() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.25em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-[11px] tracking-[0.25em] uppercase">
               Our Network
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
@@ -105,17 +105,17 @@ export default function GTMPartnerships() {
                 key={i}
                 variants={scaleIn}
                 whileHover={{ y: -4 }}
-                className="bg-white border border-[#C9A962]/30 rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/60 transition-all duration-300 h-full"
+                className="bg-white border border-[#B8860B]/60 rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#B8860B]/60 transition-all duration-300 h-full"
               >
-                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-[#C9A962]/20 flex items-center justify-center mb-5">
-                  <category.icon className="w-5 h-5 text-[#C9A962]" />
+                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-[#B8860B]/50 flex items-center justify-center mb-5">
+                  <category.icon className="w-5 h-5 text-[#B8860B]" />
                 </div>
                 <h3 className="font-display text-lg font-bold text-black mb-2 tracking-tight">{category.title}</h3>
                 <p className="font-body text-sm text-black/50 mb-4 leading-relaxed">{category.description}</p>
-                <div className="space-y-2 pt-4 border-t border-[#C9A962]/20">
+                <div className="space-y-2 pt-4 border-t border-[#B8860B]/50">
                   {category.partners.map((partner, j) => (
                     <div key={j} className="flex items-center gap-2.5">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#C9A962]/60" />
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#B8860B]/60" />
                       <span className="font-body text-sm text-black/60">{partner}</span>
                     </div>
                   ))}
@@ -136,7 +136,7 @@ export default function GTMPartnerships() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.25em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-[11px] tracking-[0.25em] uppercase">
               High-Value Channel
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
@@ -180,13 +180,13 @@ export default function GTMPartnerships() {
                   key={i}
                   variants={scaleIn}
                   whileHover={{ y: -4 }}
-                  className="bg-white border border-[#C9A962]/30 rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/60 transition-all duration-300"
+                  className="bg-white border border-[#B8860B]/60 rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#B8860B]/60 transition-all duration-300"
                 >
-                  <h3 className="font-display text-2xl font-bold text-[#C9A962] mb-1 tracking-tight">{community.title}</h3>
+                  <h3 className="font-display text-2xl font-bold text-[#B8860B] mb-1 tracking-tight">{community.title}</h3>
                   <p className="font-body text-xs text-black/45 mb-4">{community.subtitle}</p>
                   <p className="font-body text-sm text-black/50 leading-relaxed mb-5">{community.description}</p>
-                  <div className="pt-4 border-t border-[#C9A962]/20">
-                    <span className="font-mono text-[10px] text-[#C9A962] font-semibold tracking-[0.15em] uppercase">{community.stats}</span>
+                  <div className="pt-4 border-t border-[#B8860B]/50">
+                    <span className="font-mono text-[10px] text-[#B8860B] font-semibold tracking-[0.15em] uppercase">{community.stats}</span>
                   </div>
                 </motion.div>
               ))}
@@ -205,7 +205,7 @@ export default function GTMPartnerships() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.25em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-[11px] tracking-[0.25em] uppercase">
               How We Partner
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
@@ -229,10 +229,10 @@ export default function GTMPartnerships() {
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="flex gap-4 items-start p-6 rounded-xl bg-white border border-[#C9A962]/30 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:border-[#C9A962]/50 transition-all duration-300"
+                className="flex gap-4 items-start p-6 rounded-xl bg-white border border-[#B8860B]/60 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:border-[#B8860B]/50 transition-all duration-300"
               >
-                <div className="w-10 h-10 rounded-lg bg-[#C9A962]/10 border border-[#C9A962]/20 flex items-center justify-center flex-shrink-0">
-                  <span className="font-display text-sm font-bold text-[#C9A962]">{String(i + 1).padStart(2, '0')}</span>
+                <div className="w-10 h-10 rounded-lg bg-[#B8860B]/10 border border-[#B8860B]/50 flex items-center justify-center flex-shrink-0">
+                  <span className="font-display text-sm font-bold text-[#B8860B]">{String(i + 1).padStart(2, '0')}</span>
                 </div>
                 <div>
                   <h3 className="font-display text-base font-bold text-black mb-2 tracking-tight">{step.title}</h3>
@@ -254,7 +254,7 @@ export default function GTMPartnerships() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.25em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-[11px] tracking-[0.25em] uppercase">
               Partnership Impact
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
@@ -278,10 +278,10 @@ export default function GTMPartnerships() {
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="flex gap-4 items-start p-6 rounded-xl bg-white border border-[#C9A962]/30 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:border-[#C9A962]/50 transition-all duration-300"
+                className="flex gap-4 items-start p-6 rounded-xl bg-white border border-[#B8860B]/60 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:border-[#B8860B]/50 transition-all duration-300"
               >
-                <div className="w-9 h-9 rounded-lg bg-[#C9A962]/10 border border-[#C9A962]/20 flex items-center justify-center flex-shrink-0">
-                  <Star className="w-4 h-4 text-[#C9A962]" />
+                <div className="w-9 h-9 rounded-lg bg-[#B8860B]/10 border border-[#B8860B]/50 flex items-center justify-center flex-shrink-0">
+                  <Star className="w-4 h-4 text-[#B8860B]" />
                 </div>
                 <div>
                   <h3 className="font-display text-base font-bold text-black mb-2 tracking-tight">{benefit.title}</h3>
@@ -299,7 +299,7 @@ export default function GTMPartnerships() {
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
           >
-            <a href="/gtm/results" className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-lg bg-[#C9A962] text-white font-body text-sm font-semibold hover:bg-[#B8963E] shadow-[0_2px_8px_rgba(201,169,98,0.3)] hover:shadow-[0_8px_24px_rgba(201,169,98,0.35)] transition-all">
+            <a href="/gtm/results" className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-lg bg-[#B8860B] text-white font-body text-sm font-semibold hover:bg-[#B8963E] shadow-[0_2px_8px_rgba(201,169,98,0.3)] hover:shadow-[0_8px_24px_rgba(201,169,98,0.35)] transition-all">
               See Our Results
               <ArrowRight className="w-4 h-4" />
             </a>

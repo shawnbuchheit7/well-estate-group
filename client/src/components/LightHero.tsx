@@ -44,13 +44,13 @@ export default function LightHero({ eyebrow, title, description, stats, children
       <div className="absolute inset-0 overflow-hidden">
         {/* Top-left corner accent */}
         <svg className="absolute top-16 left-10 w-20 h-20 opacity-[0.06]" viewBox="0 0 100 100">
-          <line x1="0" y1="0" x2="80" y2="0" stroke="#C9A962" strokeWidth="0.75" />
-          <line x1="0" y1="0" x2="0" y2="80" stroke="#C9A962" strokeWidth="0.75" />
+          <line x1="0" y1="0" x2="80" y2="0" stroke="#B8860B" strokeWidth="0.75" />
+          <line x1="0" y1="0" x2="0" y2="80" stroke="#B8860B" strokeWidth="0.75" />
         </svg>
         {/* Bottom-right corner accent */}
         <svg className="absolute bottom-16 right-10 w-20 h-20 opacity-[0.06]" viewBox="0 0 100 100">
-          <line x1="20" y1="100" x2="100" y2="100" stroke="#C9A962" strokeWidth="0.75" />
-          <line x1="100" y1="20" x2="100" y2="100" stroke="#C9A962" strokeWidth="0.75" />
+          <line x1="20" y1="100" x2="100" y2="100" stroke="#B8860B" strokeWidth="0.75" />
+          <line x1="100" y1="20" x2="100" y2="100" stroke="#B8860B" strokeWidth="0.75" />
         </svg>
       </div>
 
@@ -87,11 +87,11 @@ export default function LightHero({ eyebrow, title, description, stats, children
 
             {/* Eyebrow with gold line accents */}
             <motion.div variants={fadeInUp} className="flex items-center justify-center gap-4 mb-4">
-              <span className="w-10 h-[1px] bg-[#C9A962]/50" />
-              <span className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.3em] uppercase">
+              <span className="w-10 h-[1px] bg-[#B8860B]/50" />
+              <span className="font-mono text-[#B8860B] font-semibold text-[11px] tracking-[0.3em] uppercase">
                 {eyebrow}
               </span>
-              <span className="w-10 h-[1px] bg-[#C9A962]/50" />
+              <span className="w-10 h-[1px] bg-[#B8860B]/50" />
             </motion.div>
 
             {/* Title — elegant serif in black, bolder */}
@@ -107,7 +107,7 @@ export default function LightHero({ eyebrow, title, description, stats, children
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="h-[2px] w-14 mx-auto bg-[#C9A962] mb-5"
+              className="h-[2px] w-14 mx-auto bg-[#B8860B] mb-5"
             />
 
             {/* Description — slightly darker for better readability */}

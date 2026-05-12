@@ -120,7 +120,7 @@ export default function GTMGlobalMarkets() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Countries — Lines of Business
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 text-black">
@@ -140,20 +140,20 @@ export default function GTMGlobalMarkets() {
                 key={i}
                 variants={scaleIn}
                 whileHover={{ y: -4, boxShadow: "0 16px 40px rgba(0,0,0,0.08)" }}
-                className="bg-white border border-[#C9A962]/35 rounded-xl overflow-hidden hover:border-[#C9A962]/60 transition-all duration-300"
+                className="bg-white border border-[#B8860B]/65 rounded-xl overflow-hidden hover:border-[#B8860B]/60 transition-all duration-300"
               >
-                <div className="px-6 py-4 border-b border-[#C9A962]/40 bg-[#FAFAF8]">
+                <div className="px-6 py-4 border-b border-[#B8860B]/70 bg-[#FAFAF8]">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <span className="text-2xl">{region.flag}</span>
                       <div>
                         <h3 className="font-display text-lg font-semibold text-black">{region.country}</h3>
-                        <span className="font-mono text-[10px] text-[#C9A962] font-semibold tracking-wider">{region.lobCount}</span>
+                        <span className="font-mono text-[10px] text-[#B8860B] font-semibold tracking-wider">{region.lobCount}</span>
                       </div>
                     </div>
                     {region.allActive && (
                       <motion.span 
-                        className="px-3 py-1 rounded-full bg-[#C9A962]/10 text-[#C9A962] text-[10px] font-mono font-semibold tracking-wider"
+                        className="px-3 py-1 rounded-full bg-[#B8860B]/10 text-[#B8860B] text-[10px] font-mono font-semibold tracking-wider"
                         initial={{ scale: 0 }}
                         whileInView={{ scale: 1 }}
                         viewport={{ once: true }}
@@ -177,7 +177,7 @@ export default function GTMGlobalMarkets() {
                           viewport={{ once: true }}
                           transition={{ delay: 0.3 + j * 0.05 }}
                           whileHover={{ scale: 1.05 }}
-                          className="px-3 py-1 rounded-full bg-[#C9A962]/8 text-xs font-body text-black/60 border border-[#C9A962]/10"
+                          className="px-3 py-1 rounded-full bg-[#B8860B]/8 text-xs font-body text-black/60 border border-[#B8860B]/10"
                         >
                           {market}
                         </motion.span>
@@ -192,7 +192,7 @@ export default function GTMGlobalMarkets() {
                           <motion.span
                             key={j}
                             whileHover={{ scale: 1.05 }}
-                            className="px-3 py-1 rounded-full border border-[#C9A962]/40 text-xs font-body text-black/50 hover:border-[#C9A962]/60 transition-colors"
+                            className="px-3 py-1 rounded-full border border-[#B8860B]/70 text-xs font-body text-black/50 hover:border-[#B8860B]/60 transition-colors"
                           >
                             {partner}
                           </motion.span>
@@ -217,7 +217,7 @@ export default function GTMGlobalMarkets() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Organizational Structure
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-4 text-black">
@@ -238,10 +238,10 @@ export default function GTMGlobalMarkets() {
             {/* Top Level */}
             <motion.div variants={fadeInUp} className="text-center mb-10">
               <motion.div 
-                className="inline-flex items-center gap-3 px-7 py-4 rounded-xl bg-[#C9A962] text-white shadow-[0_8px_30px_rgba(201,169,98,0.3)]"
+                className="inline-flex items-center gap-3 px-7 py-4 rounded-xl bg-[#B8860B] text-white shadow-[0_8px_30px_rgba(201,169,98,0.3)]"
                 whileHover={{ scale: 1.03, boxShadow: "0 12px 40px rgba(0,0,0,0.25)" }}
               >
-                <Users className="w-5 h-5 text-[#C9A962]" />
+                <Users className="w-5 h-5 text-[#B8860B]" />
                 <span className="font-display text-base font-semibold">{orgChart.top}</span>
               </motion.div>
               <div className="w-px h-8 bg-black/15 mx-auto mt-2" />
@@ -270,15 +270,15 @@ export default function GTMGlobalMarkets() {
                   <motion.div 
                     className={`px-3 py-3 rounded-lg bg-white border mb-2 shadow-[0_2px_8px_rgba(0,0,0,0.03)] cursor-pointer transition-all duration-300 ${
                       region.status === "active" 
-                        ? "border-[#C9A962]/30 hover:border-[#C9A962]/60" 
-                        : "border-[#C9A962]/35 hover:border-[#C9A962]/40"
+                        ? "border-[#B8860B]/60 hover:border-[#B8860B]/60" 
+                        : "border-[#B8860B]/65 hover:border-[#B8860B]/70"
                     }`}
                     whileHover={{ y: -2, boxShadow: "0 8px 20px rgba(0,0,0,0.06)" }}
                     onClick={() => setExpandedRegion(expandedRegion === i ? null : i)}
                   >
                     <h4 className="font-display text-xs font-semibold text-black leading-tight">{region.name}</h4>
                     {region.status === "active" && (
-                      <span className="font-mono text-[9px] text-[#C9A962] tracking-wider">{region.cities.length} cities</span>
+                      <span className="font-mono text-[9px] text-[#B8860B] tracking-wider">{region.cities.length} cities</span>
                     )}
                   </motion.div>
 
@@ -293,18 +293,18 @@ export default function GTMGlobalMarkets() {
                         {region.cities.map((city, j) => (
                           <motion.div 
                             key={j} 
-                            className="px-2.5 py-1.5 rounded-md bg-white border border-[#C9A962]/40 hover:border-[#C9A962]/50 transition-colors"
+                            className="px-2.5 py-1.5 rounded-md bg-white border border-[#B8860B]/70 hover:border-[#B8860B]/50 transition-colors"
                             whileHover={{ x: 2 }}
                           >
                             <div className="flex items-center justify-center gap-1">
-                              <MapPin className="w-2.5 h-2.5 text-[#C9A962] flex-shrink-0" />
+                              <MapPin className="w-2.5 h-2.5 text-[#B8860B] flex-shrink-0" />
                               <span className="font-body text-[10px] text-black/50">{city}</span>
                             </div>
                           </motion.div>
                         ))}
                       </motion.div>
                     ) : region.cities.length === 0 ? (
-                      <div className="px-3 py-3 rounded-md border border-dashed border-[#C9A962]/35">
+                      <div className="px-3 py-3 rounded-md border border-dashed border-[#B8860B]/65">
                         <span className="font-mono text-[10px] text-black/20 tracking-wider">Expansion planned</span>
                       </div>
                     ) : null}

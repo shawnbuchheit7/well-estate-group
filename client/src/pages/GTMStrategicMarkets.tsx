@@ -40,7 +40,7 @@ const y1Quadrants: Quadrant[] = [
     subtitle: "High Attractiveness / High Ease of Access",
     icon: Target,
     bg: "bg-white",
-    iconBg: "bg-[#C9A962]/15",
+    iconBg: "bg-[#B8860B]/15",
     items: [
       { name: "Health Care", highlighted: true },
       { name: "Golf & Country Clubs", highlighted: true },
@@ -95,7 +95,7 @@ const y2Quadrants: Quadrant[] = [
     subtitle: "High Attractiveness / High Ease of Access",
     icon: Target,
     bg: "bg-white",
-    iconBg: "bg-[#C9A962]/15",
+    iconBg: "bg-[#B8860B]/15",
     items: [
       { name: "Health Care", highlighted: true },
       { name: "Golf & Country Clubs", highlighted: true },
@@ -154,7 +154,7 @@ function MatrixGrid({ quadrants, year }: { quadrants: Quadrant[]; year: number }
         {/* Y-axis label */}
         <div className="hidden md:flex absolute -left-16 top-1/2 -translate-y-1/2 -rotate-90 items-center gap-2">
           <span className="font-mono text-[10px] text-black/20 tracking-wider uppercase whitespace-nowrap">Market Attractiveness</span>
-          <span className="text-[#C9A962] text-xs">↑</span>
+          <span className="text-[#B8860B] text-xs">↑</span>
         </div>
 
         {/* 2x2 Grid */}
@@ -170,8 +170,8 @@ function MatrixGrid({ quadrants, year }: { quadrants: Quadrant[]; year: number }
               onMouseLeave={() => setHoveredQuadrant(null)}
               className={`${q.bg} rounded-xl sm:rounded-2xl p-4 sm:p-6 flex flex-col border transition-all duration-300 shadow-[0_2px_12px_rgba(0,0,0,0.04)] ${
                 hoveredQuadrant === i 
-                  ? "border-[#C9A962]/40 shadow-[0_8px_30px_rgba(0,0,0,0.08)]" 
-                  : "border-[#C9A962]/35"
+                  ? "border-[#B8860B]/70 shadow-[0_8px_30px_rgba(0,0,0,0.08)]" 
+                  : "border-[#B8860B]/65"
               }`}
               style={{ minHeight: '200px' }}
             >
@@ -182,7 +182,7 @@ function MatrixGrid({ quadrants, year }: { quadrants: Quadrant[]; year: number }
                   animate={hoveredQuadrant === i ? { scale: 1.1 } : { scale: 1 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <q.icon className={`w-4 h-4 sm:w-[18px] sm:h-[18px] ${i === 0 ? 'text-[#C9A962]' : 'text-black/50'}`} />
+                  <q.icon className={`w-4 h-4 sm:w-[18px] sm:h-[18px] ${i === 0 ? 'text-[#B8860B]' : 'text-black/50'}`} />
                 </motion.div>
                 <div className="min-w-0">
                   <h3 className="font-display text-base sm:text-lg font-semibold text-black leading-tight">{q.title}</h3>
@@ -191,7 +191,7 @@ function MatrixGrid({ quadrants, year }: { quadrants: Quadrant[]; year: number }
               </div>
 
               {/* Divider */}
-              <div className={`h-px w-full mb-3 sm:mb-4 ${i === 0 ? 'bg-[#C9A962]/25' : 'bg-black/[0.06]'}`} />
+              <div className={`h-px w-full mb-3 sm:mb-4 ${i === 0 ? 'bg-[#B8860B]/25' : 'bg-black/[0.06]'}`} />
 
               {/* Pills */}
               <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-auto">
@@ -205,8 +205,8 @@ function MatrixGrid({ quadrants, year }: { quadrants: Quadrant[]; year: number }
                     whileHover={{ scale: 1.05, y: -1 }}
                     className={`px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-medium tracking-wide transition-all cursor-default ${
                       item.highlighted
-                        ? "bg-[#C9A962] text-white shadow-md"
-                        : "bg-white text-black/70 border border-[#C9A962]/40 hover:border-[#C9A962]/60"
+                        ? "bg-[#B8860B] text-white shadow-md"
+                        : "bg-white text-black/70 border border-[#B8860B]/70 hover:border-[#B8860B]/60"
                     }`}
                   >
                     {item.name}
@@ -220,7 +220,7 @@ function MatrixGrid({ quadrants, year }: { quadrants: Quadrant[]; year: number }
         {/* X-axis label */}
         <div className="flex justify-center items-center gap-2 mt-6">
           <span className="font-mono text-[10px] text-black/20 tracking-wider uppercase">Ease of Access</span>
-          <span className="text-[#C9A962] text-xs">→</span>
+          <span className="text-[#B8860B] text-xs">→</span>
         </div>
       </div>
     </div>
@@ -253,7 +253,7 @@ export default function GTMStrategicMarkets() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#C9A962] text-white text-[11px] sm:text-xs font-mono tracking-wider uppercase mb-4">
+            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#B8860B] text-white text-[11px] sm:text-xs font-mono tracking-wider uppercase mb-4">
               Year 1 — Q1 through Q4
             </motion.div>
             <motion.h2 variants={fadeInUp} className="font-display text-2xl sm:text-3xl md:text-4xl font-medium text-black">
@@ -283,7 +283,7 @@ export default function GTMStrategicMarkets() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#C9A962] text-white text-[11px] sm:text-xs font-mono tracking-wider uppercase mb-4">
+            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#B8860B] text-white text-[11px] sm:text-xs font-mono tracking-wider uppercase mb-4">
               Year 2 — Q1 through Q4
             </motion.div>
             <motion.h2 variants={fadeInUp} className="font-display text-2xl sm:text-3xl md:text-4xl font-medium text-black">
@@ -309,7 +309,7 @@ export default function GTMStrategicMarkets() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-10">
-              <span className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+              <span className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
                 Year-Over-Year Analysis
               </span>
               <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-medium text-black mt-3">
@@ -331,7 +331,7 @@ export default function GTMStrategicMarkets() {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
                   whileHover={{ x: 4, boxShadow: "0 8px 24px rgba(0,0,0,0.06)" }}
-                  className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-4 sm:p-5 rounded-xl bg-white border border-[#C9A962]/35 shadow-[0_2px_8px_rgba(0,0,0,0.03)] transition-all duration-300"
+                  className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-4 sm:p-5 rounded-xl bg-white border border-[#B8860B]/65 shadow-[0_2px_8px_rgba(0,0,0,0.03)] transition-all duration-300"
                 >
                   {/* Direction indicator + Segment name */}
                   <div className="flex items-center gap-3 sm:min-w-[220px]">
@@ -349,8 +349,8 @@ export default function GTMStrategicMarkets() {
                   {/* From → To */}
                   <div className="flex items-center gap-2 sm:gap-3 ml-10 sm:ml-0">
                     <span className="font-mono text-[10px] sm:text-[11px] text-black/40 bg-black/[0.03] px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg whitespace-nowrap">{shift.from}</span>
-                    <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C9A962] flex-shrink-0" />
-                    <span className="font-mono text-[10px] sm:text-[11px] font-semibold text-black bg-[#C9A962]/10 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg whitespace-nowrap">{shift.to}</span>
+                    <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#B8860B] flex-shrink-0" />
+                    <span className="font-mono text-[10px] sm:text-[11px] font-semibold text-black bg-[#B8860B]/10 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg whitespace-nowrap">{shift.to}</span>
                   </div>
                 </motion.div>
               ))}

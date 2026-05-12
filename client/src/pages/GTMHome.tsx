@@ -50,7 +50,7 @@ export default function GTMHome() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Market Opportunity
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-5 text-black">
@@ -84,11 +84,11 @@ export default function GTMHome() {
                 whileHover={{ y: -6, boxShadow: "0 16px 40px rgba(0,0,0,0.08)" }}
                 className="relative group"
               >
-                <div className="bg-white border border-[#C9A962]/35 rounded-2xl p-6 h-full hover:border-[#C9A962]/40 transition-all duration-300 text-center relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#C9A962]/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="bg-white border border-[#B8860B]/65 rounded-2xl p-6 h-full hover:border-[#B8860B]/70 transition-all duration-300 text-center relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#B8860B]/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="relative z-10">
-                    <div className="w-14 h-14 rounded-full bg-[#C9A962]/8 flex items-center justify-center mx-auto mb-4 group-hover:bg-[#C9A962]/15 transition-colors">
-                      <touchpoint.icon className="w-7 h-7 text-[#C9A962]" />
+                    <div className="w-14 h-14 rounded-full bg-[#B8860B]/8 flex items-center justify-center mx-auto mb-4 group-hover:bg-[#B8860B]/15 transition-colors">
+                      <touchpoint.icon className="w-7 h-7 text-[#B8860B]" />
                     </div>
                     <h3 className="font-display text-sm font-semibold text-black mb-2">{touchpoint.label}</h3>
                     <p className="font-body text-xs text-black/55 leading-relaxed">{touchpoint.description}</p>
@@ -109,7 +109,7 @@ export default function GTMHome() {
             <motion.div 
               variants={fadeInUp} 
               whileHover={{ scale: 1.02 }}
-              className="text-center p-7 rounded-2xl border border-[#C9A962]/30 bg-white flex-1 shadow-[0_2px_12px_rgba(0,0,0,0.03)]"
+              className="text-center p-7 rounded-2xl border border-[#B8860B]/60 bg-white flex-1 shadow-[0_2px_12px_rgba(0,0,0,0.03)]"
             >
               <p className="font-mono text-[10px] text-black/30 uppercase tracking-[0.2em] mb-2">Current State</p>
               <p className="font-display text-xl font-semibold text-black">Direct-to-Consumer</p>
@@ -120,15 +120,15 @@ export default function GTMHome() {
                 animate={{ x: [0, 4, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
               >
-                <ArrowRight className="w-8 h-8 text-[#C9A962] rotate-90 md:rotate-0" />
+                <ArrowRight className="w-8 h-8 text-[#B8860B] rotate-90 md:rotate-0" />
               </motion.div>
             </motion.div>
             <motion.div 
               variants={fadeInUp} 
               whileHover={{ scale: 1.02 }}
-              className="text-center p-7 rounded-2xl border-2 border-[#C9A962]/30 bg-[#C9A962]/[0.03] flex-1 shadow-[0_4px_20px_rgba(201,169,98,0.08)]"
+              className="text-center p-7 rounded-2xl border-2 border-[#B8860B]/60 bg-[#B8860B]/[0.03] flex-1 shadow-[0_4px_20px_rgba(201,169,98,0.08)]"
             >
-              <p className="font-mono text-[10px] text-[#C9A962] uppercase tracking-[0.2em] mb-2">With WEG</p>
+              <p className="font-mono text-[10px] text-[#B8860B] uppercase tracking-[0.2em] mb-2">With WEG</p>
               <p className="font-display text-xl font-semibold text-black">Full B2B Distribution</p>
               <p className="font-body text-xs text-black/50 mt-2">8 verticals, 4 global regions, 30+ channel partners</p>
             </motion.div>
@@ -146,7 +146,7 @@ export default function GTMHome() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Channel Strategy
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-5 text-black">
@@ -201,10 +201,10 @@ export default function GTMHome() {
                 key={i}
                 variants={fadeInUp}
                 whileHover={{ y: -3, boxShadow: "0 8px 24px rgba(0,0,0,0.06)" }}
-                className="flex gap-4 items-start p-6 rounded-xl bg-white border border-[#C9A962]/35 hover:border-[#C9A962]/60 transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
+                className="flex gap-4 items-start p-6 rounded-xl bg-white border border-[#B8860B]/65 hover:border-[#B8860B]/60 transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
               >
-                <div className="w-10 h-10 rounded-full bg-[#C9A962]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <channel.icon className="w-5 h-5 text-[#C9A962]" />
+                <div className="w-10 h-10 rounded-full bg-[#B8860B]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <channel.icon className="w-5 h-5 text-[#B8860B]" />
                 </div>
                 <div>
                   <h3 className="font-display text-base font-semibold text-black mb-1.5">{channel.title}</h3>
@@ -228,7 +228,7 @@ export default function GTMHome() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Go-To-Market Plan
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 text-black">
@@ -273,10 +273,10 @@ export default function GTMHome() {
                 key={i}
                 variants={fadeInUp}
                 whileHover={{ y: -3, boxShadow: "0 8px 24px rgba(0,0,0,0.06)" }}
-                className="flex gap-4 items-start p-5 rounded-xl bg-white border border-[#C9A962]/35 hover:border-[#C9A962]/60 transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
+                className="flex gap-4 items-start p-5 rounded-xl bg-white border border-[#B8860B]/65 hover:border-[#B8860B]/60 transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
               >
-                <div className="w-7 h-7 rounded-full bg-[#C9A962]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#C9A962]" />
+                <div className="w-7 h-7 rounded-full bg-[#B8860B]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#B8860B]" />
                 </div>
                 <div>
                   <h3 className="font-display text-base font-semibold text-black mb-1.5">{focus.title}</h3>
@@ -298,7 +298,7 @@ export default function GTMHome() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Why Well Estate Group
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 text-black">
@@ -335,10 +335,10 @@ export default function GTMHome() {
                 key={i}
                 variants={fadeInUp}
                 whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(0,0,0,0.06)" }}
-                className="flex gap-4 items-start p-6 rounded-xl bg-white border border-[#C9A962]/35 shadow-[0_4px_16px_rgba(0,0,0,0.03)] hover:border-[#C9A962]/60 transition-all duration-300"
+                className="flex gap-4 items-start p-6 rounded-xl bg-white border border-[#B8860B]/65 shadow-[0_4px_16px_rgba(0,0,0,0.03)] hover:border-[#B8860B]/60 transition-all duration-300"
               >
-                <div className="w-8 h-8 rounded-full bg-[#C9A962]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <CheckCircle2 className="w-4.5 h-4.5 text-[#C9A962]" />
+                <div className="w-8 h-8 rounded-full bg-[#B8860B]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <CheckCircle2 className="w-4.5 h-4.5 text-[#B8860B]" />
                 </div>
                 <div>
                   <h3 className="font-display text-lg font-semibold text-black mb-1.5">{advantage.title}</h3>

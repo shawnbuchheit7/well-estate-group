@@ -116,10 +116,10 @@ const channelDefs: ChannelDef[] = [
     name: "Consumer (DTC)",
     shortName: "Consumer",
     icon: Package,
-    accentColor: "#C9A962",
-    accentBg: "bg-[#C9A962]/[0.06]",
-    accentBorder: "border-[#C9A962]/20",
-    barColor: "#C9A962",
+    accentColor: "#B8860B",
+    accentBg: "bg-[#B8860B]/[0.06]",
+    accentBorder: "border-[#B8860B]/50",
+    barColor: "#B8860B",
     maxDiscountPct: 0,
     defaultDiscountPct: 0,
     defaultAvgDiscountPct: 0,
@@ -133,7 +133,7 @@ const channelDefs: ChannelDef[] = [
     icon: Building2,
     accentColor: "#1A1A1A",
     accentBg: "bg-black/[0.02]",
-    accentBorder: "border-[#C9A962]/30",
+    accentBorder: "border-[#B8860B]/60",
     barColor: "#1A1A1A",
     maxDiscountPct: 25,
     defaultDiscountPct: 25,
@@ -148,7 +148,7 @@ const channelDefs: ChannelDef[] = [
     icon: Store,
     accentColor: "#6B7280",
     accentBg: "bg-black/[0.01]",
-    accentBorder: "border-[#C9A962]/25",
+    accentBorder: "border-[#B8860B]/55",
     barColor: "#9CA3AF",
     maxDiscountPct: 40,
     defaultDiscountPct: 40,
@@ -180,7 +180,7 @@ function CustomSlider({
   formatDisplay,
   label,
   sublabel,
-  accentColor = "#C9A962",
+  accentColor = "#B8860B",
   disabled = false,
 }: {
   value: number;
@@ -245,7 +245,7 @@ function GMRing({ value, target = 60, size = 80, strokeWidth = 6 }: { value: num
   const offset = circumference - (clampedValue / 100) * circumference;
 
   const getColor = (v: number) => {
-    if (v >= target) return "#C9A962";
+    if (v >= target) return "#B8860B";
     if (v >= (target - 10)) return "#D97706";
     return "#DC2626";
   };
@@ -428,7 +428,7 @@ export default function BlendedGMModeler() {
   const isHealthy = blended.blendedGMPct >= gmTarget;
   const isWarning = blended.blendedGMPct >= (gmTarget - 10) && blended.blendedGMPct < gmTarget;
 
-  const statusColor = isHealthy ? "#C9A962" : isWarning ? "#D97706" : "#DC2626";
+  const statusColor = isHealthy ? "#B8860B" : isWarning ? "#D97706" : "#DC2626";
 
   return (
     <div className="max-w-6xl mx-auto">
@@ -438,24 +438,24 @@ export default function BlendedGMModeler() {
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="mb-5 rounded-xl border border-[#C9A962]/25 bg-white overflow-hidden"
+        className="mb-5 rounded-xl border border-[#B8860B]/55 bg-white overflow-hidden"
       >
-        <div className="px-4 py-3 border-b border-[#C9A962]/15">
+        <div className="px-4 py-3 border-b border-[#B8860B]/15">
           <div className="flex items-center gap-2.5">
-            <Tag className="w-4 h-4 text-[#C9A962]" />
+            <Tag className="w-4 h-4 text-[#B8860B]" />
             <span className="font-mono text-[11px] text-black/60 uppercase tracking-[0.15em] font-semibold">Proposed Floor Pricing by Segment</span>
           </div>
         </div>
         <div className="p-4">
           <div className="grid grid-cols-4 gap-0 divide-x divide-black/[0.06]">
             {[
-              { segment: "DTC / Consumer", price: fmtCurrency(msrp), discount: "0% off list", note: "Full MSRP — margin anchor", color: "#C9A962" },
+              { segment: "DTC / Consumer", price: fmtCurrency(msrp), discount: "0% off list", note: "Full MSRP — margin anchor", color: "#B8860B" },
               { segment: "Vertical Markets", price: fmtCurrency(Math.round(msrp * 0.75)), discount: "Max 25% off list", note: "Clubs, medical, hospitality, corporate", color: "#1A1A1A" },
               { segment: "Commercial Markets", price: fmtCurrency(Math.round(msrp * 0.60)), discount: "Max 40% off list", note: "Health clubs, sports performance, dealers", color: "#6B7280" },
               { segment: "GSA / Government", price: fmtCurrency(Math.round(msrp * 0.63)), discount: "~37% off list", note: "Contractual / schedule pricing", color: "#4B5563" },
             ].map((seg) => (
               <div key={seg.segment} className="px-4 first:pl-0 last:pr-0 text-center flex flex-col items-center">
-                <span className="inline-block px-3 py-1 rounded-full border border-[#C9A962]/35 bg-black/[0.03] font-mono text-[11px] text-black/80 tracking-wider uppercase font-semibold mb-2">{seg.segment}</span>
+                <span className="inline-block px-3 py-1 rounded-full border border-[#B8860B]/65 bg-black/[0.03] font-mono text-[11px] text-black/80 tracking-wider uppercase font-semibold mb-2">{seg.segment}</span>
                 <span className="font-display text-2xl font-bold text-black tabular-nums block">{seg.price}</span>
                 <span className="inline-block mt-2 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold text-white" style={{ backgroundColor: seg.color }}>{seg.discount}</span>
                 <span className="font-body text-[10px] text-black/50 block mt-1.5">{seg.note}</span>
@@ -476,7 +476,7 @@ export default function BlendedGMModeler() {
         className="mb-4"
       >
         <div className="flex items-center gap-3 mb-2.5">
-          <Zap className="w-4 h-4 text-[#C9A962]" />
+          <Zap className="w-4 h-4 text-[#B8860B]" />
           <span className="font-mono text-[11px] text-black/60 uppercase tracking-[0.15em] font-semibold">Quick Scenarios</span>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5">
@@ -486,12 +486,12 @@ export default function BlendedGMModeler() {
               onClick={() => loadPreset(preset)}
               className={`text-left p-3 rounded-lg border transition-all duration-200 ${
                 activePreset === preset.name
-                  ? "border-[#C9A962] bg-[#C9A962]/[0.04] shadow-sm"
-                  : "border-[#C9A962]/25 bg-white hover:border-[#C9A962]/40 hover:bg-[#C9A962]/[0.02]"
+                  ? "border-[#B8860B] bg-[#B8860B]/[0.04] shadow-sm"
+                  : "border-[#B8860B]/55 bg-white hover:border-[#B8860B]/70 hover:bg-[#B8860B]/[0.02]"
               }`}
             >
               <p className={`font-display text-sm font-semibold mb-1 ${
-                activePreset === preset.name ? "text-[#C9A962]" : "text-black"
+                activePreset === preset.name ? "text-[#B8860B]" : "text-black"
               }`}>
                 {preset.name}
               </p>
@@ -506,11 +506,11 @@ export default function BlendedGMModeler() {
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="mb-4 rounded-xl border border-[#C9A962]/25 bg-white overflow-hidden"
+        className="mb-4 rounded-xl border border-[#B8860B]/55 bg-white overflow-hidden"
       >
         <div className="p-3.5">
           <div className="flex items-center gap-2.5 mb-2.5">
-            <BarChart3 className="w-4 h-4 text-[#C9A962]" />
+            <BarChart3 className="w-4 h-4 text-[#B8860B]" />
             <span className="font-mono text-[11px] text-black/60 uppercase tracking-[0.15em] font-semibold">Pricing Assumption</span>
           </div>
 
@@ -520,7 +520,7 @@ export default function BlendedGMModeler() {
               className={`p-2.5 rounded-lg border text-left transition-all duration-200 ${
                 pricingMode === "floor"
                   ? "border-[#DC2626]/40 bg-red-50/50 shadow-sm"
-                  : "border-[#C9A962]/20 bg-white hover:border-[#C9A962]/35"
+                  : "border-[#B8860B]/50 bg-white hover:border-[#B8860B]/65"
               }`}
             >
               <div className="flex items-center gap-2 mb-1.5">
@@ -543,17 +543,17 @@ export default function BlendedGMModeler() {
               onClick={() => setPricingMode("expected")}
               className={`p-2.5 rounded-lg border text-left transition-all duration-200 ${
                 pricingMode === "expected"
-                  ? "border-[#C9A962]/40 bg-[#C9A962]/[0.04] shadow-sm"
-                  : "border-[#C9A962]/20 bg-white hover:border-[#C9A962]/35"
+                  ? "border-[#B8860B]/70 bg-[#B8860B]/[0.04] shadow-sm"
+                  : "border-[#B8860B]/50 bg-white hover:border-[#B8860B]/65"
               }`}
             >
               <div className="flex items-center gap-2 mb-1.5">
                 {pricingMode === "expected" ? (
-                  <ToggleRight className="w-4 h-4 text-[#C9A962]" />
+                  <ToggleRight className="w-4 h-4 text-[#B8860B]" />
                 ) : (
                   <ToggleLeft className="w-4 h-4 text-black/20" />
                 )}
-                <span className={`font-display text-xs font-semibold ${pricingMode === "expected" ? "text-[#C9A962]" : "text-black/50"}`}>
+                <span className={`font-display text-xs font-semibold ${pricingMode === "expected" ? "text-[#B8860B]" : "text-black/50"}`}>
                   Expected ASP
                 </span>
               </div>
@@ -580,7 +580,7 @@ export default function BlendedGMModeler() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         className={`mb-4 rounded-xl border bg-white overflow-hidden ${
-          isHealthy ? "border-[#C9A962]/25" : isWarning ? "border-amber-200" : "border-red-200"
+          isHealthy ? "border-[#B8860B]/55" : isWarning ? "border-amber-200" : "border-red-200"
         }`}
       >
         <div className="p-5">
@@ -599,7 +599,7 @@ export default function BlendedGMModeler() {
                 <span className={`font-mono text-[8px] px-1.5 py-0.5 rounded-full ${
                   pricingMode === "floor" 
                     ? "bg-red-100 text-red-600" 
-                    : "bg-[#C9A962]/10 text-[#C9A962]"
+                    : "bg-[#B8860B]/10 text-[#B8860B]"
                 }`}>
                   {pricingMode === "floor" ? "FLOOR" : "EXPECTED"}
                 </span>
@@ -614,7 +614,7 @@ export default function BlendedGMModeler() {
               >
                 {fmtPct(blended.blendedGMPct)}
               </motion.div>
-              <p className={`font-body text-xs mt-1.5 ${isHealthy ? "text-[#C9A962]/70" : isWarning ? "text-amber-600/70" : "text-red-600/70"}`}>
+              <p className={`font-body text-xs mt-1.5 ${isHealthy ? "text-[#B8860B]/70" : isWarning ? "text-amber-600/70" : "text-red-600/70"}`}>
                 {isHealthy
                   ? `Above ${gmTarget}% target — healthy margin structure`
                   : isWarning
@@ -643,14 +643,14 @@ export default function BlendedGMModeler() {
           </div>
 
           {/* Target line indicator */}
-          <div className="mt-4 pt-3 border-t border-[#C9A962]/15">
+          <div className="mt-4 pt-3 border-t border-[#B8860B]/15">
             <div className="flex items-center justify-between text-[9px] font-mono text-black/30 mb-1">
               <span>0%</span>
-              <span className="text-[#C9A962] font-semibold">{gmTarget}% TARGET</span>
+              <span className="text-[#B8860B] font-semibold">{gmTarget}% TARGET</span>
               <span>100%</span>
             </div>
             <div className="relative h-2 rounded-full bg-black/[0.04] overflow-hidden">
-              <div className="absolute top-0 bottom-0 w-0.5 bg-[#C9A962]/60 z-10" style={{ left: `${gmTarget}%` }} />
+              <div className="absolute top-0 bottom-0 w-0.5 bg-[#B8860B]/60 z-10" style={{ left: `${gmTarget}%` }} />
               <motion.div
                 className="absolute left-0 top-0 bottom-0 rounded-full"
                 style={{ backgroundColor: statusColor }}
@@ -689,7 +689,7 @@ export default function BlendedGMModeler() {
                   <div
                     key={l.lever}
                     className={`p-2.5 rounded-lg border ${
-                      i === 0 ? "border-[#C9A962]/30 bg-[#C9A962]/[0.04]" : "border-[#C9A962]/20 bg-white"
+                      i === 0 ? "border-[#B8860B]/60 bg-[#B8860B]/[0.04]" : "border-[#B8860B]/50 bg-white"
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1">
@@ -697,7 +697,7 @@ export default function BlendedGMModeler() {
                         {i === 0 ? "Best Lever" : `Option ${i + 1}`}
                       </span>
                       <span className={`font-display text-sm font-bold tabular-nums ${
-                        i === 0 ? "text-[#C9A962]" : "text-black/60"
+                        i === 0 ? "text-[#B8860B]" : "text-black/60"
                       }`}>
                         +{l.impact.toFixed(1)} pts
                       </span>
@@ -716,13 +716,13 @@ export default function BlendedGMModeler() {
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="mb-4 rounded-xl border border-[#C9A962]/25 bg-white overflow-hidden"
+        className="mb-4 rounded-xl border border-[#B8860B]/55 bg-white overflow-hidden"
       >
         {/* Header */}
-        <div className="px-4 py-3 border-b border-[#C9A962]/15 flex items-center justify-between">
+        <div className="px-4 py-3 border-b border-[#B8860B]/15 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-[#C9A962]/[0.08] flex items-center justify-center">
-              <Tag className="w-4 h-4 text-[#C9A962]" />
+            <div className="w-8 h-8 rounded-lg bg-[#B8860B]/[0.08] flex items-center justify-center">
+              <Tag className="w-4 h-4 text-[#B8860B]" />
             </div>
             <div>
               <h3 className="font-display text-sm font-semibold text-black">Global Pricing & Cost Controls</h3>
@@ -731,7 +731,7 @@ export default function BlendedGMModeler() {
           </div>
           <button
             onClick={handleReset}
-            className="flex items-center gap-1.5 font-mono text-[10px] text-black/35 hover:text-[#C9A962] tracking-[0.12em] uppercase px-3 py-2 rounded-lg border border-[#C9A962]/20 hover:border-[#C9A962]/60 transition-all"
+            className="flex items-center gap-1.5 font-mono text-[10px] text-black/35 hover:text-[#B8860B] tracking-[0.12em] uppercase px-3 py-2 rounded-lg border border-[#B8860B]/50 hover:border-[#B8860B]/60 transition-all"
           >
             <RotateCcw className="w-3 h-3" />
             Reset All
@@ -750,9 +750,9 @@ export default function BlendedGMModeler() {
               formatDisplay={(v) => v + "%"}
               label="GM Target"
               sublabel="Idealized target achieved through scale and optimization"
-              accentColor="#C9A962"
+              accentColor="#B8860B"
             />
-            <div className="mt-4 pt-3 border-t border-[#C9A962]/12">
+            <div className="mt-4 pt-3 border-t border-[#B8860B]/12">
               <div className="flex items-center justify-between">
                 <span className="font-mono text-[9px] text-black/40 tracking-wider uppercase">Required MSRP at Target</span>
                 <span className="font-display text-sm font-bold text-black tabular-nums">
@@ -774,10 +774,10 @@ export default function BlendedGMModeler() {
               formatDisplay={fmtCurrency}
               label="List Price (MSRP)"
               sublabel="Anchor price — all channel discounts calculated from this"
-              accentColor="#C9A962"
+              accentColor="#B8860B"
             />
             {/* Show cascading prices preview */}
-            <div className="mt-4 pt-3 border-t border-[#C9A962]/12 grid grid-cols-3 gap-3">
+            <div className="mt-4 pt-3 border-t border-[#B8860B]/12 grid grid-cols-3 gap-3">
               {channelDefs.map((ch, i) => (
                 <div key={i} className="text-center">
                   <span className="font-mono text-[9px] text-black/40 tracking-wider uppercase block">{ch.shortName}</span>
@@ -804,10 +804,10 @@ export default function BlendedGMModeler() {
               accentColor="#1A1A1A"
             />
             {/* Show GM at list price */}
-            <div className="mt-4 pt-3 border-t border-[#C9A962]/12 flex items-center justify-between">
+            <div className="mt-4 pt-3 border-t border-[#B8860B]/12 flex items-center justify-between">
               <span className="font-mono text-[9px] text-black/30 tracking-wider uppercase">GM at Full List</span>
               <div className="flex items-center gap-2">
-                <span className="font-display text-sm font-bold tabular-nums" style={{ color: ((msrp - cogs) / msrp * 100) >= gmTarget ? "#C9A962" : "#D97706" }}>
+                <span className="font-display text-sm font-bold tabular-nums" style={{ color: ((msrp - cogs) / msrp * 100) >= gmTarget ? "#B8860B" : "#D97706" }}>
                   {fmtPct((msrp - cogs) / msrp * 100)}
                 </span>
                 <span className="font-mono text-[9px] text-black/30">({fmtCurrency(msrp - cogs)} margin)</span>
@@ -821,7 +821,7 @@ export default function BlendedGMModeler() {
       <div className="grid md:grid-cols-3 gap-3 mb-4">
         {channelDefs.map((ch, i) => {
           const m = channelMetrics[i];
-          const gmColor = m.gmPct >= gmTarget ? "#C9A962" : m.gmPct >= (gmTarget - 10) ? "#D97706" : "#DC2626";
+          const gmColor = m.gmPct >= gmTarget ? "#B8860B" : m.gmPct >= (gmTarget - 10) ? "#D97706" : "#DC2626";
 
           return (
             <motion.div
@@ -840,9 +840,9 @@ export default function BlendedGMModeler() {
                     <h4 className="font-display text-sm font-semibold text-black">{ch.name}</h4>
                   </div>
                   {ch.locked && (
-                    <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#C9A962]/10">
-                      <Lock className="w-3 h-3 text-[#C9A962]" />
-                      <span className="font-mono text-[8px] text-[#C9A962] tracking-wider uppercase">Locked</span>
+                    <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#B8860B]/10">
+                      <Lock className="w-3 h-3 text-[#B8860B]" />
+                      <span className="font-mono text-[8px] text-[#B8860B] tracking-wider uppercase">Locked</span>
                     </div>
                   )}
                 </div>
@@ -862,12 +862,12 @@ export default function BlendedGMModeler() {
 
                 {/* Price / Discount control */}
                 {ch.locked ? (
-                  <div className="p-3 rounded-xl bg-black/[0.02] border border-[#C9A962]/12 mb-4">
+                  <div className="p-3 rounded-xl bg-black/[0.02] border border-[#B8860B]/12 mb-4">
                     <div className="flex items-center justify-between">
                       <span className="font-mono text-[10px] text-black/40 uppercase tracking-[0.12em]">Selling Price</span>
                       <span className="font-display text-xl font-bold text-black tabular-nums">{fmtCurrency(prices[i])}</span>
                     </div>
-                    <p className="font-body text-[10px] text-[#C9A962]/70 mt-1">Full MSRP — no discounts permitted</p>
+                    <p className="font-body text-[10px] text-[#B8860B]/70 mt-1">Full MSRP — no discounts permitted</p>
                   </div>
                 ) : (
                   <div className="mb-4">
@@ -893,7 +893,7 @@ export default function BlendedGMModeler() {
                         formatDisplay={(v) => `${v}% off → ${fmtCurrency(Math.round(msrp * (1 - v / 100)))}`}
                         label="Avg Discount (Expected)"
                         sublabel={`Realistic avg — max allowed: ${ch.maxDiscountPct}% (floor: ${fmtCurrency(Math.round(msrp * (1 - ch.maxDiscountPct / 100)))})`}
-                        accentColor="#C9A962"
+                        accentColor="#B8860B"
                       />
                     )}
                   </div>
@@ -922,14 +922,14 @@ export default function BlendedGMModeler() {
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="rounded-xl border border-[#C9A962]/25 bg-white overflow-hidden"
+        className="rounded-xl border border-[#B8860B]/55 bg-white overflow-hidden"
       >
         <button
           onClick={() => setShowBreakdown(!showBreakdown)}
           className="w-full px-5 py-4 flex items-center justify-between hover:bg-black/[0.02] transition-all duration-200"
         >
           <div className="flex items-center gap-2.5">
-            <BarChart3 className="w-4 h-4 text-[#C9A962]" />
+            <BarChart3 className="w-4 h-4 text-[#B8860B]" />
             <h3 className="font-display text-sm font-semibold text-black">Revenue & Margin Breakdown</h3>
             <span className="font-mono text-[9px] text-black/35 tracking-wider ml-2">PER 1,000 UNITS</span>
           </div>
@@ -950,7 +950,7 @@ export default function BlendedGMModeler() {
               transition={{ duration: 0.2 }}
               className="overflow-hidden"
             >
-              <div className="px-6 pb-6 border-t border-[#C9A962]/15">
+              <div className="px-6 pb-6 border-t border-[#B8860B]/15">
                 <div className="pt-5">
                   {/* Stacked bar */}
                   <div className="h-8 rounded-full overflow-hidden flex mb-6">
@@ -975,7 +975,7 @@ export default function BlendedGMModeler() {
                   <div className="grid grid-cols-3 gap-0 divide-x divide-black/[0.05]">
                     {channelDefs.map((ch, i) => {
                       const m = channelMetrics[i];
-                      const gmColor = m.gmPct >= gmTarget ? "#C9A962" : m.gmPct >= (gmTarget - 10) ? "#D97706" : "#DC2626";
+                      const gmColor = m.gmPct >= gmTarget ? "#B8860B" : m.gmPct >= (gmTarget - 10) ? "#D97706" : "#DC2626";
                       return (
                         <div key={i} className="px-4 first:pl-0 last:pr-0">
                           <div className="flex items-center gap-2 mb-3">
@@ -1012,7 +1012,7 @@ export default function BlendedGMModeler() {
                   </div>
 
                   {/* Totals */}
-                  <div className="mt-5 pt-5 border-t border-[#C9A962]/20 flex items-end justify-between">
+                  <div className="mt-5 pt-5 border-t border-[#B8860B]/50 flex items-end justify-between">
                     <div className="flex items-center gap-8">
                       <div>
                         <span className="font-mono text-[9px] text-black/35 block uppercase tracking-wider">Total Revenue</span>

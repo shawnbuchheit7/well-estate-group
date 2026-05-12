@@ -3,8 +3,8 @@
  * Design: Boss's exact light mode system
  *   - bg-white / bg-[#FAFAF8] alternating sections
  *   - text-black primary, text-black/55 body, text-black/40 muted
- *   - #C9A962 gold for all accents, eyebrows, icons
- *   - border-[#C9A962]/35 cards, rounded-2xl
+ *   - #B8860B gold for all accents, eyebrows, icons
+ *   - border-[#B8860B]/65 cards, rounded-2xl
  *   - font-mono labels, font-display headings, font-body body
  *   - LightHero + SectionNav + fadeInUp/staggerContainer/scaleIn
  *
@@ -25,7 +25,7 @@ import LightHero from "@/components/LightHero";
 import { SectionNav } from "@/components/SectionNav";
 import { fadeInUp, staggerContainer, scaleIn } from "@/lib/animations";
 
-const GOLD = "#C9A962";
+const GOLD = "#B8860B";
 
 const sections = [
   { id: "hero",       label: "Overview"   },
@@ -40,7 +40,7 @@ const sections = [
 function SectionHeader({ eyebrow, title, body }: { eyebrow: string; title: string; body?: string }) {
   return (
     <motion.div className="text-center mb-14" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer}>
-      <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">{eyebrow}</motion.span>
+      <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">{eyebrow}</motion.span>
       <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-5 text-black">{title}</motion.h2>
       {body && <motion.p variants={fadeInUp} className="font-body text-base text-black/55 max-w-2xl mx-auto">{body}</motion.p>}
     </motion.div>
@@ -56,7 +56,7 @@ function AccordionCard({ title, subtitle, icon: Icon, color, children }: {
 }) {
   const [open, setOpen] = useState(false);
   return (
-    <motion.div variants={fadeInUp} className="bg-white border border-[#C9A962]/35 rounded-2xl overflow-hidden hover:border-[#C9A962]/60 hover:shadow-lg transition-all duration-300">
+    <motion.div variants={fadeInUp} className="bg-white border border-[#B8860B]/65 rounded-2xl overflow-hidden hover:border-[#B8860B]/60 hover:shadow-lg transition-all duration-300">
       <button onClick={() => setOpen(o => !o)} className="w-full flex items-center justify-between px-6 py-5 text-left">
         <div className="flex items-center gap-4">
           <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: `${color}15` }}>
@@ -72,7 +72,7 @@ function AccordionCard({ title, subtitle, icon: Icon, color, children }: {
       <AnimatePresence initial={false}>
         {open && (
           <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3, ease: "easeInOut" }} className="overflow-hidden">
-            <div className="px-6 pb-6 border-t border-[#C9A962]/20">{children}</div>
+            <div className="px-6 pb-6 border-t border-[#B8860B]/50">{children}</div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -82,7 +82,7 @@ function AccordionCard({ title, subtitle, icon: Icon, color, children }: {
 
 // ── Data ───────────────────────────────────────────────────────────────────
 const tiers = [
-  { tier: "Base",     range: "1–4 units/mo",   rate: "$150",  pct: "13.7%", monthly: "$150–$600",    color: "#C9A962", icon: Star    },
+  { tier: "Base",     range: "1–4 units/mo",   rate: "$150",  pct: "13.7%", monthly: "$150–$600",    color: "#B8860B", icon: Star    },
   { tier: "Silver",   range: "5–9 units/mo",   rate: "$175",  pct: "16.0%", monthly: "$875–$1,575",  color: "#94A3B8", icon: Award   },
   { tier: "Gold",     range: "10–24 units/mo", rate: "$200",  pct: "18.3%", monthly: "$2,000–$4,800", color: "#F59E0B", icon: Trophy  },
   { tier: "Platinum", range: "25+ units/mo",   rate: "$250",  pct: "22.8%", monthly: "$6,250+",       color: "#8B5CF6", icon: Mic2    },
@@ -228,7 +228,7 @@ export default function ZWAffiliateProgram() {
                     </div>
                   ))}
                 </div>
-                <div className="pt-3 border-t border-[#C9A962]/20 space-y-1.5">
+                <div className="pt-3 border-t border-[#B8860B]/50 space-y-1.5">
                   {track.items.map((item, j) => (
                     <div key={j} className="flex items-start gap-2">
                       <CheckCircle2 className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={{ color: track.color }} />
@@ -261,7 +261,7 @@ export default function ZWAffiliateProgram() {
               <motion.div
                 key={i} variants={scaleIn}
                 whileHover={{ y: -4, boxShadow: "0 16px 40px rgba(0,0,0,0.07)" }}
-                className="bg-white border border-[#C9A962]/35 rounded-2xl p-5 text-center hover:border-[#C9A962]/60 transition-all duration-300"
+                className="bg-white border border-[#B8860B]/65 rounded-2xl p-5 text-center hover:border-[#B8860B]/60 transition-all duration-300"
               >
                 <div className="w-12 h-12 rounded-full mx-auto mb-3 flex items-center justify-center" style={{ background: `${t.color}15` }}>
                   <t.icon className="w-6 h-6" style={{ color: t.color }} />
@@ -270,7 +270,7 @@ export default function ZWAffiliateProgram() {
                 <p className="font-display text-3xl font-bold text-black">{t.rate}</p>
                 <p className="font-mono text-[9px] text-black/35 mt-0.5">per unit</p>
                 <p className="font-body text-xs text-black/50 mt-2">{t.range}</p>
-                <div className="mt-3 pt-3 border-t border-[#C9A962]/25">
+                <div className="mt-3 pt-3 border-t border-[#B8860B]/55">
                   <p className="font-mono text-[9px] text-black/35 uppercase tracking-wider">Monthly Potential</p>
                   <p className="font-display text-sm font-semibold text-black mt-1">{t.monthly}</p>
                 </div>
@@ -283,13 +283,13 @@ export default function ZWAffiliateProgram() {
             className="max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           >
-            <div className="bg-white border border-[#C9A962]/35 rounded-2xl overflow-hidden">
+            <div className="bg-white border border-[#B8860B]/65 rounded-2xl overflow-hidden">
               <div className="bg-[#F5F4F1] px-6 py-3">
                 <p className="font-mono text-xs text-black">Earning Scenarios — Based on $1,095 DTC MSRP</p>
               </div>
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-[#C9A962]/25">
+                  <tr className="border-b border-[#B8860B]/55">
                     {["Units/Month", "Tier", "Commission/Unit", "Monthly Earnings", "Annual Earnings"].map(h => (
                       <th key={h} className="px-4 py-3 text-left font-mono text-[9px] text-black/35 uppercase tracking-wider">{h}</th>
                     ))}
@@ -300,11 +300,11 @@ export default function ZWAffiliateProgram() {
                     <tr
                       key={i}
                       onClick={() => setActiveScenario(activeScenario === i ? null : i)}
-                      className={`border-b border-[#C9A962]/20 cursor-pointer transition-colors ${activeScenario === i ? "bg-[#C9A962]/5" : "hover:bg-[#FAFAF8]"}`}
+                      className={`border-b border-[#B8860B]/50 cursor-pointer transition-colors ${activeScenario === i ? "bg-[#B8860B]/5" : "hover:bg-[#FAFAF8]"}`}
                     >
                       <td className="px-4 py-3 font-display text-base font-bold text-black">{row.units}</td>
                       <td className="px-4 py-3">
-                        <span className="font-mono text-[9px] px-2 py-1 rounded-full bg-[#C9A962]/10 text-[#C9A962]">{row.tier}</span>
+                        <span className="font-mono text-[9px] px-2 py-1 rounded-full bg-[#B8860B]/10 text-[#B8860B]">{row.tier}</span>
                       </td>
                       <td className="px-4 py-3 font-body text-sm text-black/70">
                         {tiers.find(t => t.tier === row.tier)?.rate}/unit
@@ -337,7 +337,7 @@ export default function ZWAffiliateProgram() {
               <motion.div
                 key={i} variants={scaleIn}
                 whileHover={{ y: -4, boxShadow: "0 16px 40px rgba(0,0,0,0.07)" }}
-                className="bg-white border border-[#C9A962]/35 rounded-2xl p-6 hover:border-[#C9A962]/60 transition-all duration-300"
+                className="bg-white border border-[#B8860B]/65 rounded-2xl p-6 hover:border-[#B8860B]/60 transition-all duration-300"
               >
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: `${method.color}15` }}>
@@ -352,17 +352,17 @@ export default function ZWAffiliateProgram() {
 
           {/* Attribution priority */}
           <motion.div
-            className="max-w-4xl mx-auto mt-8 p-6 bg-[#FAFAF8] border border-[#C9A962]/25 rounded-2xl"
+            className="max-w-4xl mx-auto mt-8 p-6 bg-[#FAFAF8] border border-[#B8860B]/55 rounded-2xl"
             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
           >
-            <p className="font-mono text-[10px] text-[#C9A962] uppercase tracking-[0.2em] mb-3">Attribution Priority Order</p>
+            <p className="font-mono text-[10px] text-[#B8860B] uppercase tracking-[0.2em] mb-3">Attribution Priority Order</p>
             <div className="flex flex-col md:flex-row items-center gap-3">
               {["1. Promo Code Used at Checkout", "2. UTM Link Click (30-day window)", "3. Cookie Attribution (30-day window)"].map((step, i, arr) => (
                 <div key={i} className="flex items-center gap-3">
-                  <div className="text-center px-4 py-2.5 bg-white border border-[#C9A962]/35 rounded-xl shadow-sm">
+                  <div className="text-center px-4 py-2.5 bg-white border border-[#B8860B]/65 rounded-xl shadow-sm">
                     <p className="font-body text-xs text-black/70">{step}</p>
                   </div>
-                  {i < arr.length - 1 && <ArrowRight className="w-4 h-4 text-[#C9A962] flex-shrink-0" />}
+                  {i < arr.length - 1 && <ArrowRight className="w-4 h-4 text-[#B8860B] flex-shrink-0" />}
                 </div>
               ))}
             </div>
@@ -386,7 +386,7 @@ export default function ZWAffiliateProgram() {
                 key={i}
                 initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                className="bg-white border border-[#C9A962]/35 rounded-2xl p-5 hover:border-[#C9A962]/50 hover:shadow-md transition-all duration-300"
+                className="bg-white border border-[#B8860B]/65 rounded-2xl p-5 hover:border-[#B8860B]/50 hover:shadow-md transition-all duration-300"
               >
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 rounded-full flex items-center justify-center text-white font-display text-sm font-bold flex-shrink-0" style={{ background: GOLD }}>
@@ -416,15 +416,15 @@ export default function ZWAffiliateProgram() {
             className="max-w-5xl mx-auto"
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           >
-            <div className="bg-white border border-[#C9A962]/35 rounded-2xl overflow-hidden">
+            <div className="bg-white border border-[#B8860B]/65 rounded-2xl overflow-hidden">
               <div className="bg-[#F5F4F1] px-6 py-3 flex items-center gap-2">
-                <Database className="w-4 h-4 text-[#C9A962]" />
+                <Database className="w-4 h-4 text-[#B8860B]" />
                 <span className="font-mono text-xs text-white">Salesforce Custom Object: Commission__c</span>
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
-                    <tr className="border-b border-[#C9A962]/25">
+                    <tr className="border-b border-[#B8860B]/55">
                       {["Object", "Field", "Type", "Description"].map(h => (
                         <th key={h} className="px-4 py-3 text-left font-mono text-[9px] text-black/35 uppercase tracking-wider">{h}</th>
                       ))}
@@ -432,8 +432,8 @@ export default function ZWAffiliateProgram() {
                   </thead>
                   <tbody>
                     {sfFields.map((row, i) => (
-                      <tr key={i} className={`border-b border-[#C9A962]/20 hover:bg-[#FAFAF8] transition-colors ${i % 2 === 0 ? "" : "bg-[#FAFAF8]/40"}`}>
-                        <td className="px-4 py-2.5 font-mono text-[10px] text-[#C9A962]">{row.object}</td>
+                      <tr key={i} className={`border-b border-[#B8860B]/50 hover:bg-[#FAFAF8] transition-colors ${i % 2 === 0 ? "" : "bg-[#FAFAF8]/40"}`}>
+                        <td className="px-4 py-2.5 font-mono text-[10px] text-[#B8860B]">{row.object}</td>
                         <td className="px-4 py-2.5 font-mono text-[10px] text-black/70">{row.field}</td>
                         <td className="px-4 py-2.5 font-mono text-[9px] text-black/40">{row.type}</td>
                         <td className="px-4 py-2.5 font-body text-xs text-black/55">{row.desc}</td>
@@ -450,7 +450,7 @@ export default function ZWAffiliateProgram() {
                 { title: "Zapier: Code Used → Commission Record", detail: "When a promo code is used at DTC checkout, Zapier creates a Commission__c record in Salesforce within 60 seconds. Fields populated: Partner_Code__c, Units_Sold__c, Commission_Rate__c, Month__c.", icon: Zap, color: "#FF4A00" },
                 { title: "Salesforce Flow: Monthly Payout Report", detail: "On the 1st of each month, a Salesforce Flow runs to aggregate all Commission__c records for the prior month, calculate totals, and email a payout summary to each partner and the WEG finance team.", icon: FileText, color: GOLD },
               ].map((auto, i) => (
-                <div key={i} className="bg-[#FAFAF8] border border-[#C9A962]/25 rounded-2xl p-5">
+                <div key={i} className="bg-[#FAFAF8] border border-[#B8860B]/55 rounded-2xl p-5">
                   <div className="flex items-center gap-3 mb-2">
                     <div className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: `${auto.color}15` }}>
                       <auto.icon className="w-4 h-4" style={{ color: auto.color }} />
@@ -481,7 +481,7 @@ export default function ZWAffiliateProgram() {
             {termsHighlights.map((term, i) => (
               <motion.div
                 key={i} variants={fadeInUp}
-                className="bg-white border border-[#C9A962]/35 rounded-2xl p-5 hover:border-[#C9A962]/50 hover:shadow-md transition-all duration-300"
+                className="bg-white border border-[#B8860B]/65 rounded-2xl p-5 hover:border-[#B8860B]/50 hover:shadow-md transition-all duration-300"
               >
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: `${GOLD}15` }}>

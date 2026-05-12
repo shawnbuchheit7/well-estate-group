@@ -119,7 +119,7 @@ const pillars = [
     title: "The Rollout Mechanism",
     subtitle: "Anti-Extension",
     icon: Activity,
-    color: "#C9A962",
+    color: "#B8860B",
     science: "EMG studies consistently rank the rollout pattern at the top of the hierarchy for core muscle activation. Research published in the Journal of Human Kinetics demonstrated activation levels exceeding 60% of maximal voluntary contraction — dramatically outperforming traditional crunches.",
     why: "The rollout is an anti-extension exercise. Instead of simply flexing the spine, the core must fire maximally to prevent hyperextension as the body lengthens. This eccentric loading recruits more muscle fibers and builds functional stability that translates directly to athletic performance and injury prevention.",
     citations: ["Journal of Human Kinetics, 2017", "American Council on Exercise, 2014"],
@@ -130,7 +130,7 @@ const pillars = [
     title: "Added Resistance",
     subtitle: "Progressive Overload",
     icon: TrendingUp,
-    color: "#C9A962",
+    color: "#B8860B",
     science: "The abdominal muscles are skeletal muscles identical in composition to the biceps or chest — they require progressive overload to grow. Studies show that without adding external resistance, users build endurance rather than true strength or hypertrophy. Greatest rectus abdominis activity occurs when external loads are applied.",
     why: "ZeroWheel solves the \"bodyweight ceiling\" problem with a motor providing up to 40 lbs of magnetic resistance. Users can treat core training like any other major lift — systematically increasing load to force continuous adaptation and growth.",
     citations: ["RP Strength, 2024", "International Journal of Environmental Research and Public Health, 2020"],
@@ -141,7 +141,7 @@ const pillars = [
     title: "Exercise Variance",
     subtitle: "Adaptive Resistance Prevention",
     icon: Layers,
-    color: "#C9A962",
+    color: "#B8860B",
     science: "Scientific literature confirms that exercise variation is critical for long-term muscular development. A phenomenon known as 'adaptive resistance' occurs when the body becomes so efficient at a specific movement that it stops adapting. Systematic reviews show that varying exercises promotes superior hypertrophy.",
     why: "A traditional ab roller does one thing. ZeroWheel enables rollouts, planks, pikes, knee tucks, and rotational oblique movements. By changing the angle, load, and movement pattern, ZeroWheel stimulates the core from every vector — preventing plateaus and ensuring continuous progress.",
     citations: ["Sports Medicine, 2022", "PLoS One, 2019"],
@@ -155,7 +155,7 @@ const lobPlaybooks = [
     icon: Star,
     lob: "Private Clubs",
     tier: "Tier 1 — Launch Priority",
-    tierColor: "#C9A962",
+    tierColor: "#B8860B",
     marketCategory: "Vertical",
     pricing: "$825/unit (max 25% off list)",
     buyerPersona: "The Fitness Director at luxury private clubs (country clubs, athletic clubs, social clubs), influenced by the Head Golf Professional, Tennis Pro, GM, and Board of Directors. Decision-maker focused on member retention, exclusivity, and delivering personalized, technology-driven experiences.",
@@ -180,7 +180,7 @@ const lobPlaybooks = [
     icon: Dumbbell,
     lob: "Commercial Fitness Clubs",
     tier: "Tier 1 — Launch Priority",
-    tierColor: "#C9A962",
+    tierColor: "#B8860B",
     marketCategory: "Commercial",
     pricing: "$695/unit (max 40% off list)",
     buyerPersona: "Corporate procurement teams and owner/operators at commercial fitness chains (Equinox, Life Time, Bay Club, Rochester Athletic Club). Decision-makers focused on equipment durability, member engagement, group class programming, and revenue per square foot.",
@@ -206,7 +206,7 @@ const lobPlaybooks = [
     icon: Stethoscope,
     lob: "Medical & Rehabilitation",
     tier: "Tier 1 — Launch Priority",
-    tierColor: "#C9A962",
+    tierColor: "#B8860B",
     marketCategory: "Vertical",
     pricing: "$825/unit (max 25% off list)",
     buyerPersona: "The Clinical Rehabilitation Director / Lead Physical Therapist and owner/operators at sports medicine clinics and rehabilitation centers. Decision-makers focused on patient safety, clinical efficacy, objective data tracking, and insurance reimbursement potential.",
@@ -231,7 +231,7 @@ const lobPlaybooks = [
     icon: Package,
     lob: "Direct-to-Consumer",
     tier: "Tier 1 — Launch Priority",
-    tierColor: "#C9A962",
+    tierColor: "#B8860B",
     marketCategory: "DTC",
     pricing: "$1,095/unit (full MSRP)",
     buyerPersona: "The Fitness Tech Enthusiast / Home Gym Optimizer (HHI $200K+). Values premium design, connected features, and science-backed training. Currently owns or has considered Peloton, Tonal, or Mirror.",
@@ -410,7 +410,7 @@ export default function ZWProductAnalysis() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Product Intelligence
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-5 text-black">
@@ -430,9 +430,9 @@ export default function ZWProductAnalysis() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.06 }}
-                className="p-4 rounded-2xl border border-[#C9A962]/40 bg-white text-center hover:border-[#C9A962]/40 hover:shadow-md transition-all duration-300"
+                className="p-4 rounded-2xl border border-[#B8860B]/70 bg-white text-center hover:border-[#B8860B]/70 hover:shadow-md transition-all duration-300"
               >
-                <spec.icon className="w-5 h-5 text-[#C9A962] mx-auto mb-2" />
+                <spec.icon className="w-5 h-5 text-[#B8860B] mx-auto mb-2" />
                 <p className="font-display text-lg font-bold text-black">{spec.value}</p>
                 <p className="font-mono text-[9px] text-black/40 tracking-wider uppercase">{spec.label}</p>
                 <p className="font-body text-[10px] text-black/35 mt-0.5">{spec.sub}</p>
@@ -448,7 +448,7 @@ export default function ZWProductAnalysis() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Four Intelligent Modes
             </motion.span>
             <motion.h3 variants={fadeInUp} className="font-display text-2xl md:text-3xl font-medium mt-4 mb-3 text-black">
@@ -467,7 +467,7 @@ export default function ZWProductAnalysis() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="p-6 rounded-2xl border border-[#C9A962]/40 bg-white hover:shadow-lg transition-all duration-300"
+                className="p-6 rounded-2xl border border-[#B8860B]/70 bg-white hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: `${mode.color}15` }}>
@@ -484,7 +484,7 @@ export default function ZWProductAnalysis() {
                   </div>
                 </div>
                 <p className="font-body text-sm text-black/60 leading-relaxed mb-3">{mode.description}</p>
-                <div className="pt-3 border-t border-[#C9A962]/20">
+                <div className="pt-3 border-t border-[#B8860B]/50">
                   <p className="font-mono text-[9px] text-black/35 tracking-wider uppercase mb-1">Ideal For</p>
                   <p className="font-body text-xs text-black/50">{mode.audience}</p>
                 </div>
@@ -498,7 +498,7 @@ export default function ZWProductAnalysis() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="rounded-2xl border border-[#C9A962]/40 overflow-hidden"
+              className="rounded-2xl border border-[#B8860B]/70 overflow-hidden"
             >
               <div className="bg-[#F5F4F1] p-6">
                 <h3 className="font-display text-xl font-semibold text-black mb-1">Core Strength: The Foundation</h3>
@@ -514,7 +514,7 @@ export default function ZWProductAnalysis() {
                   <div key={i} className="p-6">
                     <h4 className="font-display text-sm font-semibold text-black mb-2">{item.title}</h4>
                     <p className="font-body text-xs text-black/55 leading-relaxed mb-2">{item.desc}</p>
-                    <span className="font-mono text-[9px] text-[#C9A962] tracking-wider uppercase">{item.source}</span>
+                    <span className="font-mono text-[9px] text-[#B8860B] tracking-wider uppercase">{item.source}</span>
                   </div>
                 ))}
               </div>
@@ -533,7 +533,7 @@ export default function ZWProductAnalysis() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Science-Backed Positioning
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-5 text-black">
@@ -552,18 +552,18 @@ export default function ZWProductAnalysis() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.15 }}
-                className="rounded-2xl border border-[#C9A962]/40 bg-white overflow-hidden hover:shadow-lg transition-all duration-300"
+                className="rounded-2xl border border-[#B8860B]/70 bg-white overflow-hidden hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex flex-col md:flex-row">
                   <div className="md:w-24 bg-[#F5F4F1] flex items-center justify-center py-6 md:py-0">
-                    <span className="font-display text-4xl font-bold text-[#C9A962]">{pillar.number}</span>
+                    <span className="font-display text-4xl font-bold text-[#B8860B]">{pillar.number}</span>
                   </div>
                   <div className="flex-1 p-8">
                     <div className="flex items-center gap-3 mb-1">
-                      <pillar.icon className="w-6 h-6 text-[#C9A962]" />
+                      <pillar.icon className="w-6 h-6 text-[#B8860B]" />
                       <h3 className="font-display text-xl font-semibold text-black">{pillar.title}</h3>
                     </div>
-                    <p className="font-mono text-[10px] text-[#C9A962] tracking-wider uppercase mb-4">{pillar.subtitle}</p>
+                    <p className="font-mono text-[10px] text-[#B8860B] tracking-wider uppercase mb-4">{pillar.subtitle}</p>
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
                         <p className="font-mono text-[10px] text-black/40 tracking-wider uppercase mb-2">The Science</p>
@@ -577,8 +577,8 @@ export default function ZWProductAnalysis() {
                       <div>
                         <p className="font-mono text-[10px] text-black/40 tracking-wider uppercase mb-2">Why It Matters</p>
                         <p className="font-body text-sm text-black/65 leading-relaxed mb-4">{pillar.why}</p>
-                        <div className="p-3 rounded-xl bg-[#C9A962]/5 border border-[#C9A962]/20">
-                          <p className="font-mono text-[9px] text-[#C9A962] tracking-wider uppercase mb-1">Marketing Angle</p>
+                        <div className="p-3 rounded-xl bg-[#B8860B]/5 border border-[#B8860B]/50">
+                          <p className="font-mono text-[9px] text-[#B8860B] tracking-wider uppercase mb-1">Marketing Angle</p>
                           <p className="font-body text-sm text-black/80 italic">{pillar.marketingAngle}</p>
                         </div>
                       </div>
@@ -603,7 +603,7 @@ export default function ZWProductAnalysis() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Competitive Positioning
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-5 text-black">
@@ -619,7 +619,7 @@ export default function ZWProductAnalysis() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="rounded-2xl border border-[#C9A962]/40 overflow-hidden"
+              className="rounded-2xl border border-[#B8860B]/70 overflow-hidden"
             >
               <table className="w-full">
                 <thead>
@@ -637,18 +637,18 @@ export default function ZWProductAnalysis() {
                     { product: "Bodyweight Circuits", rollout: false, resistance: false, variance: true },
                     { product: "Cable Machines", rollout: false, resistance: true, variance: true },
                   ].map((row, i) => (
-                    <tr key={i} className="border-b border-[#C9A962]/20">
+                    <tr key={i} className="border-b border-[#B8860B]/50">
                       <td className="p-4 font-body text-sm text-black/70 font-medium">{row.product}</td>
                       <td className="p-4 text-center">{row.rollout ? <CheckCircle2 className="w-5 h-5 text-emerald-500 mx-auto" /> : <span className="text-black/20">—</span>}</td>
                       <td className="p-4 text-center">{row.resistance ? <CheckCircle2 className="w-5 h-5 text-emerald-500 mx-auto" /> : <span className="text-black/20">—</span>}</td>
                       <td className="p-4 text-center">{row.variance ? <CheckCircle2 className="w-5 h-5 text-emerald-500 mx-auto" /> : <span className="text-black/20">—</span>}</td>
                     </tr>
                   ))}
-                  <tr className="bg-[#C9A962]/10 border-t-2 border-[#C9A962]">
+                  <tr className="bg-[#B8860B]/10 border-t-2 border-[#B8860B]">
                     <td className="p-4 font-display text-sm text-black font-bold">ZeroWheel</td>
-                    <td className="p-4 text-center"><CheckCircle2 className="w-5 h-5 text-[#C9A962] mx-auto" /></td>
-                    <td className="p-4 text-center"><CheckCircle2 className="w-5 h-5 text-[#C9A962] mx-auto" /></td>
-                    <td className="p-4 text-center"><CheckCircle2 className="w-5 h-5 text-[#C9A962] mx-auto" /></td>
+                    <td className="p-4 text-center"><CheckCircle2 className="w-5 h-5 text-[#B8860B] mx-auto" /></td>
+                    <td className="p-4 text-center"><CheckCircle2 className="w-5 h-5 text-[#B8860B] mx-auto" /></td>
+                    <td className="p-4 text-center"><CheckCircle2 className="w-5 h-5 text-[#B8860B] mx-auto" /></td>
                   </tr>
                 </tbody>
               </table>
@@ -670,7 +670,7 @@ export default function ZWProductAnalysis() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Market Validation
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-5 text-black">
@@ -689,14 +689,14 @@ export default function ZWProductAnalysis() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="p-6 rounded-2xl border border-[#C9A962]/40 bg-white hover:shadow-lg transition-all duration-300"
+                className="p-6 rounded-2xl border border-[#B8860B]/70 bg-white hover:shadow-lg transition-all duration-300"
               >
-                <Quote className="w-6 h-6 text-[#C9A962]/30 mb-3" />
+                <Quote className="w-6 h-6 text-[#B8860B]/30 mb-3" />
                 <p className="font-body text-sm text-black/75 italic leading-relaxed mb-4">"{t.quote}"</p>
-                <div className="pt-3 border-t border-[#C9A962]/20">
+                <div className="pt-3 border-t border-[#B8860B]/50">
                   <p className="font-display text-sm font-semibold text-black">{t.name}</p>
                   <p className="font-body text-xs text-black/50 mt-0.5">{t.title}</p>
-                  <span className="inline-block mt-2 font-mono text-[9px] text-[#C9A962] tracking-wider uppercase px-2 py-0.5 rounded-full bg-[#C9A962]/10">
+                  <span className="inline-block mt-2 font-mono text-[9px] text-[#B8860B] tracking-wider uppercase px-2 py-0.5 rounded-full bg-[#B8860B]/10">
                     {t.category}
                   </span>
                 </div>
@@ -718,7 +718,7 @@ export default function ZWProductAnalysis() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Go-To-Market Playbook
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-5 text-black">
@@ -735,11 +735,11 @@ export default function ZWProductAnalysis() {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="rounded-2xl border border-[#C9A962]/40 overflow-hidden"
+              className="rounded-2xl border border-[#B8860B]/70 overflow-hidden"
             >
               <div className="bg-[#F5F4F1] px-6 py-4 flex items-center justify-between">
                 <span className="font-display text-sm font-semibold text-black">Pricing Structure</span>
-                <span className="font-mono text-xs text-[#C9A962]">MSRP $1,095 — All prices end in 5</span>
+                <span className="font-mono text-xs text-[#B8860B]">MSRP $1,095 — All prices end in 5</span>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-black/[0.06]">
                 {[
@@ -761,11 +761,11 @@ export default function ZWProductAnalysis() {
           {/* Priority Tier Legend */}
           <div className="flex flex-wrap justify-center gap-4 mb-10 max-w-5xl mx-auto">
             {[
-              { label: "Tier 1 — Launch Priority", color: "#C9A962", count: 4 },
+              { label: "Tier 1 — Launch Priority", color: "#B8860B", count: 4 },
               { label: "Tier 2 — Growth Phase", color: "#888", count: 3 },
               { label: "Tier 3 — Scale Phase", color: "#555", count: 2 },
             ].map((tier, i) => (
-              <div key={i} className="flex items-center gap-2 px-4 py-2 rounded-full border border-[#C9A962]/25 bg-white">
+              <div key={i} className="flex items-center gap-2 px-4 py-2 rounded-full border border-[#B8860B]/55 bg-white">
                 <div className="w-3 h-3 rounded-full" style={{ backgroundColor: tier.color }} />
                 <span className="font-mono text-[10px] tracking-wider uppercase text-black/60">{tier.label}</span>
                 <span className="font-display text-xs font-bold text-black/40">({tier.count})</span>
@@ -790,12 +790,12 @@ export default function ZWProductAnalysis() {
                 }}
                 className={`p-5 rounded-2xl border text-left transition-all duration-300 hover:shadow-lg ${
                   expandedLob === i
-                    ? "border-[#C9A962] bg-[#C9A962]/5 shadow-md"
-                    : "border-[#C9A962]/40 bg-white hover:border-[#C9A962]/40"
+                    ? "border-[#B8860B] bg-[#B8860B]/5 shadow-md"
+                    : "border-[#B8860B]/70 bg-white hover:border-[#B8860B]/70"
                 }`}
               >
                 <div className="flex items-center justify-between mb-3">
-                  <lob.icon className="w-7 h-7 text-[#C9A962]" />
+                  <lob.icon className="w-7 h-7 text-[#B8860B]" />
                   <span
                     className="font-mono text-[9px] tracking-wider uppercase px-2 py-0.5 rounded-full"
                     style={{ backgroundColor: `${lob.tierColor}15`, color: lob.tierColor }}
@@ -805,7 +805,7 @@ export default function ZWProductAnalysis() {
                 </div>
                 <h3 className="font-display text-sm font-semibold text-black mb-1">{lob.lob}</h3>
                 <p className="font-mono text-[10px] text-black/40">{lob.pricing}</p>
-                <div className="flex items-center gap-1 mt-3 text-[#C9A962]">
+                <div className="flex items-center gap-1 mt-3 text-[#B8860B]">
                   <span className="font-mono text-[10px] tracking-wider uppercase">View Playbook</span>
                   <ArrowRight className="w-3 h-3" />
                 </div>
@@ -825,7 +825,7 @@ export default function ZWProductAnalysis() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Detailed Playbooks
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-5 text-black">
@@ -846,8 +846,8 @@ export default function ZWProductAnalysis() {
                 transition={{ delay: i * 0.03 }}
                 className={`rounded-2xl border overflow-hidden transition-all duration-300 ${
                   expandedLob === i
-                    ? "border-[#C9A962] shadow-lg"
-                    : "border-[#C9A962]/40 hover:border-[#C9A962]/40"
+                    ? "border-[#B8860B] shadow-lg"
+                    : "border-[#B8860B]/70 hover:border-[#B8860B]/70"
                 }`}
               >
                 {/* Header (always visible) */}
@@ -856,8 +856,8 @@ export default function ZWProductAnalysis() {
                   className="w-full flex items-center justify-between p-6 bg-white hover:bg-[#FAFAF8] transition-colors text-left"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-[#C9A962]/10 flex items-center justify-center flex-shrink-0">
-                      <lob.icon className="w-5 h-5 text-[#C9A962]" />
+                    <div className="w-10 h-10 rounded-xl bg-[#B8860B]/10 flex items-center justify-center flex-shrink-0">
+                      <lob.icon className="w-5 h-5 text-[#B8860B]" />
                     </div>
                     <div>
                       <h3 className="font-display text-lg font-semibold text-black">{lob.lob}</h3>
@@ -873,7 +873,7 @@ export default function ZWProductAnalysis() {
                     </div>
                   </div>
                   {expandedLob === i ? (
-                    <ChevronUp className="w-5 h-5 text-[#C9A962] flex-shrink-0" />
+                    <ChevronUp className="w-5 h-5 text-[#B8860B] flex-shrink-0" />
                   ) : (
                     <ChevronDown className="w-5 h-5 text-black/30 flex-shrink-0" />
                   )}
@@ -889,20 +889,20 @@ export default function ZWProductAnalysis() {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <div className="px-6 pb-8 bg-white border-t border-[#C9A962]/20">
+                      <div className="px-6 pb-8 bg-white border-t border-[#B8860B]/50">
                         {/* Row 1: Buyer Persona + Positioning */}
                         <div className="grid md:grid-cols-2 gap-6 mt-6">
-                          <div className="p-5 rounded-xl bg-[#FAFAF8] border border-[#C9A962]/25">
+                          <div className="p-5 rounded-xl bg-[#FAFAF8] border border-[#B8860B]/55">
                             <div className="flex items-center gap-2 mb-3">
-                              <UserCheck className="w-4 h-4 text-[#C9A962]" />
-                              <p className="font-mono text-[10px] text-[#C9A962] tracking-wider uppercase">Target Buyer Persona</p>
+                              <UserCheck className="w-4 h-4 text-[#B8860B]" />
+                              <p className="font-mono text-[10px] text-[#B8860B] tracking-wider uppercase">Target Buyer Persona</p>
                             </div>
                             <p className="font-body text-sm text-black/70 leading-relaxed">{lob.buyerPersona}</p>
                           </div>
-                          <div className="p-5 rounded-xl bg-[#FAFAF8] border border-[#C9A962]/25">
+                          <div className="p-5 rounded-xl bg-[#FAFAF8] border border-[#B8860B]/55">
                             <div className="flex items-center gap-2 mb-3">
-                              <Crosshair className="w-4 h-4 text-[#C9A962]" />
-                              <p className="font-mono text-[10px] text-[#C9A962] tracking-wider uppercase">Core Positioning</p>
+                              <Crosshair className="w-4 h-4 text-[#B8860B]" />
+                              <p className="font-mono text-[10px] text-[#B8860B] tracking-wider uppercase">Core Positioning</p>
                             </div>
                             <p className="font-body text-sm text-black/70 leading-relaxed">{lob.positioning}</p>
                           </div>
@@ -910,29 +910,29 @@ export default function ZWProductAnalysis() {
 
                         {/* Row 1.5: Pain Points + Key Selling Points */}
                         <div className="grid md:grid-cols-2 gap-6 mt-6">
-                          <div className="p-5 rounded-xl bg-[#FAFAF8] border border-[#C9A962]/25">
+                          <div className="p-5 rounded-xl bg-[#FAFAF8] border border-[#B8860B]/55">
                             <div className="flex items-center gap-2 mb-3">
-                              <AlertTriangle className="w-4 h-4 text-[#C9A962]" />
-                              <p className="font-mono text-[10px] text-[#C9A962] tracking-wider uppercase">Pain Points</p>
+                              <AlertTriangle className="w-4 h-4 text-[#B8860B]" />
+                              <p className="font-mono text-[10px] text-[#B8860B] tracking-wider uppercase">Pain Points</p>
                             </div>
                             <div className="space-y-2">
                               {lob.painPoints.map((point, j) => (
                                 <div key={j} className="flex items-start gap-2 text-sm text-black/65">
-                                  <span className="text-[#C9A962] mt-1 flex-shrink-0">•</span>
+                                  <span className="text-[#B8860B] mt-1 flex-shrink-0">•</span>
                                   {point}
                                 </div>
                               ))}
                             </div>
                           </div>
-                          <div className="p-5 rounded-xl bg-[#FAFAF8] border border-[#C9A962]/25">
+                          <div className="p-5 rounded-xl bg-[#FAFAF8] border border-[#B8860B]/55">
                             <div className="flex items-center gap-2 mb-3">
-                              <Star className="w-4 h-4 text-[#C9A962]" />
-                              <p className="font-mono text-[10px] text-[#C9A962] tracking-wider uppercase">Key Selling Points</p>
+                              <Star className="w-4 h-4 text-[#B8860B]" />
+                              <p className="font-mono text-[10px] text-[#B8860B] tracking-wider uppercase">Key Selling Points</p>
                             </div>
                             <div className="space-y-2">
                               {lob.keySellingPoints.map((point, j) => (
                                 <div key={j} className="flex items-start gap-2 text-sm text-black/65">
-                                  <CheckCircle2 className="w-3.5 h-3.5 text-[#C9A962] mt-0.5 flex-shrink-0" />
+                                  <CheckCircle2 className="w-3.5 h-3.5 text-[#B8860B] mt-0.5 flex-shrink-0" />
                                   {point}
                                 </div>
                               ))}
@@ -943,12 +943,12 @@ export default function ZWProductAnalysis() {
                         {/* Row 2: Pillar-Specific Messaging */}
                         <div className="mt-6">
                           <div className="flex items-center gap-2 mb-4">
-                            <MessageSquare className="w-4 h-4 text-[#C9A962]" />
-                            <p className="font-mono text-[10px] text-[#C9A962] tracking-wider uppercase">Pillar-Specific Messaging</p>
+                            <MessageSquare className="w-4 h-4 text-[#B8860B]" />
+                            <p className="font-mono text-[10px] text-[#B8860B] tracking-wider uppercase">Pillar-Specific Messaging</p>
                           </div>
                           <div className="grid md:grid-cols-3 gap-4">
                             {lob.messaging.map((msg, j) => (
-                              <div key={j} className="p-4 rounded-xl bg-[#FAFAF8] border border-[#C9A962]/25">
+                              <div key={j} className="p-4 rounded-xl bg-[#FAFAF8] border border-[#B8860B]/55">
                                 <p className="font-mono text-[9px] text-black/40 tracking-wider uppercase mb-2">Pillar {j + 1}: {msg.pillar}</p>
                                 <p className="font-body text-sm text-black/75 italic leading-relaxed">{msg.angle}</p>
                               </div>
@@ -960,13 +960,13 @@ export default function ZWProductAnalysis() {
                         <div className="grid md:grid-cols-2 gap-6 mt-6">
                           <div>
                             <div className="flex items-center gap-2 mb-3">
-                              <Megaphone className="w-4 h-4 text-[#C9A962]" />
-                              <p className="font-mono text-[10px] text-[#C9A962] tracking-wider uppercase">Marketing Channels & Tactics</p>
+                              <Megaphone className="w-4 h-4 text-[#B8860B]" />
+                              <p className="font-mono text-[10px] text-[#B8860B] tracking-wider uppercase">Marketing Channels & Tactics</p>
                             </div>
                             <div className="space-y-2">
                               {lob.channels.map((channel, j) => (
                                 <div key={j} className="flex items-start gap-2 text-sm text-black/65">
-                                  <ArrowRight className="w-3.5 h-3.5 text-[#C9A962] mt-0.5 flex-shrink-0" />
+                                  <ArrowRight className="w-3.5 h-3.5 text-[#B8860B] mt-0.5 flex-shrink-0" />
                                   {channel}
                                 </div>
                               ))}
@@ -974,8 +974,8 @@ export default function ZWProductAnalysis() {
                           </div>
                           <div className="p-5 rounded-xl bg-[#F5F4F1] text-black">
                             <div className="flex items-center gap-2 mb-3">
-                              <Target className="w-4 h-4 text-[#C9A962]" />
-                              <p className="font-mono text-[10px] text-[#C9A962] tracking-wider uppercase">Sales Motion</p>
+                              <Target className="w-4 h-4 text-[#B8860B]" />
+                              <p className="font-mono text-[10px] text-[#B8860B] tracking-wider uppercase">Sales Motion</p>
                             </div>
                             <p className="font-body text-sm text-white/80 leading-relaxed">{lob.salesMotion}</p>
                           </div>
@@ -984,14 +984,14 @@ export default function ZWProductAnalysis() {
                         {/* Row 4: Objection Handling */}
                         <div className="mt-6">
                           <div className="flex items-center gap-2 mb-4">
-                            <AlertTriangle className="w-4 h-4 text-[#C9A962]" />
-                            <p className="font-mono text-[10px] text-[#C9A962] tracking-wider uppercase">Objection Handling</p>
+                            <AlertTriangle className="w-4 h-4 text-[#B8860B]" />
+                            <p className="font-mono text-[10px] text-[#B8860B] tracking-wider uppercase">Objection Handling</p>
                           </div>
                           <div className="space-y-3">
                             {lob.objections.map((obj, j) => (
-                              <div key={j} className="p-4 rounded-xl border border-[#C9A962]/25 bg-[#FAFAF8]">
+                              <div key={j} className="p-4 rounded-xl border border-[#B8860B]/55 bg-[#FAFAF8]">
                                 <p className="font-display text-sm font-semibold text-black/80 mb-2">{obj.objection}</p>
-                                <p className="font-body text-sm text-black/60 leading-relaxed pl-4 border-l-2 border-[#C9A962]">{obj.response}</p>
+                                <p className="font-body text-sm text-black/60 leading-relaxed pl-4 border-l-2 border-[#B8860B]">{obj.response}</p>
                               </div>
                             ))}
                           </div>
@@ -1000,12 +1000,12 @@ export default function ZWProductAnalysis() {
                         {/* Row 5: KPIs */}
                         <div className="mt-6">
                           <div className="flex items-center gap-2 mb-3">
-                            <BarChart3 className="w-4 h-4 text-[#C9A962]" />
-                            <p className="font-mono text-[10px] text-[#C9A962] tracking-wider uppercase">Success Metrics & KPIs</p>
+                            <BarChart3 className="w-4 h-4 text-[#B8860B]" />
+                            <p className="font-mono text-[10px] text-[#B8860B] tracking-wider uppercase">Success Metrics & KPIs</p>
                           </div>
                           <div className="flex flex-wrap gap-2">
                             {lob.kpis.map((kpi, j) => (
-                              <span key={j} className="font-body text-xs text-black/60 bg-[#FAFAF8] border border-[#C9A962]/25 px-3 py-1.5 rounded-full">
+                              <span key={j} className="font-body text-xs text-black/60 bg-[#FAFAF8] border border-[#B8860B]/55 px-3 py-1.5 rounded-full">
                                 {kpi}
                               </span>
                             ))}
@@ -1033,7 +1033,7 @@ export default function ZWProductAnalysis() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Strategic Advantages
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-5 text-black">
@@ -1060,13 +1060,13 @@ export default function ZWProductAnalysis() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="p-6 rounded-2xl border border-[#C9A962]/40 bg-white hover:border-[#C9A962]/40 hover:shadow-lg transition-all duration-300"
+                className="p-6 rounded-2xl border border-[#B8860B]/70 bg-white hover:border-[#B8860B]/70 hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-[#C9A962]/10 flex items-center justify-center">
-                    <point.icon className="w-5 h-5 text-[#C9A962]" />
+                  <div className="w-10 h-10 rounded-xl bg-[#B8860B]/10 flex items-center justify-center">
+                    <point.icon className="w-5 h-5 text-[#B8860B]" />
                   </div>
-                  <span className="font-display text-xs font-bold text-[#C9A962]">0{i + 1}</span>
+                  <span className="font-display text-xs font-bold text-[#B8860B]">0{i + 1}</span>
                 </div>
                 <h3 className="font-display text-lg font-semibold text-black mb-2">{point.title}</h3>
                 <p className="font-body text-sm text-black/60 leading-relaxed">{point.desc}</p>
@@ -1086,7 +1086,7 @@ export default function ZWProductAnalysis() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Network Effects
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-5 text-black">
@@ -1126,20 +1126,20 @@ export default function ZWProductAnalysis() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="flex items-start gap-5 p-6 rounded-2xl border border-[#C9A962]/40 bg-white hover:shadow-lg transition-all duration-300"
+                className="flex items-start gap-5 p-6 rounded-2xl border border-[#B8860B]/70 bg-white hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex flex-col items-center gap-1 flex-shrink-0 pt-1">
-                  <div className="w-8 h-8 rounded-full bg-[#C9A962]/10 flex items-center justify-center">
-                    <Zap className="w-4 h-4 text-[#C9A962]" />
+                  <div className="w-8 h-8 rounded-full bg-[#B8860B]/10 flex items-center justify-center">
+                    <Zap className="w-4 h-4 text-[#B8860B]" />
                   </div>
-                  <div className="w-px h-8 bg-[#C9A962]/20" />
-                  <ArrowRight className="w-4 h-4 text-[#C9A962]" />
+                  <div className="w-px h-8 bg-[#B8860B]/20" />
+                  <ArrowRight className="w-4 h-4 text-[#B8860B]" />
                 </div>
                 <div>
                   <div className="flex items-center gap-2 mb-1">
                     <span className="font-display text-sm font-bold text-black">{synergy.from}</span>
-                    <ArrowRight className="w-3 h-3 text-[#C9A962]" />
-                    <span className="font-mono text-xs text-[#C9A962]">{synergy.to}</span>
+                    <ArrowRight className="w-3 h-3 text-[#B8860B]" />
+                    <span className="font-mono text-xs text-[#B8860B]">{synergy.to}</span>
                   </div>
                   <p className="font-body text-sm text-black/60 leading-relaxed">{synergy.effect}</p>
                 </div>
@@ -1161,7 +1161,7 @@ export default function ZWProductAnalysis() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               WEG Recommendations
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-5 text-black">
@@ -1214,17 +1214,17 @@ export default function ZWProductAnalysis() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="p-8 rounded-2xl border border-[#C9A962]/40 bg-white hover:shadow-lg transition-all duration-300"
+                className="p-8 rounded-2xl border border-[#B8860B]/70 bg-white hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex items-start gap-5">
                   <div className="w-12 h-12 rounded-xl bg-[#F5F4F1] flex items-center justify-center flex-shrink-0">
-                    <span className="font-display text-lg font-bold text-[#C9A962]">{rec.priority}</span>
+                    <span className="font-display text-lg font-bold text-[#B8860B]">{rec.priority}</span>
                   </div>
                   <div className="flex-1">
                     <h3 className="font-display text-lg font-semibold text-black mb-3">{rec.title}</h3>
                     <p className="font-body text-sm text-black/65 leading-relaxed mb-4">{rec.description}</p>
-                    <div className="p-4 rounded-xl bg-[#C9A962]/5 border border-[#C9A962]/20">
-                      <p className="font-mono text-[9px] text-[#C9A962] tracking-wider uppercase mb-1">Recommended Action</p>
+                    <div className="p-4 rounded-xl bg-[#B8860B]/5 border border-[#B8860B]/50">
+                      <p className="font-mono text-[9px] text-[#B8860B] tracking-wider uppercase mb-1">Recommended Action</p>
                       <p className="font-body text-sm text-black/75">{rec.action}</p>
                     </div>
                   </div>

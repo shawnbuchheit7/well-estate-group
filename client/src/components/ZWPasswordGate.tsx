@@ -52,7 +52,7 @@ export default function ZWPasswordGate({ children }: ZWPasswordGateProps) {
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#FAFAF8]">
-        <div className="w-8 h-8 border-2 border-[#C9A962] border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border-2 border-[#B8860B] border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
@@ -70,8 +70,8 @@ export default function ZWPasswordGate({ children }: ZWPasswordGateProps) {
       }} />
 
       {/* Gold accent lines */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A962]/30 to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A962]/30 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#B8860B]/30 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#B8860B]/30 to-transparent" />
 
       <motion.div
         initial={{ opacity: 0, y: 20, scale: 0.97 }}
@@ -79,7 +79,7 @@ export default function ZWPasswordGate({ children }: ZWPasswordGateProps) {
         transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
         className="relative z-10 w-full max-w-md mx-6"
       >
-        <div className="bg-white border border-[#C9A962]/25 rounded-2xl shadow-[0_20px_80px_rgba(0,0,0,0.07)] p-10">
+        <div className="bg-white border border-[#B8860B]/55 rounded-2xl shadow-[0_20px_80px_rgba(0,0,0,0.07)] p-10">
 
           {/* ZeroWheel branding */}
           <div className="flex flex-col items-center mb-8">
@@ -107,7 +107,7 @@ export default function ZWPasswordGate({ children }: ZWPasswordGateProps) {
             </motion.div>
 
             <motion.p
-              className="font-mono text-[10px] text-[#C9A962] uppercase tracking-[0.2em] mb-1"
+              className="font-mono text-[10px] text-[#B8860B] uppercase tracking-[0.2em] mb-1"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.25 }}
@@ -133,7 +133,7 @@ export default function ZWPasswordGate({ children }: ZWPasswordGateProps) {
           </div>
 
           {/* Divider */}
-          <div className="w-10 h-px bg-[#C9A962] mx-auto mb-7" />
+          <div className="w-10 h-px bg-[#B8860B] mx-auto mb-7" />
 
           {/* Password Form */}
           <form onSubmit={handleSubmit}>
@@ -156,7 +156,7 @@ export default function ZWPasswordGate({ children }: ZWPasswordGateProps) {
                   onKeyDown={handleKeyDown}
                   placeholder="Enter access code"
                   autoFocus
-                  className="w-full pl-11 pr-12 py-3.5 bg-[#FAFAF8] border-[1.5px] border-[#C9A962]/25 rounded-xl font-body text-sm text-black placeholder:text-black/20 focus:outline-none focus:border-[#C9A962] focus:ring-2 focus:ring-[#C9A962]/10 transition-all"
+                  className="w-full pl-11 pr-12 py-3.5 bg-[#FAFAF8] border-[1.5px] border-[#B8860B]/55 rounded-xl font-body text-sm text-black placeholder:text-black/20 focus:outline-none focus:border-[#B8860B] focus:ring-2 focus:ring-[#B8860B]/10 transition-all"
                 />
                 <button
                   type="button"

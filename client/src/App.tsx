@@ -78,7 +78,7 @@ function PageLoader() {
         {/* Animated gold line */}
         <div className="relative w-16 h-[2px] bg-black/[0.06] rounded-full overflow-hidden">
           <motion.div
-            className="absolute inset-y-0 left-0 w-1/2 bg-[#C9A962] rounded-full"
+            className="absolute inset-y-0 left-0 w-1/2 bg-[#B8860B] rounded-full"
             animate={{ x: ["-50%", "150%"] }}
             transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
           />

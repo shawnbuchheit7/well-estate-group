@@ -39,7 +39,7 @@ interface GradientBackgroundProps {
 // Animated gradient background
 export function GradientBackground({ 
   className = "",
-  colors = ["#C9A962", "#2D2D2D", "#C9A962"],
+  colors = ["#B8860B", "#2D2D2D", "#B8860B"],
   animated = true
 }: GradientBackgroundProps) {
   return (
@@ -135,7 +135,7 @@ interface ParticleFieldProps {
 export function ParticleField({ 
   className = "", 
   count = 30,
-  color = "#C9A962"
+  color = "#B8860B"
 }: ParticleFieldProps) {
   const particles = useMemo(() => 
     Array.from({ length: count }, (_, i) => ({
@@ -189,8 +189,8 @@ export function GridPattern({ className = "", size = 40 }: GridPatternProps) {
       className={`absolute inset-0 pointer-events-none ${className}`}
       style={{
         backgroundImage: `
-          linear-gradient(to right, rgba(201, 169, 98, 0.03) 1px, transparent 1px),
-          linear-gradient(to bottom, rgba(201, 169, 98, 0.03) 1px, transparent 1px)
+          linear-gradient(to right, rgba(184, 134, 11, 0.03) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(184, 134, 11, 0.03) 1px, transparent 1px)
         `,
         backgroundSize: `${size}px ${size}px`,
       }}
@@ -208,7 +208,7 @@ interface GlowOrbProps {
 // Glowing orb effect
 export function GlowOrb({ 
   className = "",
-  color = "#C9A962",
+  color = "#B8860B",
   size = 400,
   blur = 100
 }: GlowOrbProps) {
@@ -240,7 +240,7 @@ interface WaveBackgroundProps {
 }
 
 // Animated wave background
-export function WaveBackground({ className = "", color = "#C9A962" }: WaveBackgroundProps) {
+export function WaveBackground({ className = "", color = "#B8860B" }: WaveBackgroundProps) {
   return (
     <div className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
       <svg

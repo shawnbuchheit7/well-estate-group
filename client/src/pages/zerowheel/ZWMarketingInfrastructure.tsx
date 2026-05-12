@@ -3,8 +3,8 @@
  * Design: Boss's exact light mode system
  *   - bg-white / bg-[#FAFAF8] alternating sections
  *   - text-black primary, text-black/55 body, text-black/40 muted
- *   - #C9A962 gold for all accents, eyebrows, icons
- *   - border-[#C9A962]/35 cards, rounded-2xl
+ *   - #B8860B gold for all accents, eyebrows, icons
+ *   - border-[#B8860B]/65 cards, rounded-2xl
  *   - font-mono labels, font-display headings, font-body body
  *   - LightHero + SectionNav + fadeInUp/staggerContainer/scaleIn
  */
@@ -21,7 +21,7 @@ import LightHero from "@/components/LightHero";
 import { SectionNav } from "@/components/SectionNav";
 import { fadeInUp, staggerContainer, scaleIn } from "@/lib/animations";
 
-const GOLD = "#C9A962";
+const GOLD = "#B8860B";
 
 const sections = [
   { id: "hero",           label: "Overview"       },
@@ -38,7 +38,7 @@ const sections = [
 function SectionHeader({ eyebrow, title, body }: { eyebrow: string; title: string; body?: string }) {
   return (
     <motion.div className="text-center mb-14" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer}>
-      <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">{eyebrow}</motion.span>
+      <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">{eyebrow}</motion.span>
       <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-5 text-black">{title}</motion.h2>
       {body && <motion.p variants={fadeInUp} className="font-body text-base text-black/55 max-w-2xl mx-auto">{body}</motion.p>}
     </motion.div>
@@ -54,7 +54,7 @@ function AccordionCard({ title, subtitle, icon: Icon, color, children }: {
 }) {
   const [open, setOpen] = useState(false);
   return (
-    <motion.div variants={fadeInUp} className="bg-white border border-[#C9A962]/35 rounded-2xl overflow-hidden hover:border-[#C9A962]/60 hover:shadow-lg transition-all duration-300">
+    <motion.div variants={fadeInUp} className="bg-white border border-[#B8860B]/65 rounded-2xl overflow-hidden hover:border-[#B8860B]/60 hover:shadow-lg transition-all duration-300">
       <button onClick={() => setOpen(o => !o)} className="w-full flex items-center justify-between px-6 py-5 text-left">
         <div className="flex items-center gap-4">
           <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: `${color}15` }}>
@@ -70,7 +70,7 @@ function AccordionCard({ title, subtitle, icon: Icon, color, children }: {
       <AnimatePresence initial={false}>
         {open && (
           <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3, ease: "easeInOut" }} className="overflow-hidden">
-            <div className="px-6 pb-6 border-t border-[#C9A962]/20">{children}</div>
+            <div className="px-6 pb-6 border-t border-[#B8860B]/50">{children}</div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -89,7 +89,7 @@ const techStack = [
 ];
 
 const funnelStages = [
-  { stage: "Awareness", volume: "", source: "CMAA events, influencer posts, thought leadership content, LinkedIn outreach, direct referrals, sponsorships", action: "Impression or content view — no action required", color: "#C9A962" },
+  { stage: "Awareness", volume: "", source: "CMAA events, influencer posts, thought leadership content, LinkedIn outreach, direct referrals, sponsorships", action: "Impression or content view — no action required", color: "#B8860B" },
   { stage: "Interest", volume: "", source: "Landing page visit, Typeform start, Intercom chat initiated", action: "UTM parameters captured, Intercom bot triggered, Klaviyo Awareness flow enrolled", color: "#B8A080" },
   { stage: "Lead Captured", volume: "", source: "Typeform submission (B2B or DTC), trade show badge scan, direct referral", action: "Salesforce Lead created via Zapier within 60s. LOB assigned, UTM fields populated, owner assigned by LOB", color: "#9A8060" },
   { stage: "Qualified", volume: "", source: "Rep call, Intercom qualification, or Klaviyo engagement score ≥ 60", action: "Lead converted to Contact + Opportunity in Salesforce. Stage = Qualified. Klaviyo flow switches to Nurture sequence", color: "#7A6040" },
@@ -108,19 +108,19 @@ const channelPlaybooks = [
         <p className="font-body text-sm text-black/60 leading-relaxed">Primary B2B channel. WEG's existing relationships with CMAA chapter leaders, Troon regional directors, and Club Corp wellness VPs give ZeroWheel warm entry into 500+ private clubs. Strategy is relationship-first — no cold outreach. Every account is pre-mapped in Salesforce with a named WEG contact as the relationship owner.</p>
         <div className="grid md:grid-cols-2 gap-4">
           <div className="bg-[#FAFAF8] rounded-xl p-4">
-            <p className="font-mono text-[10px] text-[#C9A962] uppercase tracking-[0.15em] mb-2">Named Targets</p>
+            <p className="font-mono text-[10px] text-[#B8860B] uppercase tracking-[0.15em] mb-2">Named Targets</p>
             {["Troon Golf (200+ managed clubs)", "Club Corp / Invited (200+ clubs)", "One Spa World (cruise + resort spa operator)", "Delos (wellness real estate, 30+ properties)", "CMAA Chapter Presidents (15 key regions)"].map((t, i) => (
               <div key={i} className="flex items-start gap-2 mb-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#C9A962] mt-0.5 flex-shrink-0" />
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#B8860B] mt-0.5 flex-shrink-0" />
                 <span className="font-body text-xs text-black/60">{t}</span>
               </div>
             ))}
           </div>
           <div className="bg-[#FAFAF8] rounded-xl p-4">
-            <p className="font-mono text-[10px] text-[#C9A962] uppercase tracking-[0.15em] mb-2">Outreach Sequence</p>
+            <p className="font-mono text-[10px] text-[#B8860B] uppercase tracking-[0.15em] mb-2">Outreach Sequence</p>
             {["Day 1: Warm intro email from WEG contact", "Day 3: LinkedIn connection + content share", "Day 7: Phone call — 5-min discovery", "Day 14: Demo invite (Zoom or on-site)", "Day 21: Proposal with LOB-specific pricing", "Day 30: Follow-up + reference intro"].map((s, i) => (
               <div key={i} className="flex items-start gap-2 mb-1.5">
-                <span className="font-mono text-[10px] text-[#C9A962] w-4 flex-shrink-0">{i + 1}</span>
+                <span className="font-mono text-[10px] text-[#B8860B] w-4 flex-shrink-0">{i + 1}</span>
                 <span className="font-body text-xs text-black/60">{s}</span>
               </div>
             ))}
@@ -128,7 +128,7 @@ const channelPlaybooks = [
         </div>
         <div className="grid grid-cols-3 gap-3">
           {[{ label: "Target Accounts", value: "500+" }, { label: "Avg Deal Size", value: "$8,760" }, { label: "Close Rate Target", value: "18%" }].map((m, i) => (
-            <div key={i} className="text-center p-3 bg-white border border-[#C9A962]/25 rounded-xl">
+            <div key={i} className="text-center p-3 bg-white border border-[#B8860B]/55 rounded-xl">
               <p className="font-display text-xl font-bold text-black">{m.value}</p>
               <p className="font-mono text-[9px] text-black/40 uppercase tracking-wider mt-1">{m.label}</p>
             </div>
@@ -145,7 +145,7 @@ const channelPlaybooks = [
       <div className="mt-4 space-y-4">
         <p className="font-body text-sm text-black/60 leading-relaxed">ZeroWheel's core strength and rotational power application makes it a natural fit for golf and pickleball performance training. WEG will seed the device with 10–15 credentialed trainers (TPI-certified, NASM-certified) who will use it with clients, provide feedback, and co-create programming. This builds organic credibility and a content library simultaneously.</p>
         <div className="bg-[#FAFAF8] rounded-xl p-4">
-          <p className="font-mono text-[10px] text-[#C9A962] uppercase tracking-[0.15em] mb-3">Content & Seeding Plan</p>
+          <p className="font-mono text-[10px] text-[#B8860B] uppercase tracking-[0.15em] mb-3">Content & Seeding Plan</p>
           <div className="grid md:grid-cols-2 gap-3">
             {["Golf Rotation Series: 6-week core program for club members (co-branded with TPI trainer)", "Pickleball Power Series: 4-week program targeting private club pickleball courts", "Trainer Seed Program: 15 devices placed with credentialed trainers at no cost in exchange for content + feedback", "Case Study Library: 3 before/after performance case studies per quarter", "CMAA Regional Demos: Live device demos at 4 regional CMAA shows in 2026", "Dr. Mike Clark / NASM: Explore co-branded content and certification integration"].map((item, i) => (
               <div key={i} className="flex items-start gap-2">
@@ -172,11 +172,11 @@ const channelPlaybooks = [
             { persona: "Active Consumer (DTC)", platform: "Meta Retargeting", targeting: "Website visitors, lookalike of past buyers", cta: "Train Smarter — $1,095", budget: "$500/mo" },
           ].map((p, i) => (
             <div key={i} className="bg-[#FAFAF8] rounded-xl p-4">
-              <p className="font-mono text-[10px] text-[#C9A962] uppercase tracking-[0.15em] mb-2">{p.platform}</p>
+              <p className="font-mono text-[10px] text-[#B8860B] uppercase tracking-[0.15em] mb-2">{p.platform}</p>
               <p className="font-display text-sm font-semibold text-black mb-1">{p.persona}</p>
               <p className="font-body text-xs text-black/50 mb-2">{p.targeting}</p>
               <p className="font-mono text-[10px] text-black/40">CTA: {p.cta}</p>
-              <p className="font-mono text-[10px] text-[#C9A962] mt-1">Budget: {p.budget}</p>
+              <p className="font-mono text-[10px] text-[#B8860B] mt-1">Budget: {p.budget}</p>
             </div>
           ))}
         </div>
@@ -192,7 +192,7 @@ const channelPlaybooks = [
         <p className="font-body text-sm text-black/60 leading-relaxed">WEG recommends a structured affiliate program for DTC sales only. Influencers and athletes receive a unique promo code tracked in Salesforce. Base commission is $250/unit sold. Tiered bonuses reward volume. See the dedicated Affiliate Program tab for full terms, onboarding kit, and Salesforce Commission object architecture.</p>
         <div className="grid md:grid-cols-2 gap-4">
           <div className="bg-[#FAFAF8] rounded-xl p-4">
-            <p className="font-mono text-[10px] text-[#C9A962] uppercase tracking-[0.15em] mb-2">Anchor Partners (Target)</p>
+            <p className="font-mono text-[10px] text-[#B8860B] uppercase tracking-[0.15em] mb-2">Anchor Partners (Target)</p>
             {["Delos / Alfredo Carvajal — wellness real estate", "Blue Zone / Dan Buettner — longevity audience", "Dr. Mike Clark / NASM — fitness professional network", "TPI-certified golf trainers (10–15 seeded)", "Pickleball influencers with club audiences (5–10)"].map((p, i) => (
               <div key={i} className="flex items-start gap-2 mb-1.5">
                 <CheckCircle2 className="w-3.5 h-3.5 text-[#F59E0B] mt-0.5 flex-shrink-0" />
@@ -201,10 +201,10 @@ const channelPlaybooks = [
             ))}
           </div>
           <div className="bg-[#FAFAF8] rounded-xl p-4">
-            <p className="font-mono text-[10px] text-[#C9A962] uppercase tracking-[0.15em] mb-2">Commission Tiers</p>
+            <p className="font-mono text-[10px] text-[#B8860B] uppercase tracking-[0.15em] mb-2">Commission Tiers</p>
             {[["Base", "1–4 units/mo", "$250/unit"], ["Silver", "5–9 units/mo", "$275/unit"], ["Gold", "10–24 units/mo", "$300/unit"], ["Platinum", "25+ units/mo", "$325/unit"]].map(([tier, vol, rate], i) => (
-              <div key={i} className="flex items-center justify-between py-1.5 border-b border-[#C9A962]/20 last:border-0">
-                <span className="font-mono text-[10px] text-[#C9A962]">{tier}</span>
+              <div key={i} className="flex items-center justify-between py-1.5 border-b border-[#B8860B]/50 last:border-0">
+                <span className="font-mono text-[10px] text-[#B8860B]">{tier}</span>
                 <span className="font-body text-xs text-black/50">{vol}</span>
                 <span className="font-display text-sm font-bold text-black">{rate}</span>
               </div>
@@ -230,7 +230,7 @@ const channelPlaybooks = [
           ].map((e, i) => (
             <div key={i} className="bg-[#FAFAF8] rounded-xl p-4">
               <p className="font-display text-sm font-semibold text-black">{e.event}</p>
-              <p className="font-mono text-[10px] text-[#C9A962] mt-1">{e.timing} · {e.lob}</p>
+              <p className="font-mono text-[10px] text-[#B8860B] mt-1">{e.timing} · {e.lob}</p>
               <p className="font-body text-xs text-black/50 mt-2">{e.goal}</p>
             </div>
           ))}
@@ -247,7 +247,7 @@ const channelPlaybooks = [
         <p className="font-body text-sm text-black/60 leading-relaxed">WEG has direct relationships with cruise line wellness and spa procurement teams. The strategy is in-room wellness placement (stateroom fitness amenity) and spa/fitness center bulk purchase. One Spa World manages spa operations for multiple major cruise lines — a single enterprise deal could place ZeroWheel on 50+ ships.</p>
         <div className="grid md:grid-cols-2 gap-4">
           <div className="bg-[#FAFAF8] rounded-xl p-4">
-            <p className="font-mono text-[10px] text-[#C9A962] uppercase tracking-[0.15em] mb-2">Target Accounts</p>
+            <p className="font-mono text-[10px] text-[#B8860B] uppercase tracking-[0.15em] mb-2">Target Accounts</p>
             {["One Spa World (multi-line spa operator)", "Carnival Corporation (9 brands, 100+ ships)", "Norwegian Cruise Line Holdings", "Royal Caribbean Group", "MSC Cruises (European expansion)"].map((t, i) => (
               <div key={i} className="flex items-start gap-2 mb-1.5">
                 <CheckCircle2 className="w-3.5 h-3.5 text-[#0EA5E9] mt-0.5 flex-shrink-0" />
@@ -256,7 +256,7 @@ const channelPlaybooks = [
             ))}
           </div>
           <div className="bg-[#FAFAF8] rounded-xl p-4">
-            <p className="font-mono text-[10px] text-[#C9A962] uppercase tracking-[0.15em] mb-2">Entry Points</p>
+            <p className="font-mono text-[10px] text-[#B8860B] uppercase tracking-[0.15em] mb-2">Entry Points</p>
             {["In-room wellness amenity (stateroom placement)", "Fitness center bulk purchase (5–20 units/ship)", "Spa programming integration (core + recovery)", "Retail sale on-board (DTC at sea)", "Staff wellness program (crew fitness)"].map((t, i) => (
               <div key={i} className="flex items-start gap-2 mb-1.5">
                 <ArrowRight className="w-3.5 h-3.5 text-[#0EA5E9] mt-0.5 flex-shrink-0" />
@@ -389,7 +389,7 @@ export default function ZWMarketingInfrastructure() {
               <motion.div
                 key={i} variants={scaleIn}
                 whileHover={{ y: -4, boxShadow: "0 16px 40px rgba(0,0,0,0.07)" }}
-                className="bg-white border border-[#C9A962]/35 rounded-2xl p-6 hover:border-[#C9A962]/60 transition-all duration-300"
+                className="bg-white border border-[#B8860B]/65 rounded-2xl p-6 hover:border-[#B8860B]/60 transition-all duration-300"
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: `${tool.color}15` }}>
@@ -399,7 +399,7 @@ export default function ZWMarketingInfrastructure() {
                     <div className="flex items-center justify-between gap-2">
                       <p className="font-display text-sm font-semibold text-black">{tool.name}</p>
                       <span className={`font-mono text-[10px] px-2 py-0.5 rounded-full flex-shrink-0 ${
-                        tool.cost === "Included" ? "bg-black/5 text-black/40" : "bg-[#C9A962]/10 text-[#C9A962]"
+                        tool.cost === "Included" ? "bg-black/5 text-black/40" : "bg-[#B8860B]/10 text-[#B8860B]"
                       }`}>{tool.cost}</span>
                     </div>
                     <p className="font-mono text-[10px] text-black/35 uppercase tracking-[0.12em] mt-0.5">{tool.role}</p>
@@ -416,9 +416,9 @@ export default function ZWMarketingInfrastructure() {
             className="max-w-6xl mx-auto mt-6 mb-2"
             initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           >
-            <div className="bg-[#FAFAF8] border border-[#C9A962]/20 rounded-2xl px-8 py-5 flex flex-wrap items-center justify-between gap-4">
+            <div className="bg-[#FAFAF8] border border-[#B8860B]/50 rounded-2xl px-8 py-5 flex flex-wrap items-center justify-between gap-4">
               <div className="flex items-center gap-3">
-                <Award className="w-5 h-5 text-[#C9A962]" />
+                <Award className="w-5 h-5 text-[#B8860B]" />
                 <div>
                   <p className="font-mono text-[10px] text-black/35 uppercase tracking-[0.15em]">Estimated Monthly Stack Cost</p>
                   <p className="font-body text-xs text-black/50 mt-0.5">Based on 5 teammates — scales with team growth</p>
@@ -438,7 +438,7 @@ export default function ZWMarketingInfrastructure() {
                 ))}
                 <div className="h-8 w-px bg-black/10" />
                 <div className="text-center">
-                  <p className="font-display text-xl font-bold text-[#C9A962]">$800<span className="text-sm font-normal text-black/40">/mo</span></p>
+                  <p className="font-display text-xl font-bold text-[#B8860B]">$800<span className="text-sm font-normal text-black/40">/mo</span></p>
                   <p className="font-mono text-[9px] text-black/35 uppercase tracking-wider">Total</p>
                 </div>
               </div>
@@ -450,8 +450,8 @@ export default function ZWMarketingInfrastructure() {
             className="max-w-4xl mx-auto mt-14"
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           >
-            <div className="bg-[#FAFAF8] border border-[#C9A962]/25 rounded-2xl p-8">
-              <p className="font-mono text-[10px] text-[#C9A962] uppercase tracking-[0.2em] text-center mb-6">Data Flow Architecture</p>
+            <div className="bg-[#FAFAF8] border border-[#B8860B]/55 rounded-2xl p-8">
+              <p className="font-mono text-[10px] text-[#B8860B] uppercase tracking-[0.2em] text-center mb-6">Data Flow Architecture</p>
               {/* Row 1: Intake pipeline */}
               <div className="flex flex-col md:flex-row items-center justify-center gap-3 flex-wrap mb-5">
                 {[
@@ -461,34 +461,34 @@ export default function ZWMarketingInfrastructure() {
                   { label: "Salesforce",              sub: "Source of truth"     },
                 ].map((node, i, arr) => (
                   <div key={i} className="flex items-center gap-3">
-                    <div className="text-center px-4 py-3 bg-white border border-[#C9A962]/35 rounded-xl shadow-sm min-w-[130px]">
+                    <div className="text-center px-4 py-3 bg-white border border-[#B8860B]/65 rounded-xl shadow-sm min-w-[130px]">
                       <p className="font-display text-xs font-semibold text-black">{node.label}</p>
                       <p className="font-mono text-[9px] text-black/35 mt-0.5">{node.sub}</p>
                     </div>
-                    {i < arr.length - 1 && <ArrowRight className="w-4 h-4 text-[#C9A962] flex-shrink-0" />}
+                    {i < arr.length - 1 && <ArrowRight className="w-4 h-4 text-[#B8860B] flex-shrink-0" />}
                   </div>
                 ))}
               </div>
               {/* Divider label */}
               <div className="flex items-center gap-3 mb-5">
-                <div className="flex-1 border-t border-dashed border-[#C9A962]/30" />
+                <div className="flex-1 border-t border-dashed border-[#B8860B]/60" />
                 <p className="font-mono text-[9px] text-black/30 uppercase tracking-widest px-2">Once in Salesforce — nurture & convert</p>
-                <div className="flex-1 border-t border-dashed border-[#C9A962]/30" />
+                <div className="flex-1 border-t border-dashed border-[#B8860B]/60" />
               </div>
               {/* Row 2: Nurture + conversion engine */}
               <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-                <div className="text-center px-5 py-4 bg-white border border-[#C9A962]/35 rounded-xl shadow-sm min-w-[150px]">
+                <div className="text-center px-5 py-4 bg-white border border-[#B8860B]/65 rounded-xl shadow-sm min-w-[150px]">
                   <p className="font-display text-sm font-semibold text-black">Sales Team</p>
                   <p className="font-mono text-[9px] text-black/40 mt-0.5">Direct outreach & conversion</p>
                 </div>
                 <span className="font-mono text-xs text-black/30">+</span>
-                <div className="text-center px-5 py-4 bg-white border border-[#C9A962]/35 rounded-xl shadow-sm min-w-[150px]">
+                <div className="text-center px-5 py-4 bg-white border border-[#B8860B]/65 rounded-xl shadow-sm min-w-[150px]">
                   <p className="font-display text-sm font-semibold text-black">Klaviyo</p>
                   <p className="font-mono text-[9px] text-black/40 mt-0.5">Email nurture engine</p>
                 </div>
-                <ArrowRight className="w-4 h-4 text-[#C9A962] flex-shrink-0" />
-                <div className="text-center px-5 py-4 bg-white border-2 border-[#C9A962]/50 rounded-xl shadow-sm min-w-[170px]">
-                  <p className="font-display text-sm font-semibold text-[#C9A962]">Leads → Accounts → Sales</p>
+                <ArrowRight className="w-4 h-4 text-[#B8860B] flex-shrink-0" />
+                <div className="text-center px-5 py-4 bg-white border-2 border-[#B8860B]/50 rounded-xl shadow-sm min-w-[170px]">
+                  <p className="font-display text-sm font-semibold text-[#B8860B]">Leads → Accounts → Sales</p>
                   <p className="font-mono text-[9px] text-black/40 mt-0.5">Conversion goal</p>
                 </div>
               </div>
@@ -512,7 +512,7 @@ export default function ZWMarketingInfrastructure() {
                 key={i}
                 initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                className="bg-white border border-[#C9A962]/35 rounded-2xl p-5 hover:border-[#C9A962]/50 hover:shadow-md transition-all duration-300"
+                className="bg-white border border-[#B8860B]/65 rounded-2xl p-5 hover:border-[#B8860B]/50 hover:shadow-md transition-all duration-300"
               >
                 <div className="flex flex-col md:flex-row md:items-start gap-4">
                   <div className="flex items-center gap-3 md:w-48 flex-shrink-0">
@@ -574,8 +574,8 @@ export default function ZWMarketingInfrastructure() {
             title="Automated Drip Flows"
             body="WEG recommends Klaviyo as the email platform — native Salesforce sync, $150/mo, and built for hybrid B2B/DTC brands. The examples below illustrate what can be built — actual flows, sequences, and messaging will be developed collaboratively with the ZeroWheel team."
           />
-          <div className="max-w-3xl mx-auto mb-8 px-5 py-4 bg-[#C9A962]/[0.07] border border-[#C9A962]/25 rounded-xl text-center">
-            <p className="font-mono text-[10px] text-[#C9A962] uppercase tracking-[0.15em] mb-1">Note</p>
+          <div className="max-w-3xl mx-auto mb-8 px-5 py-4 bg-[#B8860B]/[0.07] border border-[#B8860B]/55 rounded-xl text-center">
+            <p className="font-mono text-[10px] text-[#B8860B] uppercase tracking-[0.15em] mb-1">Note</p>
             <p className="font-body text-xs text-black/55">The flows shown here are illustrative examples of what can be built in Klaviyo. Specific sequences, copy, timing, and triggers will be defined and refined as part of the WEG engagement.</p>
           </div>
           <div className="max-w-5xl mx-auto">
@@ -583,7 +583,7 @@ export default function ZWMarketingInfrastructure() {
               {emailFlows.map((flow, i) => (
                 <button
                   key={i} onClick={() => setActiveEmail(i)}
-                  className={`px-4 py-2 rounded-full border font-mono text-xs transition-all ${activeEmail === i ? "bg-[#C9A962] text-white border-[#C9A962]" : "border-[#C9A962]/25 text-black/55 hover:border-[#C9A962]/50 hover:text-black"}`}
+                  className={`px-4 py-2 rounded-full border font-mono text-xs transition-all ${activeEmail === i ? "bg-[#B8860B] text-white border-[#B8860B]" : "border-[#B8860B]/55 text-black/55 hover:border-[#B8860B]/50 hover:text-black"}`}
                 >
                   {flow.name}
                 </button>
@@ -591,11 +591,11 @@ export default function ZWMarketingInfrastructure() {
             </div>
             <AnimatePresence mode="wait">
               <motion.div key={activeEmail} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.25 }}>
-                <div className="bg-white border border-[#C9A962]/35 rounded-2xl overflow-hidden">
-                  <div className="px-6 py-4 border-b border-[#C9A962]/25 flex items-center justify-between">
+                <div className="bg-white border border-[#B8860B]/65 rounded-2xl overflow-hidden">
+                  <div className="px-6 py-4 border-b border-[#B8860B]/55 flex items-center justify-between">
                     <div>
                       <p className="font-display text-base font-semibold text-black">{emailFlows[activeEmail].name}</p>
-                      <p className="font-mono text-[10px] text-[#C9A962] mt-0.5">Trigger: {emailFlows[activeEmail].trigger}</p>
+                      <p className="font-mono text-[10px] text-[#B8860B] mt-0.5">Trigger: {emailFlows[activeEmail].trigger}</p>
                     </div>
                     <span className="font-mono text-[10px] text-black/40 bg-black/[0.04] px-3 py-1.5 rounded-full hidden md:block">{emailFlows[activeEmail].audience}</span>
                   </div>
@@ -603,7 +603,7 @@ export default function ZWMarketingInfrastructure() {
                     {emailFlows[activeEmail].emails.map((email, j) => (
                       <div key={j} className="px-6 py-4 flex items-start gap-4">
                         <div className="w-12 flex-shrink-0 text-center">
-                          <span className="font-mono text-[10px] text-[#C9A962]">Day {email.day}</span>
+                          <span className="font-mono text-[10px] text-[#B8860B]">Day {email.day}</span>
                         </div>
                         <div className="flex-1">
                           <p className="font-display text-sm font-semibold text-black mb-1">"{email.subject}"</p>
@@ -633,14 +633,14 @@ export default function ZWMarketingInfrastructure() {
             initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer}
           >
             {[
-              { tier: "Base",     units: "1–4 units/mo",   rate: "$250/unit", earn: "$250–$1,000/mo",   color: "#C9A962" },
+              { tier: "Base",     units: "1–4 units/mo",   rate: "$250/unit", earn: "$250–$1,000/mo",   color: "#B8860B" },
               { tier: "Silver",   units: "5–9 units/mo",   rate: "$275/unit", earn: "$1,375–$2,475/mo", color: "#94A3B8" },
               { tier: "Gold",     units: "10–24 units/mo", rate: "$300/unit", earn: "$3,000–$7,200/mo", color: "#F59E0B" },
             ].map((t, i) => (
               <motion.div
                 key={i} variants={scaleIn}
                 whileHover={{ y: -4, boxShadow: "0 16px 40px rgba(0,0,0,0.07)" }}
-                className="bg-white border border-[#C9A962]/35 rounded-2xl p-6 text-center hover:border-[#C9A962]/60 transition-all duration-300"
+                className="bg-white border border-[#B8860B]/65 rounded-2xl p-6 text-center hover:border-[#B8860B]/60 transition-all duration-300"
               >
                 <div className="w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ background: `${t.color}15` }}>
                   <Star className="w-6 h-6" style={{ color: t.color }} />
@@ -648,7 +648,7 @@ export default function ZWMarketingInfrastructure() {
                 <p className="font-mono text-[10px] uppercase tracking-[0.2em] mb-1" style={{ color: t.color }}>{t.tier}</p>
                 <p className="font-display text-2xl font-bold text-black">{t.rate}</p>
                 <p className="font-body text-xs text-black/50 mt-1">{t.units}</p>
-                <div className="mt-4 pt-4 border-t border-[#C9A962]/25">
+                <div className="mt-4 pt-4 border-t border-[#B8860B]/55">
                   <p className="font-mono text-[10px] text-black/35 uppercase tracking-wider">Monthly Earnings</p>
                   <p className="font-display text-sm font-semibold text-black mt-1">{t.earn}</p>
                 </div>
@@ -656,10 +656,10 @@ export default function ZWMarketingInfrastructure() {
             ))}
           </motion.div>
           <motion.div
-            className="max-w-5xl mx-auto mt-6 p-5 bg-[#FAFAF8] border border-[#C9A962]/25 rounded-2xl"
+            className="max-w-5xl mx-auto mt-6 p-5 bg-[#FAFAF8] border border-[#B8860B]/55 rounded-2xl"
             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
           >
-            <p className="font-mono text-[10px] text-[#C9A962] uppercase tracking-[0.2em] mb-2">Important: DTC Only</p>
+            <p className="font-mono text-[10px] text-[#B8860B] uppercase tracking-[0.2em] mb-2">Important: DTC Only</p>
             <p className="font-body text-sm text-black/60">This affiliate program applies exclusively to DTC consumer sales at $1,095 MSRP. B2B facility and institutional sales are handled separately through WEG's direct sales team at Commercial ($695) and Vertical ($825) pricing tiers. Mixing channels would undermine the pricing architecture.</p>
           </motion.div>
         </div>
@@ -682,7 +682,7 @@ export default function ZWMarketingInfrastructure() {
               <motion.div
                 key={i} variants={scaleIn}
                 whileHover={{ y: -4, boxShadow: "0 16px 40px rgba(0,0,0,0.07)" }}
-                className="bg-white border border-[#C9A962]/35 rounded-2xl p-5 hover:border-[#C9A962]/60 transition-all duration-300"
+                className="bg-white border border-[#B8860B]/65 rounded-2xl p-5 hover:border-[#B8860B]/60 transition-all duration-300"
               >
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: `${lob.color}15` }}>
@@ -723,12 +723,12 @@ export default function ZWMarketingInfrastructure() {
                 { day: "Wednesday", title: "Channel & Campaign Check", items: ["Meta ad CPL and conversion rate", "Klaviyo open rates and click rates", "Affiliate code usage and commission accrual", "Event pipeline — upcoming shows prep"] },
                 { day: "Friday", title: "Win / Loss Debrief", items: ["All closed won deals logged with win reason", "All closed lost deals logged with loss reason", "Rep activity log review (calls, demos, emails)", "Next week priorities set in Salesforce tasks"] },
               ].map((d, i) => (
-                <motion.div key={i} variants={fadeInUp} className="bg-[#FAFAF8] border border-[#C9A962]/25 rounded-2xl p-5">
-                  <p className="font-mono text-[10px] text-[#C9A962] uppercase tracking-[0.2em] mb-1">{d.day}</p>
+                <motion.div key={i} variants={fadeInUp} className="bg-[#FAFAF8] border border-[#B8860B]/55 rounded-2xl p-5">
+                  <p className="font-mono text-[10px] text-[#B8860B] uppercase tracking-[0.2em] mb-1">{d.day}</p>
                   <p className="font-display text-base font-semibold text-black mb-3">{d.title}</p>
                   {d.items.map((item, j) => (
                     <div key={j} className="flex items-start gap-2 mb-2">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#C9A962] mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#B8860B] mt-0.5 flex-shrink-0" />
                       <span className="font-body text-xs text-black/60">{item}</span>
                     </div>
                   ))}
@@ -741,15 +741,15 @@ export default function ZWMarketingInfrastructure() {
             className="max-w-5xl mx-auto"
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           >
-            <div className="bg-white border border-[#C9A962]/35 rounded-2xl overflow-hidden">
+            <div className="bg-white border border-[#B8860B]/65 rounded-2xl overflow-hidden">
               <div className="bg-[#F5F4F1] px-6 py-3 flex items-center justify-between">
                 <span className="font-mono text-xs text-black">KPI Tracking Matrix — Salesforce Field Reference</span>
-                <span className="font-mono text-[10px] text-[#C9A962]">Updated Weekly</span>
+                <span className="font-mono text-[10px] text-[#B8860B]">Updated Weekly</span>
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
-                    <tr className="border-b border-[#C9A962]/25">
+                    <tr className="border-b border-[#B8860B]/55">
                       {["Metric", "Owner", "Target", "Salesforce Field", "Cadence"].map(h => (
                         <th key={h} className="px-4 py-3 text-left font-mono text-[9px] text-black/35 uppercase tracking-wider">{h}</th>
                       ))}
@@ -757,9 +757,9 @@ export default function ZWMarketingInfrastructure() {
                   </thead>
                   <tbody>
                     {accountabilityKPIs.map((kpi, i) => (
-                      <tr key={i} className={`border-b border-[#C9A962]/20 hover:bg-[#FAFAF8] transition-colors ${i % 2 === 0 ? "" : "bg-[#FAFAF8]/40"}`}>
+                      <tr key={i} className={`border-b border-[#B8860B]/50 hover:bg-[#FAFAF8] transition-colors ${i % 2 === 0 ? "" : "bg-[#FAFAF8]/40"}`}>
                         <td className="px-4 py-3 font-display text-sm font-semibold text-black">{kpi.metric}</td>
-                        <td className="px-4 py-3 font-mono text-[10px] text-[#C9A962]">{kpi.owner}</td>
+                        <td className="px-4 py-3 font-mono text-[10px] text-[#B8860B]">{kpi.owner}</td>
                         <td className="px-4 py-3 font-body text-xs text-black/70">{kpi.target}</td>
                         <td className="px-4 py-3 font-mono text-[9px] text-black/40">{kpi.sfField}</td>
                         <td className="px-4 py-3 font-mono text-[10px] text-black/50">{kpi.cadence}</td>

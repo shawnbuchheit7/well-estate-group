@@ -154,7 +154,7 @@ interface PulseRingProps {
 // Pulsing ring effect for emphasis
 export function PulseRing({ 
   className = "",
-  color = "rgba(201, 169, 98, 0.5)",
+  color = "rgba(184, 134, 11, 0.5)",
   size = 100
 }: PulseRingProps) {
   return (

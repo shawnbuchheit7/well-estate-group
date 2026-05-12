@@ -127,7 +127,7 @@ export function PresentationProvider({ children }: { children: ReactNode }) {
             className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[9999] flex items-center gap-4 px-5 py-2.5 rounded-full bg-black/80 backdrop-blur-xl border border-white/10 shadow-2xl"
           >
             <div className="flex items-center gap-2">
-              <Maximize2 className="w-3.5 h-3.5 text-[#C9A962]" />
+              <Maximize2 className="w-3.5 h-3.5 text-[#B8860B]" />
               <span className="font-mono text-[11px] text-white/70 tracking-wider uppercase">
                 Presentation Mode
               </span>
@@ -159,8 +159,8 @@ export function DarkModeToggle() {
       onClick={togglePresentMode}
       className={`relative flex items-center gap-2 px-3 py-1.5 rounded-full border text-[11px] font-mono tracking-wider uppercase transition-all ${
         isPresentMode
-          ? "border-[#C9A962]/40 bg-[#C9A962]/10 text-[#C9A962]"
-          : "border-[#C9A962]/25 bg-transparent text-black/40 hover:text-black/60 hover:border-[#C9A962]/30"
+          ? "border-[#B8860B]/70 bg-[#B8860B]/10 text-[#B8860B]"
+          : "border-[#B8860B]/55 bg-transparent text-black/40 hover:text-black/60 hover:border-[#B8860B]/60"
       }`}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
@@ -288,7 +288,7 @@ export function PresentationMode({ slides, pageName }: PresentationModeProps) {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[9998] bg-white"
           >
-            <div className="absolute top-0 left-0 right-0 h-16 bg-white/80 backdrop-blur-sm border-b border-[#C9A962]/25 flex items-center justify-between px-6 z-10">
+            <div className="absolute top-0 left-0 right-0 h-16 bg-white/80 backdrop-blur-sm border-b border-[#B8860B]/55 flex items-center justify-between px-6 z-10">
               <div className="flex items-center gap-4">
                 <span className="font-mono text-sm text-black/50">{pageName}</span>
                 <span className="text-black/20">|</span>
@@ -325,7 +325,7 @@ export function PresentationMode({ slides, pageName }: PresentationModeProps) {
               </AnimatePresence>
             </div>
 
-            <div className="absolute bottom-0 left-0 right-0 h-20 bg-white/80 backdrop-blur-sm border-t border-[#C9A962]/25 flex items-center justify-between px-6">
+            <div className="absolute bottom-0 left-0 right-0 h-20 bg-white/80 backdrop-blur-sm border-t border-[#B8860B]/55 flex items-center justify-between px-6">
               <button
                 onClick={prevSlide}
                 disabled={currentSlide === 0}

@@ -43,7 +43,7 @@ export default function ZWOverview() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Market Opportunity
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-5 text-black">
@@ -79,11 +79,11 @@ export default function ZWOverview() {
                 whileHover={{ y: -6, boxShadow: "0 16px 40px rgba(0,0,0,0.08)" }}
                 className="relative group"
               >
-                <div className="bg-white border border-[#C9A962]/35 rounded-2xl p-6 h-full hover:border-[#C9A962]/40 hover:shadow-lg transition-all duration-300 text-center relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#C9A962]/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="bg-white border border-[#B8860B]/65 rounded-2xl p-6 h-full hover:border-[#B8860B]/70 hover:shadow-lg transition-all duration-300 text-center relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#B8860B]/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="relative z-10">
-                    <div className="w-14 h-14 rounded-full bg-[#C9A962]/8 flex items-center justify-center mx-auto mb-4 group-hover:bg-[#C9A962]/15 transition-colors">
-                      <touchpoint.icon className="w-7 h-7 text-[#C9A962]" />
+                    <div className="w-14 h-14 rounded-full bg-[#B8860B]/8 flex items-center justify-center mx-auto mb-4 group-hover:bg-[#B8860B]/15 transition-colors">
+                      <touchpoint.icon className="w-7 h-7 text-[#B8860B]" />
                     </div>
                     <h3 className="font-display text-sm font-semibold text-black mb-2">{touchpoint.label}</h3>
                     <p className="font-body text-xs text-black/55 leading-relaxed">{touchpoint.description}</p>
@@ -101,34 +101,34 @@ export default function ZWOverview() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.div variants={fadeInUp} className="bg-[#FAFAF8] border border-[#C9A962]/25 rounded-2xl p-8">
-              <p className="font-mono text-[10px] text-[#C9A962] uppercase tracking-[0.2em] mb-5">Market Opportunity Funnel</p>
+            <motion.div variants={fadeInUp} className="bg-[#FAFAF8] border border-[#B8860B]/55 rounded-2xl p-8">
+              <p className="font-mono text-[10px] text-[#B8860B] uppercase tracking-[0.2em] mb-5">Market Opportunity Funnel</p>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
-                <div className="text-center p-4 rounded-xl bg-white border border-[#C9A962]/20">
+                <div className="text-center p-4 rounded-xl bg-white border border-[#B8860B]/50">
                   <p className="font-display text-2xl font-bold text-black">$6.7T</p>
                   <p className="font-mono text-[9px] text-black/45 uppercase tracking-wider mt-1">Global Wellness Economy</p>
                   <p className="font-body text-[11px] text-black/40 mt-1">GWI 2024 — fitness, wellness, nutrition, longevity</p>
                 </div>
-                <div className="text-center p-4 rounded-xl bg-white border border-[#C9A962]/20">
+                <div className="text-center p-4 rounded-xl bg-white border border-[#B8860B]/50">
                   <p className="font-display text-2xl font-bold text-black">$24B</p>
                   <p className="font-mono text-[9px] text-black/45 uppercase tracking-wider mt-1">Core Development TAM</p>
                   <p className="font-body text-[11px] text-black/40 mt-1">Total addressable market at steady-state adoption</p>
                 </div>
-                <div className="text-center p-4 rounded-xl bg-white border border-[#C9A962]/20">
+                <div className="text-center p-4 rounded-xl bg-white border border-[#B8860B]/50">
                   <p className="font-display text-2xl font-bold text-black">$18B</p>
                   <p className="font-mono text-[9px] text-black/45 uppercase tracking-wider mt-1">Serviceable Market (SAM)</p>
                   <p className="font-body text-[11px] text-black/40 mt-1">Regions ZeroWheel is licensed to serve (US, Canada, EU, Japan)</p>
                 </div>
-                <div className="text-center p-4 rounded-xl bg-[#C9A962]/[0.06] border border-[#C9A962]/20">
-                  <p className="font-display text-2xl font-bold text-[#C9A962]">$300M+</p>
-                  <p className="font-mono text-[9px] text-[#C9A962]/70 uppercase tracking-wider mt-1">5-Year Revenue Target (SOM)</p>
+                <div className="text-center p-4 rounded-xl bg-[#B8860B]/[0.06] border border-[#B8860B]/50">
+                  <p className="font-display text-2xl font-bold text-[#B8860B]">$300M+</p>
+                  <p className="font-mono text-[9px] text-[#B8860B]/70 uppercase tracking-wider mt-1">5-Year Revenue Target (SOM)</p>
                   <p className="font-body text-[11px] text-black/40 mt-1">Based on adoption curves of comparable powered fitness devices</p>
                 </div>
               </div>
               <div className="flex items-center justify-center gap-2 mt-4">
-                <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#C9A962]/30" />
+                <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#B8860B]/30" />
                 <p className="font-body text-[11px] text-black/40 italic">Source: ZeroWheel Seed Raise Deck (Mar 2026) &amp; Global Wellness Institute</p>
-                <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#C9A962]/30" />
+                <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#B8860B]/30" />
               </div>
             </motion.div>
           </motion.div>
@@ -144,7 +144,7 @@ export default function ZWOverview() {
             <motion.div
               variants={fadeInUp}
               whileHover={{ scale: 1.02 }}
-              className="text-center p-7 rounded-2xl border border-[#C9A962]/40 bg-white flex-1 shadow-[0_2px_12px_rgba(0,0,0,0.03)]"
+              className="text-center p-7 rounded-2xl border border-[#B8860B]/70 bg-white flex-1 shadow-[0_2px_12px_rgba(0,0,0,0.03)]"
             >
               <p className="font-mono text-[10px] text-black/45 uppercase tracking-[0.2em] mb-2">Current State</p>
               <p className="font-display text-xl font-semibold text-black">Direct-to-Consumer</p>
@@ -152,29 +152,29 @@ export default function ZWOverview() {
             </motion.div>
             <motion.div variants={fadeInUp}>
               <motion.div animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}>
-                <ArrowRight className="w-8 h-8 text-[#C9A962] rotate-90 md:rotate-0" />
+                <ArrowRight className="w-8 h-8 text-[#B8860B] rotate-90 md:rotate-0" />
               </motion.div>
             </motion.div>
             <motion.div
               variants={fadeInUp}
               whileHover={{ scale: 1.02 }}
-              className="text-center p-7 rounded-2xl border border-[#C9A962]/40 bg-white flex-1 shadow-[0_2px_12px_rgba(0,0,0,0.03)]"
+              className="text-center p-7 rounded-2xl border border-[#B8860B]/70 bg-white flex-1 shadow-[0_2px_12px_rgba(0,0,0,0.03)]"
             >
-              <p className="font-mono text-[10px] text-[#C9A962] uppercase tracking-[0.2em] mb-2">With WEG</p>
+              <p className="font-mono text-[10px] text-[#B8860B] uppercase tracking-[0.2em] mb-2">With WEG</p>
               <p className="font-display text-xl font-semibold text-black">Full B2B Distribution</p>
               <p className="font-body text-xs text-black/50 mt-2">9 macro LOBs, 4 global regions, 30+ channel partners</p>
             </motion.div>
             <motion.div variants={fadeInUp}>
               <motion.div animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}>
-                <ArrowRight className="w-8 h-8 text-[#C9A962] rotate-90 md:rotate-0" />
+                <ArrowRight className="w-8 h-8 text-[#B8860B] rotate-90 md:rotate-0" />
               </motion.div>
             </motion.div>
             <motion.div
               variants={fadeInUp}
               whileHover={{ scale: 1.02 }}
-              className="text-center p-7 rounded-2xl border-2 border-[#C9A962]/30 bg-[#C9A962]/[0.03] flex-1 shadow-[0_4px_20px_rgba(201,169,98,0.08)]"
+              className="text-center p-7 rounded-2xl border-2 border-[#B8860B]/60 bg-[#B8860B]/[0.03] flex-1 shadow-[0_4px_20px_rgba(201,169,98,0.08)]"
             >
-              <p className="font-mono text-[10px] text-[#C9A962] uppercase tracking-[0.2em] mb-2">Scale</p>
+              <p className="font-mono text-[10px] text-[#B8860B] uppercase tracking-[0.2em] mb-2">Scale</p>
               <p className="font-display text-xl font-semibold text-black">Dealers & Resellers</p>
               <p className="font-body text-xs text-black/50 mt-2">Authorized dealer network, regional resellers, white-label partners</p>
             </motion.div>
@@ -192,7 +192,7 @@ export default function ZWOverview() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Why Well Estate Group
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 text-black">
@@ -229,10 +229,10 @@ export default function ZWOverview() {
                 key={i}
                 variants={fadeInUp}
                 whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(0,0,0,0.06)" }}
-                className="flex gap-4 items-start p-6 rounded-xl bg-white border border-[#C9A962]/35 shadow-[0_4px_16px_rgba(0,0,0,0.03)] hover:border-[#C9A962]/60 hover:shadow-lg transition-all duration-300"
+                className="flex gap-4 items-start p-6 rounded-xl bg-white border border-[#B8860B]/65 shadow-[0_4px_16px_rgba(0,0,0,0.03)] hover:border-[#B8860B]/60 hover:shadow-lg transition-all duration-300"
               >
-                <div className="w-8 h-8 rounded-full bg-[#C9A962]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <CheckCircle2 className="w-4.5 h-4.5 text-[#C9A962]" />
+                <div className="w-8 h-8 rounded-full bg-[#B8860B]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <CheckCircle2 className="w-4.5 h-4.5 text-[#B8860B]" />
                 </div>
                 <div>
                   <h3 className="font-display text-lg font-semibold text-black mb-1.5">{advantage.title}</h3>

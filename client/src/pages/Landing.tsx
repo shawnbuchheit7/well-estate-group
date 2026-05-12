@@ -46,7 +46,7 @@ const pillars = [
 ];
 
 function PillarIcon({ type }: { type: string }) {
-  const cls = "w-6 h-6 md:w-7 md:h-7 text-[#C9A962]";
+  const cls = "w-6 h-6 md:w-7 md:h-7 text-[#B8860B]";
   switch (type) {
     case "chart":
       return (
@@ -131,7 +131,7 @@ export default function Landing() {
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ duration: 0.8, delay: 1.8, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] }}
-            className="mt-4 h-[2px] w-16 bg-gradient-to-r from-transparent via-[#C9A962] to-transparent"
+            className="mt-4 h-[2px] w-16 bg-gradient-to-r from-transparent via-[#B8860B] to-transparent"
           />
 
           {/* Tagline */}
@@ -177,14 +177,14 @@ export default function Landing() {
                 <div className="relative p-8 md:p-9 flex flex-col items-center text-center min-h-[300px] md:min-h-[340px] justify-center">
                   {/* Pillar Number */}
                   <span
-                    className="font-mono text-[10px] text-[#0A0A0A]/35 tracking-[0.3em] mb-5 group-hover:text-[#C9A962] transition-colors duration-400"
+                    className="font-mono text-[10px] text-[#0A0A0A]/35 tracking-[0.3em] mb-5 group-hover:text-[#B8860B] transition-colors duration-400"
                   >
                     PILLAR {pillar.num}
                   </span>
 
                   {/* Icon */}
                   <div
-                    className="mb-7 w-12 h-12 rounded-lg border border-[#C9A962]/20 flex items-center justify-center bg-[#C9A962]/[0.04] group-hover:border-[#C9A962]/50 group-hover:bg-[#C9A962]/[0.08] transition-all duration-400"
+                    className="mb-7 w-12 h-12 rounded-lg border border-[#B8860B]/50 flex items-center justify-center bg-[#B8860B]/[0.04] group-hover:border-[#B8860B]/50 group-hover:bg-[#B8860B]/[0.08] transition-all duration-400"
                   >
                     <PillarIcon type={pillar.icon} />
                   </div>
@@ -200,14 +200,14 @@ export default function Landing() {
                   </p>
 
                   {/* CTA */}
-                  <div className="flex items-center gap-2 font-mono text-xs font-semibold text-[#C9A962] group-hover:text-[#B8963E] transition-colors tracking-[0.1em] uppercase">
+                  <div className="flex items-center gap-2 font-mono text-xs font-semibold text-[#B8860B] group-hover:text-[#B8963E] transition-colors tracking-[0.1em] uppercase">
                     <span>Enter</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform duration-300" />
                   </div>
                 </div>
 
                 {/* Bottom accent line on hover */}
-                <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C9A962] to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center" />
+                <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#B8860B] to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center" />
               </motion.div>
             </Link>
           ))}
@@ -244,7 +244,7 @@ export default function Landing() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 3 + i * 0.08 }}
-                  className="font-display text-sm md:text-base font-semibold text-[#0A0A0A]/50 hover:text-[#C9A962] transition-colors duration-300 whitespace-nowrap"
+                  className="font-display text-sm md:text-base font-semibold text-[#0A0A0A]/50 hover:text-[#B8860B] transition-colors duration-300 whitespace-nowrap"
                 >
                   {name}
                 </motion.span>
@@ -261,7 +261,7 @@ export default function Landing() {
           className="mt-16 md:mt-20 w-full max-w-4xl"
         >
           <div className="text-center mb-10">
-            <p className="font-mono text-[10px] text-[#C9A962] tracking-[0.2em] uppercase mb-3">
+            <p className="font-mono text-[10px] text-[#B8860B] tracking-[0.2em] uppercase mb-3">
               Who We Are
             </p>
             <h3 className="font-display text-2xl md:text-3xl font-semibold text-[#0A0A0A] mb-4">
@@ -287,7 +287,7 @@ export default function Landing() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 3.4 + i * 0.1 }}
                 whileHover={{ y: -3 }}
-                className="text-center p-5 rounded-xl border border-[#0A0A0A]/[0.08] bg-[#F9F9F7] hover:border-[#C9A962]/60 transition-all duration-300"
+                className="text-center p-5 rounded-xl border border-[#0A0A0A]/[0.08] bg-[#F9F9F7] hover:border-[#B8860B]/60 transition-all duration-300"
                 style={{
                   boxShadow: "0 2px 8px rgba(0,0,0,0.02)",
                 }}

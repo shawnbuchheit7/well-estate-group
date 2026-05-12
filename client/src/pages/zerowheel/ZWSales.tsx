@@ -47,7 +47,7 @@ const macroLOBs: MacroLOB[] = [
   {
     name: "Private Clubs",
     icon: Star,
-    color: "#C9A962",
+    color: "#B8860B",
     category: "Vertical",
     pricing: "$825 (max 25% off list)",
     description: "Golf, country, city, and leisure clubs — the highest-value B2B channel. Buyer: Fitness Director (influenced by Head Golf Pro, Tennis Pro, GM, Board). Uniquely positioned for golf, tennis, and pickleball-specific routines. Core strength increases drive distance.",
@@ -75,7 +75,7 @@ const macroLOBs: MacroLOB[] = [
   {
     name: "Commercial Fitness Clubs",
     icon: Dumbbell,
-    color: "#C9A962",
+    color: "#B8860B",
     category: "Commercial",
     pricing: "$695 (max 40% off list)",
     description: "Large-format fitness chains and boutique studios. Buyer: Corporate procurement and owner/operators. Pickleball prep, dramatic core results, small footprint allows multiple units on the gym floor.",
@@ -98,7 +98,7 @@ const macroLOBs: MacroLOB[] = [
   {
     name: "Medical & Rehabilitation",
     icon: Stethoscope,
-    color: "#C9A962",
+    color: "#B8860B",
     category: "Vertical",
     pricing: "$825 (max 25% off list)",
     description: "Sports medicine clinics, PT, and rehab centers. Buyer: Clinical Rehab Director and owner/operators. Shoulder rehab and ROM improvement. Graduated assistance via Springback Mode.",
@@ -118,7 +118,7 @@ const macroLOBs: MacroLOB[] = [
   {
     name: "Direct-to-Consumer",
     icon: Package,
-    color: "#C9A962",
+    color: "#B8860B",
     category: "DTC",
     pricing: "$1,095 (full MSRP)",
     description: "Premium e-commerce and retail — the broadest reach channel for brand awareness, full margin capture, and social proof generation.",
@@ -137,7 +137,7 @@ const macroLOBs: MacroLOB[] = [
   {
     name: "Corporate Wellness",
     icon: Target,
-    color: "#C9A962",
+    color: "#B8860B",
     category: "Vertical",
     pricing: "$825 (max 25% off list)",
     description: "Fortune 500 wellness programs — addresses the #1 workplace injury (lower back pain) with gamified engagement and measurable ROI.",
@@ -154,7 +154,7 @@ const macroLOBs: MacroLOB[] = [
   {
     name: "Professional Sports",
     icon: Users,
-    color: "#C9A962",
+    color: "#B8860B",
     category: "Vertical",
     pricing: "$825 (max 25% off list)",
     description: "Professional teams, collegiate athletics, and performance training — validation channel that drives brand authority and cascading demand.",
@@ -178,7 +178,7 @@ const macroLOBs: MacroLOB[] = [
   {
     name: "Hospitality & Amenities",
     icon: Building2,
-    color: "#C9A962",
+    color: "#B8860B",
     category: "Vertical",
     pricing: "$825 (max 25% off list)",
     description: "5-star hotels, luxury resorts, wellness retreats, and premium residential. Buyer: Management companies, fitness & spa directors, GMs, Director of Rooms. Major in-room wellness opportunity — next-gen alternative to Technogym, Precor, and Peloton in-room programs.",
@@ -200,7 +200,7 @@ const macroLOBs: MacroLOB[] = [
   {
     name: "Military & Government",
     icon: Shield,
-    color: "#C9A962",
+    color: "#B8860B",
     category: "GSA",
     pricing: "$694 (GSA best pricing)",
     description: "DoD installations, VA rehab, police & fire departments, community recreation centers. Buyer: TSAC-F, Police & Fire Chiefs, Directors of Recreation. GSA compliant, Made in USA, endorsed by US Army.",
@@ -217,7 +217,7 @@ const macroLOBs: MacroLOB[] = [
   {
     name: "Cruise & Maritime",
     icon: Ship,
-    color: "#C9A962",
+    color: "#B8860B",
     category: "Vertical",
     pricing: "$825 (max 25% off list)",
     description: "Cruise lines and superyachts. Buyer: VP Onboard Experience, VP Newbuild, management companies (e.g., OneSpaWorld). In-cabin wellness is a major emerging opportunity. Cruise lines typically operate through RFP process.",
@@ -281,7 +281,7 @@ export default function ZWSales() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Go-To-Market Framework
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-4 text-black">
@@ -298,7 +298,7 @@ export default function ZWSales() {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="rounded-2xl border border-[#C9A962]/40 overflow-hidden"
+              className="rounded-2xl border border-[#B8860B]/70 overflow-hidden"
             >
               <div className="bg-[#F5F4F1] px-6 py-3 flex items-center justify-between">
                 <span className="font-display text-sm font-semibold text-black">Pricing Structure</span>
@@ -359,7 +359,7 @@ export default function ZWSales() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Detailed Targeting
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-4 text-black">
@@ -382,10 +382,10 @@ export default function ZWSales() {
                 key={i}
                 variants={fadeInUp}
                 whileHover={{ y: -3, boxShadow: "0 12px 30px rgba(0,0,0,0.06)" }}
-                className="bg-white border border-[#C9A962]/35 rounded-xl overflow-hidden hover:border-[#C9A962]/60 hover:shadow-lg transition-all duration-300"
+                className="bg-white border border-[#B8860B]/65 rounded-xl overflow-hidden hover:border-[#B8860B]/60 hover:shadow-lg transition-all duration-300"
               >
                 {/* Card Header */}
-                <div className="flex items-center justify-between px-6 py-4 border-b border-[#C9A962]/40" style={{ background: `linear-gradient(135deg, ${lob.color}08, transparent)` }}>
+                <div className="flex items-center justify-between px-6 py-4 border-b border-[#B8860B]/70" style={{ background: `linear-gradient(135deg, ${lob.color}08, transparent)` }}>
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: `${lob.color}15` }}>
                       <lob.icon className="w-5 h-5" style={{ color: lob.color }} />
@@ -393,7 +393,7 @@ export default function ZWSales() {
                     <div>
                       <div className="flex items-center gap-3">
                         <h3 className="font-display text-lg font-semibold text-black">{lob.name}</h3>
-                        <span className="font-mono text-[9px] tracking-wider uppercase px-2 py-0.5 rounded-full bg-[#C9A962]/10 text-[#C9A962]">{lob.category}</span>
+                        <span className="font-mono text-[9px] tracking-wider uppercase px-2 py-0.5 rounded-full bg-[#B8860B]/10 text-[#B8860B]">{lob.category}</span>
                       </div>
                       <p className="font-body text-xs text-black/45 mt-0.5">{lob.description}</p>
                     </div>
@@ -418,7 +418,7 @@ export default function ZWSales() {
                     </div>
 
                     {/* Metrics Sidebar */}
-                    <div className="flex md:flex-col gap-4 md:gap-3 md:min-w-[160px] md:border-l md:border-[#C9A962]/40 md:pl-6">
+                    <div className="flex md:flex-col gap-4 md:gap-3 md:min-w-[160px] md:border-l md:border-[#B8860B]/70 md:pl-6">
                       <div>
                         <p className="font-mono text-[9px] text-black/25 uppercase tracking-wider">Addressable</p>
                         <p className="font-display text-lg font-semibold text-black mt-0.5">{lob.metrics.accounts}</p>
@@ -436,10 +436,10 @@ export default function ZWSales() {
 
                   {/* Key Contacts & Influencers */}
                   {(lob.contacts || lob.contactNote) && (
-                    <div className="mt-6 pt-5 border-t border-[#C9A962]/25">
+                    <div className="mt-6 pt-5 border-t border-[#B8860B]/55">
                       <div className="flex items-center gap-2 mb-3">
-                        <UserCheck className="w-4 h-4 text-[#C9A962]" />
-                        <p className="font-mono text-[10px] text-[#C9A962] uppercase tracking-[0.15em] font-semibold">Key Contacts & Influencers</p>
+                        <UserCheck className="w-4 h-4 text-[#B8860B]" />
+                        <p className="font-mono text-[10px] text-[#B8860B] uppercase tracking-[0.15em] font-semibold">Key Contacts & Influencers</p>
                       </div>
                       {lob.contactNote && (
                         <p className="font-body text-sm text-black/50 italic">{lob.contactNote}</p>
@@ -447,10 +447,10 @@ export default function ZWSales() {
                       {lob.contacts && (
                         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
                           {lob.contacts.map((contact, j) => (
-                            <div key={j} className="rounded-lg border border-[#C9A962]/25 bg-[#FAFAF8] p-3 hover:border-[#C9A962]/60 transition-colors">
+                            <div key={j} className="rounded-lg border border-[#B8860B]/55 bg-[#FAFAF8] p-3 hover:border-[#B8860B]/60 transition-colors">
                               <p className="font-display text-sm font-semibold text-black leading-tight">{contact.name}</p>
                               <p className="font-body text-xs text-black/55 mt-0.5">{contact.title}</p>
-                              <p className="font-body text-xs text-[#C9A962] font-medium mt-0.5">{contact.org}</p>
+                              <p className="font-body text-xs text-[#B8860B] font-medium mt-0.5">{contact.org}</p>
                               {contact.note && (
                                 <p className="font-body text-[11px] text-black/35 mt-1.5 leading-relaxed">{contact.note}</p>
                               )}
@@ -479,7 +479,7 @@ export default function ZWSales() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Industry Network
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-4 text-black">
@@ -505,7 +505,7 @@ export default function ZWSales() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.02 }}
                 whileHover={{ scale: 1.05, y: -2, boxShadow: "0 8px 20px rgba(0,0,0,0.06)" }}
-                className="px-4 py-2 rounded-full bg-white border border-[#C9A962]/40 text-sm font-body font-medium text-black/60 hover:border-[#C9A962]/40 hover:text-black hover:bg-[#C9A962]/[0.03] transition-all cursor-default shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
+                className="px-4 py-2 rounded-full bg-white border border-[#B8860B]/70 text-sm font-body font-medium text-black/60 hover:border-[#B8860B]/70 hover:text-black hover:bg-[#B8860B]/[0.03] transition-all cursor-default shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
               >
                 {partner}
               </motion.span>

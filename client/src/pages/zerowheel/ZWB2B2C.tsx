@@ -36,7 +36,7 @@ export default function ZWB2B2C() {
           variants={staggerContainer}
         >
           <motion.div variants={fadeInUp} className="text-center mb-16">
-            <span className="font-mono text-[#C9A962] text-xs tracking-[0.25em] uppercase">The Model</span>
+            <span className="font-mono text-[#B8860B] text-xs tracking-[0.25em] uppercase">The Model</span>
             <h2 className="font-display text-4xl mt-3 text-black">How B2B2C Works</h2>
             <p className="text-black/55 max-w-2xl mx-auto mt-4 leading-relaxed">
               ZeroWheel sells to businesses (clubs, facilities, teams) who then provide the product to their end consumers (members, patients, athletes) — creating a dual revenue stream.
@@ -46,26 +46,26 @@ export default function ZWB2B2C() {
           {/* 3-Tier Flow */}
           <motion.div variants={fadeInUp} className="flex flex-col md:flex-row items-center justify-center gap-4 mb-20">
             {/* Tier 1: ZeroWheel */}
-            <div className="bg-white border border-[#C9A962]/25 rounded-2xl p-8 text-center w-72 shadow-sm">
-              <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#C9A962] font-semibold">Tier 1 — Manufacturer</span>
+            <div className="bg-white border border-[#B8860B]/55 rounded-2xl p-8 text-center w-72 shadow-sm">
+              <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#B8860B] font-semibold">Tier 1 — Manufacturer</span>
               <h3 className="font-display text-2xl mt-3 text-black">ZeroWheel</h3>
               <p className="text-black/50 text-sm mt-2">Product development, manufacturing, brand strategy</p>
             </div>
 
-            <div className="text-[#C9A962] text-2xl font-light rotate-90 md:rotate-0">→</div>
+            <div className="text-[#B8860B] text-2xl font-light rotate-90 md:rotate-0">→</div>
 
             {/* Tier 2: B2B Partners */}
-            <div className="bg-[#FAFAF8] border border-[#C9A962]/25 rounded-2xl p-8 text-center w-72 shadow-sm">
-              <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#C9A962] font-semibold">Tier 2 — B2B Partners</span>
+            <div className="bg-[#FAFAF8] border border-[#B8860B]/55 rounded-2xl p-8 text-center w-72 shadow-sm">
+              <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#B8860B] font-semibold">Tier 2 — B2B Partners</span>
               <h3 className="font-display text-2xl mt-3 text-black">Clubs & Facilities</h3>
               <p className="text-black/50 text-sm mt-2">Purchase units, integrate into programming, drive member engagement</p>
             </div>
 
-            <div className="text-[#C9A962] text-2xl font-light rotate-90 md:rotate-0">→</div>
+            <div className="text-[#B8860B] text-2xl font-light rotate-90 md:rotate-0">→</div>
 
             {/* Tier 3: End Consumer */}
-            <div className="bg-[#F5F4F0] border border-[#C9A962]/30 rounded-2xl p-8 text-center w-72 shadow-sm">
-              <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#C9A962] font-semibold">Tier 3 — Consumer</span>
+            <div className="bg-[#F5F4F0] border border-[#B8860B]/60 rounded-2xl p-8 text-center w-72 shadow-sm">
+              <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#B8860B] font-semibold">Tier 3 — Consumer</span>
               <h3 className="font-display text-2xl mt-3 text-black">Members & Athletes</h3>
               <p className="text-black/50 text-sm mt-2">Experience the product, subscribe to digital content, purchase accessories</p>
             </div>
@@ -83,15 +83,15 @@ export default function ZWB2B2C() {
           variants={staggerContainer}
         >
           <motion.div variants={fadeInUp} className="text-center mb-14">
-            <span className="font-mono text-[#C9A962] text-xs tracking-[0.25em] uppercase">Revenue Architecture</span>
+            <span className="font-mono text-[#B8860B] text-xs tracking-[0.25em] uppercase">Revenue Architecture</span>
             <h2 className="font-display text-4xl mt-3 text-black">Multi-Layer Revenue Model</h2>
           </motion.div>
 
           <motion.div variants={fadeInUp} className="grid md:grid-cols-3 gap-8">
             {/* Hardware Revenue */}
-            <div className="bg-white border border-[#C9A962]/25 rounded-2xl p-8 shadow-sm">
-              <div className="w-12 h-12 rounded-xl bg-[#C9A962]/10 flex items-center justify-center mb-4">
-                <span className="text-[#C9A962] text-xl">⬡</span>
+            <div className="bg-white border border-[#B8860B]/55 rounded-2xl p-8 shadow-sm">
+              <div className="w-12 h-12 rounded-xl bg-[#B8860B]/10 flex items-center justify-center mb-4">
+                <span className="text-[#B8860B] text-xl">⬡</span>
               </div>
               <h3 className="font-display text-xl text-black mb-2">Hardware Sales</h3>
               <p className="text-black/50 text-sm mb-4">Unit sales across Vertical ($825) and Commercial ($695) market categories</p>
@@ -120,9 +120,9 @@ export default function ZWB2B2C() {
             </div>
 
             {/* Subscription Revenue */}
-            <div className="bg-white border border-[#C9A962]/25 rounded-2xl p-8 shadow-sm">
-              <div className="w-12 h-12 rounded-xl bg-[#C9A962]/10 flex items-center justify-center mb-4">
-                <span className="text-[#C9A962] text-xl">∞</span>
+            <div className="bg-white border border-[#B8860B]/55 rounded-2xl p-8 shadow-sm">
+              <div className="w-12 h-12 rounded-xl bg-[#B8860B]/10 flex items-center justify-center mb-4">
+                <span className="text-[#B8860B] text-xl">∞</span>
               </div>
               <h3 className="font-display text-xl text-black mb-2">Consumer Subscriptions</h3>
               <p className="text-black/50 text-sm mb-4">End-user digital content and training programs</p>
@@ -143,9 +143,9 @@ export default function ZWB2B2C() {
             </div>
 
             {/* Accessory & Licensing */}
-            <div className="bg-white border border-[#C9A962]/25 rounded-2xl p-8 shadow-sm">
-              <div className="w-12 h-12 rounded-xl bg-[#C9A962]/10 flex items-center justify-center mb-4">
-                <span className="text-[#C9A962] text-xl">◈</span>
+            <div className="bg-white border border-[#B8860B]/55 rounded-2xl p-8 shadow-sm">
+              <div className="w-12 h-12 rounded-xl bg-[#B8860B]/10 flex items-center justify-center mb-4">
+                <span className="text-[#B8860B] text-xl">◈</span>
               </div>
               <h3 className="font-display text-xl text-black mb-2">Accessories & Licensing</h3>
               <p className="text-black/50 text-sm mb-4">Ancillary products and content licensing to partners</p>
@@ -178,7 +178,7 @@ export default function ZWB2B2C() {
           variants={staggerContainer}
         >
           <motion.div variants={fadeInUp} className="text-center mb-14">
-            <span className="font-mono text-[#C9A962] text-xs tracking-[0.25em] uppercase">Vertical Playbooks</span>
+            <span className="font-mono text-[#B8860B] text-xs tracking-[0.25em] uppercase">Vertical Playbooks</span>
             <h2 className="font-display text-4xl mt-3 text-black">B2B2C by Market Vertical</h2>
             <p className="text-black/55 max-w-2xl mx-auto mt-4 leading-relaxed">
               Each vertical has a unique B2B2C dynamic — different buyer, different end-user, different revenue mix.
@@ -188,7 +188,7 @@ export default function ZWB2B2C() {
           <motion.div variants={fadeInUp} className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-[#C9A962]/25">
+                <tr className="border-b border-[#B8860B]/55">
                   <th className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/40 py-4 pr-6">Vertical</th>
                   <th className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/40 py-4 pr-6">B2B Buyer</th>
                   <th className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/40 py-4 pr-6">End Consumer</th>
@@ -208,7 +208,7 @@ export default function ZWB2B2C() {
                   { vertical: "Military & Government", buyer: "TSAC-F / Police & Fire Chiefs / Dir. of Rec", consumer: "Service Members & Community", model: "Hardware + Maintenance Contract", ltv: "$500+" },
                   { vertical: "Cruise & Maritime", buyer: "VP Onboard / VP Newbuild / Mgmt Co", consumer: "Passengers & Crew", model: "Hardware + In-Cabin Wellness", ltv: "$250+" },
                 ].map((row, i) => (
-                  <tr key={i} className="border-b border-[#C9A962]/20 hover:bg-[#FAFAF8] transition-colors">
+                  <tr key={i} className="border-b border-[#B8860B]/50 hover:bg-[#FAFAF8] transition-colors">
                     <td className="py-4 pr-6 font-semibold text-black text-sm">{row.vertical}</td>
                     <td className="py-4 pr-6 text-black/60 text-sm">{row.buyer}</td>
                     <td className="py-4 pr-6 text-black/60 text-sm">{row.consumer}</td>
@@ -232,7 +232,7 @@ export default function ZWB2B2C() {
           variants={staggerContainer}
         >
           <motion.div variants={fadeInUp} className="text-center mb-14">
-            <span className="font-mono text-[#C9A962] text-xs tracking-[0.25em] uppercase">Engagement</span>
+            <span className="font-mono text-[#B8860B] text-xs tracking-[0.25em] uppercase">Engagement</span>
             <h2 className="font-display text-4xl mt-3 text-black">Consumer Engagement Flywheel</h2>
             <p className="text-black/55 max-w-2xl mx-auto mt-4 leading-relaxed">
               The B2B2C model creates a self-reinforcing cycle — institutional placement drives consumer discovery, consumer engagement drives retention, and retention drives recurring revenue.
@@ -246,8 +246,8 @@ export default function ZWB2B2C() {
               { step: "03", title: "Conversion", desc: "Users subscribe to digital content, purchase accessories, track progress" },
               { step: "04", title: "Retention", desc: "Data-driven engagement, community features, and progressive training keep users active" },
             ].map((item, i) => (
-              <div key={i} className="bg-white border border-[#C9A962]/25 rounded-2xl p-6 text-center shadow-sm">
-                <span className="font-mono text-[#C9A962] text-2xl font-bold">{item.step}</span>
+              <div key={i} className="bg-white border border-[#B8860B]/55 rounded-2xl p-6 text-center shadow-sm">
+                <span className="font-mono text-[#B8860B] text-2xl font-bold">{item.step}</span>
                 <h3 className="font-display text-lg mt-3 text-black">{item.title}</h3>
                 <p className="text-black/50 text-sm mt-2 leading-relaxed">{item.desc}</p>
               </div>
@@ -266,13 +266,13 @@ export default function ZWB2B2C() {
           variants={staggerContainer}
         >
           <motion.div variants={fadeInUp} className="text-center mb-14">
-            <span className="font-mono text-[#C9A962] text-xs tracking-[0.25em] uppercase">Targets</span>
+            <span className="font-mono text-[#B8860B] text-xs tracking-[0.25em] uppercase">Targets</span>
             <h2 className="font-display text-4xl mt-3 text-black">B2B2C Success Metrics</h2>
           </motion.div>
 
           <motion.div variants={fadeInUp} className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white border border-[#C9A962]/25 rounded-2xl p-8 shadow-sm">
-              <h3 className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#C9A962] mb-4">B2B Metrics</h3>
+            <div className="bg-white border border-[#B8860B]/55 rounded-2xl p-8 shadow-sm">
+              <h3 className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#B8860B] mb-4">B2B Metrics</h3>
               <div className="space-y-4">
                 {[
                   { metric: "Partner Acquisition Rate", target: "15–20 new partners/quarter" },
@@ -281,7 +281,7 @@ export default function ZWB2B2C() {
                   { metric: "Reorder Rate", target: "40% within 12 months" },
                   { metric: "Net Promoter Score (B2B)", target: "70+" },
                 ].map((item, i) => (
-                  <div key={i} className="flex justify-between items-center py-2 border-b border-[#C9A962]/15">
+                  <div key={i} className="flex justify-between items-center py-2 border-b border-[#B8860B]/15">
                     <span className="text-black/60 text-sm">{item.metric}</span>
                     <span className="font-semibold text-black text-sm">{item.target}</span>
                   </div>
@@ -289,8 +289,8 @@ export default function ZWB2B2C() {
               </div>
             </div>
 
-            <div className="bg-white border border-[#C9A962]/25 rounded-2xl p-8 shadow-sm">
-              <h3 className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#C9A962] mb-4">Consumer Metrics</h3>
+            <div className="bg-white border border-[#B8860B]/55 rounded-2xl p-8 shadow-sm">
+              <h3 className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#B8860B] mb-4">Consumer Metrics</h3>
               <div className="space-y-4">
                 {[
                   { metric: "Consumer Conversion Rate", target: "12–18% of facility users" },
@@ -299,7 +299,7 @@ export default function ZWB2B2C() {
                   { metric: "Churn Rate", target: "<5% monthly" },
                   { metric: "Net Promoter Score (Consumer)", target: "65+" },
                 ].map((item, i) => (
-                  <div key={i} className="flex justify-between items-center py-2 border-b border-[#C9A962]/15">
+                  <div key={i} className="flex justify-between items-center py-2 border-b border-[#B8860B]/15">
                     <span className="text-black/60 text-sm">{item.metric}</span>
                     <span className="font-semibold text-black text-sm">{item.target}</span>
                   </div>

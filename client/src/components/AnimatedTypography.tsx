@@ -130,7 +130,7 @@ interface GradientTextProps {
 export function GradientText({ 
   children, 
   className = "",
-  colors = ["#C9A962", "#E8D5A3", "#C9A962"],
+  colors = ["#B8860B", "#E8D5A3", "#B8860B"],
   animated = true
 }: GradientTextProps) {
   return (
@@ -164,7 +164,7 @@ interface HighlightTextProps {
 export function HighlightText({ 
   children, 
   className = "",
-  highlightColor = "#C9A962"
+  highlightColor = "#B8860B"
 }: HighlightTextProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });

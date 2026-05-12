@@ -34,7 +34,7 @@ export default function DarkHero({ eyebrow, title, description, stats, children,
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern id="dark-hero-grid" width="60" height="60" patternUnits="userSpaceOnUse">
-              <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#C9A962" strokeWidth="0.5"/>
+              <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#B8860B" strokeWidth="0.5"/>
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#dark-hero-grid)" />
@@ -66,7 +66,7 @@ export default function DarkHero({ eyebrow, title, description, stats, children,
           >
             <motion.span
               variants={fadeInUp}
-              className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase"
+              className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase"
             >
               {eyebrow}
             </motion.span>
@@ -80,7 +80,7 @@ export default function DarkHero({ eyebrow, title, description, stats, children,
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="h-[2px] w-16 mx-auto bg-[#C9A962] mb-6"
+              className="h-[2px] w-16 mx-auto bg-[#B8860B] mb-6"
             />
             <motion.p
               variants={fadeInUp}

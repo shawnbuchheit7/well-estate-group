@@ -47,7 +47,7 @@ export default function LongevityPerformanceModel() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Business Plan
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-4 text-black">
@@ -71,7 +71,7 @@ export default function LongevityPerformanceModel() {
                 key={i}
                 href={section.path}
                 variants={fadeInUp}
-                className="group p-6 rounded-2xl border border-[#C9A962]/35 bg-white hover:border-[#C9A962]/60 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300"
+                className="group p-6 rounded-2xl border border-[#B8860B]/65 bg-white hover:border-[#B8860B]/60 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300"
                 whileHover={{ y: -4 }}
               >
                 <div className="flex items-center justify-between mb-3">
@@ -79,7 +79,7 @@ export default function LongevityPerformanceModel() {
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <motion.span
-                    className="text-[#C9A962] opacity-0 group-hover:opacity-100 transition-opacity"
+                    className="text-[#B8860B] opacity-0 group-hover:opacity-100 transition-opacity"
                     initial={false}
                   >
                     →
@@ -107,7 +107,7 @@ export default function LongevityPerformanceModel() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Key Differentiators
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-2xl md:text-3xl font-medium mt-4 text-black">
@@ -133,10 +133,10 @@ export default function LongevityPerformanceModel() {
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="text-center p-4 rounded-xl border border-[#C9A962]/25 bg-white"
+                className="text-center p-4 rounded-xl border border-[#B8860B]/55 bg-white"
               >
-                <div className="w-10 h-10 mx-auto mb-3 rounded-full bg-[#C9A962]/10 flex items-center justify-center">
-                  <span className="font-mono text-[10px] text-[#C9A962] font-bold">{String(i + 1).padStart(2, "0")}</span>
+                <div className="w-10 h-10 mx-auto mb-3 rounded-full bg-[#B8860B]/10 flex items-center justify-center">
+                  <span className="font-mono text-[10px] text-[#B8860B] font-bold">{String(i + 1).padStart(2, "0")}</span>
                 </div>
                 <p className="font-body text-xs text-black/70 font-medium leading-tight">{pillar}</p>
               </motion.div>
@@ -146,11 +146,11 @@ export default function LongevityPerformanceModel() {
       </section>
 
       {/* Back to Models */}
-      <section className="py-12 bg-white border-t border-[#C9A962]/20">
+      <section className="py-12 bg-white border-t border-[#B8860B]/50">
         <div className="container px-6 text-center">
           <Link href="/longevity">
             <motion.div
-              className="inline-flex items-center gap-2 text-black/50 hover:text-[#C9A962] transition-colors cursor-pointer"
+              className="inline-flex items-center gap-2 text-black/50 hover:text-[#B8860B] transition-colors cursor-pointer"
               whileHover={{ x: -4 }}
             >
               <ArrowRight className="w-4 h-4 rotate-180" />

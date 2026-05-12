@@ -1,6 +1,6 @@
 /*
  * ZeroWheel Business Intelligence Dashboard
- * Design: Light premium — white bg, gold (#C9A962) accents, teal highlights
+ * Design: Light premium — white bg, gold (#B8860B) accents, teal highlights
  * Features: Date range picker, rep filter, line-of-business filter, dynamic charts
  * Data: $1,095/unit DTC MSRP. 9 macro LOBs per boss's ZeroWheel GTM framework.
  * Revenue target: $1,095 x 1,000 units = ~$1.095M Year 1
@@ -25,7 +25,7 @@ import LightHero from "@/components/LightHero";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 
 // ─── Color Palette ───────────────────────────────────────────────────────────
-const GOLD = "#C9A962";
+const GOLD = "#B8860B";
 const GOLD_DIM = "#8B7D3C";
 const TEAL = "#2DD4BF";
 const RED = "#F87171";
@@ -111,7 +111,7 @@ function pct(n: number) { return `${(n * 100).toFixed(1)}%`; }
 const DarkTooltip = ({ active, payload, label }: any) => {
   if (!active || !payload?.length) return null;
   return (
-    <div className="bg-white border border-[#C9A962]/35 rounded-xl px-4 py-3 shadow-xl min-w-[140px]">
+    <div className="bg-white border border-[#B8860B]/65 rounded-xl px-4 py-3 shadow-xl min-w-[140px]">
       <p className="font-mono text-[10px] text-black/40 uppercase tracking-wider mb-2">{label}</p>
       {payload.map((p: any, i: number) => (
         <div key={i} className="flex items-center gap-2 mb-1">
@@ -189,7 +189,7 @@ function FilterDropdown({ label, options, value, onChange, color = GOLD }: {
         <ChevronDown className="w-3 h-3 ml-1" style={{ color: "rgba(0,0,0,0.40)" }} />
       </button>
       {open && (
-        <div className="absolute top-full mt-1 left-0 z-50 rounded-xl border border-[#C9A962]/35 shadow-xl bg-white overflow-hidden min-w-[180px]">
+        <div className="absolute top-full mt-1 left-0 z-50 rounded-xl border border-[#B8860B]/65 shadow-xl bg-white overflow-hidden min-w-[180px]">
           {options.map(opt => (
             <button
               key={opt}

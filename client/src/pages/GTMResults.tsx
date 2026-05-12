@@ -48,7 +48,7 @@ export default function GTMResults() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.25em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-[11px] tracking-[0.25em] uppercase">
               Net Promoter Score
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
@@ -68,7 +68,7 @@ export default function GTMResults() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.div variants={fadeInUp} className="bg-white border border-[#C9A962]/30 rounded-xl p-8 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_8px_24px_rgba(0,0,0,0.05)]">
+            <motion.div variants={fadeInUp} className="bg-white border border-[#B8860B]/60 rounded-xl p-8 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_8px_24px_rgba(0,0,0,0.05)]">
               <h3 className="font-display text-lg font-bold text-black mb-6 text-center tracking-tight">Understanding NPS</h3>
               <div className="grid md:grid-cols-3 gap-5">
                 <div className="text-center p-5 rounded-xl bg-red-50 border border-red-100">
@@ -87,7 +87,7 @@ export default function GTMResults() {
                   <p className="font-body text-xs text-black/45 leading-relaxed">Loyal enthusiasts who will fuel growth through referrals and repeat purchases</p>
                 </div>
               </div>
-              <div className="mt-6 text-center border-t border-[#C9A962]/20 pt-5">
+              <div className="mt-6 text-center border-t border-[#B8860B]/50 pt-5">
                 <p className="font-body text-sm text-black/50">
                   <span className="font-semibold text-black">NPS = % Promoters − % Detractors</span> &nbsp;|&nbsp; 
                   Industry average: 30–40 &nbsp;|&nbsp; World-class: 70+
@@ -125,10 +125,10 @@ export default function GTMResults() {
                 key={i}
                 variants={scaleIn}
                 whileHover={{ y: -4 }}
-                className="bg-white border border-[#C9A962]/30 rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/60 transition-all duration-300"
+                className="bg-white border border-[#B8860B]/60 rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#B8860B]/60 transition-all duration-300"
               >
-                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-[#C9A962]/20 flex items-center justify-center mb-5">
-                  <metric.icon className="w-5 h-5 text-[#C9A962]" />
+                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-[#B8860B]/50 flex items-center justify-center mb-5">
+                  <metric.icon className="w-5 h-5 text-[#B8860B]" />
                 </div>
                 <h3 className="font-display text-lg font-bold text-black mb-2.5 tracking-tight">{metric.title}</h3>
                 <p className="font-body text-sm text-black/50 leading-relaxed">{metric.description}</p>
@@ -148,7 +148,7 @@ export default function GTMResults() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.25em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-[11px] tracking-[0.25em] uppercase">
               Real-Time Feedback
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
@@ -194,10 +194,10 @@ export default function GTMResults() {
                   key={i}
                   variants={fadeInUp}
                   whileHover={{ y: -3 }}
-                  className="flex gap-5 p-6 rounded-xl bg-white border border-[#C9A962]/30 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_28px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/60 transition-all duration-300"
+                  className="flex gap-5 p-6 rounded-xl bg-white border border-[#B8860B]/60 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_28px_rgba(0,0,0,0.07)] hover:border-[#B8860B]/60 transition-all duration-300"
                 >
-                  <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-[#C9A962]/20 flex items-center justify-center flex-shrink-0">
-                    <item.icon className="w-5 h-5 text-[#C9A962]" />
+                  <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-[#B8860B]/50 flex items-center justify-center flex-shrink-0">
+                    <item.icon className="w-5 h-5 text-[#B8860B]" />
                   </div>
                   <div>
                     <h3 className="font-display text-base font-bold text-black mb-2 tracking-tight">{item.title}</h3>
@@ -220,7 +220,7 @@ export default function GTMResults() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.25em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-[11px] tracking-[0.25em] uppercase">
               Our Methodology
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
@@ -244,10 +244,10 @@ export default function GTMResults() {
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="flex gap-4 items-start p-6 rounded-xl bg-white border border-[#C9A962]/30 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:border-[#C9A962]/50 transition-all duration-300"
+                className="flex gap-4 items-start p-6 rounded-xl bg-white border border-[#B8860B]/60 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:border-[#B8860B]/50 transition-all duration-300"
               >
-                <div className="w-9 h-9 rounded-lg bg-[#C9A962]/10 border border-[#C9A962]/20 flex items-center justify-center flex-shrink-0">
-                  <CheckCircle2 className="w-4 h-4 text-[#C9A962]" />
+                <div className="w-9 h-9 rounded-lg bg-[#B8860B]/10 border border-[#B8860B]/50 flex items-center justify-center flex-shrink-0">
+                  <CheckCircle2 className="w-4 h-4 text-[#B8860B]" />
                 </div>
                 <div>
                   <h3 className="font-display text-base font-bold text-black mb-2 tracking-tight">{method.title}</h3>
@@ -260,7 +260,7 @@ export default function GTMResults() {
       </section>
 
       {/* CTA */}
-      <section id="cta" className="py-20 sm:py-24 bg-white border-t border-[#C9A962]/20">
+      <section id="cta" className="py-20 sm:py-24 bg-white border-t border-[#B8860B]/50">
         <div className="container px-6 sm:px-8">
           <motion.div
             className="text-center max-w-2xl mx-auto"
@@ -269,7 +269,7 @@ export default function GTMResults() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.25em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-[11px] tracking-[0.25em] uppercase">
               Ready to Grow?
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
@@ -280,11 +280,11 @@ export default function GTMResults() {
               Let's start with a conversation about your product, your market, and your ambitions.
             </motion.p>
             <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/gtm" className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-lg bg-[#C9A962] text-white font-body text-sm font-semibold hover:bg-[#B8963E] shadow-[0_2px_8px_rgba(201,169,98,0.3)] hover:shadow-[0_8px_24px_rgba(201,169,98,0.35)] transition-all">
+              <a href="/gtm" className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-lg bg-[#B8860B] text-white font-body text-sm font-semibold hover:bg-[#B8963E] shadow-[0_2px_8px_rgba(201,169,98,0.3)] hover:shadow-[0_8px_24px_rgba(201,169,98,0.35)] transition-all">
                 Back to GTM Overview
                 <ArrowRight className="w-4 h-4" />
               </a>
-              <a href="mailto:shawn@wellestategroup.com" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg border border-[#C9A962]/40 text-black font-body text-sm font-semibold hover:border-[#C9A962]/40 hover:bg-[#F9F9F7] transition-all">
+              <a href="mailto:shawn@wellestategroup.com" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg border border-[#B8860B]/70 text-black font-body text-sm font-semibold hover:border-[#B8860B]/70 hover:bg-[#F9F9F7] transition-all">
                 Contact Us
               </a>
             </motion.div>

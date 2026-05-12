@@ -47,7 +47,7 @@ const macroLobs: MacroLob[] = [
     name: "Private Clubs",
     icon: Star,
     category: "VERTICAL",
-    categoryColor: "#C9A962",
+    categoryColor: "#B8860B",
     pricing: "$825/unit (max 25% off list)",
     priceValue: "$825",
     tier: "Tier 1 — Launch",
@@ -87,7 +87,7 @@ const macroLobs: MacroLob[] = [
     name: "Medical & Rehabilitation",
     icon: Stethoscope,
     category: "VERTICAL",
-    categoryColor: "#C9A962",
+    categoryColor: "#B8860B",
     pricing: "$825/unit (max 25% off list)",
     priceValue: "$825",
     tier: "Tier 1 — Launch",
@@ -126,7 +126,7 @@ const macroLobs: MacroLob[] = [
     name: "Corporate Wellness",
     icon: Target,
     category: "VERTICAL",
-    categoryColor: "#C9A962",
+    categoryColor: "#B8860B",
     pricing: "$825/unit (max 25% off list)",
     priceValue: "$825",
     tier: "Tier 2 — Growth",
@@ -165,7 +165,7 @@ const macroLobs: MacroLob[] = [
     name: "Hospitality & Amenities",
     icon: Building2,
     category: "VERTICAL",
-    categoryColor: "#C9A962",
+    categoryColor: "#B8860B",
     pricing: "$825/unit (max 25% off list)",
     priceValue: "$825",
     tier: "Tier 2 — Growth",
@@ -205,7 +205,7 @@ const macroLobs: MacroLob[] = [
     name: "Cruise & Maritime",
     icon: Ship,
     category: "VERTICAL",
-    categoryColor: "#C9A962",
+    categoryColor: "#B8860B",
     pricing: "$825/unit (max 25% off list)",
     priceValue: "$825",
     tier: "Tier 3 — Scale",
@@ -272,7 +272,7 @@ export default function ZWLinesOfBusiness() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Pricing Framework
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 mb-4 text-black">
@@ -290,13 +290,13 @@ export default function ZWLinesOfBusiness() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="rounded-2xl border-2 border-[#C9A962]/40 overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
+            <div className="rounded-2xl border-2 border-[#B8860B]/70 overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
               <div className="bg-[#F5F4F1] px-8 py-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <Layers className="w-4 h-4 text-[#C9A962]" />
+                  <Layers className="w-4 h-4 text-[#B8860B]" />
                   <span className="font-display text-sm font-semibold text-white">Pricing Structure</span>
                 </div>
-                <span className="font-mono text-[10px] text-[#C9A962] tracking-wider">MSRP $1,095 — DO NOT EXCEED THRESHOLDS</span>
+                <span className="font-mono text-[10px] text-[#B8860B] tracking-wider">MSRP $1,095 — DO NOT EXCEED THRESHOLDS</span>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4">
                 {[
@@ -305,7 +305,7 @@ export default function ZWLinesOfBusiness() {
                   { label: "Commercial (max)", price: "$695", note: "Max 40% off list", discount: "40%", bg: "bg-white" },
                   { label: "GSA (best)", price: "$694", note: "Best pricing — floor", discount: "~37%", bg: "bg-[#FAFAF8]" },
                 ].map((tier, i) => (
-                  <div key={i} className={`p-6 text-center ${tier.bg} ${i < 3 ? "border-r border-[#C9A962]/20" : ""}`}>
+                  <div key={i} className={`p-6 text-center ${tier.bg} ${i < 3 ? "border-r border-[#B8860B]/50" : ""}`}>
                     <p className="font-mono text-[9px] text-black/40 tracking-[0.15em] uppercase mb-2">{tier.label}</p>
                     <p className="font-display text-2xl font-bold text-black mb-1">{tier.price}</p>
                     <p className="font-body text-[11px] text-black/40">{tier.note}</p>
@@ -330,7 +330,7 @@ export default function ZWLinesOfBusiness() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Go-To-Market Framework
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-4 text-black">
@@ -361,16 +361,16 @@ export default function ZWLinesOfBusiness() {
                     onClick={() => toggleLob(i)}
                     className={`cursor-pointer rounded-2xl border-2 transition-all duration-300 overflow-hidden ${
                       isExpanded
-                        ? "border-[#C9A962]/40 shadow-[0_8px_30px_rgba(201,169,98,0.1)]"
-                        : "border-[#C9A962]/35 hover:border-[#C9A962]/60 hover:shadow-[0_4px_16px_rgba(0,0,0,0.05)]"
+                        ? "border-[#B8860B]/70 shadow-[0_8px_30px_rgba(201,169,98,0.1)]"
+                        : "border-[#B8860B]/65 hover:border-[#B8860B]/60 hover:shadow-[0_4px_16px_rgba(0,0,0,0.05)]"
                     } bg-white`}
                   >
                     <div className="px-6 py-5 flex items-center justify-between">
                       <div className="flex items-center gap-4">
                         <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 ${
-                          isExpanded ? "bg-[#C9A962]/15" : "bg-black/[0.04] group-hover:bg-[#C9A962]/10"
+                          isExpanded ? "bg-[#B8860B]/15" : "bg-black/[0.04] group-hover:bg-[#B8860B]/10"
                         }`}>
-                          <Icon className={`w-5 h-5 transition-colors ${isExpanded ? "text-[#C9A962]" : "text-black/40 group-hover:text-[#C9A962]"}`} />
+                          <Icon className={`w-5 h-5 transition-colors ${isExpanded ? "text-[#B8860B]" : "text-black/40 group-hover:text-[#B8860B]"}`} />
                         </div>
                         <div>
                           <div className="flex items-center gap-3">
@@ -399,7 +399,7 @@ export default function ZWLinesOfBusiness() {
                           animate={{ rotate: isExpanded ? 180 : 0 }}
                           transition={{ duration: 0.3 }}
                         >
-                          <ChevronDown className={`w-5 h-5 transition-colors ${isExpanded ? "text-[#C9A962]" : "text-black/25"}`} />
+                          <ChevronDown className={`w-5 h-5 transition-colors ${isExpanded ? "text-[#B8860B]" : "text-black/25"}`} />
                         </motion.div>
                       </div>
                     </div>
@@ -423,8 +423,8 @@ export default function ZWLinesOfBusiness() {
                                 {/* Buyer Persona */}
                                 <div>
                                   <div className="flex items-center gap-2 mb-2">
-                                    <UserCircle className="w-3.5 h-3.5 text-[#C9A962]" />
-                                    <span className="font-mono text-[9px] text-[#C9A962] tracking-[0.15em] uppercase font-semibold">Buyer Persona</span>
+                                    <UserCircle className="w-3.5 h-3.5 text-[#B8860B]" />
+                                    <span className="font-mono text-[9px] text-[#B8860B] tracking-[0.15em] uppercase font-semibold">Buyer Persona</span>
                                   </div>
                                   <p className="font-display text-sm font-semibold text-black">{lob.persona}</p>
                                   <p className="font-body text-xs text-black/40 mt-0.5">{lob.personaTitle}</p>
@@ -467,8 +467,8 @@ export default function ZWLinesOfBusiness() {
                                 {/* GTM Positioning */}
                                 <div>
                                   <div className="flex items-center gap-2 mb-2">
-                                    <Crosshair className="w-3.5 h-3.5 text-[#C9A962]" />
-                                    <span className="font-mono text-[9px] text-[#C9A962] tracking-[0.15em] uppercase font-semibold">GTM Positioning</span>
+                                    <Crosshair className="w-3.5 h-3.5 text-[#B8860B]" />
+                                    <span className="font-mono text-[9px] text-[#B8860B] tracking-[0.15em] uppercase font-semibold">GTM Positioning</span>
                                   </div>
                                   <p className="font-body text-xs text-black/55 leading-relaxed">{lob.gtmPositioning}</p>
                                 </div>
@@ -476,12 +476,12 @@ export default function ZWLinesOfBusiness() {
                                 {/* Sub-Segments */}
                                 <div>
                                   <div className="flex items-center gap-2 mb-2.5">
-                                    <ArrowRight className="w-3.5 h-3.5 text-[#C9A962]" />
-                                    <span className="font-mono text-[9px] text-[#C9A962] tracking-[0.15em] uppercase font-semibold">Sub-Segments ({lob.subs.length})</span>
+                                    <ArrowRight className="w-3.5 h-3.5 text-[#B8860B]" />
+                                    <span className="font-mono text-[9px] text-[#B8860B] tracking-[0.15em] uppercase font-semibold">Sub-Segments ({lob.subs.length})</span>
                                   </div>
                                   <div className="flex flex-wrap gap-1.5">
                                     {lob.subs.map((sub, j) => (
-                                      <span key={j} className="px-2.5 py-1 rounded-full bg-black/[0.04] text-black/55 font-body text-[10px] border border-[#C9A962]/20">
+                                      <span key={j} className="px-2.5 py-1 rounded-full bg-black/[0.04] text-black/55 font-body text-[10px] border border-[#B8860B]/50">
                                         {sub}
                                       </span>
                                     ))}
@@ -493,8 +493,8 @@ export default function ZWLinesOfBusiness() {
                                   <div className="bg-[#F5F4F1] rounded-xl p-4 mt-3">
                                     <p className="font-body text-xs text-white/70 italic leading-relaxed">"{lob.testimonial.quote}"</p>
                                     <div className="mt-2.5 flex items-center gap-2">
-                                      <div className="w-5 h-5 rounded-full bg-[#C9A962]/20 flex items-center justify-center">
-                                        <span className="text-[8px] text-[#C9A962] font-bold">{lob.testimonial.author[0]}</span>
+                                      <div className="w-5 h-5 rounded-full bg-[#B8860B]/20 flex items-center justify-center">
+                                        <span className="text-[8px] text-[#B8860B] font-bold">{lob.testimonial.author[0]}</span>
                                       </div>
                                       <div>
                                         <p className="font-display text-[10px] font-semibold text-white">{lob.testimonial.author}</p>
@@ -529,7 +529,7 @@ export default function ZWLinesOfBusiness() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               At A Glance
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 mb-4 text-black">
@@ -547,15 +547,15 @@ export default function ZWLinesOfBusiness() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="rounded-2xl border-2 border-[#C9A962]/40 overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
+            <div className="rounded-2xl border-2 border-[#B8860B]/70 overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
               <div className="bg-[#F5F4F1] px-6 py-3 flex items-center gap-3">
-                <TrendingUp className="w-4 h-4 text-[#C9A962]" />
+                <TrendingUp className="w-4 h-4 text-[#B8860B]" />
                 <span className="font-display text-sm font-semibold text-black">Go-To-Market Summary</span>
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
-                    <tr className="bg-[#FAFAF8] border-b border-[#C9A962]/25">
+                    <tr className="bg-[#FAFAF8] border-b border-[#B8860B]/55">
                       <th className="text-left p-4 font-mono text-[9px] text-black/40 tracking-[0.15em] uppercase">Market Vertical</th>
                       <th className="text-left p-4 font-mono text-[9px] text-black/40 tracking-[0.15em] uppercase">Decision Maker</th>
                       <th className="text-left p-4 font-mono text-[9px] text-black/40 tracking-[0.15em] uppercase">Key Pain Point</th>
@@ -566,7 +566,7 @@ export default function ZWLinesOfBusiness() {
                     {summaryTable.map((row, i) => (
                       <tr
                         key={i}
-                        className={`border-b border-[#C9A962]/12 hover:bg-[#C9A962]/[0.03] transition-colors ${
+                        className={`border-b border-[#B8860B]/12 hover:bg-[#B8860B]/[0.03] transition-colors ${
                           i % 2 === 0 ? "bg-white" : "bg-[#FAFAF8]/50"
                         }`}
                       >
@@ -580,7 +580,7 @@ export default function ZWLinesOfBusiness() {
                           <span className="font-body text-xs text-black/55">{row.painPoint}</span>
                         </td>
                         <td className="p-4">
-                          <span className="font-body text-xs text-[#C9A962] font-medium">{row.uvp}</span>
+                          <span className="font-body text-xs text-[#B8860B] font-medium">{row.uvp}</span>
                         </td>
                       </tr>
                     ))}

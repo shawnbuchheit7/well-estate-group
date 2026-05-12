@@ -54,7 +54,7 @@ export default function Home() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Business Plan
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-3 mb-3 text-black">
@@ -78,7 +78,7 @@ export default function Home() {
                 key={i}
                 href={section.path}
                 variants={fadeInUp}
-                className="group p-6 rounded-xl border border-[#C9A962]/25 bg-white hover:border-[#C9A962]/60 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300"
+                className="group p-6 rounded-xl border border-[#B8860B]/55 bg-white hover:border-[#B8860B]/60 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300"
                 whileHover={{ y: -4 }}
               >
                 <div className="flex items-center justify-between mb-3">
@@ -86,7 +86,7 @@ export default function Home() {
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <motion.span
-                    className="text-[#C9A962] opacity-0 group-hover:opacity-100 transition-opacity"
+                    className="text-[#B8860B] opacity-0 group-hover:opacity-100 transition-opacity"
                     initial={false}
                   >
                     →

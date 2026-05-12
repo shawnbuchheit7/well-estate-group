@@ -5,7 +5,7 @@
 
 /* 
  * DESIGN PHILOSOPHY: Well Estate Group - Premium Longevity Consultancy
- * LUXURY AESTHETIC: Black, White, Grays with Gold (#C9A962) accents
+ * LUXURY AESTHETIC: Black, White, Grays with Gold (#B8860B) accents
  * Maximum contrast, clean lines, super premium feel
  * Typography: Playfair Display (display), DM Sans (body), Space Mono (mono)
  */
@@ -62,7 +62,7 @@
   --sidebar-primary-foreground: oklch(1 0 0);
   
   /* Gold accent for decorative elements */
-  --accent: oklch(0.55 0.14 75); /* Gold #C9A962 */
+  --accent: oklch(0.55 0.14 75); /* Gold #B8860B */
   --accent-foreground: oklch(1 0 0);
   
   --chart-1: oklch(0.15 0.005 0);
@@ -93,7 +93,7 @@
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
   
-  --border: oklch(0.78 0.06 75); /* Gold-tinted borders for luxury feel */
+  --border: oklch(0.62 0.14 75); /* Deep gold borders #B8860B for luxury feel */
   --input: oklch(0.97 0.003 0);
   --ring: oklch(0.52 0.14 75);
   
@@ -218,7 +218,7 @@
   
   /* Luxury gradient utilities */
   .gradient-gold {
-    background: linear-gradient(135deg, #5A4210 0%, #C9A962 50%, #5A4210 100%);
+    background: linear-gradient(135deg, #5A4210 0%, #B8860B 50%, #5A4210 100%);
   }
   
   .gradient-light {
@@ -255,21 +255,21 @@
   /* LUXURY CARD STYLES - Gold outline borders, refined shadows */
   .card-elevated {
     background: #FFFFFF;
-    border: 1px solid rgba(201, 169, 98, 0.35);
+    border: 2px solid rgba(184, 134, 11, 0.65);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03), 0 4px 20px rgba(0, 0, 0, 0.04);
     border-radius: 0.75rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .card-elevated:hover {
-    border-color: rgba(201, 169, 98, 0.55);
-    box-shadow: 0 8px 32px rgba(201, 169, 98, 0.10), 0 2px 8px rgba(0, 0, 0, 0.04);
+    border-color: rgba(184, 134, 11, 0.85);
+    box-shadow: 0 8px 32px rgba(184, 134, 11, 0.12), 0 2px 8px rgba(0, 0, 0, 0.04);
     transform: translateY(-2px);
   }
   
   .box-highlight {
     background: #F9F9F7;
-    border: 1px solid rgba(201, 169, 98, 0.25);
+    border: 2px solid rgba(184, 134, 11, 0.7);
     border-radius: 0.5rem;
   }
   
@@ -285,7 +285,7 @@ html {
 
 /* Selection color — gold tint */
 ::selection {
-  background: rgba(201, 169, 98, 0.18);
+  background: rgba(184, 134, 11, 0.18);
   color: inherit;
 }
 
@@ -299,12 +299,12 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(201, 169, 98, 0.4);
+  background: rgba(184, 134, 11, 0.4);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(201, 169, 98, 0.7);
+  background: rgba(184, 134, 11, 0.7);
 }
 
 /* Enhanced card and box styling - refined luxury shadows */
@@ -321,7 +321,7 @@ html {
 
 /* Gold borders on interactive card/box elements */
 [class*="border"][class*="rounded"] {
-  border-color: rgba(201, 169, 98, 0.30);
+  border-color: rgba(184, 134, 11, 0.65);
 }
 
 /* Table styling - luxury */
@@ -333,7 +333,7 @@ table {
 
 table th {
   background: #F7F7F5;
-  border-bottom: 2px solid rgba(201, 169, 98, 0.30);
+  border-bottom: 2px solid rgba(184, 134, 11, 0.7);
   font-family: 'Space Mono', monospace;
   font-weight: 600;
   text-transform: uppercase;
@@ -344,7 +344,7 @@ table th {
 }
 
 table td {
-  border-bottom: 1px solid rgba(201, 169, 98, 0.12);
+  border-bottom: 1px solid rgba(184, 134, 11, 0.3);
   font-family: 'DM Sans', sans-serif;
   font-size: 0.875rem;
   padding: 0.75rem 1rem;
@@ -370,7 +370,7 @@ table tr:first-child th:last-child {
 
 /* Input and form field contrast */
 input, textarea, select {
-  border: 1px solid rgba(201, 169, 98, 0.25) !important;
+  border: 2px solid rgba(184, 134, 11, 0.65) !important;
   background: #FFFFFF !important;
   font-family: 'DM Sans', sans-serif !important;
   border-radius: 0.5rem !important;
@@ -378,13 +378,13 @@ input, textarea, select {
 }
 
 input:focus, textarea:focus, select:focus {
-  border-color: #C9A962 !important;
-  box-shadow: 0 0 0 3px rgba(201, 169, 98, 0.10) !important;
+  border-color: #B8860B !important;
+  box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.15) !important;
 }
 
-/* Luxury section dividers — very subtle gold */
+/* Luxury section dividers — subtle gold */
 section + section {
-  border-top: 1px solid rgba(201, 169, 98, 0.10);
+  border-top: 1px solid rgba(184, 134, 11, 0.20);
 }
 
 /* Premium pill/badge styling */

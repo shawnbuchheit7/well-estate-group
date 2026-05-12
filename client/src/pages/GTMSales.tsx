@@ -148,7 +148,7 @@ export default function GTMSales() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Priority Segments
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-4 text-black">
@@ -175,7 +175,7 @@ export default function GTMSales() {
                   y: -4,
                   boxShadow: "0 16px 40px rgba(201,169,98,0.15)",
                 }}
-                className="w-36 h-36 md:w-40 md:h-40 rounded-full border-2 border-[#C9A962]/40 bg-white hover:border-[#C9A962] hover:bg-[#C9A962]/[0.06] flex items-center justify-center p-4 transition-colors duration-300 cursor-default shadow-[0_4px_20px_rgba(201,169,98,0.08)]"
+                className="w-36 h-36 md:w-40 md:h-40 rounded-full border-2 border-[#B8860B]/70 bg-white hover:border-[#B8860B] hover:bg-[#B8860B]/[0.06] flex items-center justify-center p-4 transition-colors duration-300 cursor-default shadow-[0_4px_20px_rgba(201,169,98,0.08)]"
               >
                 <p className="font-display text-sm md:text-base font-semibold text-black text-center leading-tight">{market}</p>
               </motion.div>
@@ -196,7 +196,7 @@ export default function GTMSales() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Detailed Targeting
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-4 text-black">
@@ -219,11 +219,11 @@ export default function GTMSales() {
                 key={i}
                 variants={fadeInUp}
                 whileHover={{ y: -3, boxShadow: "0 12px 30px rgba(0,0,0,0.06)" }}
-                className="bg-white border border-[#C9A962]/35 rounded-xl overflow-hidden hover:border-[#C9A962]/60 transition-all duration-300"
+                className="bg-white border border-[#B8860B]/65 rounded-xl overflow-hidden hover:border-[#B8860B]/60 transition-all duration-300"
               >
-                <div className="flex items-center gap-3 px-5 py-3.5 border-b border-[#C9A962]/40 bg-[#FAFAF8]">
-                  <div className="w-9 h-9 rounded-lg bg-[#C9A962]/10 flex items-center justify-center flex-shrink-0">
-                    <lob.icon className="w-4.5 h-4.5 text-[#C9A962]" />
+                <div className="flex items-center gap-3 px-5 py-3.5 border-b border-[#B8860B]/70 bg-[#FAFAF8]">
+                  <div className="w-9 h-9 rounded-lg bg-[#B8860B]/10 flex items-center justify-center flex-shrink-0">
+                    <lob.icon className="w-4.5 h-4.5 text-[#B8860B]" />
                   </div>
                   <h3 className="font-display text-base font-semibold text-black">{lob.name}</h3>
                 </div>
@@ -231,7 +231,7 @@ export default function GTMSales() {
                   <ul className="space-y-2.5">
                     {lob.targets.map((target, j) => (
                       <li key={j} className="flex items-start gap-2.5">
-                        <ArrowRight className="w-3.5 h-3.5 text-[#C9A962] mt-0.5 flex-shrink-0" />
+                        <ArrowRight className="w-3.5 h-3.5 text-[#B8860B] mt-0.5 flex-shrink-0" />
                         <span className="font-body text-sm text-black/45 leading-relaxed">{target}</span>
                       </li>
                     ))}
@@ -253,7 +253,7 @@ export default function GTMSales() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
               Industry Network
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-4 text-black">
@@ -279,7 +279,7 @@ export default function GTMSales() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.02 }}
                 whileHover={{ scale: 1.05, y: -2, boxShadow: "0 8px 20px rgba(0,0,0,0.06)" }}
-                className="px-4 py-2 rounded-full bg-white border border-[#C9A962]/40 text-sm font-body font-medium text-black/60 hover:border-[#C9A962]/40 hover:text-black hover:bg-[#C9A962]/[0.03] transition-all cursor-default shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
+                className="px-4 py-2 rounded-full bg-white border border-[#B8860B]/70 text-sm font-body font-medium text-black/60 hover:border-[#B8860B]/70 hover:text-black hover:bg-[#B8860B]/[0.03] transition-all cursor-default shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
               >
                 {partner}
               </motion.span>
