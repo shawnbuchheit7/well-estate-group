@@ -532,8 +532,8 @@ export default function UseOfFunds() {
                   className="aspect-[4/3]"
                 />
                 <div className="p-4">
-                  <h4 className="font-display font-medium text-sm">Member Lounge</h4>
-                  <p className="font-body text-xs text-muted-foreground">Premium lounge with refreshments and entertainment</p>
+<h4 className="font-display font-medium text-sm">Member Suite</h4>
+                   <p className="font-body text-xs text-muted-foreground">Private treatment suite with seating area and entertainment</p>
                 </div>
               </div>
 
@@ -544,8 +544,8 @@ export default function UseOfFunds() {
                   className="aspect-[4/3]"
                 />
                 <div className="p-4">
-                  <h4 className="font-display font-medium text-sm">Concierge Area</h4>
-                  <p className="font-body text-xs text-muted-foreground">Private consultation and member services</p>
+<h4 className="font-display font-medium text-sm">Reception</h4>
+                   <p className="font-body text-xs text-muted-foreground">Welcome area with Fountain Life branding and concierge desk</p>
                 </div>
               </div>
             </motion.div>
