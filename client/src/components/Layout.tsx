@@ -173,7 +173,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
       {/* Navigation — hidden in present mode */}
       {!isPresentMode && (
       <motion.nav 
-        className="fixed top-0 left-0 right-0 z-50 backdrop-blur-2xl border-b bg-white/97 border-[#C9A962]/25"
+        className="fixed top-0 left-0 right-0 z-50 backdrop-blur-2xl bg-white/97"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] }}
@@ -217,7 +217,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                         className={`relative px-3.5 py-1.5 rounded-lg border transition-all whitespace-nowrap ${
                           isActive
                             ? "text-white font-semibold border-black bg-black shadow-[0_2px_8px_rgba(0,0,0,0.15)]"
-                            : "text-black/55 border-transparent hover:text-black hover:border-[#C9A962]/35 hover:bg-black/[0.03]"
+                            : "text-black/55 border-[#C9A962]/60 hover:text-black hover:border-[#C9A962] hover:bg-black/[0.03]"
                         }`}
                       >
                         {link.label}
@@ -263,7 +263,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
           </div>
           {/* Second row: scrollable tab strip — only shown when many tabs */}
           {navLinks.length > 6 && (
-            <div className="hidden lg:block relative border-t border-[#C9A962]/20">
+            <div className="hidden lg:block relative">
               <div className="overflow-x-auto scrollbar-hide pb-0" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
                 <div className="flex items-center justify-center gap-1 px-4 py-1.5 font-body text-xs w-full">
                   {navLinks.map((link) => {
@@ -277,7 +277,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                           className={`relative px-3 py-1 rounded-md border transition-all whitespace-nowrap text-[11px] ${
                             isActive
                               ? "text-white font-semibold border-black bg-black shadow-sm"
-                              : "text-black/55 border-transparent hover:text-black hover:border-[#C9A962]/25 hover:bg-black/[0.03]"
+                              : "text-black/55 border-[#C9A962]/60 hover:text-black hover:border-[#C9A962] hover:bg-black/[0.03]"
                           }`}
                         >
                           {link.label}
