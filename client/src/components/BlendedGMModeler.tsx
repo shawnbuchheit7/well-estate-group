@@ -118,7 +118,7 @@ const channelDefs: ChannelDef[] = [
     icon: Package,
     accentColor: "#B8860B",
     accentBg: "bg-[#B8860B]/[0.06]",
-    accentBorder: "border-[#B8860B]/50",
+    accentBorder: "border-[#B8860B]/40",
     barColor: "#B8860B",
     maxDiscountPct: 0,
     defaultDiscountPct: 0,
@@ -133,7 +133,7 @@ const channelDefs: ChannelDef[] = [
     icon: Building2,
     accentColor: "#1A1A1A",
     accentBg: "bg-black/[0.02]",
-    accentBorder: "border-[#B8860B]/60",
+    accentBorder: "border-[#B8860B]/40",
     barColor: "#1A1A1A",
     maxDiscountPct: 25,
     defaultDiscountPct: 25,
@@ -438,7 +438,7 @@ export default function BlendedGMModeler() {
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="mb-5 rounded-xl border-2 border-[#B8860B]/55 bg-white overflow-hidden"
+        className="mb-5 rounded-xl border border-[#B8860B]/55 bg-white overflow-hidden"
       >
         <div className="px-4 py-3 border-b border-[#B8860B]/15">
           <div className="flex items-center gap-2.5">
@@ -455,7 +455,7 @@ export default function BlendedGMModeler() {
               { segment: "GSA / Government", price: fmtCurrency(Math.round(msrp * 0.63)), discount: "~37% off list", note: "Contractual / schedule pricing", color: "#4B5563" },
             ].map((seg) => (
               <div key={seg.segment} className="px-4 first:pl-0 last:pr-0 text-center flex flex-col items-center">
-                <span className="inline-block px-3 py-1 rounded-full border-2 border-[#B8860B]/65 bg-black/[0.03] font-mono text-[11px] text-black/80 tracking-wider uppercase font-semibold mb-2">{seg.segment}</span>
+                <span className="inline-block px-3 py-1 rounded-full border border-[#B8860B]/40 bg-black/[0.03] font-mono text-[11px] text-black/80 tracking-wider uppercase font-semibold mb-2">{seg.segment}</span>
                 <span className="font-display text-2xl font-bold text-black tabular-nums block">{seg.price}</span>
                 <span className="inline-block mt-2 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold text-white" style={{ backgroundColor: seg.color }}>{seg.discount}</span>
                 <span className="font-body text-[10px] text-black/65 block mt-1.5">{seg.note}</span>
@@ -487,7 +487,7 @@ export default function BlendedGMModeler() {
               className={`text-left p-3 rounded-lg border transition-all duration-200 ${
                 activePreset === preset.name
                   ? "border-[#B8860B] bg-[#B8860B]/[0.04] shadow-sm"
-                  : "border-[#B8860B]/55 bg-white hover:border-[#B8860B]/70 hover:bg-[#B8860B]/[0.02]"
+                  : "border-[#B8860B]/55 bg-white hover:border-[#B8860B]/60 hover:bg-[#B8860B]/[0.02]"
               }`}
             >
               <p className={`font-display text-sm font-semibold mb-1 ${
@@ -506,7 +506,7 @@ export default function BlendedGMModeler() {
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="mb-4 rounded-xl border-2 border-[#B8860B]/55 bg-white overflow-hidden"
+        className="mb-4 rounded-xl border border-[#B8860B]/55 bg-white overflow-hidden"
       >
         <div className="p-3.5">
           <div className="flex items-center gap-2.5 mb-2.5">
@@ -520,7 +520,7 @@ export default function BlendedGMModeler() {
               className={`p-2.5 rounded-lg border text-left transition-all duration-200 ${
                 pricingMode === "floor"
                   ? "border-[#DC2626]/40 bg-red-50/50 shadow-sm"
-                  : "border-[#B8860B]/50 bg-white hover:border-[#B8860B]/65"
+                  : "border-[#B8860B]/40 bg-white hover:border-[#B8860B]/60"
               }`}
             >
               <div className="flex items-center gap-2 mb-1.5">
@@ -543,8 +543,8 @@ export default function BlendedGMModeler() {
               onClick={() => setPricingMode("expected")}
               className={`p-2.5 rounded-lg border text-left transition-all duration-200 ${
                 pricingMode === "expected"
-                  ? "border-[#B8860B]/70 bg-[#B8860B]/[0.04] shadow-sm"
-                  : "border-[#B8860B]/50 bg-white hover:border-[#B8860B]/65"
+                  ? "border-[#B8860B]/40 bg-[#B8860B]/[0.04] shadow-sm"
+                  : "border-[#B8860B]/40 bg-white hover:border-[#B8860B]/60"
               }`}
             >
               <div className="flex items-center gap-2 mb-1.5">
@@ -689,7 +689,7 @@ export default function BlendedGMModeler() {
                   <div
                     key={l.lever}
                     className={`p-2.5 rounded-lg border ${
-                      i === 0 ? "border-[#B8860B]/60 bg-[#B8860B]/[0.04]" : "border-[#B8860B]/50 bg-white"
+                      i === 0 ? "border-[#B8860B]/40 bg-[#B8860B]/[0.04]" : "border-[#B8860B]/40 bg-white"
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1">
@@ -716,7 +716,7 @@ export default function BlendedGMModeler() {
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="mb-4 rounded-xl border-2 border-[#B8860B]/55 bg-white overflow-hidden"
+        className="mb-4 rounded-xl border border-[#B8860B]/55 bg-white overflow-hidden"
       >
         {/* Header */}
         <div className="px-4 py-3 border-b border-[#B8860B]/15 flex items-center justify-between">
@@ -731,7 +731,7 @@ export default function BlendedGMModeler() {
           </div>
           <button
             onClick={handleReset}
-            className="flex items-center gap-1.5 font-mono text-[10px] text-black/50 hover:text-[#B8860B] tracking-[0.12em] uppercase px-3 py-2 rounded-lg border-2 border-[#B8860B]/50 hover:border-[#B8860B]/60 transition-all"
+            className="flex items-center gap-1.5 font-mono text-[10px] text-black/50 hover:text-[#B8860B] tracking-[0.12em] uppercase px-3 py-2 rounded-lg border border-[#B8860B]/40 hover:border-[#B8860B]/60 transition-all"
           >
             <RotateCcw className="w-3 h-3" />
             Reset All
@@ -862,7 +862,7 @@ export default function BlendedGMModeler() {
 
                 {/* Price / Discount control */}
                 {ch.locked ? (
-                  <div className="p-3 rounded-xl bg-black/[0.02] border-2 border-[#B8860B]/12 mb-4">
+                  <div className="p-3 rounded-xl bg-black/[0.02] border border-[#B8860B]/12 mb-4">
                     <div className="flex items-center justify-between">
                       <span className="font-mono text-[10px] text-black/55 uppercase tracking-[0.12em]">Selling Price</span>
                       <span className="font-display text-xl font-bold text-black tabular-nums">{fmtCurrency(prices[i])}</span>
@@ -922,7 +922,7 @@ export default function BlendedGMModeler() {
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="rounded-xl border-2 border-[#B8860B]/55 bg-white overflow-hidden"
+        className="rounded-xl border border-[#B8860B]/55 bg-white overflow-hidden"
       >
         <button
           onClick={() => setShowBreakdown(!showBreakdown)}
@@ -1012,7 +1012,7 @@ export default function BlendedGMModeler() {
                   </div>
 
                   {/* Totals */}
-                  <div className="mt-5 pt-5 border-t border-[#B8860B]/50 flex items-end justify-between">
+                  <div className="mt-5 pt-5 border-t border-[#B8860B]/40 flex items-end justify-between">
                     <div className="flex items-center gap-8">
                       <div>
                         <span className="font-mono text-[9px] text-black/50 block uppercase tracking-wider">Total Revenue</span>

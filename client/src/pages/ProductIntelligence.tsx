@@ -154,7 +154,7 @@ export default function ProductIntelligence() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.15 }}
-                  className="bg-white rounded-xl border-2 border-[#B8860B]/60 shadow-[0_2px_8px_rgba(0,0,0,0.04),0_8px_24px_rgba(0,0,0,0.05)] overflow-hidden hover:shadow-[0_12px_40px_rgba(0,0,0,0.10)] hover:border-[#B8860B]/60 transition-all duration-300"
+                  className="bg-white rounded-xl border border-[#B8860B]/40 shadow-[0_2px_8px_rgba(0,0,0,0.04),0_8px_24px_rgba(0,0,0,0.05)] overflow-hidden hover:shadow-[0_12px_40px_rgba(0,0,0,0.10)] hover:border-[#B8860B]/60 transition-all duration-300"
                 >
                   <div className="p-4 sm:p-6">
                     <img
@@ -163,7 +163,7 @@ export default function ProductIntelligence() {
                       className="w-full h-auto object-contain mx-auto"
                     />
                   </div>
-                  <div className="border-t border-[#B8860B]/60 px-4 py-3.5 bg-[#F9F9F7]">
+                  <div className="border-t border-[#B8860B]/40 px-4 py-3.5 bg-[#F9F9F7]">
                     <p className="font-mono text-[10px] sm:text-[11px] font-semibold text-black/60 tracking-wider text-center uppercase mb-0.5">
                       {view.label}
                     </p>
@@ -218,7 +218,7 @@ export default function ProductIntelligence() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="bg-white rounded-xl p-6 sm:p-7 border-2 border-[#B8860B]/60 shadow-[0_2px_8px_rgba(184,134,11,0.05),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(184,134,11,0.12)] hover:border-[#B8860B]/60 transition-all duration-300"
+                  className="bg-white rounded-xl p-6 sm:p-7 border border-[#B8860B]/40 shadow-[0_2px_8px_rgba(184,134,11,0.05),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(184,134,11,0.12)] hover:border-[#B8860B]/60 transition-all duration-300"
                 >
                   <div className="w-8 h-8 rounded-lg bg-[#B8860B]/10 flex items-center justify-center mb-4">
                     <span className="font-mono text-xs font-bold text-[#B8860B]">0{i + 1}</span>
@@ -258,7 +258,7 @@ export default function ProductIntelligence() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="bg-white rounded-xl p-6 border-2 border-[#B8860B]/60 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_28px_rgba(0,0,0,0.07)] hover:border-[#B8860B]/60 transition-all duration-300"
+                className="bg-white rounded-xl p-6 border border-[#B8860B]/40 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_28px_rgba(0,0,0,0.07)] hover:border-[#B8860B]/60 transition-all duration-300"
               >
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-9 h-9 rounded-lg bg-black/[0.04] flex items-center justify-center flex-shrink-0">
@@ -298,13 +298,13 @@ export default function ProductIntelligence() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-3xl mx-auto bg-white rounded-xl border-2 border-[#B8860B]/60 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_8px_24px_rgba(0,0,0,0.05)] overflow-hidden"
+            className="max-w-3xl mx-auto bg-white rounded-xl border border-[#B8860B]/40 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_8px_24px_rgba(0,0,0,0.05)] overflow-hidden"
           >
             {specs.map((spec, i) => (
               <div
                 key={i}
                 className={`flex items-center justify-between px-6 sm:px-8 py-4 ${
-                  i !== specs.length - 1 ? "border-b border-[#B8860B]/50" : ""
+                  i !== specs.length - 1 ? "border-b border-[#B8860B]/40" : ""
                 } ${i % 2 === 0 ? "bg-white" : "bg-[#FAFAF8]"} hover:bg-[#F5F4F0] transition-colors duration-150`}
               >
                 <span className="font-body text-xs sm:text-sm text-black/65">{spec.label}</span>
@@ -347,7 +347,7 @@ export default function ProductIntelligence() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
-                  className="flex items-start gap-4 p-5 sm:p-6 rounded-xl bg-white border-2 border-[#B8860B]/60 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(184,134,11,0.10)] hover:border-[#B8860B]/50 transition-all duration-300"
+                  className="flex items-start gap-4 p-5 sm:p-6 rounded-xl bg-white border border-[#B8860B]/40 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(184,134,11,0.10)] hover:border-[#B8860B]/60 transition-all duration-300"
                 >
                   <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-[#F5F4F1] flex items-center justify-center flex-shrink-0">
                     <span className="font-mono text-[10px] sm:text-xs font-bold text-white">{item.item}</span>
@@ -417,7 +417,7 @@ export default function ProductIntelligence() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white rounded-xl p-6 border-2 border-[#B8860B]/65 shadow-[0_2px_12px_rgba(184,134,11,0.05)] relative overflow-hidden"
+                className="bg-white rounded-xl p-6 border border-[#B8860B]/40 shadow-[0_2px_12px_rgba(184,134,11,0.05)] relative overflow-hidden"
               >
                 {/* Status badge */}
                 <div className="flex items-center justify-between mb-4">

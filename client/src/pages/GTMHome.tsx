@@ -84,7 +84,7 @@ export default function GTMHome() {
                 whileHover={{ y: -6, boxShadow: "0 16px 40px rgba(184,134,11,0.12), 0 0 0 1px rgba(184,134,11,0.3)" }}
                 className="relative group"
               >
-                <div className="bg-white border-2 border-[#B8860B]/65 rounded-2xl p-6 h-full hover:border-[#B8860B]/70 transition-all duration-300 text-center relative overflow-hidden">
+                <div className="bg-white border border-[#B8860B]/40 rounded-2xl p-6 h-full hover:border-[#B8860B]/60 transition-all duration-300 text-center relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#B8860B]/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="relative z-10">
                     <div className="w-14 h-14 rounded-full bg-[#B8860B]/8 flex items-center justify-center mx-auto mb-4 group-hover:bg-[#B8860B]/15 transition-colors">
@@ -109,7 +109,7 @@ export default function GTMHome() {
             <motion.div 
               variants={fadeInUp} 
               whileHover={{ scale: 1.02 }}
-              className="text-center p-7 rounded-2xl border-2 border-[#B8860B]/60 bg-white flex-1 shadow-[0_2px_12px_rgba(184,134,11,0.05)]"
+              className="text-center p-7 rounded-2xl border border-[#B8860B]/40 bg-white flex-1 shadow-[0_2px_12px_rgba(184,134,11,0.05)]"
             >
               <p className="font-mono text-[10px] text-black/45 uppercase tracking-[0.2em] mb-2">Current State</p>
               <p className="font-display text-xl font-semibold text-black">Direct-to-Consumer</p>
@@ -126,7 +126,7 @@ export default function GTMHome() {
             <motion.div 
               variants={fadeInUp} 
               whileHover={{ scale: 1.02 }}
-              className="text-center p-7 rounded-2xl border-2 border-[#B8860B]/60 bg-[#B8860B]/[0.03] flex-1 shadow-[0_4px_20px_rgba(201,169,98,0.08)]"
+              className="text-center p-7 rounded-2xl border border-[#B8860B]/40 bg-[#B8860B]/[0.03] flex-1 shadow-[0_4px_20px_rgba(201,169,98,0.08)]"
             >
               <p className="font-mono text-[10px] text-[#B8860B] uppercase tracking-[0.2em] mb-2">With WEG</p>
               <p className="font-display text-xl font-semibold text-black">Full B2B Distribution</p>
@@ -201,7 +201,7 @@ export default function GTMHome() {
                 key={i}
                 variants={fadeInUp}
                 whileHover={{ y: -3, boxShadow: "0 8px 24px rgba(0,0,0,0.06)" }}
-                className="flex gap-4 items-start p-6 rounded-xl bg-white border-2 border-[#B8860B]/65 hover:border-[#B8860B]/60 transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
+                className="flex gap-4 items-start p-6 rounded-xl bg-white border border-[#B8860B]/40 hover:border-[#B8860B]/60 transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
               >
                 <div className="w-10 h-10 rounded-full bg-[#B8860B]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                   <channel.icon className="w-5 h-5 text-[#B8860B]" />
@@ -273,7 +273,7 @@ export default function GTMHome() {
                 key={i}
                 variants={fadeInUp}
                 whileHover={{ y: -3, boxShadow: "0 8px 24px rgba(0,0,0,0.06)" }}
-                className="flex gap-4 items-start p-5 rounded-xl bg-white border-2 border-[#B8860B]/65 hover:border-[#B8860B]/60 transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
+                className="flex gap-4 items-start p-5 rounded-xl bg-white border border-[#B8860B]/40 hover:border-[#B8860B]/60 transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
               >
                 <div className="w-7 h-7 rounded-full bg-[#B8860B]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                   <CheckCircle2 className="w-4 h-4 text-[#B8860B]" />
@@ -335,7 +335,7 @@ export default function GTMHome() {
                 key={i}
                 variants={fadeInUp}
                 whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(0,0,0,0.06)" }}
-                className="flex gap-4 items-start p-6 rounded-xl bg-white border-2 border-[#B8860B]/65 shadow-[0_4px_16px_rgba(0,0,0,0.03)] hover:border-[#B8860B]/60 transition-all duration-300"
+                className="flex gap-4 items-start p-6 rounded-xl bg-white border border-[#B8860B]/40 shadow-[0_4px_16px_rgba(0,0,0,0.03)] hover:border-[#B8860B]/60 transition-all duration-300"
               >
                 <div className="w-8 h-8 rounded-full bg-[#B8860B]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                   <CheckCircle2 className="w-4.5 h-4.5 text-[#B8860B]" />

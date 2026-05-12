@@ -27,7 +27,7 @@ export default function Therapeutics() {
             animate="visible"
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
               PROPRIETARY THERAPEUTICS
             </motion.span>
             <motion.h1 variants={fadeInUp} className="font-display text-5xl md:text-7xl font-medium mt-4 mb-6">
@@ -52,7 +52,7 @@ export default function Therapeutics() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp}>
-              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
                 THE WELL ESTATE GROUP DIFFERENCE
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
@@ -84,7 +84,7 @@ export default function Therapeutics() {
               <img 
                 src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/EYeJVwdkrNJOoDJr.webp" 
                 alt="Well Estate Group Treatment Room"
-                className="relative rounded-3xl border border-border shadow-2xl"
+                className="relative rounded-3xl border border-[#B8860B]/40 shadow-2xl ring-1 ring-[#B8860B]/20 ring-offset-2 ring-offset-white"
               />
             </motion.div>
           </motion.div>
@@ -101,7 +101,7 @@ export default function Therapeutics() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
               BREAKTHROUGH BIOLOGICS
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
@@ -190,7 +190,7 @@ export default function Therapeutics() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-amber-500 text-sm tracking-wider">
+              <span className="font-mono text-amber-500 text-sm tracking-wider section-header-accent-center">
                 MASSIVE ADDITIONAL OPPORTUNITY
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
@@ -520,7 +520,7 @@ export default function Therapeutics() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
                 VERTICAL INTEGRATION
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">

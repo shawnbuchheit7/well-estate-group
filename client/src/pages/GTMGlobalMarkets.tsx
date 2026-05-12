@@ -140,9 +140,9 @@ export default function GTMGlobalMarkets() {
                 key={i}
                 variants={scaleIn}
                 whileHover={{ y: -4, boxShadow: "0 16px 40px rgba(184,134,11,0.12), 0 0 0 1px rgba(184,134,11,0.3)" }}
-                className="bg-white border-2 border-[#B8860B]/65 rounded-xl overflow-hidden hover:border-[#B8860B]/60 transition-all duration-300"
+                className="bg-white border border-[#B8860B]/40 rounded-xl overflow-hidden hover:border-[#B8860B]/60 transition-all duration-300"
               >
-                <div className="px-6 py-4 border-b border-[#B8860B]/70 bg-[#FAFAF8]">
+                <div className="px-6 py-4 border-b border-[#B8860B]/40 bg-[#FAFAF8]">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <span className="text-2xl">{region.flag}</span>
@@ -177,7 +177,7 @@ export default function GTMGlobalMarkets() {
                           viewport={{ once: true }}
                           transition={{ delay: 0.3 + j * 0.05 }}
                           whileHover={{ scale: 1.05 }}
-                          className="px-3 py-1 rounded-full bg-[#B8860B]/8 text-xs font-body text-black/60 border-2 border-[#B8860B]/10"
+                          className="px-3 py-1 rounded-full bg-[#B8860B]/8 text-xs font-body text-black/60 border border-[#B8860B]/10"
                         >
                           {market}
                         </motion.span>
@@ -192,7 +192,7 @@ export default function GTMGlobalMarkets() {
                           <motion.span
                             key={j}
                             whileHover={{ scale: 1.05 }}
-                            className="px-3 py-1 rounded-full border-2 border-[#B8860B]/70 text-xs font-body text-black/65 hover:border-[#B8860B]/60 transition-colors"
+                            className="px-3 py-1 rounded-full border border-[#B8860B]/40 text-xs font-body text-black/65 hover:border-[#B8860B]/60 transition-colors"
                           >
                             {partner}
                           </motion.span>
@@ -270,8 +270,8 @@ export default function GTMGlobalMarkets() {
                   <motion.div 
                     className={`px-3 py-3 rounded-lg bg-white border mb-2 shadow-[0_2px_8px_rgba(184,134,11,0.05)] cursor-pointer transition-all duration-300 ${
                       region.status === "active" 
-                        ? "border-[#B8860B]/60 hover:border-[#B8860B]/60" 
-                        : "border-[#B8860B]/65 hover:border-[#B8860B]/70"
+                        ? "border-[#B8860B]/40 hover:border-[#B8860B]/60" 
+                        : "border-[#B8860B]/40 hover:border-[#B8860B]/60"
                     }`}
                     whileHover={{ y: -2, boxShadow: "0 8px 20px rgba(0,0,0,0.06)" }}
                     onClick={() => setExpandedRegion(expandedRegion === i ? null : i)}
@@ -293,7 +293,7 @@ export default function GTMGlobalMarkets() {
                         {region.cities.map((city, j) => (
                           <motion.div 
                             key={j} 
-                            className="px-2.5 py-1.5 rounded-md bg-white border-2 border-[#B8860B]/70 hover:border-[#B8860B]/50 transition-colors"
+                            className="px-2.5 py-1.5 rounded-md bg-white border border-[#B8860B]/40 hover:border-[#B8860B]/60 transition-colors"
                             whileHover={{ x: 2 }}
                           >
                             <div className="flex items-center justify-center gap-1">
@@ -304,7 +304,7 @@ export default function GTMGlobalMarkets() {
                         ))}
                       </motion.div>
                     ) : region.cities.length === 0 ? (
-                      <div className="px-3 py-3 rounded-md border border-dashed border-[#B8860B]/65">
+                      <div className="px-3 py-3 rounded-md border border-dashed border-[#B8860B]/40">
                         <span className="font-mono text-[10px] text-black/20 tracking-wider">Expansion planned</span>
                       </div>
                     ) : null}

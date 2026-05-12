@@ -136,7 +136,7 @@ export default function GTMLinesOfBusiness() {
                   y: -4,
                   boxShadow: "0 12px 40px rgba(201,169,98,0.15)",
                 }}
-                className="aspect-square rounded-full border-2 border-[#B8860B]/65 hover:border-[#B8860B]/60 flex items-center justify-center p-4 bg-white hover:bg-[#B8860B]/[0.04] transition-colors duration-300 cursor-default shadow-[0_4px_16px_rgba(0,0,0,0.04)]"
+                className="aspect-square rounded-full border border-[#B8860B]/40 hover:border-[#B8860B]/60 flex items-center justify-center p-4 bg-white hover:bg-[#B8860B]/[0.04] transition-colors duration-300 cursor-default shadow-[0_4px_16px_rgba(0,0,0,0.04)]"
               >
                 <p className="font-body text-xs md:text-sm font-medium text-black/70 text-center leading-tight">{lob}</p>
               </motion.div>
@@ -186,12 +186,12 @@ export default function GTMLinesOfBusiness() {
                   selectedMacro === i ? "ring-2 ring-[#B8860B] ring-offset-2" : ""
                 }`}
               >
-                <div className="bg-white border-2 border-[#B8860B]/65 rounded-2xl p-7 h-full hover:border-[#B8860B]/70 transition-all duration-300 text-center relative overflow-hidden">
+                <div className="bg-white border border-[#B8860B]/40 rounded-2xl p-7 h-full hover:border-[#B8860B]/60 transition-all duration-300 text-center relative overflow-hidden">
                   {/* Background accent */}
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#B8860B]/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
                   <div className="relative z-10">
-                    <div className="w-14 h-14 rounded-full border-2 border-[#B8860B]/60 flex items-center justify-center mx-auto mb-4 group-hover:border-[#B8860B]/60 group-hover:bg-[#B8860B]/5 transition-all">
+                    <div className="w-14 h-14 rounded-full border border-[#B8860B]/40 flex items-center justify-center mx-auto mb-4 group-hover:border-[#B8860B]/60 group-hover:bg-[#B8860B]/5 transition-all">
                       <lob.icon className="w-6 h-6 text-[#B8860B]" />
                     </div>
                     <h3 className="font-display text-base font-semibold text-black mb-2">{lob.name}</h3>
@@ -274,7 +274,7 @@ export default function GTMLinesOfBusiness() {
                   key={i}
                   variants={fadeInUp}
                   whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(0,0,0,0.06)" }}
-                  className="bg-white border-2 border-[#B8860B]/65 rounded-xl overflow-hidden hover:border-[#B8860B]/60 transition-all duration-300"
+                  className="bg-white border border-[#B8860B]/40 rounded-xl overflow-hidden hover:border-[#B8860B]/60 transition-all duration-300"
                 >
                   <div className="bg-[#F5F4F1] px-5 py-3.5 flex items-center gap-2">
                     <category.icon className="w-4 h-4 text-[#B8860B]" />

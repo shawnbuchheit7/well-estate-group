@@ -216,8 +216,8 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                         href={link.href}
                         className={`relative px-3.5 py-1.5 rounded-lg border-2 transition-all whitespace-nowrap ${
                           isActive
-                            ? "text-white font-semibold border-black bg-black shadow-[0_2px_8px_rgba(0,0,0,0.15)]"
-                            : "text-black/70 border-[#B8860B] hover:text-black hover:border-[#996515] hover:bg-black/[0.03]"
+                            ? "text-white font-semibold border-[#B8860B] bg-[#B8860B] shadow-[0_2px_8px_rgba(184,134,11,0.25)]"
+                            : "text-black/70 border-[#B8860B]/40 hover:text-black hover:border-[#B8860B]/60 hover:bg-[#B8860B]/[0.03]"
                         }`}
                       >
                         {link.label}
@@ -276,8 +276,8 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                           href={link.href}
                           className={`relative px-3 py-1 rounded-md border-2 transition-all whitespace-nowrap text-[11px] ${
                             isActive
-                              ? "text-white font-semibold border-black bg-black shadow-sm"
-                              : "text-black/70 border-[#B8860B] hover:text-black hover:border-[#996515] hover:bg-black/[0.03]"
+                              ? "text-white font-semibold border-[#B8860B] bg-[#B8860B] shadow-sm"
+                              : "text-black/70 border-[#B8860B]/40 hover:text-black hover:border-[#B8860B]/60 hover:bg-[#B8860B]/[0.03]"
                           }`}
                         >
                           {link.label}
@@ -318,7 +318,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
             >
               <div className="flex flex-col h-full">
                 {/* Mobile Menu Header */}
-                <div className="flex items-center justify-between h-20 px-6 border-b border-[#B8860B]/50">
+                <div className="flex items-center justify-between h-20 px-6 border-b border-[#B8860B]/40">
                   <span className="font-display text-xl font-semibold text-black">Menu</span>
                   <motion.button
                     onClick={closeMobileMenu}
@@ -357,7 +357,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                           onClick={closeMobileMenu}
                           className={`block px-4 py-3 rounded-lg font-body text-base transition-all ${
                             location === link.href
-                              ? "bg-black text-white font-semibold"
+                              ? "bg-[#B8860B] text-white font-semibold"
                               : "text-black/60 hover:bg-black/[0.03] hover:translate-x-2"
                           }`}
                         >
@@ -370,7 +370,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                 
                 {/* Mobile Menu Footer */}
                 {showDataRoom && (
-                  <div className="p-6 border-t border-[#B8860B]/50">
+                  <div className="p-6 border-t border-[#B8860B]/40">
                     <Link href="/longevity/data-room" onClick={closeMobileMenu}>
                       <Button className="w-full bg-black hover:bg-black/90 text-white font-body font-medium shadow-md">
                         Data Room
@@ -391,12 +391,12 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
 
       {/* Cross-Pillar Navigation — hidden on ZeroWheel project pages and in present mode */}
       {!isPresentMode && currentPillarIndex >= 0 && !isZWRoute && (
-        <section className="py-12 border-t bg-white border-[#B8860B]/65">
+        <section className="py-12 border-t bg-white border-[#B8860B]/40">
           <div className="container px-6">
             <div className="flex items-center justify-between max-w-4xl mx-auto">
               {prevPillar ? (
                 <Link href={prevPillar.href} className="group flex items-center gap-3 text-left">
-                  <div className="w-10 h-10 rounded-full border flex items-center justify-center group-hover:border-[#B8860B]/50 group-hover:bg-[#B8860B]/[0.04] transition-all border-[#B8860B]/60">
+                  <div className="w-10 h-10 rounded-full border flex items-center justify-center group-hover:border-[#B8860B]/60 group-hover:bg-[#B8860B]/[0.04] transition-all border-[#B8860B]/40">
                     <ChevronLeft className="w-4 h-4 group-hover:text-[#B8860B] transition-colors text-black/55" />
                   </div>
                   <div>
@@ -416,7 +416,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                     <p className="font-mono text-[10px] tracking-wider uppercase text-black/50">Pillar {nextPillar.num}</p>
                     <p className="font-body text-sm transition-colors text-black/70 group-hover:text-black">{nextPillar.label}</p>
                   </div>
-                  <div className="w-10 h-10 rounded-full border flex items-center justify-center group-hover:border-[#B8860B]/50 group-hover:bg-[#B8860B]/[0.04] transition-all border-[#B8860B]/60">
+                  <div className="w-10 h-10 rounded-full border flex items-center justify-center group-hover:border-[#B8860B]/60 group-hover:bg-[#B8860B]/[0.04] transition-all border-[#B8860B]/40">
                     <ArrowRight className="w-4 h-4 group-hover:text-[#B8860B] transition-colors text-black/55" />
                   </div>
                 </Link>
@@ -431,7 +431,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
 
       {/* Enhanced Footer with Contact CTA — hidden in present mode */}
       {!isPresentMode && (
-      <footer className="py-16 border-t border-[#B8860B]/65 bg-[#FAFAF8]">
+      <footer className="py-16 border-t border-[#B8860B]/40 bg-[#1A1A1A]">
         <div className="container px-6">
           <div className="max-w-6xl mx-auto">
             {/* Footer Top */}
@@ -446,11 +446,11 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   />
-                  <span className="font-display text-base font-semibold tracking-wide group-hover:text-[#B8860B] transition-colors text-black">
+                  <span className="font-display text-base font-semibold tracking-wide group-hover:text-[#B8860B] transition-colors text-white">
                     WELL ESTATE GROUP
                   </span>
                 </Link>
-                <p className="font-body text-sm leading-relaxed text-black/65">
+                <p className="font-body text-sm leading-relaxed text-white/60">
                   Consulting Services in Fitness, Wellness & Longevity. Delivering end-to-end strategy from market entry to global expansion.
                 </p>
               </div>
@@ -460,9 +460,9 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                 {/* Pillar Links — hidden on ZeroWheel project pages */}
                 {!isZWRoute && (
                   <div className="flex flex-col gap-3">
-                    <p className="font-mono text-[10px] tracking-wider uppercase mb-1 text-black/55">Pillars</p>
+                    <p className="font-mono text-[10px] tracking-wider uppercase mb-1 text-[#B8860B]">Pillars</p>
                     {pillarOrder.map((pillar) => (
-                      <Link key={pillar.href} href={pillar.href} className="font-body text-sm hover:text-[#B8860B] transition-colors text-black/60">
+                      <Link key={pillar.href} href={pillar.href} className="font-body text-sm hover:text-[#B8860B] transition-colors text-white/60">
                         {pillar.label}
                       </Link>
                     ))}
@@ -471,17 +471,17 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
 
                 {/* Contact CTA */}
                 <div className="flex flex-col gap-3">
-                  <p className="font-mono text-[10px] tracking-wider uppercase mb-1 text-black/55">Get in Touch</p>
+                  <p className="font-mono text-[10px] tracking-wider uppercase mb-1 text-[#B8860B]">Get in Touch</p>
                   <a 
                     href="mailto:info@wellestategroup.com" 
-                    className="group flex items-center gap-3 px-5 py-3 rounded-xl border hover:border-[#B8860B]/50 transition-all border-[#B8860B]/60 bg-white hover:bg-[#B8860B]/[0.04]"
+                    className="group flex items-center gap-3 px-5 py-3 rounded-xl border hover:border-[#B8860B]/60 transition-all border-[#B8860B]/40 bg-white/5 hover:bg-[#B8860B]/10"
                   >
-                    <div className="w-9 h-9 rounded-full bg-black flex items-center justify-center group-hover:bg-[#B8860B] transition-colors">
+                    <div className="w-9 h-9 rounded-full bg-[#B8860B] flex items-center justify-center group-hover:bg-[#B8860B]/80 transition-colors">
                       <Mail className="w-4 h-4 text-white" />
                     </div>
                     <div>
-                      <p className="font-body text-sm font-semibold text-black">Inquire</p>
-                      <p className="font-body text-xs text-black/60">info@wellestategroup.com</p>
+                      <p className="font-body text-sm font-semibold text-white">Inquire</p>
+                      <p className="font-body text-xs text-white/60">info@wellestategroup.com</p>
                     </div>
                   </a>
                 </div>
@@ -493,11 +493,11 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
 
             {/* Footer Bottom */}
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="font-body text-[11px] tracking-wider text-black/50">
+              <p className="font-body text-[11px] tracking-wider text-white/40">
                 &copy; 2026 Well Estate Group. All rights reserved.
               </p>
               <div className="flex items-center gap-6">
-                <span className="font-mono text-[10px] tracking-wider text-black/25">
+                <span className="font-mono text-[10px] tracking-wider text-white/20">
                   CONFIDENTIAL
                 </span>
               </div>

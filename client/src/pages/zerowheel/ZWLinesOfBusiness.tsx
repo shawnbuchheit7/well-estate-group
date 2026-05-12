@@ -290,7 +290,7 @@ export default function ZWLinesOfBusiness() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="rounded-2xl border-2 border-[#B8860B]/70 overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
+            <div className="rounded-2xl border border-[#B8860B]/40 overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
               <div className="bg-[#F5F4F1] px-8 py-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <Layers className="w-4 h-4 text-[#B8860B]" />
@@ -305,7 +305,7 @@ export default function ZWLinesOfBusiness() {
                   { label: "Commercial (max)", price: "$695", note: "Max 40% off list", discount: "40%", bg: "bg-white" },
                   { label: "GSA (best)", price: "$694", note: "Best pricing — floor", discount: "~37%", bg: "bg-[#FAFAF8]" },
                 ].map((tier, i) => (
-                  <div key={i} className={`p-6 text-center ${tier.bg} ${i < 3 ? "border-r border-[#B8860B]/50" : ""}`}>
+                  <div key={i} className={`p-6 text-center ${tier.bg} ${i < 3 ? "border-r border-[#B8860B]/40" : ""}`}>
                     <p className="font-mono text-[9px] text-black/55 tracking-[0.15em] uppercase mb-2">{tier.label}</p>
                     <p className="font-display text-2xl font-bold text-black mb-1">{tier.price}</p>
                     <p className="font-body text-[11px] text-black/55">{tier.note}</p>
@@ -361,8 +361,8 @@ export default function ZWLinesOfBusiness() {
                     onClick={() => toggleLob(i)}
                     className={`cursor-pointer rounded-2xl border-2 transition-all duration-300 overflow-hidden ${
                       isExpanded
-                        ? "border-[#B8860B]/70 shadow-[0_8px_30px_rgba(201,169,98,0.1)]"
-                        : "border-[#B8860B]/65 hover:border-[#B8860B]/60 hover:shadow-[0_4px_16px_rgba(0,0,0,0.05)]"
+                        ? "border-[#B8860B]/40 shadow-[0_8px_30px_rgba(201,169,98,0.1)]"
+                        : "border-[#B8860B]/40 hover:border-[#B8860B]/60 hover:shadow-[0_4px_16px_rgba(0,0,0,0.05)]"
                     } bg-white`}
                   >
                     <div className="px-6 py-5 flex items-center justify-between">
@@ -481,7 +481,7 @@ export default function ZWLinesOfBusiness() {
                                   </div>
                                   <div className="flex flex-wrap gap-1.5">
                                     {lob.subs.map((sub, j) => (
-                                      <span key={j} className="px-2.5 py-1 rounded-full bg-black/[0.04] text-black/70 font-body text-[10px] border-2 border-[#B8860B]/50">
+                                      <span key={j} className="px-2.5 py-1 rounded-full bg-black/[0.04] text-black/70 font-body text-[10px] border border-[#B8860B]/40">
                                         {sub}
                                       </span>
                                     ))}
@@ -547,7 +547,7 @@ export default function ZWLinesOfBusiness() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="rounded-2xl border-2 border-[#B8860B]/70 overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
+            <div className="rounded-2xl border border-[#B8860B]/40 overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
               <div className="bg-[#F5F4F1] px-6 py-3 flex items-center gap-3">
                 <TrendingUp className="w-4 h-4 text-[#B8860B]" />
                 <span className="font-display text-sm font-semibold text-black">Go-To-Market Summary</span>

@@ -25,7 +25,7 @@ export default function UseOfFunds() {
             animate="visible"
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
               CAPITAL DEPLOYMENT
             </motion.span>
             <motion.h1 variants={fadeInUp} className="font-display text-5xl md:text-7xl font-medium mt-4 mb-6">
@@ -49,7 +49,7 @@ export default function UseOfFunds() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.div variants={fadeInUp} className="bg-card border border-border rounded-2xl overflow-hidden">
+            <motion.div variants={fadeInUp} className="bg-card border border-[#B8860B]/40 rounded-2xl overflow-hidden ring-1 ring-[#B8860B]/20 ring-offset-2 ring-offset-white">
               <div className="p-8 border-b border-border bg-muted/30">
                 <div className="flex justify-between items-center">
                   <div>
@@ -112,7 +112,7 @@ export default function UseOfFunds() {
 
             {/* Use of Proceeds Waterfall */}
             <motion.div variants={fadeInUp} className="mt-12">
-              <div className="bg-card border border-border rounded-2xl overflow-hidden">
+              <div className="bg-card border border-[#B8860B]/40 rounded-2xl overflow-hidden ring-1 ring-[#B8860B]/20 ring-offset-2 ring-offset-white">
                 <div className="p-6 border-b border-border bg-muted/30">
                   <h3 className="font-display text-xl font-medium">Use of Proceeds Waterfall</h3>
                   <p className="font-body text-sm text-muted-foreground">Visual deployment of $50M Series A capital</p>
@@ -197,7 +197,7 @@ export default function UseOfFunds() {
 
             {/* Hiring Costs Breakdown */}
             <motion.div variants={fadeInUp} className="mt-12">
-              <div className="bg-card border border-border rounded-2xl overflow-hidden">
+              <div className="bg-card border border-[#B8860B]/40 rounded-2xl overflow-hidden ring-1 ring-[#B8860B]/20 ring-offset-2 ring-offset-white">
                 <div className="p-6 border-b border-border bg-muted/30">
                   <h3 className="font-display text-xl font-medium">Staffing & Payroll Allocation</h3>
                   <p className="font-body text-sm text-muted-foreground">How Series A capital maps to team build</p>
@@ -355,7 +355,7 @@ export default function UseOfFunds() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
               CENTER DEVELOPMENT
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
@@ -467,7 +467,7 @@ export default function UseOfFunds() {
             </motion.div>
 
             <motion.div variants={fadeInUp} className="max-w-4xl mx-auto">
-              <div className="bg-card border border-border rounded-2xl overflow-hidden">
+              <div className="bg-card border border-[#B8860B]/40 rounded-2xl overflow-hidden ring-1 ring-[#B8860B]/20 ring-offset-2 ring-offset-white">
                 <div className="p-4 border-b border-border bg-muted/30">
                   <h4 className="font-display font-medium">Complete Facility Layout</h4>
                   <p className="font-body text-sm text-muted-foreground">Full floor plan with furniture placement and room designations</p>
@@ -524,7 +524,7 @@ export default function UseOfFunds() {
             </motion.div>
 
             <motion.div variants={fadeInUp} className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-<div className="bg-card border border-border rounded-2xl overflow-hidden">
+<div className="bg-card border border-[#B8860B]/40 rounded-2xl overflow-hidden ring-1 ring-[#B8860B]/20 ring-offset-2 ring-offset-white">
                 <ImageLightbox
                   src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/EDiztIuFTUvBdnwn.webp"
                   alt="Reception Area - Entry"
@@ -536,7 +536,7 @@ export default function UseOfFunds() {
                 </div>
               </div>
 
-              <div className="bg-card border border-border rounded-2xl overflow-hidden">
+              <div className="bg-card border border-[#B8860B]/40 rounded-2xl overflow-hidden ring-1 ring-[#B8860B]/20 ring-offset-2 ring-offset-white">
                 <ImageLightbox
                   src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/EYeJVwdkrNJOoDJr.webp"
                   alt="Reception Area - Concierge"
@@ -564,7 +564,7 @@ export default function UseOfFunds() {
             </motion.div>
 
             <motion.div variants={fadeInUp} className="grid md:grid-cols-2 gap-6">
-              <div className="bg-card border border-border rounded-2xl overflow-hidden">
+              <div className="bg-card border border-[#B8860B]/40 rounded-2xl overflow-hidden ring-1 ring-[#B8860B]/20 ring-offset-2 ring-offset-white">
                 <ImageLightbox
                   src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/tXgFRFbpaGApxrTA.webp"
                   alt="Treatment Suite - Main View"
@@ -578,7 +578,7 @@ export default function UseOfFunds() {
                 </div>
               </div>
 
-              <div className="bg-card border border-border rounded-2xl overflow-hidden">
+              <div className="bg-card border border-[#B8860B]/40 rounded-2xl overflow-hidden ring-1 ring-[#B8860B]/20 ring-offset-2 ring-offset-white">
                 <ImageLightbox
                   src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/dQxiDPfHDevJrAde.webp"
                   alt="Treatment Suite - Seating Area"
@@ -609,7 +609,7 @@ export default function UseOfFunds() {
               <p className="font-body text-muted-foreground">RH Contract luxury furniture and finishes throughout</p>
             </motion.div>
 
-            <motion.div variants={fadeInUp} className="bg-card border border-border rounded-2xl overflow-hidden">
+            <motion.div variants={fadeInUp} className="bg-card border border-[#B8860B]/40 rounded-2xl overflow-hidden ring-1 ring-[#B8860B]/20 ring-offset-2 ring-offset-white">
               <div className="p-6 border-b border-border bg-gradient-to-r from-primary/5 to-accent/5">
                 <div className="flex items-center justify-between">
                   <div>
@@ -666,7 +666,7 @@ export default function UseOfFunds() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
               REVENUE ARCHITECTURE
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
@@ -734,7 +734,7 @@ export default function UseOfFunds() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
                 GLOBAL FOOTPRINT
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
@@ -819,7 +819,7 @@ export default function UseOfFunds() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
                 MARKET TIMING
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">

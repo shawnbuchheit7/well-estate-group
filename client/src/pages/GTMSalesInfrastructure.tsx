@@ -135,9 +135,9 @@ export default function GTMSalesInfrastructure() {
                 key={i}
                 variants={fadeInUp}
                 whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(0,0,0,0.06)" }}
-                className="bg-white border-2 border-[#B8860B]/65 rounded-xl overflow-hidden hover:border-[#B8860B]/60 transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
+                className="bg-white border border-[#B8860B]/40 rounded-xl overflow-hidden hover:border-[#B8860B]/60 transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
               >
-                <div className="flex items-center gap-3 px-5 py-4 border-b border-[#B8860B]/70 bg-[#FAFAF8]">
+                <div className="flex items-center gap-3 px-5 py-4 border-b border-[#B8860B]/40 bg-[#FAFAF8]">
                   <div className="w-10 h-10 rounded-lg bg-[#B8860B]/10 flex items-center justify-center flex-shrink-0">
                     <platform.icon className="w-5 h-5 text-[#B8860B]" />
                   </div>
@@ -199,7 +199,7 @@ export default function GTMSalesInfrastructure() {
                 <motion.div key={i} variants={fadeInUp} className="flex items-center gap-2">
                   <motion.div
                     whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(0,0,0,0.06)" }}
-                    className="text-center px-5 py-4 rounded-xl bg-white border-2 border-[#B8860B]/65 shadow-[0_2px_8px_rgba(0,0,0,0.02)] min-w-[140px] hover:border-[#B8860B]/60 transition-all duration-300"
+                    className="text-center px-5 py-4 rounded-xl bg-white border border-[#B8860B]/40 shadow-[0_2px_8px_rgba(0,0,0,0.02)] min-w-[140px] hover:border-[#B8860B]/60 transition-all duration-300"
                   >
                     <div className="w-8 h-8 rounded-full bg-[#B8860B]/10 flex items-center justify-center mx-auto mb-2">
                       <span className="font-display text-sm font-bold text-[#B8860B]">{i + 1}</span>
@@ -226,7 +226,7 @@ export default function GTMSalesInfrastructure() {
                 <motion.div
                   key={i}
                   variants={fadeInUp}
-                  className="text-center px-4 py-4 rounded-xl bg-white border-2 border-[#B8860B]/65 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
+                  className="text-center px-4 py-4 rounded-xl bg-white border border-[#B8860B]/40 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
                 >
                   <div className="w-7 h-7 rounded-full bg-[#B8860B]/10 flex items-center justify-center mx-auto mb-2">
                     <span className="font-display text-xs font-bold text-[#B8860B]">{i + 1}</span>
@@ -276,7 +276,7 @@ export default function GTMSalesInfrastructure() {
                 key={i}
                 variants={fadeInUp}
                 whileHover={{ y: -3, boxShadow: "0 8px 24px rgba(0,0,0,0.05)" }}
-                className="flex gap-4 items-start p-5 rounded-xl bg-white border-2 border-[#B8860B]/65 hover:border-[#B8860B]/60 transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
+                className="flex gap-4 items-start p-5 rounded-xl bg-white border border-[#B8860B]/40 hover:border-[#B8860B]/60 transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
               >
                 <div className="w-9 h-9 rounded-lg bg-[#B8860B]/8 flex items-center justify-center flex-shrink-0 mt-0.5">
                   <tool.icon className="w-4.5 h-4.5 text-[#B8860B]" />

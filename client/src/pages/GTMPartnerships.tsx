@@ -105,14 +105,14 @@ export default function GTMPartnerships() {
                 key={i}
                 variants={scaleIn}
                 whileHover={{ y: -4 }}
-                className="bg-white border-2 border-[#B8860B]/60 rounded-xl p-7 shadow-[0_2px_8px_rgba(184,134,11,0.05),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(184,134,11,0.12)] hover:border-[#B8860B]/60 transition-all duration-300 h-full"
+                className="bg-white border border-[#B8860B]/40 rounded-xl p-7 shadow-[0_2px_8px_rgba(184,134,11,0.05),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(184,134,11,0.12)] hover:border-[#B8860B]/60 transition-all duration-300 h-full"
               >
-                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border-2 border-[#B8860B]/50 flex items-center justify-center mb-5">
+                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-[#B8860B]/40 flex items-center justify-center mb-5">
                   <category.icon className="w-5 h-5 text-[#B8860B]" />
                 </div>
                 <h3 className="font-display text-lg font-bold text-black mb-2 tracking-tight">{category.title}</h3>
                 <p className="font-body text-sm text-black/65 mb-4 leading-relaxed">{category.description}</p>
-                <div className="space-y-2 pt-4 border-t border-[#B8860B]/50">
+                <div className="space-y-2 pt-4 border-t border-[#B8860B]/40">
                   {category.partners.map((partner, j) => (
                     <div key={j} className="flex items-center gap-2.5">
                       <div className="w-1.5 h-1.5 rounded-full bg-[#B8860B]/60" />
@@ -180,12 +180,12 @@ export default function GTMPartnerships() {
                   key={i}
                   variants={scaleIn}
                   whileHover={{ y: -4 }}
-                  className="bg-white border-2 border-[#B8860B]/60 rounded-xl p-7 shadow-[0_2px_8px_rgba(184,134,11,0.05),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(184,134,11,0.12)] hover:border-[#B8860B]/60 transition-all duration-300"
+                  className="bg-white border border-[#B8860B]/40 rounded-xl p-7 shadow-[0_2px_8px_rgba(184,134,11,0.05),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(184,134,11,0.12)] hover:border-[#B8860B]/60 transition-all duration-300"
                 >
                   <h3 className="font-display text-2xl font-bold text-[#B8860B] mb-1 tracking-tight">{community.title}</h3>
                   <p className="font-body text-xs text-black/60 mb-4">{community.subtitle}</p>
                   <p className="font-body text-sm text-black/65 leading-relaxed mb-5">{community.description}</p>
-                  <div className="pt-4 border-t border-[#B8860B]/50">
+                  <div className="pt-4 border-t border-[#B8860B]/40">
                     <span className="font-mono text-[10px] text-[#B8860B] font-semibold tracking-[0.15em] uppercase">{community.stats}</span>
                   </div>
                 </motion.div>
@@ -229,9 +229,9 @@ export default function GTMPartnerships() {
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="flex gap-4 items-start p-6 rounded-xl bg-white border-2 border-[#B8860B]/60 shadow-[0_2px_8px_rgba(184,134,11,0.05)] hover:shadow-[0_8px_24px_rgba(184,134,11,0.10)] hover:border-[#B8860B]/50 transition-all duration-300"
+                className="flex gap-4 items-start p-6 rounded-xl bg-white border border-[#B8860B]/40 shadow-[0_2px_8px_rgba(184,134,11,0.05)] hover:shadow-[0_8px_24px_rgba(184,134,11,0.10)] hover:border-[#B8860B]/60 transition-all duration-300"
               >
-                <div className="w-10 h-10 rounded-lg bg-[#B8860B]/10 border-2 border-[#B8860B]/50 flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 rounded-lg bg-[#B8860B]/10 border border-[#B8860B]/40 flex items-center justify-center flex-shrink-0">
                   <span className="font-display text-sm font-bold text-[#B8860B]">{String(i + 1).padStart(2, '0')}</span>
                 </div>
                 <div>
@@ -278,9 +278,9 @@ export default function GTMPartnerships() {
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="flex gap-4 items-start p-6 rounded-xl bg-white border-2 border-[#B8860B]/60 shadow-[0_2px_8px_rgba(184,134,11,0.05)] hover:shadow-[0_8px_24px_rgba(184,134,11,0.10)] hover:border-[#B8860B]/50 transition-all duration-300"
+                className="flex gap-4 items-start p-6 rounded-xl bg-white border border-[#B8860B]/40 shadow-[0_2px_8px_rgba(184,134,11,0.05)] hover:shadow-[0_8px_24px_rgba(184,134,11,0.10)] hover:border-[#B8860B]/60 transition-all duration-300"
               >
-                <div className="w-9 h-9 rounded-lg bg-[#B8860B]/10 border-2 border-[#B8860B]/50 flex items-center justify-center flex-shrink-0">
+                <div className="w-9 h-9 rounded-lg bg-[#B8860B]/10 border border-[#B8860B]/40 flex items-center justify-center flex-shrink-0">
                   <Star className="w-4 h-4 text-[#B8860B]" />
                 </div>
                 <div>

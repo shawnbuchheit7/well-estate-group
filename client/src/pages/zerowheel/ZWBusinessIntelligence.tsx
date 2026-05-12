@@ -111,7 +111,7 @@ function pct(n: number) { return `${(n * 100).toFixed(1)}%`; }
 const DarkTooltip = ({ active, payload, label }: any) => {
   if (!active || !payload?.length) return null;
   return (
-    <div className="bg-white border-2 border-[#B8860B]/65 rounded-xl px-4 py-3 shadow-xl min-w-[140px]">
+    <div className="bg-white border border-[#B8860B]/40 rounded-xl px-4 py-3 shadow-xl min-w-[140px]">
       <p className="font-mono text-[10px] text-black/55 uppercase tracking-wider mb-2">{label}</p>
       {payload.map((p: any, i: number) => (
         <div key={i} className="flex items-center gap-2 mb-1">
@@ -189,7 +189,7 @@ function FilterDropdown({ label, options, value, onChange, color = GOLD }: {
         <ChevronDown className="w-3 h-3 ml-1" style={{ color: "rgba(0,0,0,0.40)" }} />
       </button>
       {open && (
-        <div className="absolute top-full mt-1 left-0 z-50 rounded-xl border-2 border-[#B8860B]/65 shadow-xl bg-white overflow-hidden min-w-[180px]">
+        <div className="absolute top-full mt-1 left-0 z-50 rounded-xl border border-[#B8860B]/40 shadow-xl bg-white overflow-hidden min-w-[180px]">
           {options.map(opt => (
             <button
               key={opt}

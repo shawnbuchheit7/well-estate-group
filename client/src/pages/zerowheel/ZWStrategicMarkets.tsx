@@ -157,7 +157,7 @@ function DraggableExercise() {
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="mb-8 p-5 rounded-xl border-2 border-[#B8860B]/55 bg-[#B8860B]/[0.03]"
+        className="mb-8 p-5 rounded-xl border border-[#B8860B]/55 bg-[#B8860B]/[0.03]"
       >
         <div className="flex items-start gap-3">
           <Info className="w-5 h-5 text-[#B8860B] flex-shrink-0 mt-0.5" />
@@ -187,7 +187,7 @@ function DraggableExercise() {
         </div>
         <button
           onClick={handleReset}
-          className="font-mono text-[10px] text-black/55 hover:text-[#B8860B] tracking-wider uppercase px-3 py-1.5 rounded-lg border-2 border-[#B8860B]/55 hover:border-[#B8860B]/60 transition-all"
+          className="font-mono text-[10px] text-black/55 hover:text-[#B8860B] tracking-wider uppercase px-3 py-1.5 rounded-lg border border-[#B8860B]/55 hover:border-[#B8860B]/60 transition-all"
         >
           Reset
         </button>
@@ -204,7 +204,7 @@ function DraggableExercise() {
         className={`mb-8 p-5 rounded-2xl border-2 border-dashed transition-all duration-300 min-h-[80px] ${
           dragOverZone === "staging"
             ? "border-[#B8860B] bg-[#B8860B]/[0.03]"
-            : "border-[#B8860B]/65 bg-[#FAFAF8]"
+            : "border-[#B8860B]/40 bg-[#FAFAF8]"
         }`}
       >
         <div className="flex items-center gap-2 mb-3">
@@ -222,7 +222,7 @@ function DraggableExercise() {
               draggable
               onDragStart={(e) => handleDragStart(e, lob.id)}
               onDragEnd={handleDragEnd}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-medium tracking-wide transition-all cursor-grab active:cursor-grabbing select-none bg-white text-black/70 border-2 border-[#B8860B]/70 hover:border-[#B8860B]/70 hover:shadow-md hover:scale-[1.03] hover:-translate-y-0.5 ${
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-medium tracking-wide transition-all cursor-grab active:cursor-grabbing select-none bg-white text-black/70 border border-[#B8860B]/40 hover:border-[#B8860B]/60 hover:shadow-md hover:scale-[1.03] hover:-translate-y-0.5 ${
                 draggedItem === lob.id ? "opacity-50 scale-95" : ""
               }`}
             >
@@ -271,7 +271,7 @@ function DraggableExercise() {
                 } ${
                   isDropTarget
                     ? "border-[#B8860B] shadow-[0_8px_30px_rgba(201,169,98,0.15)] scale-[1.01]"
-                    : "border-[#B8860B]/65 shadow-[0_2px_12px_rgba(0,0,0,0.04)]"
+                    : "border-[#B8860B]/40 shadow-[0_2px_12px_rgba(0,0,0,0.04)]"
                 }`}
                 style={{ minHeight: '200px' }}
               >
@@ -291,7 +291,7 @@ function DraggableExercise() {
 
                 {/* Drop zone indicator when empty and being dragged over */}
                 {isDropTarget && lobs.length === 0 && (
-                  <div className="flex-1 flex items-center justify-center border-2 border-dashed border-[#B8860B]/70 rounded-xl mb-2 min-h-[60px]">
+                  <div className="flex-1 flex items-center justify-center border-2 border-dashed border-[#B8860B]/40 rounded-xl mb-2 min-h-[60px]">
                     <span className="font-body text-xs text-[#B8860B]/60">Drop here</span>
                   </div>
                 )}
@@ -307,7 +307,7 @@ function DraggableExercise() {
                       className={`flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-[11px] sm:text-xs font-medium tracking-wide transition-all cursor-grab active:cursor-grabbing select-none ${
                         isTopLeft
                           ? "bg-[#B8860B] text-white shadow-md hover:shadow-lg hover:scale-[1.03]"
-                          : "bg-white text-black/70 border-2 border-[#B8860B]/70 hover:border-[#B8860B]/70 hover:shadow-md hover:scale-[1.03]"
+                          : "bg-white text-black/70 border border-[#B8860B]/40 hover:border-[#B8860B]/60 hover:shadow-md hover:scale-[1.03]"
                       } ${draggedItem === lob.id ? "opacity-50 scale-95" : ""}`}
                     >
                       <GripVertical className={`w-3 h-3 flex-shrink-0 ${isTopLeft ? 'text-white/40' : 'text-black/25'}`} />

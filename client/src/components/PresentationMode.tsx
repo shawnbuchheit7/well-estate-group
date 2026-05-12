@@ -159,7 +159,7 @@ export function DarkModeToggle() {
       onClick={togglePresentMode}
       className={`relative flex items-center gap-2 px-3 py-1.5 rounded-full border text-[11px] font-mono tracking-wider uppercase transition-all ${
         isPresentMode
-          ? "border-[#B8860B]/70 bg-[#B8860B]/10 text-[#B8860B]"
+          ? "border-[#B8860B]/40 bg-[#B8860B]/10 text-[#B8860B]"
           : "border-[#B8860B]/55 bg-transparent text-black/55 hover:text-black/60 hover:border-[#B8860B]/60"
       }`}
       whileHover={{ scale: 1.05 }}

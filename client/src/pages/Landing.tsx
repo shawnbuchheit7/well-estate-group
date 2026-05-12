@@ -155,7 +155,7 @@ export default function Landing() {
           {pillars.map((pillar, i) => (
             <Link key={pillar.num} href={pillar.href}>
               <motion.div
-                className="group relative overflow-hidden rounded-xl border-2 border-[#B8860B]/60 bg-white cursor-pointer h-full"
+                className="group relative overflow-hidden rounded-xl border border-[#B8860B]/40 bg-white cursor-pointer h-full"
                 style={{
                   boxShadow: "0 2px 8px rgba(184,134,11,0.06), 0 4px 20px rgba(0,0,0,0.04)",
                 }}
@@ -184,7 +184,7 @@ export default function Landing() {
 
                   {/* Icon */}
                   <div
-                    className="mb-7 w-12 h-12 rounded-lg border-2 border-[#B8860B]/50 flex items-center justify-center bg-[#B8860B]/[0.04] group-hover:border-[#B8860B]/50 group-hover:bg-[#B8860B]/[0.08] transition-all duration-400"
+                    className="mb-7 w-12 h-12 rounded-lg border border-[#B8860B]/40 flex items-center justify-center bg-[#B8860B]/[0.04] group-hover:border-[#B8860B]/60 group-hover:bg-[#B8860B]/[0.08] transition-all duration-400"
                   >
                     <PillarIcon type={pillar.icon} />
                   </div>
@@ -287,7 +287,7 @@ export default function Landing() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 3.4 + i * 0.1 }}
                 whileHover={{ y: -3 }}
-                className="text-center p-5 rounded-xl border-2 border-[#B8860B]/50 bg-[#F9F9F7] hover:border-[#B8860B]/80 transition-all duration-300"
+                className="text-center p-5 rounded-xl border border-[#B8860B]/40 bg-[#F9F9F7] hover:border-[#B8860B]/60 transition-all duration-300"
                 style={{
                   boxShadow: "0 2px 8px rgba(0,0,0,0.02)",
                 }}

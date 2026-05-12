@@ -153,7 +153,7 @@ export function AnimatedCounter({
   }, [hasStarted, numValue, duration, decimals]);
 
   return (
-    <span ref={elementRef} className={className}>
+    <span ref={elementRef} className={`${className} ${hasStarted ? 'stat-shimmer' : ''}`}>
       {prefix}{displayValue}{suffix}
     </span>
   );

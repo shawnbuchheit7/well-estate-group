@@ -298,7 +298,7 @@ export default function ZWSales() {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="rounded-2xl border-2 border-[#B8860B]/70 overflow-hidden"
+              className="rounded-2xl border border-[#B8860B]/40 overflow-hidden"
             >
               <div className="bg-[#F5F4F1] px-6 py-3 flex items-center justify-between">
                 <span className="font-display text-sm font-semibold text-black">Pricing Structure</span>
@@ -382,10 +382,10 @@ export default function ZWSales() {
                 key={i}
                 variants={fadeInUp}
                 whileHover={{ y: -3, boxShadow: "0 12px 30px rgba(0,0,0,0.06)" }}
-                className="bg-white border-2 border-[#B8860B]/65 rounded-xl overflow-hidden hover:border-[#B8860B]/60 hover:shadow-lg transition-all duration-300"
+                className="bg-white border border-[#B8860B]/40 rounded-xl overflow-hidden hover:border-[#B8860B]/60 hover:shadow-lg transition-all duration-300"
               >
                 {/* Card Header */}
-                <div className="flex items-center justify-between px-6 py-4 border-b border-[#B8860B]/70" style={{ background: `linear-gradient(135deg, ${lob.color}08, transparent)` }}>
+                <div className="flex items-center justify-between px-6 py-4 border-b border-[#B8860B]/40" style={{ background: `linear-gradient(135deg, ${lob.color}08, transparent)` }}>
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: `${lob.color}15` }}>
                       <lob.icon className="w-5 h-5" style={{ color: lob.color }} />
@@ -418,7 +418,7 @@ export default function ZWSales() {
                     </div>
 
                     {/* Metrics Sidebar */}
-                    <div className="flex md:flex-col gap-4 md:gap-3 md:min-w-[160px] md:border-l md:border-[#B8860B]/70 md:pl-6">
+                    <div className="flex md:flex-col gap-4 md:gap-3 md:min-w-[160px] md:border-l md:border-[#B8860B]/40 md:pl-6">
                       <div>
                         <p className="font-mono text-[9px] text-black/25 uppercase tracking-wider">Addressable</p>
                         <p className="font-display text-lg font-semibold text-black mt-0.5">{lob.metrics.accounts}</p>
@@ -447,7 +447,7 @@ export default function ZWSales() {
                       {lob.contacts && (
                         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
                           {lob.contacts.map((contact, j) => (
-                            <div key={j} className="rounded-lg border-2 border-[#B8860B]/55 bg-[#FAFAF8] p-3 hover:border-[#B8860B]/60 transition-colors">
+                            <div key={j} className="rounded-lg border border-[#B8860B]/55 bg-[#FAFAF8] p-3 hover:border-[#B8860B]/60 transition-colors">
                               <p className="font-display text-sm font-semibold text-black leading-tight">{contact.name}</p>
                               <p className="font-body text-xs text-black/70 mt-0.5">{contact.title}</p>
                               <p className="font-body text-xs text-[#B8860B] font-medium mt-0.5">{contact.org}</p>
@@ -505,7 +505,7 @@ export default function ZWSales() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.02 }}
                 whileHover={{ scale: 1.05, y: -2, boxShadow: "0 8px 20px rgba(0,0,0,0.06)" }}
-                className="px-4 py-2 rounded-full bg-white border-2 border-[#B8860B]/70 text-sm font-body font-medium text-black/60 hover:border-[#B8860B]/70 hover:text-black hover:bg-[#B8860B]/[0.03] transition-all cursor-default shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
+                className="px-4 py-2 rounded-full bg-white border border-[#B8860B]/40 text-sm font-body font-medium text-black/60 hover:border-[#B8860B]/60 hover:text-black hover:bg-[#B8860B]/[0.03] transition-all cursor-default shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
               >
                 {partner}
               </motion.span>

@@ -72,7 +72,7 @@ export default function Hiring() {
             animate="visible"
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
               BUILDING THE TEAM
             </motion.span>
             <motion.h1 variants={fadeInUp} className="font-display text-5xl md:text-7xl font-medium mt-4 mb-6">
@@ -252,7 +252,7 @@ export default function Hiring() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-amber-500 text-sm tracking-wider">
+              <span className="font-mono text-amber-500 text-sm tracking-wider section-header-accent-center">
                 PHASE 2
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-4">
@@ -357,7 +357,7 @@ export default function Hiring() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
                 ORGANIZATIONAL STRUCTURE
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-4">
@@ -497,7 +497,7 @@ export default function Hiring() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
                 CENTER STAFFING
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-4">
@@ -716,7 +716,7 @@ export default function Hiring() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
                 CORPORATE SUPPORT
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-4">
@@ -817,7 +817,7 @@ export default function Hiring() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
                 HEADCOUNT SUMMARY
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-4">
@@ -883,7 +883,7 @@ export default function Hiring() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
                 HIRING ROADMAP
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-4">
@@ -936,7 +936,7 @@ export default function Hiring() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
                 LAUNCH PREPARATION
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-4">
@@ -1124,7 +1124,7 @@ export default function Hiring() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
                 EQUITY COMPENSATION
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-4">
@@ -1220,7 +1220,7 @@ export default function Hiring() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
                 SCALING STRATEGY
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-4">
@@ -1917,7 +1917,7 @@ export default function Hiring() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
                 RECRUITING PARTNER
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-4">
@@ -1991,7 +1991,7 @@ export default function Hiring() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
+              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
                 GOVERNANCE
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-4">

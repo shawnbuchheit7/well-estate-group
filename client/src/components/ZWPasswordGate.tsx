@@ -52,7 +52,7 @@ export default function ZWPasswordGate({ children }: ZWPasswordGateProps) {
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#FAFAF8]">
-        <div className="w-8 h-8 border-2 border-[#B8860B] border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border border-[#B8860B] border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
@@ -79,7 +79,7 @@ export default function ZWPasswordGate({ children }: ZWPasswordGateProps) {
         transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
         className="relative z-10 w-full max-w-md mx-6"
       >
-        <div className="bg-white border-2 border-[#B8860B]/55 rounded-2xl shadow-[0_20px_80px_rgba(0,0,0,0.07)] p-10">
+        <div className="bg-white border border-[#B8860B]/55 rounded-2xl shadow-[0_20px_80px_rgba(0,0,0,0.07)] p-10">
 
           {/* ZeroWheel branding */}
           <div className="flex flex-col items-center mb-8">

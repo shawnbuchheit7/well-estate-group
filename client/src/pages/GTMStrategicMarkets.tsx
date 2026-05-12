@@ -170,8 +170,8 @@ function MatrixGrid({ quadrants, year }: { quadrants: Quadrant[]; year: number }
               onMouseLeave={() => setHoveredQuadrant(null)}
               className={`${q.bg} rounded-xl sm:rounded-2xl p-4 sm:p-6 flex flex-col border transition-all duration-300 shadow-[0_2px_12px_rgba(0,0,0,0.04)] ${
                 hoveredQuadrant === i 
-                  ? "border-[#B8860B]/70 shadow-[0_8px_30px_rgba(0,0,0,0.08)]" 
-                  : "border-[#B8860B]/65"
+                  ? "border-[#B8860B]/40 shadow-[0_8px_30px_rgba(0,0,0,0.08)]" 
+                  : "border-[#B8860B]/40"
               }`}
               style={{ minHeight: '200px' }}
             >
@@ -206,7 +206,7 @@ function MatrixGrid({ quadrants, year }: { quadrants: Quadrant[]; year: number }
                     className={`px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-medium tracking-wide transition-all cursor-default ${
                       item.highlighted
                         ? "bg-[#B8860B] text-white shadow-md"
-                        : "bg-white text-black/70 border-2 border-[#B8860B]/70 hover:border-[#B8860B]/60"
+                        : "bg-white text-black/70 border border-[#B8860B]/40 hover:border-[#B8860B]/60"
                     }`}
                   >
                     {item.name}
@@ -331,7 +331,7 @@ export default function GTMStrategicMarkets() {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
                   whileHover={{ x: 4, boxShadow: "0 8px 24px rgba(0,0,0,0.06)" }}
-                  className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-4 sm:p-5 rounded-xl bg-white border-2 border-[#B8860B]/65 shadow-[0_2px_8px_rgba(184,134,11,0.05)] transition-all duration-300"
+                  className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-4 sm:p-5 rounded-xl bg-white border border-[#B8860B]/40 shadow-[0_2px_8px_rgba(184,134,11,0.05)] transition-all duration-300"
                 >
                   {/* Direction indicator + Segment name */}
                   <div className="flex items-center gap-3 sm:min-w-[220px]">

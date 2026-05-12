@@ -4,7 +4,7 @@
  *   - bg-white / bg-[#FAFAF8] alternating sections
  *   - text-black primary, text-black/70 body, text-black/55 muted
  *   - #B8860B gold for all accents, eyebrows, icons
- *   - border-[#B8860B]/65 cards, rounded-2xl
+ *   - border-[#B8860B]/40 cards, rounded-2xl
  *   - font-mono labels, font-display headings, font-body body
  *   - LightHero + SectionNav + fadeInUp/staggerContainer/scaleIn
  */
@@ -54,7 +54,7 @@ function AccordionCard({ title, subtitle, icon: Icon, color, children }: {
 }) {
   const [open, setOpen] = useState(false);
   return (
-    <motion.div variants={fadeInUp} className="bg-white border-2 border-[#B8860B]/65 rounded-2xl overflow-hidden hover:border-[#B8860B]/60 hover:shadow-lg transition-all duration-300">
+    <motion.div variants={fadeInUp} className="bg-white border border-[#B8860B]/40 rounded-2xl overflow-hidden hover:border-[#B8860B]/60 hover:shadow-lg transition-all duration-300">
       <button onClick={() => setOpen(o => !o)} className="w-full flex items-center justify-between px-6 py-5 text-left">
         <div className="flex items-center gap-4">
           <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: `${color}15` }}>
@@ -70,7 +70,7 @@ function AccordionCard({ title, subtitle, icon: Icon, color, children }: {
       <AnimatePresence initial={false}>
         {open && (
           <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3, ease: "easeInOut" }} className="overflow-hidden">
-            <div className="px-6 pb-6 border-t border-[#B8860B]/50">{children}</div>
+            <div className="px-6 pb-6 border-t border-[#B8860B]/40">{children}</div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -128,7 +128,7 @@ const channelPlaybooks = [
         </div>
         <div className="grid grid-cols-3 gap-3">
           {[{ label: "Target Accounts", value: "500+" }, { label: "Avg Deal Size", value: "$8,760" }, { label: "Close Rate Target", value: "18%" }].map((m, i) => (
-            <div key={i} className="text-center p-3 bg-white border-2 border-[#B8860B]/55 rounded-xl">
+            <div key={i} className="text-center p-3 bg-white border border-[#B8860B]/55 rounded-xl">
               <p className="font-display text-xl font-bold text-black">{m.value}</p>
               <p className="font-mono text-[9px] text-black/55 uppercase tracking-wider mt-1">{m.label}</p>
             </div>
@@ -203,7 +203,7 @@ const channelPlaybooks = [
           <div className="bg-[#FAFAF8] rounded-xl p-4">
             <p className="font-mono text-[10px] text-[#B8860B] uppercase tracking-[0.15em] mb-2">Commission Tiers</p>
             {[["Base", "1–4 units/mo", "$250/unit"], ["Silver", "5–9 units/mo", "$275/unit"], ["Gold", "10–24 units/mo", "$300/unit"], ["Platinum", "25+ units/mo", "$325/unit"]].map(([tier, vol, rate], i) => (
-              <div key={i} className="flex items-center justify-between py-1.5 border-b border-[#B8860B]/50 last:border-0">
+              <div key={i} className="flex items-center justify-between py-1.5 border-b border-[#B8860B]/40 last:border-0">
                 <span className="font-mono text-[10px] text-[#B8860B]">{tier}</span>
                 <span className="font-body text-xs text-black/65">{vol}</span>
                 <span className="font-display text-sm font-bold text-black">{rate}</span>
@@ -389,7 +389,7 @@ export default function ZWMarketingInfrastructure() {
               <motion.div
                 key={i} variants={scaleIn}
                 whileHover={{ y: -4, boxShadow: "0 16px 40px rgba(0,0,0,0.07)" }}
-                className="bg-white border-2 border-[#B8860B]/65 rounded-2xl p-6 hover:border-[#B8860B]/60 transition-all duration-300"
+                className="bg-white border border-[#B8860B]/40 rounded-2xl p-6 hover:border-[#B8860B]/60 transition-all duration-300"
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: `${tool.color}15` }}>
@@ -416,7 +416,7 @@ export default function ZWMarketingInfrastructure() {
             className="max-w-6xl mx-auto mt-6 mb-2"
             initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           >
-            <div className="bg-[#FAFAF8] border-2 border-[#B8860B]/50 rounded-2xl px-8 py-5 flex flex-wrap items-center justify-between gap-4">
+            <div className="bg-[#FAFAF8] border border-[#B8860B]/40 rounded-2xl px-8 py-5 flex flex-wrap items-center justify-between gap-4">
               <div className="flex items-center gap-3">
                 <Award className="w-5 h-5 text-[#B8860B]" />
                 <div>
@@ -450,7 +450,7 @@ export default function ZWMarketingInfrastructure() {
             className="max-w-4xl mx-auto mt-14"
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           >
-            <div className="bg-[#FAFAF8] border-2 border-[#B8860B]/55 rounded-2xl p-8">
+            <div className="bg-[#FAFAF8] border border-[#B8860B]/55 rounded-2xl p-8">
               <p className="font-mono text-[10px] text-[#B8860B] uppercase tracking-[0.2em] text-center mb-6">Data Flow Architecture</p>
               {/* Row 1: Intake pipeline */}
               <div className="flex flex-col md:flex-row items-center justify-center gap-3 flex-wrap mb-5">
@@ -461,7 +461,7 @@ export default function ZWMarketingInfrastructure() {
                   { label: "Salesforce",              sub: "Source of truth"     },
                 ].map((node, i, arr) => (
                   <div key={i} className="flex items-center gap-3">
-                    <div className="text-center px-4 py-3 bg-white border-2 border-[#B8860B]/65 rounded-xl shadow-sm min-w-[130px]">
+                    <div className="text-center px-4 py-3 bg-white border border-[#B8860B]/40 rounded-xl shadow-sm min-w-[130px]">
                       <p className="font-display text-xs font-semibold text-black">{node.label}</p>
                       <p className="font-mono text-[9px] text-black/50 mt-0.5">{node.sub}</p>
                     </div>
@@ -471,23 +471,23 @@ export default function ZWMarketingInfrastructure() {
               </div>
               {/* Divider label */}
               <div className="flex items-center gap-3 mb-5">
-                <div className="flex-1 border-t border-dashed border-[#B8860B]/60" />
+                <div className="flex-1 border-t border-dashed border-[#B8860B]/40" />
                 <p className="font-mono text-[9px] text-black/45 uppercase tracking-widest px-2">Once in Salesforce — nurture & convert</p>
-                <div className="flex-1 border-t border-dashed border-[#B8860B]/60" />
+                <div className="flex-1 border-t border-dashed border-[#B8860B]/40" />
               </div>
               {/* Row 2: Nurture + conversion engine */}
               <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-                <div className="text-center px-5 py-4 bg-white border-2 border-[#B8860B]/65 rounded-xl shadow-sm min-w-[150px]">
+                <div className="text-center px-5 py-4 bg-white border border-[#B8860B]/40 rounded-xl shadow-sm min-w-[150px]">
                   <p className="font-display text-sm font-semibold text-black">Sales Team</p>
                   <p className="font-mono text-[9px] text-black/55 mt-0.5">Direct outreach & conversion</p>
                 </div>
                 <span className="font-mono text-xs text-black/45">+</span>
-                <div className="text-center px-5 py-4 bg-white border-2 border-[#B8860B]/65 rounded-xl shadow-sm min-w-[150px]">
+                <div className="text-center px-5 py-4 bg-white border border-[#B8860B]/40 rounded-xl shadow-sm min-w-[150px]">
                   <p className="font-display text-sm font-semibold text-black">Klaviyo</p>
                   <p className="font-mono text-[9px] text-black/55 mt-0.5">Email nurture engine</p>
                 </div>
                 <ArrowRight className="w-4 h-4 text-[#B8860B] flex-shrink-0" />
-                <div className="text-center px-5 py-4 bg-white border-2 border-[#B8860B]/50 rounded-xl shadow-sm min-w-[170px]">
+                <div className="text-center px-5 py-4 bg-white border border-[#B8860B]/40 rounded-xl shadow-sm min-w-[170px]">
                   <p className="font-display text-sm font-semibold text-[#B8860B]">Leads → Accounts → Sales</p>
                   <p className="font-mono text-[9px] text-black/55 mt-0.5">Conversion goal</p>
                 </div>
@@ -512,7 +512,7 @@ export default function ZWMarketingInfrastructure() {
                 key={i}
                 initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                className="bg-white border-2 border-[#B8860B]/65 rounded-2xl p-5 hover:border-[#B8860B]/50 hover:shadow-md transition-all duration-300"
+                className="bg-white border border-[#B8860B]/40 rounded-2xl p-5 hover:border-[#B8860B]/60 hover:shadow-md transition-all duration-300"
               >
                 <div className="flex flex-col md:flex-row md:items-start gap-4">
                   <div className="flex items-center gap-3 md:w-48 flex-shrink-0">
@@ -574,7 +574,7 @@ export default function ZWMarketingInfrastructure() {
             title="Automated Drip Flows"
             body="WEG recommends Klaviyo as the email platform — native Salesforce sync, $150/mo, and built for hybrid B2B/DTC brands. The examples below illustrate what can be built — actual flows, sequences, and messaging will be developed collaboratively with the ZeroWheel team."
           />
-          <div className="max-w-3xl mx-auto mb-8 px-5 py-4 bg-[#B8860B]/[0.07] border-2 border-[#B8860B]/55 rounded-xl text-center">
+          <div className="max-w-3xl mx-auto mb-8 px-5 py-4 bg-[#B8860B]/[0.07] border border-[#B8860B]/55 rounded-xl text-center">
             <p className="font-mono text-[10px] text-[#B8860B] uppercase tracking-[0.15em] mb-1">Note</p>
             <p className="font-body text-xs text-black/70">The flows shown here are illustrative examples of what can be built in Klaviyo. Specific sequences, copy, timing, and triggers will be defined and refined as part of the WEG engagement.</p>
           </div>
@@ -583,7 +583,7 @@ export default function ZWMarketingInfrastructure() {
               {emailFlows.map((flow, i) => (
                 <button
                   key={i} onClick={() => setActiveEmail(i)}
-                  className={`px-4 py-2 rounded-full border font-mono text-xs transition-all ${activeEmail === i ? "bg-[#B8860B] text-white border-[#B8860B]" : "border-[#B8860B]/55 text-black/70 hover:border-[#B8860B]/50 hover:text-black"}`}
+                  className={`px-4 py-2 rounded-full border font-mono text-xs transition-all ${activeEmail === i ? "bg-[#B8860B] text-white border-[#B8860B]" : "border-[#B8860B]/55 text-black/70 hover:border-[#B8860B]/60 hover:text-black"}`}
                 >
                   {flow.name}
                 </button>
@@ -591,7 +591,7 @@ export default function ZWMarketingInfrastructure() {
             </div>
             <AnimatePresence mode="wait">
               <motion.div key={activeEmail} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.25 }}>
-                <div className="bg-white border-2 border-[#B8860B]/65 rounded-2xl overflow-hidden">
+                <div className="bg-white border border-[#B8860B]/40 rounded-2xl overflow-hidden">
                   <div className="px-6 py-4 border-b border-[#B8860B]/55 flex items-center justify-between">
                     <div>
                       <p className="font-display text-base font-semibold text-black">{emailFlows[activeEmail].name}</p>
@@ -640,7 +640,7 @@ export default function ZWMarketingInfrastructure() {
               <motion.div
                 key={i} variants={scaleIn}
                 whileHover={{ y: -4, boxShadow: "0 16px 40px rgba(0,0,0,0.07)" }}
-                className="bg-white border-2 border-[#B8860B]/65 rounded-2xl p-6 text-center hover:border-[#B8860B]/60 transition-all duration-300"
+                className="bg-white border border-[#B8860B]/40 rounded-2xl p-6 text-center hover:border-[#B8860B]/60 transition-all duration-300"
               >
                 <div className="w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ background: `${t.color}15` }}>
                   <Star className="w-6 h-6" style={{ color: t.color }} />
@@ -656,7 +656,7 @@ export default function ZWMarketingInfrastructure() {
             ))}
           </motion.div>
           <motion.div
-            className="max-w-5xl mx-auto mt-6 p-5 bg-[#FAFAF8] border-2 border-[#B8860B]/55 rounded-2xl"
+            className="max-w-5xl mx-auto mt-6 p-5 bg-[#FAFAF8] border border-[#B8860B]/55 rounded-2xl"
             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
           >
             <p className="font-mono text-[10px] text-[#B8860B] uppercase tracking-[0.2em] mb-2">Important: DTC Only</p>
@@ -682,7 +682,7 @@ export default function ZWMarketingInfrastructure() {
               <motion.div
                 key={i} variants={scaleIn}
                 whileHover={{ y: -4, boxShadow: "0 16px 40px rgba(0,0,0,0.07)" }}
-                className="bg-white border-2 border-[#B8860B]/65 rounded-2xl p-5 hover:border-[#B8860B]/60 transition-all duration-300"
+                className="bg-white border border-[#B8860B]/40 rounded-2xl p-5 hover:border-[#B8860B]/60 transition-all duration-300"
               >
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: `${lob.color}15` }}>
@@ -723,7 +723,7 @@ export default function ZWMarketingInfrastructure() {
                 { day: "Wednesday", title: "Channel & Campaign Check", items: ["Meta ad CPL and conversion rate", "Klaviyo open rates and click rates", "Affiliate code usage and commission accrual", "Event pipeline — upcoming shows prep"] },
                 { day: "Friday", title: "Win / Loss Debrief", items: ["All closed won deals logged with win reason", "All closed lost deals logged with loss reason", "Rep activity log review (calls, demos, emails)", "Next week priorities set in Salesforce tasks"] },
               ].map((d, i) => (
-                <motion.div key={i} variants={fadeInUp} className="bg-[#FAFAF8] border-2 border-[#B8860B]/55 rounded-2xl p-5">
+                <motion.div key={i} variants={fadeInUp} className="bg-[#FAFAF8] border border-[#B8860B]/55 rounded-2xl p-5">
                   <p className="font-mono text-[10px] text-[#B8860B] uppercase tracking-[0.2em] mb-1">{d.day}</p>
                   <p className="font-display text-base font-semibold text-black mb-3">{d.title}</p>
                   {d.items.map((item, j) => (
@@ -741,7 +741,7 @@ export default function ZWMarketingInfrastructure() {
             className="max-w-5xl mx-auto"
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           >
-            <div className="bg-white border-2 border-[#B8860B]/65 rounded-2xl overflow-hidden">
+            <div className="bg-white border border-[#B8860B]/40 rounded-2xl overflow-hidden">
               <div className="bg-[#F5F4F1] px-6 py-3 flex items-center justify-between">
                 <span className="font-mono text-xs text-black">KPI Tracking Matrix — Salesforce Field Reference</span>
                 <span className="font-mono text-[10px] text-[#B8860B]">Updated Weekly</span>
@@ -757,7 +757,7 @@ export default function ZWMarketingInfrastructure() {
                   </thead>
                   <tbody>
                     {accountabilityKPIs.map((kpi, i) => (
-                      <tr key={i} className={`border-b border-[#B8860B]/50 hover:bg-[#FAFAF8] transition-colors ${i % 2 === 0 ? "" : "bg-[#FAFAF8]/40"}`}>
+                      <tr key={i} className={`border-b border-[#B8860B]/40 hover:bg-[#FAFAF8] transition-colors ${i % 2 === 0 ? "" : "bg-[#FAFAF8]/40"}`}>
                         <td className="px-4 py-3 font-display text-sm font-semibold text-black">{kpi.metric}</td>
                         <td className="px-4 py-3 font-mono text-[10px] text-[#B8860B]">{kpi.owner}</td>
                         <td className="px-4 py-3 font-body text-xs text-black/70">{kpi.target}</td>
