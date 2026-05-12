@@ -527,8 +527,8 @@ export default function UseOfFunds() {
             <motion.div variants={fadeInUp} className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
 <div className="bg-card border border-[#B8860B]/40 rounded-2xl overflow-hidden ring-1 ring-[#B8860B]/20 ring-offset-2 ring-offset-white">
                 <ImageLightbox
-                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/EDiztIuFTUvBdnwn.webp"
-                  alt="Reception Area - Entry"
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/NTYiYTpFDlTOGjZQ.webp"
+                  alt="Member Suite"
                   className="aspect-[4/3]"
                 />
                 <div className="p-4">
@@ -539,8 +539,8 @@ export default function UseOfFunds() {
 
               <div className="bg-card border border-[#B8860B]/40 rounded-2xl overflow-hidden ring-1 ring-[#B8860B]/20 ring-offset-2 ring-offset-white">
                 <ImageLightbox
-                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/EYeJVwdkrNJOoDJr.webp"
-                  alt="Reception Area - Concierge"
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/ImRCfLrVYUaWzZkO.webp"
+                  alt="Reception"
                   className="aspect-[4/3]"
                 />
                 <div className="p-4">
