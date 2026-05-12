@@ -263,7 +263,7 @@ export default function ZWLinesOfBusiness() {
       {/* Pricing Structure */}
       <section id="pricing" className="py-18">
         <div className="container">
-          <div className="h-px bg-gradient-to-r from-transparent via-black/8 to-transparent mb-18" />
+          <div className="h-px bg-gradient-to-r from-transparent via-[#B8860B]/25 to-transparent mb-18" />
 
           <motion.div
             className="text-center mb-10"
@@ -278,7 +278,7 @@ export default function ZWLinesOfBusiness() {
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 mb-4 text-black">
               Maximum Discount Thresholds
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-sm text-black/45 max-w-xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-body text-sm text-black/60 max-w-xl mx-auto">
               All pricing anchored to the $1,095 MSRP. Discounts represent the absolute maximum — do not exceed under any circumstance.
             </motion.p>
           </motion.div>
@@ -306,11 +306,11 @@ export default function ZWLinesOfBusiness() {
                   { label: "GSA (best)", price: "$694", note: "Best pricing — floor", discount: "~37%", bg: "bg-[#FAFAF8]" },
                 ].map((tier, i) => (
                   <div key={i} className={`p-6 text-center ${tier.bg} ${i < 3 ? "border-r border-[#B8860B]/50" : ""}`}>
-                    <p className="font-mono text-[9px] text-black/40 tracking-[0.15em] uppercase mb-2">{tier.label}</p>
+                    <p className="font-mono text-[9px] text-black/55 tracking-[0.15em] uppercase mb-2">{tier.label}</p>
                     <p className="font-display text-2xl font-bold text-black mb-1">{tier.price}</p>
-                    <p className="font-body text-[11px] text-black/40">{tier.note}</p>
+                    <p className="font-body text-[11px] text-black/55">{tier.note}</p>
                     <div className="mt-3 inline-block px-2.5 py-0.5 rounded-full bg-black/5">
-                      <span className="font-mono text-[9px] text-black/50 tracking-wider">{tier.discount} OFF</span>
+                      <span className="font-mono text-[9px] text-black/65 tracking-wider">{tier.discount} OFF</span>
                     </div>
                   </div>
                 ))}
@@ -336,7 +336,7 @@ export default function ZWLinesOfBusiness() {
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-4 text-black">
               Nine Macro Lines of Business
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-base text-black/45 max-w-2xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-body text-base text-black/60 max-w-2xl mx-auto">
               Each macro LOB represents a distinct market with its own buyer persona, sales cycle, pain points, and revenue potential. Click any LOB to view the full playbook.
             </motion.p>
           </motion.div>
@@ -370,7 +370,7 @@ export default function ZWLinesOfBusiness() {
                         <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 ${
                           isExpanded ? "bg-[#B8860B]/15" : "bg-black/[0.04] group-hover:bg-[#B8860B]/10"
                         }`}>
-                          <Icon className={`w-5 h-5 transition-colors ${isExpanded ? "text-[#B8860B]" : "text-black/40 group-hover:text-[#B8860B]"}`} />
+                          <Icon className={`w-5 h-5 transition-colors ${isExpanded ? "text-[#B8860B]" : "text-black/55 group-hover:text-[#B8860B]"}`} />
                         </div>
                         <div>
                           <div className="flex items-center gap-3">
@@ -387,9 +387,9 @@ export default function ZWLinesOfBusiness() {
                             </span>
                           </div>
                           <div className="flex items-center gap-4 mt-0.5">
-                            <span className="font-mono text-[10px] text-black/35">{lob.pricing}</span>
+                            <span className="font-mono text-[10px] text-black/50">{lob.pricing}</span>
                             <span className="font-mono text-[10px] text-black/25">|</span>
-                            <span className="font-mono text-[10px] text-black/35">{lob.tier}</span>
+                            <span className="font-mono text-[10px] text-black/50">{lob.tier}</span>
                           </div>
                         </div>
                       </div>
@@ -415,7 +415,7 @@ export default function ZWLinesOfBusiness() {
                           className="overflow-hidden"
                         >
                           <div className="px-6 pb-6">
-                            <div className="h-px bg-gradient-to-r from-transparent via-black/8 to-transparent mb-6" />
+                            <div className="h-px bg-gradient-to-r from-transparent via-[#B8860B]/25 to-transparent mb-6" />
 
                             <div className="grid md:grid-cols-2 gap-6">
                               {/* Left Column — Persona, Pain Points, Key Selling */}
@@ -427,7 +427,7 @@ export default function ZWLinesOfBusiness() {
                                     <span className="font-mono text-[9px] text-[#B8860B] tracking-[0.15em] uppercase font-semibold">Buyer Persona</span>
                                   </div>
                                   <p className="font-display text-sm font-semibold text-black">{lob.persona}</p>
-                                  <p className="font-body text-xs text-black/40 mt-0.5">{lob.personaTitle}</p>
+                                  <p className="font-body text-xs text-black/55 mt-0.5">{lob.personaTitle}</p>
                                 </div>
 
                                 {/* Pain Points */}
@@ -440,7 +440,7 @@ export default function ZWLinesOfBusiness() {
                                     {lob.painPoints.map((point, j) => (
                                       <div key={j} className="flex items-start gap-2.5">
                                         <div className="w-1.5 h-1.5 rounded-full bg-red-300 mt-1.5 flex-shrink-0" />
-                                        <span className="font-body text-xs text-black/55 leading-relaxed">{point}</span>
+                                        <span className="font-body text-xs text-black/70 leading-relaxed">{point}</span>
                                       </div>
                                     ))}
                                   </div>
@@ -470,7 +470,7 @@ export default function ZWLinesOfBusiness() {
                                     <Crosshair className="w-3.5 h-3.5 text-[#B8860B]" />
                                     <span className="font-mono text-[9px] text-[#B8860B] tracking-[0.15em] uppercase font-semibold">GTM Positioning</span>
                                   </div>
-                                  <p className="font-body text-xs text-black/55 leading-relaxed">{lob.gtmPositioning}</p>
+                                  <p className="font-body text-xs text-black/70 leading-relaxed">{lob.gtmPositioning}</p>
                                 </div>
 
                                 {/* Sub-Segments */}
@@ -481,7 +481,7 @@ export default function ZWLinesOfBusiness() {
                                   </div>
                                   <div className="flex flex-wrap gap-1.5">
                                     {lob.subs.map((sub, j) => (
-                                      <span key={j} className="px-2.5 py-1 rounded-full bg-black/[0.04] text-black/55 font-body text-[10px] border border-[#B8860B]/50">
+                                      <span key={j} className="px-2.5 py-1 rounded-full bg-black/[0.04] text-black/70 font-body text-[10px] border-2 border-[#B8860B]/50">
                                         {sub}
                                       </span>
                                     ))}
@@ -520,7 +520,7 @@ export default function ZWLinesOfBusiness() {
       {/* GTM Summary Table */}
       <section id="summary" className="py-18">
         <div className="container">
-          <div className="h-px bg-gradient-to-r from-transparent via-black/8 to-transparent mb-18" />
+          <div className="h-px bg-gradient-to-r from-transparent via-[#B8860B]/25 to-transparent mb-18" />
 
           <motion.div
             className="text-center mb-10"
@@ -535,7 +535,7 @@ export default function ZWLinesOfBusiness() {
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 mb-4 text-black">
               GTM Summary Matrix
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-sm text-black/45 max-w-xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-body text-sm text-black/60 max-w-xl mx-auto">
               Decision makers, core pain points, and unique value propositions across all nine macro lines of business.
             </motion.p>
           </motion.div>
@@ -556,10 +556,10 @@ export default function ZWLinesOfBusiness() {
                 <table className="w-full">
                   <thead>
                     <tr className="bg-[#FAFAF8] border-b border-[#B8860B]/55">
-                      <th className="text-left p-4 font-mono text-[9px] text-black/40 tracking-[0.15em] uppercase">Market Vertical</th>
-                      <th className="text-left p-4 font-mono text-[9px] text-black/40 tracking-[0.15em] uppercase">Decision Maker</th>
-                      <th className="text-left p-4 font-mono text-[9px] text-black/40 tracking-[0.15em] uppercase">Key Pain Point</th>
-                      <th className="text-left p-4 font-mono text-[9px] text-black/40 tracking-[0.15em] uppercase">Unique Value Proposition</th>
+                      <th className="text-left p-4 font-mono text-[9px] text-black/55 tracking-[0.15em] uppercase">Market Vertical</th>
+                      <th className="text-left p-4 font-mono text-[9px] text-black/55 tracking-[0.15em] uppercase">Decision Maker</th>
+                      <th className="text-left p-4 font-mono text-[9px] text-black/55 tracking-[0.15em] uppercase">Key Pain Point</th>
+                      <th className="text-left p-4 font-mono text-[9px] text-black/55 tracking-[0.15em] uppercase">Unique Value Proposition</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -574,10 +574,10 @@ export default function ZWLinesOfBusiness() {
                           <span className="font-display text-xs font-semibold text-black">{row.vertical}</span>
                         </td>
                         <td className="p-4">
-                          <span className="font-body text-xs text-black/55">{row.decisionMaker}</span>
+                          <span className="font-body text-xs text-black/70">{row.decisionMaker}</span>
                         </td>
                         <td className="p-4">
-                          <span className="font-body text-xs text-black/55">{row.painPoint}</span>
+                          <span className="font-body text-xs text-black/70">{row.painPoint}</span>
                         </td>
                         <td className="p-4">
                           <span className="font-body text-xs text-[#B8860B] font-medium">{row.uvp}</span>

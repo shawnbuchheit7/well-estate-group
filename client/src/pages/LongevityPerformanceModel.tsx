@@ -53,7 +53,7 @@ export default function LongevityPerformanceModel() {
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-4 text-black">
               Explore the Model
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-base text-black/50 max-w-2xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-body text-base text-black/65 max-w-2xl mx-auto">
               Navigate through each section of the Performance Model business plan using the tabs above
               or the directory below.
             </motion.p>
@@ -71,7 +71,7 @@ export default function LongevityPerformanceModel() {
                 key={i}
                 href={section.path}
                 variants={fadeInUp}
-                className="group p-6 rounded-2xl border border-[#B8860B]/65 bg-white hover:border-[#B8860B]/60 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300"
+                className="group p-6 rounded-2xl border-2 border-[#B8860B]/65 bg-white hover:border-[#B8860B]/60 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300"
                 whileHover={{ y: -4 }}
               >
                 <div className="flex items-center justify-between mb-3">
@@ -88,7 +88,7 @@ export default function LongevityPerformanceModel() {
                 <h3 className="font-display text-lg font-medium text-black mb-2">
                   {section.title}
                 </h3>
-                <p className="font-body text-sm text-black/45 leading-relaxed">
+                <p className="font-body text-sm text-black/60 leading-relaxed">
                   {section.desc}
                 </p>
               </motion.a>
@@ -133,7 +133,7 @@ export default function LongevityPerformanceModel() {
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="text-center p-4 rounded-xl border border-[#B8860B]/55 bg-white"
+                className="text-center p-4 rounded-xl border-2 border-[#B8860B]/55 bg-white"
               >
                 <div className="w-10 h-10 mx-auto mb-3 rounded-full bg-[#B8860B]/10 flex items-center justify-center">
                   <span className="font-mono text-[10px] text-[#B8860B] font-bold">{String(i + 1).padStart(2, "0")}</span>
@@ -150,7 +150,7 @@ export default function LongevityPerformanceModel() {
         <div className="container px-6 text-center">
           <Link href="/longevity">
             <motion.div
-              className="inline-flex items-center gap-2 text-black/50 hover:text-[#B8860B] transition-colors cursor-pointer"
+              className="inline-flex items-center gap-2 text-black/65 hover:text-[#B8860B] transition-colors cursor-pointer"
               whileHover={{ x: -4 }}
             >
               <ArrowRight className="w-4 h-4 rotate-180" />

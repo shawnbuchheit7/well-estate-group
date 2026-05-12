@@ -60,7 +60,7 @@ export default function Home() {
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-3 mb-3 text-black">
               Explore the Plan
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-base text-black/50 max-w-2xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-body text-base text-black/65 max-w-2xl mx-auto">
               Navigate through each section of the Longevity Ventures business plan using the tabs above
               or the directory below.
             </motion.p>
@@ -78,7 +78,7 @@ export default function Home() {
                 key={i}
                 href={section.path}
                 variants={fadeInUp}
-                className="group p-6 rounded-xl border border-[#B8860B]/55 bg-white hover:border-[#B8860B]/60 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300"
+                className="group p-6 rounded-xl border-2 border-[#B8860B]/55 bg-white hover:border-[#B8860B]/60 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300"
                 whileHover={{ y: -4 }}
               >
                 <div className="flex items-center justify-between mb-3">
@@ -95,7 +95,7 @@ export default function Home() {
                 <h3 className="font-display text-lg font-medium text-black mb-2">
                   {section.title}
                 </h3>
-                <p className="font-body text-sm text-black/45 leading-relaxed">
+                <p className="font-body text-sm text-black/60 leading-relaxed">
                   {section.desc}
                 </p>
               </motion.a>

@@ -47,7 +47,7 @@ export default function ZWCommercialStrategy() {
       {/* Pricing Architecture */}
       <section id="pricing-tiers" className="py-18 bg-white">
         <div className="container">
-          <div className="h-px bg-gradient-to-r from-transparent via-black/8 to-transparent mb-18" />
+          <div className="h-px bg-gradient-to-r from-transparent via-[#B8860B]/25 to-transparent mb-18" />
 
           <motion.div
             className="text-center mb-14"
@@ -86,21 +86,21 @@ export default function ZWCommercialStrategy() {
               </div>
               <div className="flex items-center gap-6 text-center">
                 <div>
-                  <span className="font-mono text-[10px] text-black/40 tracking-wider uppercase block">DTC Retail</span>
+                  <span className="font-mono text-[10px] text-black/55 tracking-wider uppercase block">DTC Retail</span>
                   <span className="font-display text-lg font-bold text-black">$1,095</span>
-                  <span className="font-body text-xs text-black/40 block">0% off list (full MSRP)</span>
+                  <span className="font-body text-xs text-black/55 block">0% off list (full MSRP)</span>
                 </div>
                 <div className="w-px h-10 bg-black/10" />
                 <div>
-                  <span className="font-mono text-[10px] text-black/40 tracking-wider uppercase block">Vertical Markets</span>
+                  <span className="font-mono text-[10px] text-black/55 tracking-wider uppercase block">Vertical Markets</span>
                   <span className="font-display text-lg font-bold text-black">$825</span>
-                  <span className="font-body text-xs text-black/40 block">max 25% off list (do not exceed)</span>
+                  <span className="font-body text-xs text-black/55 block">max 25% off list (do not exceed)</span>
                 </div>
                 <div className="w-px h-10 bg-black/10" />
                 <div>
-                  <span className="font-mono text-[10px] text-black/40 tracking-wider uppercase block">Commercial Markets</span>
+                  <span className="font-mono text-[10px] text-black/55 tracking-wider uppercase block">Commercial Markets</span>
                   <span className="font-display text-lg font-bold text-black">$695</span>
-                  <span className="font-body text-xs text-black/40 block">max 40% off list (do not exceed)</span>
+                  <span className="font-body text-xs text-black/55 block">max 40% off list (do not exceed)</span>
                 </div>
               </div>
               <div className="flex items-center gap-2 bg-black/5 px-4 py-2 rounded-full">
@@ -186,7 +186,7 @@ export default function ZWCommercialStrategy() {
                 <h3 className="font-display text-lg font-semibold text-black mb-1">{tier.tier}</h3>
                 <div className="flex items-baseline gap-2 mb-1">
                   <span className="font-display text-3xl font-bold text-black">{tier.price}</span>
-                  <span className="font-body text-sm text-black/40">{tier.unit}</span>
+                  <span className="font-body text-sm text-black/55">{tier.unit}</span>
                 </div>
                 <span className="inline-block font-mono text-[10px] text-[#B8860B] tracking-wider bg-[#B8860B]/10 px-2 py-0.5 rounded-full mb-4">
                   {tier.discount}
@@ -199,7 +199,7 @@ export default function ZWCommercialStrategy() {
                     </li>
                   ))}
                 </ul>
-                <p className="font-body text-xs text-black/40 italic border-t border-[#B8860B]/55 pt-3">{tier.note}</p>
+                <p className="font-body text-xs text-black/55 italic border-t border-[#B8860B]/55 pt-3">{tier.note}</p>
               </motion.div>
             ))}
           </div>
@@ -211,14 +211,14 @@ export default function ZWCommercialStrategy() {
             viewport={{ once: true }}
             className="max-w-5xl mx-auto mt-8"
           >
-            <div className="rounded-2xl border border-[#B8860B]/70 overflow-hidden">
+            <div className="rounded-2xl border-2 border-[#B8860B]/70 overflow-hidden">
               <table className="w-full">
                 <thead>
                   <tr className="bg-[#FAFAF8] border-b border-[#B8860B]/60">
-                    <th className="text-left p-4 font-mono text-xs text-black/50 tracking-wider uppercase">Market Category</th>
-                    <th className="text-right p-4 font-mono text-xs text-black/50 tracking-wider uppercase">Points Off List</th>
-                    <th className="text-right p-4 font-mono text-xs text-black/50 tracking-wider uppercase">Net Price</th>
-                    <th className="text-right p-4 font-mono text-xs text-black/50 tracking-wider uppercase">Discount $</th>
+                    <th className="text-left p-4 font-mono text-xs text-black/65 tracking-wider uppercase">Market Category</th>
+                    <th className="text-right p-4 font-mono text-xs text-black/65 tracking-wider uppercase">Points Off List</th>
+                    <th className="text-right p-4 font-mono text-xs text-black/65 tracking-wider uppercase">Net Price</th>
+                    <th className="text-right p-4 font-mono text-xs text-black/65 tracking-wider uppercase">Discount $</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -231,13 +231,13 @@ export default function ZWCommercialStrategy() {
                       <td className="p-4 font-body text-sm text-black/80 font-medium">{row.category}</td>
                       <td className="p-4 text-right font-display text-sm font-semibold text-black">{row.points}</td>
                       <td className="p-4 text-right font-display text-sm font-bold text-[#B8860B]">{row.net}</td>
-                      <td className="p-4 text-right font-body text-sm text-black/50">{row.savings}</td>
+                      <td className="p-4 text-right font-body text-sm text-black/65">{row.savings}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
-            <p className="font-body text-xs text-black/35 mt-3 text-center italic">
+            <p className="font-body text-xs text-black/50 mt-3 text-center italic">
               All pricing expressed as margin points off the $1,095 MSRP. Price floor of $695 applies to all channels — no exceptions.
             </p>
           </motion.div>
@@ -326,7 +326,7 @@ export default function ZWCommercialStrategy() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="p-8 rounded-2xl border border-[#B8860B]/70 bg-white hover:shadow-lg transition-all duration-300"
+                className="p-8 rounded-2xl border-2 border-[#B8860B]/70 bg-white hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex items-center gap-3 mb-1">
                   <card.icon className="w-6 h-6 text-[#B8860B]" />
@@ -336,7 +336,7 @@ export default function ZWCommercialStrategy() {
                 <div className="space-y-3">
                   {card.items.map((item, j) => (
                     <div key={j} className="flex items-center justify-between py-2 border-b border-[#B8860B]/50 last:border-0">
-                      <span className="font-body text-sm text-black/55">{item.label}</span>
+                      <span className="font-body text-sm text-black/70">{item.label}</span>
                       <span className="font-display text-sm font-semibold text-black">{item.value}</span>
                     </div>
                   ))}
@@ -350,7 +350,7 @@ export default function ZWCommercialStrategy() {
       {/* Margin Analysis */}
       <section id="margin-analysis" className="py-18 bg-white">
         <div className="container">
-          <div className="h-px bg-gradient-to-r from-transparent via-black/8 to-transparent mb-18" />
+          <div className="h-px bg-gradient-to-r from-transparent via-[#B8860B]/25 to-transparent mb-18" />
 
           <motion.div
             className="text-center mb-14"
@@ -371,16 +371,16 @@ export default function ZWCommercialStrategy() {
           </motion.div>
 
           <div className="max-w-4xl mx-auto">
-            <div className="rounded-2xl border border-[#B8860B]/70 overflow-hidden">
+            <div className="rounded-2xl border-2 border-[#B8860B]/70 overflow-hidden">
               <table className="w-full">
                 <thead>
                   <tr className="bg-[#FAFAF8] border-b border-[#B8860B]/60">
-                    <th className="text-left p-4 font-mono text-xs text-black/50 tracking-wider uppercase">Channel</th>
-                    <th className="text-right p-4 font-mono text-xs text-black/50 tracking-wider uppercase">Off List</th>
-                    <th className="text-right p-4 font-mono text-xs text-black/50 tracking-wider uppercase">Revenue</th>
-                    <th className="text-right p-4 font-mono text-xs text-black/50 tracking-wider uppercase">COGS</th>
-                    <th className="text-right p-4 font-mono text-xs text-black/50 tracking-wider uppercase">Gross Profit</th>
-                    <th className="text-right p-4 font-mono text-xs text-black/50 tracking-wider uppercase">Margin</th>
+                    <th className="text-left p-4 font-mono text-xs text-black/65 tracking-wider uppercase">Channel</th>
+                    <th className="text-right p-4 font-mono text-xs text-black/65 tracking-wider uppercase">Off List</th>
+                    <th className="text-right p-4 font-mono text-xs text-black/65 tracking-wider uppercase">Revenue</th>
+                    <th className="text-right p-4 font-mono text-xs text-black/65 tracking-wider uppercase">COGS</th>
+                    <th className="text-right p-4 font-mono text-xs text-black/65 tracking-wider uppercase">Gross Profit</th>
+                    <th className="text-right p-4 font-mono text-xs text-black/65 tracking-wider uppercase">Margin</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -399,9 +399,9 @@ export default function ZWCommercialStrategy() {
                   ].map((row, i) => (
                     <tr key={i} className={`border-b border-[#B8860B]/50 last:border-0 ${row.highlight ? "bg-[#B8860B]/5" : ""}`}>
                       <td className="p-4 font-body text-sm text-black/80 font-medium">{row.channel}</td>
-                      <td className="p-4 text-right font-mono text-xs text-black/50">{row.offList}</td>
+                      <td className="p-4 text-right font-mono text-xs text-black/65">{row.offList}</td>
                       <td className="p-4 text-right font-display text-sm font-semibold text-black">{row.revenue}</td>
-                      <td className="p-4 text-right font-body text-sm text-black/50">{row.cogs}</td>
+                      <td className="p-4 text-right font-body text-sm text-black/65">{row.cogs}</td>
                       <td className="p-4 text-right font-display text-sm font-semibold text-emerald-600">{row.profit}</td>
                       <td className="p-4 text-right font-display text-sm font-bold text-[#B8860B]">{row.margin}</td>
                     </tr>
@@ -409,7 +409,7 @@ export default function ZWCommercialStrategy() {
                 </tbody>
               </table>
             </div>
-            <p className="font-body text-xs text-black/35 mt-3 text-center italic">
+            <p className="font-body text-xs text-black/50 mt-3 text-center italic">
               COGS estimates include manufacturing, packaging, and shipping. All pricing anchored to $1,095 MSRP. Floor price: $695.
             </p>
           </div>
@@ -447,12 +447,12 @@ export default function ZWCommercialStrategy() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="p-6 rounded-2xl border border-[#B8860B]/70 bg-white hover:shadow-lg transition-all duration-300 text-center"
+                className="p-6 rounded-2xl border-2 border-[#B8860B]/70 bg-white hover:shadow-lg transition-all duration-300 text-center"
               >
                 <stream.icon className="w-8 h-8 text-[#B8860B] mx-auto mb-3" />
                 <h3 className="font-display text-lg font-semibold text-black mb-1">{stream.title}</h3>
                 <span className="inline-block font-mono text-xs text-[#B8860B] tracking-wider bg-[#B8860B]/10 px-2 py-0.5 rounded-full mb-3">{stream.value}</span>
-                <p className="font-body text-sm text-black/55">{stream.desc}</p>
+                <p className="font-body text-sm text-black/70">{stream.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -462,7 +462,7 @@ export default function ZWCommercialStrategy() {
       {/* Commercial Terms */}
       <section id="commercial-terms" className="py-18 bg-white">
         <div className="container">
-          <div className="h-px bg-gradient-to-r from-transparent via-black/8 to-transparent mb-18" />
+          <div className="h-px bg-gradient-to-r from-transparent via-[#B8860B]/25 to-transparent mb-18" />
 
           <motion.div
             className="text-center mb-14"
@@ -487,7 +487,7 @@ export default function ZWCommercialStrategy() {
           >
             <Lightbulb className="w-10 h-10 text-[#B8860B] mx-auto mb-4" />
             <h3 className="font-display text-xl font-semibold text-black mb-2">Commercial Terms Workspace</h3>
-            <p className="font-body text-sm text-black/50">
+            <p className="font-body text-sm text-black/65">
               This section is reserved for detailed commercial terms, contract templates, payment schedules, warranty terms, and return policies — to be developed as the commercial strategy is finalized.
             </p>
           </motion.div>
@@ -496,7 +496,7 @@ export default function ZWCommercialStrategy() {
       {/* Pricing Discipline & Negotiation Rules */}
       <section id="negotiation-rules" className="py-18 bg-white">
         <div className="container">
-          <div className="h-px bg-gradient-to-r from-transparent via-black/8 to-transparent mb-18" />
+          <div className="h-px bg-gradient-to-r from-transparent via-[#B8860B]/25 to-transparent mb-18" />
 
           <motion.div
             className="text-center mb-14"
@@ -511,7 +511,7 @@ export default function ZWCommercialStrategy() {
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-5 text-black">
               Negotiation Guidelines
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-base text-black/55 max-w-2xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-body text-base text-black/70 max-w-2xl mx-auto">
               Five non-negotiable rules that protect brand value, margin integrity, and channel harmony across all market categories.
             </motion.p>
           </motion.div>
@@ -520,7 +520,7 @@ export default function ZWCommercialStrategy() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="rounded-2xl border border-[#B8860B]/65 bg-white p-8 shadow-[0_2px_12px_rgba(0,0,0,0.03)] max-w-5xl mx-auto"
+            className="rounded-2xl border-2 border-[#B8860B]/65 bg-white p-8 shadow-[0_2px_12px_rgba(184,134,11,0.05)] max-w-5xl mx-auto"
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-full bg-[#B8860B]/10 flex items-center justify-center">
@@ -557,7 +557,7 @@ export default function ZWCommercialStrategy() {
                   </div>
                   <div>
                     <p className="font-display text-sm font-semibold text-black mb-0.5">{item.rule}</p>
-                    <p className="font-body text-xs text-black/55 leading-relaxed">{item.detail}</p>
+                    <p className="font-body text-xs text-black/70 leading-relaxed">{item.detail}</p>
                   </div>
                 </div>
               ))}
@@ -569,7 +569,7 @@ export default function ZWCommercialStrategy() {
       {/* Phase 1 GTM Priorities */}
       <section id="gtm-priorities" className="py-18 bg-[#FAFAF8]">
         <div className="container">
-          <div className="h-px bg-gradient-to-r from-transparent via-black/8 to-transparent mb-18" />
+          <div className="h-px bg-gradient-to-r from-transparent via-[#B8860B]/25 to-transparent mb-18" />
 
           <motion.div
             className="text-center mb-14"
@@ -623,14 +623,14 @@ export default function ZWCommercialStrategy() {
                 key={i}
                 variants={fadeInUp}
                 whileHover={{ y: -3, boxShadow: "0 8px 24px rgba(0,0,0,0.06)" }}
-                className="flex gap-4 items-start p-5 rounded-xl bg-white border border-[#B8860B]/65 hover:border-[#B8860B]/60 hover:shadow-lg transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
+                className="flex gap-4 items-start p-5 rounded-xl bg-white border-2 border-[#B8860B]/65 hover:border-[#B8860B]/60 hover:shadow-lg transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
               >
                 <div className="w-7 h-7 rounded-full bg-[#B8860B]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                   <CheckCircle2 className="w-4 h-4 text-[#B8860B]" />
                 </div>
                 <div>
                   <h3 className="font-display text-base font-semibold text-black mb-1.5">{focus.title}</h3>
-                  <p className="font-body text-sm text-black/55 leading-relaxed">{focus.description}</p>
+                  <p className="font-body text-sm text-black/70 leading-relaxed">{focus.description}</p>
                 </div>
               </motion.div>
             ))}

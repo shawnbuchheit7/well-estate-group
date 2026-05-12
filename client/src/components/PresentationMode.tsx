@@ -160,7 +160,7 @@ export function DarkModeToggle() {
       className={`relative flex items-center gap-2 px-3 py-1.5 rounded-full border text-[11px] font-mono tracking-wider uppercase transition-all ${
         isPresentMode
           ? "border-[#B8860B]/70 bg-[#B8860B]/10 text-[#B8860B]"
-          : "border-[#B8860B]/55 bg-transparent text-black/40 hover:text-black/60 hover:border-[#B8860B]/60"
+          : "border-[#B8860B]/55 bg-transparent text-black/55 hover:text-black/60 hover:border-[#B8860B]/60"
       }`}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
@@ -290,12 +290,12 @@ export function PresentationMode({ slides, pageName }: PresentationModeProps) {
           >
             <div className="absolute top-0 left-0 right-0 h-16 bg-white/80 backdrop-blur-sm border-b border-[#B8860B]/55 flex items-center justify-between px-6 z-10">
               <div className="flex items-center gap-4">
-                <span className="font-mono text-sm text-black/50">{pageName}</span>
+                <span className="font-mono text-sm text-black/65">{pageName}</span>
                 <span className="text-black/20">|</span>
                 <span className="font-display font-medium text-black">{slides[currentSlide]?.title}</span>
               </div>
               <div className="flex items-center gap-4">
-                <span className="font-mono text-sm text-black/40">
+                <span className="font-mono text-sm text-black/55">
                   {currentSlide + 1} / {slides.length}
                 </span>
                 <button

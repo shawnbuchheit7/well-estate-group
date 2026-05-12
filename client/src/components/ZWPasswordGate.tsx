@@ -79,7 +79,7 @@ export default function ZWPasswordGate({ children }: ZWPasswordGateProps) {
         transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
         className="relative z-10 w-full max-w-md mx-6"
       >
-        <div className="bg-white border border-[#B8860B]/55 rounded-2xl shadow-[0_20px_80px_rgba(0,0,0,0.07)] p-10">
+        <div className="bg-white border-2 border-[#B8860B]/55 rounded-2xl shadow-[0_20px_80px_rgba(0,0,0,0.07)] p-10">
 
           {/* ZeroWheel branding */}
           <div className="flex flex-col items-center mb-8">
@@ -123,7 +123,7 @@ export default function ZWPasswordGate({ children }: ZWPasswordGateProps) {
               Confidential Access
             </motion.h1>
             <motion.p
-              className="font-body text-xs text-black/40 mt-2 text-center"
+              className="font-body text-xs text-black/55 mt-2 text-center"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.35 }}
@@ -142,7 +142,7 @@ export default function ZWPasswordGate({ children }: ZWPasswordGateProps) {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
             >
-              <label className="block font-mono text-[10px] text-black/40 uppercase tracking-[0.15em] mb-3">
+              <label className="block font-mono text-[10px] text-black/55 uppercase tracking-[0.15em] mb-3">
                 Access Code
               </label>
               <div className="relative">
@@ -161,7 +161,7 @@ export default function ZWPasswordGate({ children }: ZWPasswordGateProps) {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-black/20 hover:text-black/50 transition-colors"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-black/20 hover:text-black/65 transition-colors"
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>

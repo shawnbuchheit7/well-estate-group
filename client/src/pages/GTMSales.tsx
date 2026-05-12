@@ -139,7 +139,7 @@ export default function GTMSales() {
       {/* Focus & Drive Markets */}
       <section id="focus-markets" className="py-18">
         <div className="container">
-          <div className="h-px bg-gradient-to-r from-transparent via-black/8 to-transparent mb-18" />
+          <div className="h-px bg-gradient-to-r from-transparent via-[#B8860B]/25 to-transparent mb-18" />
           
           <motion.div
             className="text-center mb-12"
@@ -154,7 +154,7 @@ export default function GTMSales() {
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-4 text-black">
               Focus & Drive Markets
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-base text-black/40 max-w-2xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-body text-base text-black/55 max-w-2xl mx-auto">
               These five segments represent the highest-priority markets for immediate business development focus.
             </motion.p>
           </motion.div>
@@ -187,7 +187,7 @@ export default function GTMSales() {
       {/* LOB Targeting Detail */}
       <section id="lob-targeting" className="py-18">
         <div className="container">
-          <div className="h-px bg-gradient-to-r from-transparent via-black/8 to-transparent mb-18" />
+          <div className="h-px bg-gradient-to-r from-transparent via-[#B8860B]/25 to-transparent mb-18" />
           
           <motion.div
             className="text-center mb-12"
@@ -202,7 +202,7 @@ export default function GTMSales() {
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-4 text-black">
               LOB Sales Targets
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-base text-black/40 max-w-2xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-body text-base text-black/55 max-w-2xl mx-auto">
               Specific organizations, associations, and accounts targeted within each macro line of business.
             </motion.p>
           </motion.div>
@@ -219,7 +219,7 @@ export default function GTMSales() {
                 key={i}
                 variants={fadeInUp}
                 whileHover={{ y: -3, boxShadow: "0 12px 30px rgba(0,0,0,0.06)" }}
-                className="bg-white border border-[#B8860B]/65 rounded-xl overflow-hidden hover:border-[#B8860B]/60 transition-all duration-300"
+                className="bg-white border-2 border-[#B8860B]/65 rounded-xl overflow-hidden hover:border-[#B8860B]/60 transition-all duration-300"
               >
                 <div className="flex items-center gap-3 px-5 py-3.5 border-b border-[#B8860B]/70 bg-[#FAFAF8]">
                   <div className="w-9 h-9 rounded-lg bg-[#B8860B]/10 flex items-center justify-center flex-shrink-0">
@@ -232,7 +232,7 @@ export default function GTMSales() {
                     {lob.targets.map((target, j) => (
                       <li key={j} className="flex items-start gap-2.5">
                         <ArrowRight className="w-3.5 h-3.5 text-[#B8860B] mt-0.5 flex-shrink-0" />
-                        <span className="font-body text-sm text-black/45 leading-relaxed">{target}</span>
+                        <span className="font-body text-sm text-black/60 leading-relaxed">{target}</span>
                       </li>
                     ))}
                   </ul>
@@ -259,7 +259,7 @@ export default function GTMSales() {
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-4 text-black">
               Key Partnerships & Associations
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-base text-black/40 max-w-2xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-body text-base text-black/55 max-w-2xl mx-auto">
               An extensive network of industry associations, club management organizations, and strategic partners.
             </motion.p>
           </motion.div>
@@ -279,7 +279,7 @@ export default function GTMSales() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.02 }}
                 whileHover={{ scale: 1.05, y: -2, boxShadow: "0 8px 20px rgba(0,0,0,0.06)" }}
-                className="px-4 py-2 rounded-full bg-white border border-[#B8860B]/70 text-sm font-body font-medium text-black/60 hover:border-[#B8860B]/70 hover:text-black hover:bg-[#B8860B]/[0.03] transition-all cursor-default shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
+                className="px-4 py-2 rounded-full bg-white border-2 border-[#B8860B]/70 text-sm font-body font-medium text-black/60 hover:border-[#B8860B]/70 hover:text-black hover:bg-[#B8860B]/[0.03] transition-all cursor-default shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
               >
                 {partner}
               </motion.span>

@@ -256,15 +256,15 @@
   .card-elevated {
     background: #FFFFFF;
     border: 2px solid rgba(184, 134, 11, 0.65);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03), 0 4px 20px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 2px 8px rgba(184, 134, 11, 0.06), 0 4px 20px rgba(0, 0, 0, 0.05);
     border-radius: 0.75rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .card-elevated:hover {
     border-color: rgba(184, 134, 11, 0.85);
-    box-shadow: 0 8px 32px rgba(184, 134, 11, 0.12), 0 2px 8px rgba(0, 0, 0, 0.04);
-    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(184, 134, 11, 0.15), 0 4px 12px rgba(0, 0, 0, 0.04);
+    transform: translateY(-4px);
   }
   
   .box-highlight {
@@ -310,7 +310,7 @@ html {
 /* Enhanced card and box styling - refined luxury shadows */
 [class*="bg-card"],
 [class*="bg-muted"] {
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02), 0 2px 12px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 2px 8px rgba(184, 134, 11, 0.04), 0 4px 16px rgba(0, 0, 0, 0.03);
 }
 
 .rounded-lg[class*="border"],

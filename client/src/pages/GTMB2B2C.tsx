@@ -73,14 +73,14 @@ export default function GTMB2B2C() {
                 key={i}
                 variants={scaleIn}
                 whileHover={{ y: -4 }}
-                className="bg-white border border-[#B8860B]/60 rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#B8860B]/60 transition-all duration-300"
+                className="bg-white border-2 border-[#B8860B]/60 rounded-xl p-7 shadow-[0_2px_8px_rgba(184,134,11,0.05),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(184,134,11,0.12)] hover:border-[#B8860B]/60 transition-all duration-300"
               >
-                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-[#B8860B]/50 flex items-center justify-center mb-5">
+                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border-2 border-[#B8860B]/50 flex items-center justify-center mb-5">
                   <model.icon className="w-5 h-5 text-[#B8860B]" />
                 </div>
                 <h3 className="font-display text-2xl font-bold text-black mb-1 tracking-tight">{model.title}</h3>
                 <p className="font-mono text-[10px] text-[#B8860B] font-semibold tracking-[0.15em] uppercase mb-4">{model.subtitle}</p>
-                <p className="font-body text-sm text-black/50 leading-relaxed">{model.description}</p>
+                <p className="font-body text-sm text-black/65 leading-relaxed">{model.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -103,7 +103,7 @@ export default function GTMB2B2C() {
             <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
               Enterprise & Institutional Sales
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-sm text-black/50 max-w-2xl mx-auto mt-4 leading-relaxed">
+            <motion.p variants={fadeInUp} className="font-body text-sm text-black/65 max-w-2xl mx-auto mt-4 leading-relaxed">
               Direct sales to businesses and organizations that integrate wellness solutions into their 
               operations, employee benefits, or member offerings.
             </motion.p>
@@ -137,13 +137,13 @@ export default function GTMB2B2C() {
                 key={i}
                 variants={scaleIn}
                 whileHover={{ y: -4 }}
-                className="bg-white border border-[#B8860B]/60 rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#B8860B]/60 transition-all duration-300"
+                className="bg-white border-2 border-[#B8860B]/60 rounded-xl p-7 shadow-[0_2px_8px_rgba(184,134,11,0.05),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(184,134,11,0.12)] hover:border-[#B8860B]/60 transition-all duration-300"
               >
-                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-[#B8860B]/50 flex items-center justify-center mb-5">
+                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border-2 border-[#B8860B]/50 flex items-center justify-center mb-5">
                   <item.icon className="w-5 h-5 text-[#B8860B]" />
                 </div>
                 <h3 className="font-display text-lg font-bold text-black mb-2.5 tracking-tight">{item.title}</h3>
-                <p className="font-body text-sm text-black/50 leading-relaxed">{item.description}</p>
+                <p className="font-body text-sm text-black/65 leading-relaxed">{item.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -166,7 +166,7 @@ export default function GTMB2B2C() {
             <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
               Direct-to-Consumer Seekers
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-sm text-black/50 max-w-2xl mx-auto mt-4 leading-relaxed">
+            <motion.p variants={fadeInUp} className="font-body text-sm text-black/65 max-w-2xl mx-auto mt-4 leading-relaxed">
               Individuals proactively seeking predictive, preventive, and proactive healthcare solutions — 
               acquired through digital marketing, referrals, and brand awareness.
             </motion.p>
@@ -200,13 +200,13 @@ export default function GTMB2B2C() {
                 key={i}
                 variants={scaleIn}
                 whileHover={{ y: -4 }}
-                className="bg-white border border-[#B8860B]/60 rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#B8860B]/60 transition-all duration-300"
+                className="bg-white border-2 border-[#B8860B]/60 rounded-xl p-7 shadow-[0_2px_8px_rgba(184,134,11,0.05),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(184,134,11,0.12)] hover:border-[#B8860B]/60 transition-all duration-300"
               >
-                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-[#B8860B]/50 flex items-center justify-center mb-5">
+                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border-2 border-[#B8860B]/50 flex items-center justify-center mb-5">
                   <item.icon className="w-5 h-5 text-[#B8860B]" />
                 </div>
                 <h3 className="font-display text-lg font-bold text-black mb-2.5 tracking-tight">{item.title}</h3>
-                <p className="font-body text-sm text-black/50 leading-relaxed">{item.description}</p>
+                <p className="font-body text-sm text-black/65 leading-relaxed">{item.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -229,7 +229,7 @@ export default function GTMB2B2C() {
             <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
               Partnership-Driven Acquisition
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-sm text-black/50 max-w-2xl mx-auto mt-4 leading-relaxed">
+            <motion.p variants={fadeInUp} className="font-body text-sm text-black/65 max-w-2xl mx-auto mt-4 leading-relaxed">
               Leveraging B2B partnerships to reach end consumers — facilitating an extension of a partner's 
               wellness offerings to their existing member base.
             </motion.p>
@@ -263,13 +263,13 @@ export default function GTMB2B2C() {
                 key={i}
                 variants={scaleIn}
                 whileHover={{ y: -4 }}
-                className="bg-white border border-[#B8860B]/60 rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#B8860B]/60 transition-all duration-300"
+                className="bg-white border-2 border-[#B8860B]/60 rounded-xl p-7 shadow-[0_2px_8px_rgba(184,134,11,0.05),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(184,134,11,0.12)] hover:border-[#B8860B]/60 transition-all duration-300"
               >
-                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-[#B8860B]/50 flex items-center justify-center mb-5">
+                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border-2 border-[#B8860B]/50 flex items-center justify-center mb-5">
                   <item.icon className="w-5 h-5 text-[#B8860B]" />
                 </div>
                 <h3 className="font-display text-lg font-bold text-black mb-2.5 tracking-tight">{item.title}</h3>
-                <p className="font-body text-sm text-black/50 leading-relaxed">{item.description}</p>
+                <p className="font-body text-sm text-black/65 leading-relaxed">{item.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -292,7 +292,7 @@ export default function GTMB2B2C() {
             <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
               Building the Bridge
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-sm text-black/50 max-w-2xl mx-auto mt-4 leading-relaxed">
+            <motion.p variants={fadeInUp} className="font-body text-sm text-black/65 max-w-2xl mx-auto mt-4 leading-relaxed">
               Fitness and wellness has largely been one direction. We facilitate multiple opportunities by extending 
               from proactive wellness and fitness regimens into early detection and prevention of disease.
             </motion.p>
@@ -307,32 +307,32 @@ export default function GTMB2B2C() {
             variants={staggerContainer}
           >
             <div className="grid md:grid-cols-3 gap-5 items-center">
-              <motion.div variants={scaleIn} className="bg-white border border-[#B8860B]/60 rounded-xl p-7 text-center shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.04)]">
-                <div className="w-14 h-14 rounded-xl bg-[#F9F9F7] border border-[#B8860B]/50 flex items-center justify-center mx-auto mb-4">
+              <motion.div variants={scaleIn} className="bg-white border-2 border-[#B8860B]/60 rounded-xl p-7 text-center shadow-[0_2px_8px_rgba(184,134,11,0.05),0_4px_16px_rgba(0,0,0,0.03)]">
+                <div className="w-14 h-14 rounded-xl bg-[#F9F9F7] border-2 border-[#B8860B]/50 flex items-center justify-center mx-auto mb-4">
                   <Heart className="w-6 h-6 text-[#B8860B]" />
                 </div>
                 <h3 className="font-display text-xl font-bold text-black mb-2 tracking-tight">Healthcare</h3>
-                <p className="font-body text-xs text-black/45 leading-relaxed">Physician-led diagnostics, regenerative medicine, executive health</p>
+                <p className="font-body text-xs text-black/60 leading-relaxed">Physician-led diagnostics, regenerative medicine, executive health</p>
               </motion.div>
 
               <motion.div variants={fadeInUp} className="text-center py-4">
                 <div className="flex items-center justify-center gap-3">
                   <div className="h-px w-10 bg-[#B8860B]/40" />
-                  <div className="w-14 h-14 rounded-xl bg-[#B8860B]/10 border border-[#B8860B]/55 flex items-center justify-center">
+                  <div className="w-14 h-14 rounded-xl bg-[#B8860B]/10 border-2 border-[#B8860B]/55 flex items-center justify-center">
                     <ArrowRightLeft className="w-5 h-5 text-[#B8860B]" />
                   </div>
                   <div className="h-px w-10 bg-[#B8860B]/40" />
                 </div>
                 <p className="font-display text-sm font-bold text-black mt-3">WEG Bridge</p>
-                <p className="font-body text-[11px] text-black/40 mt-1">Value-driven, not direct selling</p>
+                <p className="font-body text-[11px] text-black/55 mt-1">Value-driven, not direct selling</p>
               </motion.div>
 
-              <motion.div variants={scaleIn} className="bg-white border border-[#B8860B]/60 rounded-xl p-7 text-center shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.04)]">
-                <div className="w-14 h-14 rounded-xl bg-[#F9F9F7] border border-[#B8860B]/50 flex items-center justify-center mx-auto mb-4">
+              <motion.div variants={scaleIn} className="bg-white border-2 border-[#B8860B]/60 rounded-xl p-7 text-center shadow-[0_2px_8px_rgba(184,134,11,0.05),0_4px_16px_rgba(0,0,0,0.03)]">
+                <div className="w-14 h-14 rounded-xl bg-[#F9F9F7] border-2 border-[#B8860B]/50 flex items-center justify-center mx-auto mb-4">
                   <Users className="w-6 h-6 text-[#B8860B]" />
                 </div>
                 <h3 className="font-display text-xl font-bold text-black mb-2 tracking-tight">Consumer</h3>
-                <p className="font-body text-xs text-black/45 leading-relaxed">Fitness enthusiasts, wellness seekers, health-conscious individuals</p>
+                <p className="font-body text-xs text-black/60 leading-relaxed">Fitness enthusiasts, wellness seekers, health-conscious individuals</p>
               </motion.div>
             </div>
           </motion.div>
@@ -393,14 +393,14 @@ export default function GTMB2B2C() {
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="flex gap-4 items-start p-6 rounded-xl bg-white border border-[#B8860B]/60 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:border-[#B8860B]/50 transition-all duration-300"
+                className="flex gap-4 items-start p-6 rounded-xl bg-white border-2 border-[#B8860B]/60 shadow-[0_2px_8px_rgba(184,134,11,0.05)] hover:shadow-[0_8px_24px_rgba(184,134,11,0.10)] hover:border-[#B8860B]/50 transition-all duration-300"
               >
-                <div className="w-9 h-9 rounded-lg bg-[#B8860B]/10 border border-[#B8860B]/50 flex items-center justify-center flex-shrink-0">
+                <div className="w-9 h-9 rounded-lg bg-[#B8860B]/10 border-2 border-[#B8860B]/50 flex items-center justify-center flex-shrink-0">
                   <CheckCircle2 className="w-4 h-4 text-[#B8860B]" />
                 </div>
                 <div>
                   <h3 className="font-display text-base font-bold text-black mb-2 tracking-tight">{diff.title}</h3>
-                  <p className="font-body text-sm text-black/50 leading-relaxed">{diff.description}</p>
+                  <p className="font-body text-sm text-black/65 leading-relaxed">{diff.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -424,7 +424,7 @@ export default function GTMB2B2C() {
             <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
               How It All Works Together
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-sm text-black/50 max-w-2xl mx-auto mt-4 leading-relaxed">
+            <motion.p variants={fadeInUp} className="font-body text-sm text-black/65 max-w-2xl mx-auto mt-4 leading-relaxed">
               B2B, B2C, and B2B2C channels reinforce each other — creating a compounding growth engine.
             </motion.p>
           </motion.div>
@@ -460,14 +460,14 @@ export default function GTMB2B2C() {
                 key={i}
                 variants={scaleIn}
                 whileHover={{ y: -4 }}
-                className="bg-white border border-[#B8860B]/60 rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#B8860B]/60 transition-all duration-300"
+                className="bg-white border-2 border-[#B8860B]/60 rounded-xl p-7 shadow-[0_2px_8px_rgba(184,134,11,0.05),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(184,134,11,0.12)] hover:border-[#B8860B]/60 transition-all duration-300"
               >
                 <span className="font-display text-4xl font-bold text-[#B8860B]/20">{step.step}</span>
-                <div className="w-10 h-10 rounded-lg bg-[#F9F9F7] border border-[#B8860B]/50 flex items-center justify-center mt-3 mb-4">
+                <div className="w-10 h-10 rounded-lg bg-[#F9F9F7] border-2 border-[#B8860B]/50 flex items-center justify-center mt-3 mb-4">
                   <step.icon className="w-5 h-5 text-[#B8860B]" />
                 </div>
                 <h3 className="font-display text-lg font-bold text-black mb-2.5 tracking-tight">{step.title}</h3>
-                <p className="font-body text-sm text-black/50 leading-relaxed">{step.description}</p>
+                <p className="font-body text-sm text-black/65 leading-relaxed">{step.description}</p>
               </motion.div>
             ))}
           </motion.div>

@@ -2,7 +2,7 @@
  * ZeroWheel Affiliate & Influencer Program — WEG Proposed
  * Design: Boss's exact light mode system
  *   - bg-white / bg-[#FAFAF8] alternating sections
- *   - text-black primary, text-black/55 body, text-black/40 muted
+ *   - text-black primary, text-black/70 body, text-black/55 muted
  *   - #B8860B gold for all accents, eyebrows, icons
  *   - border-[#B8860B]/65 cards, rounded-2xl
  *   - font-mono labels, font-display headings, font-body body
@@ -42,13 +42,13 @@ function SectionHeader({ eyebrow, title, body }: { eyebrow: string; title: strin
     <motion.div className="text-center mb-14" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer}>
       <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">{eyebrow}</motion.span>
       <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-5 text-black">{title}</motion.h2>
-      {body && <motion.p variants={fadeInUp} className="font-body text-base text-black/55 max-w-2xl mx-auto">{body}</motion.p>}
+      {body && <motion.p variants={fadeInUp} className="font-body text-base text-black/70 max-w-2xl mx-auto">{body}</motion.p>}
     </motion.div>
   );
 }
 
 function Divider() {
-  return <div className="h-px bg-gradient-to-r from-transparent via-black/8 to-transparent mb-18" />;
+  return <div className="h-px bg-gradient-to-r from-transparent via-[#B8860B]/25 to-transparent mb-18" />;
 }
 
 function AccordionCard({ title, subtitle, icon: Icon, color, children }: {
@@ -56,7 +56,7 @@ function AccordionCard({ title, subtitle, icon: Icon, color, children }: {
 }) {
   const [open, setOpen] = useState(false);
   return (
-    <motion.div variants={fadeInUp} className="bg-white border border-[#B8860B]/65 rounded-2xl overflow-hidden hover:border-[#B8860B]/60 hover:shadow-lg transition-all duration-300">
+    <motion.div variants={fadeInUp} className="bg-white border-2 border-[#B8860B]/65 rounded-2xl overflow-hidden hover:border-[#B8860B]/60 hover:shadow-lg transition-all duration-300">
       <button onClick={() => setOpen(o => !o)} className="w-full flex items-center justify-between px-6 py-5 text-left">
         <div className="flex items-center gap-4">
           <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: `${color}15` }}>
@@ -64,10 +64,10 @@ function AccordionCard({ title, subtitle, icon: Icon, color, children }: {
           </div>
           <div>
             <p className="font-display text-base font-semibold text-black">{title}</p>
-            <p className="font-body text-xs text-black/45 mt-0.5">{subtitle}</p>
+            <p className="font-body text-xs text-black/60 mt-0.5">{subtitle}</p>
           </div>
         </div>
-        <ChevronDown className={`w-5 h-5 text-black/30 transition-transform duration-300 flex-shrink-0 ${open ? "rotate-180" : ""}`} />
+        <ChevronDown className={`w-5 h-5 text-black/45 transition-transform duration-300 flex-shrink-0 ${open ? "rotate-180" : ""}`} />
       </button>
       <AnimatePresence initial={false}>
         {open && (
@@ -223,7 +223,7 @@ export default function ZWAffiliateProgram() {
                     { label: "Salesforce", value: track.salesforce },
                   ].map((row, j) => (
                     <div key={j} className="flex gap-2">
-                      <span className="font-mono text-[9px] text-black/35 uppercase tracking-wider w-20 flex-shrink-0 pt-0.5">{row.label}</span>
+                      <span className="font-mono text-[9px] text-black/50 uppercase tracking-wider w-20 flex-shrink-0 pt-0.5">{row.label}</span>
                       <span className="font-body text-xs text-black/60">{row.value}</span>
                     </div>
                   ))}
@@ -232,7 +232,7 @@ export default function ZWAffiliateProgram() {
                   {track.items.map((item, j) => (
                     <div key={j} className="flex items-start gap-2">
                       <CheckCircle2 className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={{ color: track.color }} />
-                      <span className="font-body text-xs text-black/55">{item}</span>
+                      <span className="font-body text-xs text-black/70">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -261,17 +261,17 @@ export default function ZWAffiliateProgram() {
               <motion.div
                 key={i} variants={scaleIn}
                 whileHover={{ y: -4, boxShadow: "0 16px 40px rgba(0,0,0,0.07)" }}
-                className="bg-white border border-[#B8860B]/65 rounded-2xl p-5 text-center hover:border-[#B8860B]/60 transition-all duration-300"
+                className="bg-white border-2 border-[#B8860B]/65 rounded-2xl p-5 text-center hover:border-[#B8860B]/60 transition-all duration-300"
               >
                 <div className="w-12 h-12 rounded-full mx-auto mb-3 flex items-center justify-center" style={{ background: `${t.color}15` }}>
                   <t.icon className="w-6 h-6" style={{ color: t.color }} />
                 </div>
                 <p className="font-mono text-[10px] uppercase tracking-[0.2em] mb-1" style={{ color: t.color }}>{t.tier}</p>
                 <p className="font-display text-3xl font-bold text-black">{t.rate}</p>
-                <p className="font-mono text-[9px] text-black/35 mt-0.5">per unit</p>
-                <p className="font-body text-xs text-black/50 mt-2">{t.range}</p>
+                <p className="font-mono text-[9px] text-black/50 mt-0.5">per unit</p>
+                <p className="font-body text-xs text-black/65 mt-2">{t.range}</p>
                 <div className="mt-3 pt-3 border-t border-[#B8860B]/55">
-                  <p className="font-mono text-[9px] text-black/35 uppercase tracking-wider">Monthly Potential</p>
+                  <p className="font-mono text-[9px] text-black/50 uppercase tracking-wider">Monthly Potential</p>
                   <p className="font-display text-sm font-semibold text-black mt-1">{t.monthly}</p>
                 </div>
               </motion.div>
@@ -283,7 +283,7 @@ export default function ZWAffiliateProgram() {
             className="max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           >
-            <div className="bg-white border border-[#B8860B]/65 rounded-2xl overflow-hidden">
+            <div className="bg-white border-2 border-[#B8860B]/65 rounded-2xl overflow-hidden">
               <div className="bg-[#F5F4F1] px-6 py-3">
                 <p className="font-mono text-xs text-black">Earning Scenarios — Based on $1,095 DTC MSRP</p>
               </div>
@@ -291,7 +291,7 @@ export default function ZWAffiliateProgram() {
                 <thead>
                   <tr className="border-b border-[#B8860B]/55">
                     {["Units/Month", "Tier", "Commission/Unit", "Monthly Earnings", "Annual Earnings"].map(h => (
-                      <th key={h} className="px-4 py-3 text-left font-mono text-[9px] text-black/35 uppercase tracking-wider">{h}</th>
+                      <th key={h} className="px-4 py-3 text-left font-mono text-[9px] text-black/50 uppercase tracking-wider">{h}</th>
                     ))}
                   </tr>
                 </thead>
@@ -337,7 +337,7 @@ export default function ZWAffiliateProgram() {
               <motion.div
                 key={i} variants={scaleIn}
                 whileHover={{ y: -4, boxShadow: "0 16px 40px rgba(0,0,0,0.07)" }}
-                className="bg-white border border-[#B8860B]/65 rounded-2xl p-6 hover:border-[#B8860B]/60 transition-all duration-300"
+                className="bg-white border-2 border-[#B8860B]/65 rounded-2xl p-6 hover:border-[#B8860B]/60 transition-all duration-300"
               >
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: `${method.color}15` }}>
@@ -345,28 +345,28 @@ export default function ZWAffiliateProgram() {
                   </div>
                   <p className="font-display text-sm font-semibold text-black">{method.method}</p>
                 </div>
-                <p className="font-body text-xs text-black/55 leading-relaxed">{method.detail}</p>
+                <p className="font-body text-xs text-black/70 leading-relaxed">{method.detail}</p>
               </motion.div>
             ))}
           </motion.div>
 
           {/* Attribution priority */}
           <motion.div
-            className="max-w-4xl mx-auto mt-8 p-6 bg-[#FAFAF8] border border-[#B8860B]/55 rounded-2xl"
+            className="max-w-4xl mx-auto mt-8 p-6 bg-[#FAFAF8] border-2 border-[#B8860B]/55 rounded-2xl"
             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
           >
             <p className="font-mono text-[10px] text-[#B8860B] uppercase tracking-[0.2em] mb-3">Attribution Priority Order</p>
             <div className="flex flex-col md:flex-row items-center gap-3">
               {["1. Promo Code Used at Checkout", "2. UTM Link Click (30-day window)", "3. Cookie Attribution (30-day window)"].map((step, i, arr) => (
                 <div key={i} className="flex items-center gap-3">
-                  <div className="text-center px-4 py-2.5 bg-white border border-[#B8860B]/65 rounded-xl shadow-sm">
+                  <div className="text-center px-4 py-2.5 bg-white border-2 border-[#B8860B]/65 rounded-xl shadow-sm">
                     <p className="font-body text-xs text-black/70">{step}</p>
                   </div>
                   {i < arr.length - 1 && <ArrowRight className="w-4 h-4 text-[#B8860B] flex-shrink-0" />}
                 </div>
               ))}
             </div>
-            <p className="font-body text-xs text-black/45 mt-3">If multiple attribution signals are present, promo code takes priority. No double-attribution — one commission per sale.</p>
+            <p className="font-body text-xs text-black/60 mt-3">If multiple attribution signals are present, promo code takes priority. No double-attribution — one commission per sale.</p>
           </motion.div>
         </div>
       </section>
@@ -386,7 +386,7 @@ export default function ZWAffiliateProgram() {
                 key={i}
                 initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                className="bg-white border border-[#B8860B]/65 rounded-2xl p-5 hover:border-[#B8860B]/50 hover:shadow-md transition-all duration-300"
+                className="bg-white border-2 border-[#B8860B]/65 rounded-2xl p-5 hover:border-[#B8860B]/50 hover:shadow-md transition-all duration-300"
               >
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 rounded-full flex items-center justify-center text-white font-display text-sm font-bold flex-shrink-0" style={{ background: GOLD }}>
@@ -394,7 +394,7 @@ export default function ZWAffiliateProgram() {
                   </div>
                   <div>
                     <p className="font-display text-sm font-semibold text-black">{step.title}</p>
-                    <p className="font-body text-xs text-black/55 mt-1 leading-relaxed">{step.detail}</p>
+                    <p className="font-body text-xs text-black/70 mt-1 leading-relaxed">{step.detail}</p>
                   </div>
                 </div>
               </motion.div>
@@ -416,7 +416,7 @@ export default function ZWAffiliateProgram() {
             className="max-w-5xl mx-auto"
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           >
-            <div className="bg-white border border-[#B8860B]/65 rounded-2xl overflow-hidden">
+            <div className="bg-white border-2 border-[#B8860B]/65 rounded-2xl overflow-hidden">
               <div className="bg-[#F5F4F1] px-6 py-3 flex items-center gap-2">
                 <Database className="w-4 h-4 text-[#B8860B]" />
                 <span className="font-mono text-xs text-white">Salesforce Custom Object: Commission__c</span>
@@ -426,7 +426,7 @@ export default function ZWAffiliateProgram() {
                   <thead>
                     <tr className="border-b border-[#B8860B]/55">
                       {["Object", "Field", "Type", "Description"].map(h => (
-                        <th key={h} className="px-4 py-3 text-left font-mono text-[9px] text-black/35 uppercase tracking-wider">{h}</th>
+                        <th key={h} className="px-4 py-3 text-left font-mono text-[9px] text-black/50 uppercase tracking-wider">{h}</th>
                       ))}
                     </tr>
                   </thead>
@@ -435,8 +435,8 @@ export default function ZWAffiliateProgram() {
                       <tr key={i} className={`border-b border-[#B8860B]/50 hover:bg-[#FAFAF8] transition-colors ${i % 2 === 0 ? "" : "bg-[#FAFAF8]/40"}`}>
                         <td className="px-4 py-2.5 font-mono text-[10px] text-[#B8860B]">{row.object}</td>
                         <td className="px-4 py-2.5 font-mono text-[10px] text-black/70">{row.field}</td>
-                        <td className="px-4 py-2.5 font-mono text-[9px] text-black/40">{row.type}</td>
-                        <td className="px-4 py-2.5 font-body text-xs text-black/55">{row.desc}</td>
+                        <td className="px-4 py-2.5 font-mono text-[9px] text-black/55">{row.type}</td>
+                        <td className="px-4 py-2.5 font-body text-xs text-black/70">{row.desc}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -450,14 +450,14 @@ export default function ZWAffiliateProgram() {
                 { title: "Zapier: Code Used → Commission Record", detail: "When a promo code is used at DTC checkout, Zapier creates a Commission__c record in Salesforce within 60 seconds. Fields populated: Partner_Code__c, Units_Sold__c, Commission_Rate__c, Month__c.", icon: Zap, color: "#FF4A00" },
                 { title: "Salesforce Flow: Monthly Payout Report", detail: "On the 1st of each month, a Salesforce Flow runs to aggregate all Commission__c records for the prior month, calculate totals, and email a payout summary to each partner and the WEG finance team.", icon: FileText, color: GOLD },
               ].map((auto, i) => (
-                <div key={i} className="bg-[#FAFAF8] border border-[#B8860B]/55 rounded-2xl p-5">
+                <div key={i} className="bg-[#FAFAF8] border-2 border-[#B8860B]/55 rounded-2xl p-5">
                   <div className="flex items-center gap-3 mb-2">
                     <div className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: `${auto.color}15` }}>
                       <auto.icon className="w-4 h-4" style={{ color: auto.color }} />
                     </div>
                     <p className="font-display text-sm font-semibold text-black">{auto.title}</p>
                   </div>
-                  <p className="font-body text-xs text-black/55 leading-relaxed">{auto.detail}</p>
+                  <p className="font-body text-xs text-black/70 leading-relaxed">{auto.detail}</p>
                 </div>
               ))}
             </div>
@@ -481,7 +481,7 @@ export default function ZWAffiliateProgram() {
             {termsHighlights.map((term, i) => (
               <motion.div
                 key={i} variants={fadeInUp}
-                className="bg-white border border-[#B8860B]/65 rounded-2xl p-5 hover:border-[#B8860B]/50 hover:shadow-md transition-all duration-300"
+                className="bg-white border-2 border-[#B8860B]/65 rounded-2xl p-5 hover:border-[#B8860B]/50 hover:shadow-md transition-all duration-300"
               >
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: `${GOLD}15` }}>
@@ -489,7 +489,7 @@ export default function ZWAffiliateProgram() {
                   </div>
                   <div>
                     <p className="font-display text-sm font-semibold text-black">{term.title}</p>
-                    <p className="font-body text-xs text-black/55 mt-1 leading-relaxed">{term.detail}</p>
+                    <p className="font-body text-xs text-black/70 mt-1 leading-relaxed">{term.detail}</p>
                   </div>
                 </div>
               </motion.div>

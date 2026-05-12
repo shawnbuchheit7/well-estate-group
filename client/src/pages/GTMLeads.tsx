@@ -54,7 +54,7 @@ export default function GTMLeads() {
             <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
               From Contact to Customer
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-sm text-black/50 max-w-2xl mx-auto mt-4 leading-relaxed">
+            <motion.p variants={fadeInUp} className="font-body text-sm text-black/65 max-w-2xl mx-auto mt-4 leading-relaxed">
               A structured, trackable journey that ensures no lead falls through the cracks.
             </motion.p>
           </motion.div>
@@ -110,7 +110,7 @@ export default function GTMLeads() {
                 className="flex gap-5 mb-6 last:mb-0"
               >
                 <div className="flex flex-col items-center flex-shrink-0">
-                  <div className="w-12 h-12 rounded-xl bg-white border border-[#B8860B]/60 shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-xl bg-white border-2 border-[#B8860B]/60 shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex items-center justify-center">
                     <stage.icon className="w-5 h-5 text-[#B8860B]" />
                   </div>
                   {i < 5 && <div className="w-px h-full bg-black/[0.08] mt-2" />}
@@ -120,7 +120,7 @@ export default function GTMLeads() {
                     <span className="font-mono text-[10px] text-[#B8860B] font-semibold tracking-[0.15em]">STEP {stage.step}</span>
                   </div>
                   <h3 className="font-display text-lg font-bold text-black mb-2 tracking-tight">{stage.title}</h3>
-                  <p className="font-body text-sm text-black/50 leading-relaxed">{stage.description}</p>
+                  <p className="font-body text-sm text-black/65 leading-relaxed">{stage.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -163,15 +163,15 @@ export default function GTMLeads() {
                 key={i}
                 variants={scaleIn}
                 whileHover={{ y: -4 }}
-                className="bg-white border border-[#B8860B]/60 rounded-xl p-6 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#B8860B]/60 transition-all duration-300"
+                className="bg-white border-2 border-[#B8860B]/60 rounded-xl p-6 shadow-[0_2px_8px_rgba(184,134,11,0.05),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(184,134,11,0.12)] hover:border-[#B8860B]/60 transition-all duration-300"
               >
-                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-[#B8860B]/50 flex items-center justify-center mb-5">
+                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border-2 border-[#B8860B]/50 flex items-center justify-center mb-5">
                   <source.icon className="w-5 h-5 text-[#B8860B]" />
                 </div>
                 <h3 className="font-display text-base font-bold text-black mb-4 tracking-tight">{source.title}</h3>
                 <ul className="space-y-2.5">
                   {source.items.map((item, j) => (
-                    <li key={j} className="flex items-center gap-2.5 font-body text-sm text-black/50">
+                    <li key={j} className="flex items-center gap-2.5 font-body text-sm text-black/65">
                       <div className="w-1.5 h-1.5 rounded-full bg-[#B8860B]/60" />
                       {item}
                     </li>
@@ -199,7 +199,7 @@ export default function GTMLeads() {
             <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
               Salesforce-Powered Operations
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-sm text-black/50 max-w-2xl mx-auto mt-4 leading-relaxed">
+            <motion.p variants={fadeInUp} className="font-body text-sm text-black/65 max-w-2xl mx-auto mt-4 leading-relaxed">
               Complete CRM implementation with automated workflows, activity tracking, and integrated reporting.
             </motion.p>
           </motion.div>
@@ -221,14 +221,14 @@ export default function GTMLeads() {
                 key={i}
                 variants={fadeInUp}
                 whileHover={{ y: -3 }}
-                className="flex gap-5 p-6 rounded-xl bg-white border border-[#B8860B]/60 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_28px_rgba(0,0,0,0.07)] hover:border-[#B8860B]/60 transition-all duration-300"
+                className="flex gap-5 p-6 rounded-xl bg-white border-2 border-[#B8860B]/60 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_28px_rgba(0,0,0,0.07)] hover:border-[#B8860B]/60 transition-all duration-300"
               >
-                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-[#B8860B]/50 flex items-center justify-center flex-shrink-0">
+                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border-2 border-[#B8860B]/50 flex items-center justify-center flex-shrink-0">
                   <feature.icon className="w-5 h-5 text-[#B8860B]" />
                 </div>
                 <div>
                   <h3 className="font-display text-base font-bold text-black mb-2 tracking-tight">{feature.title}</h3>
-                  <p className="font-body text-sm text-black/50 leading-relaxed">{feature.description}</p>
+                  <p className="font-body text-sm text-black/65 leading-relaxed">{feature.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -262,7 +262,7 @@ export default function GTMLeads() {
             variants={staggerContainer}
           >
             {/* Metrics Table */}
-            <motion.div variants={fadeInUp} className="bg-white border border-[#B8860B]/60 rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.03),0_8px_24px_rgba(0,0,0,0.05)] overflow-hidden">
+            <motion.div variants={fadeInUp} className="bg-white border-2 border-[#B8860B]/60 rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.03),0_8px_24px_rgba(0,0,0,0.05)] overflow-hidden">
               <div className="grid grid-cols-3 bg-[#F5F4F1] border-b border-[#B8860B]/55">
                 <div className="px-6 py-4 font-mono text-[11px] tracking-[0.15em] uppercase font-semibold">Metric</div>
                 <div className="px-6 py-4 font-mono text-[11px] tracking-[0.15em] uppercase font-semibold">What We Track</div>
@@ -278,8 +278,8 @@ export default function GTMLeads() {
               ].map((row, i) => (
                 <div key={i} className={`grid grid-cols-3 ${i % 2 === 0 ? "bg-white" : "bg-[#FAFAF8]"} ${i < 5 ? "border-b border-[#B8860B]/50" : ""} hover:bg-[#F5F4F0] transition-colors duration-150`}>
                   <div className="px-6 py-4 font-display text-sm font-bold text-black">{row.metric}</div>
-                  <div className="px-6 py-4 font-body text-sm text-black/50">{row.track}</div>
-                  <div className="px-6 py-4 font-body text-sm text-black/50">{row.why}</div>
+                  <div className="px-6 py-4 font-body text-sm text-black/65">{row.track}</div>
+                  <div className="px-6 py-4 font-body text-sm text-black/65">{row.why}</div>
                 </div>
               ))}
             </motion.div>

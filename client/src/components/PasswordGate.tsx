@@ -120,7 +120,7 @@ export default function PasswordGate({ children }: PasswordGateProps) {
         transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] }}
         className="relative z-10 w-full max-w-md mx-6"
       >
-        <div className="bg-white border border-[#B8860B]/50 rounded-2xl shadow-[0_20px_80px_rgba(0,0,0,0.08)] p-10">
+        <div className="bg-white border-2 border-[#B8860B]/50 rounded-2xl shadow-[0_20px_80px_rgba(0,0,0,0.08)] p-10">
           {/* Logo */}
           <div className="flex flex-col items-center mb-10">
             <motion.img

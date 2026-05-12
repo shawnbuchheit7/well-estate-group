@@ -182,11 +182,11 @@ function MatrixGrid({ quadrants, year }: { quadrants: Quadrant[]; year: number }
                   animate={hoveredQuadrant === i ? { scale: 1.1 } : { scale: 1 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <q.icon className={`w-4 h-4 sm:w-[18px] sm:h-[18px] ${i === 0 ? 'text-[#B8860B]' : 'text-black/50'}`} />
+                  <q.icon className={`w-4 h-4 sm:w-[18px] sm:h-[18px] ${i === 0 ? 'text-[#B8860B]' : 'text-black/65'}`} />
                 </motion.div>
                 <div className="min-w-0">
                   <h3 className="font-display text-base sm:text-lg font-semibold text-black leading-tight">{q.title}</h3>
-                  <p className="font-mono text-[9px] sm:text-[10px] text-black/35 tracking-wide mt-0.5 leading-snug">{q.subtitle}</p>
+                  <p className="font-mono text-[9px] sm:text-[10px] text-black/50 tracking-wide mt-0.5 leading-snug">{q.subtitle}</p>
                 </div>
               </div>
 
@@ -206,7 +206,7 @@ function MatrixGrid({ quadrants, year }: { quadrants: Quadrant[]; year: number }
                     className={`px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-medium tracking-wide transition-all cursor-default ${
                       item.highlighted
                         ? "bg-[#B8860B] text-white shadow-md"
-                        : "bg-white text-black/70 border border-[#B8860B]/70 hover:border-[#B8860B]/60"
+                        : "bg-white text-black/70 border-2 border-[#B8860B]/70 hover:border-[#B8860B]/60"
                     }`}
                   >
                     {item.name}
@@ -259,7 +259,7 @@ export default function GTMStrategicMarkets() {
             <motion.h2 variants={fadeInUp} className="font-display text-2xl sm:text-3xl md:text-4xl font-medium text-black">
               Initial Market Positioning
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-xs sm:text-sm text-black/40 mt-3 max-w-xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-body text-xs sm:text-sm text-black/55 mt-3 max-w-xl mx-auto">
               Gold-highlighted segments represent the primary focus and drive markets for initial market entry.
             </motion.p>
           </motion.div>
@@ -270,7 +270,7 @@ export default function GTMStrategicMarkets() {
 
       {/* Divider */}
       <div className="container px-4 sm:px-6">
-        <div className="h-px bg-gradient-to-r from-transparent via-black/8 to-transparent" />
+        <div className="h-px bg-gradient-to-r from-transparent via-[#B8860B]/25 to-transparent" />
       </div>
 
       {/* Year 2 Matrix */}
@@ -289,7 +289,7 @@ export default function GTMStrategicMarkets() {
             <motion.h2 variants={fadeInUp} className="font-display text-2xl sm:text-3xl md:text-4xl font-medium text-black">
               Evolved Market Positioning
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-xs sm:text-sm text-black/40 mt-3 max-w-xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-body text-xs sm:text-sm text-black/55 mt-3 max-w-xl mx-auto">
               Segments shift between quadrants as market intelligence matures and relationships deepen.
             </motion.p>
           </motion.div>
@@ -331,7 +331,7 @@ export default function GTMStrategicMarkets() {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
                   whileHover={{ x: 4, boxShadow: "0 8px 24px rgba(0,0,0,0.06)" }}
-                  className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-4 sm:p-5 rounded-xl bg-white border border-[#B8860B]/65 shadow-[0_2px_8px_rgba(0,0,0,0.03)] transition-all duration-300"
+                  className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-4 sm:p-5 rounded-xl bg-white border-2 border-[#B8860B]/65 shadow-[0_2px_8px_rgba(184,134,11,0.05)] transition-all duration-300"
                 >
                   {/* Direction indicator + Segment name */}
                   <div className="flex items-center gap-3 sm:min-w-[220px]">
@@ -348,7 +348,7 @@ export default function GTMStrategicMarkets() {
                   
                   {/* From → To */}
                   <div className="flex items-center gap-2 sm:gap-3 ml-10 sm:ml-0">
-                    <span className="font-mono text-[10px] sm:text-[11px] text-black/40 bg-black/[0.03] px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg whitespace-nowrap">{shift.from}</span>
+                    <span className="font-mono text-[10px] sm:text-[11px] text-black/55 bg-black/[0.03] px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg whitespace-nowrap">{shift.from}</span>
                     <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#B8860B] flex-shrink-0" />
                     <span className="font-mono text-[10px] sm:text-[11px] font-semibold text-black bg-[#B8860B]/10 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg whitespace-nowrap">{shift.to}</span>
                   </div>

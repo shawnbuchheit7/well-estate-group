@@ -103,7 +103,7 @@ export default function GTMSalesInfrastructure() {
       {/* Core Platforms */}
       <section id="core-platforms" className="py-18">
         <div className="container">
-          <div className="h-px bg-gradient-to-r from-transparent via-black/8 to-transparent mb-18" />
+          <div className="h-px bg-gradient-to-r from-transparent via-[#B8860B]/25 to-transparent mb-18" />
 
           <motion.div
             className="text-center mb-14"
@@ -118,7 +118,7 @@ export default function GTMSalesInfrastructure() {
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-4 text-black">
               Primary Platforms
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-base text-black/40 max-w-2xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-body text-base text-black/55 max-w-2xl mx-auto">
               The six foundational platforms that power every stage of the sales cycle — from first touch to closed deal.
             </motion.p>
           </motion.div>
@@ -135,7 +135,7 @@ export default function GTMSalesInfrastructure() {
                 key={i}
                 variants={fadeInUp}
                 whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(0,0,0,0.06)" }}
-                className="bg-white border border-[#B8860B]/65 rounded-xl overflow-hidden hover:border-[#B8860B]/60 transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
+                className="bg-white border-2 border-[#B8860B]/65 rounded-xl overflow-hidden hover:border-[#B8860B]/60 transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
               >
                 <div className="flex items-center gap-3 px-5 py-4 border-b border-[#B8860B]/70 bg-[#FAFAF8]">
                   <div className="w-10 h-10 rounded-lg bg-[#B8860B]/10 flex items-center justify-center flex-shrink-0">
@@ -143,16 +143,16 @@ export default function GTMSalesInfrastructure() {
                   </div>
                   <div>
                     <h3 className="font-display text-base font-semibold text-black leading-tight">{platform.name}</h3>
-                    <p className="font-mono text-[10px] text-black/30 tracking-wider uppercase">{platform.category}</p>
+                    <p className="font-mono text-[10px] text-black/45 tracking-wider uppercase">{platform.category}</p>
                   </div>
                 </div>
                 <div className="p-5">
-                  <p className="font-body text-sm text-black/40 leading-relaxed mb-4">{platform.description}</p>
+                  <p className="font-body text-sm text-black/55 leading-relaxed mb-4">{platform.description}</p>
                   <div className="flex flex-wrap gap-1.5">
                     {platform.features.map((feature, j) => (
                       <span
                         key={j}
-                        className="px-2.5 py-1 rounded-full bg-[#B8860B]/[0.06] text-[11px] font-mono text-black/40 tracking-wide"
+                        className="px-2.5 py-1 rounded-full bg-[#B8860B]/[0.06] text-[11px] font-mono text-black/55 tracking-wide"
                       >
                         {feature}
                       </span>
@@ -181,7 +181,7 @@ export default function GTMSalesInfrastructure() {
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-4 text-black">
               Integrated Sales Workflow
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-base text-black/40 max-w-2xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-body text-base text-black/55 max-w-2xl mx-auto">
               A seamless six-stage pipeline from lead generation to closed deal, with each stage powered by a dedicated platform.
             </motion.p>
           </motion.div>
@@ -199,13 +199,13 @@ export default function GTMSalesInfrastructure() {
                 <motion.div key={i} variants={fadeInUp} className="flex items-center gap-2">
                   <motion.div
                     whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(0,0,0,0.06)" }}
-                    className="text-center px-5 py-4 rounded-xl bg-white border border-[#B8860B]/65 shadow-[0_2px_8px_rgba(0,0,0,0.02)] min-w-[140px] hover:border-[#B8860B]/60 transition-all duration-300"
+                    className="text-center px-5 py-4 rounded-xl bg-white border-2 border-[#B8860B]/65 shadow-[0_2px_8px_rgba(0,0,0,0.02)] min-w-[140px] hover:border-[#B8860B]/60 transition-all duration-300"
                   >
                     <div className="w-8 h-8 rounded-full bg-[#B8860B]/10 flex items-center justify-center mx-auto mb-2">
                       <span className="font-display text-sm font-bold text-[#B8860B]">{i + 1}</span>
                     </div>
                     <p className="font-display text-sm font-semibold text-black">{item.step}</p>
-                    <p className="font-body text-[10px] text-black/30 mt-0.5">{item.detail}</p>
+                    <p className="font-body text-[10px] text-black/45 mt-0.5">{item.detail}</p>
                     <p className="font-mono text-[9px] text-[#B8860B]/60 tracking-wider uppercase mt-2">{item.platform}</p>
                   </motion.div>
                   {i < workflowSteps.length - 1 && (
@@ -226,13 +226,13 @@ export default function GTMSalesInfrastructure() {
                 <motion.div
                   key={i}
                   variants={fadeInUp}
-                  className="text-center px-4 py-4 rounded-xl bg-white border border-[#B8860B]/65 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
+                  className="text-center px-4 py-4 rounded-xl bg-white border-2 border-[#B8860B]/65 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
                 >
                   <div className="w-7 h-7 rounded-full bg-[#B8860B]/10 flex items-center justify-center mx-auto mb-2">
                     <span className="font-display text-xs font-bold text-[#B8860B]">{i + 1}</span>
                   </div>
                   <p className="font-display text-sm font-semibold text-black">{item.step}</p>
-                  <p className="font-body text-[10px] text-black/30 mt-0.5">{item.detail}</p>
+                  <p className="font-body text-[10px] text-black/45 mt-0.5">{item.detail}</p>
                   <p className="font-mono text-[9px] text-[#B8860B]/60 tracking-wider uppercase mt-1.5">{item.platform}</p>
                 </motion.div>
               ))}
@@ -244,7 +244,7 @@ export default function GTMSalesInfrastructure() {
       {/* Additional Tools */}
       <section id="additional-tools" className="py-18">
         <div className="container">
-          <div className="h-px bg-gradient-to-r from-transparent via-black/8 to-transparent mb-18" />
+          <div className="h-px bg-gradient-to-r from-transparent via-[#B8860B]/25 to-transparent mb-18" />
 
           <motion.div
             className="text-center mb-14"
@@ -259,7 +259,7 @@ export default function GTMSalesInfrastructure() {
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-4 text-black">
               Additional Tools
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-base text-black/40 max-w-2xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-body text-base text-black/55 max-w-2xl mx-auto">
               Complementary platforms that enhance team productivity, prospecting, and knowledge management across the organization.
             </motion.p>
           </motion.div>
@@ -276,7 +276,7 @@ export default function GTMSalesInfrastructure() {
                 key={i}
                 variants={fadeInUp}
                 whileHover={{ y: -3, boxShadow: "0 8px 24px rgba(0,0,0,0.05)" }}
-                className="flex gap-4 items-start p-5 rounded-xl bg-white border border-[#B8860B]/65 hover:border-[#B8860B]/60 transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
+                className="flex gap-4 items-start p-5 rounded-xl bg-white border-2 border-[#B8860B]/65 hover:border-[#B8860B]/60 transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
               >
                 <div className="w-9 h-9 rounded-lg bg-[#B8860B]/8 flex items-center justify-center flex-shrink-0 mt-0.5">
                   <tool.icon className="w-4.5 h-4.5 text-[#B8860B]" />
@@ -284,7 +284,7 @@ export default function GTMSalesInfrastructure() {
                 <div>
                   <h3 className="font-display text-sm font-semibold text-black mb-0.5">{tool.name}</h3>
                   <p className="font-mono text-[9px] text-black/25 tracking-wider uppercase mb-2">{tool.category}</p>
-                  <p className="font-body text-sm text-black/40 leading-relaxed">{tool.description}</p>
+                  <p className="font-body text-sm text-black/55 leading-relaxed">{tool.description}</p>
                 </div>
               </motion.div>
             ))}

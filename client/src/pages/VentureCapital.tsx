@@ -112,13 +112,13 @@ export default function VentureCapital() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -4 }}
-                className="bg-white rounded-xl p-7 border border-[#B8860B]/60 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_8px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] hover:border-[#B8860B]/60 transition-all duration-300"
+                className="bg-white rounded-xl p-7 border-2 border-[#B8860B]/60 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_8px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] hover:border-[#B8860B]/60 transition-all duration-300"
               >
-                <div className="w-11 h-11 rounded-lg bg-[#FAFAF8] border border-[#B8860B]/55 flex items-center justify-center mb-5">
+                <div className="w-11 h-11 rounded-lg bg-[#FAFAF8] border-2 border-[#B8860B]/55 flex items-center justify-center mb-5">
                   <item.icon className="w-5 h-5 text-[#B8860B]" />
                 </div>
                 <h3 className="font-display text-lg font-bold text-black mb-2.5 tracking-tight">{item.title}</h3>
-                <p className="font-body text-sm text-black/55 leading-relaxed">{item.description}</p>
+                <p className="font-body text-sm text-black/70 leading-relaxed">{item.description}</p>
               </motion.div>
             ))}
           </div>
@@ -147,7 +147,7 @@ export default function VentureCapital() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-4xl mx-auto bg-white rounded-xl border border-[#B8860B]/60 shadow-[0_4px_20px_rgba(0,0,0,0.05)] overflow-hidden"
+            className="max-w-4xl mx-auto bg-white rounded-xl border-2 border-[#B8860B]/60 shadow-[0_4px_20px_rgba(0,0,0,0.05)] overflow-hidden"
           >
             {/* Table Header */}
             <div className="grid grid-cols-12 gap-4 px-6 sm:px-8 py-4 bg-[#F5F4F1] border-b border-[#B8860B]/55">
@@ -174,10 +174,10 @@ export default function VentureCapital() {
                   <span className="font-body text-sm font-bold text-black">{area.category}</span>
                 </div>
                 <div className="col-span-5">
-                  <span className="font-body text-xs text-black/50 leading-relaxed">{area.examples}</span>
+                  <span className="font-body text-xs text-black/65 leading-relaxed">{area.examples}</span>
                 </div>
                 <div className="col-span-3 text-right">
-                  <span className="inline-block font-mono text-[10px] text-[#B8860B] bg-[#B8860B]/8 border border-[#B8860B]/50 px-2.5 py-1 rounded-md tracking-[0.1em] font-medium">
+                  <span className="inline-block font-mono text-[10px] text-[#B8860B] bg-[#B8860B]/8 border-2 border-[#B8860B]/50 px-2.5 py-1 rounded-md tracking-[0.1em] font-medium">
                     {area.stage}
                   </span>
                 </div>
@@ -214,11 +214,11 @@ export default function VentureCapital() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -3 }}
-                className="text-center p-6 sm:p-7 rounded-xl bg-white border border-[#B8860B]/60 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#B8860B]/60 transition-all duration-300"
+                className="text-center p-6 sm:p-7 rounded-xl bg-white border-2 border-[#B8860B]/60 shadow-[0_2px_8px_rgba(184,134,11,0.05),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(184,134,11,0.12)] hover:border-[#B8860B]/60 transition-all duration-300"
               >
                 <div className="font-display text-3xl sm:text-4xl font-bold text-black mb-2">{item.count}</div>
                 <div className="font-mono text-[10px] text-[#B8860B] tracking-[0.15em] uppercase mb-2 font-semibold">{item.status}</div>
-                <div className="font-body text-[11px] text-black/40 leading-relaxed">{item.note}</div>
+                <div className="font-body text-[11px] text-black/55 leading-relaxed">{item.note}</div>
               </motion.div>
             ))}
           </div>
@@ -234,13 +234,13 @@ export default function VentureCapital() {
             viewport={{ once: true }}
             className="text-center max-w-2xl mx-auto"
           >
-            <div className="w-14 h-14 rounded-xl bg-white border border-[#B8860B]/55 shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex items-center justify-center mx-auto mb-6">
+            <div className="w-14 h-14 rounded-xl bg-white border-2 border-[#B8860B]/55 shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex items-center justify-center mx-auto mb-6">
               <Briefcase className="w-6 h-6 text-[#B8860B]" />
             </div>
             <h3 className="font-display text-2xl sm:text-3xl font-semibold text-black mb-4 tracking-tight">
               Seeking Innovative Products
             </h3>
-            <p className="font-body text-sm text-black/50 leading-relaxed mb-8">
+            <p className="font-body text-sm text-black/65 leading-relaxed mb-8">
               We are actively evaluating fitness and wellness products for strategic investment. 
               If you have a product that addresses a genuine market gap, we want to hear from you.
             </p>

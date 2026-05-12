@@ -272,7 +272,7 @@ export default function ZWSales() {
       {/* Macro LOBs Overview */}
       <section id="macro-lobs" className="py-18">
         <div className="container">
-          <div className="h-px bg-gradient-to-r from-transparent via-black/8 to-transparent mb-18" />
+          <div className="h-px bg-gradient-to-r from-transparent via-[#B8860B]/25 to-transparent mb-18" />
 
           <motion.div
             className="text-center mb-14"
@@ -287,7 +287,7 @@ export default function ZWSales() {
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-4 text-black">
               Nine Macro Lines of Business
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-base text-black/55 max-w-2xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-body text-base text-black/70 max-w-2xl mx-auto">
               Each macro LOB represents a distinct market with its own buyer personas, sales cycles, and revenue potential. All discount pricing represents the maximum discount — do-not-exceed thresholds.
             </motion.p>
           </motion.div>
@@ -298,11 +298,11 @@ export default function ZWSales() {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="rounded-2xl border border-[#B8860B]/70 overflow-hidden"
+              className="rounded-2xl border-2 border-[#B8860B]/70 overflow-hidden"
             >
               <div className="bg-[#F5F4F1] px-6 py-3 flex items-center justify-between">
                 <span className="font-display text-sm font-semibold text-black">Pricing Structure</span>
-                <span className="font-mono text-[9px] text-black/40 tracking-wider uppercase">Max Discount Thresholds — Do Not Exceed</span>
+                <span className="font-mono text-[9px] text-black/55 tracking-wider uppercase">Max Discount Thresholds — Do Not Exceed</span>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-black/[0.06]">
                 {[
@@ -312,9 +312,9 @@ export default function ZWSales() {
                   { label: "GSA (best)", price: "$694", note: "do not exceed" },
                 ].map((tier, i) => (
                   <div key={i} className="p-4 text-center">
-                    <p className="font-mono text-[9px] text-black/40 tracking-wider uppercase mb-1">{tier.label}</p>
+                    <p className="font-mono text-[9px] text-black/55 tracking-wider uppercase mb-1">{tier.label}</p>
                     <p className="font-display text-xl font-bold text-black">{tier.price}</p>
-                    <p className="font-body text-[10px] text-black/35">{tier.note}</p>
+                    <p className="font-body text-[10px] text-black/50">{tier.note}</p>
                   </div>
                 ))}
               </div>
@@ -342,7 +342,7 @@ export default function ZWSales() {
               >
                 <lob.icon className="w-5 h-5 mb-2" style={{ color: lob.color }} />
                 <p className="font-display text-xs md:text-sm font-semibold text-black text-center leading-tight">{lob.name}</p>
-                <span className="font-mono text-[8px] text-black/30 tracking-wider uppercase mt-1">{lob.category}</span>
+                <span className="font-mono text-[8px] text-black/45 tracking-wider uppercase mt-1">{lob.category}</span>
               </motion.div>
             ))}
           </motion.div>
@@ -365,7 +365,7 @@ export default function ZWSales() {
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-4 text-black">
               LOB Sales Targets & Metrics
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-base text-black/55 max-w-2xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-body text-base text-black/70 max-w-2xl mx-auto">
               Specific organizations, associations, and accounts targeted within each macro line of business, with deal sizing and sales cycle benchmarks.
             </motion.p>
           </motion.div>
@@ -382,7 +382,7 @@ export default function ZWSales() {
                 key={i}
                 variants={fadeInUp}
                 whileHover={{ y: -3, boxShadow: "0 12px 30px rgba(0,0,0,0.06)" }}
-                className="bg-white border border-[#B8860B]/65 rounded-xl overflow-hidden hover:border-[#B8860B]/60 hover:shadow-lg transition-all duration-300"
+                className="bg-white border-2 border-[#B8860B]/65 rounded-xl overflow-hidden hover:border-[#B8860B]/60 hover:shadow-lg transition-all duration-300"
               >
                 {/* Card Header */}
                 <div className="flex items-center justify-between px-6 py-4 border-b border-[#B8860B]/70" style={{ background: `linear-gradient(135deg, ${lob.color}08, transparent)` }}>
@@ -395,10 +395,10 @@ export default function ZWSales() {
                         <h3 className="font-display text-lg font-semibold text-black">{lob.name}</h3>
                         <span className="font-mono text-[9px] tracking-wider uppercase px-2 py-0.5 rounded-full bg-[#B8860B]/10 text-[#B8860B]">{lob.category}</span>
                       </div>
-                      <p className="font-body text-xs text-black/45 mt-0.5">{lob.description}</p>
+                      <p className="font-body text-xs text-black/60 mt-0.5">{lob.description}</p>
                     </div>
                   </div>
-                  <span className="font-mono text-[10px] text-black/35 hidden md:block">{lob.pricing}</span>
+                  <span className="font-mono text-[10px] text-black/50 hidden md:block">{lob.pricing}</span>
                 </div>
 
                 {/* Card Body */}
@@ -406,12 +406,12 @@ export default function ZWSales() {
                   <div className="grid md:grid-cols-[1fr_auto] gap-6">
                     {/* Targets */}
                     <div>
-                      <p className="font-mono text-[10px] text-black/45 uppercase tracking-[0.15em] mb-3">Industry Events & Associations</p>
+                      <p className="font-mono text-[10px] text-black/60 uppercase tracking-[0.15em] mb-3">Industry Events & Associations</p>
                       <ul className="space-y-2">
                         {lob.targets.map((target, j) => (
                           <li key={j} className="flex items-start gap-2.5">
                             <ArrowRight className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={{ color: lob.color }} />
-                            <span className="font-body text-sm text-black/55 leading-relaxed">{target}</span>
+                            <span className="font-body text-sm text-black/70 leading-relaxed">{target}</span>
                           </li>
                         ))}
                       </ul>
@@ -442,17 +442,17 @@ export default function ZWSales() {
                         <p className="font-mono text-[10px] text-[#B8860B] uppercase tracking-[0.15em] font-semibold">Key Contacts & Influencers</p>
                       </div>
                       {lob.contactNote && (
-                        <p className="font-body text-sm text-black/50 italic">{lob.contactNote}</p>
+                        <p className="font-body text-sm text-black/65 italic">{lob.contactNote}</p>
                       )}
                       {lob.contacts && (
                         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
                           {lob.contacts.map((contact, j) => (
-                            <div key={j} className="rounded-lg border border-[#B8860B]/55 bg-[#FAFAF8] p-3 hover:border-[#B8860B]/60 transition-colors">
+                            <div key={j} className="rounded-lg border-2 border-[#B8860B]/55 bg-[#FAFAF8] p-3 hover:border-[#B8860B]/60 transition-colors">
                               <p className="font-display text-sm font-semibold text-black leading-tight">{contact.name}</p>
-                              <p className="font-body text-xs text-black/55 mt-0.5">{contact.title}</p>
+                              <p className="font-body text-xs text-black/70 mt-0.5">{contact.title}</p>
                               <p className="font-body text-xs text-[#B8860B] font-medium mt-0.5">{contact.org}</p>
                               {contact.note && (
-                                <p className="font-body text-[11px] text-black/35 mt-1.5 leading-relaxed">{contact.note}</p>
+                                <p className="font-body text-[11px] text-black/50 mt-1.5 leading-relaxed">{contact.note}</p>
                               )}
                             </div>
                           ))}
@@ -470,7 +470,7 @@ export default function ZWSales() {
       {/* Key Partnerships */}
       <section id="partnerships" className="py-18">
         <div className="container">
-          <div className="h-px bg-gradient-to-r from-transparent via-black/8 to-transparent mb-18" />
+          <div className="h-px bg-gradient-to-r from-transparent via-[#B8860B]/25 to-transparent mb-18" />
 
           <motion.div
             className="text-center mb-12"
@@ -485,7 +485,7 @@ export default function ZWSales() {
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-4 text-black">
               Key Partnerships & Associations
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-base text-black/55 max-w-2xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-body text-base text-black/70 max-w-2xl mx-auto">
               An extensive network of industry associations, club management organizations, and strategic partners that provide direct access to decision-makers.
             </motion.p>
           </motion.div>
@@ -505,7 +505,7 @@ export default function ZWSales() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.02 }}
                 whileHover={{ scale: 1.05, y: -2, boxShadow: "0 8px 20px rgba(0,0,0,0.06)" }}
-                className="px-4 py-2 rounded-full bg-white border border-[#B8860B]/70 text-sm font-body font-medium text-black/60 hover:border-[#B8860B]/70 hover:text-black hover:bg-[#B8860B]/[0.03] transition-all cursor-default shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
+                className="px-4 py-2 rounded-full bg-white border-2 border-[#B8860B]/70 text-sm font-body font-medium text-black/60 hover:border-[#B8860B]/70 hover:text-black hover:bg-[#B8860B]/[0.03] transition-all cursor-default shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
               >
                 {partner}
               </motion.span>

@@ -157,13 +157,13 @@ function DraggableExercise() {
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="mb-8 p-5 rounded-xl border border-[#B8860B]/55 bg-[#B8860B]/[0.03]"
+        className="mb-8 p-5 rounded-xl border-2 border-[#B8860B]/55 bg-[#B8860B]/[0.03]"
       >
         <div className="flex items-start gap-3">
           <Info className="w-5 h-5 text-[#B8860B] flex-shrink-0 mt-0.5" />
           <div>
             <p className="font-display text-sm font-semibold text-black mb-1">Collaborative Exercise — WEG + ZeroWheel</p>
-            <p className="font-body text-sm text-black/55 leading-relaxed">
+            <p className="font-body text-sm text-black/70 leading-relaxed">
               This is a strategic prioritization exercise to be completed together with the ZeroWheel team. Drag each of the 9 macro lines of business from the staging area into the quadrant that best represents its market attractiveness and ease of access. Use this to align on where to focus resources in Year 1.
             </p>
           </div>
@@ -181,13 +181,13 @@ function DraggableExercise() {
               transition={{ duration: 0.3 }}
             />
           </div>
-          <span className="font-mono text-[11px] text-black/40 tracking-wider">
+          <span className="font-mono text-[11px] text-black/55 tracking-wider">
             {placedCount}/{allLOBs.length} placed
           </span>
         </div>
         <button
           onClick={handleReset}
-          className="font-mono text-[10px] text-black/40 hover:text-[#B8860B] tracking-wider uppercase px-3 py-1.5 rounded-lg border border-[#B8860B]/55 hover:border-[#B8860B]/60 transition-all"
+          className="font-mono text-[10px] text-black/55 hover:text-[#B8860B] tracking-wider uppercase px-3 py-1.5 rounded-lg border-2 border-[#B8860B]/55 hover:border-[#B8860B]/60 transition-all"
         >
           Reset
         </button>
@@ -208,7 +208,7 @@ function DraggableExercise() {
         }`}
       >
         <div className="flex items-center gap-2 mb-3">
-          <span className="font-mono text-[10px] text-black/40 uppercase tracking-[0.15em] font-semibold">
+          <span className="font-mono text-[10px] text-black/55 uppercase tracking-[0.15em] font-semibold">
             9 Macro Lines of Business
           </span>
           {stagingLobs.length > 0 && (
@@ -222,14 +222,14 @@ function DraggableExercise() {
               draggable
               onDragStart={(e) => handleDragStart(e, lob.id)}
               onDragEnd={handleDragEnd}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-medium tracking-wide transition-all cursor-grab active:cursor-grabbing select-none bg-white text-black/70 border border-[#B8860B]/70 hover:border-[#B8860B]/70 hover:shadow-md hover:scale-[1.03] hover:-translate-y-0.5 ${
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-medium tracking-wide transition-all cursor-grab active:cursor-grabbing select-none bg-white text-black/70 border-2 border-[#B8860B]/70 hover:border-[#B8860B]/70 hover:shadow-md hover:scale-[1.03] hover:-translate-y-0.5 ${
                 draggedItem === lob.id ? "opacity-50 scale-95" : ""
               }`}
             >
               <GripVertical className="w-3 h-3 flex-shrink-0 text-black/25" />
               <lob.icon className="w-3.5 h-3.5 flex-shrink-0 text-[#B8860B]" />
               <span>{lob.name}</span>
-              <span className="font-mono text-[8px] tracking-wider uppercase ml-1 text-black/30">
+              <span className="font-mono text-[8px] tracking-wider uppercase ml-1 text-black/45">
                 {lob.category}
               </span>
             </div>
@@ -278,11 +278,11 @@ function DraggableExercise() {
                 {/* Header */}
                 <div className="flex items-start gap-3 mb-4">
                   <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${isTopLeft ? "bg-[#B8860B]/15" : "bg-black/[0.06]"}`}>
-                    <q.icon className={`w-4 h-4 sm:w-[18px] sm:h-[18px] ${isTopLeft ? 'text-[#B8860B]' : 'text-black/50'}`} />
+                    <q.icon className={`w-4 h-4 sm:w-[18px] sm:h-[18px] ${isTopLeft ? 'text-[#B8860B]' : 'text-black/65'}`} />
                   </div>
                   <div className="min-w-0">
                     <h3 className="font-display text-base sm:text-lg font-semibold text-black leading-tight">{q.title}</h3>
-                    <p className="font-mono text-[9px] sm:text-[10px] text-black/50 tracking-wide mt-0.5 leading-snug">{q.subtitle}</p>
+                    <p className="font-mono text-[9px] sm:text-[10px] text-black/65 tracking-wide mt-0.5 leading-snug">{q.subtitle}</p>
                   </div>
                 </div>
 
@@ -307,11 +307,11 @@ function DraggableExercise() {
                       className={`flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-[11px] sm:text-xs font-medium tracking-wide transition-all cursor-grab active:cursor-grabbing select-none ${
                         isTopLeft
                           ? "bg-[#B8860B] text-white shadow-md hover:shadow-lg hover:scale-[1.03]"
-                          : "bg-white text-black/70 border border-[#B8860B]/70 hover:border-[#B8860B]/70 hover:shadow-md hover:scale-[1.03]"
+                          : "bg-white text-black/70 border-2 border-[#B8860B]/70 hover:border-[#B8860B]/70 hover:shadow-md hover:scale-[1.03]"
                       } ${draggedItem === lob.id ? "opacity-50 scale-95" : ""}`}
                     >
                       <GripVertical className={`w-3 h-3 flex-shrink-0 ${isTopLeft ? 'text-white/40' : 'text-black/25'}`} />
-                      <lob.icon className={`w-3.5 h-3.5 flex-shrink-0 ${isTopLeft ? 'text-[#B8860B]' : 'text-black/40'}`} />
+                      <lob.icon className={`w-3.5 h-3.5 flex-shrink-0 ${isTopLeft ? 'text-[#B8860B]' : 'text-black/55'}`} />
                       <span>{lob.name}</span>
                     </div>
                   ))}
@@ -381,7 +381,7 @@ export default function ZWStrategicMarkets() {
             <motion.h2 variants={fadeInUp} className="font-display text-2xl sm:text-3xl md:text-4xl font-medium text-black">
               Strategic Market Positioning
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-xs sm:text-sm text-black/40 mt-3 max-w-xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-body text-xs sm:text-sm text-black/55 mt-3 max-w-xl mx-auto">
               Drag each LOB from the staging area into the appropriate quadrant. LOBs can be moved between quadrants or back to staging at any time.
             </motion.p>
           </motion.div>
@@ -405,7 +405,7 @@ export default function ZWStrategicMarkets() {
             <motion.h2 variants={fadeInUp} className="font-display text-2xl sm:text-3xl md:text-4xl font-medium text-black">
               Blended Gross Margin Analysis
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-xs sm:text-sm text-black/40 mt-3 max-w-xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-body text-xs sm:text-sm text-black/55 mt-3 max-w-xl mx-auto">
               Model manufacturing costs, channel pricing, and volume mix to find the optimal blended gross margin across Consumer, Vertical, and Commercial markets.
             </motion.p>
           </motion.div>

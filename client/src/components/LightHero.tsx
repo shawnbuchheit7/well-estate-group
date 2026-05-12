@@ -113,7 +113,7 @@ export default function LightHero({ eyebrow, title, description, stats, children
             {/* Description — slightly darker for better readability */}
             <motion.p
               variants={fadeInUp}
-              className="font-body text-base md:text-lg text-black/60 leading-relaxed max-w-3xl mx-auto"
+              className="font-body text-base md:text-lg text-black/75 leading-relaxed max-w-3xl mx-auto"
             >
               {description}
             </motion.p>
@@ -137,11 +137,11 @@ export default function LightHero({ eyebrow, title, description, stats, children
                   >
                     <AnimatedCounter valueStr={stat.value} duration={1.8} />
                   </motion.div>
-                  <p className="font-mono text-[10px] text-black/45 tracking-[0.15em] uppercase mt-2 font-medium">
+                  <p className="font-mono text-[10px] text-black/65 tracking-[0.15em] uppercase mt-2 font-medium">
                     {stat.label}
                   </p>
                   {stat.sublabel && (
-                    <p className="font-body text-[9px] text-black/30 mt-1 italic">{stat.sublabel}</p>
+                    <p className="font-body text-[9px] text-black/65 mt-1 italic">{stat.sublabel}</p>
                   )}
                 </motion.div>
               ))}
@@ -154,7 +154,7 @@ export default function LightHero({ eyebrow, title, description, stats, children
       </div>
 
       {/* Bottom border — crisper separation */}
-      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-black/[0.10] to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#B8860B]/40 to-transparent" />
     </section>
   );
 }

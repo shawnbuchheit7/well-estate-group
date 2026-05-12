@@ -100,7 +100,7 @@ export default function GTMLinesOfBusiness() {
       {/* All 15 LOBs - Interactive Circle Grid */}
       <section id="all-lobs" className="py-18">
         <div className="container">
-          <div className="h-px bg-gradient-to-r from-transparent via-black/8 to-transparent mb-18" />
+          <div className="h-px bg-gradient-to-r from-transparent via-[#B8860B]/25 to-transparent mb-18" />
           
           <motion.div
             className="text-center mb-12"
@@ -115,7 +115,7 @@ export default function GTMLinesOfBusiness() {
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-4 text-black">
               Lines of Business
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-base text-black/40 max-w-2xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-body text-base text-black/55 max-w-2xl mx-auto">
               Each circle represents a distinct line of business within the wellness and longevity ecosystem.
             </motion.p>
           </motion.div>
@@ -148,7 +148,7 @@ export default function GTMLinesOfBusiness() {
       {/* 8 Macro LOBs - Interactive Cards */}
       <section id="macro-lobs" className="py-18">
         <div className="container">
-          <div className="h-px bg-gradient-to-r from-transparent via-black/8 to-transparent mb-18" />
+          <div className="h-px bg-gradient-to-r from-transparent via-[#B8860B]/25 to-transparent mb-18" />
           
           <motion.div
             className="text-center mb-12"
@@ -163,7 +163,7 @@ export default function GTMLinesOfBusiness() {
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-4 text-black">
               Macro Lines of Business
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-base text-black/40 max-w-2xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-body text-base text-black/55 max-w-2xl mx-auto">
               The 15+ individual LOBs roll up into 8 macro categories. Click any category to explore its sub-segments.
             </motion.p>
           </motion.div>
@@ -179,14 +179,14 @@ export default function GTMLinesOfBusiness() {
               <motion.div
                 key={i}
                 variants={scaleIn}
-                whileHover={{ y: -6, boxShadow: "0 16px 40px rgba(0,0,0,0.08)" }}
+                whileHover={{ y: -6, boxShadow: "0 16px 40px rgba(184,134,11,0.12), 0 0 0 1px rgba(184,134,11,0.3)" }}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => setSelectedMacro(selectedMacro === i ? null : i)}
                 className={`group cursor-pointer transition-all duration-300 ${
                   selectedMacro === i ? "ring-2 ring-[#B8860B] ring-offset-2" : ""
                 }`}
               >
-                <div className="bg-white border border-[#B8860B]/65 rounded-2xl p-7 h-full hover:border-[#B8860B]/70 transition-all duration-300 text-center relative overflow-hidden">
+                <div className="bg-white border-2 border-[#B8860B]/65 rounded-2xl p-7 h-full hover:border-[#B8860B]/70 transition-all duration-300 text-center relative overflow-hidden">
                   {/* Background accent */}
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#B8860B]/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
@@ -256,7 +256,7 @@ export default function GTMLinesOfBusiness() {
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-4 text-black">
               Sub-Macro LOBs
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-base text-black/40 max-w-2xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-body text-base text-black/55 max-w-2xl mx-auto">
               Detailed sub-segments within each macro line of business, defining specific target accounts and organizations.
             </motion.p>
           </motion.div>
@@ -274,7 +274,7 @@ export default function GTMLinesOfBusiness() {
                   key={i}
                   variants={fadeInUp}
                   whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(0,0,0,0.06)" }}
-                  className="bg-white border border-[#B8860B]/65 rounded-xl overflow-hidden hover:border-[#B8860B]/60 transition-all duration-300"
+                  className="bg-white border-2 border-[#B8860B]/65 rounded-xl overflow-hidden hover:border-[#B8860B]/60 transition-all duration-300"
                 >
                   <div className="bg-[#F5F4F1] px-5 py-3.5 flex items-center gap-2">
                     <category.icon className="w-4 h-4 text-[#B8860B]" />
@@ -285,7 +285,7 @@ export default function GTMLinesOfBusiness() {
                       {category.subs.map((sub, j) => (
                         <li key={j} className="flex items-start gap-2">
                           <div className="w-1.5 h-1.5 rounded-full bg-[#B8860B] mt-1.5 flex-shrink-0" />
-                          <span className="font-body text-sm text-black/50">{sub}</span>
+                          <span className="font-body text-sm text-black/65">{sub}</span>
                         </li>
                       ))}
                     </ul>

@@ -139,7 +139,7 @@ export default function Landing() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 2, duration: 0.6 }}
-            className="font-body text-xs md:text-sm text-[#0A0A0A]/50 tracking-[0.12em] mt-5"
+            className="font-body text-xs md:text-sm text-[#0A0A0A]/65 tracking-[0.12em] mt-5"
           >
             Consulting Services in Fitness, Wellness & Longevity
           </motion.p>
@@ -155,14 +155,14 @@ export default function Landing() {
           {pillars.map((pillar, i) => (
             <Link key={pillar.num} href={pillar.href}>
               <motion.div
-                className="group relative overflow-hidden rounded-xl border border-[#0A0A0A]/[0.08] bg-white cursor-pointer h-full"
+                className="group relative overflow-hidden rounded-xl border-2 border-[#B8860B]/60 bg-white cursor-pointer h-full"
                 style={{
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.03), 0 4px 20px rgba(0,0,0,0.04)",
+                  boxShadow: "0 2px 8px rgba(184,134,11,0.06), 0 4px 20px rgba(0,0,0,0.04)",
                 }}
                 whileHover={{
                   scale: 1.02,
                   y: -4,
-                  boxShadow: "0 12px 40px rgba(0,0,0,0.08), 0 0 0 1px rgba(201,169,98,0.2)",
+                  boxShadow: "0 12px 40px rgba(184,134,11,0.12), 0 0 0 2px rgba(184,134,11,0.5)",
                 }}
                 whileTap={{ scale: 0.98 }}
                 initial={{ opacity: 0, y: 30 }}
@@ -177,14 +177,14 @@ export default function Landing() {
                 <div className="relative p-8 md:p-9 flex flex-col items-center text-center min-h-[300px] md:min-h-[340px] justify-center">
                   {/* Pillar Number */}
                   <span
-                    className="font-mono text-[10px] text-[#0A0A0A]/35 tracking-[0.3em] mb-5 group-hover:text-[#B8860B] transition-colors duration-400"
+                    className="font-mono text-[10px] text-[#0A0A0A]/50 tracking-[0.3em] mb-5 group-hover:text-[#B8860B] transition-colors duration-400"
                   >
                     PILLAR {pillar.num}
                   </span>
 
                   {/* Icon */}
                   <div
-                    className="mb-7 w-12 h-12 rounded-lg border border-[#B8860B]/50 flex items-center justify-center bg-[#B8860B]/[0.04] group-hover:border-[#B8860B]/50 group-hover:bg-[#B8860B]/[0.08] transition-all duration-400"
+                    className="mb-7 w-12 h-12 rounded-lg border-2 border-[#B8860B]/50 flex items-center justify-center bg-[#B8860B]/[0.04] group-hover:border-[#B8860B]/50 group-hover:bg-[#B8860B]/[0.08] transition-all duration-400"
                   >
                     <PillarIcon type={pillar.icon} />
                   </div>
@@ -195,7 +195,7 @@ export default function Landing() {
                   </h2>
 
                   {/* Subtitle */}
-                  <p className="font-body text-[13px] text-[#0A0A0A]/50 leading-relaxed max-w-[240px] mb-8">
+                  <p className="font-body text-[13px] text-[#0A0A0A]/70 leading-relaxed max-w-[240px] mb-8">
                     {pillar.description}
                   </p>
 
@@ -220,7 +220,7 @@ export default function Landing() {
           transition={{ delay: 2.8, duration: 0.8 }}
           className="mt-20 md:mt-28 w-full max-w-5xl"
         >
-          <p className="font-mono text-[10px] text-[#0A0A0A]/40 tracking-[0.2em] uppercase text-center mb-8">
+          <p className="font-mono text-[10px] text-[#0A0A0A]/55 tracking-[0.2em] uppercase text-center mb-8">
             Industry Reach
           </p>
           
@@ -244,7 +244,7 @@ export default function Landing() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 3 + i * 0.08 }}
-                  className="font-display text-sm md:text-base font-semibold text-[#0A0A0A]/50 hover:text-[#B8860B] transition-colors duration-300 whitespace-nowrap"
+                  className="font-display text-sm md:text-base font-semibold text-[#0A0A0A]/65 hover:text-[#B8860B] transition-colors duration-300 whitespace-nowrap"
                 >
                   {name}
                 </motion.span>
@@ -267,7 +267,7 @@ export default function Landing() {
             <h3 className="font-display text-2xl md:text-3xl font-semibold text-[#0A0A0A] mb-4">
               Built on Decades of Industry Leadership
             </h3>
-            <p className="font-body text-sm text-[#0A0A0A]/55 leading-relaxed max-w-2xl mx-auto">
+            <p className="font-body text-sm text-[#0A0A0A]/70 leading-relaxed max-w-2xl mx-auto">
               Well Estate Group brings together senior executives from the world's leading fitness, 
               wellness, and hospitality brands — delivering institutional-grade consulting to companies 
               ready to scale.
@@ -287,13 +287,13 @@ export default function Landing() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 3.4 + i * 0.1 }}
                 whileHover={{ y: -3 }}
-                className="text-center p-5 rounded-xl border border-[#0A0A0A]/[0.08] bg-[#F9F9F7] hover:border-[#B8860B]/60 transition-all duration-300"
+                className="text-center p-5 rounded-xl border-2 border-[#B8860B]/50 bg-[#F9F9F7] hover:border-[#B8860B]/80 transition-all duration-300"
                 style={{
                   boxShadow: "0 2px 8px rgba(0,0,0,0.02)",
                 }}
               >
                 <p className="font-display text-2xl font-semibold text-[#0A0A0A]">{stat.value}</p>
-                <p className="font-body text-[11px] text-[#0A0A0A]/50 mt-1">{stat.label}</p>
+                <p className="font-body text-[11px] text-[#0A0A0A]/65 mt-1">{stat.label}</p>
               </motion.div>
             ))}
           </div>
@@ -306,7 +306,7 @@ export default function Landing() {
           transition={{ delay: 3.6, duration: 0.6 }}
           className="mt-16 md:mt-20 text-center"
         >
-          <p className="font-body text-[10px] text-[#0A0A0A]/30 tracking-wider">
+          <p className="font-body text-[10px] text-[#0A0A0A]/45 tracking-wider">
             &copy; 2026 Well Estate Group. All rights reserved.
           </p>
         </motion.div>

@@ -401,7 +401,7 @@ export default function ZWProductAnalysis() {
       {/* ═══ PRODUCT DEEP DIVE ═══ */}
       <section id="product-deep-dive" className="py-18 bg-white">
         <div className="container">
-          <div className="h-px bg-gradient-to-r from-transparent via-black/8 to-transparent mb-18" />
+          <div className="h-px bg-gradient-to-r from-transparent via-[#B8860B]/25 to-transparent mb-18" />
 
           <motion.div
             className="text-center mb-14"
@@ -430,12 +430,12 @@ export default function ZWProductAnalysis() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.06 }}
-                className="p-4 rounded-2xl border border-[#B8860B]/70 bg-white text-center hover:border-[#B8860B]/70 hover:shadow-md transition-all duration-300"
+                className="p-4 rounded-2xl border-2 border-[#B8860B]/70 bg-white text-center hover:border-[#B8860B]/70 hover:shadow-md transition-all duration-300"
               >
                 <spec.icon className="w-5 h-5 text-[#B8860B] mx-auto mb-2" />
                 <p className="font-display text-lg font-bold text-black">{spec.value}</p>
-                <p className="font-mono text-[9px] text-black/40 tracking-wider uppercase">{spec.label}</p>
-                <p className="font-body text-[10px] text-black/35 mt-0.5">{spec.sub}</p>
+                <p className="font-mono text-[9px] text-black/55 tracking-wider uppercase">{spec.label}</p>
+                <p className="font-body text-[10px] text-black/50 mt-0.5">{spec.sub}</p>
               </motion.div>
             ))}
           </div>
@@ -467,7 +467,7 @@ export default function ZWProductAnalysis() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="p-6 rounded-2xl border border-[#B8860B]/70 bg-white hover:shadow-lg transition-all duration-300"
+                className="p-6 rounded-2xl border-2 border-[#B8860B]/70 bg-white hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: `${mode.color}15` }}>
@@ -485,8 +485,8 @@ export default function ZWProductAnalysis() {
                 </div>
                 <p className="font-body text-sm text-black/60 leading-relaxed mb-3">{mode.description}</p>
                 <div className="pt-3 border-t border-[#B8860B]/50">
-                  <p className="font-mono text-[9px] text-black/35 tracking-wider uppercase mb-1">Ideal For</p>
-                  <p className="font-body text-xs text-black/50">{mode.audience}</p>
+                  <p className="font-mono text-[9px] text-black/50 tracking-wider uppercase mb-1">Ideal For</p>
+                  <p className="font-body text-xs text-black/65">{mode.audience}</p>
                 </div>
               </motion.div>
             ))}
@@ -498,11 +498,11 @@ export default function ZWProductAnalysis() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="rounded-2xl border border-[#B8860B]/70 overflow-hidden"
+              className="rounded-2xl border-2 border-[#B8860B]/70 overflow-hidden"
             >
               <div className="bg-[#F5F4F1] p-6">
                 <h3 className="font-display text-xl font-semibold text-black mb-1">Core Strength: The Foundation</h3>
-                <p className="font-body text-sm text-black/50">Why core training is the single most impactful investment in human performance and longevity</p>
+                <p className="font-body text-sm text-black/65">Why core training is the single most impactful investment in human performance and longevity</p>
               </div>
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-0 divide-y md:divide-y-0 md:divide-x divide-black/[0.06]">
                 {[
@@ -513,7 +513,7 @@ export default function ZWProductAnalysis() {
                 ].map((item, i) => (
                   <div key={i} className="p-6">
                     <h4 className="font-display text-sm font-semibold text-black mb-2">{item.title}</h4>
-                    <p className="font-body text-xs text-black/55 leading-relaxed mb-2">{item.desc}</p>
+                    <p className="font-body text-xs text-black/70 leading-relaxed mb-2">{item.desc}</p>
                     <span className="font-mono text-[9px] text-[#B8860B] tracking-wider uppercase">{item.source}</span>
                   </div>
                 ))}
@@ -552,7 +552,7 @@ export default function ZWProductAnalysis() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.15 }}
-                className="rounded-2xl border border-[#B8860B]/70 bg-white overflow-hidden hover:shadow-lg transition-all duration-300"
+                className="rounded-2xl border-2 border-[#B8860B]/70 bg-white overflow-hidden hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex flex-col md:flex-row">
                   <div className="md:w-24 bg-[#F5F4F1] flex items-center justify-center py-6 md:py-0">
@@ -566,18 +566,18 @@ export default function ZWProductAnalysis() {
                     <p className="font-mono text-[10px] text-[#B8860B] tracking-wider uppercase mb-4">{pillar.subtitle}</p>
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <p className="font-mono text-[10px] text-black/40 tracking-wider uppercase mb-2">The Science</p>
+                        <p className="font-mono text-[10px] text-black/55 tracking-wider uppercase mb-2">The Science</p>
                         <p className="font-body text-sm text-black/65 leading-relaxed">{pillar.science}</p>
                         <div className="flex flex-wrap gap-2 mt-3">
                           {pillar.citations.map((cite, j) => (
-                            <span key={j} className="font-mono text-[9px] text-black/35 bg-black/[0.04] px-2 py-1 rounded">{cite}</span>
+                            <span key={j} className="font-mono text-[9px] text-black/50 bg-black/[0.04] px-2 py-1 rounded">{cite}</span>
                           ))}
                         </div>
                       </div>
                       <div>
-                        <p className="font-mono text-[10px] text-black/40 tracking-wider uppercase mb-2">Why It Matters</p>
+                        <p className="font-mono text-[10px] text-black/55 tracking-wider uppercase mb-2">Why It Matters</p>
                         <p className="font-body text-sm text-black/65 leading-relaxed mb-4">{pillar.why}</p>
-                        <div className="p-3 rounded-xl bg-[#B8860B]/5 border border-[#B8860B]/50">
+                        <div className="p-3 rounded-xl bg-[#B8860B]/5 border-2 border-[#B8860B]/50">
                           <p className="font-mono text-[9px] text-[#B8860B] tracking-wider uppercase mb-1">Marketing Angle</p>
                           <p className="font-body text-sm text-black/80 italic">{pillar.marketingAngle}</p>
                         </div>
@@ -594,7 +594,7 @@ export default function ZWProductAnalysis() {
       {/* ═══ COMPETITIVE MATRIX ═══ */}
       <section id="competitive-matrix" className="py-18 bg-white">
         <div className="container">
-          <div className="h-px bg-gradient-to-r from-transparent via-black/8 to-transparent mb-18" />
+          <div className="h-px bg-gradient-to-r from-transparent via-[#B8860B]/25 to-transparent mb-18" />
 
           <motion.div
             className="text-center mb-14"
@@ -619,7 +619,7 @@ export default function ZWProductAnalysis() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="rounded-2xl border border-[#B8860B]/70 overflow-hidden"
+              className="rounded-2xl border-2 border-[#B8860B]/70 overflow-hidden"
             >
               <table className="w-full">
                 <thead>
@@ -653,7 +653,7 @@ export default function ZWProductAnalysis() {
                 </tbody>
               </table>
             </motion.div>
-            <p className="font-body text-xs text-black/35 mt-3 text-center italic">
+            <p className="font-body text-xs text-black/50 mt-3 text-center italic">
               ZeroWheel is the only product that successfully integrates all three scientifically proven pillars of optimal core development.
             </p>
           </div>
@@ -689,13 +689,13 @@ export default function ZWProductAnalysis() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="p-6 rounded-2xl border border-[#B8860B]/70 bg-white hover:shadow-lg transition-all duration-300"
+                className="p-6 rounded-2xl border-2 border-[#B8860B]/70 bg-white hover:shadow-lg transition-all duration-300"
               >
                 <Quote className="w-6 h-6 text-[#B8860B]/30 mb-3" />
                 <p className="font-body text-sm text-black/75 italic leading-relaxed mb-4">"{t.quote}"</p>
                 <div className="pt-3 border-t border-[#B8860B]/50">
                   <p className="font-display text-sm font-semibold text-black">{t.name}</p>
-                  <p className="font-body text-xs text-black/50 mt-0.5">{t.title}</p>
+                  <p className="font-body text-xs text-black/65 mt-0.5">{t.title}</p>
                   <span className="inline-block mt-2 font-mono text-[9px] text-[#B8860B] tracking-wider uppercase px-2 py-0.5 rounded-full bg-[#B8860B]/10">
                     {t.category}
                   </span>
@@ -709,7 +709,7 @@ export default function ZWProductAnalysis() {
       {/* ═══ LOB NAVIGATOR ═══ */}
       <section id="lob-navigator" className="py-18 bg-white">
         <div className="container">
-          <div className="h-px bg-gradient-to-r from-transparent via-black/8 to-transparent mb-18" />
+          <div className="h-px bg-gradient-to-r from-transparent via-[#B8860B]/25 to-transparent mb-18" />
 
           <motion.div
             className="text-center mb-14"
@@ -735,7 +735,7 @@ export default function ZWProductAnalysis() {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="rounded-2xl border border-[#B8860B]/70 overflow-hidden"
+              className="rounded-2xl border-2 border-[#B8860B]/70 overflow-hidden"
             >
               <div className="bg-[#F5F4F1] px-6 py-4 flex items-center justify-between">
                 <span className="font-display text-sm font-semibold text-black">Pricing Structure</span>
@@ -749,9 +749,9 @@ export default function ZWProductAnalysis() {
                   { label: "GSA (Mil/Gov)", price: "$694", note: "best pricing" },
                 ].map((tier, i) => (
                   <div key={i} className="p-4 text-center">
-                    <p className="font-mono text-[9px] text-black/40 tracking-wider uppercase mb-1">{tier.label}</p>
+                    <p className="font-mono text-[9px] text-black/55 tracking-wider uppercase mb-1">{tier.label}</p>
                     <p className="font-display text-xl font-bold text-black">{tier.price}</p>
-                    <p className="font-body text-[10px] text-black/35">{tier.note}</p>
+                    <p className="font-body text-[10px] text-black/50">{tier.note}</p>
                   </div>
                 ))}
               </div>
@@ -765,10 +765,10 @@ export default function ZWProductAnalysis() {
               { label: "Tier 2 — Growth Phase", color: "#888", count: 3 },
               { label: "Tier 3 — Scale Phase", color: "#555", count: 2 },
             ].map((tier, i) => (
-              <div key={i} className="flex items-center gap-2 px-4 py-2 rounded-full border border-[#B8860B]/55 bg-white">
+              <div key={i} className="flex items-center gap-2 px-4 py-2 rounded-full border-2 border-[#B8860B]/55 bg-white">
                 <div className="w-3 h-3 rounded-full" style={{ backgroundColor: tier.color }} />
                 <span className="font-mono text-[10px] tracking-wider uppercase text-black/60">{tier.label}</span>
-                <span className="font-display text-xs font-bold text-black/40">({tier.count})</span>
+                <span className="font-display text-xs font-bold text-black/55">({tier.count})</span>
               </div>
             ))}
           </div>
@@ -804,7 +804,7 @@ export default function ZWProductAnalysis() {
                   </span>
                 </div>
                 <h3 className="font-display text-sm font-semibold text-black mb-1">{lob.lob}</h3>
-                <p className="font-mono text-[10px] text-black/40">{lob.pricing}</p>
+                <p className="font-mono text-[10px] text-black/55">{lob.pricing}</p>
                 <div className="flex items-center gap-1 mt-3 text-[#B8860B]">
                   <span className="font-mono text-[10px] tracking-wider uppercase">View Playbook</span>
                   <ArrowRight className="w-3 h-3" />
@@ -868,14 +868,14 @@ export default function ZWProductAnalysis() {
                         >
                           {lob.tier}
                         </span>
-                        <span className="font-mono text-[10px] text-black/40">{lob.marketCategory} · {lob.pricing}</span>
+                        <span className="font-mono text-[10px] text-black/55">{lob.marketCategory} · {lob.pricing}</span>
                       </div>
                     </div>
                   </div>
                   {expandedLob === i ? (
                     <ChevronUp className="w-5 h-5 text-[#B8860B] flex-shrink-0" />
                   ) : (
-                    <ChevronDown className="w-5 h-5 text-black/30 flex-shrink-0" />
+                    <ChevronDown className="w-5 h-5 text-black/45 flex-shrink-0" />
                   )}
                 </button>
 
@@ -892,14 +892,14 @@ export default function ZWProductAnalysis() {
                       <div className="px-6 pb-8 bg-white border-t border-[#B8860B]/50">
                         {/* Row 1: Buyer Persona + Positioning */}
                         <div className="grid md:grid-cols-2 gap-6 mt-6">
-                          <div className="p-5 rounded-xl bg-[#FAFAF8] border border-[#B8860B]/55">
+                          <div className="p-5 rounded-xl bg-[#FAFAF8] border-2 border-[#B8860B]/55">
                             <div className="flex items-center gap-2 mb-3">
                               <UserCheck className="w-4 h-4 text-[#B8860B]" />
                               <p className="font-mono text-[10px] text-[#B8860B] tracking-wider uppercase">Target Buyer Persona</p>
                             </div>
                             <p className="font-body text-sm text-black/70 leading-relaxed">{lob.buyerPersona}</p>
                           </div>
-                          <div className="p-5 rounded-xl bg-[#FAFAF8] border border-[#B8860B]/55">
+                          <div className="p-5 rounded-xl bg-[#FAFAF8] border-2 border-[#B8860B]/55">
                             <div className="flex items-center gap-2 mb-3">
                               <Crosshair className="w-4 h-4 text-[#B8860B]" />
                               <p className="font-mono text-[10px] text-[#B8860B] tracking-wider uppercase">Core Positioning</p>
@@ -910,7 +910,7 @@ export default function ZWProductAnalysis() {
 
                         {/* Row 1.5: Pain Points + Key Selling Points */}
                         <div className="grid md:grid-cols-2 gap-6 mt-6">
-                          <div className="p-5 rounded-xl bg-[#FAFAF8] border border-[#B8860B]/55">
+                          <div className="p-5 rounded-xl bg-[#FAFAF8] border-2 border-[#B8860B]/55">
                             <div className="flex items-center gap-2 mb-3">
                               <AlertTriangle className="w-4 h-4 text-[#B8860B]" />
                               <p className="font-mono text-[10px] text-[#B8860B] tracking-wider uppercase">Pain Points</p>
@@ -924,7 +924,7 @@ export default function ZWProductAnalysis() {
                               ))}
                             </div>
                           </div>
-                          <div className="p-5 rounded-xl bg-[#FAFAF8] border border-[#B8860B]/55">
+                          <div className="p-5 rounded-xl bg-[#FAFAF8] border-2 border-[#B8860B]/55">
                             <div className="flex items-center gap-2 mb-3">
                               <Star className="w-4 h-4 text-[#B8860B]" />
                               <p className="font-mono text-[10px] text-[#B8860B] tracking-wider uppercase">Key Selling Points</p>
@@ -948,8 +948,8 @@ export default function ZWProductAnalysis() {
                           </div>
                           <div className="grid md:grid-cols-3 gap-4">
                             {lob.messaging.map((msg, j) => (
-                              <div key={j} className="p-4 rounded-xl bg-[#FAFAF8] border border-[#B8860B]/55">
-                                <p className="font-mono text-[9px] text-black/40 tracking-wider uppercase mb-2">Pillar {j + 1}: {msg.pillar}</p>
+                              <div key={j} className="p-4 rounded-xl bg-[#FAFAF8] border-2 border-[#B8860B]/55">
+                                <p className="font-mono text-[9px] text-black/55 tracking-wider uppercase mb-2">Pillar {j + 1}: {msg.pillar}</p>
                                 <p className="font-body text-sm text-black/75 italic leading-relaxed">{msg.angle}</p>
                               </div>
                             ))}
@@ -989,7 +989,7 @@ export default function ZWProductAnalysis() {
                           </div>
                           <div className="space-y-3">
                             {lob.objections.map((obj, j) => (
-                              <div key={j} className="p-4 rounded-xl border border-[#B8860B]/55 bg-[#FAFAF8]">
+                              <div key={j} className="p-4 rounded-xl border-2 border-[#B8860B]/55 bg-[#FAFAF8]">
                                 <p className="font-display text-sm font-semibold text-black/80 mb-2">{obj.objection}</p>
                                 <p className="font-body text-sm text-black/60 leading-relaxed pl-4 border-l-2 border-[#B8860B]">{obj.response}</p>
                               </div>
@@ -1005,7 +1005,7 @@ export default function ZWProductAnalysis() {
                           </div>
                           <div className="flex flex-wrap gap-2">
                             {lob.kpis.map((kpi, j) => (
-                              <span key={j} className="font-body text-xs text-black/60 bg-[#FAFAF8] border border-[#B8860B]/55 px-3 py-1.5 rounded-full">
+                              <span key={j} className="font-body text-xs text-black/60 bg-[#FAFAF8] border-2 border-[#B8860B]/55 px-3 py-1.5 rounded-full">
                                 {kpi}
                               </span>
                             ))}
@@ -1024,7 +1024,7 @@ export default function ZWProductAnalysis() {
       {/* ═══ LEVERAGE POINTS ═══ */}
       <section id="leverage-points" className="py-18 bg-white">
         <div className="container">
-          <div className="h-px bg-gradient-to-r from-transparent via-black/8 to-transparent mb-18" />
+          <div className="h-px bg-gradient-to-r from-transparent via-[#B8860B]/25 to-transparent mb-18" />
 
           <motion.div
             className="text-center mb-14"
@@ -1060,7 +1060,7 @@ export default function ZWProductAnalysis() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="p-6 rounded-2xl border border-[#B8860B]/70 bg-white hover:border-[#B8860B]/70 hover:shadow-lg transition-all duration-300"
+                className="p-6 rounded-2xl border-2 border-[#B8860B]/70 bg-white hover:border-[#B8860B]/70 hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-xl bg-[#B8860B]/10 flex items-center justify-center">
@@ -1126,7 +1126,7 @@ export default function ZWProductAnalysis() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="flex items-start gap-5 p-6 rounded-2xl border border-[#B8860B]/70 bg-white hover:shadow-lg transition-all duration-300"
+                className="flex items-start gap-5 p-6 rounded-2xl border-2 border-[#B8860B]/70 bg-white hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex flex-col items-center gap-1 flex-shrink-0 pt-1">
                   <div className="w-8 h-8 rounded-full bg-[#B8860B]/10 flex items-center justify-center">
@@ -1152,7 +1152,7 @@ export default function ZWProductAnalysis() {
       {/* ═══ STRATEGIC RECOMMENDATIONS ═══ */}
       <section id="recommendations" className="py-18 bg-white">
         <div className="container">
-          <div className="h-px bg-gradient-to-r from-transparent via-black/8 to-transparent mb-18" />
+          <div className="h-px bg-gradient-to-r from-transparent via-[#B8860B]/25 to-transparent mb-18" />
 
           <motion.div
             className="text-center mb-14"
@@ -1214,7 +1214,7 @@ export default function ZWProductAnalysis() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="p-8 rounded-2xl border border-[#B8860B]/70 bg-white hover:shadow-lg transition-all duration-300"
+                className="p-8 rounded-2xl border-2 border-[#B8860B]/70 bg-white hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex items-start gap-5">
                   <div className="w-12 h-12 rounded-xl bg-[#F5F4F1] flex items-center justify-center flex-shrink-0">
@@ -1223,7 +1223,7 @@ export default function ZWProductAnalysis() {
                   <div className="flex-1">
                     <h3 className="font-display text-lg font-semibold text-black mb-3">{rec.title}</h3>
                     <p className="font-body text-sm text-black/65 leading-relaxed mb-4">{rec.description}</p>
-                    <div className="p-4 rounded-xl bg-[#B8860B]/5 border border-[#B8860B]/50">
+                    <div className="p-4 rounded-xl bg-[#B8860B]/5 border-2 border-[#B8860B]/50">
                       <p className="font-mono text-[9px] text-[#B8860B] tracking-wider uppercase mb-1">Recommended Action</p>
                       <p className="font-body text-sm text-black/75">{rec.action}</p>
                     </div>

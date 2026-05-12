@@ -132,7 +132,7 @@ export default function ProductIntelligence() {
             <motion.h2 variants={fadeInUp} className="font-display text-2xl sm:text-3xl md:text-4xl font-medium text-black">
               T-Spine Dumbbell Rest
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-xs sm:text-sm text-black/40 mt-3 max-w-xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-body text-xs sm:text-sm text-black/55 mt-3 max-w-xl mx-auto">
               Minimalist power rack dumbbell rest attachment. Ultra-minimal "T-Spine" structure 
               that eliminates bulky steel plates and provides a sleek, skeletal aesthetic.
             </motion.p>
@@ -154,7 +154,7 @@ export default function ProductIntelligence() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.15 }}
-                  className="bg-white rounded-xl border border-[#B8860B]/60 shadow-[0_2px_8px_rgba(0,0,0,0.04),0_8px_24px_rgba(0,0,0,0.05)] overflow-hidden hover:shadow-[0_12px_40px_rgba(0,0,0,0.10)] hover:border-[#B8860B]/60 transition-all duration-300"
+                  className="bg-white rounded-xl border-2 border-[#B8860B]/60 shadow-[0_2px_8px_rgba(0,0,0,0.04),0_8px_24px_rgba(0,0,0,0.05)] overflow-hidden hover:shadow-[0_12px_40px_rgba(0,0,0,0.10)] hover:border-[#B8860B]/60 transition-all duration-300"
                 >
                   <div className="p-4 sm:p-6">
                     <img
@@ -167,7 +167,7 @@ export default function ProductIntelligence() {
                     <p className="font-mono text-[10px] sm:text-[11px] font-semibold text-black/60 tracking-wider text-center uppercase mb-0.5">
                       {view.label}
                     </p>
-                    <p className="font-mono text-[9px] sm:text-[10px] text-black/35 tracking-wider text-center uppercase">
+                    <p className="font-mono text-[9px] sm:text-[10px] text-black/50 tracking-wider text-center uppercase">
                       {view.desc}
                     </p>
                   </div>
@@ -218,13 +218,13 @@ export default function ProductIntelligence() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="bg-white rounded-xl p-6 sm:p-7 border border-[#B8860B]/60 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#B8860B]/60 transition-all duration-300"
+                  className="bg-white rounded-xl p-6 sm:p-7 border-2 border-[#B8860B]/60 shadow-[0_2px_8px_rgba(184,134,11,0.05),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(184,134,11,0.12)] hover:border-[#B8860B]/60 transition-all duration-300"
                 >
                   <div className="w-8 h-8 rounded-lg bg-[#B8860B]/10 flex items-center justify-center mb-4">
                     <span className="font-mono text-xs font-bold text-[#B8860B]">0{i + 1}</span>
                   </div>
                   <h4 className="font-display text-base sm:text-lg font-semibold text-black mb-2">{item.title}</h4>
-                  <p className="font-body text-xs sm:text-sm text-black/50 leading-relaxed">{item.text}</p>
+                  <p className="font-body text-xs sm:text-sm text-black/65 leading-relaxed">{item.text}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -258,7 +258,7 @@ export default function ProductIntelligence() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="bg-white rounded-xl p-6 border border-[#B8860B]/60 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_28px_rgba(0,0,0,0.07)] hover:border-[#B8860B]/60 transition-all duration-300"
+                className="bg-white rounded-xl p-6 border-2 border-[#B8860B]/60 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_28px_rgba(0,0,0,0.07)] hover:border-[#B8860B]/60 transition-all duration-300"
               >
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-9 h-9 rounded-lg bg-black/[0.04] flex items-center justify-center flex-shrink-0">
@@ -269,7 +269,7 @@ export default function ProductIntelligence() {
                     <p className="font-mono text-[9px] sm:text-[10px] text-[#B8860B] tracking-wider uppercase">{feature.subtitle}</p>
                   </div>
                 </div>
-                <p className="font-body text-xs text-black/45 leading-relaxed">{feature.description}</p>
+                <p className="font-body text-xs text-black/60 leading-relaxed">{feature.description}</p>
               </motion.div>
             ))}
           </div>
@@ -298,7 +298,7 @@ export default function ProductIntelligence() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-3xl mx-auto bg-white rounded-xl border border-[#B8860B]/60 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_8px_24px_rgba(0,0,0,0.05)] overflow-hidden"
+            className="max-w-3xl mx-auto bg-white rounded-xl border-2 border-[#B8860B]/60 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_8px_24px_rgba(0,0,0,0.05)] overflow-hidden"
           >
             {specs.map((spec, i) => (
               <div
@@ -307,7 +307,7 @@ export default function ProductIntelligence() {
                   i !== specs.length - 1 ? "border-b border-[#B8860B]/50" : ""
                 } ${i % 2 === 0 ? "bg-white" : "bg-[#FAFAF8]"} hover:bg-[#F5F4F0] transition-colors duration-150`}
               >
-                <span className="font-body text-xs sm:text-sm text-black/50">{spec.label}</span>
+                <span className="font-body text-xs sm:text-sm text-black/65">{spec.label}</span>
                 <span className="font-mono text-xs sm:text-sm font-medium text-black text-right">{spec.value}</span>
               </div>
             ))}
@@ -347,7 +347,7 @@ export default function ProductIntelligence() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
-                  className="flex items-start gap-4 p-5 sm:p-6 rounded-xl bg-white border border-[#B8860B]/60 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:border-[#B8860B]/50 transition-all duration-300"
+                  className="flex items-start gap-4 p-5 sm:p-6 rounded-xl bg-white border-2 border-[#B8860B]/60 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(184,134,11,0.10)] hover:border-[#B8860B]/50 transition-all duration-300"
                 >
                   <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-[#F5F4F1] flex items-center justify-center flex-shrink-0">
                     <span className="font-mono text-[10px] sm:text-xs font-bold text-white">{item.item}</span>
@@ -359,7 +359,7 @@ export default function ProductIntelligence() {
                         ×{item.qty}
                       </span>
                     </div>
-                    <p className="font-body text-[11px] sm:text-xs text-black/40">{item.detail}</p>
+                    <p className="font-body text-[11px] sm:text-xs text-black/55">{item.detail}</p>
                   </div>
                   <CheckCircle2 className="w-4 h-4 text-emerald-500/60 flex-shrink-0 mt-1" />
                 </motion.div>
@@ -385,7 +385,7 @@ export default function ProductIntelligence() {
             <motion.h3 variants={fadeInUp} className="font-display text-xl sm:text-2xl md:text-3xl font-medium text-black mt-3">
               Product Pipeline
             </motion.h3>
-            <motion.p variants={fadeInUp} className="font-body text-xs sm:text-sm text-black/40 mt-3 max-w-xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-body text-xs sm:text-sm text-black/55 mt-3 max-w-xl mx-auto">
               Active development and evaluation of next-generation fitness and wellness equipment across multiple categories.
             </motion.p>
           </motion.div>
@@ -417,7 +417,7 @@ export default function ProductIntelligence() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white rounded-xl p-6 border border-[#B8860B]/65 shadow-[0_2px_12px_rgba(0,0,0,0.03)] relative overflow-hidden"
+                className="bg-white rounded-xl p-6 border-2 border-[#B8860B]/65 shadow-[0_2px_12px_rgba(184,134,11,0.05)] relative overflow-hidden"
               >
                 {/* Status badge */}
                 <div className="flex items-center justify-between mb-4">
@@ -429,7 +429,7 @@ export default function ProductIntelligence() {
                   </span>
                 </div>
                 <h4 className="font-display text-base font-semibold text-black mb-2">{item.category}</h4>
-                <p className="font-body text-xs text-black/40 leading-relaxed">{item.description}</p>
+                <p className="font-body text-xs text-black/55 leading-relaxed">{item.description}</p>
                 {/* Blur overlay to indicate confidentiality */}
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#B8860B]/20 via-[#B8860B]/40 to-[#B8860B]/20" />
               </motion.div>
