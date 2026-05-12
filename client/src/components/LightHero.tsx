@@ -55,7 +55,7 @@ export default function LightHero({ eyebrow, title, description, stats, children
       </div>
 
       {/* Content */}
-      <div className="relative z-10 py-24 md:py-32">
+      <div className="relative z-10 py-14 md:py-20">
         <div className="container">
           <motion.div
             className="text-center max-w-4xl mx-auto"
@@ -65,7 +65,7 @@ export default function LightHero({ eyebrow, title, description, stats, children
           >
             {/* Brand Logo + Name (optional) — dark pill for visibility */}
             {logoSrc && (
-              <motion.div variants={fadeInUp} className="flex items-center justify-center mb-10">
+              <motion.div variants={fadeInUp} className="flex items-center justify-center mb-6">
                 <div className="inline-flex items-center gap-4 bg-[#0A0A0A] rounded-xl px-8 py-4 shadow-[0_4px_20px_rgba(0,0,0,0.15)]">
                   <motion.img
                     src={logoSrc}
@@ -86,7 +86,7 @@ export default function LightHero({ eyebrow, title, description, stats, children
             )}
 
             {/* Eyebrow with gold line accents */}
-            <motion.div variants={fadeInUp} className="flex items-center justify-center gap-4 mb-6">
+            <motion.div variants={fadeInUp} className="flex items-center justify-center gap-4 mb-4">
               <span className="w-10 h-[1px] bg-[#C9A962]/50" />
               <span className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.3em] uppercase">
                 {eyebrow}
@@ -97,7 +97,7 @@ export default function LightHero({ eyebrow, title, description, stats, children
             {/* Title — elegant serif in black, bolder */}
             <motion.h1
               variants={fadeInUp}
-              className="font-display text-4xl md:text-6xl lg:text-7xl font-semibold mb-7 text-black leading-[1.05] tracking-tight"
+              className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold mb-5 text-black leading-[1.05] tracking-tight"
             >
               {title}
             </motion.h1>
@@ -107,7 +107,7 @@ export default function LightHero({ eyebrow, title, description, stats, children
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="h-[2px] w-14 mx-auto bg-[#C9A962] mb-7"
+              className="h-[2px] w-14 mx-auto bg-[#C9A962] mb-5"
             />
 
             {/* Description — slightly darker for better readability */}
@@ -122,7 +122,7 @@ export default function LightHero({ eyebrow, title, description, stats, children
           {/* Stats — sharper, more defined */}
           {stats && stats.length > 0 && (
             <motion.div
-              className="flex justify-center gap-10 md:gap-16 mt-16"
+              className="flex justify-center gap-10 md:gap-16 mt-10"
               initial="hidden"
               animate="visible"
               variants={staggerContainer}
