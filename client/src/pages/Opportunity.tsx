@@ -9,6 +9,7 @@ import { TrendingUp, FlaskConical, Sparkles, Heart } from "lucide-react";
 import Layout from "@/components/Layout";
 import { fadeInUp, staggerContainer, scaleIn } from "@/lib/animations";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
+import { ExpansionTimeline, RevenueBreakdown } from "@/components/AnimatedInfographic";
 
 export default function Opportunity() {
   return (
@@ -424,6 +425,15 @@ export default function Opportunity() {
             </div>
           </motion.div>
         </div>
+      {/* Animated Infographics */}
+      <section className="py-20 bg-white">
+        <div className="container max-w-5xl mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <ExpansionTimeline />
+            <RevenueBreakdown />
+          </div>
+        </div>
+      </section>
       </section>
     </Layout>
   );

@@ -13,6 +13,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ScrollProgressBar, BackToTop } from "@/components/NavigationEnhancements";
 import { DarkModeToggle, usePresentationMode } from "@/components/PresentationMode";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { FloatingCTA } from "@/components/FloatingCTA";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -430,6 +431,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
 
       {/* Back to Top Button — hidden in present mode */}
       {!isPresentMode && <BackToTop />}
+      {!isPresentMode && <FloatingCTA />}
 
       {/* Enhanced Footer with Contact CTA — hidden in present mode */}
       {!isPresentMode && (

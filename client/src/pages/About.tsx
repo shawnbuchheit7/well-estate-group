@@ -1,10 +1,11 @@
 /*
  * About Page - Well Estate Group
- * Placeholder page for company information
+ * Company overview with social proof and advisory credibility
  */
 
 import Layout from "@/components/Layout";
 import { motion } from "framer-motion";
+import { SocialProof } from "@/components/SocialProof";
 
 export default function About() {
   return (
@@ -35,7 +36,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Content Section */}
+      {/* Mission Section */}
       <section className="py-20">
         <div className="container">
           <motion.div
@@ -45,18 +46,30 @@ export default function About() {
             transition={{ duration: 0.6 }}
             className="max-w-4xl mx-auto"
           >
-            <div className="bg-card/50 backdrop-blur-sm border border-border rounded-2xl p-8 md:p-12">
+            <div className="bg-card/50 backdrop-blur-sm border border-[#B8860B]/40 rounded-2xl p-8 md:p-12">
+              <p className="font-mono text-[10px] text-[#B8860B] tracking-[0.2em] uppercase mb-4 text-center section-header-accent">
+                Our Mission
+              </p>
               <h2 className="font-display text-2xl md:text-3xl font-bold mb-6 text-center">
-                Coming Soon
+                Building the Future of Proactive Healthcare
               </h2>
-              <p className="font-body text-muted-foreground text-center text-lg">
-                This page is currently under development. Check back soon for more information about 
-                Well Estate Group, our mission, leadership team, and advisory board.
+              <p className="font-body text-[#0A0A0A]/70 text-center text-lg leading-relaxed mb-6">
+                Well Estate Group brings together senior executives from the world&apos;s leading fitness, 
+                wellness, and hospitality brands — delivering institutional-grade consulting to companies 
+                ready to scale in the $5.6 trillion global wellness economy.
+              </p>
+              <p className="font-body text-[#0A0A0A]/70 text-center leading-relaxed">
+                Our four pillars — Go-To-Market Strategy, Longevity Ventures, Product Intelligence, and 
+                Venture Capital — provide end-to-end support for the next generation of health optimization 
+                companies.
               </p>
             </div>
           </motion.div>
         </div>
       </section>
+
+      {/* Social Proof Section */}
+      <SocialProof />
     </Layout>
   );
 }

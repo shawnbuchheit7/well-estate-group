@@ -72,6 +72,19 @@ function PillarIcon({ type }: { type: string }) {
 export default function Landing() {
   return (
     <div className="min-h-screen overflow-hidden relative bg-white">
+      {/* Video Hero Background */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.07]"
+          src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/KbkFFfbdIgYELkhB.mp4"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/60 to-white/90" />
+      </div>
+
       {/* PRESENT toggle — top right */}
       <div className="absolute top-6 right-6 z-20">
         <DarkModeToggle />

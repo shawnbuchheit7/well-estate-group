@@ -21,20 +21,29 @@ export default function Projections() {
   // Sensitivity Analysis State
   const [membershipPrice, setMembershipPrice] = useState(29500);
   const [renewalRate, setRenewalRate] = useState(70);
+  const [centerCount, setCenterCount] = useState(10);
+  const [growthRate, setGrowthRate] = useState(500); // new members per center per year
   
   // Calculate sensitivity metrics
-  const baseRevenue = 327; // $327M at $29,500 and 70% renewal
   const baseMemberPrice = 29500;
   const baseRenewal = 70;
+  const baseCenters = 10;
+  const baseGrowth = 500; // members/center/year
+  const baseRevenue = 327; // $327M at base assumptions
   
   const priceMultiplier = membershipPrice / baseMemberPrice;
   const renewalMultiplier = 1 + ((renewalRate - baseRenewal) / 100) * 0.5; // 50% impact from renewal changes
-  const adjustedRevenue = Math.round(baseRevenue * priceMultiplier * renewalMultiplier);
+  const centerMultiplier = centerCount / baseCenters;
+  const growthMultiplier = growthRate / baseGrowth;
+  const adjustedRevenue = Math.round(baseRevenue * priceMultiplier * renewalMultiplier * centerMultiplier * growthMultiplier);
   const adjustedEBITDA = Math.round(adjustedRevenue * 0.345); // 34.5% margin
-  const adjustedMembers = Math.round(7863 * renewalMultiplier);
+  const adjustedMembers = Math.round(7863 * renewalMultiplier * centerMultiplier * growthMultiplier);
   
   // Break-even calculation
   const breakEvenMembers = Math.ceil(2500000 / (membershipPrice * 0.66)); // Fixed costs / (price * margin)
+  
+  // Revenue per center
+  const revenuePerCenter = Math.round(adjustedRevenue / centerCount);
   
   return (
     <Layout>
@@ -329,14 +338,14 @@ export default function Projections() {
                 Sensitivity Analysis
               </h2>
               <p className="font-body text-muted-foreground max-w-2xl mx-auto">
-                Explore how changes in membership pricing and renewal rates affect 5-year projections.
+                Explore how changes in pricing, renewal rates, center count, and growth rate affect 5-year projections.
               </p>
             </motion.div>
 
             <motion.div variants={fadeInUp} className="bg-card border border-border rounded-2xl overflow-hidden">
               {/* Controls */}
               <div className="p-8 border-b border-border bg-muted/30">
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="grid md:grid-cols-2 gap-8 mb-8">
                   {/* Membership Price Slider */}
                   <div>
                     <div className="flex justify-between items-center mb-3">
@@ -381,36 +390,87 @@ export default function Projections() {
                     </div>
                   </div>
                 </div>
+
+                <div className="grid md:grid-cols-2 gap-8">
+                  {/* Center Count Slider */}
+                  <div>
+                    <div className="flex justify-between items-center mb-3">
+                      <label className="font-display font-medium">Number of Centers (2031)</label>
+                      <span className="font-mono text-xl text-primary font-bold">{centerCount}</span>
+                    </div>
+                    <input
+                      type="range"
+                      min="4"
+                      max="20"
+                      step="1"
+                      value={centerCount}
+                      onChange={(e) => setCenterCount(Number(e.target.value))}
+                      className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
+                    />
+                    <div className="flex justify-between text-xs text-muted-foreground mt-1">
+                      <span>4 centers</span>
+                      <span className="text-primary">Base: 10</span>
+                      <span>20 centers</span>
+                    </div>
+                  </div>
+
+                  {/* Membership Growth Rate Slider */}
+                  <div>
+                    <div className="flex justify-between items-center mb-3">
+                      <label className="font-display font-medium">New Members / Center / Year</label>
+                      <span className="font-mono text-xl text-primary font-bold">{growthRate}</span>
+                    </div>
+                    <input
+                      type="range"
+                      min="200"
+                      max="800"
+                      step="50"
+                      value={growthRate}
+                      onChange={(e) => setGrowthRate(Number(e.target.value))}
+                      className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
+                    />
+                    <div className="flex justify-between text-xs text-muted-foreground mt-1">
+                      <span>200/yr</span>
+                      <span className="text-primary">Base: 500/yr</span>
+                      <span>800/yr</span>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               {/* Results */}
               <div className="p-8">
-                <div className="grid md:grid-cols-4 gap-6 mb-8">
-                  <div className="bg-muted/30 rounded-xl p-6 text-center">
-                    <span className="font-mono text-3xl font-bold text-gradient">${adjustedRevenue}M</span>
-                    <p className="font-body text-sm text-muted-foreground mt-2">2031 Revenue</p>
+                <div className="grid md:grid-cols-5 gap-4 mb-8">
+                  <div className="bg-muted/30 rounded-xl p-5 text-center">
+                    <span className="font-mono text-2xl font-bold text-gradient">${adjustedRevenue}M</span>
+                    <p className="font-body text-xs text-muted-foreground mt-2">2031 Revenue</p>
                     <p className={`font-mono text-xs mt-1 ${adjustedRevenue >= baseRevenue ? 'text-emerald-400' : 'text-amber-400'}`}>
                       {adjustedRevenue >= baseRevenue ? '+' : ''}{adjustedRevenue - baseRevenue}M vs base
                     </p>
                   </div>
-                  <div className="bg-muted/30 rounded-xl p-6 text-center">
-                    <span className="font-mono text-3xl font-bold text-gradient">${adjustedEBITDA}M</span>
-                    <p className="font-body text-sm text-muted-foreground mt-2">2031 EBITDA</p>
+                  <div className="bg-muted/30 rounded-xl p-5 text-center">
+                    <span className="font-mono text-2xl font-bold text-gradient">${adjustedEBITDA}M</span>
+                    <p className="font-body text-xs text-muted-foreground mt-2">2031 EBITDA</p>
                     <p className={`font-mono text-xs mt-1 ${adjustedEBITDA >= 113 ? 'text-emerald-400' : 'text-amber-400'}`}>
                       {adjustedEBITDA >= 113 ? '+' : ''}{adjustedEBITDA - 113}M vs base
                     </p>
                   </div>
-                  <div className="bg-muted/30 rounded-xl p-6 text-center">
-                    <span className="font-mono text-3xl font-bold text-foreground">{adjustedMembers.toLocaleString()}</span>
-                    <p className="font-body text-sm text-muted-foreground mt-2">2031 Members</p>
+                  <div className="bg-muted/30 rounded-xl p-5 text-center">
+                    <span className="font-mono text-2xl font-bold text-foreground">{adjustedMembers.toLocaleString()}</span>
+                    <p className="font-body text-xs text-muted-foreground mt-2">2031 Members</p>
                     <p className={`font-mono text-xs mt-1 ${adjustedMembers >= 7863 ? 'text-emerald-400' : 'text-amber-400'}`}>
                       {adjustedMembers >= 7863 ? '+' : ''}{adjustedMembers - 7863} vs base
                     </p>
                   </div>
-                  <div className="bg-muted/30 rounded-xl p-6 text-center">
-                    <span className="font-mono text-3xl font-bold text-foreground">{breakEvenMembers}</span>
-                    <p className="font-body text-sm text-muted-foreground mt-2">Break-Even Members</p>
-                    <p className="font-mono text-xs mt-1 text-muted-foreground">Per center/year</p>
+                  <div className="bg-muted/30 rounded-xl p-5 text-center">
+                    <span className="font-mono text-2xl font-bold text-foreground">${revenuePerCenter}M</span>
+                    <p className="font-body text-xs text-muted-foreground mt-2">Revenue/Center</p>
+                    <p className="font-mono text-xs mt-1 text-muted-foreground">Avg per location</p>
+                  </div>
+                  <div className="bg-muted/30 rounded-xl p-5 text-center">
+                    <span className="font-mono text-2xl font-bold text-foreground">{breakEvenMembers}</span>
+                    <p className="font-body text-xs text-muted-foreground mt-2">Break-Even</p>
+                    <p className="font-mono text-xs mt-1 text-muted-foreground">Members/center/yr</p>
                   </div>
                 </div>
 

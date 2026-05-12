@@ -462,22 +462,22 @@ export default function UseOfFunds() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-8">
-              <h3 className="font-display text-2xl font-medium mb-2">Center Floor Plan Template</h3>
-              <p className="font-body text-muted-foreground">Design blueprint for flagship membership centers</p>
+              <h3 className="font-display text-2xl font-medium mb-2">Houston Center — A110 Floor Plan (1st Level)</h3>
+              <p className="font-body text-muted-foreground">Architectural floor plan showing the Fountain Life clinic scope area</p>
             </motion.div>
 
             <motion.div variants={fadeInUp} className="max-w-4xl mx-auto">
               <div className="bg-card border border-[#B8860B]/40 rounded-2xl overflow-hidden ring-1 ring-[#B8860B]/20 ring-offset-2 ring-offset-white">
                 <div className="p-4 border-b border-border bg-muted/30">
-                  <h4 className="font-display font-medium">Complete Facility Layout</h4>
-                  <p className="font-body text-sm text-muted-foreground">Full floor plan with furniture placement and room designations</p>
+                  <h4 className="font-display font-medium">A110 — 1st Level Clinic Layout</h4>
+                  <p className="font-body text-sm text-muted-foreground">Cropped to project scope area — MRI, CT, blood draw, IV prep, exam suites, reception</p>
                 </div>
                 <div className="p-4 bg-white relative group">
-                  <ImageLightbox src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/kbXKfSSSEfoSNfzI.png" alt="Complete Center Floor Plan">
+                  <ImageLightbox src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/NYGRuBgdVzcUlfzA.webp" alt="Houston Center A110 Floor Plan">
                     <img 
                       loading="lazy"
-                      src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/kbXKfSSSEfoSNfzI.png" 
-                      alt="Complete Center Floor Plan" 
+                      src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/NYGRuBgdVzcUlfzA.webp" 
+                      alt="Houston Center A110 Floor Plan" 
                       className="w-full h-auto rounded-lg"
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors rounded-lg flex items-center justify-center">
@@ -532,8 +532,8 @@ export default function UseOfFunds() {
                   className="aspect-[4/3]"
                 />
                 <div className="p-4">
-                  <h4 className="font-display font-medium text-sm">Entry & Check-In</h4>
-                  <p className="font-body text-xs text-muted-foreground">Welcoming reception with concierge desk</p>
+                  <h4 className="font-display font-medium text-sm">Member Lounge</h4>
+                  <p className="font-body text-xs text-muted-foreground">Premium lounge with refreshments and entertainment</p>
                 </div>
               </div>
 

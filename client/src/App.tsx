@@ -11,6 +11,7 @@ import { DarkThemeProvider } from "./components/PresentationMode";
 import ScrollToTop from "./components/ScrollToTop";
 import BackToTop from "./components/BackToTop";
 import KeyboardNav from "./components/KeyboardNav";
+import AnalyticsProvider from "./components/AnalyticsProvider";
 
 // Landing page loads immediately
 import Landing from "./pages/Landing";
@@ -106,6 +107,7 @@ function App() {
               <ScrollToTop />
               <BackToTop />
               <KeyboardNav />
+              <AnalyticsProvider />
               <Suspense fallback={<PageLoader />}>
                 <Switch>
                   {/* New Landing Page - Front door */}
