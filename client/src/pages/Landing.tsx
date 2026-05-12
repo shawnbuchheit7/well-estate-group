@@ -200,14 +200,14 @@ export default function Landing() {
           {pillars.map((pillar, i) => (
             <Link key={pillar.num} href={pillar.href}>
               <motion.div
-                className="group relative overflow-hidden rounded-2xl border border-white/[0.18] bg-white/[0.05] backdrop-blur-sm cursor-pointer h-full"
+                className="group relative overflow-hidden rounded-xl border border-white/[0.10] bg-[#111111] cursor-pointer h-full"
                 style={{
-                  boxShadow: "0 4px 24px rgba(0,0,0,0.4), 0 1px 4px rgba(0,0,0,0.3)",
+                  boxShadow: "0 2px 12px rgba(0,0,0,0.6), 0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04)",
                 }}
                 whileHover={{
-                  scale: 1.03,
-                  y: -8,
-                  boxShadow: "0 25px 60px rgba(0,0,0,0.5), 0 0 50px rgba(201,169,98,0.12), inset 0 0 0 1px rgba(201,169,98,0.15)",
+                  scale: 1.02,
+                  y: -6,
+                  boxShadow: "0 20px 50px rgba(0,0,0,0.6), 0 0 40px rgba(201,169,98,0.08), inset 0 1px 0 rgba(201,169,98,0.15)",
                 }}
                 whileTap={{ scale: 0.98 }}
                 initial={{ opacity: 0, y: 30 }}
@@ -218,48 +218,47 @@ export default function Landing() {
                   ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
                 }}
               >
-                {/* Subtle gradient overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-b from-[#C9A962]/0 via-[#C9A962]/0 to-[#C9A962]/0 group-hover:from-[#C9A962]/[0.03] group-hover:via-transparent group-hover:to-[#C9A962]/[0.05] transition-all duration-700" />
+                {/* Top edge highlight */}
+                <div className="absolute top-0 left-4 right-4 h-[1px] bg-gradient-to-r from-transparent via-white/[0.12] to-transparent" />
+
+                {/* Hover gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-b from-[#C9A962]/0 to-[#C9A962]/0 group-hover:from-[#C9A962]/[0.04] group-hover:to-transparent transition-all duration-500" />
 
                 {/* Content */}
-                <div className="relative p-8 md:p-9 flex flex-col items-center text-center min-h-[300px] md:min-h-[320px] justify-center">
+                <div className="relative p-8 md:p-9 flex flex-col items-center text-center min-h-[300px] md:min-h-[340px] justify-center">
                   {/* Pillar Number */}
-                  <motion.span
-                    className="font-mono text-[10px] text-white/50 tracking-[0.3em] mb-4 group-hover:text-[#C9A962]/80 transition-colors duration-500"
+                  <span
+                    className="font-mono text-[10px] text-white/40 tracking-[0.3em] mb-5 group-hover:text-[#C9A962]/70 transition-colors duration-400"
                   >
                     PILLAR {pillar.num}
-                  </motion.span>
+                  </span>
 
                   {/* Icon */}
-                  <motion.div
-                    className="mb-6 w-16 h-16 rounded-full border border-[#C9A962]/25 flex items-center justify-center group-hover:border-[#C9A962]/60 group-hover:bg-[#C9A962]/[0.08] transition-all duration-500"
+                  <div
+                    className="mb-7 w-12 h-12 rounded-lg border border-[#C9A962]/20 flex items-center justify-center bg-[#C9A962]/[0.04] group-hover:border-[#C9A962]/50 group-hover:bg-[#C9A962]/[0.08] transition-all duration-400"
                   >
                     <PillarIcon type={pillar.icon} />
-                  </motion.div>
+                  </div>
 
                   {/* Title */}
-                  <h2 className="font-display text-lg md:text-xl font-semibold text-white mb-3 leading-tight group-hover:text-white transition-colors">
+                  <h2 className="font-display text-xl md:text-2xl font-bold text-white mb-3 leading-tight tracking-tight">
                     {pillar.title}
                   </h2>
 
                   {/* Subtitle */}
-                  <p className="font-body text-xs text-white/65 leading-relaxed max-w-[220px] mb-7">
+                  <p className="font-body text-[13px] text-white/50 leading-relaxed max-w-[240px] mb-8">
                     {pillar.description}
                   </p>
 
                   {/* CTA */}
-                  <div className="flex items-center gap-2 font-body text-sm font-semibold text-[#C9A962] group-hover:text-[#D4B872] transition-colors tracking-wider">
+                  <div className="flex items-center gap-2 font-mono text-xs font-semibold text-[#C9A962] group-hover:text-[#D4B872] transition-colors tracking-[0.1em] uppercase">
                     <span>Enter</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300" />
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform duration-300" />
                   </div>
                 </div>
 
                 {/* Bottom accent line */}
-                <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C9A962] to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center" />
-                
-                {/* Top-left corner accent */}
-                <div className="absolute top-0 left-0 w-8 h-[2px] bg-[#C9A962]/0 group-hover:bg-[#C9A962]/30 transition-all duration-500" />
-                <div className="absolute top-0 left-0 w-[2px] h-8 bg-[#C9A962]/0 group-hover:bg-[#C9A962]/30 transition-all duration-500" />
+                <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#C9A962]/60 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center" />
               </motion.div>
             </Link>
           ))}
