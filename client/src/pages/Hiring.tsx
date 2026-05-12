@@ -1474,7 +1474,7 @@ export default function Hiring() {
                 </div>
                 
                 {/* Quick Stats */}
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                   <div className="bg-muted/20 rounded-lg p-3 text-center">
                     <span className="font-mono text-2xl text-primary font-bold">{utilizationPct}%</span>
                     <p className="text-[10px] text-muted-foreground mt-1">Capacity Used</p>
@@ -1602,7 +1602,7 @@ export default function Hiring() {
                         </span>
                         <p className="text-xs text-muted-foreground mt-1">Annual ELITE Team Labor Cost</p>
                       </div>
-                      <div className="grid grid-cols-2 gap-3 text-center">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-center">
                         <div className="bg-background/50 rounded-lg p-2">
                           <span className="font-mono text-lg text-amber-500">{teamsNeeded}</span>
                           <p className="text-[10px] text-muted-foreground">Teams</p>
@@ -1846,7 +1846,7 @@ export default function Hiring() {
                 </div>
                 
                 {/* Member Capacity Note */}
-                <div className="mt-4 p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-lg">
+                <div className="mt-4 p-4 bg-[#B8860B]/10 border border-emerald-500/30 rounded-lg">
                   <p className="font-body text-sm text-muted-foreground">
                     <span className="text-emerald-400 font-medium">Member Capacity:</span> {centerCount} center{centerCount > 1 ? 's' : ''} with {centerCount * eliteTeamsPerCenter} ELITE teams can support up to <span className="font-mono text-emerald-400 font-bold">{(centerCount * eliteTeamsPerCenter * 120).toLocaleString()}</span> members at full capacity, generating <span className="font-mono text-emerald-400 font-bold">${((centerCount * eliteTeamsPerCenter * 120 * eliteRevenuePerMember) / 1000000).toFixed(1)}M</span> in annual ELITE revenue.
                   </p>

@@ -98,7 +98,7 @@ export default function ImageLightbox({ src, alt, children, className }: ImageLi
       <div onClick={handleOpen} className={`cursor-zoom-in relative group ${className || ''}`}>
         {children || (
           <>
-            <img src={src} alt={alt} className="w-full h-full object-cover" />
+            <img loading="lazy" src={src} alt={alt} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
               <ZoomIn className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>

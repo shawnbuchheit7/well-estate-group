@@ -47,6 +47,7 @@ export default function Investors() {
           >
             <div className="relative rounded-2xl overflow-hidden border border-border group">
               <img 
+                      loading="lazy"
                 src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/fQPnPIvzRyJNNhfN.png" 
                 alt="Well Estate Group Founders - Joe Russo, Chris Hemsworth, Josh Brolin, Donald Mustard"
                 className="w-full h-auto"
@@ -150,6 +151,7 @@ export default function Investors() {
                   {/* Investor Photo */}
                   <div className="aspect-square overflow-hidden">
                     <img 
+                      loading="lazy"
                       src={investor.image} 
                       alt={investor.name}
                       className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ${investor.imagePosition}`}
@@ -344,9 +346,9 @@ export default function Investors() {
                 <div className="space-y-4">
                   {[
                     { label: "Founders & Management", pct: 55, color: "bg-primary" },
-                    { label: "Series A Investors", pct: 25, color: "bg-emerald-500" },
+                    { label: "Series A Investors", pct: 25, color: "bg-[#B8860B]/50" },
                     { label: "Angel/Seed Investors", pct: 12, color: "bg-amber-500" },
-                    { label: "Employee Option Pool", pct: 8, color: "bg-purple-500" }
+                    { label: "Employee Option Pool", pct: 8, color: "bg-[#996515]" }
                   ].map((item, i) => (
                     <div key={i}>
                       <div className="flex justify-between items-center mb-1">
@@ -535,7 +537,7 @@ export default function Investors() {
                         { icon: Check, text: "Pro-rata rights to maintain ownership in future rounds" },
                         { icon: Check, text: "Board observer seat for investors $5M+" }
                       ].map((item, i) => (
-                        <div key={i} className="flex items-start gap-2 bg-emerald-500/10 border border-emerald-500/20 rounded-lg p-3">
+                        <div key={i} className="flex items-start gap-2 bg-[#B8860B]/10 border border-emerald-500/20 rounded-lg p-3">
                           <item.icon className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
                           <span className="font-body text-sm text-emerald-100">{item.text}</span>
                         </div>

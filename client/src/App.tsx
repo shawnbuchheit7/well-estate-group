@@ -98,7 +98,7 @@ function App() {
   return (
     <ErrorBoundary>
       <DarkThemeProvider>
-      <ThemeProvider defaultTheme="light">
+      <ThemeProvider defaultTheme="light" switchable={true}>
         <TooltipProvider>
           <Toaster />
           <PasswordGate>

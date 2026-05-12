@@ -878,7 +878,7 @@ export default function Projections() {
                         <td className="p-4 text-right">($5.5M)</td>
                         <td className="p-4 text-right">($7.0M)</td>
                       </tr>
-                      <tr className="bg-emerald-500/10">
+                      <tr className="bg-[#B8860B]/10">
                         <td className="p-4 font-medium text-emerald-400">HoldCo EBITDA</td>
                         <td className="p-4 text-right font-mono text-amber-400">($0.9M)</td>
                         <td className="p-4 text-right font-mono text-emerald-400">$0.2M</td>
@@ -929,7 +929,7 @@ export default function Projections() {
                   <div className="font-display font-medium">Base Corporate Overhead</div>
                   <div className="text-sm text-muted-foreground">Fixed costs (executive, legal)</div>
                 </div>
-                <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-2xl p-6 text-center">
+                <div className="bg-[#B8860B]/10 border border-emerald-500/30 rounded-2xl p-6 text-center">
                   <div className="text-4xl font-mono font-bold text-emerald-400 mb-2">2027</div>
                   <div className="font-display font-medium text-emerald-400">HoldCo Breakeven Year</div>
                   <div className="text-sm text-muted-foreground">2 centers generating positive cash flow</div>
@@ -1032,7 +1032,7 @@ export default function Projections() {
                       ))}
                     </div>
                     
-                    <div className="grid grid-cols-3 gap-4 pt-4 border-t border-border">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-border">
                       <div className="text-center">
                         <span className="font-mono text-lg font-bold text-foreground">{item.revenue}</span>
                         <p className="font-body text-xs text-muted-foreground">Revenue</p>
@@ -1531,7 +1531,7 @@ export default function Projections() {
                 <h2 className="font-display text-3xl font-medium text-center">Center Rollout Timeline</h2>
                 <p className="text-muted-foreground text-center">Disciplined expansion from flagship to 10-center domestic network</p>
                 <div className="bg-card border border-border rounded-2xl p-8">
-                  <div className="grid grid-cols-4 gap-4">
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     {[
                       { year: "2027", centers: "1", label: "Flagship Launch" },
                       { year: "2028", centers: "2", label: "Second Market" },

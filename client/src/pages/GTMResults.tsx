@@ -81,7 +81,7 @@ export default function GTMResults() {
                   <p className="font-display text-sm font-bold text-black mb-2">Passives</p>
                   <p className="font-body text-xs text-black/60 leading-relaxed">Satisfied but unenthusiastic customers vulnerable to competitive offerings</p>
                 </div>
-                <div className="text-center p-5 rounded-xl bg-emerald-50 border border-emerald-100">
+                <div className="text-center p-5 rounded-xl bg-[#B8860B]/5 border border-emerald-100">
                   <p className="font-display text-2xl font-bold text-emerald-500 mb-1">9–10</p>
                   <p className="font-display text-sm font-bold text-black mb-2">Promoters</p>
                   <p className="font-body text-xs text-black/60 leading-relaxed">Loyal enthusiasts who will fuel growth through referrals and repeat purchases</p>

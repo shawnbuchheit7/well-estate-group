@@ -1,7 +1,7 @@
 /**
  * DESIGN: "Cellular Renaissance" - Organic Futurism
  * Use of Funds page - $50M Series A allocation
- * Updated with generic center design example and 3D renderings
+ * Updated with Houston Center photography
  */
 
 import { motion, useInView } from "framer-motion";
@@ -124,7 +124,7 @@ export default function UseOfFunds() {
                       { label: "Series A Raise", amount: 50, cumulative: 50, type: "start", color: "bg-primary" },
                       { label: "Flagship Center #1", amount: -12.5, cumulative: 37.5, type: "expense", color: "bg-amber-500" },
                       { label: "Center #2 Development", amount: -10, cumulative: 27.5, type: "expense", color: "bg-amber-500" },
-                      { label: "Marketing & Growth", amount: -10, cumulative: 17.5, type: "expense", color: "bg-emerald-500" },
+                      { label: "Marketing & Growth", amount: -10, cumulative: 17.5, type: "expense", color: "bg-[#B8860B]/50" },
                       { label: "Working Capital", amount: -10, cumulative: 7.5, type: "expense", color: "bg-blue-500" },
                       { label: "International Reserve", amount: -7.5, cumulative: 0, type: "expense", color: "bg-purple-500" }
                     ].map((item, i) => (
@@ -181,7 +181,7 @@ export default function UseOfFunds() {
                   <div className="mt-6 pt-6 border-t border-border flex flex-wrap gap-4 justify-center">
                     {[
                       { color: "bg-amber-500", label: "Center Development" },
-                      { color: "bg-emerald-500", label: "Marketing & Growth" },
+                      { color: "bg-[#B8860B]/50", label: "Marketing & Growth" },
                       { color: "bg-blue-500", label: "Working Capital" },
                       { color: "bg-purple-500", label: "International" }
                     ].map((item, i) => (
@@ -475,6 +475,7 @@ export default function UseOfFunds() {
                 <div className="p-4 bg-white relative group">
                   <ImageLightbox src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/kbXKfSSSEfoSNfzI.png" alt="Complete Center Floor Plan">
                     <img 
+                      loading="lazy"
                       src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/kbXKfSSSEfoSNfzI.png" 
                       alt="Complete Center Floor Plan" 
                       className="w-full h-auto rounded-lg"
@@ -520,7 +521,7 @@ export default function UseOfFunds() {
           >
             <motion.div variants={fadeInUp} className="text-center mb-8">
               <h3 className="font-display text-2xl font-medium mb-2">Reception & Welcome Experience</h3>
-              <p className="font-body text-muted-foreground">3D renderings of the luxury reception and check-in areas</p>
+              <p className="font-body text-muted-foreground">Houston Center reception and member welcome experience</p>
             </motion.div>
 
             <motion.div variants={fadeInUp} className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
@@ -560,7 +561,7 @@ export default function UseOfFunds() {
           >
             <motion.div variants={fadeInUp} className="text-center mb-8">
               <h3 className="font-display text-2xl font-medium mb-2">Treatment Suite Design</h3>
-              <p className="font-body text-muted-foreground">3D renderings of the luxury treatment and VIP suites</p>
+              <p className="font-body text-muted-foreground">Houston Center treatment suites and diagnostic rooms</p>
             </motion.div>
 
             <motion.div variants={fadeInUp} className="grid md:grid-cols-2 gap-6">
@@ -851,7 +852,7 @@ export default function UseOfFunds() {
                   title: "Regulatory Clarity",
                   icon: Building2,
                   color: "text-emerald-400",
-                  bgColor: "bg-emerald-500/10",
+                  bgColor: "bg-[#B8860B]/10",
                   borderColor: "border-emerald-500/30",
                   points: [
                     "FDA 361 pathway established for autologous biologics",

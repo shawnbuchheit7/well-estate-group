@@ -92,6 +92,7 @@ export default function PasswordGate({ children }: PasswordGateProps) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white">
         <img
+                      loading="lazy"
           src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/LHselcWIkeWDRNuE.png"
           alt="Well Estate Group"
           className="w-16 h-16 animate-spin"

@@ -501,3 +501,324 @@ body {
   background: linear-gradient(90deg, transparent, #B8860B, transparent);
   margin: 8px auto 0;
 }
+
+/* Mobile Responsiveness Fixes */
+@media (max-width: 640px) {
+  /* Ensure tables are horizontally scrollable on mobile */
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Prevent text overflow */
+  .font-display {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  /* Scale down large stat numbers on mobile */
+  .text-5xl, .text-6xl, .text-7xl {
+    font-size: clamp(2rem, 8vw, 3.5rem);
+  }
+  
+  /* Ensure images don't overflow */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Fix horizontal padding on mobile */
+  .px-8, .px-10, .px-12, .px-16 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Reduce section padding on tablets */
+  .py-24, .py-28, .py-32 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+/* Standardized Typography Scale */
+.heading-hero {
+  @apply font-display text-5xl md:text-7xl font-medium tracking-tight leading-[1.05];
+}
+
+.heading-section {
+  @apply font-display text-3xl md:text-5xl font-medium tracking-tight leading-[1.1];
+}
+
+.heading-subsection {
+  @apply font-display text-2xl md:text-3xl font-medium leading-tight;
+}
+
+.heading-card {
+  @apply font-display text-xl md:text-2xl font-medium leading-snug;
+}
+
+.body-large {
+  @apply font-body text-lg md:text-xl leading-relaxed text-black/70;
+}
+
+.body-default {
+  @apply font-body text-base leading-relaxed text-black/70;
+}
+
+.body-small {
+  @apply font-body text-sm leading-relaxed text-black/65;
+}
+
+.label-section {
+  @apply font-mono text-[11px] font-semibold tracking-[0.25em] uppercase text-[#B8860B];
+}
+
+/* Data Visualization Gold Accent System */
+:root {
+  --chart-gold-primary: #B8860B;
+  --chart-gold-secondary: #D4A843;
+  --chart-gold-tertiary: #E8C97A;
+  --chart-gold-light: #F5E6C8;
+  --chart-dark: #1A1A1A;
+  --chart-gray: #6B7280;
+}
+
+/* Override default chart colors to gold palette */
+.recharts-cartesian-axis-tick-value,
+.recharts-legend-item-text {
+  fill: #1A1A1A !important;
+  font-family: var(--font-body) !important;
+}
+
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: rgba(184, 134, 11, 0.15) !important;
+}
+
+/* Gold gradient for chart areas */
+.chart-gold-gradient {
+  background: linear-gradient(135deg, #B8860B 0%, #D4A843 50%, #E8C97A 100%);
+}
+
+/* Page Transition Animation */
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply to main content area on page load */
+main, [data-page] {
+  animation: pageEnter 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ========================================
+ * DARK MODE STYLES
+ * ======================================== */
+
+.dark {
+  color-scheme: dark;
+}
+
+.dark body,
+.dark .min-h-screen {
+  background-color: #0F0F0F !important;
+  color: #E8E8E8 !important;
+}
+
+/* Dark mode nav */
+.dark nav,
+.dark .backdrop-blur-2xl {
+  background: rgba(15, 15, 15, 0.97) !important;
+}
+
+/* Dark mode cards */
+.dark .card-elevated,
+.dark [class*="bg-white"],
+.dark [class*="bg-gray-50"] {
+  background-color: #1A1A1A !important;
+  border-color: rgba(184, 134, 11, 0.3) !important;
+}
+
+/* Dark mode text overrides */
+.dark [class*="text-black"] {
+  color: #E8E8E8 !important;
+}
+
+.dark [class*="text-black/"] {
+  color: rgba(232, 232, 232, 0.7) !important;
+}
+
+/* Dark mode borders */
+.dark [class*="border-[#B8860B]"] {
+  border-color: rgba(184, 134, 11, 0.5) !important;
+}
+
+/* Dark mode section backgrounds */
+.dark [class*="bg-[#f5f5f0]"],
+.dark [class*="bg-neutral-50"],
+.dark [class*="bg-stone-50"],
+.dark [class*="bg-[#FAFAF8]"],
+.dark [class*="bg-[#f8f7f4]"] {
+  background-color: #141414 !important;
+}
+
+/* Dark mode active nav tab */
+.dark .bg-\[\#B8860B\] {
+  background-color: #B8860B !important;
+  color: white !important;
+}
+
+/* Dark mode footer stays dark (already dark) */
+.dark footer {
+  background-color: #0A0A0A !important;
+}
+
+/* Dark mode stat boxes */
+.dark .stat-shimmer {
+  color: #D4A843 !important;
+}
+
+/* Dark mode images - slight brightness adjustment */
+.dark img {
+  filter: brightness(0.92);
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-track {
+  background: #1A1A1A;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(184, 134, 11, 0.4);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(184, 134, 11, 0.6);
+}
+
+/* ========================================
+ * PDF / PRINT EXPORT STYLING
+ * ======================================== */
+
+@media print {
+  /* Hide navigation, footer, and interactive elements */
+  nav, footer, .fixed, .sticky,
+  [class*="BackToTop"], [class*="ScrollProgress"],
+  button[title*="Present"], button[title*="Dark Mode"],
+  button[title*="Light Mode"], .cross-pillar-nav {
+    display: none !important;
+  }
+
+  /* Reset backgrounds for print */
+  body, .min-h-screen, main {
+    background: white !important;
+    color: black !important;
+    font-size: 11pt !important;
+  }
+
+  /* Ensure content fills the page */
+  main {
+    padding-top: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Gold borders translate to print */
+  [class*="border-[#B8860B]"] {
+    border-color: #B8860B !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Ensure gold backgrounds print */
+  .bg-\[\#B8860B\],
+  [class*="bg-[#B8860B]"] {
+    background-color: #B8860B !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Page breaks */
+  .page-break-before {
+    page-break-before: always;
+  }
+  .page-break-after {
+    page-break-after: always;
+  }
+  .no-page-break {
+    page-break-inside: avoid;
+  }
+
+  /* Cards should not break across pages */
+  .card-elevated, [class*="rounded-xl"],
+  [class*="rounded-2xl"] {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Images should not break */
+  img {
+    page-break-inside: avoid;
+    max-width: 100% !important;
+    filter: none !important;
+  }
+
+  /* Typography for print */
+  h1 { font-size: 24pt !important; }
+  h2 { font-size: 18pt !important; }
+  h3 { font-size: 14pt !important; }
+  p, li { font-size: 11pt !important; line-height: 1.5 !important; }
+
+  /* Stat numbers */
+  .stat-shimmer {
+    animation: none !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: black !important;
+  }
+
+  /* Links */
+  a {
+    color: #B8860B !important;
+    text-decoration: underline !important;
+  }
+
+  /* Table styling for print */
+  table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+  }
+  th, td {
+    border: 1px solid #B8860B !important;
+    padding: 6px 10px !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  th {
+    background-color: rgba(184, 134, 11, 0.1) !important;
+    font-weight: bold !important;
+  }
+
+  /* Footer/header for printed pages */
+  @page {
+    margin: 1.5cm;
+    @bottom-center {
+      content: "Well Estate Group — Confidential";
+      font-size: 8pt;
+      color: #999;
+    }
+  }
+}

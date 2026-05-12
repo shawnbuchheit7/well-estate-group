@@ -12,6 +12,7 @@ import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { ScrollProgressBar, BackToTop } from "@/components/NavigationEnhancements";
 import { DarkModeToggle, usePresentationMode } from "@/components/PresentationMode";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -231,6 +232,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
           
           {/* Section Label, Dark Mode Toggle, or Data Room Button - Far Right */}
           <div className="flex items-center gap-3 flex-shrink-0">
+            <ThemeToggle />
             <DarkModeToggle />
             {showDataRoom ? (
               <Link href="/longevity/data-room" className="hidden sm:block">

@@ -91,6 +91,7 @@ export default function ZWPasswordGate({ children }: ZWPasswordGateProps) {
               transition={{ delay: 0.15, duration: 0.4 }}
             >
               <img
+                      loading="lazy"
                 src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/zerowheel-logo-white.png"
                 alt="ZeroWheel"
                 className="h-7"

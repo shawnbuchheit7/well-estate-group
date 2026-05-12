@@ -126,7 +126,7 @@ const channelPlaybooks = [
             ))}
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
           {[{ label: "Target Accounts", value: "500+" }, { label: "Avg Deal Size", value: "$8,760" }, { label: "Close Rate Target", value: "18%" }].map((m, i) => (
             <div key={i} className="text-center p-3 bg-white border border-[#B8860B]/55 rounded-xl">
               <p className="font-display text-xl font-bold text-black">{m.value}</p>

@@ -82,6 +82,7 @@ export default function Therapeutics() {
             <motion.div variants={scaleIn} className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-accent/30 rounded-3xl blur-3xl" />
               <img 
+                      loading="lazy"
                 src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/EYeJVwdkrNJOoDJr.webp" 
                 alt="Well Estate Group Treatment Room"
                 className="relative rounded-3xl border border-[#B8860B]/40 shadow-2xl ring-1 ring-[#B8860B]/20 ring-offset-2 ring-offset-white"
@@ -219,7 +220,7 @@ export default function Therapeutics() {
                   and treatment protocols—to hospitals, clinics, and medical groups worldwide without the capital 
                   investment required for physical center development.
                 </p>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[
                     { value: "$50B+", label: "Global Regenerative Medicine Market" },
                     { value: "15%+", label: "Annual Market Growth Rate" },

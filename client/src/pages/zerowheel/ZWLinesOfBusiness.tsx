@@ -454,7 +454,7 @@ export default function ZWLinesOfBusiness() {
                                   </div>
                                   <div className="flex flex-wrap gap-1.5">
                                     {lob.keySelling.map((point, j) => (
-                                      <span key={j} className="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 font-body text-[10px] border border-emerald-100">
+                                      <span key={j} className="px-2.5 py-1 rounded-full bg-[#B8860B]/5 text-emerald-700 font-body text-[10px] border border-emerald-100">
                                         {point}
                                       </span>
                                     ))}

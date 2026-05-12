@@ -136,7 +136,7 @@ ${formData.message || 'No additional message provided.'}
               <motion.div variants={fadeInUp} className="md:col-span-3">
                 {isSubmitted ? (
                   <div className="bg-card border border-emerald-500/30 rounded-2xl p-12 text-center">
-                    <div className="w-20 h-20 rounded-full bg-emerald-500/10 flex items-center justify-center mx-auto mb-6">
+                    <div className="w-20 h-20 rounded-full bg-[#B8860B]/10 flex items-center justify-center mx-auto mb-6">
                       <CheckCircle className="w-10 h-10 text-emerald-400" />
                     </div>
                     <h3 className="font-display text-2xl font-medium mb-4">Request Submitted</h3>

@@ -582,7 +582,7 @@ export default function ZWBusinessIntelligence() {
             <DarkCard className="lg:col-span-2">
               <p className="font-mono text-[10px] text-black/55 uppercase tracking-[0.15em] mb-1">Revenue Forecast</p>
               <p className="font-display text-lg font-semibold text-black mb-4">Forward-Looking Projections</p>
-              <div className="grid grid-cols-2 gap-4 mb-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                 {[
                   { period: "Next 30 Days", low: "$78K", mid: "$92K", high: "$108K", color: GOLD },
                   { period: "Next 90 Days", low: "$248K", mid: "$298K", high: "$341K", color: TEAL },

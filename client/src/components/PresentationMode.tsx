@@ -273,7 +273,7 @@ export function PresentationMode({ slides, pageName }: PresentationModeProps) {
     <>
       <button
         onClick={() => setIsActive(true)}
-        className="fixed bottom-6 right-6 z-40 flex items-center gap-2 px-4 py-3 bg-black text-white rounded-full shadow-lg hover:bg-black/90 transition-all hover:scale-105 group"
+        className="fixed bottom-6 right-6 z-40 flex items-center gap-2 px-4 py-3 bg-[#B8860B] text-white rounded-full shadow-lg shadow-[#B8860B]/20 hover:bg-[#996515] transition-all hover:scale-105 group"
         title="Enter Slide Mode"
       >
         <Maximize2 className="w-5 h-5" />
@@ -342,8 +342,8 @@ export function PresentationMode({ slides, pageName }: PresentationModeProps) {
                     onClick={() => goToSlide(index)}
                     className={`flex-shrink-0 transition-all ${
                       index === currentSlide
-                        ? "w-8 h-3 bg-black rounded-full"
-                        : "w-3 h-3 bg-black/20 hover:bg-black/40 rounded-full"
+                        ? "w-8 h-3 bg-[#B8860B] rounded-full"
+                        : "w-3 h-3 bg-[#B8860B]/20 hover:bg-[#B8860B]/40 rounded-full"
                     }`}
                     title={slide.title}
                   />
@@ -353,7 +353,7 @@ export function PresentationMode({ slides, pageName }: PresentationModeProps) {
               <button
                 onClick={nextSlide}
                 disabled={currentSlide === slides.length - 1}
-                className="flex items-center gap-2 px-4 py-2 bg-black text-white hover:bg-black/90 rounded-lg transition-colors disabled:opacity-30"
+                className="flex items-center gap-2 px-4 py-2 bg-[#B8860B] text-white hover:bg-[#996515] rounded-lg transition-colors disabled:opacity-30"
               >
                 <span className="font-mono text-sm hidden sm:inline">Next</span>
                 <ChevronRight className="w-5 h-5" />

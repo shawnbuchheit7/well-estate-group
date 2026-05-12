@@ -103,6 +103,7 @@ export default function GTMProjects() {
                         {project.logoSrc ? (
                           <div className="w-14 h-14 rounded-xl bg-[#F5F4F1] border border-[#B8860B]/55 flex items-center justify-center shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
                             <img 
+                      loading="lazy"
                               src={project.logoSrc} 
                               alt={project.logoAlt || project.title}
                               className="h-7 w-auto object-contain"

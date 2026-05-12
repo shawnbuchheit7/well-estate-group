@@ -93,6 +93,7 @@ export default function Team() {
                 <div className="relative bg-card border border-border rounded-2xl overflow-hidden h-full hover:border-primary/50 transition-colors">
                   <div className="h-56 overflow-hidden flex items-center justify-center bg-muted/20">
                     <img 
+                      loading="lazy"
                       src={member.image} 
                       alt={member.name}
                       className="w-auto h-full object-contain object-center group-hover:scale-105 transition-transform duration-500"

@@ -158,6 +158,7 @@ export default function ProductIntelligence() {
                 >
                   <div className="p-4 sm:p-6">
                     <img
+                      loading="lazy"
                       src={view.src}
                       alt={view.label}
                       className="w-full h-auto object-contain mx-auto"

@@ -336,7 +336,7 @@ export default function GTMStrategicMarkets() {
                   {/* Direction indicator + Segment name */}
                   <div className="flex items-center gap-3 sm:min-w-[220px]">
                     <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${
-                      shift.direction === "up" ? "bg-emerald-50" : "bg-red-50"
+                      shift.direction === "up" ? "bg-[#B8860B]/5" : "bg-red-50"
                     }`}>
                       {shift.direction === "up" 
                         ? <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600" />

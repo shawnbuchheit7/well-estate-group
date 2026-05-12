@@ -240,7 +240,7 @@ export default function Performance() {
                       <td className="p-4 text-right text-muted-foreground">($3.9M)</td>
                       <td className="p-4 text-right text-muted-foreground">($4.6M)</td>
                     </tr>
-                    <tr className="bg-emerald-500/10">
+                    <tr className="bg-[#B8860B]/10">
                       <td className="p-4 font-medium text-emerald-400">Net Contribution to HoldCo</td>
                       <td className="p-4 text-right text-emerald-400 font-medium">$5.3M</td>
                       <td className="p-4 text-right text-emerald-400 font-medium">$8.0M</td>
@@ -472,7 +472,7 @@ export default function Performance() {
               <div className="bg-card border border-border rounded-2xl overflow-hidden">
                 <div className="p-6 border-b border-border bg-muted/30">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-xl bg-[#B8860B]/10 flex items-center justify-center">
                       <Users className="w-5 h-5 text-emerald-400" />
                     </div>
                     <div>
@@ -482,8 +482,8 @@ export default function Performance() {
                   </div>
                 </div>
                 <div className="p-6">
-                  <div className="grid grid-cols-2 gap-4 mb-6">
-                    <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4 text-center">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                    <div className="bg-[#B8860B]/10 border border-emerald-500/20 rounded-xl p-4 text-center">
                       <span className="text-emerald-400 font-mono text-2xl font-bold">$1,000</span>
                       <p className="text-sm text-muted-foreground mt-1">Referral CAC</p>
                       <p className="text-xs text-emerald-400/70">$500 referrer + $500 new member</p>
@@ -612,7 +612,7 @@ export default function Performance() {
               <div className="bg-card border border-border rounded-2xl overflow-hidden">
                 <div className="p-6 border-b border-border bg-muted/30">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-xl bg-[#B8860B]/10 flex items-center justify-center">
                       <TrendingUp className="w-5 h-5 text-emerald-400" />
                     </div>
                     <div>
@@ -661,10 +661,10 @@ export default function Performance() {
                     <p className="font-body text-sm text-muted-foreground mb-4">Referral Rate Progression</p>
                     {[
                       { year: "Year 1", rate: 0, color: "bg-muted" },
-                      { year: "Year 2", rate: 30, color: "bg-emerald-500/50" },
-                      { year: "Year 3", rate: 38, color: "bg-emerald-500/60" },
-                      { year: "Year 4", rate: 42, color: "bg-emerald-500/80" },
-                      { year: "Year 5", rate: 45, color: "bg-emerald-500" }
+                      { year: "Year 2", rate: 30, color: "bg-[#B8860B]/50/50" },
+                      { year: "Year 3", rate: 38, color: "bg-[#B8860B]/50/60" },
+                      { year: "Year 4", rate: 42, color: "bg-[#B8860B]/50/80" },
+                      { year: "Year 5", rate: 45, color: "bg-[#B8860B]/50" }
                     ].map((item, i) => (
                       <div key={i} className="flex items-center gap-4">
                         <span className="font-mono text-xs text-muted-foreground w-16">{item.year}</span>
@@ -679,7 +679,7 @@ export default function Performance() {
                     ))}
                   </div>
                   
-                  <div className="mt-6 bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4">
+                  <div className="mt-6 bg-[#B8860B]/10 border border-emerald-500/20 rounded-xl p-4">
                     <div className="flex items-start gap-3">
                       <ArrowUpCircle className="w-5 h-5 text-emerald-400 mt-0.5" />
                       <div>
@@ -751,7 +751,7 @@ export default function Performance() {
                       <p className="text-sm text-muted-foreground mt-1">Base Case Revenue</p>
                       <p className="text-xs text-primary/70">at 70% renewal</p>
                     </div>
-                    <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4 text-center">
+                    <div className="bg-[#B8860B]/10 border border-emerald-500/20 rounded-xl p-4 text-center">
                       <span className="text-emerald-400 font-mono text-2xl font-bold">+$10M</span>
                       <p className="text-sm text-muted-foreground mt-1">5-Year Revenue Upside</p>
                       <p className="text-xs text-emerald-400/70">at 75% renewal</p>
@@ -969,7 +969,7 @@ export default function Performance() {
                 </table>
               </div>
               <div className="p-4 bg-muted/20 border-t border-border">
-                <div className="grid grid-cols-3 gap-4 text-center">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
                   <div>
                     <span className="font-mono text-lg font-bold text-primary">70%</span>
                     <p className="text-xs text-muted-foreground">Annual Retention</p>
@@ -1398,7 +1398,7 @@ export default function Performance() {
                 <UserPlus className="w-5 h-5 text-primary" />
                 Total Personnel Costs (Including Benefits)
               </h3>
-              <div className="grid grid-cols-5 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
                 {[
                   { year: "Year 1", cost: "$4.3M" },
                   { year: "Year 2", cost: "$6.4M" },
@@ -1565,7 +1565,7 @@ export default function Performance() {
             <motion.div variants={fadeInUp}>
               <div className="bg-gradient-to-br from-emerald-500/10 to-primary/10 border border-emerald-500/30 rounded-2xl p-8">
                 <div className="flex items-start gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-[#B8860B]/20 flex items-center justify-center flex-shrink-0">
                     <Lightbulb className="w-6 h-6 text-emerald-400" />
                   </div>
                   <div>
@@ -1604,13 +1604,13 @@ export default function Performance() {
                   ].map((item, i) => (
                     <div key={i} className="bg-card/50 backdrop-blur border border-border rounded-xl p-5">
                       <div className="flex items-start gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
+                        <div className="w-10 h-10 rounded-lg bg-[#B8860B]/10 flex items-center justify-center flex-shrink-0">
                           <item.icon className="w-5 h-5 text-emerald-400" />
                         </div>
                         <div>
                           <div className="flex items-center gap-2 mb-1">
                             <h4 className="font-display font-medium">{item.title}</h4>
-                            <span className="font-mono text-xs text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">{item.impact}</span>
+                            <span className="font-mono text-xs text-emerald-400 bg-[#B8860B]/10 px-2 py-0.5 rounded">{item.impact}</span>
                           </div>
                           <p className="font-body text-sm text-muted-foreground">{item.description}</p>
                         </div>
