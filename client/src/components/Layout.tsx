@@ -214,10 +214,10 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                     >
                       <Link
                         href={link.href}
-                        className={`relative px-3.5 py-1.5 rounded-lg border-2 transition-all whitespace-nowrap ${
+                        className={`relative px-3.5 py-1.5 rounded-lg transition-all whitespace-nowrap ${
                           isActive
-                            ? "text-white font-semibold border-[#B8860B] bg-[#B8860B] shadow-[0_2px_8px_rgba(184,134,11,0.25)]"
-                            : "text-black/70 border-[#B8860B]/40 hover:text-black hover:border-[#B8860B]/60 hover:bg-[#B8860B]/[0.03]"
+                            ? "text-white font-semibold border-2 border-[#B8860B] bg-[#B8860B] shadow-[0_2px_8px_rgba(184,134,11,0.25)]"
+                            : "text-black/70 border border-[#B8860B]/40 hover:text-black hover:border-[#B8860B]/60 hover:bg-[#B8860B]/[0.03]"
                         }`}
                       >
                         {link.label}
@@ -274,10 +274,10 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                       >
                         <Link
                           href={link.href}
-                          className={`relative px-3 py-1 rounded-md border-2 transition-all whitespace-nowrap text-[11px] ${
+                          className={`relative px-3 py-1 rounded-md transition-all whitespace-nowrap text-[11px] ${
                             isActive
-                              ? "text-white font-semibold border-[#B8860B] bg-[#B8860B] shadow-sm"
-                              : "text-black/70 border-[#B8860B]/40 hover:text-black hover:border-[#B8860B]/60 hover:bg-[#B8860B]/[0.03]"
+                              ? "text-white font-semibold border-2 border-[#B8860B] bg-[#B8860B] shadow-sm"
+                              : "text-black/70 border border-[#B8860B]/40 hover:text-black hover:border-[#B8860B]/60 hover:bg-[#B8860B]/[0.03]"
                           }`}
                         >
                           {link.label}
