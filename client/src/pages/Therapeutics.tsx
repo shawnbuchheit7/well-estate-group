@@ -82,7 +82,7 @@ export default function Therapeutics() {
             <motion.div variants={scaleIn} className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-accent/30 rounded-3xl blur-3xl" />
               <img 
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/yDtDzloISldUQyMw.png" 
+                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/EYeJVwdkrNJOoDJr.webp" 
                 alt="Well Estate Group Treatment Room"
                 className="relative rounded-3xl border border-border shadow-2xl"
               />
