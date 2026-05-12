@@ -163,7 +163,7 @@ export default function ImageLightbox({ src, alt, children, className }: ImageLi
               </button>
             </div>
 
-            {/* Image container */}
+            {/* Image container — clicks on the image stop propagation; clicks outside (on overlay) close */}
             <div
               ref={containerRef}
               className="w-full h-full flex items-center justify-center overflow-hidden"
@@ -172,7 +172,6 @@ export default function ImageLightbox({ src, alt, children, className }: ImageLi
               onMouseMove={handleMouseMove}
               onMouseUp={handleMouseUp}
               onMouseLeave={handleMouseUp}
-              onClick={(e) => e.stopPropagation()}
               style={{ cursor: scale > 1 ? (isDragging ? "grabbing" : "grab") : "default" }}
             >
               <motion.img
@@ -188,12 +187,13 @@ export default function ImageLightbox({ src, alt, children, className }: ImageLi
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.2 }}
                 draggable={false}
+                onClick={(e) => e.stopPropagation()}
               />
             </div>
 
             {/* Instructions */}
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/60 text-sm">
-              Scroll to zoom • Drag to pan • Press Esc to close
+              Click outside image to close • Scroll to zoom • Drag to pan • Esc to close
             </div>
           </motion.div>
         )}
