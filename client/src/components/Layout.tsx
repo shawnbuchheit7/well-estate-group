@@ -214,10 +214,10 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                     >
                       <Link
                         href={link.href}
-                        className={`relative px-3.5 py-1.5 rounded-lg border transition-all whitespace-nowrap ${
+                        className={`relative px-3.5 py-1.5 rounded-lg border-2 transition-all whitespace-nowrap ${
                           isActive
                             ? "text-white font-semibold border-black bg-black shadow-[0_2px_8px_rgba(0,0,0,0.15)]"
-                            : "text-black/55 border-[#C9A962]/60 hover:text-black hover:border-[#C9A962] hover:bg-black/[0.03]"
+                            : "text-black/55 border-[#B8860B] hover:text-black hover:border-[#996515] hover:bg-black/[0.03]"
                         }`}
                       >
                         {link.label}
@@ -274,10 +274,10 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                       >
                         <Link
                           href={link.href}
-                          className={`relative px-3 py-1 rounded-md border transition-all whitespace-nowrap text-[11px] ${
+                          className={`relative px-3 py-1 rounded-md border-2 transition-all whitespace-nowrap text-[11px] ${
                             isActive
                               ? "text-white font-semibold border-black bg-black shadow-sm"
-                              : "text-black/55 border-[#C9A962]/60 hover:text-black hover:border-[#C9A962] hover:bg-black/[0.03]"
+                              : "text-black/55 border-[#B8860B] hover:text-black hover:border-[#996515] hover:bg-black/[0.03]"
                           }`}
                         >
                           {link.label}
