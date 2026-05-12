@@ -131,7 +131,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
   } else if (isLongevityPerformanceRoute || section === "longevity-performance") {
     navLinks = longevityPerformanceNavLinks;
     homeLink = "/longevity/performance-model";
-    sectionLabel = "Performance Model";
+    sectionLabel = "Performance & Recovery Model";
     backLink = "/longevity";
   } else if (isLongevityProjectsRoute) {
     navLinks = [];

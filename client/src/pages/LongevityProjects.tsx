@@ -3,6 +3,7 @@
  * Design: Ultra-premium luxury — white, cream, gold accents (matches GTMProjects pattern)
  */
 
+import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Plus } from "lucide-react";
 import { Link } from "wouter";
@@ -13,6 +14,7 @@ import { fadeInUp, staggerContainer } from "@/lib/animations";
 interface ModelTile {
   id: string;
   title: string;
+  titleDisplay?: React.ReactNode;
   subtitle: string;
   description: string;
   href: string;
@@ -26,6 +28,7 @@ const models: ModelTile[] = [
   {
     id: "luxury",
     title: "Longevity Center Luxury Business Model",
+    titleDisplay: <>Longevity Center<br /><em className="italic font-light">Luxury Business Model</em></>,
     subtitle: "Premium Physician-Led Longevity Centers",
     description: "A premium longevity center concept delivering cutting-edge diagnostics, therapeutics, and personalized wellness programs. Designed for high-net-worth individuals seeking the most advanced health optimization available.",
     href: "/longevity/luxury",
@@ -38,7 +41,8 @@ const models: ModelTile[] = [
   },
   {
     id: "performance",
-    title: "Longevity Center Performance Model",
+    title: "Longevity Center Performance & Recovery Model",
+    titleDisplay: <>Longevity Center<br /><em className="italic font-light">Performance & Recovery Model</em></>,
     subtitle: "NAD+ & Human Performance Optimization",
     description: "A performance-focused longevity center model built on NAD+ therapeutics, advanced diagnostics, and hyper-personalized protocols. Designed for scalable deployment through clinic partnerships, hospitality integration, and direct-to-consumer channels.",
     href: "/longevity/performance-model",
@@ -119,7 +123,7 @@ export default function LongevityProjects() {
                               <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
                             </svg>
                           </div>
-                          <span className="font-mono text-[10px] text-white/40 tracking-[0.2em] uppercase">Performance Model</span>
+                          <span className="font-mono text-[10px] text-white/40 tracking-[0.2em] uppercase">Performance & Recovery</span>
                         </div>
                       )}
 
@@ -138,7 +142,7 @@ export default function LongevityProjects() {
                     {/* Card Body */}
                     <div className="p-6">
                       <h3 className="font-display text-xl font-semibold text-black mb-1 group-hover:text-[#C9A962] transition-colors">
-                        {model.title}
+                        {model.titleDisplay || model.title}
                       </h3>
                       <p className="font-mono text-[10px] text-black/40 tracking-wider uppercase mb-3">
                         {model.subtitle}

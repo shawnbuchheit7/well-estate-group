@@ -17,7 +17,7 @@ interface LightHeroStat {
 
 interface LightHeroProps {
   eyebrow: string;
-  title: string;
+  title: string | ReactNode;
   description: string;
   stats?: LightHeroStat[];
   children?: ReactNode;

@@ -97,13 +97,13 @@ export default function Home() {
                 variants={fadeInUp}
                 className="font-mono text-[#C9A962] font-semibold text-xs tracking-[0.2em] uppercase"
               >
-                Pillar II
+                Luxury Business Model
               </motion.span>
               <motion.h1
                 variants={fadeInUp}
                 className="font-display text-5xl md:text-7xl lg:text-8xl font-medium mt-4 mb-6 text-white leading-[1.05]"
               >
-                Longevity Ventures
+                Longevity Center<br /><em className="italic font-light">Luxury Business Model</em>
               </motion.h1>
               <motion.div
                 initial={{ scaleX: 0 }}

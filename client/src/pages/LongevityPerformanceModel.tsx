@@ -26,8 +26,8 @@ export default function LongevityPerformanceModel() {
   return (
     <Layout section="longevity-performance">
       <LightHero
-        eyebrow="Performance Model"
-        title="Longevity Center Performance Model"
+        eyebrow="Performance & Recovery Model"
+        title={<>Longevity Center<br /><em className="italic font-light">Performance & Recovery Model</em></>}
         description="A performance-focused longevity center model built on NAD+ therapeutics, advanced diagnostics, and hyper-personalized protocols. Designed for scalable deployment through clinic partnerships, hospitality integration, and direct-to-consumer channels."
         stats={[
           { label: "Global Partners", value: "40+" },
