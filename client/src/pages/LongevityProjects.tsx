@@ -99,13 +99,13 @@ export default function LongevityProjects() {
               <motion.div key={model.id} variants={fadeInUp}>
                 <Link href={model.href}>
                   <motion.div
-                    whileHover={{ y: -8, boxShadow: "0 20px 50px rgba(0,0,0,0.12)" }}
-                    className="group relative rounded-2xl border border-black/[0.10] bg-white overflow-hidden cursor-pointer hover:border-[#C9A962]/40 transition-all duration-500 shadow-[0_4px_20px_rgba(0,0,0,0.04)]"
+                    whileHover={{ y: -6, boxShadow: "0 24px 48px rgba(0,0,0,0.14), 0 8px 16px rgba(0,0,0,0.08)" }}
+                    className="group relative rounded-xl border border-black/[0.15] bg-white overflow-hidden cursor-pointer hover:border-[#C9A962]/50 transition-all duration-400 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_8px_24px_rgba(0,0,0,0.04)]"
                   >
                     {/* Card Header — Dark with icon */}
-                    <div className="relative h-48 bg-[#0A0A0A] flex items-center justify-center overflow-hidden">
+                    <div className="relative h-48 bg-[#0A0A0A] flex items-center justify-center overflow-hidden border-b border-black/20">
                       {/* Subtle gradient */}
-                      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_50%_50%,rgba(201,169,98,0.08),transparent)]" />
+                      <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_50%_50%,rgba(201,169,98,0.06),transparent)]" />
                       
                       {model.id === "luxury" ? (
                         <div className="relative z-10 flex flex-col items-center gap-3">
@@ -140,32 +140,32 @@ export default function LongevityProjects() {
                     </div>
 
                     {/* Card Body */}
-                    <div className="p-6">
-                      <h3 className="font-display text-xl font-semibold text-black mb-1 group-hover:text-[#C9A962] transition-colors">
+                    <div className="p-7">
+                      <h3 className="font-display text-xl font-bold text-black mb-1.5 group-hover:text-[#C9A962] transition-colors tracking-tight">
                         {model.titleDisplay || model.title}
                       </h3>
-                      <p className="font-mono text-[10px] text-black/40 tracking-wider uppercase mb-3">
+                      <p className="font-mono text-[10px] text-black/50 tracking-[0.15em] uppercase mb-4 font-medium">
                         {model.subtitle}
                       </p>
-                      <p className="font-body text-sm text-black/55 leading-relaxed mb-5">
+                      <p className="font-body text-sm text-black/60 leading-relaxed mb-6">
                         {model.description}
                       </p>
 
                       {/* Stats Row */}
                       {model.stats && (
-                        <div className="flex gap-4 mb-5">
+                        <div className="flex gap-3 mb-6">
                           {model.stats.map((stat, i) => (
-                            <div key={i} className="flex-1 text-center py-2 rounded-lg bg-black/[0.03] border border-black/[0.10]">
-                              <p className="font-display text-lg font-semibold text-black">{stat.value}</p>
-                              <p className="font-body text-[10px] text-black/40 uppercase tracking-wider">{stat.label}</p>
+                            <div key={i} className="flex-1 text-center py-2.5 rounded-lg bg-[#FAFAF8] border border-black/[0.12] shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)]">
+                              <p className="font-display text-lg font-bold text-black">{stat.value}</p>
+                              <p className="font-mono text-[9px] text-black/45 uppercase tracking-[0.12em] font-medium">{stat.label}</p>
                             </div>
                           ))}
                         </div>
                       )}
 
                       {/* CTA */}
-                      <div className="flex items-center gap-2 text-black/50 group-hover:text-[#C9A962] transition-colors">
-                        <span className="font-body text-sm font-medium">View Model</span>
+                      <div className="flex items-center gap-2 text-black/60 group-hover:text-[#C9A962] transition-colors pt-2 border-t border-black/[0.06]">
+                        <span className="font-body text-sm font-semibold">View Model</span>
                         <motion.div
                           animate={{ x: [0, 4, 0] }}
                           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
@@ -181,7 +181,7 @@ export default function LongevityProjects() {
 
             {/* Add New Model Tile */}
             <motion.div variants={fadeInUp}>
-              <div className="rounded-2xl border-2 border-dashed border-black/[0.10] bg-white/50 h-full min-h-[380px] flex flex-col items-center justify-center gap-4 cursor-default hover:border-[#C9A962]/30 transition-all duration-300">
+              <div className="rounded-xl border-2 border-dashed border-black/[0.12] bg-[#FAFAF8]/50 h-full min-h-[380px] flex flex-col items-center justify-center gap-4 cursor-default hover:border-[#C9A962]/30 transition-all duration-300">
                 <div className="w-14 h-14 rounded-full border border-black/10 flex items-center justify-center">
                   <Plus className="w-6 h-6 text-black/20" />
                 </div>
