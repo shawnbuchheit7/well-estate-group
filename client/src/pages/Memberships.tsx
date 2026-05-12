@@ -68,14 +68,7 @@ export default function Memberships() {
                 </div>
                 
                 <div className="mb-8">
-                  <AnimatedCounter 
-                    value={29500} 
-                    prefix="$" 
-                    suffix="" 
-                    decimals={0}
-                    className="font-display text-5xl font-semibold"
-                    duration={2}
-                  />
+                  <span className="font-display text-5xl font-semibold">$29</span><span className="font-display text-3xl font-semibold text-foreground/70">,500</span>
                   <span className="text-lg text-muted-foreground ml-1">/year</span>
                 </div>
                 
@@ -135,14 +128,7 @@ export default function Memberships() {
                 </div>
                 
                 <div className="mb-8">
-                  <AnimatedCounter 
-                    value={12500} 
-                    prefix="$" 
-                    suffix="" 
-                    decimals={0}
-                    className="font-display text-5xl font-semibold"
-                    duration={2}
-                  />
+                  <span className="font-display text-5xl font-semibold">$12</span><span className="font-display text-3xl font-semibold text-foreground/70">,500</span>
                   <span className="text-lg text-muted-foreground ml-1">/year</span>
                 </div>
                 
@@ -293,7 +279,7 @@ export default function Memberships() {
               <h4 className="font-display font-medium mb-4">ELITE Membership Economics</h4>
               <div className="grid md:grid-cols-5 gap-6 text-center">
                 <div>
-                  <span className="font-mono text-2xl text-accent">$29,500</span>
+                  <span className="font-mono text-2xl text-accent">$29<span className="text-base">,500</span></span>
                   <p className="text-xs text-muted-foreground mt-1">Annual Fee</p>
                 </div>
                 <div>
@@ -309,7 +295,7 @@ export default function Memberships() {
                   <p className="text-xs text-muted-foreground mt-1">Avg Tenure</p>
                 </div>
                 <div>
-                  <span className="font-mono text-2xl text-foreground">$97,350</span>
+                  <span className="font-mono text-2xl text-foreground">$97<span className="text-base">,350</span></span>
                   <p className="text-xs text-muted-foreground mt-1">Lifetime Value</p>
                 </div>
               </div>
@@ -468,7 +454,7 @@ export default function Memberships() {
               <h4 className="font-display font-medium mb-4">PRIME Membership Economics</h4>
               <div className="grid md:grid-cols-4 gap-6 text-center">
                 <div>
-                  <span className="font-mono text-2xl text-primary">$12,500</span>
+                  <span className="font-mono text-2xl text-primary">$12<span className="text-base">,500</span></span>
                   <p className="text-xs text-muted-foreground mt-1">Annual Fee</p>
                 </div>
                 <div>

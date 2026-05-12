@@ -173,7 +173,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
       {/* Navigation — hidden in present mode */}
       {!isPresentMode && (
       <motion.nav 
-        className="fixed top-0 left-0 right-0 z-50 backdrop-blur-2xl border-b bg-white/97 border-black/[0.08]"
+        className="fixed top-0 left-0 right-0 z-50 backdrop-blur-2xl border-b bg-white/97 border-[#C9A962]/25"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] }}
@@ -217,7 +217,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                         className={`relative px-3.5 py-1.5 rounded-lg border transition-all whitespace-nowrap ${
                           isActive
                             ? "text-white font-semibold border-black bg-black shadow-[0_2px_8px_rgba(0,0,0,0.15)]"
-                            : "text-black/55 border-transparent hover:text-black hover:border-black/[0.12] hover:bg-black/[0.03]"
+                            : "text-black/55 border-transparent hover:text-black hover:border-[#C9A962]/35 hover:bg-black/[0.03]"
                         }`}
                       >
                         {link.label}
@@ -263,7 +263,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
           </div>
           {/* Second row: scrollable tab strip — only shown when many tabs */}
           {navLinks.length > 6 && (
-            <div className="hidden lg:block relative border-t border-black/[0.06]">
+            <div className="hidden lg:block relative border-t border-[#C9A962]/20">
               <div className="overflow-x-auto scrollbar-hide pb-0" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
                 <div className="flex items-center justify-center gap-1 px-4 py-1.5 font-body text-xs w-full">
                   {navLinks.map((link) => {
@@ -277,7 +277,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                           className={`relative px-3 py-1 rounded-md border transition-all whitespace-nowrap text-[11px] ${
                             isActive
                               ? "text-white font-semibold border-black bg-black shadow-sm"
-                              : "text-black/55 border-transparent hover:text-black hover:border-black/15 hover:bg-black/[0.03]"
+                              : "text-black/55 border-transparent hover:text-black hover:border-[#C9A962]/25 hover:bg-black/[0.03]"
                           }`}
                         >
                           {link.label}
@@ -314,11 +314,11 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-white border-l border-black/15 z-50 lg:hidden shadow-2xl"
+              className="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-white border-l border-[#C9A962]/25 z-50 lg:hidden shadow-2xl"
             >
               <div className="flex flex-col h-full">
                 {/* Mobile Menu Header */}
-                <div className="flex items-center justify-between h-20 px-6 border-b border-black/8">
+                <div className="flex items-center justify-between h-20 px-6 border-b border-[#C9A962]/20">
                   <span className="font-display text-xl font-semibold text-black">Menu</span>
                   <motion.button
                     onClick={closeMobileMenu}
@@ -370,7 +370,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                 
                 {/* Mobile Menu Footer */}
                 {showDataRoom && (
-                  <div className="p-6 border-t border-black/8">
+                  <div className="p-6 border-t border-[#C9A962]/20">
                     <Link href="/longevity/data-room" onClick={closeMobileMenu}>
                       <Button className="w-full bg-black hover:bg-black/90 text-white font-body font-medium shadow-md">
                         Data Room
@@ -391,12 +391,12 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
 
       {/* Cross-Pillar Navigation — hidden on ZeroWheel project pages and in present mode */}
       {!isPresentMode && currentPillarIndex >= 0 && !isZWRoute && (
-        <section className="py-12 border-t bg-white border-black/[0.12]">
+        <section className="py-12 border-t bg-white border-[#C9A962]/35">
           <div className="container px-6">
             <div className="flex items-center justify-between max-w-4xl mx-auto">
               {prevPillar ? (
                 <Link href={prevPillar.href} className="group flex items-center gap-3 text-left">
-                  <div className="w-10 h-10 rounded-full border flex items-center justify-center group-hover:border-[#C9A962]/50 group-hover:bg-[#C9A962]/[0.04] transition-all border-black/20">
+                  <div className="w-10 h-10 rounded-full border flex items-center justify-center group-hover:border-[#C9A962]/50 group-hover:bg-[#C9A962]/[0.04] transition-all border-[#C9A962]/30">
                     <ChevronLeft className="w-4 h-4 group-hover:text-[#C9A962] transition-colors text-black/40" />
                   </div>
                   <div>
@@ -416,7 +416,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                     <p className="font-mono text-[10px] tracking-wider uppercase text-black/35">Pillar {nextPillar.num}</p>
                     <p className="font-body text-sm transition-colors text-black/70 group-hover:text-black">{nextPillar.label}</p>
                   </div>
-                  <div className="w-10 h-10 rounded-full border flex items-center justify-center group-hover:border-[#C9A962]/50 group-hover:bg-[#C9A962]/[0.04] transition-all border-black/20">
+                  <div className="w-10 h-10 rounded-full border flex items-center justify-center group-hover:border-[#C9A962]/50 group-hover:bg-[#C9A962]/[0.04] transition-all border-[#C9A962]/30">
                     <ArrowRight className="w-4 h-4 group-hover:text-[#C9A962] transition-colors text-black/40" />
                   </div>
                 </Link>
@@ -431,7 +431,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
 
       {/* Enhanced Footer with Contact CTA — hidden in present mode */}
       {!isPresentMode && (
-      <footer className="py-16 border-t border-black/[0.12] bg-[#FAFAF8]">
+      <footer className="py-16 border-t border-[#C9A962]/35 bg-[#FAFAF8]">
         <div className="container px-6">
           <div className="max-w-6xl mx-auto">
             {/* Footer Top */}
@@ -474,7 +474,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                   <p className="font-mono text-[10px] tracking-wider uppercase mb-1 text-black/40">Get in Touch</p>
                   <a 
                     href="mailto:info@wellestategroup.com" 
-                    className="group flex items-center gap-3 px-5 py-3 rounded-xl border hover:border-[#C9A962]/50 transition-all border-black/20 bg-white hover:bg-[#C9A962]/[0.04]"
+                    className="group flex items-center gap-3 px-5 py-3 rounded-xl border hover:border-[#C9A962]/50 transition-all border-[#C9A962]/30 bg-white hover:bg-[#C9A962]/[0.04]"
                   >
                     <div className="w-9 h-9 rounded-full bg-black flex items-center justify-center group-hover:bg-[#C9A962] transition-colors">
                       <Mail className="w-4 h-4 text-white" />

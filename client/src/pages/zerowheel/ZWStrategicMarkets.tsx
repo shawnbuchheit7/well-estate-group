@@ -187,7 +187,7 @@ function DraggableExercise() {
         </div>
         <button
           onClick={handleReset}
-          className="font-mono text-[10px] text-black/40 hover:text-[#C9A962] tracking-wider uppercase px-3 py-1.5 rounded-lg border border-black/[0.08] hover:border-[#C9A962]/30 transition-all"
+          className="font-mono text-[10px] text-black/40 hover:text-[#C9A962] tracking-wider uppercase px-3 py-1.5 rounded-lg border border-[#C9A962]/25 hover:border-[#C9A962]/60 transition-all"
         >
           Reset
         </button>
@@ -204,7 +204,7 @@ function DraggableExercise() {
         className={`mb-8 p-5 rounded-2xl border-2 border-dashed transition-all duration-300 min-h-[80px] ${
           dragOverZone === "staging"
             ? "border-[#C9A962] bg-[#C9A962]/[0.03]"
-            : "border-black/[0.12] bg-[#FAFAF8]"
+            : "border-[#C9A962]/35 bg-[#FAFAF8]"
         }`}
       >
         <div className="flex items-center gap-2 mb-3">
@@ -222,7 +222,7 @@ function DraggableExercise() {
               draggable
               onDragStart={(e) => handleDragStart(e, lob.id)}
               onDragEnd={handleDragEnd}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-medium tracking-wide transition-all cursor-grab active:cursor-grabbing select-none bg-white text-black/70 border border-black/[0.15] hover:border-[#C9A962]/40 hover:shadow-md hover:scale-[1.03] hover:-translate-y-0.5 ${
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-medium tracking-wide transition-all cursor-grab active:cursor-grabbing select-none bg-white text-black/70 border border-[#C9A962]/40 hover:border-[#C9A962]/40 hover:shadow-md hover:scale-[1.03] hover:-translate-y-0.5 ${
                 draggedItem === lob.id ? "opacity-50 scale-95" : ""
               }`}
             >
@@ -271,7 +271,7 @@ function DraggableExercise() {
                 } ${
                   isDropTarget
                     ? "border-[#C9A962] shadow-[0_8px_30px_rgba(201,169,98,0.15)] scale-[1.01]"
-                    : "border-black/[0.12] shadow-[0_2px_12px_rgba(0,0,0,0.04)]"
+                    : "border-[#C9A962]/35 shadow-[0_2px_12px_rgba(0,0,0,0.04)]"
                 }`}
                 style={{ minHeight: '200px' }}
               >
@@ -307,7 +307,7 @@ function DraggableExercise() {
                       className={`flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-[11px] sm:text-xs font-medium tracking-wide transition-all cursor-grab active:cursor-grabbing select-none ${
                         isTopLeft
                           ? "bg-[#C9A962] text-white shadow-md hover:shadow-lg hover:scale-[1.03]"
-                          : "bg-white text-black/70 border border-black/[0.15] hover:border-[#C9A962]/40 hover:shadow-md hover:scale-[1.03]"
+                          : "bg-white text-black/70 border border-[#C9A962]/40 hover:border-[#C9A962]/40 hover:shadow-md hover:scale-[1.03]"
                       } ${draggedItem === lob.id ? "opacity-50 scale-95" : ""}`}
                     >
                       <GripVertical className={`w-3 h-3 flex-shrink-0 ${isTopLeft ? 'text-white/40' : 'text-black/25'}`} />

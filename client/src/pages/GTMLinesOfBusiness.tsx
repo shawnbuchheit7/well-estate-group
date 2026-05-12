@@ -136,7 +136,7 @@ export default function GTMLinesOfBusiness() {
                   y: -4,
                   boxShadow: "0 12px 40px rgba(201,169,98,0.15)",
                 }}
-                className="aspect-square rounded-full border-2 border-black/[0.12] hover:border-[#C9A962]/60 flex items-center justify-center p-4 bg-white hover:bg-[#C9A962]/[0.04] transition-colors duration-300 cursor-default shadow-[0_4px_16px_rgba(0,0,0,0.04)]"
+                className="aspect-square rounded-full border-2 border-[#C9A962]/35 hover:border-[#C9A962]/60 flex items-center justify-center p-4 bg-white hover:bg-[#C9A962]/[0.04] transition-colors duration-300 cursor-default shadow-[0_4px_16px_rgba(0,0,0,0.04)]"
               >
                 <p className="font-body text-xs md:text-sm font-medium text-black/70 text-center leading-tight">{lob}</p>
               </motion.div>
@@ -186,7 +186,7 @@ export default function GTMLinesOfBusiness() {
                   selectedMacro === i ? "ring-2 ring-[#C9A962] ring-offset-2" : ""
                 }`}
               >
-                <div className="bg-white border border-black/[0.12] rounded-2xl p-7 h-full hover:border-[#C9A962]/40 transition-all duration-300 text-center relative overflow-hidden">
+                <div className="bg-white border border-[#C9A962]/35 rounded-2xl p-7 h-full hover:border-[#C9A962]/40 transition-all duration-300 text-center relative overflow-hidden">
                   {/* Background accent */}
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#C9A962]/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
@@ -274,7 +274,7 @@ export default function GTMLinesOfBusiness() {
                   key={i}
                   variants={fadeInUp}
                   whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(0,0,0,0.06)" }}
-                  className="bg-white border border-black/[0.12] rounded-xl overflow-hidden hover:border-[#C9A962]/30 transition-all duration-300"
+                  className="bg-white border border-[#C9A962]/35 rounded-xl overflow-hidden hover:border-[#C9A962]/60 transition-all duration-300"
                 >
                   <div className="bg-[#F5F4F1] px-5 py-3.5 flex items-center gap-2">
                     <category.icon className="w-4 h-4 text-[#C9A962]" />

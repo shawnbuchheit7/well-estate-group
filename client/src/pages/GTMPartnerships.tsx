@@ -105,14 +105,14 @@ export default function GTMPartnerships() {
                 key={i}
                 variants={scaleIn}
                 whileHover={{ y: -4 }}
-                className="bg-white border border-black/[0.10] rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/25 transition-all duration-300 h-full"
+                className="bg-white border border-[#C9A962]/30 rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/60 transition-all duration-300 h-full"
               >
-                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-black/[0.06] flex items-center justify-center mb-5">
+                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-[#C9A962]/20 flex items-center justify-center mb-5">
                   <category.icon className="w-5 h-5 text-[#C9A962]" />
                 </div>
                 <h3 className="font-display text-lg font-bold text-black mb-2 tracking-tight">{category.title}</h3>
                 <p className="font-body text-sm text-black/50 mb-4 leading-relaxed">{category.description}</p>
-                <div className="space-y-2 pt-4 border-t border-black/[0.06]">
+                <div className="space-y-2 pt-4 border-t border-[#C9A962]/20">
                   {category.partners.map((partner, j) => (
                     <div key={j} className="flex items-center gap-2.5">
                       <div className="w-1.5 h-1.5 rounded-full bg-[#C9A962]/60" />
@@ -180,12 +180,12 @@ export default function GTMPartnerships() {
                   key={i}
                   variants={scaleIn}
                   whileHover={{ y: -4 }}
-                  className="bg-white border border-black/[0.10] rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/25 transition-all duration-300"
+                  className="bg-white border border-[#C9A962]/30 rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/60 transition-all duration-300"
                 >
                   <h3 className="font-display text-2xl font-bold text-[#C9A962] mb-1 tracking-tight">{community.title}</h3>
                   <p className="font-body text-xs text-black/45 mb-4">{community.subtitle}</p>
                   <p className="font-body text-sm text-black/50 leading-relaxed mb-5">{community.description}</p>
-                  <div className="pt-4 border-t border-black/[0.06]">
+                  <div className="pt-4 border-t border-[#C9A962]/20">
                     <span className="font-mono text-[10px] text-[#C9A962] font-semibold tracking-[0.15em] uppercase">{community.stats}</span>
                   </div>
                 </motion.div>
@@ -229,7 +229,7 @@ export default function GTMPartnerships() {
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="flex gap-4 items-start p-6 rounded-xl bg-white border border-black/[0.10] shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:border-[#C9A962]/20 transition-all duration-300"
+                className="flex gap-4 items-start p-6 rounded-xl bg-white border border-[#C9A962]/30 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:border-[#C9A962]/50 transition-all duration-300"
               >
                 <div className="w-10 h-10 rounded-lg bg-[#C9A962]/10 border border-[#C9A962]/20 flex items-center justify-center flex-shrink-0">
                   <span className="font-display text-sm font-bold text-[#C9A962]">{String(i + 1).padStart(2, '0')}</span>
@@ -278,7 +278,7 @@ export default function GTMPartnerships() {
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="flex gap-4 items-start p-6 rounded-xl bg-white border border-black/[0.10] shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:border-[#C9A962]/20 transition-all duration-300"
+                className="flex gap-4 items-start p-6 rounded-xl bg-white border border-[#C9A962]/30 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:border-[#C9A962]/50 transition-all duration-300"
               >
                 <div className="w-9 h-9 rounded-lg bg-[#C9A962]/10 border border-[#C9A962]/20 flex items-center justify-center flex-shrink-0">
                   <Star className="w-4 h-4 text-[#C9A962]" />

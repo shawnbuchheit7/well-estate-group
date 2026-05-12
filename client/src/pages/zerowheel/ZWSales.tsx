@@ -298,7 +298,7 @@ export default function ZWSales() {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="rounded-2xl border border-black/[0.15] overflow-hidden"
+              className="rounded-2xl border border-[#C9A962]/40 overflow-hidden"
             >
               <div className="bg-[#F5F4F1] px-6 py-3 flex items-center justify-between">
                 <span className="font-display text-sm font-semibold text-black">Pricing Structure</span>
@@ -382,10 +382,10 @@ export default function ZWSales() {
                 key={i}
                 variants={fadeInUp}
                 whileHover={{ y: -3, boxShadow: "0 12px 30px rgba(0,0,0,0.06)" }}
-                className="bg-white border border-black/[0.12] rounded-xl overflow-hidden hover:border-[#C9A962]/30 hover:shadow-lg transition-all duration-300"
+                className="bg-white border border-[#C9A962]/35 rounded-xl overflow-hidden hover:border-[#C9A962]/60 hover:shadow-lg transition-all duration-300"
               >
                 {/* Card Header */}
-                <div className="flex items-center justify-between px-6 py-4 border-b border-black/[0.15]" style={{ background: `linear-gradient(135deg, ${lob.color}08, transparent)` }}>
+                <div className="flex items-center justify-between px-6 py-4 border-b border-[#C9A962]/40" style={{ background: `linear-gradient(135deg, ${lob.color}08, transparent)` }}>
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: `${lob.color}15` }}>
                       <lob.icon className="w-5 h-5" style={{ color: lob.color }} />
@@ -418,7 +418,7 @@ export default function ZWSales() {
                     </div>
 
                     {/* Metrics Sidebar */}
-                    <div className="flex md:flex-col gap-4 md:gap-3 md:min-w-[160px] md:border-l md:border-black/[0.15] md:pl-6">
+                    <div className="flex md:flex-col gap-4 md:gap-3 md:min-w-[160px] md:border-l md:border-[#C9A962]/40 md:pl-6">
                       <div>
                         <p className="font-mono text-[9px] text-black/25 uppercase tracking-wider">Addressable</p>
                         <p className="font-display text-lg font-semibold text-black mt-0.5">{lob.metrics.accounts}</p>
@@ -436,7 +436,7 @@ export default function ZWSales() {
 
                   {/* Key Contacts & Influencers */}
                   {(lob.contacts || lob.contactNote) && (
-                    <div className="mt-6 pt-5 border-t border-black/[0.08]">
+                    <div className="mt-6 pt-5 border-t border-[#C9A962]/25">
                       <div className="flex items-center gap-2 mb-3">
                         <UserCheck className="w-4 h-4 text-[#C9A962]" />
                         <p className="font-mono text-[10px] text-[#C9A962] uppercase tracking-[0.15em] font-semibold">Key Contacts & Influencers</p>
@@ -447,7 +447,7 @@ export default function ZWSales() {
                       {lob.contacts && (
                         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
                           {lob.contacts.map((contact, j) => (
-                            <div key={j} className="rounded-lg border border-black/[0.08] bg-[#FAFAF8] p-3 hover:border-[#C9A962]/30 transition-colors">
+                            <div key={j} className="rounded-lg border border-[#C9A962]/25 bg-[#FAFAF8] p-3 hover:border-[#C9A962]/60 transition-colors">
                               <p className="font-display text-sm font-semibold text-black leading-tight">{contact.name}</p>
                               <p className="font-body text-xs text-black/55 mt-0.5">{contact.title}</p>
                               <p className="font-body text-xs text-[#C9A962] font-medium mt-0.5">{contact.org}</p>
@@ -505,7 +505,7 @@ export default function ZWSales() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.02 }}
                 whileHover={{ scale: 1.05, y: -2, boxShadow: "0 8px 20px rgba(0,0,0,0.06)" }}
-                className="px-4 py-2 rounded-full bg-white border border-black/[0.15] text-sm font-body font-medium text-black/60 hover:border-[#C9A962]/40 hover:text-black hover:bg-[#C9A962]/[0.03] transition-all cursor-default shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
+                className="px-4 py-2 rounded-full bg-white border border-[#C9A962]/40 text-sm font-body font-medium text-black/60 hover:border-[#C9A962]/40 hover:text-black hover:bg-[#C9A962]/[0.03] transition-all cursor-default shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
               >
                 {partner}
               </motion.span>

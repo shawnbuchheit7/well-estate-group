@@ -78,7 +78,7 @@ export default function Home() {
                 key={i}
                 href={section.path}
                 variants={fadeInUp}
-                className="group p-6 rounded-xl border border-black/[0.08] bg-white hover:border-[#C9A962]/30 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300"
+                className="group p-6 rounded-xl border border-[#C9A962]/25 bg-white hover:border-[#C9A962]/60 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300"
                 whileHover={{ y: -4 }}
               >
                 <div className="flex items-center justify-between mb-3">

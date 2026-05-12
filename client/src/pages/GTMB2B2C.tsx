@@ -73,9 +73,9 @@ export default function GTMB2B2C() {
                 key={i}
                 variants={scaleIn}
                 whileHover={{ y: -4 }}
-                className="bg-white border border-black/[0.10] rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/25 transition-all duration-300"
+                className="bg-white border border-[#C9A962]/30 rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/60 transition-all duration-300"
               >
-                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-black/[0.06] flex items-center justify-center mb-5">
+                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-[#C9A962]/20 flex items-center justify-center mb-5">
                   <model.icon className="w-5 h-5 text-[#C9A962]" />
                 </div>
                 <h3 className="font-display text-2xl font-bold text-black mb-1 tracking-tight">{model.title}</h3>
@@ -137,9 +137,9 @@ export default function GTMB2B2C() {
                 key={i}
                 variants={scaleIn}
                 whileHover={{ y: -4 }}
-                className="bg-white border border-black/[0.10] rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/25 transition-all duration-300"
+                className="bg-white border border-[#C9A962]/30 rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/60 transition-all duration-300"
               >
-                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-black/[0.06] flex items-center justify-center mb-5">
+                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-[#C9A962]/20 flex items-center justify-center mb-5">
                   <item.icon className="w-5 h-5 text-[#C9A962]" />
                 </div>
                 <h3 className="font-display text-lg font-bold text-black mb-2.5 tracking-tight">{item.title}</h3>
@@ -200,9 +200,9 @@ export default function GTMB2B2C() {
                 key={i}
                 variants={scaleIn}
                 whileHover={{ y: -4 }}
-                className="bg-white border border-black/[0.10] rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/25 transition-all duration-300"
+                className="bg-white border border-[#C9A962]/30 rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/60 transition-all duration-300"
               >
-                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-black/[0.06] flex items-center justify-center mb-5">
+                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-[#C9A962]/20 flex items-center justify-center mb-5">
                   <item.icon className="w-5 h-5 text-[#C9A962]" />
                 </div>
                 <h3 className="font-display text-lg font-bold text-black mb-2.5 tracking-tight">{item.title}</h3>
@@ -263,9 +263,9 @@ export default function GTMB2B2C() {
                 key={i}
                 variants={scaleIn}
                 whileHover={{ y: -4 }}
-                className="bg-white border border-black/[0.10] rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/25 transition-all duration-300"
+                className="bg-white border border-[#C9A962]/30 rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/60 transition-all duration-300"
               >
-                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-black/[0.06] flex items-center justify-center mb-5">
+                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-[#C9A962]/20 flex items-center justify-center mb-5">
                   <item.icon className="w-5 h-5 text-[#C9A962]" />
                 </div>
                 <h3 className="font-display text-lg font-bold text-black mb-2.5 tracking-tight">{item.title}</h3>
@@ -307,8 +307,8 @@ export default function GTMB2B2C() {
             variants={staggerContainer}
           >
             <div className="grid md:grid-cols-3 gap-5 items-center">
-              <motion.div variants={scaleIn} className="bg-white border border-black/[0.10] rounded-xl p-7 text-center shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.04)]">
-                <div className="w-14 h-14 rounded-xl bg-[#F9F9F7] border border-black/[0.06] flex items-center justify-center mx-auto mb-4">
+              <motion.div variants={scaleIn} className="bg-white border border-[#C9A962]/30 rounded-xl p-7 text-center shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.04)]">
+                <div className="w-14 h-14 rounded-xl bg-[#F9F9F7] border border-[#C9A962]/20 flex items-center justify-center mx-auto mb-4">
                   <Heart className="w-6 h-6 text-[#C9A962]" />
                 </div>
                 <h3 className="font-display text-xl font-bold text-black mb-2 tracking-tight">Healthcare</h3>
@@ -327,8 +327,8 @@ export default function GTMB2B2C() {
                 <p className="font-body text-[11px] text-black/40 mt-1">Value-driven, not direct selling</p>
               </motion.div>
 
-              <motion.div variants={scaleIn} className="bg-white border border-black/[0.10] rounded-xl p-7 text-center shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.04)]">
-                <div className="w-14 h-14 rounded-xl bg-[#F9F9F7] border border-black/[0.06] flex items-center justify-center mx-auto mb-4">
+              <motion.div variants={scaleIn} className="bg-white border border-[#C9A962]/30 rounded-xl p-7 text-center shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.04)]">
+                <div className="w-14 h-14 rounded-xl bg-[#F9F9F7] border border-[#C9A962]/20 flex items-center justify-center mx-auto mb-4">
                   <Users className="w-6 h-6 text-[#C9A962]" />
                 </div>
                 <h3 className="font-display text-xl font-bold text-black mb-2 tracking-tight">Consumer</h3>
@@ -393,7 +393,7 @@ export default function GTMB2B2C() {
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="flex gap-4 items-start p-6 rounded-xl bg-white border border-black/[0.10] shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:border-[#C9A962]/20 transition-all duration-300"
+                className="flex gap-4 items-start p-6 rounded-xl bg-white border border-[#C9A962]/30 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:border-[#C9A962]/50 transition-all duration-300"
               >
                 <div className="w-9 h-9 rounded-lg bg-[#C9A962]/10 border border-[#C9A962]/20 flex items-center justify-center flex-shrink-0">
                   <CheckCircle2 className="w-4 h-4 text-[#C9A962]" />
@@ -460,10 +460,10 @@ export default function GTMB2B2C() {
                 key={i}
                 variants={scaleIn}
                 whileHover={{ y: -4 }}
-                className="bg-white border border-black/[0.10] rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/25 transition-all duration-300"
+                className="bg-white border border-[#C9A962]/30 rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/60 transition-all duration-300"
               >
                 <span className="font-display text-4xl font-bold text-[#C9A962]/20">{step.step}</span>
-                <div className="w-10 h-10 rounded-lg bg-[#F9F9F7] border border-black/[0.06] flex items-center justify-center mt-3 mb-4">
+                <div className="w-10 h-10 rounded-lg bg-[#F9F9F7] border border-[#C9A962]/20 flex items-center justify-center mt-3 mb-4">
                   <step.icon className="w-5 h-5 text-[#C9A962]" />
                 </div>
                 <h3 className="font-display text-lg font-bold text-black mb-2.5 tracking-tight">{step.title}</h3>

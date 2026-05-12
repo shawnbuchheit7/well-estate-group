@@ -287,7 +287,7 @@ export default function Landing() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 3.4 + i * 0.1 }}
                 whileHover={{ y: -3 }}
-                className="text-center p-5 rounded-xl border border-[#0A0A0A]/[0.08] bg-[#F9F9F7] hover:border-[#C9A962]/30 transition-all duration-300"
+                className="text-center p-5 rounded-xl border border-[#0A0A0A]/[0.08] bg-[#F9F9F7] hover:border-[#C9A962]/60 transition-all duration-300"
                 style={{
                   boxShadow: "0 2px 8px rgba(0,0,0,0.02)",
                 }}

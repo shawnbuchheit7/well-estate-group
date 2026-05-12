@@ -110,7 +110,7 @@ export default function GTMLeads() {
                 className="flex gap-5 mb-6 last:mb-0"
               >
                 <div className="flex flex-col items-center flex-shrink-0">
-                  <div className="w-12 h-12 rounded-xl bg-white border border-black/[0.10] shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-xl bg-white border border-[#C9A962]/30 shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex items-center justify-center">
                     <stage.icon className="w-5 h-5 text-[#C9A962]" />
                   </div>
                   {i < 5 && <div className="w-px h-full bg-black/[0.08] mt-2" />}
@@ -163,9 +163,9 @@ export default function GTMLeads() {
                 key={i}
                 variants={scaleIn}
                 whileHover={{ y: -4 }}
-                className="bg-white border border-black/[0.10] rounded-xl p-6 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/25 transition-all duration-300"
+                className="bg-white border border-[#C9A962]/30 rounded-xl p-6 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/60 transition-all duration-300"
               >
-                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-black/[0.06] flex items-center justify-center mb-5">
+                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-[#C9A962]/20 flex items-center justify-center mb-5">
                   <source.icon className="w-5 h-5 text-[#C9A962]" />
                 </div>
                 <h3 className="font-display text-base font-bold text-black mb-4 tracking-tight">{source.title}</h3>
@@ -221,9 +221,9 @@ export default function GTMLeads() {
                 key={i}
                 variants={fadeInUp}
                 whileHover={{ y: -3 }}
-                className="flex gap-5 p-6 rounded-xl bg-white border border-black/[0.10] shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_28px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/25 transition-all duration-300"
+                className="flex gap-5 p-6 rounded-xl bg-white border border-[#C9A962]/30 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_28px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/60 transition-all duration-300"
               >
-                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-black/[0.06] flex items-center justify-center flex-shrink-0">
+                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-[#C9A962]/20 flex items-center justify-center flex-shrink-0">
                   <feature.icon className="w-5 h-5 text-[#C9A962]" />
                 </div>
                 <div>
@@ -262,8 +262,8 @@ export default function GTMLeads() {
             variants={staggerContainer}
           >
             {/* Metrics Table */}
-            <motion.div variants={fadeInUp} className="bg-white border border-black/[0.10] rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.03),0_8px_24px_rgba(0,0,0,0.05)] overflow-hidden">
-              <div className="grid grid-cols-3 bg-[#F5F4F1] border-b border-black/[0.08]">
+            <motion.div variants={fadeInUp} className="bg-white border border-[#C9A962]/30 rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.03),0_8px_24px_rgba(0,0,0,0.05)] overflow-hidden">
+              <div className="grid grid-cols-3 bg-[#F5F4F1] border-b border-[#C9A962]/25">
                 <div className="px-6 py-4 font-mono text-[11px] tracking-[0.15em] uppercase font-semibold">Metric</div>
                 <div className="px-6 py-4 font-mono text-[11px] tracking-[0.15em] uppercase font-semibold">What We Track</div>
                 <div className="px-6 py-4 font-mono text-[11px] tracking-[0.15em] uppercase font-semibold">Why It Matters</div>
@@ -276,7 +276,7 @@ export default function GTMLeads() {
                 { metric: "NPS Score", track: "Net Promoter Score from post-service surveys", why: "Predicts retention, referrals, and brand health" },
                 { metric: "Pipeline Velocity", track: "Average time from lead to conversion", why: "Identifies bottlenecks and optimization opportunities" },
               ].map((row, i) => (
-                <div key={i} className={`grid grid-cols-3 ${i % 2 === 0 ? "bg-white" : "bg-[#FAFAF8]"} ${i < 5 ? "border-b border-black/[0.06]" : ""} hover:bg-[#F5F4F0] transition-colors duration-150`}>
+                <div key={i} className={`grid grid-cols-3 ${i % 2 === 0 ? "bg-white" : "bg-[#FAFAF8]"} ${i < 5 ? "border-b border-[#C9A962]/20" : ""} hover:bg-[#F5F4F0] transition-colors duration-150`}>
                   <div className="px-6 py-4 font-display text-sm font-bold text-black">{row.metric}</div>
                   <div className="px-6 py-4 font-body text-sm text-black/50">{row.track}</div>
                   <div className="px-6 py-4 font-body text-sm text-black/50">{row.why}</div>

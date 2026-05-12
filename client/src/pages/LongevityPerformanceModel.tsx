@@ -71,7 +71,7 @@ export default function LongevityPerformanceModel() {
                 key={i}
                 href={section.path}
                 variants={fadeInUp}
-                className="group p-6 rounded-2xl border border-black/[0.12] bg-white hover:border-[#C9A962]/30 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300"
+                className="group p-6 rounded-2xl border border-[#C9A962]/35 bg-white hover:border-[#C9A962]/60 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300"
                 whileHover={{ y: -4 }}
               >
                 <div className="flex items-center justify-between mb-3">
@@ -133,7 +133,7 @@ export default function LongevityPerformanceModel() {
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="text-center p-4 rounded-xl border border-black/[0.08] bg-white"
+                className="text-center p-4 rounded-xl border border-[#C9A962]/25 bg-white"
               >
                 <div className="w-10 h-10 mx-auto mb-3 rounded-full bg-[#C9A962]/10 flex items-center justify-center">
                   <span className="font-mono text-[10px] text-[#C9A962] font-bold">{String(i + 1).padStart(2, "0")}</span>
@@ -146,7 +146,7 @@ export default function LongevityPerformanceModel() {
       </section>
 
       {/* Back to Models */}
-      <section className="py-12 bg-white border-t border-black/[0.06]">
+      <section className="py-12 bg-white border-t border-[#C9A962]/20">
         <div className="container px-6 text-center">
           <Link href="/longevity">
             <motion.div

@@ -526,7 +526,7 @@ export default function UseOfFunds() {
             <motion.div variants={fadeInUp} className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
 <div className="bg-card border border-border rounded-2xl overflow-hidden">
                 <ImageLightbox
-                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/rZMRFqNlZXobGXKO.jpg"
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/EDiztIuFTUvBdnwn.webp"
                   alt="Reception Area - Entry"
                   className="aspect-[4/3]"
                 />
@@ -538,7 +538,7 @@ export default function UseOfFunds() {
 
               <div className="bg-card border border-border rounded-2xl overflow-hidden">
                 <ImageLightbox
-                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/KbwUcCDWQiXoJQaP.jpg"
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/EYeJVwdkrNJOoDJr.webp"
                   alt="Reception Area - Concierge"
                   className="aspect-[4/3]"
                 />
@@ -566,7 +566,7 @@ export default function UseOfFunds() {
             <motion.div variants={fadeInUp} className="grid md:grid-cols-2 gap-6">
               <div className="bg-card border border-border rounded-2xl overflow-hidden">
                 <ImageLightbox
-                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/hhSjBSwqXHSHkHyu.jpg"
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/tXgFRFbpaGApxrTA.webp"
                   alt="Treatment Suite - Main View"
                   className="aspect-[16/10]"
                 />
@@ -580,7 +580,7 @@ export default function UseOfFunds() {
 
               <div className="bg-card border border-border rounded-2xl overflow-hidden">
                 <ImageLightbox
-                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/VwvNhVzXPNfmaFwA.jpg"
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/dQxiDPfHDevJrAde.webp"
                   alt="Treatment Suite - Seating Area"
                   className="aspect-[16/10]"
                 />
@@ -721,7 +721,7 @@ export default function UseOfFunds() {
       <section className="py-20 relative bg-card/30">
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-10"
-          style={{ backgroundImage: "url('https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/EtdQiGqFkWiUzcUh.jpg')" }}
+          style={{ backgroundImage: "url('https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/cjyrQEUvkyRrFBtm.webp')" }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
         

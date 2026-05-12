@@ -160,7 +160,7 @@ export function DarkModeToggle() {
       className={`relative flex items-center gap-2 px-3 py-1.5 rounded-full border text-[11px] font-mono tracking-wider uppercase transition-all ${
         isPresentMode
           ? "border-[#C9A962]/40 bg-[#C9A962]/10 text-[#C9A962]"
-          : "border-black/10 bg-transparent text-black/40 hover:text-black/60 hover:border-black/20"
+          : "border-[#C9A962]/25 bg-transparent text-black/40 hover:text-black/60 hover:border-[#C9A962]/30"
       }`}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
@@ -288,7 +288,7 @@ export function PresentationMode({ slides, pageName }: PresentationModeProps) {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[9998] bg-white"
           >
-            <div className="absolute top-0 left-0 right-0 h-16 bg-white/80 backdrop-blur-sm border-b border-black/10 flex items-center justify-between px-6 z-10">
+            <div className="absolute top-0 left-0 right-0 h-16 bg-white/80 backdrop-blur-sm border-b border-[#C9A962]/25 flex items-center justify-between px-6 z-10">
               <div className="flex items-center gap-4">
                 <span className="font-mono text-sm text-black/50">{pageName}</span>
                 <span className="text-black/20">|</span>
@@ -325,7 +325,7 @@ export function PresentationMode({ slides, pageName }: PresentationModeProps) {
               </AnimatePresence>
             </div>
 
-            <div className="absolute bottom-0 left-0 right-0 h-20 bg-white/80 backdrop-blur-sm border-t border-black/10 flex items-center justify-between px-6">
+            <div className="absolute bottom-0 left-0 right-0 h-20 bg-white/80 backdrop-blur-sm border-t border-[#C9A962]/25 flex items-center justify-between px-6">
               <button
                 onClick={prevSlide}
                 disabled={currentSlide === 0}

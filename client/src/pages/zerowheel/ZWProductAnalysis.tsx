@@ -430,7 +430,7 @@ export default function ZWProductAnalysis() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.06 }}
-                className="p-4 rounded-2xl border border-black/[0.15] bg-white text-center hover:border-[#C9A962]/40 hover:shadow-md transition-all duration-300"
+                className="p-4 rounded-2xl border border-[#C9A962]/40 bg-white text-center hover:border-[#C9A962]/40 hover:shadow-md transition-all duration-300"
               >
                 <spec.icon className="w-5 h-5 text-[#C9A962] mx-auto mb-2" />
                 <p className="font-display text-lg font-bold text-black">{spec.value}</p>
@@ -467,7 +467,7 @@ export default function ZWProductAnalysis() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="p-6 rounded-2xl border border-black/[0.15] bg-white hover:shadow-lg transition-all duration-300"
+                className="p-6 rounded-2xl border border-[#C9A962]/40 bg-white hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: `${mode.color}15` }}>
@@ -484,7 +484,7 @@ export default function ZWProductAnalysis() {
                   </div>
                 </div>
                 <p className="font-body text-sm text-black/60 leading-relaxed mb-3">{mode.description}</p>
-                <div className="pt-3 border-t border-black/[0.06]">
+                <div className="pt-3 border-t border-[#C9A962]/20">
                   <p className="font-mono text-[9px] text-black/35 tracking-wider uppercase mb-1">Ideal For</p>
                   <p className="font-body text-xs text-black/50">{mode.audience}</p>
                 </div>
@@ -498,7 +498,7 @@ export default function ZWProductAnalysis() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="rounded-2xl border border-black/[0.15] overflow-hidden"
+              className="rounded-2xl border border-[#C9A962]/40 overflow-hidden"
             >
               <div className="bg-[#F5F4F1] p-6">
                 <h3 className="font-display text-xl font-semibold text-black mb-1">Core Strength: The Foundation</h3>
@@ -552,7 +552,7 @@ export default function ZWProductAnalysis() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.15 }}
-                className="rounded-2xl border border-black/[0.15] bg-white overflow-hidden hover:shadow-lg transition-all duration-300"
+                className="rounded-2xl border border-[#C9A962]/40 bg-white overflow-hidden hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex flex-col md:flex-row">
                   <div className="md:w-24 bg-[#F5F4F1] flex items-center justify-center py-6 md:py-0">
@@ -619,7 +619,7 @@ export default function ZWProductAnalysis() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="rounded-2xl border border-black/[0.15] overflow-hidden"
+              className="rounded-2xl border border-[#C9A962]/40 overflow-hidden"
             >
               <table className="w-full">
                 <thead>
@@ -637,7 +637,7 @@ export default function ZWProductAnalysis() {
                     { product: "Bodyweight Circuits", rollout: false, resistance: false, variance: true },
                     { product: "Cable Machines", rollout: false, resistance: true, variance: true },
                   ].map((row, i) => (
-                    <tr key={i} className="border-b border-black/[0.06]">
+                    <tr key={i} className="border-b border-[#C9A962]/20">
                       <td className="p-4 font-body text-sm text-black/70 font-medium">{row.product}</td>
                       <td className="p-4 text-center">{row.rollout ? <CheckCircle2 className="w-5 h-5 text-emerald-500 mx-auto" /> : <span className="text-black/20">—</span>}</td>
                       <td className="p-4 text-center">{row.resistance ? <CheckCircle2 className="w-5 h-5 text-emerald-500 mx-auto" /> : <span className="text-black/20">—</span>}</td>
@@ -689,11 +689,11 @@ export default function ZWProductAnalysis() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="p-6 rounded-2xl border border-black/[0.15] bg-white hover:shadow-lg transition-all duration-300"
+                className="p-6 rounded-2xl border border-[#C9A962]/40 bg-white hover:shadow-lg transition-all duration-300"
               >
                 <Quote className="w-6 h-6 text-[#C9A962]/30 mb-3" />
                 <p className="font-body text-sm text-black/75 italic leading-relaxed mb-4">"{t.quote}"</p>
-                <div className="pt-3 border-t border-black/[0.06]">
+                <div className="pt-3 border-t border-[#C9A962]/20">
                   <p className="font-display text-sm font-semibold text-black">{t.name}</p>
                   <p className="font-body text-xs text-black/50 mt-0.5">{t.title}</p>
                   <span className="inline-block mt-2 font-mono text-[9px] text-[#C9A962] tracking-wider uppercase px-2 py-0.5 rounded-full bg-[#C9A962]/10">
@@ -735,7 +735,7 @@ export default function ZWProductAnalysis() {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="rounded-2xl border border-black/[0.15] overflow-hidden"
+              className="rounded-2xl border border-[#C9A962]/40 overflow-hidden"
             >
               <div className="bg-[#F5F4F1] px-6 py-4 flex items-center justify-between">
                 <span className="font-display text-sm font-semibold text-black">Pricing Structure</span>
@@ -765,7 +765,7 @@ export default function ZWProductAnalysis() {
               { label: "Tier 2 — Growth Phase", color: "#888", count: 3 },
               { label: "Tier 3 — Scale Phase", color: "#555", count: 2 },
             ].map((tier, i) => (
-              <div key={i} className="flex items-center gap-2 px-4 py-2 rounded-full border border-black/10 bg-white">
+              <div key={i} className="flex items-center gap-2 px-4 py-2 rounded-full border border-[#C9A962]/25 bg-white">
                 <div className="w-3 h-3 rounded-full" style={{ backgroundColor: tier.color }} />
                 <span className="font-mono text-[10px] tracking-wider uppercase text-black/60">{tier.label}</span>
                 <span className="font-display text-xs font-bold text-black/40">({tier.count})</span>
@@ -791,7 +791,7 @@ export default function ZWProductAnalysis() {
                 className={`p-5 rounded-2xl border text-left transition-all duration-300 hover:shadow-lg ${
                   expandedLob === i
                     ? "border-[#C9A962] bg-[#C9A962]/5 shadow-md"
-                    : "border-black/[0.15] bg-white hover:border-[#C9A962]/40"
+                    : "border-[#C9A962]/40 bg-white hover:border-[#C9A962]/40"
                 }`}
               >
                 <div className="flex items-center justify-between mb-3">
@@ -847,7 +847,7 @@ export default function ZWProductAnalysis() {
                 className={`rounded-2xl border overflow-hidden transition-all duration-300 ${
                   expandedLob === i
                     ? "border-[#C9A962] shadow-lg"
-                    : "border-black/[0.15] hover:border-[#C9A962]/40"
+                    : "border-[#C9A962]/40 hover:border-[#C9A962]/40"
                 }`}
               >
                 {/* Header (always visible) */}
@@ -889,17 +889,17 @@ export default function ZWProductAnalysis() {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <div className="px-6 pb-8 bg-white border-t border-black/[0.06]">
+                      <div className="px-6 pb-8 bg-white border-t border-[#C9A962]/20">
                         {/* Row 1: Buyer Persona + Positioning */}
                         <div className="grid md:grid-cols-2 gap-6 mt-6">
-                          <div className="p-5 rounded-xl bg-[#FAFAF8] border border-black/[0.08]">
+                          <div className="p-5 rounded-xl bg-[#FAFAF8] border border-[#C9A962]/25">
                             <div className="flex items-center gap-2 mb-3">
                               <UserCheck className="w-4 h-4 text-[#C9A962]" />
                               <p className="font-mono text-[10px] text-[#C9A962] tracking-wider uppercase">Target Buyer Persona</p>
                             </div>
                             <p className="font-body text-sm text-black/70 leading-relaxed">{lob.buyerPersona}</p>
                           </div>
-                          <div className="p-5 rounded-xl bg-[#FAFAF8] border border-black/[0.08]">
+                          <div className="p-5 rounded-xl bg-[#FAFAF8] border border-[#C9A962]/25">
                             <div className="flex items-center gap-2 mb-3">
                               <Crosshair className="w-4 h-4 text-[#C9A962]" />
                               <p className="font-mono text-[10px] text-[#C9A962] tracking-wider uppercase">Core Positioning</p>
@@ -910,7 +910,7 @@ export default function ZWProductAnalysis() {
 
                         {/* Row 1.5: Pain Points + Key Selling Points */}
                         <div className="grid md:grid-cols-2 gap-6 mt-6">
-                          <div className="p-5 rounded-xl bg-[#FAFAF8] border border-black/[0.08]">
+                          <div className="p-5 rounded-xl bg-[#FAFAF8] border border-[#C9A962]/25">
                             <div className="flex items-center gap-2 mb-3">
                               <AlertTriangle className="w-4 h-4 text-[#C9A962]" />
                               <p className="font-mono text-[10px] text-[#C9A962] tracking-wider uppercase">Pain Points</p>
@@ -924,7 +924,7 @@ export default function ZWProductAnalysis() {
                               ))}
                             </div>
                           </div>
-                          <div className="p-5 rounded-xl bg-[#FAFAF8] border border-black/[0.08]">
+                          <div className="p-5 rounded-xl bg-[#FAFAF8] border border-[#C9A962]/25">
                             <div className="flex items-center gap-2 mb-3">
                               <Star className="w-4 h-4 text-[#C9A962]" />
                               <p className="font-mono text-[10px] text-[#C9A962] tracking-wider uppercase">Key Selling Points</p>
@@ -948,7 +948,7 @@ export default function ZWProductAnalysis() {
                           </div>
                           <div className="grid md:grid-cols-3 gap-4">
                             {lob.messaging.map((msg, j) => (
-                              <div key={j} className="p-4 rounded-xl bg-[#FAFAF8] border border-black/[0.08]">
+                              <div key={j} className="p-4 rounded-xl bg-[#FAFAF8] border border-[#C9A962]/25">
                                 <p className="font-mono text-[9px] text-black/40 tracking-wider uppercase mb-2">Pillar {j + 1}: {msg.pillar}</p>
                                 <p className="font-body text-sm text-black/75 italic leading-relaxed">{msg.angle}</p>
                               </div>
@@ -989,7 +989,7 @@ export default function ZWProductAnalysis() {
                           </div>
                           <div className="space-y-3">
                             {lob.objections.map((obj, j) => (
-                              <div key={j} className="p-4 rounded-xl border border-black/[0.08] bg-[#FAFAF8]">
+                              <div key={j} className="p-4 rounded-xl border border-[#C9A962]/25 bg-[#FAFAF8]">
                                 <p className="font-display text-sm font-semibold text-black/80 mb-2">{obj.objection}</p>
                                 <p className="font-body text-sm text-black/60 leading-relaxed pl-4 border-l-2 border-[#C9A962]">{obj.response}</p>
                               </div>
@@ -1005,7 +1005,7 @@ export default function ZWProductAnalysis() {
                           </div>
                           <div className="flex flex-wrap gap-2">
                             {lob.kpis.map((kpi, j) => (
-                              <span key={j} className="font-body text-xs text-black/60 bg-[#FAFAF8] border border-black/[0.08] px-3 py-1.5 rounded-full">
+                              <span key={j} className="font-body text-xs text-black/60 bg-[#FAFAF8] border border-[#C9A962]/25 px-3 py-1.5 rounded-full">
                                 {kpi}
                               </span>
                             ))}
@@ -1060,7 +1060,7 @@ export default function ZWProductAnalysis() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="p-6 rounded-2xl border border-black/[0.15] bg-white hover:border-[#C9A962]/40 hover:shadow-lg transition-all duration-300"
+                className="p-6 rounded-2xl border border-[#C9A962]/40 bg-white hover:border-[#C9A962]/40 hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-xl bg-[#C9A962]/10 flex items-center justify-center">
@@ -1126,7 +1126,7 @@ export default function ZWProductAnalysis() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="flex items-start gap-5 p-6 rounded-2xl border border-black/[0.15] bg-white hover:shadow-lg transition-all duration-300"
+                className="flex items-start gap-5 p-6 rounded-2xl border border-[#C9A962]/40 bg-white hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex flex-col items-center gap-1 flex-shrink-0 pt-1">
                   <div className="w-8 h-8 rounded-full bg-[#C9A962]/10 flex items-center justify-center">
@@ -1214,7 +1214,7 @@ export default function ZWProductAnalysis() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="p-8 rounded-2xl border border-black/[0.15] bg-white hover:shadow-lg transition-all duration-300"
+                className="p-8 rounded-2xl border border-[#C9A962]/40 bg-white hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex items-start gap-5">
                   <div className="w-12 h-12 rounded-xl bg-[#F5F4F1] flex items-center justify-center flex-shrink-0">

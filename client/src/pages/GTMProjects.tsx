@@ -94,14 +94,14 @@ export default function GTMProjects() {
                 <Link href={project.href}>
                   <motion.div
                     whileHover={{ y: -6, boxShadow: "0 24px 48px rgba(0,0,0,0.10), 0 8px 16px rgba(0,0,0,0.06)" }}
-                    className="group relative rounded-xl border border-black/[0.12] bg-white overflow-hidden cursor-pointer hover:border-[#C9A962]/50 transition-all duration-300 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.03)]"
+                    className="group relative rounded-xl border border-[#C9A962]/35 bg-white overflow-hidden cursor-pointer hover:border-[#C9A962]/50 transition-all duration-300 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.03)]"
                   >
                     {/* Card Content — Clean white design */}
                     <div className="p-8">
                       {/* Top row: Logo/Icon + Status */}
                       <div className="flex items-start justify-between mb-6">
                         {project.logoSrc ? (
-                          <div className="w-14 h-14 rounded-xl bg-[#F5F4F1] border border-black/[0.08] flex items-center justify-center shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+                          <div className="w-14 h-14 rounded-xl bg-[#F5F4F1] border border-[#C9A962]/25 flex items-center justify-center shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
                             <img 
                               src={project.logoSrc} 
                               alt={project.logoAlt || project.title}
@@ -109,7 +109,7 @@ export default function GTMProjects() {
                             />
                           </div>
                         ) : (
-                          <div className="w-14 h-14 rounded-xl bg-[#FAFAF8] border border-black/[0.08] flex items-center justify-center shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+                          <div className="w-14 h-14 rounded-xl bg-[#FAFAF8] border border-[#C9A962]/25 flex items-center justify-center shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
                             <span className="font-display text-xl font-semibold text-black/30">W</span>
                           </div>
                         )}
@@ -117,8 +117,8 @@ export default function GTMProjects() {
                           project.status === "active" 
                             ? "bg-[#C9A962]/10 text-[#C9A962] border border-[#C9A962]/25" 
                             : project.status === "sample"
-                            ? "bg-black/[0.04] text-black/40 border border-black/[0.10]"
-                            : "bg-black/[0.03] text-black/30 border border-black/[0.08]"
+                            ? "bg-black/[0.04] text-black/40 border border-[#C9A962]/30"
+                            : "bg-black/[0.03] text-black/30 border border-[#C9A962]/25"
                         }`}>
                           {project.status}
                         </span>
@@ -139,7 +139,7 @@ export default function GTMProjects() {
                       {project.stats && (
                         <div className="flex gap-3 mb-7">
                           {project.stats.map((stat, i) => (
-                            <div key={i} className="flex-1 text-center py-3 rounded-lg bg-[#FAFAF8] border border-black/[0.08]">
+                            <div key={i} className="flex-1 text-center py-3 rounded-lg bg-[#FAFAF8] border border-[#C9A962]/25">
                               <p className="font-display text-xl font-bold text-black leading-none">{stat.value}</p>
                               <p className="font-mono text-[9px] text-black/40 uppercase tracking-[0.12em] font-medium mt-1.5">{stat.label}</p>
                             </div>
@@ -148,7 +148,7 @@ export default function GTMProjects() {
                       )}
 
                       {/* CTA */}
-                      <div className="flex items-center gap-2 text-black/50 group-hover:text-[#C9A962] transition-colors pt-4 border-t border-black/[0.06]">
+                      <div className="flex items-center gap-2 text-black/50 group-hover:text-[#C9A962] transition-colors pt-4 border-t border-[#C9A962]/20">
                         <span className="font-body text-sm font-semibold">View Strategy</span>
                         <motion.div
                           animate={{ x: [0, 4, 0] }}
@@ -165,8 +165,8 @@ export default function GTMProjects() {
 
             {/* Add New Project Tile */}
             <motion.div variants={fadeInUp}>
-              <div className="rounded-xl border-2 border-dashed border-black/[0.08] bg-[#FAFAF8]/30 h-full min-h-[420px] flex flex-col items-center justify-center gap-4 cursor-default hover:border-[#C9A962]/30 transition-all duration-300">
-                <div className="w-14 h-14 rounded-xl border border-black/[0.08] flex items-center justify-center bg-white">
+              <div className="rounded-xl border-2 border-dashed border-[#C9A962]/25 bg-[#FAFAF8]/30 h-full min-h-[420px] flex flex-col items-center justify-center gap-4 cursor-default hover:border-[#C9A962]/60 transition-all duration-300">
+                <div className="w-14 h-14 rounded-xl border border-[#C9A962]/25 flex items-center justify-center bg-white">
                   <Plus className="w-5 h-5 text-black/20" />
                 </div>
                 <div className="text-center">

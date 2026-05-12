@@ -93,7 +93,7 @@
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
   
-  --border: oklch(0.80 0.005 0); /* Stronger visible borders */
+  --border: oklch(0.78 0.06 75); /* Gold-tinted borders for luxury feel */
   --input: oklch(0.97 0.003 0);
   --ring: oklch(0.52 0.14 75);
   
@@ -252,24 +252,24 @@
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
   }
   
-  /* LUXURY CARD STYLES - Sharp borders, refined shadows */
+  /* LUXURY CARD STYLES - Gold outline borders, refined shadows */
   .card-elevated {
     background: #FFFFFF;
-    border: 1px solid rgba(0, 0, 0, 0.10);
+    border: 1px solid rgba(201, 169, 98, 0.35);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03), 0 4px 20px rgba(0, 0, 0, 0.04);
     border-radius: 0.75rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .card-elevated:hover {
-    border-color: rgba(201, 169, 98, 0.25);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+    border-color: rgba(201, 169, 98, 0.55);
+    box-shadow: 0 8px 32px rgba(201, 169, 98, 0.10), 0 2px 8px rgba(0, 0, 0, 0.04);
     transform: translateY(-2px);
   }
   
   .box-highlight {
     background: #F9F9F7;
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(201, 169, 98, 0.25);
     border-radius: 0.5rem;
   }
   
@@ -319,9 +319,9 @@ html {
   box-shadow: 0 2px_8px rgba(0, 0, 0, 0.03), 0 4px 16px rgba(0, 0, 0, 0.03);
 }
 
-/* Stronger borders on interactive elements */
+/* Gold borders on interactive card/box elements */
 [class*="border"][class*="rounded"] {
-  border-color: rgba(0, 0, 0, 0.10);
+  border-color: rgba(201, 169, 98, 0.30);
 }
 
 /* Table styling - luxury */
@@ -333,7 +333,7 @@ table {
 
 table th {
   background: #F7F7F5;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.10);
+  border-bottom: 2px solid rgba(201, 169, 98, 0.30);
   font-family: 'Space Mono', monospace;
   font-weight: 600;
   text-transform: uppercase;
@@ -344,7 +344,7 @@ table th {
 }
 
 table td {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(201, 169, 98, 0.12);
   font-family: 'DM Sans', sans-serif;
   font-size: 0.875rem;
   padding: 0.75rem 1rem;
@@ -370,7 +370,7 @@ table tr:first-child th:last-child {
 
 /* Input and form field contrast */
 input, textarea, select {
-  border: 1px solid rgba(0, 0, 0, 0.10) !important;
+  border: 1px solid rgba(201, 169, 98, 0.25) !important;
   background: #FFFFFF !important;
   font-family: 'DM Sans', sans-serif !important;
   border-radius: 0.5rem !important;
@@ -382,9 +382,9 @@ input:focus, textarea:focus, select:focus {
   box-shadow: 0 0 0 3px rgba(201, 169, 98, 0.10) !important;
 }
 
-/* Luxury section dividers — very subtle */
+/* Luxury section dividers — very subtle gold */
 section + section {
-  border-top: 1px solid rgba(0, 0, 0, 0.03);
+  border-top: 1px solid rgba(201, 169, 98, 0.10);
 }
 
 /* Premium pill/badge styling */

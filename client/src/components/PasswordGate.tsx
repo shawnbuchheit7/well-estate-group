@@ -120,7 +120,7 @@ export default function PasswordGate({ children }: PasswordGateProps) {
         transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] }}
         className="relative z-10 w-full max-w-md mx-6"
       >
-        <div className="bg-white border border-black/8 rounded-2xl shadow-[0_20px_80px_rgba(0,0,0,0.08)] p-10">
+        <div className="bg-white border border-[#C9A962]/20 rounded-2xl shadow-[0_20px_80px_rgba(0,0,0,0.08)] p-10">
           {/* Logo */}
           <div className="flex flex-col items-center mb-10">
             <motion.img
@@ -173,7 +173,7 @@ export default function PasswordGate({ children }: PasswordGateProps) {
                   onKeyDown={handleKeyDown}
                   placeholder="Enter access code"
                   autoFocus
-                  className="w-full pl-11 pr-12 py-3.5 bg-gray-50 border-[1.5px] border-black/8 rounded-xl font-body text-sm text-black placeholder:text-gray-300 focus:outline-none focus:border-[#C9A962] focus:ring-2 focus:ring-[#C9A962]/10 transition-all"
+                  className="w-full pl-11 pr-12 py-3.5 bg-gray-50 border-[1.5px] border-[#C9A962]/20 rounded-xl font-body text-sm text-black placeholder:text-gray-300 focus:outline-none focus:border-[#C9A962] focus:ring-2 focus:ring-[#C9A962]/10 transition-all"
                   style={{ background: '#FAFAFA' }}
                 />
                 <button

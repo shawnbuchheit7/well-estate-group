@@ -112,9 +112,9 @@ export default function VentureCapital() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -4 }}
-                className="bg-white rounded-xl p-7 border border-black/[0.10] shadow-[0_2px_8px_rgba(0,0,0,0.03),0_8px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] hover:border-[#C9A962]/30 transition-all duration-300"
+                className="bg-white rounded-xl p-7 border border-[#C9A962]/30 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_8px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] hover:border-[#C9A962]/60 transition-all duration-300"
               >
-                <div className="w-11 h-11 rounded-lg bg-[#FAFAF8] border border-black/[0.08] flex items-center justify-center mb-5">
+                <div className="w-11 h-11 rounded-lg bg-[#FAFAF8] border border-[#C9A962]/25 flex items-center justify-center mb-5">
                   <item.icon className="w-5 h-5 text-[#C9A962]" />
                 </div>
                 <h3 className="font-display text-lg font-bold text-black mb-2.5 tracking-tight">{item.title}</h3>
@@ -147,10 +147,10 @@ export default function VentureCapital() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-4xl mx-auto bg-white rounded-xl border border-black/[0.10] shadow-[0_4px_20px_rgba(0,0,0,0.05)] overflow-hidden"
+            className="max-w-4xl mx-auto bg-white rounded-xl border border-[#C9A962]/30 shadow-[0_4px_20px_rgba(0,0,0,0.05)] overflow-hidden"
           >
             {/* Table Header */}
-            <div className="grid grid-cols-12 gap-4 px-6 sm:px-8 py-4 bg-[#F5F4F1] border-b border-black/[0.08]">
+            <div className="grid grid-cols-12 gap-4 px-6 sm:px-8 py-4 bg-[#F5F4F1] border-b border-[#C9A962]/25">
               <div className="col-span-4">
                 <span className="font-mono text-[10px] sm:text-[11px] tracking-[0.15em] uppercase font-semibold">Category</span>
               </div>
@@ -167,7 +167,7 @@ export default function VentureCapital() {
               <div
                 key={i}
                 className={`grid grid-cols-12 gap-4 px-6 sm:px-8 py-5 items-center ${
-                  i !== focusAreas.length - 1 ? "border-b border-black/[0.08]" : ""
+                  i !== focusAreas.length - 1 ? "border-b border-[#C9A962]/25" : ""
                 } ${i % 2 === 0 ? "bg-white" : "bg-[#FAFAF8]"} hover:bg-[#F5F4F0] transition-colors duration-200`}
               >
                 <div className="col-span-4">
@@ -214,7 +214,7 @@ export default function VentureCapital() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -3 }}
-                className="text-center p-6 sm:p-7 rounded-xl bg-white border border-black/[0.10] shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/25 transition-all duration-300"
+                className="text-center p-6 sm:p-7 rounded-xl bg-white border border-[#C9A962]/30 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/60 transition-all duration-300"
               >
                 <div className="font-display text-3xl sm:text-4xl font-bold text-black mb-2">{item.count}</div>
                 <div className="font-mono text-[10px] text-[#C9A962] tracking-[0.15em] uppercase mb-2 font-semibold">{item.status}</div>
@@ -226,7 +226,7 @@ export default function VentureCapital() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 sm:py-24 bg-[#F9F9F7] border-t border-black/[0.08]">
+      <section className="py-20 sm:py-24 bg-[#F9F9F7] border-t border-[#C9A962]/25">
         <div className="container px-6 sm:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -234,7 +234,7 @@ export default function VentureCapital() {
             viewport={{ once: true }}
             className="text-center max-w-2xl mx-auto"
           >
-            <div className="w-14 h-14 rounded-xl bg-white border border-black/[0.08] shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex items-center justify-center mx-auto mb-6">
+            <div className="w-14 h-14 rounded-xl bg-white border border-[#C9A962]/25 shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex items-center justify-center mx-auto mb-6">
               <Briefcase className="w-6 h-6 text-[#C9A962]" />
             </div>
             <h3 className="font-display text-2xl sm:text-3xl font-semibold text-black mb-4 tracking-tight">

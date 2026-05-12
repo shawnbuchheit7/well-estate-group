@@ -174,7 +174,7 @@ export default function ZWCommercialStrategy() {
                 className={`p-8 rounded-2xl border transition-all duration-300 hover:shadow-lg ${
                   tier.highlight
                     ? "border-[#C9A962] bg-[#FAFAF8] shadow-md"
-                    : "border-black/[0.15] bg-white"
+                    : "border-[#C9A962]/40 bg-white"
                 }`}
               >
                 {tier.highlight && (
@@ -199,7 +199,7 @@ export default function ZWCommercialStrategy() {
                     </li>
                   ))}
                 </ul>
-                <p className="font-body text-xs text-black/40 italic border-t border-black/[0.08] pt-3">{tier.note}</p>
+                <p className="font-body text-xs text-black/40 italic border-t border-[#C9A962]/25 pt-3">{tier.note}</p>
               </motion.div>
             ))}
           </div>
@@ -211,10 +211,10 @@ export default function ZWCommercialStrategy() {
             viewport={{ once: true }}
             className="max-w-5xl mx-auto mt-8"
           >
-            <div className="rounded-2xl border border-black/[0.15] overflow-hidden">
+            <div className="rounded-2xl border border-[#C9A962]/40 overflow-hidden">
               <table className="w-full">
                 <thead>
-                  <tr className="bg-[#FAFAF8] border-b border-black/[0.10]">
+                  <tr className="bg-[#FAFAF8] border-b border-[#C9A962]/30">
                     <th className="text-left p-4 font-mono text-xs text-black/50 tracking-wider uppercase">Market Category</th>
                     <th className="text-right p-4 font-mono text-xs text-black/50 tracking-wider uppercase">Points Off List</th>
                     <th className="text-right p-4 font-mono text-xs text-black/50 tracking-wider uppercase">Net Price</th>
@@ -227,7 +227,7 @@ export default function ZWCommercialStrategy() {
                     { category: "Vertical Markets (Medical, Hospitality, Corporate, Gov)", points: "25%", net: "$825", savings: "$275", highlight: false },
                     { category: "Commercial Markets (Clubs, Sports Performance, Dealers)", points: "40%", net: "$695", savings: "$400", highlight: false },
                   ].map((row, i) => (
-                    <tr key={i} className={`border-b border-black/[0.06] last:border-0 ${row.highlight ? "bg-[#C9A962]/5" : ""}`}>
+                    <tr key={i} className={`border-b border-[#C9A962]/20 last:border-0 ${row.highlight ? "bg-[#C9A962]/5" : ""}`}>
                       <td className="p-4 font-body text-sm text-black/80 font-medium">{row.category}</td>
                       <td className="p-4 text-right font-display text-sm font-semibold text-black">{row.points}</td>
                       <td className="p-4 text-right font-display text-sm font-bold text-[#C9A962]">{row.net}</td>
@@ -326,7 +326,7 @@ export default function ZWCommercialStrategy() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="p-8 rounded-2xl border border-black/[0.15] bg-white hover:shadow-lg transition-all duration-300"
+                className="p-8 rounded-2xl border border-[#C9A962]/40 bg-white hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex items-center gap-3 mb-1">
                   <card.icon className="w-6 h-6 text-[#C9A962]" />
@@ -335,7 +335,7 @@ export default function ZWCommercialStrategy() {
                 <p className="font-mono text-[10px] text-[#C9A962] tracking-wider uppercase mb-5">{card.subtitle}</p>
                 <div className="space-y-3">
                   {card.items.map((item, j) => (
-                    <div key={j} className="flex items-center justify-between py-2 border-b border-black/[0.06] last:border-0">
+                    <div key={j} className="flex items-center justify-between py-2 border-b border-[#C9A962]/20 last:border-0">
                       <span className="font-body text-sm text-black/55">{item.label}</span>
                       <span className="font-display text-sm font-semibold text-black">{item.value}</span>
                     </div>
@@ -371,10 +371,10 @@ export default function ZWCommercialStrategy() {
           </motion.div>
 
           <div className="max-w-4xl mx-auto">
-            <div className="rounded-2xl border border-black/[0.15] overflow-hidden">
+            <div className="rounded-2xl border border-[#C9A962]/40 overflow-hidden">
               <table className="w-full">
                 <thead>
-                  <tr className="bg-[#FAFAF8] border-b border-black/[0.10]">
+                  <tr className="bg-[#FAFAF8] border-b border-[#C9A962]/30">
                     <th className="text-left p-4 font-mono text-xs text-black/50 tracking-wider uppercase">Channel</th>
                     <th className="text-right p-4 font-mono text-xs text-black/50 tracking-wider uppercase">Off List</th>
                     <th className="text-right p-4 font-mono text-xs text-black/50 tracking-wider uppercase">Revenue</th>
@@ -397,7 +397,7 @@ export default function ZWCommercialStrategy() {
                     { channel: "Commercial — Authorized Dealers", offList: "40%", revenue: "$695", cogs: "$330", profit: "$365", margin: "52.5%", highlight: false },
                     { channel: "Commercial — Distributors / Resellers", offList: "40%", revenue: "$695", cogs: "$320", profit: "$375", margin: "54.0%", highlight: false },
                   ].map((row, i) => (
-                    <tr key={i} className={`border-b border-black/[0.06] last:border-0 ${row.highlight ? "bg-[#C9A962]/5" : ""}`}>
+                    <tr key={i} className={`border-b border-[#C9A962]/20 last:border-0 ${row.highlight ? "bg-[#C9A962]/5" : ""}`}>
                       <td className="p-4 font-body text-sm text-black/80 font-medium">{row.channel}</td>
                       <td className="p-4 text-right font-mono text-xs text-black/50">{row.offList}</td>
                       <td className="p-4 text-right font-display text-sm font-semibold text-black">{row.revenue}</td>
@@ -447,7 +447,7 @@ export default function ZWCommercialStrategy() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="p-6 rounded-2xl border border-black/[0.15] bg-white hover:shadow-lg transition-all duration-300 text-center"
+                className="p-6 rounded-2xl border border-[#C9A962]/40 bg-white hover:shadow-lg transition-all duration-300 text-center"
               >
                 <stream.icon className="w-8 h-8 text-[#C9A962] mx-auto mb-3" />
                 <h3 className="font-display text-lg font-semibold text-black mb-1">{stream.title}</h3>
@@ -520,7 +520,7 @@ export default function ZWCommercialStrategy() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="rounded-2xl border border-black/[0.12] bg-white p-8 shadow-[0_2px_12px_rgba(0,0,0,0.03)] max-w-5xl mx-auto"
+            className="rounded-2xl border border-[#C9A962]/35 bg-white p-8 shadow-[0_2px_12px_rgba(0,0,0,0.03)] max-w-5xl mx-auto"
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-full bg-[#C9A962]/10 flex items-center justify-center">
@@ -623,7 +623,7 @@ export default function ZWCommercialStrategy() {
                 key={i}
                 variants={fadeInUp}
                 whileHover={{ y: -3, boxShadow: "0 8px 24px rgba(0,0,0,0.06)" }}
-                className="flex gap-4 items-start p-5 rounded-xl bg-white border border-black/[0.12] hover:border-[#C9A962]/25 hover:shadow-lg transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
+                className="flex gap-4 items-start p-5 rounded-xl bg-white border border-[#C9A962]/35 hover:border-[#C9A962]/60 hover:shadow-lg transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
               >
                 <div className="w-7 h-7 rounded-full bg-[#C9A962]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                   <CheckCircle2 className="w-4 h-4 text-[#C9A962]" />
