@@ -6,7 +6,8 @@
 /* 
  * DESIGN PHILOSOPHY: Well Estate Group - Premium Longevity Consultancy
  * LUXURY AESTHETIC: Black, White, Grays with Gold (#C9A962) accents
- * Maximum contrast, clean lines, premium feel
+ * Maximum contrast, clean lines, super premium feel
+ * Typography: Playfair Display (display), DM Sans (body), Space Mono (mono)
  */
 
 @theme inline {
@@ -70,37 +71,37 @@
   --chart-4: oklch(0.60 0.005 0);
   --chart-5: oklch(0.75 0.005 0);
   
-  --radius: 0.75rem;
+  --radius: 0.625rem;
   
   /* Pure White Background, Near-Black Text */
   --background: oklch(1 0 0);
-  --foreground: oklch(0.12 0.005 0); /* Very dark - #1C1C1C */
+  --foreground: oklch(0.10 0.005 0); /* Deeper black - stronger contrast */
   
   /* Cards: subtle warm off-white */
   --card: oklch(0.98 0.002 80);
-  --card-foreground: oklch(0.12 0.005 0);
+  --card-foreground: oklch(0.10 0.005 0);
   
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.12 0.005 0);
+  --popover-foreground: oklch(0.10 0.005 0);
   
-  --secondary: oklch(0.95 0.003 0);
-  --secondary-foreground: oklch(0.12 0.005 0);
+  --secondary: oklch(0.96 0.003 0);
+  --secondary-foreground: oklch(0.10 0.005 0);
   
-  --muted: oklch(0.94 0.003 0);
-  --muted-foreground: oklch(0.35 0.005 0); /* Darker muted text for readability */
+  --muted: oklch(0.95 0.003 0);
+  --muted-foreground: oklch(0.32 0.005 0); /* Darker muted for better readability */
   
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
   
-  --border: oklch(0.82 0.005 0); /* Visible borders */
-  --input: oklch(0.96 0.003 0);
+  --border: oklch(0.80 0.005 0); /* Stronger visible borders */
+  --input: oklch(0.97 0.003 0);
   --ring: oklch(0.52 0.14 75);
   
   --sidebar: oklch(0.98 0.002 80);
-  --sidebar-foreground: oklch(0.12 0.005 0);
-  --sidebar-accent: oklch(0.95 0.003 0);
-  --sidebar-accent-foreground: oklch(0.12 0.005 0);
-  --sidebar-border: oklch(0.82 0.005 0);
+  --sidebar-foreground: oklch(0.10 0.005 0);
+  --sidebar-accent: oklch(0.96 0.003 0);
+  --sidebar-accent-foreground: oklch(0.10 0.005 0);
+  --sidebar-border: oklch(0.80 0.005 0);
   --sidebar-ring: oklch(0.52 0.14 75);
 }
 
@@ -109,33 +110,33 @@
   --primary-foreground: oklch(0.12 0.02 80);
   --sidebar-primary: oklch(0.65 0.11 80);
   --sidebar-primary-foreground: oklch(0.12 0.02 80);
-  --background: oklch(0.08 0.005 0);
+  --background: oklch(0.06 0.005 0);
   --foreground: oklch(0.98 0.005 0);
-  --card: oklch(0.12 0.005 0);
+  --card: oklch(0.10 0.005 0);
   --card-foreground: oklch(0.98 0.005 0);
-  --popover: oklch(0.12 0.005 0);
+  --popover: oklch(0.10 0.005 0);
   --popover-foreground: oklch(0.98 0.005 0);
-  --secondary: oklch(0.18 0.005 0);
+  --secondary: oklch(0.16 0.005 0);
   --secondary-foreground: oklch(0.95 0.005 0);
-  --muted: oklch(0.20 0.005 0);
-  --muted-foreground: oklch(0.70 0.005 0);
+  --muted: oklch(0.18 0.005 0);
+  --muted-foreground: oklch(0.72 0.005 0);
   --accent: oklch(0.72 0.12 80);
   --accent-foreground: oklch(0.12 0.02 80);
   --destructive: oklch(0.704 0.191 22.216);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.25 0.005 0);
-  --input: oklch(0.18 0.005 0);
+  --border: oklch(0.22 0.005 0);
+  --input: oklch(0.16 0.005 0);
   --ring: oklch(0.72 0.12 80);
   --chart-1: oklch(0.72 0.12 80);
   --chart-2: oklch(0.65 0.11 80);
   --chart-3: oklch(0.58 0.10 80);
   --chart-4: oklch(0.50 0.09 80);
   --chart-5: oklch(0.42 0.08 80);
-  --sidebar: oklch(0.08 0.005 0);
+  --sidebar: oklch(0.06 0.005 0);
   --sidebar-foreground: oklch(0.98 0.005 0);
-  --sidebar-accent: oklch(0.18 0.005 0);
+  --sidebar-accent: oklch(0.16 0.005 0);
   --sidebar-accent-foreground: oklch(0.98 0.005 0);
-  --sidebar-border: oklch(0.25 0.005 0);
+  --sidebar-border: oklch(0.22 0.005 0);
   --sidebar-ring: oklch(0.72 0.12 80);
 }
 
@@ -148,11 +149,17 @@
     font-family: 'DM Sans', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'kern' 1, 'liga' 1;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
     font-weight: 600;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
+    color: #0A0A0A;
+  }
+  p {
+    line-height: 1.7;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
@@ -172,8 +179,8 @@
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 
   .flex {
@@ -183,15 +190,15 @@
 
   @media (min-width: 640px) {
     .container {
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
     }
   }
 
   @media (min-width: 1024px) {
     .container {
-      padding-left: 2rem;
-      padding-right: 2rem;
+      padding-left: 3rem;
+      padding-right: 3rem;
       max-width: 1400px;
     }
   }
@@ -215,7 +222,7 @@
   }
   
   .gradient-light {
-    background: linear-gradient(180deg, #FFFFFF 0%, #FAFAFA 50%, #FFFFFF 100%);
+    background: linear-gradient(180deg, #FFFFFF 0%, #FAFAF8 50%, #FFFFFF 100%);
   }
   
   .text-gradient {
@@ -234,36 +241,40 @@
   
   /* Premium glow effects */
   .glow-gold {
-    box-shadow: 0 0 60px rgba(184, 150, 62, 0.4);
+    box-shadow: 0 0 60px rgba(184, 150, 62, 0.35);
   }
   
   .glow-gold-intense {
-    box-shadow: 0 0 80px rgba(184, 150, 62, 0.5), 0 0 120px rgba(184, 150, 62, 0.2);
+    box-shadow: 0 0 80px rgba(184, 150, 62, 0.45), 0 0 120px rgba(184, 150, 62, 0.15);
   }
   
   .glow-subtle {
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
   }
   
-  /* LUXURY CARD STYLES - Strong borders, clean shadows */
+  /* LUXURY CARD STYLES - Sharp borders, refined shadows */
   .card-elevated {
-    background: #FAFAF8;
-    border: 1.5px solid rgba(0, 0, 0, 0.10);
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04);
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03), 0 4px 20px rgba(0, 0, 0, 0.04);
+    border-radius: 0.75rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .card-elevated:hover {
-    border-color: rgba(0, 0, 0, 0.15);
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.10), 0 2px 8px rgba(0, 0, 0, 0.06);
+    border-color: rgba(201, 169, 98, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+    transform: translateY(-2px);
   }
   
   .box-highlight {
-    background: #F7F7F5;
-    border: 1.5px solid rgba(0, 0, 0, 0.12);
+    background: #F9F9F7;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 0.5rem;
   }
   
   .section-alt {
-    background: #FAFAFA;
+    background: #F9F9F7;
   }
 }
 
@@ -272,37 +283,40 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Selection color */
+/* Selection color — gold tint */
 ::selection {
-  background: rgba(201, 169, 98, 0.2);
+  background: rgba(201, 169, 98, 0.18);
   color: inherit;
 }
 
-/* Premium scrollbar */
+/* Premium scrollbar — thin and refined */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F5F5F5;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #C9A962;
-  border-radius: 4px;
+  background: rgba(201, 169, 98, 0.4);
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #B8963E;
+  background: rgba(201, 169, 98, 0.7);
 }
 
-/* Enhanced card and box styling - luxury shadows */
+/* Enhanced card and box styling - refined luxury shadows */
 [class*="bg-card"],
-[class*="bg-muted"],
+[class*="bg-muted"] {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02), 0 2px 12px rgba(0, 0, 0, 0.03);
+}
+
 .rounded-lg[class*="border"],
 .rounded-xl[class*="border"],
 .rounded-2xl[class*="border"] {
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04), 0 1px 4px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 2px_8px rgba(0, 0, 0, 0.03), 0 4px 16px rgba(0, 0, 0, 0.03);
 }
 
 /* Stronger borders on interactive elements */
@@ -314,26 +328,39 @@ html {
 table {
   border-collapse: separate;
   border-spacing: 0;
+  width: 100%;
 }
 
 table th {
-  background: #F5F5F3;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.12);
-  font-family: 'DM Sans', sans-serif;
+  background: #F7F7F5;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.10);
+  font-family: 'Space Mono', monospace;
   font-weight: 600;
   text-transform: uppercase;
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-  color: #333;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: #555;
+  padding: 0.875rem 1rem;
 }
 
 table td {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  padding: 0.75rem 1rem;
+  color: #333;
 }
 
 table tr:hover td {
   background: #FAFAF8;
+}
+
+table tr:first-child th:first-child {
+  border-top-left-radius: 0.5rem;
+}
+
+table tr:first-child th:last-child {
+  border-top-right-radius: 0.5rem;
 }
 
 /* Accordion and collapsible styling */
@@ -343,24 +370,36 @@ table tr:hover td {
 
 /* Input and form field contrast */
 input, textarea, select {
-  border: 1.5px solid rgba(0, 0, 0, 0.12) !important;
-  background: #FEFEFE !important;
+  border: 1px solid rgba(0, 0, 0, 0.10) !important;
+  background: #FFFFFF !important;
   font-family: 'DM Sans', sans-serif !important;
+  border-radius: 0.5rem !important;
+  transition: all 0.2s ease !important;
 }
 
 input:focus, textarea:focus, select:focus {
   border-color: #C9A962 !important;
-  box-shadow: 0 0 0 3px rgba(201, 169, 98, 0.12) !important;
+  box-shadow: 0 0 0 3px rgba(201, 169, 98, 0.10) !important;
 }
 
-/* Luxury section dividers */
+/* Luxury section dividers — very subtle */
 section + section {
-  border-top: 1px solid rgba(0, 0, 0, 0.04);
+  border-top: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 /* Premium pill/badge styling */
 .rounded-full {
   font-family: 'DM Sans', sans-serif;
+}
+
+/* Global link hover — gold accent */
+a {
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+/* Image rendering */
+img {
+  image-rendering: -webkit-optimize-contrast;
 }
 
 /* ========================================

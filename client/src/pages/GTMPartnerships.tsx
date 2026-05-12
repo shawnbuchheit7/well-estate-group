@@ -1,12 +1,12 @@
 /*
  * GTM Partnerships & Channels Page - WEG Strategic Alliances
- * Based on WEG Master Deck Slides 65-69, 118
- * Matches WEG "Cellular Renaissance" design system
+ * Design: Super premium luxury — white/cream/gold, sharp contrast, refined typography
  */
 
 import { motion } from "framer-motion";
 import { Handshake, Users, Globe, Award, ArrowRight, Building2, Dumbbell, Crown, CheckCircle2, Star } from "lucide-react";
 import Layout from "@/components/Layout";
+import LightHero from "@/components/LightHero";
 import { fadeInUp, staggerContainer, scaleIn } from "@/lib/animations";
 import { SectionNav } from "@/components/SectionNav";
 
@@ -24,55 +24,40 @@ export default function GTMPartnerships() {
       <SectionNav sections={sections} />
 
       {/* Hero */}
-      <section id="hero" className="py-24 md:py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background" />
-        <div className="container relative z-10">
-          <motion.div
-            className="text-center max-w-4xl mx-auto"
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
-            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
-              STRATEGIC ALLIANCES
-            </motion.span>
-            <motion.h1 variants={fadeInUp} className="font-display text-5xl md:text-7xl font-medium mt-4 mb-6">
-              Partnerships & Channels
-            </motion.h1>
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="h-px w-32 mx-auto bg-gradient-to-r from-transparent via-primary to-transparent mb-6"
-            />
-            <motion.p variants={fadeInUp} className="font-body text-xl text-muted-foreground leading-relaxed">
-              A wealth of partnerships and awareness channels — national and global alliances 
-              that provide access to qualified, high-value audiences at scale.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
+      <div id="hero">
+        <LightHero
+          eyebrow="Strategic Alliances"
+          title="Partnerships & Channels"
+          description="A wealth of partnerships and awareness channels — national and global alliances that provide access to qualified, high-value audiences at scale."
+          stats={[
+            { value: "6", label: "Partner Categories" },
+            { value: "24+", label: "Active Partners" },
+            { value: "97K+", label: "Network Reach" },
+            { value: "Global", label: "Coverage" },
+          ]}
+        />
+      </div>
 
       {/* Partnership Network */}
-      <section id="network" className="py-20 bg-card/30">
-        <div className="container">
+      <section id="network" className="py-20 sm:py-24 bg-[#F9F9F7]">
+        <div className="container px-6 sm:px-8">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-14"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
-              OUR NETWORK
+            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.25em] uppercase">
+              Our Network
             </motion.span>
-            <motion.h2 variants={fadeInUp} className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
+            <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
               A Wealth of Partnerships
             </motion.h2>
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto"
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -119,22 +104,21 @@ export default function GTMPartnerships() {
               <motion.div
                 key={i}
                 variants={scaleIn}
-                whileHover={{ y: -8 }}
-                className="relative group"
+                whileHover={{ y: -4 }}
+                className="bg-white border border-black/[0.10] rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/25 transition-all duration-300 h-full"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative bg-card border border-border rounded-2xl p-8 h-full hover:border-primary/50 hover:shadow-lg transition-all duration-300">
-                  <category.icon className="w-10 h-10 text-primary mb-6" />
-                  <h3 className="font-display text-xl font-medium mb-3">{category.title}</h3>
-                  <p className="font-body text-sm text-muted-foreground mb-4">{category.description}</p>
-                  <div className="space-y-2">
-                    {category.partners.map((partner, j) => (
-                      <div key={j} className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary/50" />
-                        <span className="font-body text-sm">{partner}</span>
-                      </div>
-                    ))}
-                  </div>
+                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-black/[0.06] flex items-center justify-center mb-5">
+                  <category.icon className="w-5 h-5 text-[#C9A962]" />
+                </div>
+                <h3 className="font-display text-lg font-bold text-black mb-2 tracking-tight">{category.title}</h3>
+                <p className="font-body text-sm text-black/50 mb-4 leading-relaxed">{category.description}</p>
+                <div className="space-y-2 pt-4 border-t border-black/[0.06]">
+                  {category.partners.map((partner, j) => (
+                    <div key={j} className="flex items-center gap-2.5">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#C9A962]/60" />
+                      <span className="font-body text-sm text-black/60">{partner}</span>
+                    </div>
+                  ))}
                 </div>
               </motion.div>
             ))}
@@ -143,22 +127,22 @@ export default function GTMPartnerships() {
       </section>
 
       {/* Paid Communities Deep Dive */}
-      <section id="communities" className="py-20">
-        <div className="container">
+      <section id="communities" className="py-20 sm:py-24 bg-white">
+        <div className="container px-6 sm:px-8">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-14"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
-              HIGH-VALUE CHANNEL
+            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.25em] uppercase">
+              High-Value Channel
             </motion.span>
-            <motion.h2 variants={fadeInUp} className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
+            <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
               Paid Communities Strategy
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-xl text-muted-foreground max-w-3xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-body text-sm text-black/50 max-w-2xl mx-auto mt-4 leading-relaxed">
               Paid communities represent the highest-converting lead source — members are pre-qualified, 
               high-net-worth, and actively seeking premium services.
             </motion.p>
@@ -171,7 +155,7 @@ export default function GTMPartnerships() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-5">
               {[
                 {
                   title: "YPO",
@@ -195,13 +179,14 @@ export default function GTMPartnerships() {
                 <motion.div
                   key={i}
                   variants={scaleIn}
-                  className="bg-card border border-border rounded-2xl p-8 hover:border-primary/50 transition-all"
+                  whileHover={{ y: -4 }}
+                  className="bg-white border border-black/[0.10] rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/25 transition-all duration-300"
                 >
-                  <h3 className="font-display text-2xl font-medium text-primary mb-1">{community.title}</h3>
-                  <p className="font-body text-sm text-muted-foreground mb-4">{community.subtitle}</p>
-                  <p className="font-body text-muted-foreground leading-relaxed mb-4">{community.description}</p>
-                  <div className="pt-4 border-t border-border">
-                    <span className="font-mono text-xs text-primary font-semibold">{community.stats}</span>
+                  <h3 className="font-display text-2xl font-bold text-[#C9A962] mb-1 tracking-tight">{community.title}</h3>
+                  <p className="font-body text-xs text-black/45 mb-4">{community.subtitle}</p>
+                  <p className="font-body text-sm text-black/50 leading-relaxed mb-5">{community.description}</p>
+                  <div className="pt-4 border-t border-black/[0.06]">
+                    <span className="font-mono text-[10px] text-[#C9A962] font-semibold tracking-[0.15em] uppercase">{community.stats}</span>
                   </div>
                 </motion.div>
               ))}
@@ -211,25 +196,25 @@ export default function GTMPartnerships() {
       </section>
 
       {/* Partnership Approach */}
-      <section id="approach" className="py-20 bg-card/30">
-        <div className="container">
+      <section id="approach" className="py-20 sm:py-24 bg-[#F9F9F7]">
+        <div className="container px-6 sm:px-8">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-14"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
-              HOW WE PARTNER
+            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.25em] uppercase">
+              How We Partner
             </motion.span>
-            <motion.h2 variants={fadeInUp} className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
+            <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
               Partnership Activation Framework
             </motion.h2>
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto"
+            className="grid md:grid-cols-2 gap-5 max-w-4xl mx-auto"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -244,14 +229,14 @@ export default function GTMPartnerships() {
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="flex gap-4 items-start"
+                className="flex gap-4 items-start p-6 rounded-xl bg-white border border-black/[0.10] shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:border-[#C9A962]/20 transition-all duration-300"
               >
-                <div className="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
-                  <span className="font-display text-sm font-bold text-primary">{String(i + 1).padStart(2, '0')}</span>
+                <div className="w-10 h-10 rounded-lg bg-[#C9A962]/10 border border-[#C9A962]/20 flex items-center justify-center flex-shrink-0">
+                  <span className="font-display text-sm font-bold text-[#C9A962]">{String(i + 1).padStart(2, '0')}</span>
                 </div>
                 <div>
-                  <h3 className="font-display text-xl font-medium mb-2">{step.title}</h3>
-                  <p className="font-body text-muted-foreground leading-relaxed">{step.description}</p>
+                  <h3 className="font-display text-base font-bold text-black mb-2 tracking-tight">{step.title}</h3>
+                  <p className="font-body text-sm text-black/50 leading-relaxed">{step.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -260,25 +245,25 @@ export default function GTMPartnerships() {
       </section>
 
       {/* Results */}
-      <section id="results" className="py-20">
-        <div className="container">
+      <section id="results" className="py-20 sm:py-24 bg-white">
+        <div className="container px-6 sm:px-8">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-14"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
-              PARTNERSHIP IMPACT
+            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.25em] uppercase">
+              Partnership Impact
             </motion.span>
-            <motion.h2 variants={fadeInUp} className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
+            <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
               What Partners Gain
             </motion.h2>
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto"
+            className="grid md:grid-cols-2 gap-5 max-w-4xl mx-auto"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -293,14 +278,14 @@ export default function GTMPartnerships() {
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="flex gap-4 items-start"
+                className="flex gap-4 items-start p-6 rounded-xl bg-white border border-black/[0.10] shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:border-[#C9A962]/20 transition-all duration-300"
               >
-                <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-1">
-                  <Star className="w-4 h-4 text-primary" />
+                <div className="w-9 h-9 rounded-lg bg-[#C9A962]/10 border border-[#C9A962]/20 flex items-center justify-center flex-shrink-0">
+                  <Star className="w-4 h-4 text-[#C9A962]" />
                 </div>
                 <div>
-                  <h3 className="font-display text-xl font-medium mb-2">{benefit.title}</h3>
-                  <p className="font-body text-muted-foreground leading-relaxed">{benefit.description}</p>
+                  <h3 className="font-display text-base font-bold text-black mb-2 tracking-tight">{benefit.title}</h3>
+                  <p className="font-body text-sm text-black/50 leading-relaxed">{benefit.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -308,15 +293,15 @@ export default function GTMPartnerships() {
 
           {/* CTA */}
           <motion.div
-            className="text-center mt-16"
+            className="text-center mt-14"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
           >
-            <a href="/gtm/results" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-primary text-white font-body font-medium hover:bg-primary/90 transition-colors shadow-lg hover:shadow-primary/30">
+            <a href="/gtm/results" className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-lg bg-black text-white font-body text-sm font-semibold hover:bg-[#111] shadow-[0_2px_8px_rgba(0,0,0,0.2)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.25)] transition-all">
               See Our Results
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-4 h-4" />
             </a>
           </motion.div>
         </div>

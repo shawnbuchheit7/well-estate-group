@@ -1,12 +1,12 @@
 /*
  * GTM Acquisition Models Page - B2B, B2C, B2B2C
- * Based on WEG Master Deck Slides 27-33
- * Matches WEG "Cellular Renaissance" design system
+ * Design: Super premium luxury — white/cream/gold, sharp contrast, refined typography
  */
 
 import { motion } from "framer-motion";
 import { Users, ArrowRight, Heart, Building2, Dumbbell, Hotel, Shield, TrendingUp, Zap, CheckCircle2, UserCheck, Briefcase, ShoppingBag, ArrowRightLeft } from "lucide-react";
 import Layout from "@/components/Layout";
+import LightHero from "@/components/LightHero";
 import { fadeInUp, staggerContainer, scaleIn } from "@/lib/animations";
 import { SectionNav } from "@/components/SectionNav";
 
@@ -26,36 +26,25 @@ export default function GTMB2B2C() {
       <SectionNav sections={sections} />
 
       {/* Hero */}
-      <section id="hero" className="py-24 md:py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background" />
-        <div className="container relative z-10">
-          <motion.div
-            className="text-center max-w-4xl mx-auto"
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
-            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
-              ACQUISITION MODELS
-            </motion.span>
-            <motion.h1 variants={fadeInUp} className="font-display text-5xl md:text-7xl font-medium mt-4 mb-6">
-              B2B. B2C. B2B2C.
-            </motion.h1>
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="h-px w-32 mx-auto bg-gradient-to-r from-transparent via-primary to-transparent mb-6"
-            />
-            <motion.p variants={fadeInUp} className="font-body text-xl text-muted-foreground leading-relaxed">
-              Three distinct go-to-market channels — each optimized for different customer journeys. 
-              We deploy the right model for the right market, maximizing reach and conversion.
-            </motion.p>
-          </motion.div>
+      <div id="hero">
+        <LightHero
+          eyebrow="Acquisition Models"
+          title="B2B. B2C. B2B2C."
+          description="Three distinct go-to-market channels — each optimized for different customer journeys. We deploy the right model for the right market, maximizing reach and conversion."
+          stats={[
+            { value: "3", label: "Channels" },
+            { value: "9", label: "Verticals" },
+            { value: "B2B2C", label: "Primary Model" },
+            { value: "∞", label: "Scale Potential" },
+          ]}
+        />
+      </div>
 
-          {/* Three Model Overview Cards */}
+      {/* Three Model Overview Cards */}
+      <section className="py-16 bg-white">
+        <div className="container px-6 sm:px-8">
           <motion.div
-            className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mt-16"
+            className="grid md:grid-cols-3 gap-5 max-w-5xl mx-auto"
             initial="hidden"
             animate="visible"
             variants={staggerContainer}
@@ -83,16 +72,15 @@ export default function GTMB2B2C() {
               <motion.div
                 key={i}
                 variants={scaleIn}
-                whileHover={{ y: -8 }}
-                className="relative group"
+                whileHover={{ y: -4 }}
+                className="bg-white border border-black/[0.10] rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/25 transition-all duration-300"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative bg-card border border-border rounded-2xl p-8 h-full hover:border-primary/50 hover:shadow-lg transition-all duration-300">
-                  <model.icon className="w-10 h-10 text-primary mb-4" />
-                  <h3 className="font-display text-2xl font-medium mb-1">{model.title}</h3>
-                  <p className="font-body text-sm text-primary/70 mb-4">{model.subtitle}</p>
-                  <p className="font-body text-muted-foreground leading-relaxed">{model.description}</p>
+                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-black/[0.06] flex items-center justify-center mb-5">
+                  <model.icon className="w-5 h-5 text-[#C9A962]" />
                 </div>
+                <h3 className="font-display text-2xl font-bold text-black mb-1 tracking-tight">{model.title}</h3>
+                <p className="font-mono text-[10px] text-[#C9A962] font-semibold tracking-[0.15em] uppercase mb-4">{model.subtitle}</p>
+                <p className="font-body text-sm text-black/50 leading-relaxed">{model.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -100,29 +88,29 @@ export default function GTMB2B2C() {
       </section>
 
       {/* B2B Section */}
-      <section id="b2b" className="py-20 bg-card/30">
-        <div className="container">
+      <section id="b2b" className="py-20 sm:py-24 bg-[#F9F9F7]">
+        <div className="container px-6 sm:px-8">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-14"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
-              B2B — BUSINESS TO BUSINESS
+            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.25em] uppercase">
+              B2B — Business to Business
             </motion.span>
-            <motion.h2 variants={fadeInUp} className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
+            <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
               Enterprise & Institutional Sales
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-xl text-muted-foreground max-w-3xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-body text-sm text-black/50 max-w-2xl mx-auto mt-4 leading-relaxed">
               Direct sales to businesses and organizations that integrate wellness solutions into their 
               operations, employee benefits, or member offerings.
             </motion.p>
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto"
+            className="grid md:grid-cols-3 gap-5 max-w-5xl mx-auto"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -148,15 +136,14 @@ export default function GTMB2B2C() {
               <motion.div
                 key={i}
                 variants={scaleIn}
-                whileHover={{ y: -8 }}
-                className="relative group"
+                whileHover={{ y: -4 }}
+                className="bg-white border border-black/[0.10] rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/25 transition-all duration-300"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative bg-card border border-border rounded-2xl p-8 h-full hover:border-primary/50 hover:shadow-lg transition-all duration-300">
-                  <item.icon className="w-10 h-10 text-primary mb-6" />
-                  <h3 className="font-display text-xl font-medium mb-3">{item.title}</h3>
-                  <p className="font-body text-muted-foreground leading-relaxed">{item.description}</p>
+                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-black/[0.06] flex items-center justify-center mb-5">
+                  <item.icon className="w-5 h-5 text-[#C9A962]" />
                 </div>
+                <h3 className="font-display text-lg font-bold text-black mb-2.5 tracking-tight">{item.title}</h3>
+                <p className="font-body text-sm text-black/50 leading-relaxed">{item.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -164,29 +151,29 @@ export default function GTMB2B2C() {
       </section>
 
       {/* B2C Section — Seekers */}
-      <section id="b2c" className="py-20">
-        <div className="container">
+      <section id="b2c" className="py-20 sm:py-24 bg-white">
+        <div className="container px-6 sm:px-8">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-14"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
-              B2C — BUSINESS TO CONSUMER
+            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.25em] uppercase">
+              B2C — Business to Consumer
             </motion.span>
-            <motion.h2 variants={fadeInUp} className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
+            <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
               Direct-to-Consumer Seekers
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-xl text-muted-foreground max-w-3xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-body text-sm text-black/50 max-w-2xl mx-auto mt-4 leading-relaxed">
               Individuals proactively seeking predictive, preventive, and proactive healthcare solutions — 
               acquired through digital marketing, referrals, and brand awareness.
             </motion.p>
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto"
+            className="grid md:grid-cols-3 gap-5 max-w-5xl mx-auto"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -212,15 +199,14 @@ export default function GTMB2B2C() {
               <motion.div
                 key={i}
                 variants={scaleIn}
-                whileHover={{ y: -8 }}
-                className="relative group"
+                whileHover={{ y: -4 }}
+                className="bg-white border border-black/[0.10] rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/25 transition-all duration-300"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative bg-card border border-border rounded-2xl p-8 h-full hover:border-primary/50 hover:shadow-lg transition-all duration-300">
-                  <item.icon className="w-10 h-10 text-primary mb-6" />
-                  <h3 className="font-display text-xl font-medium mb-3">{item.title}</h3>
-                  <p className="font-body text-muted-foreground leading-relaxed">{item.description}</p>
+                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-black/[0.06] flex items-center justify-center mb-5">
+                  <item.icon className="w-5 h-5 text-[#C9A962]" />
                 </div>
+                <h3 className="font-display text-lg font-bold text-black mb-2.5 tracking-tight">{item.title}</h3>
+                <p className="font-body text-sm text-black/50 leading-relaxed">{item.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -228,29 +214,29 @@ export default function GTMB2B2C() {
       </section>
 
       {/* B2B2C Section */}
-      <section id="b2b2c" className="py-20 bg-card/30">
-        <div className="container">
+      <section id="b2b2c" className="py-20 sm:py-24 bg-[#F9F9F7]">
+        <div className="container px-6 sm:px-8">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-14"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
-              B2B2C — BUSINESS TO BUSINESS TO CONSUMER
+            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.25em] uppercase">
+              B2B2C — Business to Business to Consumer
             </motion.span>
-            <motion.h2 variants={fadeInUp} className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
+            <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
               Partnership-Driven Acquisition
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-xl text-muted-foreground max-w-3xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-body text-sm text-black/50 max-w-2xl mx-auto mt-4 leading-relaxed">
               Leveraging B2B partnerships to reach end consumers — facilitating an extension of a partner's 
               wellness offerings to their existing member base.
             </motion.p>
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto"
+            className="grid md:grid-cols-3 gap-5 max-w-5xl mx-auto"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -276,15 +262,14 @@ export default function GTMB2B2C() {
               <motion.div
                 key={i}
                 variants={scaleIn}
-                whileHover={{ y: -8 }}
-                className="relative group"
+                whileHover={{ y: -4 }}
+                className="bg-white border border-black/[0.10] rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/25 transition-all duration-300"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative bg-card border border-border rounded-2xl p-8 h-full hover:border-primary/50 hover:shadow-lg transition-all duration-300">
-                  <item.icon className="w-10 h-10 text-primary mb-6" />
-                  <h3 className="font-display text-xl font-medium mb-3">{item.title}</h3>
-                  <p className="font-body text-muted-foreground leading-relaxed">{item.description}</p>
+                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-black/[0.06] flex items-center justify-center mb-5">
+                  <item.icon className="w-5 h-5 text-[#C9A962]" />
                 </div>
+                <h3 className="font-display text-lg font-bold text-black mb-2.5 tracking-tight">{item.title}</h3>
+                <p className="font-body text-sm text-black/50 leading-relaxed">{item.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -292,22 +277,22 @@ export default function GTMB2B2C() {
       </section>
 
       {/* The Bridge - Synergizing Healthcare and Selfcare */}
-      <section id="bridge" className="py-20">
-        <div className="container">
+      <section id="bridge" className="py-20 sm:py-24 bg-white">
+        <div className="container px-6 sm:px-8">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-14"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
-              SYNERGIZING HEALTHCARE & SELFCARE
+            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.25em] uppercase">
+              Synergizing Healthcare & Selfcare
             </motion.span>
-            <motion.h2 variants={fadeInUp} className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
+            <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
               Building the Bridge
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-xl text-muted-foreground max-w-3xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-body text-sm text-black/50 max-w-2xl mx-auto mt-4 leading-relaxed">
               Fitness and wellness has largely been one direction. We facilitate multiple opportunities by extending 
               from proactive wellness and fitness regimens into early detection and prevention of disease.
             </motion.p>
@@ -321,29 +306,33 @@ export default function GTMB2B2C() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <div className="grid md:grid-cols-3 gap-6 items-center">
-              <motion.div variants={scaleIn} className="bg-card border border-border rounded-2xl p-8 text-center">
-                <Heart className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h3 className="font-display text-2xl font-medium mb-2">Healthcare</h3>
-                <p className="font-body text-sm text-muted-foreground">Physician-led diagnostics, regenerative medicine, executive health</p>
-              </motion.div>
-
-              <motion.div variants={fadeInUp} className="text-center">
-                <div className="flex items-center justify-center gap-2">
-                  <div className="h-px w-12 bg-primary/50" />
-                  <div className="w-16 h-16 rounded-full bg-primary/10 border-2 border-primary/30 flex items-center justify-center">
-                    <ArrowRightLeft className="w-6 h-6 text-primary" />
-                  </div>
-                  <div className="h-px w-12 bg-primary/50" />
+            <div className="grid md:grid-cols-3 gap-5 items-center">
+              <motion.div variants={scaleIn} className="bg-white border border-black/[0.10] rounded-xl p-7 text-center shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.04)]">
+                <div className="w-14 h-14 rounded-xl bg-[#F9F9F7] border border-black/[0.06] flex items-center justify-center mx-auto mb-4">
+                  <Heart className="w-6 h-6 text-[#C9A962]" />
                 </div>
-                <p className="font-display text-sm font-medium text-primary mt-3">WEG Bridge</p>
-                <p className="font-body text-xs text-muted-foreground mt-1">Value-driven, not direct selling</p>
+                <h3 className="font-display text-xl font-bold text-black mb-2 tracking-tight">Healthcare</h3>
+                <p className="font-body text-xs text-black/45 leading-relaxed">Physician-led diagnostics, regenerative medicine, executive health</p>
               </motion.div>
 
-              <motion.div variants={scaleIn} className="bg-card border border-border rounded-2xl p-8 text-center">
-                <Users className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h3 className="font-display text-2xl font-medium mb-2">Consumer</h3>
-                <p className="font-body text-sm text-muted-foreground">Fitness enthusiasts, wellness seekers, health-conscious individuals</p>
+              <motion.div variants={fadeInUp} className="text-center py-4">
+                <div className="flex items-center justify-center gap-3">
+                  <div className="h-px w-10 bg-[#C9A962]/40" />
+                  <div className="w-14 h-14 rounded-xl bg-[#C9A962]/10 border border-[#C9A962]/25 flex items-center justify-center">
+                    <ArrowRightLeft className="w-5 h-5 text-[#C9A962]" />
+                  </div>
+                  <div className="h-px w-10 bg-[#C9A962]/40" />
+                </div>
+                <p className="font-display text-sm font-bold text-black mt-3">WEG Bridge</p>
+                <p className="font-body text-[11px] text-black/40 mt-1">Value-driven, not direct selling</p>
+              </motion.div>
+
+              <motion.div variants={scaleIn} className="bg-white border border-black/[0.10] rounded-xl p-7 text-center shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.04)]">
+                <div className="w-14 h-14 rounded-xl bg-[#F9F9F7] border border-black/[0.06] flex items-center justify-center mx-auto mb-4">
+                  <Users className="w-6 h-6 text-[#C9A962]" />
+                </div>
+                <h3 className="font-display text-xl font-bold text-black mb-2 tracking-tight">Consumer</h3>
+                <p className="font-body text-xs text-black/45 leading-relaxed">Fitness enthusiasts, wellness seekers, health-conscious individuals</p>
               </motion.div>
             </div>
           </motion.div>
@@ -351,25 +340,25 @@ export default function GTMB2B2C() {
       </section>
 
       {/* Core Differentiators */}
-      <section id="differentiators" className="py-20 bg-card/30">
-        <div className="container">
+      <section id="differentiators" className="py-20 sm:py-24 bg-[#F9F9F7]">
+        <div className="container px-6 sm:px-8">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-14"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
-              PARTNER SUPPORT
+            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.25em] uppercase">
+              Partner Support
             </motion.span>
-            <motion.h2 variants={fadeInUp} className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
+            <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
               Core Differentiators in Supporting Partners
             </motion.h2>
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto"
+            className="grid md:grid-cols-2 gap-5 max-w-4xl mx-auto"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -404,14 +393,14 @@ export default function GTMB2B2C() {
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="flex gap-4 items-start"
+                className="flex gap-4 items-start p-6 rounded-xl bg-white border border-black/[0.10] shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:border-[#C9A962]/20 transition-all duration-300"
               >
-                <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-1">
-                  <CheckCircle2 className="w-5 h-5 text-primary" />
+                <div className="w-9 h-9 rounded-lg bg-[#C9A962]/10 border border-[#C9A962]/20 flex items-center justify-center flex-shrink-0">
+                  <CheckCircle2 className="w-4 h-4 text-[#C9A962]" />
                 </div>
                 <div>
-                  <h3 className="font-display text-xl font-medium mb-2">{diff.title}</h3>
-                  <p className="font-body text-muted-foreground leading-relaxed">{diff.description}</p>
+                  <h3 className="font-display text-base font-bold text-black mb-2 tracking-tight">{diff.title}</h3>
+                  <p className="font-body text-sm text-black/50 leading-relaxed">{diff.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -420,28 +409,28 @@ export default function GTMB2B2C() {
       </section>
 
       {/* The Flywheel */}
-      <section id="flywheel" className="py-20">
-        <div className="container">
+      <section id="flywheel" className="py-20 sm:py-24 bg-white">
+        <div className="container px-6 sm:px-8">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-14"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
-              THE ACQUISITION FLYWHEEL
+            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.25em] uppercase">
+              The Acquisition Flywheel
             </motion.span>
-            <motion.h2 variants={fadeInUp} className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
+            <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
               How It All Works Together
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-xl text-muted-foreground max-w-3xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-body text-sm text-black/50 max-w-2xl mx-auto mt-4 leading-relaxed">
               B2B, B2C, and B2B2C channels reinforce each other — creating a compounding growth engine.
             </motion.p>
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto"
+            className="grid md:grid-cols-3 gap-5 max-w-5xl mx-auto"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -470,29 +459,30 @@ export default function GTMB2B2C() {
               <motion.div
                 key={i}
                 variants={scaleIn}
-                className="relative"
+                whileHover={{ y: -4 }}
+                className="bg-white border border-black/[0.10] rounded-xl p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/25 transition-all duration-300"
               >
-                <div className="bg-card border border-border rounded-2xl p-8 h-full">
-                  <span className="font-display text-5xl font-bold text-primary/20">{step.step}</span>
-                  <step.icon className="w-8 h-8 text-primary mt-4 mb-4" />
-                  <h3 className="font-display text-xl font-medium mb-3">{step.title}</h3>
-                  <p className="font-body text-muted-foreground leading-relaxed">{step.description}</p>
+                <span className="font-display text-4xl font-bold text-[#C9A962]/20">{step.step}</span>
+                <div className="w-10 h-10 rounded-lg bg-[#F9F9F7] border border-black/[0.06] flex items-center justify-center mt-3 mb-4">
+                  <step.icon className="w-5 h-5 text-[#C9A962]" />
                 </div>
+                <h3 className="font-display text-lg font-bold text-black mb-2.5 tracking-tight">{step.title}</h3>
+                <p className="font-body text-sm text-black/50 leading-relaxed">{step.description}</p>
               </motion.div>
             ))}
           </motion.div>
 
           {/* CTA */}
           <motion.div
-            className="text-center mt-16"
+            className="text-center mt-14"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
           >
-            <a href="/gtm/sales" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-primary text-white font-body font-medium hover:bg-primary/90 transition-colors shadow-lg hover:shadow-primary/30">
+            <a href="/gtm/sales" className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-lg bg-black text-white font-body text-sm font-semibold hover:bg-[#111] shadow-[0_2px_8px_rgba(0,0,0,0.2)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.25)] transition-all">
               Explore Sales & Marketing
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-4 h-4" />
             </a>
           </motion.div>
         </div>

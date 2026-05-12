@@ -1,7 +1,7 @@
 /*
  * Sticky Section Navigation for Long Pages
- * Dark premium design matching the site's #0A0A0A aesthetic
- * Shows a floating sidebar with quick links to page sections
+ * Super premium floating sidebar — refined dark glass with crisp gold accents
+ * Enhanced: Sharper borders, tighter radius, better contrast
  */
 
 import { useState, useEffect, useCallback } from 'react';
@@ -83,18 +83,22 @@ export function SectionNav({ sections }: SectionNavProps) {
           className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden xl:block"
         >
           <div
-            className="backdrop-blur-xl border rounded-2xl shadow-[0_8px_40px_rgba(0,0,0,0.4)] overflow-hidden"
-            style={{ background: "rgba(17,17,17,0.95)", borderColor: "rgba(201,169,98,0.12)" }}
+            className="backdrop-blur-2xl border rounded-xl overflow-hidden"
+            style={{
+              background: "rgba(10,10,10,0.92)",
+              borderColor: "rgba(201,169,98,0.15)",
+              boxShadow: "0 8px 32px rgba(0,0,0,0.35), 0 2px 8px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.04)",
+            }}
           >
             {/* Toggle button */}
             <button
               onClick={() => setIsExpanded(!isExpanded)}
-              className="w-full p-3 flex items-center justify-center transition-colors border-b"
+              className="w-full p-3 flex items-center justify-center transition-all duration-200 border-b"
               style={{ borderColor: "rgba(255,255,255,0.06)" }}
-              onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.05)")}
+              onMouseEnter={e => (e.currentTarget.style.background = "rgba(201,169,98,0.08)")}
               onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
             >
-              <List className="w-4 h-4" style={{ color: "rgba(255,255,255,0.4)" }} />
+              <List className="w-4 h-4" style={{ color: GOLD, opacity: 0.7 }} />
             </button>
 
             <AnimatePresence>
@@ -106,7 +110,7 @@ export function SectionNav({ sections }: SectionNavProps) {
                   transition={{ duration: 0.2 }}
                   className="overflow-hidden"
                 >
-                  <nav className="p-2 max-h-[60vh] overflow-y-auto">
+                  <nav className="p-2.5 max-h-[60vh] overflow-y-auto">
                     <ul className="space-y-0.5">
                       {sections.map((section) => {
                         const isActive = activeSection === section.id;
@@ -116,20 +120,21 @@ export function SectionNav({ sections }: SectionNavProps) {
                               onClick={() => scrollToSection(section.id)}
                               className="w-full text-left px-3 py-2 rounded-lg text-xs font-mono transition-all duration-200"
                               style={{
-                                background: isActive ? `${GOLD}15` : "transparent",
-                                color: isActive ? GOLD : "rgba(255,255,255,0.35)",
+                                background: isActive ? `rgba(201,169,98,0.12)` : "transparent",
+                                color: isActive ? GOLD : "rgba(255,255,255,0.40)",
                                 fontWeight: isActive ? 600 : 400,
+                                borderLeft: isActive ? `2px solid ${GOLD}` : "2px solid transparent",
                               }}
                               onMouseEnter={e => {
                                 if (!isActive) {
-                                  e.currentTarget.style.background = "rgba(255,255,255,0.05)";
-                                  e.currentTarget.style.color = "rgba(255,255,255,0.6)";
+                                  e.currentTarget.style.background = "rgba(255,255,255,0.04)";
+                                  e.currentTarget.style.color = "rgba(255,255,255,0.7)";
                                 }
                               }}
                               onMouseLeave={e => {
                                 if (!isActive) {
                                   e.currentTarget.style.background = "transparent";
-                                  e.currentTarget.style.color = "rgba(255,255,255,0.35)";
+                                  e.currentTarget.style.color = "rgba(255,255,255,0.40)";
                                 }
                               }}
                             >
@@ -137,11 +142,12 @@ export function SectionNav({ sections }: SectionNavProps) {
                                 <span
                                   className="w-1.5 h-1.5 rounded-full transition-all duration-200 flex-shrink-0"
                                   style={{
-                                    background: isActive ? GOLD : "rgba(255,255,255,0.15)",
-                                    transform: isActive ? "scale(1.25)" : "scale(1)",
+                                    background: isActive ? GOLD : "rgba(255,255,255,0.12)",
+                                    transform: isActive ? "scale(1.3)" : "scale(1)",
+                                    boxShadow: isActive ? `0 0 6px ${GOLD}40` : "none",
                                   }}
                                 />
-                                <span className="truncate max-w-[130px] tracking-wide text-[10px] uppercase">
+                                <span className="truncate max-w-[130px] tracking-[0.08em] text-[10px] uppercase">
                                   {section.label}
                                 </span>
                               </div>

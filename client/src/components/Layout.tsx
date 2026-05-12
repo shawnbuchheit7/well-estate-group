@@ -173,11 +173,11 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
       {/* Navigation — hidden in present mode */}
       {!isPresentMode && (
       <motion.nav 
-        className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b bg-white/95 border-black/[0.12]"
+        className="fixed top-0 left-0 right-0 z-50 backdrop-blur-2xl border-b bg-white/97 border-black/[0.08]"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] }}
-        style={{ boxShadow: '0 1px 24px rgba(0,0,0,0.05)' }}
+        style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 4px 20px rgba(0,0,0,0.03)' }}
       >
         <div className="w-full px-6 lg:px-10 xl:px-16 flex flex-col">
           <div className="flex items-center justify-between h-16">
@@ -196,7 +196,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                 whileHover={{ rotate: 360, scale: 1.1 }}
                 transition={{ duration: 0.6 }}
               />
-              <span className="font-display text-lg font-semibold tracking-wide group-hover:text-[#C9A962] transition-colors whitespace-nowrap text-black">
+              <span className="font-display text-lg font-bold tracking-[0.04em] group-hover:text-[#C9A962] transition-colors whitespace-nowrap text-black">
                 WELL ESTATE GROUP
               </span>
             </Link>
@@ -214,10 +214,10 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                     >
                       <Link
                         href={link.href}
-                        className={`relative px-3 py-1.5 rounded-md border transition-all whitespace-nowrap ${
+                        className={`relative px-3.5 py-1.5 rounded-lg border transition-all whitespace-nowrap ${
                           isActive
-                            ? "text-white font-semibold border-black bg-black shadow-sm"
-                            : "text-black/60 border-transparent hover:text-black hover:border-black/15 hover:bg-black/[0.03]"
+                            ? "text-white font-semibold border-black bg-black shadow-[0_2px_8px_rgba(0,0,0,0.15)]"
+                            : "text-black/55 border-transparent hover:text-black hover:border-black/[0.12] hover:bg-black/[0.03]"
                         }`}
                       >
                         {link.label}

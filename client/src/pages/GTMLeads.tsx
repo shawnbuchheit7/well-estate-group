@@ -1,12 +1,12 @@
 /*
  * GTM Lead Flow & CRM Page - WEG Lead Management
- * Based on WEG Master Deck Slides 51-58
- * Matches WEG "Cellular Renaissance" design system
+ * Design: Super premium luxury — white/cream/gold, sharp contrast, refined typography
  */
 
 import { motion } from "framer-motion";
 import { ArrowRight, BarChart3, Mail, Phone, Users, Database, TrendingUp, CheckCircle2, Zap, Target } from "lucide-react";
 import Layout from "@/components/Layout";
+import LightHero from "@/components/LightHero";
 import { fadeInUp, staggerContainer, scaleIn } from "@/lib/animations";
 import { SectionNav } from "@/components/SectionNav";
 
@@ -24,58 +24,43 @@ export default function GTMLeads() {
       <SectionNav sections={sections} />
 
       {/* Hero */}
-      <section id="hero" className="py-24 md:py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background" />
-        <div className="container relative z-10">
-          <motion.div
-            className="text-center max-w-4xl mx-auto"
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
-            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
-              LEAD MANAGEMENT
-            </motion.span>
-            <motion.h1 variants={fadeInUp} className="font-display text-5xl md:text-7xl font-medium mt-4 mb-6">
-              Lead Flow & CRM
-            </motion.h1>
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="h-px w-32 mx-auto bg-gradient-to-r from-transparent via-primary to-transparent mb-6"
-            />
-            <motion.p variants={fadeInUp} className="font-body text-xl text-muted-foreground leading-relaxed">
-              End-to-end lead journey management — from first touch to conversion, service delivery, 
-              and upsell — powered by Salesforce CRM with full funnel visibility.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
+      <div id="hero">
+        <LightHero
+          eyebrow="Lead Management"
+          title="Lead Flow & CRM"
+          description="End-to-end lead journey management — from first touch to conversion, service delivery, and upsell — powered by Salesforce CRM with full funnel visibility."
+          stats={[
+            { value: "6", label: "Journey Stages" },
+            { value: "4", label: "Lead Channels" },
+            { value: "100%", label: "Tracked" },
+            { value: "24/7", label: "Automated" },
+          ]}
+        />
+      </div>
 
       {/* Lead Journey */}
-      <section id="journey" className="py-20 bg-card/30">
-        <div className="container">
+      <section id="journey" className="py-20 sm:py-24 bg-[#F9F9F7]">
+        <div className="container px-6 sm:px-8">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-14"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
-              THE LEAD JOURNEY
+            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.25em] uppercase">
+              The Lead Journey
             </motion.span>
-            <motion.h2 variants={fadeInUp} className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
+            <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
               From Contact to Customer
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-xl text-muted-foreground max-w-3xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-body text-sm text-black/50 max-w-2xl mx-auto mt-4 leading-relaxed">
               A structured, trackable journey that ensures no lead falls through the cracks.
             </motion.p>
           </motion.div>
 
           <motion.div
-            className="max-w-5xl mx-auto"
+            className="max-w-3xl mx-auto"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -122,20 +107,20 @@ export default function GTMLeads() {
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="flex gap-6 mb-8 last:mb-0"
+                className="flex gap-5 mb-6 last:mb-0"
               >
                 <div className="flex flex-col items-center flex-shrink-0">
-                  <div className="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center">
-                    <stage.icon className="w-6 h-6 text-primary" />
+                  <div className="w-12 h-12 rounded-xl bg-white border border-black/[0.10] shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex items-center justify-center">
+                    <stage.icon className="w-5 h-5 text-[#C9A962]" />
                   </div>
-                  {i < 5 && <div className="w-px h-full bg-primary/20 mt-2" />}
+                  {i < 5 && <div className="w-px h-full bg-black/[0.08] mt-2" />}
                 </div>
-                <div className="pb-8">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="font-mono text-xs text-primary font-semibold">STEP {stage.step}</span>
+                <div className="pb-6">
+                  <div className="flex items-center gap-3 mb-1.5">
+                    <span className="font-mono text-[10px] text-[#C9A962] font-semibold tracking-[0.15em]">STEP {stage.step}</span>
                   </div>
-                  <h3 className="font-display text-xl font-medium mb-2">{stage.title}</h3>
-                  <p className="font-body text-muted-foreground leading-relaxed">{stage.description}</p>
+                  <h3 className="font-display text-lg font-bold text-black mb-2 tracking-tight">{stage.title}</h3>
+                  <p className="font-body text-sm text-black/50 leading-relaxed">{stage.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -144,25 +129,25 @@ export default function GTMLeads() {
       </section>
 
       {/* Lead Sources */}
-      <section id="sources" className="py-20">
-        <div className="container">
+      <section id="sources" className="py-20 sm:py-24 bg-white">
+        <div className="container px-6 sm:px-8">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-14"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
-              LEAD GENERATION
+            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.25em] uppercase">
+              Lead Generation
             </motion.span>
-            <motion.h2 variants={fadeInUp} className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
+            <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
               Multi-Channel Lead Sources
             </motion.h2>
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto"
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 max-w-5xl mx-auto"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -177,14 +162,17 @@ export default function GTMLeads() {
               <motion.div
                 key={i}
                 variants={scaleIn}
-                className="bg-card border border-border rounded-2xl p-6 hover:border-primary/40 transition-all"
+                whileHover={{ y: -4 }}
+                className="bg-white border border-black/[0.10] rounded-xl p-6 shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/25 transition-all duration-300"
               >
-                <source.icon className="w-8 h-8 text-primary mb-4" />
-                <h3 className="font-display text-lg font-medium mb-4">{source.title}</h3>
-                <ul className="space-y-2">
+                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-black/[0.06] flex items-center justify-center mb-5">
+                  <source.icon className="w-5 h-5 text-[#C9A962]" />
+                </div>
+                <h3 className="font-display text-base font-bold text-black mb-4 tracking-tight">{source.title}</h3>
+                <ul className="space-y-2.5">
                   {source.items.map((item, j) => (
-                    <li key={j} className="flex items-center gap-2 font-body text-sm text-muted-foreground">
-                      <div className="w-1.5 h-1.5 rounded-full bg-primary/50" />
+                    <li key={j} className="flex items-center gap-2.5 font-body text-sm text-black/50">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#C9A962]/60" />
                       {item}
                     </li>
                   ))}
@@ -196,28 +184,28 @@ export default function GTMLeads() {
       </section>
 
       {/* CRM & Salesforce */}
-      <section id="crm" className="py-20 bg-card/30">
-        <div className="container">
+      <section id="crm" className="py-20 sm:py-24 bg-[#F9F9F7]">
+        <div className="container px-6 sm:px-8">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-14"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
-              CRM INFRASTRUCTURE
+            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.25em] uppercase">
+              CRM Infrastructure
             </motion.span>
-            <motion.h2 variants={fadeInUp} className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
+            <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
               Salesforce-Powered Operations
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-xl text-muted-foreground max-w-3xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-body text-sm text-black/50 max-w-2xl mx-auto mt-4 leading-relaxed">
               Complete CRM implementation with automated workflows, activity tracking, and integrated reporting.
             </motion.p>
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto"
+            className="grid md:grid-cols-2 gap-5 max-w-4xl mx-auto"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -232,14 +220,15 @@ export default function GTMLeads() {
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="flex gap-5 p-6 rounded-2xl bg-card border border-border hover:border-primary/40 transition-all duration-300 group"
+                whileHover={{ y: -3 }}
+                className="flex gap-5 p-6 rounded-xl bg-white border border-black/[0.10] shadow-[0_2px_8px_rgba(0,0,0,0.03),0_4px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_28px_rgba(0,0,0,0.07)] hover:border-[#C9A962]/25 transition-all duration-300"
               >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                  <feature.icon className="w-6 h-6 text-primary" />
+                <div className="w-11 h-11 rounded-lg bg-[#F9F9F7] border border-black/[0.06] flex items-center justify-center flex-shrink-0">
+                  <feature.icon className="w-5 h-5 text-[#C9A962]" />
                 </div>
                 <div>
-                  <h3 className="font-display text-lg font-medium mb-2">{feature.title}</h3>
-                  <p className="font-body text-muted-foreground leading-relaxed">{feature.description}</p>
+                  <h3 className="font-display text-base font-bold text-black mb-2 tracking-tight">{feature.title}</h3>
+                  <p className="font-body text-sm text-black/50 leading-relaxed">{feature.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -248,19 +237,19 @@ export default function GTMLeads() {
       </section>
 
       {/* Analytics */}
-      <section id="analytics" className="py-20">
-        <div className="container">
+      <section id="analytics" className="py-20 sm:py-24 bg-white">
+        <div className="container px-6 sm:px-8">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-14"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase">
-              MEASUREMENT
+            <motion.span variants={fadeInUp} className="font-mono text-[#C9A962] font-semibold text-[11px] tracking-[0.25em] uppercase">
+              Measurement
             </motion.span>
-            <motion.h2 variants={fadeInUp} className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
+            <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
               What Gets Measured Gets Managed
             </motion.h2>
           </motion.div>
@@ -273,11 +262,11 @@ export default function GTMLeads() {
             variants={staggerContainer}
           >
             {/* Metrics Table */}
-            <motion.div variants={fadeInUp} className="bg-card border border-border rounded-2xl overflow-hidden">
-              <div className="grid grid-cols-3 bg-primary/5 border-b border-border">
-                <div className="p-4 font-display text-sm font-medium">Metric</div>
-                <div className="p-4 font-display text-sm font-medium">What We Track</div>
-                <div className="p-4 font-display text-sm font-medium">Why It Matters</div>
+            <motion.div variants={fadeInUp} className="bg-white border border-black/[0.10] rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.03),0_8px_24px_rgba(0,0,0,0.05)] overflow-hidden">
+              <div className="grid grid-cols-3 bg-[#0A0A0A] text-white">
+                <div className="px-6 py-4 font-mono text-[11px] tracking-[0.15em] uppercase font-semibold">Metric</div>
+                <div className="px-6 py-4 font-mono text-[11px] tracking-[0.15em] uppercase font-semibold">What We Track</div>
+                <div className="px-6 py-4 font-mono text-[11px] tracking-[0.15em] uppercase font-semibold">Why It Matters</div>
               </div>
               {[
                 { metric: "Lead Volume", track: "Total leads by source, channel, and campaign", why: "Identifies highest-performing acquisition channels" },
@@ -287,10 +276,10 @@ export default function GTMLeads() {
                 { metric: "NPS Score", track: "Net Promoter Score from post-service surveys", why: "Predicts retention, referrals, and brand health" },
                 { metric: "Pipeline Velocity", track: "Average time from lead to conversion", why: "Identifies bottlenecks and optimization opportunities" },
               ].map((row, i) => (
-                <div key={i} className={`grid grid-cols-3 ${i % 2 === 0 ? "" : "bg-muted/20"} ${i < 5 ? "border-b border-border" : ""}`}>
-                  <div className="p-4 font-display text-sm font-medium text-primary">{row.metric}</div>
-                  <div className="p-4 font-body text-sm text-muted-foreground">{row.track}</div>
-                  <div className="p-4 font-body text-sm text-muted-foreground">{row.why}</div>
+                <div key={i} className={`grid grid-cols-3 ${i % 2 === 0 ? "bg-white" : "bg-[#FAFAF8]"} ${i < 5 ? "border-b border-black/[0.06]" : ""} hover:bg-[#F5F4F0] transition-colors duration-150`}>
+                  <div className="px-6 py-4 font-display text-sm font-bold text-black">{row.metric}</div>
+                  <div className="px-6 py-4 font-body text-sm text-black/50">{row.track}</div>
+                  <div className="px-6 py-4 font-body text-sm text-black/50">{row.why}</div>
                 </div>
               ))}
             </motion.div>
@@ -298,15 +287,15 @@ export default function GTMLeads() {
 
           {/* CTA */}
           <motion.div
-            className="text-center mt-16"
+            className="text-center mt-14"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
           >
-            <a href="/gtm/partnerships" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-primary text-white font-body font-medium hover:bg-primary/90 transition-colors shadow-lg hover:shadow-primary/30">
+            <a href="/gtm/partnerships" className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-lg bg-black text-white font-body text-sm font-semibold hover:bg-[#111] shadow-[0_2px_8px_rgba(0,0,0,0.2)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.25)] transition-all">
               Explore Partnerships
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-4 h-4" />
             </a>
           </motion.div>
         </div>
