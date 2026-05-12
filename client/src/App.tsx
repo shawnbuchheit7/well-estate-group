@@ -166,6 +166,13 @@ function App() {
                   
                   {/* Longevity Performance Model */}
                   <Route path="/longevity/performance-model" component={LongevityPerformanceModel} />
+                  <Route path="/longevity/performance-model/about" component={LongevityPerformanceModel} />
+                  <Route path="/longevity/performance-model/platform" component={LongevityPerformanceModel} />
+                  <Route path="/longevity/performance-model/products" component={LongevityPerformanceModel} />
+                  <Route path="/longevity/performance-model/partnerships" component={LongevityPerformanceModel} />
+                  <Route path="/longevity/performance-model/diagnostics" component={LongevityPerformanceModel} />
+                  <Route path="/longevity/performance-model/hospitality" component={LongevityPerformanceModel} />
+                  <Route path="/longevity/performance-model/academy" component={LongevityPerformanceModel} />
                   <Route path="/longevity/data-room" component={DataRoom} />
                   <Route path="/longevity/contact" component={Contact} />
                   
