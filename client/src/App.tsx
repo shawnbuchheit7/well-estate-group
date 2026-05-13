@@ -51,6 +51,7 @@ const ZWB2B2C = lazy(() => import("./pages/zerowheel/ZWB2B2C"));
 const ZWMarketingInfrastructure = lazy(() => import("./pages/zerowheel/ZWMarketingInfrastructure"));
 const ZWAffiliateProgram = lazy(() => import("./pages/zerowheel/ZWAffiliateProgram"));
 
+const ProductsLanding = lazy(() => import("./pages/ProductsLanding"));
 const ProductIntelligence = lazy(() => import("./pages/ProductIntelligence"));
 const VentureCapital = lazy(() => import("./pages/VentureCapital"));
 
@@ -143,7 +144,8 @@ function App() {
                   <Route path="/gtm/sample/sales-infrastructure" component={GTMSalesInfrastructure} />
                   
                   {/* Product Intelligence Section */}
-                  <Route path="/product-intelligence" component={ProductIntelligence} />
+                  <Route path="/product-intelligence" component={ProductsLanding} />
+                  <Route path="/product-intelligence/t-spine" component={ProductIntelligence} />
                   
                   {/* Venture & Product Capital Section */}
                   <Route path="/venture-capital" component={VentureCapital} />
