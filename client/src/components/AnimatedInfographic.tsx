@@ -13,11 +13,11 @@ interface TimelineItem {
 }
 
 const expansionTimeline: TimelineItem[] = [
-  { year: "2025", label: "Launch", value: 1, maxValue: 5, detail: "Houston Flagship" },
-  { year: "2026", label: "Expansion", value: 2, maxValue: 5, detail: "+ 2nd Market" },
-  { year: "2027", label: "Growth", value: 3, maxValue: 5, detail: "+ NYC Center" },
-  { year: "2028", label: "Scale", value: 4, maxValue: 5, detail: "+ Dallas & Miami" },
-  { year: "2029", label: "Maturity", value: 5, maxValue: 5, detail: "5 Flagship Centers" },
+  { year: "2027", label: "Launch", value: 1, maxValue: 5, detail: "Center 1 (Flagship)" },
+  { year: "2028", label: "Expansion", value: 2, maxValue: 5, detail: "+ Center 2" },
+  { year: "2029", label: "Growth", value: 3, maxValue: 5, detail: "+ Center 3" },
+  { year: "2030", label: "Scale", value: 4, maxValue: 5, detail: "+ Center 4" },
+  { year: "2031", label: "Maturity", value: 5, maxValue: 5, detail: "+ Center 5" },
 ];
 
 const revenueWaterfall = [
