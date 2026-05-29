@@ -781,7 +781,7 @@ export default function Performance() {
               <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
                 Tiered Membership Model
               </h2>
-              <Link href="/memberships" className="inline-flex items-center gap-2 text-primary hover:text-accent transition-colors group">
+              <Link href="/longevity/memberships" className="inline-flex items-center gap-2 text-primary hover:text-accent transition-colors group">
                 <span className="font-body text-sm">View detailed membership benefits</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -1683,7 +1683,7 @@ export default function Performance() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp}>
-              <Link href="/projections">
+              <Link href="/longevity/projections">
                 <div className="bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 border border-primary/30 rounded-2xl p-8 hover:border-primary/50 transition-all cursor-pointer group">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">

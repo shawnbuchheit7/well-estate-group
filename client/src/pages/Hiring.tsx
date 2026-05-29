@@ -1653,7 +1653,7 @@ export default function Hiring() {
                   <p className="font-body text-sm text-muted-foreground">
                     These costs are incorporated into the single-center proforma and multi-center projections.
                   </p>
-                  <Link href="/performance" className="inline-flex items-center gap-2 px-4 py-2 bg-primary/20 hover:bg-primary/30 rounded-lg text-primary font-medium text-sm transition-colors whitespace-nowrap">
+                  <Link href="/longevity/performance" className="inline-flex items-center gap-2 px-4 py-2 bg-primary/20 hover:bg-primary/30 rounded-lg text-primary font-medium text-sm transition-colors whitespace-nowrap">
                     View Unit Economics →
                   </Link>
                 </div>

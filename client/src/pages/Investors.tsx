@@ -679,7 +679,7 @@ export default function Investors() {
               <p className="font-body text-sm text-muted-foreground mb-4">
                 Additional documents available upon execution of NDA. Contact us to request access.
               </p>
-              <a href="/contact" className="inline-flex items-center gap-2 text-primary hover:underline font-medium">
+              <a href="/longevity/contact" className="inline-flex items-center gap-2 text-primary hover:underline font-medium">
                 Request Data Room Access →
               </a>
             </motion.div>

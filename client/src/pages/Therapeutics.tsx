@@ -502,7 +502,7 @@ export default function Therapeutics() {
 
             {/* Cross-reference to Projections */}
             <motion.div variants={fadeInUp} className="mt-8 text-center">
-              <Link href="/projections" className="inline-flex items-center gap-2 text-primary hover:underline font-medium">
+              <Link href="/longevity/projections" className="inline-flex items-center gap-2 text-primary hover:underline font-medium">
                 View Growth Projections & Expansion Pathways →
               </Link>
             </motion.div>

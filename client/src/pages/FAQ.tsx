@@ -351,12 +351,12 @@ export default function FAQ() {
               Our team is available to discuss any aspects of the investment opportunity in detail.
             </motion.p>
             <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact">
+              <Link href="/longevity/contact">
                 <span className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground rounded-xl font-display font-medium hover:bg-primary/90 transition-colors cursor-pointer">
                   Schedule a Call
                 </span>
               </Link>
-              <Link href="/investors">
+              <Link href="/longevity/investors">
                 <span className="inline-flex items-center justify-center px-8 py-4 bg-card border border-border rounded-xl font-display font-medium hover:bg-muted/50 transition-colors cursor-pointer">
                   View Investment Terms
                 </span>

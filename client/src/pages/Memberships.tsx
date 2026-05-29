@@ -808,7 +808,7 @@ export default function Memberships() {
             </motion.div>
 
             <motion.div variants={fadeInUp} className="grid md:grid-cols-2 gap-6">
-              <Link href="/performance" className="group">
+              <Link href="/longevity/performance" className="group">
                 <div className="bg-card border border-border rounded-2xl p-8 h-full hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/5">
                   <div className="flex items-start justify-between mb-4">
                     <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
@@ -828,7 +828,7 @@ export default function Memberships() {
                 </div>
               </Link>
 
-              <Link href="/projections" className="group">
+              <Link href="/longevity/projections" className="group">
                 <div className="bg-card border border-border rounded-2xl p-8 h-full hover:border-accent/50 transition-all hover:shadow-lg hover:shadow-accent/5">
                   <div className="flex items-start justify-between mb-4">
                     <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
