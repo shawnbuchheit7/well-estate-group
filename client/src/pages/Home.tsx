@@ -25,7 +25,7 @@ const sections = [
   { title: "Therapeutics", desc: "Clinical protocols, treatment modalities, and wellness services", path: "/longevity/therapeutics" },
   { title: "Technology", desc: "AI-powered diagnostics, wearable integration, and data platform", path: "/longevity/technology" },
   { title: "Projections", desc: "Financial projections, unit economics, and growth trajectory", path: "/longevity/projections" },
-  { title: "Team", desc: "Leadership team, advisors, and clinical board", path: "/longevity/team" },
+  { title: "Team", desc: "Hiring priorities, team structure, and capacity planning", path: "/longevity/hiring" },
   { title: "FAQ", desc: "Frequently asked questions about the business model", path: "/longevity/faq" },
 ];
 

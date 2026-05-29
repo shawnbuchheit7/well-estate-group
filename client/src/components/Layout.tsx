@@ -30,7 +30,7 @@ const longevityNavLinks = [
   { href: "/longevity/use-of-funds", label: "Funds" },
   { href: "/longevity/performance", label: "Economics" },
   { href: "/longevity/projections", label: "Projections" },
-  { href: "/longevity/team", label: "Team" },
+  { href: "/longevity/hiring", label: "Team" },
   { href: "/longevity/faq", label: "FAQ" },
 ];
 

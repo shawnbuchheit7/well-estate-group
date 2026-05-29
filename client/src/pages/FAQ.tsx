@@ -43,7 +43,7 @@ const faqData: FAQCategory[] = [
       {
         question: "Why do you open each center with 3 ELITE physician teams?",
         answer: "Opening with 3 ELITE teams (12 staff) ensures we have capacity for member growth from day one. Each physician can onboard up to 15 new members per month, giving us capacity for 45 new ELITE members monthly. This prevents waitlists and ensures a premium member experience. New teams are added when existing physicians reach 50% capacity (60 members), ensuring seamless scaling.",
-        links: [{ text: "View Team Structure", href: "/longevity/team" }]
+        links: [{ text: "View Team Structure", href: "/longevity/hiring" }]
       },
       {
         question: "What's the difference between PRIME and ELITE memberships?",
@@ -93,7 +93,7 @@ const faqData: FAQCategory[] = [
       {
         question: "How do you handle medical malpractice liability?",
         answer: "We maintain comprehensive medical malpractice insurance for all clinical staff. Our D&O insurance provides $5M primary coverage plus $10M excess for directors and officers. All physicians are credentialed and maintain their own malpractice coverage as well.",
-        links: [{ text: "View Governance", href: "/longevity/team" }]
+        links: [{ text: "View Governance", href: "/longevity/hiring" }]
       }
     ]
   },
@@ -169,12 +169,12 @@ const faqData: FAQCategory[] = [
       {
         question: "How do you recruit physicians for the ELITE model?",
         answer: "We partner with Witt/Kieffer, a leading healthcare executive search firm with 50+ years of experience. We target physicians seeking to escape insurance-driven medicine who want to practice relationship-based care. Our compensation includes competitive base salary ($300K for ELITE physicians, $400K for Medical Directors) plus 30% MBO bonus opportunity.",
-        links: [{ text: "View Hiring Plan", href: "/longevity/team" }]
+        links: [{ text: "View Hiring Plan", href: "/longevity/hiring" }]
       },
       {
         question: "What is the MBO compensation structure?",
         answer: "Eligible team members (C-suite, management, and physicians) can earn up to 30% of base salary through Management by Objectives bonuses. Three metrics are defined annually combining individual and company goals, reviewed quarterly. For example, a physician earning $300K base could achieve total OTE of $390K with full MBO attainment.",
-        links: [{ text: "View Compensation Details", href: "/longevity/team" }]
+        links: [{ text: "View Compensation Details", href: "/longevity/hiring" }]
       },
       {
         question: "What's the role of the Medical Director vs ELITE Physicians?",
@@ -199,7 +199,7 @@ const faqData: FAQCategory[] = [
       {
         question: "What's the equity allocation for the team?",
         answer: "12% total equity pool reserved for executive team. Phase 1 executives (CEO, CFO, COO, CPO, CLO) receive the majority with 4-year vesting and 1-year cliff. Phase 2 executives (CMO Medical, CCO, CMO Marketing, CTO) receive allocations as they join. Specific individual allocations are determined at hiring based on experience and negotiation.",
-        links: [{ text: "View Equity Structure", href: "/longevity/team" }]
+        links: [{ text: "View Equity Structure", href: "/longevity/hiring" }]
       },
       {
         question: "What's the expected timeline to Series B?",
