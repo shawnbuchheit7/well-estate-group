@@ -2,6 +2,7 @@ import { Suspense, lazy } from "react";
 import { motion } from "framer-motion";
 import PasswordGate from "./components/PasswordGate";
 import ZWPasswordGate from "./components/ZWPasswordGate";
+import LongevityPasswordGate from "./components/LongevityPasswordGate";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Route, Switch, Router, Redirect } from "wouter";
@@ -151,34 +152,34 @@ function App() {
                   <Route path="/venture-capital" component={VentureCapital} />
                   
                   {/* Longevity Section - Projects Landing (multi-model) */}
-                  <Route path="/longevity" component={LongevityProjects} />
+                  <Route path="/longevity" component={() => <LongevityPasswordGate><LongevityProjects /></LongevityPasswordGate>} />
                   
                   {/* Longevity Luxury Model (original content) */}
-                  <Route path="/longevity/luxury" component={Home} />
-                  <Route path="/longevity/about" component={About} />
-                  <Route path="/longevity/opportunity" component={Opportunity} />
-                  <Route path="/longevity/memberships" component={Memberships} />
-                  <Route path="/longevity/therapeutics" component={Therapeutics} />
-                  <Route path="/longevity/technology" component={Technology} />
-                  <Route path="/longevity/performance" component={Performance} />
-                  <Route path="/longevity/investors" component={Investors} />
-                  <Route path="/longevity/team" component={Team} />
-                  <Route path="/longevity/use-of-funds" component={UseOfFunds} />
-                  <Route path="/longevity/projections" component={Projections} />
-                  <Route path="/longevity/hiring" component={Hiring} />
-                  <Route path="/longevity/faq" component={FAQ} />
+                  <Route path="/longevity/luxury" component={() => <LongevityPasswordGate><Home /></LongevityPasswordGate>} />
+                  <Route path="/longevity/about" component={() => <LongevityPasswordGate><About /></LongevityPasswordGate>} />
+                  <Route path="/longevity/opportunity" component={() => <LongevityPasswordGate><Opportunity /></LongevityPasswordGate>} />
+                  <Route path="/longevity/memberships" component={() => <LongevityPasswordGate><Memberships /></LongevityPasswordGate>} />
+                  <Route path="/longevity/therapeutics" component={() => <LongevityPasswordGate><Therapeutics /></LongevityPasswordGate>} />
+                  <Route path="/longevity/technology" component={() => <LongevityPasswordGate><Technology /></LongevityPasswordGate>} />
+                  <Route path="/longevity/performance" component={() => <LongevityPasswordGate><Performance /></LongevityPasswordGate>} />
+                  <Route path="/longevity/investors" component={() => <LongevityPasswordGate><Investors /></LongevityPasswordGate>} />
+                  <Route path="/longevity/team" component={() => <LongevityPasswordGate><Team /></LongevityPasswordGate>} />
+                  <Route path="/longevity/use-of-funds" component={() => <LongevityPasswordGate><UseOfFunds /></LongevityPasswordGate>} />
+                  <Route path="/longevity/projections" component={() => <LongevityPasswordGate><Projections /></LongevityPasswordGate>} />
+                  <Route path="/longevity/hiring" component={() => <LongevityPasswordGate><Hiring /></LongevityPasswordGate>} />
+                  <Route path="/longevity/faq" component={() => <LongevityPasswordGate><FAQ /></LongevityPasswordGate>} />
                   
                   {/* Longevity Performance Model */}
-                  <Route path="/longevity/performance-model" component={LongevityPerformanceModel} />
-                  <Route path="/longevity/performance-model/about" component={LongevityPerformanceModel} />
-                  <Route path="/longevity/performance-model/platform" component={LongevityPerformanceModel} />
-                  <Route path="/longevity/performance-model/products" component={LongevityPerformanceModel} />
-                  <Route path="/longevity/performance-model/partnerships" component={LongevityPerformanceModel} />
-                  <Route path="/longevity/performance-model/diagnostics" component={LongevityPerformanceModel} />
-                  <Route path="/longevity/performance-model/hospitality" component={LongevityPerformanceModel} />
-                  <Route path="/longevity/performance-model/academy" component={LongevityPerformanceModel} />
-                  <Route path="/longevity/data-room" component={DataRoom} />
-                  <Route path="/longevity/contact" component={Contact} />
+                  <Route path="/longevity/performance-model" component={() => <LongevityPasswordGate><LongevityPerformanceModel /></LongevityPasswordGate>} />
+                  <Route path="/longevity/performance-model/about" component={() => <LongevityPasswordGate><LongevityPerformanceModel /></LongevityPasswordGate>} />
+                  <Route path="/longevity/performance-model/platform" component={() => <LongevityPasswordGate><LongevityPerformanceModel /></LongevityPasswordGate>} />
+                  <Route path="/longevity/performance-model/products" component={() => <LongevityPasswordGate><LongevityPerformanceModel /></LongevityPasswordGate>} />
+                  <Route path="/longevity/performance-model/partnerships" component={() => <LongevityPasswordGate><LongevityPerformanceModel /></LongevityPasswordGate>} />
+                  <Route path="/longevity/performance-model/diagnostics" component={() => <LongevityPasswordGate><LongevityPerformanceModel /></LongevityPasswordGate>} />
+                  <Route path="/longevity/performance-model/hospitality" component={() => <LongevityPasswordGate><LongevityPerformanceModel /></LongevityPasswordGate>} />
+                  <Route path="/longevity/performance-model/academy" component={() => <LongevityPasswordGate><LongevityPerformanceModel /></LongevityPasswordGate>} />
+                  <Route path="/longevity/data-room" component={() => <LongevityPasswordGate><DataRoom /></LongevityPasswordGate>} />
+                  <Route path="/longevity/contact" component={() => <LongevityPasswordGate><Contact /></LongevityPasswordGate>} />
                   
                   {/* Legacy routes (backward compatibility) */}
                   <Route path="/about" component={About} />

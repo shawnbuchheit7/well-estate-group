@@ -51,6 +51,7 @@ export default function PasswordGate({ children }: PasswordGateProps) {
   }, []);
 
   const onZWRoute = pathname.startsWith('/gtm/zerowheel');
+  const onLongevityRoute = pathname.startsWith('/longevity');
 
   const [isAuthenticated, setIsAuthenticated] = useState(
     () => sessionStorage.getItem(STORAGE_KEY) === 'true'
@@ -68,6 +69,11 @@ export default function PasswordGate({ children }: PasswordGateProps) {
 
   // Always pass through on ZeroWheel routes — ZWPasswordGate handles auth there
   if (onZWRoute) {
+    return <>{children}</>;
+  }
+
+  // Always pass through on Longevity routes — LongevityPasswordGate handles auth there
+  if (onLongevityRoute) {
     return <>{children}</>;
   }
 
