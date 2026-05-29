@@ -43,12 +43,12 @@ const faqData: FAQCategory[] = [
       {
         question: "Why do you open each center with 3 ELITE physician teams?",
         answer: "Opening with 3 ELITE teams (12 staff) ensures we have capacity for member growth from day one. Each physician can onboard up to 15 new members per month, giving us capacity for 45 new ELITE members monthly. This prevents waitlists and ensures a premium member experience. New teams are added when existing physicians reach 50% capacity (60 members), ensuring seamless scaling.",
-        links: [{ text: "View Team Structure", href: "/hiring" }]
+        links: [{ text: "View Team Structure", href: "/longevity/team" }]
       },
       {
         question: "What's the difference between PRIME and ELITE memberships?",
         answer: "PRIME ($12,500) is our entry-level diagnostic membership focused on comprehensive testing and baseline establishment. ELITE ($29,500) includes everything in PRIME plus ongoing physician-led care, quarterly consultations, unlimited access to ancillary services, and personalized health optimization. ELITE represents 85% of our projected membership mix.",
-        links: [{ text: "View Membership Details", href: "/memberships" }]
+        links: [{ text: "View Membership Details", href: "/longevity/memberships" }]
       },
       {
         question: "How do you ensure quality with a 120-member panel per physician?",
@@ -61,7 +61,7 @@ const faqData: FAQCategory[] = [
       {
         question: "How do ancillary services contribute to revenue?",
         answer: "Ancillary services (IV therapy, injections, stem cell treatments) generate approximately 50% of membership value at 60% margins. These are delivered by the Center Operations Team, separate from the ELITE care teams, ensuring efficient utilization of clinical resources.",
-        links: [{ text: "View Unit Economics", href: "/performance" }]
+        links: [{ text: "View Unit Economics", href: "/longevity/performance" }]
       },
       {
         question: "Can members upgrade from PRIME to ELITE?",
@@ -93,7 +93,7 @@ const faqData: FAQCategory[] = [
       {
         question: "How do you handle medical malpractice liability?",
         answer: "We maintain comprehensive medical malpractice insurance for all clinical staff. Our D&O insurance provides $5M primary coverage plus $10M excess for directors and officers. All physicians are credentialed and maintain their own malpractice coverage as well.",
-        links: [{ text: "View Governance", href: "/hiring" }]
+        links: [{ text: "View Governance", href: "/longevity/team" }]
       }
     ]
   },
@@ -117,12 +117,12 @@ const faqData: FAQCategory[] = [
       {
         question: "What's your moat against new entrants?",
         answer: "Our competitive moat includes: (1) Proprietary GeneMetrics™ diagnostic platform, (2) Vertically integrated biologics manufacturing, (3) Hospitality-trained clinical staff, (4) First-mover advantage in luxury regenerative medicine, and (5) Network effects from member referrals and physician relationships.",
-        links: [{ text: "View Technology", href: "/technology" }]
+        links: [{ text: "View Technology", href: "/longevity/technology" }]
       },
       {
         question: "How does Well Estate Group compare to Human Longevity Institute (HLI)?",
         answer: "HLI focuses primarily on diagnostics and data analysis without the ongoing care component. Well Estate Group differentiates through our ELITE membership model with dedicated physician relationships, proprietary MUSE Cell technology, and vertically integrated biologics manufacturing. We offer both comprehensive diagnostics AND ongoing regenerative care, not just testing.",
-        links: [{ text: "View Competitive Analysis", href: "/opportunity" }]
+        links: [{ text: "View Competitive Analysis", href: "/longevity/opportunity" }]
       }
     ]
   },
@@ -134,17 +134,17 @@ const faqData: FAQCategory[] = [
       {
         question: "What's the path to profitability?",
         answer: "Each center reaches cash flow positive at approximately 150 ELITE members (Year 2). With 3 physician teams at launch supporting up to 360 members, we have significant capacity for growth. Corporate overhead is amortized across multiple centers as we scale.",
-        links: [{ text: "View Projections", href: "/projections" }]
+        links: [{ text: "View Projections", href: "/longevity/projections" }]
       },
       {
         question: "What are the two expansion pathways?",
         answer: "We have two distinct growth strategies: (1) Center Development - owned centers, franchises, and joint ventures delivering the full Well Estate Group experience, and (2) Therapeutics Product Licensing - licensing our MUSE Cell technology and biologics to medical providers worldwide. The licensing pathway represents a massive additional opportunity with a comprehensive business plan in development.",
-        links: [{ text: "View Growth Strategy", href: "/projections" }]
+        links: [{ text: "View Growth Strategy", href: "/longevity/projections" }]
       },
       {
         question: "How does the unit economics work?",
         answer: "ELITE membership generates $29,500 in revenue with ~$8,000 in direct costs (diagnostics, treatments, physician time), yielding ~73% gross margin. Ancillary services add approximately 50% of membership value at 60% margins. Blended contribution margin exceeds 65%.",
-        links: [{ text: "View Unit Economics", href: "/performance" }]
+        links: [{ text: "View Unit Economics", href: "/longevity/performance" }]
       },
       {
         question: "What's the customer acquisition cost (CAC)?",
@@ -153,7 +153,7 @@ const faqData: FAQCategory[] = [
       {
         question: "How is the $50M Series A being allocated?",
         answer: "Approximately 40% for flagship center buildout and equipment, 25% for working capital and initial operations (including staffing ramp), 15% for technology and GeneMetrics™ platform development, 10% for marketing and member acquisition, and 10% for corporate infrastructure and reserves. This funds us through profitability at the first center and initial expansion planning.",
-        links: [{ text: "View Use of Funds", href: "/use-of-funds" }]
+        links: [{ text: "View Use of Funds", href: "/longevity/use-of-funds" }]
       }
     ]
   },
@@ -169,12 +169,12 @@ const faqData: FAQCategory[] = [
       {
         question: "How do you recruit physicians for the ELITE model?",
         answer: "We partner with Witt/Kieffer, a leading healthcare executive search firm with 50+ years of experience. We target physicians seeking to escape insurance-driven medicine who want to practice relationship-based care. Our compensation includes competitive base salary ($300K for ELITE physicians, $400K for Medical Directors) plus 30% MBO bonus opportunity.",
-        links: [{ text: "View Hiring Plan", href: "/hiring" }]
+        links: [{ text: "View Hiring Plan", href: "/longevity/team" }]
       },
       {
         question: "What is the MBO compensation structure?",
         answer: "Eligible team members (C-suite, management, and physicians) can earn up to 30% of base salary through Management by Objectives bonuses. Three metrics are defined annually combining individual and company goals, reviewed quarterly. For example, a physician earning $300K base could achieve total OTE of $390K with full MBO attainment.",
-        links: [{ text: "View Compensation Details", href: "/hiring" }]
+        links: [{ text: "View Compensation Details", href: "/longevity/team" }]
       },
       {
         question: "What's the role of the Medical Director vs ELITE Physicians?",
@@ -194,12 +194,12 @@ const faqData: FAQCategory[] = [
       {
         question: "What are the Series A terms?",
         answer: "We're raising $50M at a $150M pre-money valuation (25% ownership). Investors receive preferred shares with 1x non-participating liquidation preference, pro-rata rights, and standard protective provisions. The lead investor receives 1 board seat, with the board capped at 5 members maximum. Minimum investment is $1M.",
-        links: [{ text: "View Investment Details", href: "/investors" }]
+        links: [{ text: "View Investment Details", href: "/longevity/use-of-funds" }]
       },
       {
         question: "What's the equity allocation for the team?",
         answer: "12% total equity pool reserved for executive team. Phase 1 executives (CEO, CFO, COO, CPO, CLO) receive the majority with 4-year vesting and 1-year cliff. Phase 2 executives (CMO Medical, CCO, CMO Marketing, CTO) receive allocations as they join. Specific individual allocations are determined at hiring based on experience and negotiation.",
-        links: [{ text: "View Equity Structure", href: "/hiring" }]
+        links: [{ text: "View Equity Structure", href: "/longevity/team" }]
       },
       {
         question: "What's the expected timeline to Series B?",
@@ -208,7 +208,7 @@ const faqData: FAQCategory[] = [
       {
 question: "What are the key milestones for investors?",
         answer: "Key milestones include: (1) Flagship center opening and first 100 members, (2) Cash flow positive at single center, (3) Second center opening, (4) Series B raise, and (5) Path to 5+ centers. Each milestone de-risks the investment and validates our model.",
-        links: [{ text: "View Projections", href: "/projections" }]
+        links: [{ text: "View Projections", href: "/longevity/projections" }]
       },
       {
         question: "What are the potential exit scenarios?",
@@ -221,7 +221,7 @@ question: "What are the key milestones for investors?",
       {
         question: "Is there international expansion potential?",
         answer: "Yes, we've identified significant international opportunities in UAE, Singapore, UK, and Switzerland where regulatory environments are favorable and high-net-worth populations seek premium healthcare. International expansion will follow domestic proof of concept, potentially through joint ventures or licensing arrangements to manage regulatory complexity.",
-        links: [{ text: "View Expansion Strategy", href: "/projections" }]
+        links: [{ text: "View Expansion Strategy", href: "/longevity/projections" }]
       }
     ]
   }

@@ -10,7 +10,7 @@ export default function About() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[40vh] flex items-center justify-center overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
         
@@ -36,7 +36,7 @@ export default function About() {
       </section>
 
       {/* Mission Section */}
-      <section className="py-20">
+      <section className="py-12">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
