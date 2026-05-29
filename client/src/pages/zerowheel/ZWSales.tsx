@@ -67,7 +67,7 @@ const macroLOBs: MacroLOB[] = [
       { name: "David Pillsbury", title: "CEO", org: "Invited (formerly ClubCorp)", note: "Largest private club operator in North America" },
       { name: "Michele Meleski", title: "SVP, National Fitness & Wellness", org: "Invited", note: "29+ years at Invited; oversees fitness across 200+ clubs" },
       { name: "Cindy Anderson", title: "SVP, Clubhouse Design & Development", org: "Troon", note: "At Troon since 1994; leads all clubhouse design" },
-      { name: "Dr. Kathy Hoeft, DPT", title: "Director of Fitness", org: "Port Royal Club (Naples, FL)", note: "30+ years in PT and athletic training" },
+      { name: "Dr. Kathy Hoeft, DPT", title: "Director of Fitness", org: "Port Royal Club (South FL)", note: "30+ years in PT and athletic training" },
       { name: "Luis Bracamonte", title: "Director of Fitness & Wellness", org: "Ocean Reef Club (Key Largo, FL)", note: "26 years coaching; Senior Staff since 2024" },
       { name: "Brett Morris, ECM, CMAA Fellow", title: "General Manager / COO", org: "The Club at Admirals Cove (Jupiter, FL)", note: "FLCMAA Vice President; 2022 CMAA Club Executive of the Year" },
     ],

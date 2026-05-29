@@ -463,7 +463,7 @@ export default function UseOfFunds() {
           >
             <motion.div variants={fadeInUp} className="text-center mb-8">
               <h3 className="font-display text-2xl font-medium mb-2">Houston Center — A110 Floor Plan (1st Level)</h3>
-              <p className="font-body text-muted-foreground">Architectural floor plan showing the Fountain Life clinic scope area</p>
+              <p className="font-body text-muted-foreground">Architectural floor plan showing the longevity clinic scope area</p>
             </motion.div>
 
             <motion.div variants={fadeInUp} className="max-w-4xl mx-auto">
@@ -545,7 +545,7 @@ export default function UseOfFunds() {
                 />
                 <div className="p-4">
 <h4 className="font-display font-medium text-sm">Reception</h4>
-                   <p className="font-body text-xs text-muted-foreground">Welcome area with Fountain Life branding and concierge desk</p>
+                   <p className="font-body text-xs text-muted-foreground">Welcome area with branded reception and concierge desk</p>
                 </div>
               </div>
             </motion.div>

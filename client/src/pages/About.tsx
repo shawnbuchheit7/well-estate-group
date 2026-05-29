@@ -5,7 +5,6 @@
 
 import Layout from "@/components/Layout";
 import { motion } from "framer-motion";
-import { SocialProof } from "@/components/SocialProof";
 
 export default function About() {
   return (
@@ -68,8 +67,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Social Proof Section */}
-      <SocialProof />
     </Layout>
   );
 }

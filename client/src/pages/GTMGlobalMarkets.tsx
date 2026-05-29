@@ -39,7 +39,7 @@ const globalRegions = [
   {
     country: "Canada",
     flag: "🇨🇦",
-    description: "Naples-connected market with focus on private clubs and residential multi-family development.",
+    description: "Canadian market with focus on private clubs and residential multi-family development.",
     lobCount: "2 LOBs",
     focusMarkets: ["Private/Leisure Clubs", "Multi-Family BTR"],
     partners: ["Silver Lining", "Tricon Residential"],
@@ -66,7 +66,7 @@ const orgChart = {
     },
     {
       name: "North America East",
-      cities: ["New York, NY", "Pittsburgh, PA (×3)", "Chicago, IL", "Naples, FL"],
+      cities: ["New York, NY", "Pittsburgh, PA (×3)", "Chicago, IL", "South Florida"],
       status: "active",
     },
     {
