@@ -316,11 +316,14 @@ html {
 .rounded-lg[class*="border"],
 .rounded-xl[class*="border"],
 .rounded-2xl[class*="border"] {
-  box-shadow: 0 2px_8px rgba(0, 0, 0, 0.03), 0 4px 16px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03), 0 4px 16px rgba(0, 0, 0, 0.03);
 }
 
-/* Gold borders on interactive card/box elements */
-[class*="border"][class*="rounded"] {
+/* Gold borders on interactive card/box elements - only cards, not inline badges */
+[class*="border"][class*="rounded-lg"],
+[class*="border"][class*="rounded-xl"],
+[class*="border"][class*="rounded-2xl"],
+[class*="border"][class*="rounded-3xl"] {
   border-color: rgba(184, 134, 11, 0.40);
 }
 

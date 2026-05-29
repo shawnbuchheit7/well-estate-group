@@ -298,12 +298,12 @@ export default function Opportunity() {
                   highlight: "100M+ Social Reach"
                 }
               ].map((diff, i) => (
-                <div key={i} className="bg-card border border-border rounded-2xl p-8 hover:border-primary/50 transition-colors">
+                <div key={i} className="bg-card border border-border rounded-2xl p-8 overflow-hidden hover:border-primary/50 transition-colors">
                   <h3 className="font-display text-xl font-medium mb-3">{diff.title}</h3>
-                  <p className="font-body text-muted-foreground mb-4">{diff.description}</p>
-                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/30">
-                    <TrendingUp className="w-4 h-4 text-primary" />
-                    <span className="font-mono text-sm text-primary">{diff.highlight}</span>
+                  <p className="font-body text-muted-foreground mb-6">{diff.description}</p>
+                  <div className="flex items-center gap-2">
+                    <TrendingUp className="w-4 h-4 text-primary flex-shrink-0" />
+                    <span className="font-mono text-sm text-primary font-semibold">{diff.highlight}</span>
                   </div>
                 </div>
               ))}
