@@ -37,7 +37,7 @@ export default function Home() {
         title={<>Longevity Center<br /><em className="italic font-light">Luxury Business Model</em></>}
         description="A premium longevity center concept delivering cutting-edge diagnostics, therapeutics, and personalized wellness programs. Designed for high-net-worth individuals seeking the most advanced health optimization available."
         stats={[
-          { value: "$60M", label: "ARR Target" },
+          { value: "$60M", label: "ARR Per Center" },
           { value: "5", label: "Flagship Centers" },
           { value: "$2B+", label: "Exit Potential" },
           { value: "3", label: "Revenue Streams" },

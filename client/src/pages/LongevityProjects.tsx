@@ -35,7 +35,7 @@ const models: ModelTile[] = [
     href: "/longevity/luxury",
     status: "active",
     stats: [
-      { label: "ARR Target", value: "$60M" },
+      { label: "ARR Per Center", value: "$60M" },
       { label: "Flagship Centers", value: "5" },
       { label: "Exit Potential", value: "$2B+" },
     ],

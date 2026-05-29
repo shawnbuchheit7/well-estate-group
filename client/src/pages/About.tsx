@@ -57,11 +57,7 @@ export default function About() {
                 wellness, and hospitality brands — delivering institutional-grade consulting to companies 
                 ready to scale in the $5.6 trillion global wellness economy.
               </p>
-              <p className="font-body text-[#0A0A0A]/70 text-center leading-relaxed">
-                Our four pillars — Go-To-Market Strategy, Longevity Ventures, Product Intelligence, and 
-                Venture Capital — provide end-to-end support for the next generation of health optimization 
-                companies.
-              </p>
+
             </div>
           </motion.div>
         </div>
