@@ -1,404 +1,330 @@
 /**
  * Landing Page - Well Estate Group
  * Public front-end — no password required
- * Communicates: Who WEG is, what we do, what makes us different
- * Design: Ultra-premium, black/white/grey with subtle gold accents
- * Outpositions competitors through depth, authority, and operational credibility
+ * Structure mirrors thewellestate.com but with superior authority and design
+ * Sections: Hero → About → Leadership → Solutions → Proof → Differentiator → Contact
  */
-import { motion, useInView } from "framer-motion";
-import { Link } from "wouter";
-import { useRef } from "react";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
 
-/* ─── Animation Helpers ─── */
-function FadeIn({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 24 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.7, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
+import { useEffect, useState } from 'react';
 
-/* ─── Data ─── */
-const verticals = [
-  { num: "01", title: "Hospitality & Resorts", desc: "Wellness programming, spa strategy, and revenue optimization for luxury hotel groups worldwide" },
-  { num: "02", title: "Cruise Lines", desc: "End-to-end wellness operations across 144+ vessel networks — from concept to daily execution" },
-  { num: "03", title: "Luxury Real Estate", desc: "Amenity strategy and wellness integration for premium residential and mixed-use developments" },
-  { num: "04", title: "Private Clubs", desc: "Member wellness programs, facility design, and operational excellence for Platinum Clubs of America" },
-  { num: "05", title: "Professional Sports", desc: "Performance wellness, recovery protocols, and athlete optimization for NFL, MLB, NCAA, and PGA partnerships" },
-  { num: "06", title: "Corporate Wellness", desc: "Enterprise health programs that drive retention, reduce costs, and elevate organizational performance" },
-  { num: "07", title: "Longevity & Regenerative Medicine", desc: "Physician-led center development, clinical protocols, and business planning for the longevity economy" },
-  { num: "08", title: "Fitness & Wellness Brands", desc: "Go-to-market strategy, product positioning, and commercial acceleration for emerging wellness companies" },
-];
-
-const services = [
-  { title: "Go-To-Market Strategy", desc: "Strategic market entry, sales infrastructure, and commercial acceleration for wellness and fitness brands entering new markets or scaling existing operations.", href: "/gtm" },
-  { title: "Longevity Center Development", desc: "Full business planning, unit economics, clinical protocol design, and operational strategy for physician-led regenerative medicine centers.", href: "/longevity" },
-  { title: "Product Intelligence", desc: "Independent clinical evaluation, competitive analysis, and development advisory for next-generation wellness and longevity products.", href: "/product-intelligence" },
-  { title: "Venture & Product Capital", desc: "Strategic investment and advisory for emerging fitness and wellness products poised to disrupt the consumer health market.", href: "/venture-capital" },
-];
-
-const stats = [
-  { value: "15+", label: "Years Leading Global Wellness" },
-  { value: "8", label: "Macro Verticals" },
-  { value: "144+", label: "Vessel Network" },
-  { value: "4", label: "Global Regions" },
-];
-
-const associations = [
-  "Technogym", "Platinum Clubs of America", "CMAA", "PGA", "NFL", "MLB",
-  "NCAA", "Troon", "One Spa World", "GSA", "NACAD",
-];
-
-/* ─── Component ─── */
 export default function Landing() {
-  return (
-    <div className="min-h-screen bg-white text-[#0A0A0A] overflow-x-hidden">
+  const [visible, setVisible] = useState(false);
 
-      {/* ═══ NAVIGATION ═══ */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-black/5">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
+  useEffect(() => {
+    setTimeout(() => setVisible(true), 100);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-white text-black font-sans">
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-16">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full border-2 border-[#B8860B] flex items-center justify-center">
-              <span className="font-display text-sm font-bold text-[#B8860B]">W</span>
+            <div className="w-9 h-9 rounded-full border-2 border-[#b8860b] flex items-center justify-center">
+              <span className="text-sm font-serif font-bold text-[#b8860b]">W</span>
             </div>
-            <span className="font-display text-base font-semibold tracking-tight">WELL ESTATE GROUP</span>
+            <span className="text-sm font-semibold tracking-[0.2em] uppercase">Well Estate Group</span>
           </div>
           <div className="hidden md:flex items-center gap-8">
-            <a href="#about" className="font-body text-xs uppercase tracking-[0.15em] text-black/60 hover:text-black transition-colors">About</a>
-            <a href="#verticals" className="font-body text-xs uppercase tracking-[0.15em] text-black/60 hover:text-black transition-colors">Verticals</a>
-            <a href="#services" className="font-body text-xs uppercase tracking-[0.15em] text-black/60 hover:text-black transition-colors">Services</a>
-            <a href="#contact" className="font-body text-xs uppercase tracking-[0.15em] bg-black text-white px-5 py-2 rounded-full hover:bg-black/85 transition-colors">Contact</a>
+            <a href="#about" className="text-xs tracking-[0.15em] uppercase text-gray-600 hover:text-black transition-colors">About</a>
+            <a href="#leadership" className="text-xs tracking-[0.15em] uppercase text-gray-600 hover:text-black transition-colors">Leadership</a>
+            <a href="#solutions" className="text-xs tracking-[0.15em] uppercase text-gray-600 hover:text-black transition-colors">Solutions</a>
+            <a href="#contact" className="text-xs tracking-[0.15em] uppercase text-gray-600 hover:text-black transition-colors px-5 py-2 border border-black rounded-full hover:bg-black hover:text-white transition-all">Partner with Us</a>
           </div>
         </div>
       </nav>
 
-      {/* ═══ HERO ═══ */}
-      <section className="min-h-screen flex flex-col justify-center items-center px-6 md:px-12 pt-16 relative">
-        {/* Subtle grid background */}
-        <div className="absolute inset-0 opacity-[0.02]" style={{
-          backgroundImage: `linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)`,
-          backgroundSize: '60px 60px'
-        }} />
-
-        <div className="relative z-10 max-w-5xl mx-auto text-center">
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.3em] text-[#B8860B] mb-6"
-          >
-            Premium Wellness Consulting
-          </motion.p>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.4 }}
-            className="font-display text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.05] tracking-tight"
-          >
+      {/* Hero Section */}
+      <section className="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden">
+        {/* Subtle background gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white" />
+        
+        <div className={`relative z-10 max-w-4xl mx-auto px-6 text-center transition-all duration-1000 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <p className="text-xs tracking-[0.3em] uppercase text-[#b8860b] mb-8">Premium Wellness Consulting</p>
+          
+          <h1 className="text-5xl md:text-7xl font-serif font-normal leading-[1.1] mb-8">
             Where Wellness Meets<br />
-            <span className="text-black/80">World-Class Execution</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            className="font-body text-base md:text-lg text-black/60 max-w-2xl mx-auto mt-8 leading-relaxed"
-          >
+            <em className="italic">World-Class Execution</em>
+          </h1>
+          
+          <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto mb-12">
             The only consulting firm in wellness led by a former global executive who has actually 
-            built and operated wellness programs for the world's most prestigious brands — from 
-            five-star resorts to professional sports franchises.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.0 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10"
-          >
-            <a href="#services" className="inline-flex items-center gap-2 bg-black text-white px-8 py-3.5 rounded-full font-body text-sm font-medium hover:bg-black/85 transition-all">
-              Explore Our Services <ArrowRight className="w-4 h-4" />
+            built and operated wellness programs for the world's most prestigious brands.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="#solutions" className="px-8 py-4 bg-black text-white text-sm tracking-[0.1em] uppercase rounded-full hover:bg-gray-900 transition-colors">
+              Explore Our Solutions
             </a>
-            <a href="#about" className="inline-flex items-center gap-2 border border-black/20 text-black px-8 py-3.5 rounded-full font-body text-sm font-medium hover:border-black/40 transition-all">
+            <a href="#about" className="px-8 py-4 text-sm tracking-[0.1em] uppercase border border-gray-300 rounded-full hover:border-black transition-colors">
               Our Story
             </a>
-          </motion.div>
+          </div>
         </div>
 
         {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-            className="w-5 h-8 rounded-full border border-black/20 flex items-start justify-center p-1.5"
-          >
-            <div className="w-1 h-2 bg-black/30 rounded-full" />
-          </motion.div>
-        </motion.div>
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+          <div className="w-px h-12 bg-gradient-to-b from-transparent to-gray-300" />
+        </div>
       </section>
 
-      {/* ═══ ABOUT / POSITIONING ═══ */}
-      <section id="about" className="py-24 md:py-32 px-6 md:px-12 bg-[#FAFAFA]">
-        <div className="max-w-6xl mx-auto">
-          <FadeIn>
-            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#B8860B] mb-4">Who We Are</p>
-          </FadeIn>
+      {/* About Section */}
+      <section id="about" className="py-24 md:py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
+            {/* Left - Image/Visual */}
+            <div className="relative">
+              <div className="aspect-[4/5] bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden relative">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center px-8">
+                    <div className="w-20 h-20 rounded-full border-2 border-[#b8860b] flex items-center justify-center mx-auto mb-6">
+                      <span className="text-2xl font-serif font-bold text-[#b8860b]">W</span>
+                    </div>
+                    <p className="text-xs tracking-[0.3em] uppercase text-gray-500">Est. 2020</p>
+                    <p className="text-xs tracking-[0.2em] uppercase text-gray-400 mt-2">Houston, Texas</p>
+                  </div>
+                </div>
+                {/* Decorative corner accent */}
+                <div className="absolute top-0 right-0 w-24 h-24 border-t-2 border-r-2 border-[#b8860b]/30 rounded-tr-2xl" />
+                <div className="absolute bottom-0 left-0 w-24 h-24 border-b-2 border-l-2 border-[#b8860b]/30 rounded-bl-2xl" />
+              </div>
+            </div>
 
-          <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-start">
-            <FadeIn delay={0.1}>
-              <h2 className="font-display text-3xl md:text-4xl font-semibold leading-tight">
-                Built on Decades of<br />Operational Leadership
-              </h2>
-            </FadeIn>
-
-            <FadeIn delay={0.2}>
-              <div className="space-y-5">
-                <p className="font-body text-base text-black/70 leading-relaxed">
-                  Well Estate Group was founded by a former global executive at <strong className="text-black">Technogym</strong> — 
-                  the world leader in premium fitness and wellness solutions — where he led the design, 
-                  implementation, and operation of wellness programs for the world's most demanding brands 
-                  in hospitality, cruise, real estate, private clubs, and professional sports.
+            {/* Right - Content */}
+            <div>
+              <p className="text-xs tracking-[0.3em] uppercase text-[#b8860b] mb-4">About</p>
+              <h2 className="text-4xl md:text-5xl font-serif font-normal mb-8">Well Estate Group</h2>
+              
+              <div className="space-y-6 text-gray-600 leading-relaxed">
+                <p>
+                  Well Estate Group was founded by a former global executive at <strong className="text-black">Technogym</strong> — the world leader in premium fitness and wellness solutions — where he led the design, implementation, and operation of wellness programs for the world's most demanding brands across hospitality, cruise, real estate, private clubs, and professional sports.
                 </p>
-                <p className="font-body text-base text-black/70 leading-relaxed">
-                  Unlike firms that only advise, WEG brings <strong className="text-black">direct operational experience</strong> at 
-                  the highest level. We've stood on the bridge of cruise ships, walked the floors of 
-                  Platinum Clubs, and built wellness centers from architectural concept through daily operations. 
+                <p>
+                  Unlike firms that only advise, WEG brings direct operational experience at the highest level. We've stood on the bridge of cruise ships, walked the floors of Platinum Clubs, and built wellness centers from architectural concept through daily operations.
+                </p>
+                <p className="text-black font-medium">
                   That's the difference between theory and execution.
                 </p>
-                <p className="font-body text-base text-black/70 leading-relaxed">
-                  Today, WEG delivers institutional-grade consulting, business planning, and go-to-market 
-                  strategy for companies ready to scale in the $5.6 trillion global wellness economy.
-                </p>
               </div>
-            </FadeIn>
+
+              <a href="#contact" className="inline-flex items-center gap-2 mt-8 text-sm tracking-[0.1em] uppercase text-[#b8860b] hover:text-black transition-colors group">
+                Partner with us
+                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </a>
+            </div>
           </div>
-
-          {/* Stats */}
-          <FadeIn delay={0.3} className="mt-16 md:mt-20">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {stats.map((stat, i) => (
-                <div key={i} className="text-center p-6 rounded-2xl border border-black/8 bg-white">
-                  <p className="font-display text-3xl md:text-4xl font-semibold text-black">{stat.value}</p>
-                  <p className="font-body text-xs text-black/50 mt-2 uppercase tracking-wider">{stat.label}</p>
-                </div>
-              ))}
-            </div>
-          </FadeIn>
-
-          {/* Associations */}
-          <FadeIn delay={0.4} className="mt-14">
-            <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-black/40 text-center mb-6">
-              Partnerships & Associations
-            </p>
-            <div className="flex items-center justify-center flex-wrap gap-x-8 gap-y-3">
-              {associations.map((name) => (
-                <span key={name} className="font-display text-sm font-semibold text-black/50 hover:text-[#B8860B] transition-colors duration-300 whitespace-nowrap">
-                  {name}
-                </span>
-              ))}
-            </div>
-          </FadeIn>
         </div>
       </section>
 
-      {/* ═══ VERTICALS ═══ */}
-      <section id="verticals" className="py-24 md:py-32 px-6 md:px-12">
-        <div className="max-w-6xl mx-auto">
-          <FadeIn>
-            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#B8860B] mb-4">What We Do</p>
-            <h2 className="font-display text-3xl md:text-4xl font-semibold mb-4">
-              Eight Verticals. One Standard.
-            </h2>
-            <p className="font-body text-base text-black/60 max-w-2xl mb-14">
-              We operate across every major segment of the global wellness industry — bringing 
-              the same operational rigor and premium execution to each.
-            </p>
-          </FadeIn>
+      {/* Stats Bar */}
+      <section className="py-16 bg-black text-white">
+        <div className="max-w-6xl mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+              <p className="text-3xl md:text-4xl font-serif mb-2">15+</p>
+              <p className="text-xs tracking-[0.2em] uppercase text-gray-400">Years Leading Global Wellness</p>
+            </div>
+            <div>
+              <p className="text-3xl md:text-4xl font-serif mb-2">144+</p>
+              <p className="text-xs tracking-[0.2em] uppercase text-gray-400">Vessel Network</p>
+            </div>
+            <div>
+              <p className="text-3xl md:text-4xl font-serif mb-2">4</p>
+              <p className="text-xs tracking-[0.2em] uppercase text-gray-400">Global Regions</p>
+            </div>
+            <div>
+              <p className="text-3xl md:text-4xl font-serif mb-2">$5.6T</p>
+              <p className="text-xs tracking-[0.2em] uppercase text-gray-400">Global Wellness Economy</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-          <div className="grid md:grid-cols-2 gap-px bg-black/8 rounded-2xl overflow-hidden border border-black/8">
-            {verticals.map((v, i) => (
-              <FadeIn key={i} delay={i * 0.05}>
-                <div className="bg-white p-8 md:p-10 h-full hover:bg-[#FAFAFA] transition-colors duration-300 group">
-                  <div className="flex items-start justify-between mb-4">
-                    <span className="font-mono text-[10px] text-[#B8860B] tracking-wider">{v.num}</span>
+      {/* Leadership Section */}
+      <section id="leadership" className="py-24 md:py-32 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="text-center mb-16">
+            <p className="text-xs tracking-[0.3em] uppercase text-[#b8860b] mb-4">Leadership</p>
+            <h2 className="text-4xl md:text-5xl font-serif font-normal">Built by an Operator,<br />Not a Theorist</h2>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-2xl p-8 md:p-12 shadow-sm border border-gray-100">
+              <div className="grid md:grid-cols-[1fr_2fr] gap-8 items-start">
+                <div className="text-center md:text-left">
+                  <div className="w-28 h-28 rounded-full bg-gradient-to-br from-gray-200 to-gray-300 mx-auto md:mx-0 flex items-center justify-center mb-4">
+                    <span className="text-3xl font-serif text-gray-500">SB</span>
                   </div>
-                  <h3 className="font-display text-lg font-semibold mb-2 group-hover:text-[#B8860B] transition-colors duration-300">
-                    {v.title}
-                  </h3>
-                  <p className="font-body text-sm text-black/55 leading-relaxed">{v.desc}</p>
+                  <h3 className="text-xl font-serif font-medium">Shawn Buchheit</h3>
+                  <p className="text-sm text-gray-500 mt-1">Founder & President</p>
                 </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ DIFFERENTIATOR ═══ */}
-      <section className="py-24 md:py-32 px-6 md:px-12 bg-[#0A0A0A] text-white">
-        <div className="max-w-5xl mx-auto text-center">
-          <FadeIn>
-            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#B8860B] mb-6">The Difference</p>
-            <h2 className="font-display text-3xl md:text-5xl font-semibold leading-tight mb-8">
-              Others Consult.<br />We Build.
-            </h2>
-          </FadeIn>
-
-          <FadeIn delay={0.2}>
-            <div className="grid md:grid-cols-3 gap-8 mt-14">
-              <div className="text-center p-8">
-                <div className="w-12 h-12 rounded-full border border-[#B8860B]/40 flex items-center justify-center mx-auto mb-5">
-                  <span className="font-display text-lg text-[#B8860B]">1</span>
-                </div>
-                <h4 className="font-display text-base font-semibold mb-3 text-white">Operational Authority</h4>
-                <p className="font-body text-sm text-white/55 leading-relaxed">
-                  Led by a former Technogym global executive who managed wellness operations across 
-                  hospitality, cruise, sports, and private clubs — not theorists, operators.
-                </p>
-              </div>
-              <div className="text-center p-8">
-                <div className="w-12 h-12 rounded-full border border-[#B8860B]/40 flex items-center justify-center mx-auto mb-5">
-                  <span className="font-display text-lg text-[#B8860B]">2</span>
-                </div>
-                <h4 className="font-display text-base font-semibold mb-3 text-white">Global Scale</h4>
-                <p className="font-body text-sm text-white/55 leading-relaxed">
-                  From 144+ cruise vessels to Platinum Clubs of America to NFL training facilities — 
-                  we've implemented at a scale no other wellness consultancy can match.
-                </p>
-              </div>
-              <div className="text-center p-8">
-                <div className="w-12 h-12 rounded-full border border-[#B8860B]/40 flex items-center justify-center mx-auto mb-5">
-                  <span className="font-display text-lg text-[#B8860B]">3</span>
-                </div>
-                <h4 className="font-display text-base font-semibold mb-3 text-white">End-to-End Delivery</h4>
-                <p className="font-body text-sm text-white/55 leading-relaxed">
-                  Strategy through operations. Concept through daily execution. We don't hand off a 
-                  deck and walk away — we build it, staff it, and run it.
-                </p>
-              </div>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* ═══ SERVICES ═══ */}
-      <section id="services" className="py-24 md:py-32 px-6 md:px-12">
-        <div className="max-w-6xl mx-auto">
-          <FadeIn>
-            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#B8860B] mb-4">Our Services</p>
-            <h2 className="font-display text-3xl md:text-4xl font-semibold mb-14">
-              Four Pillars of Execution
-            </h2>
-          </FadeIn>
-
-          <div className="space-y-4">
-            {services.map((s, i) => (
-              <FadeIn key={i} delay={i * 0.1}>
-                <Link href={s.href}>
-                  <div className="group p-8 md:p-10 rounded-2xl border border-black/8 hover:border-[#B8860B]/30 bg-white hover:bg-[#FAFAFA] transition-all duration-300 cursor-pointer">
-                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                      <div className="flex-1">
-                        <h3 className="font-display text-xl font-semibold mb-2 group-hover:text-[#B8860B] transition-colors">
-                          {s.title}
-                        </h3>
-                        <p className="font-body text-sm text-black/55 leading-relaxed max-w-2xl">
-                          {s.desc}
-                        </p>
-                      </div>
-                      <div className="flex-shrink-0">
-                        <div className="w-10 h-10 rounded-full border border-black/10 group-hover:border-[#B8860B]/40 flex items-center justify-center transition-all group-hover:bg-[#B8860B]/5">
-                          <ArrowUpRight className="w-4 h-4 text-black/30 group-hover:text-[#B8860B] transition-colors" />
-                        </div>
-                      </div>
+                <div className="space-y-4 text-gray-600 leading-relaxed">
+                  <p>
+                    Former global executive at <strong className="text-black">Technogym</strong>, where he led wellness strategy and implementation for the world's most prestigious hospitality groups, cruise lines, luxury real estate developments, private clubs, and professional sports organizations.
+                  </p>
+                  <p>
+                    With over 15 years at the intersection of fitness, wellness, and luxury operations, Shawn has personally designed, built, and managed wellness programs across four global regions — from 144+ cruise vessels to Platinum Clubs of America to NFL and MLB training facilities.
+                  </p>
+                  <p className="text-black font-medium">
+                    This isn't advisory from a distance. This is leadership forged in execution.
+                  </p>
+                  
+                  {/* Credentials */}
+                  <div className="pt-6 border-t border-gray-100 mt-6">
+                    <p className="text-xs tracking-[0.2em] uppercase text-gray-400 mb-3">Key Partnerships & Associations</p>
+                    <div className="flex flex-wrap gap-3">
+                      {['Technogym', 'Platinum Clubs of America', 'CMAA', 'PGA', 'NFL', 'MLB', 'NCAA', 'Troon', 'OneSpaWorld'].map((name) => (
+                        <span key={name} className="text-xs px-3 py-1.5 bg-gray-50 border border-gray-200 rounded-full text-gray-600">
+                          {name}
+                        </span>
+                      ))}
                     </div>
                   </div>
-                </Link>
-              </FadeIn>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Solutions Section */}
+      <section id="solutions" className="py-24 md:py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="text-center mb-16">
+            <p className="text-xs tracking-[0.3em] uppercase text-[#b8860b] mb-4">Solutions</p>
+            <h2 className="text-4xl md:text-5xl font-serif font-normal mb-6">What We Deliver</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Institutional-grade consulting, business planning, and go-to-market strategy for companies ready to scale in the global wellness economy.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              {
+                num: '01',
+                title: 'Go-To-Market Strategy',
+                desc: 'Strategic market entry, sales infrastructure, and commercial acceleration for wellness and fitness brands entering new markets or scaling existing operations.',
+              },
+              {
+                num: '02',
+                title: 'Longevity Center Development',
+                desc: 'Full business planning, unit economics, clinical protocol design, and operational strategy for physician-led regenerative medicine centers.',
+              },
+              {
+                num: '03',
+                title: 'Product Intelligence',
+                desc: 'Independent clinical evaluation, competitive analysis, and development advisory for next-generation wellness and longevity products.',
+              },
+              {
+                num: '04',
+                title: 'Venture & Capital Advisory',
+                desc: 'Strategic investment guidance and advisory for emerging fitness, wellness, and longevity products poised to disrupt the consumer health market.',
+              },
+            ].map((service) => (
+              <div key={service.num} className="group p-8 md:p-10 border border-gray-200 rounded-2xl hover:border-[#b8860b]/40 hover:shadow-lg transition-all duration-300">
+                <span className="text-xs tracking-[0.2em] text-[#b8860b] font-medium">{service.num}</span>
+                <h3 className="text-2xl font-serif font-medium mt-3 mb-4">{service.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{service.desc}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ═══ CTA ═══ */}
-      <section className="py-20 md:py-28 px-6 md:px-12 bg-[#FAFAFA]">
-        <div className="max-w-4xl mx-auto text-center">
-          <FadeIn>
-            <h2 className="font-display text-3xl md:text-4xl font-semibold mb-5">
-              Ready to Elevate?
+      {/* Differentiator Section */}
+      <section className="py-24 md:py-32 bg-black text-white">
+        <div className="max-w-6xl mx-auto px-6 md:px-12">
+          <div className="text-center mb-16">
+            <p className="text-xs tracking-[0.3em] uppercase text-[#b8860b] mb-4">The Difference</p>
+            <h2 className="text-4xl md:text-6xl font-serif font-normal">
+              Others Consult.<br />
+              <em className="italic text-[#b8860b]">We Build.</em>
             </h2>
-            <p className="font-body text-base text-black/60 max-w-xl mx-auto mb-10">
-              Whether you're launching a longevity center, scaling a wellness brand, or transforming 
-              your hospitality wellness offering — we bring the experience to make it exceptional.
-            </p>
-            <a href="mailto:shawn@wellestategroup.com" className="inline-flex items-center gap-2 bg-black text-white px-10 py-4 rounded-full font-body text-sm font-medium hover:bg-black/85 transition-all">
-              Get in Touch <ArrowRight className="w-4 h-4" />
-            </a>
-          </FadeIn>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: 'Operational Authority',
+                desc: 'Led by a former Technogym global executive who managed wellness operations across hospitality, cruise, sports, and private clubs — not theorists, operators.',
+              },
+              {
+                title: 'Global Scale',
+                desc: 'From 144+ cruise vessels to Platinum Clubs of America to NFL training facilities — we\'ve implemented at a scale no other wellness consultancy can match.',
+              },
+              {
+                title: 'End-to-End Delivery',
+                desc: 'Strategy through operations. Concept through daily execution. We don\'t hand off a deck and walk away — we build it, staff it, and run it.',
+              },
+            ].map((item, i) => (
+              <div key={i} className="text-center md:text-left">
+                <div className="w-10 h-10 rounded-full border border-[#b8860b]/50 flex items-center justify-center mb-4 mx-auto md:mx-0">
+                  <span className="text-sm text-[#b8860b]">{i + 1}</span>
+                </div>
+                <h3 className="text-xl font-serif font-medium mb-3">{item.title}</h3>
+                <p className="text-gray-400 leading-relaxed text-sm">{item.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ═══ FOOTER ═══ */}
-      <footer id="contact" className="py-16 px-6 md:px-12 border-t border-black/8">
-        <div className="max-w-6xl mx-auto">
+      {/* Contact / CTA Section */}
+      <section id="contact" className="py-24 md:py-32 bg-white">
+        <div className="max-w-4xl mx-auto px-6 md:px-12 text-center">
+          <p className="text-xs tracking-[0.3em] uppercase text-[#b8860b] mb-4">Partnership</p>
+          <h2 className="text-4xl md:text-5xl font-serif font-normal mb-6">Ready to Elevate?</h2>
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto mb-12">
+            Whether you're launching a longevity center, scaling a wellness brand, or transforming your hospitality wellness offering — we bring the experience to make it exceptional.
+          </p>
+          
+          <a href="mailto:shawn@wellestategroup.com" className="inline-flex items-center gap-3 px-10 py-5 bg-black text-white text-sm tracking-[0.15em] uppercase rounded-full hover:bg-gray-900 transition-colors">
+            Get in Touch
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+          </a>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-16 bg-gray-50 border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid md:grid-cols-3 gap-12">
             {/* Brand */}
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-8 h-8 rounded-full border-2 border-[#B8860B] flex items-center justify-center">
-                  <span className="font-display text-xs font-bold text-[#B8860B]">W</span>
+                <div className="w-8 h-8 rounded-full border-2 border-[#b8860b] flex items-center justify-center">
+                  <span className="text-xs font-serif font-bold text-[#b8860b]">W</span>
                 </div>
-                <span className="font-display text-sm font-semibold">WELL ESTATE GROUP</span>
+                <span className="text-sm font-semibold tracking-[0.15em] uppercase">Well Estate Group</span>
               </div>
-              <p className="font-body text-xs text-black/50 leading-relaxed">
+              <p className="text-sm text-gray-500 leading-relaxed">
                 Premium consulting for the global wellness economy.<br />
                 Strategy. Implementation. Operations.
               </p>
             </div>
 
-            {/* Quick Links */}
+            {/* Links */}
             <div>
-              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-black/40 mb-4">Explore</p>
+              <p className="text-xs tracking-[0.2em] uppercase text-gray-400 mb-4">Explore</p>
               <div className="space-y-2">
-                <Link href="/gtm" className="block font-body text-sm text-black/60 hover:text-black transition-colors">Go-To-Market Strategy</Link>
-                <Link href="/longevity" className="block font-body text-sm text-black/60 hover:text-black transition-colors">Longevity Ventures</Link>
-                <Link href="/product-intelligence" className="block font-body text-sm text-black/60 hover:text-black transition-colors">Product Intelligence</Link>
-                <Link href="/venture-capital" className="block font-body text-sm text-black/60 hover:text-black transition-colors">Venture Capital</Link>
+                <a href="/longevity/luxury" className="block text-sm text-gray-600 hover:text-black transition-colors">Longevity Ventures</a>
+                <a href="/gtm" className="block text-sm text-gray-600 hover:text-black transition-colors">Go-To-Market Strategy</a>
               </div>
             </div>
 
             {/* Contact */}
             <div>
-              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-black/40 mb-4">Contact</p>
+              <p className="text-xs tracking-[0.2em] uppercase text-gray-400 mb-4">Contact</p>
               <div className="space-y-2">
-                <a href="mailto:shawn@wellestategroup.com" className="block font-body text-sm text-black/60 hover:text-black transition-colors">
-                  shawn@wellestategroup.com
-                </a>
-                <p className="font-body text-sm text-black/60">Houston, TX</p>
+                <a href="mailto:shawn@wellestategroup.com" className="block text-sm text-gray-600 hover:text-black transition-colors">shawn@wellestategroup.com</a>
+                <p className="text-sm text-gray-500">Houston, TX</p>
               </div>
             </div>
           </div>
 
-          <div className="mt-14 pt-8 border-t border-black/5 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="font-body text-[11px] text-black/35">
-              &copy; 2026 Well Estate Group. All rights reserved.
-            </p>
-            <p className="font-body text-[11px] text-black/35">
-              Private & Confidential
-            </p>
+          <div className="mt-12 pt-8 border-t border-gray-200 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-xs text-gray-400">&copy; 2026 Well Estate Group. All rights reserved.</p>
+            <p className="text-xs text-gray-400">Private & Confidential</p>
           </div>
         </div>
       </footer>
