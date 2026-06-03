@@ -52,6 +52,7 @@ export default function PasswordGate({ children }: PasswordGateProps) {
 
   const onZWRoute = pathname.startsWith('/gtm/zerowheel');
   const onLongevityRoute = pathname.startsWith('/longevity');
+  const onLandingPage = pathname === '/' || pathname === '';
 
   const [isAuthenticated, setIsAuthenticated] = useState(
     () => sessionStorage.getItem(STORAGE_KEY) === 'true'
@@ -66,6 +67,11 @@ export default function PasswordGate({ children }: PasswordGateProps) {
     if (auth === 'true') setIsAuthenticated(true);
     setIsLoading(false);
   }, []);
+
+  // Landing page is public — no password required
+  if (onLandingPage) {
+    return <>{children}</>;
+  }
 
   // Always pass through on ZeroWheel routes — ZWPasswordGate handles auth there
   if (onZWRoute) {
