@@ -346,9 +346,9 @@ export default function LongevitySuite() {
       {/* Navigation */}
       <section className="py-16 border-t border-[#B8860B]/10">
         <div className="container max-w-4xl flex items-center justify-between">
-          <Link href="/longevity/saltleaf/wellness-consultants">
+          <Link href="/longevity/saltleaf">
             <a className="inline-flex items-center gap-2 font-body text-sm text-black/65 hover:text-[#B8860B] transition-colors">
-              <ArrowLeft className="w-4 h-4" /> Prev: Wellness Consultants
+              <ArrowLeft className="w-4 h-4" /> Back to Overview
             </a>
           </Link>
           <Link href="/longevity/saltleaf/fitness-layout">

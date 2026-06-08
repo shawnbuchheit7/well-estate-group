@@ -33,16 +33,16 @@ const consultants = [
     projectCount: "70+",
     luxuryBrands: ["Equinox Hotel", "Ritz-Carlton Reserve", "EDITION", "Waldorf Astoria", "Auberge Resorts"],
     topProjects: [
-      { name: "Spa Botánico", location: "Dorado Beach, Puerto Rico", type: "Ritz-Carlton Reserve", desc: "Game-changing spa celebrating wellness through nature and deep sense of place" },
-      { name: "The Spa by Equinox Hotel", location: "New York, NY", type: "Urban Hotel", desc: "Strategy transcending traditional spa, aligned with high-performance living ethos" },
-      { name: "Spa Alkemia at Zadún", location: "Los Cabos, Mexico", type: "Ritz-Carlton Reserve", desc: "Immersive wellness destination highlighting restorative desert-marine climate" },
-      { name: "The Miami Beach EDITION", location: "Miami Beach, FL", type: "Urban Resort", desc: "Wellness proposition for leisure, business, and local clientele" },
-      { name: "Auberge Beach Residences Spa", location: "Fort Lauderdale, FL", type: "Luxury Residential", desc: "Wellness story for Auberge's shift into residential — heated quartz sand table" },
-      { name: "Kilolani Spa at Grand Wailea", location: "Wailea, Hawaii", type: "Waldorf Astoria", desc: "Re-contextualized largest spa in Hawaiian Islands into modern wellness destination" },
-      { name: "The Spa at The Little Nell", location: "Aspen, CO", type: "Luxury Hotel", desc: "Strategic vision for Aspen's sole ski-in/ski-out luxury property" },
-      { name: "Halehouse Spa at Stanly Ranch", location: "Napa, CA", type: "Auberge Resorts", desc: "Holistic approach: fitness, performance & recovery, healing arts" },
-      { name: "West Hollywood EDITION Spa", location: "West Hollywood, CA", type: "Urban Resort & Residential", desc: "Integrated hub with leading-edge fitness and hydrothermal amenities" },
-      { name: "The Spa at Esperanza", location: "Los Cabos, Mexico", type: "Luxury Resort", desc: "Outdoor contrast bathing circuit — Aqua de la Esperanza" },
+      { name: "Spa Botánico", location: "Dorado Beach, Puerto Rico", type: "Ritz-Carlton Reserve", desc: "Game-changing spa celebrating wellness through nature and deep sense of place", url: "https://www.ritzcarlton.com/en/hotels/sjudo-dorado-beach-a-ritz-carlton-reserve/spa/" },
+      { name: "The Spa by Equinox Hotel", location: "New York, NY", type: "Urban Hotel", desc: "Strategy transcending traditional spa, aligned with high-performance living ethos", url: "https://equinox-hotels.com/nyc/wellness/spa/" },
+      { name: "Spa Alkemia at Zadún", location: "Los Cabos, Mexico", type: "Ritz-Carlton Reserve", desc: "Immersive wellness destination highlighting restorative desert-marine climate", url: "https://www.ritzcarlton.com/en/hotels/sjdzr-zadun-los-cabos-a-ritz-carlton-reserve/wellness/" },
+      { name: "The Miami Beach EDITION", location: "Miami Beach, FL", type: "Urban Resort", desc: "Wellness proposition for leisure, business, and local clientele", url: "https://www.editionhotels.com/miami-beach/spa-and-fitness/" },
+      { name: "Auberge Beach Residences Spa", location: "Fort Lauderdale, FL", type: "Luxury Residential", desc: "Wellness story for Auberge's shift into residential — heated quartz sand table", url: "https://evarabeachspa.com/" },
+      { name: "Kilolani Spa at Grand Wailea", location: "Wailea, Hawaii", type: "Waldorf Astoria", desc: "Re-contextualized largest spa in Hawaiian Islands into modern wellness destination", url: "https://spa.grandwailea.com/" },
+      { name: "The Spa at The Little Nell", location: "Aspen, CO", type: "Luxury Hotel", desc: "Strategic vision for Aspen's sole ski-in/ski-out luxury property", url: "https://www.thelittlenell.com/stay/amenities/the-spa-at-the-little-nell" },
+      { name: "Halehouse Spa at Stanly Ranch", location: "Napa, CA", type: "Auberge Resorts", desc: "Holistic approach: fitness, performance & recovery, healing arts", url: "https://auberge.com/stanly-ranch/wellness/spa/" },
+      { name: "West Hollywood EDITION Spa", location: "West Hollywood, CA", type: "Urban Resort & Residential", desc: "Integrated hub with leading-edge fitness and hydrothermal amenities", url: "https://www.editionhotels.com/weho/spa-and-fitness/" },
+      { name: "The Spa at Esperanza", location: "Los Cabos, Mexico", type: "Luxury Resort", desc: "Outdoor contrast bathing circuit — Aqua de la Esperanza", url: "https://auberge.com/esperanza/wellness/spa/" },
     ],
   },
   {
@@ -66,12 +66,12 @@ const consultants = [
     projectCount: "10+",
     luxuryBrands: ["Ritz-Carlton", "1 Hotel", "Baccarat Hotel", "THE WELL"],
     topProjects: [
-      { name: "Nimbu Spa & Wellness", location: "Costa Rica", type: "Ritz-Carlton Reserve", desc: "Transformative wellness retreat at Nekajui, a Ritz-Carlton Reserve" },
-      { name: "The Perigon", location: "Miami Beach, FL", type: "Luxury Residential", desc: "Wellness and residential spaces for ultra-luxury oceanfront condominium" },
-      { name: "THE WELL Bay Harbor Islands", location: "Bay Harbor Islands, FL", type: "Luxury Residential", desc: "First fully integrated luxury wellness residential project in the country" },
-      { name: "1 Hotel South Beach", location: "Miami Beach, FL", type: "Luxury Hotel", desc: "Design of Starwood Capital's nature-inspired lifestyle brand" },
-      { name: "Baccarat Hotel New York", location: "New York, NY", type: "Luxury Hotel & Residences", desc: "Design of the flagship luxury hotel and residences" },
-      { name: "Cadillac Hotel & Beach Club", location: "Miami Beach, FL", type: "Luxury Hotel", desc: "Design and launch of the Autograph Collection hotel" },
+      { name: "Nimbu Spa & Wellness", location: "Costa Rica", type: "Ritz-Carlton Reserve", desc: "Transformative wellness retreat at Nekajui, a Ritz-Carlton Reserve", url: "https://www.ritzcarlton.com/en/hotels/lirrz-nekajui-peninsula-papagayo-a-ritz-carlton-reserve/spa/" },
+      { name: "The Perigon", location: "Miami Beach, FL", type: "Luxury Residential", desc: "Wellness and residential spaces for ultra-luxury oceanfront condominium", url: "https://theperigonmiamibeach.com/lifestyle" },
+      { name: "THE WELL Bay Harbor Islands", location: "Bay Harbor Islands, FL", type: "Luxury Residential", desc: "First fully integrated luxury wellness residential project in the country", url: "https://www.thewellbayharbor.com/the-well/" },
+      { name: "1 Hotel South Beach", location: "Miami Beach, FL", type: "Luxury Hotel", desc: "Design of Starwood Capital's nature-inspired lifestyle brand", url: "https://www.1hotels.com/south-beach/do/bamford-wellness-spa" },
+      { name: "Baccarat Hotel New York", location: "New York, NY", type: "Luxury Hotel & Residences", desc: "Design of the flagship luxury hotel and residences", url: "https://www.baccarathotels.com/spa-de-la-mer" },
+      { name: "Cadillac Hotel & Beach Club", location: "Miami Beach, FL", type: "Luxury Hotel", desc: "Design and launch of the Autograph Collection hotel", url: "https://www.cadillachotelmiamibeach.com/kalma-spa" },
     ],
   },
   {
@@ -95,16 +95,16 @@ const consultants = [
     projectCount: "20+",
     luxuryBrands: ["Fairmont", "Ritz-Carlton", "Waldorf Astoria", "The Plaza", "Regent", "Hyatt Regency"],
     topProjects: [
-      { name: "Guerlain Wellness Spa", location: "New York, NY", type: "Waldorf Astoria", desc: "Operated the iconic Guerlain Spa at the Waldorf Astoria" },
-      { name: "111SKIN Spa/Clinic", location: "New York, NY", type: "The Plaza", desc: "Managed the 111SKIN Spa/Clinic at the historic Plaza Hotel" },
-      { name: "Sisley Spa", location: "Marina Del Rey, CA", type: "Ritz-Carlton", desc: "Managed the Sisley Spa at this prestigious Ritz-Carlton property" },
-      { name: "Well & Being", location: "Scottsdale, AZ", type: "Fairmont", desc: "Managed the Well & Being spa at the Fairmont Scottsdale Princess" },
-      { name: "Guerlain Wellness", location: "Santa Monica, CA", type: "Regent", desc: "Managed the Guerlain Wellness spa at the Regent Santa Monica" },
-      { name: "Well & Being", location: "San Juan, Puerto Rico", type: "Fairmont", desc: "Operated the Well & Being spa at the Fairmont El San Juan Hotel" },
-      { name: "The Spa at Hyatt Regency", location: "Maui, HI", type: "Luxury Resort", desc: "Operated the spa at this luxury Hawaiian resort" },
-      { name: "St. Somewhere Spa", location: "Hollywood, FL", type: "Margaritaville", desc: "Managed the spa at this coastal Florida resort" },
-      { name: "The Spa at The Lodge", location: "Sonoma, CA", type: "Luxury Resort", desc: "Operated the spa at this luxury wine country resort" },
-      { name: "SpaWell at El Conquistador", location: "Tucson, AZ", type: "Hilton Resort", desc: "Managed the SpaWell at this Hilton resort" },
+      { name: "Guerlain Wellness Spa", location: "New York, NY", type: "Waldorf Astoria", desc: "Operated the iconic Guerlain Spa at the Waldorf Astoria", url: "https://www.waldorfastorianewyork.com/wellness/" },
+      { name: "111SKIN Spa/Clinic", location: "New York, NY", type: "The Plaza", desc: "Managed the 111SKIN Spa/Clinic at the historic Plaza Hotel", url: "https://www.theplazany.com/spa-salon-and-wellness/111skin-spa-clinic/" },
+      { name: "Sisley Spa", location: "Marina Del Rey, CA", type: "Ritz-Carlton", desc: "Managed the Sisley Spa at this prestigious Ritz-Carlton property", url: "https://thesisleyspa.com/los-angeles/" },
+      { name: "Well & Being", location: "Scottsdale, AZ", type: "Fairmont", desc: "Managed the Well & Being spa at the Fairmont Scottsdale Princess", url: "https://www.scottsdaleprincess.com/spa-scottsdale/Well-Being-Spa" },
+      { name: "Guerlain Wellness", location: "Santa Monica, CA", type: "Regent", desc: "Managed the Guerlain Wellness spa at the Regent Santa Monica", url: "https://santamonica.regenthotels.com/wellness/guerlain-spa/" },
+      { name: "Well & Being", location: "San Juan, Puerto Rico", type: "Fairmont", desc: "Operated the Well & Being spa at the Fairmont El San Juan Hotel", url: "https://www.elsanjuanhotel.com/wellness/spa/" },
+      { name: "The Spa at Hyatt Regency", location: "Maui, HI", type: "Luxury Resort", desc: "Operated the spa at this luxury Hawaiian resort", url: "https://spawellmaui.com/" },
+      { name: "St. Somewhere Spa", location: "Hollywood, FL", type: "Margaritaville", desc: "Managed the spa at this coastal Florida resort", url: "https://www.margaritavillehollywoodbeachresort.com/spa-fitness" },
+      { name: "The Spa at The Lodge", location: "Sonoma, CA", type: "Luxury Resort", desc: "Operated the spa at this luxury wine country resort", url: "https://www.thelodgeatsonoma.com/spa/" },
+      { name: "SpaWell at El Conquistador", location: "Tucson, AZ", type: "Hilton Resort", desc: "Managed the SpaWell at this Hilton resort", url: "https://www.hilton.com/en/hotels/tushthh-el-conquistador-tucson/spa/" },
     ],
   },
   {
@@ -128,16 +128,16 @@ const consultants = [
     projectCount: "450+",
     luxuryBrands: ["Four Seasons", "Ritz-Carlton", "Waldorf Astoria", "St. Regis", "Bvlgari", "Rosewood", "Belmond", "Nobu", "Aman", "Raffles"],
     topProjects: [
-      { name: "Four Seasons Residences", location: "Jacksonville, FL", type: "Luxury Hotel & Residences", desc: "Spa consulting and design for luxury hotel and residential project" },
-      { name: "Pier 66 Hotel & Marina", location: "Ft. Lauderdale, FL", type: "Luxury Hotel & Marina", desc: "Wellness consulting for transformative waterfront project" },
-      { name: "Ritz-Carlton Resort", location: "West Palm Beach, FL", type: "Luxury Resort", desc: "Spa consulting and design for luxury resort" },
-      { name: "Ritz-Carlton Key Biscayne", location: "Miami, FL", type: "Luxury Resort", desc: "Spa consulting and design for luxury resort" },
-      { name: "Fisher Island Resort Spa", location: "Miami Beach, FL", type: "Luxury Resort", desc: "Spa design for exclusive island community" },
-      { name: "Waldorf Astoria Orlando", location: "Orlando, FL", type: "Luxury Hotel", desc: "Spa consulting and design for luxury hotel" },
-      { name: "St. Regis Bora Bora", location: "Bora Bora, French Polynesia", type: "Luxury Resort", desc: "Spa consulting and design for iconic overwater resort" },
-      { name: "Bvlgari Hotel & Spa", location: "Beijing, China", type: "Luxury Hotel", desc: "Spa consulting and design for luxury hotel" },
-      { name: "Four Seasons Residences", location: "Denver, CO", type: "Luxury Hotel & Residences", desc: "Spa consulting and design for hotel and residential project" },
-      { name: "Nobu Hotel", location: "Los Cabos, Mexico", type: "Luxury Hotel", desc: "Spa consulting and design for lifestyle luxury hotel" },
+      { name: "Four Seasons Residences", location: "Jacksonville, FL", type: "Luxury Hotel & Residences", desc: "Spa consulting and design for luxury hotel and residential project", url: "https://jacksonvilleprivateresidences.com/" },
+      { name: "Pier 66 Hotel & Marina", location: "Ft. Lauderdale, FL", type: "Luxury Hotel & Marina", desc: "Wellness consulting for transformative waterfront project", url: "https://piersixtysix.com/luxury-spa-fort-lauderdale" },
+      { name: "Ritz-Carlton Resort", location: "West Palm Beach, FL", type: "Luxury Resort", desc: "Spa consulting and design for luxury resort", url: "https://theresidenceswestpalmbeach.com/amenities/" },
+      { name: "Ritz-Carlton Key Biscayne", location: "Miami, FL", type: "Luxury Resort", desc: "Spa consulting and design for luxury resort", url: "https://www.ritzcarlton.com/en/hotels/miakb-the-ritz-carlton-key-biscayne-miami/spa/" },
+      { name: "Fisher Island Resort Spa", location: "Miami Beach, FL", type: "Luxury Resort", desc: "Spa design for exclusive island community", url: "https://fisherislandclub.com/spa-page/" },
+      { name: "Waldorf Astoria Orlando", location: "Orlando, FL", type: "Luxury Hotel", desc: "Spa consulting and design for luxury hotel", url: "https://www.waldorfastoriaorlando.com/spa/waldorf-astoria-spa/" },
+      { name: "St. Regis Bora Bora", location: "Bora Bora, French Polynesia", type: "Luxury Resort", desc: "Spa consulting and design for iconic overwater resort", url: "https://www.marriott.com/en-us/hotels/bobxr-the-st-regis-bora-bora-resort/spa/" },
+      { name: "Bvlgari Hotel & Spa", location: "Beijing, China", type: "Luxury Hotel", desc: "Spa consulting and design for luxury hotel", url: "https://www.bulgarihotels.com/en_US/beijing/spa-and-fitness/the-bulgari-spa" },
+      { name: "Four Seasons Residences", location: "Denver, CO", type: "Luxury Hotel & Residences", desc: "Spa consulting and design for hotel and residential project", url: "https://www.fourseasons.com/denver/spa/" },
+      { name: "Nobu Hotel", location: "Los Cabos, Mexico", type: "Luxury Hotel", desc: "Spa consulting and design for lifestyle luxury hotel", url: "https://www.nobuhotels.com/los-cabos/wellness/esencia-wellness-spa/" },
     ],
   },
   {
@@ -161,16 +161,16 @@ const consultants = [
     projectCount: "15+",
     luxuryBrands: ["Fairmont", "Waldorf Astoria", "W Hotels", "Curio Collection", "Ritz-Carlton", "Rosewood", "Four Seasons"],
     topProjects: [
-      { name: "The Cabot Collection", location: "Global (incl. Florida)", type: "Golf Resort Portfolio", desc: "Strategy and vision for wellness across expanding portfolio" },
+      { name: "The Cabot Collection", location: "Global (incl. Florida)", type: "Golf Resort Portfolio", desc: "Strategy and vision for wellness across expanding portfolio", url: "https://cabot.com/bordeaux/spa/" },
       { name: "Urbanica North Miami Beach", location: "Miami, FL", type: "Luxury Oceanfront Hotel", desc: "Feasibility, space planning, and design for spa and beach club" },
       { name: "Kelowna Hotel & Residences", location: "Kelowna, Canada", type: "Luxury Hotel & Residences", desc: "Feasibility through design for spa and fitness in waterfront development" },
-      { name: "Hilton Curio Kailani", location: "Grand Cayman", type: "Boutique Hotel", desc: "Full-floor wellness spa spanning entire seventh storey" },
-      { name: "Oceanstone Seaside Resort", location: "Nova Scotia, Canada", type: "Seaside Resort", desc: "Vision and interior design for hydrothermal spa expansion" },
-      { name: "El Conquistador Resort", location: "Fajardo, Puerto Rico", type: "Waldorf Astoria", desc: "Cutting-edge wellness programming — Spafinder Wellness Award winner" },
-      { name: "Rosewood Villa Magna", location: "Madrid, Spain", type: "Luxury Hotel", desc: "Full-service spa and wellness solutions" },
-      { name: "Four Seasons Resort Toronto", location: "Toronto, Canada", type: "Luxury Hotel", desc: "Wellness brand integration within resort" },
-      { name: "Thompson Hotel Toronto", location: "Toronto, Canada", type: "Luxury Hotel", desc: "Wellness brand integration within hotel" },
-      { name: "889 Yonge", location: "Toronto, Canada", type: "Wellness Club & Residences", desc: "Eco-conscious wellness clinic and yoga community from concept to build" },
+      { name: "Hilton Curio Kailani", location: "Grand Cayman", type: "Boutique Hotel", desc: "Full-floor wellness spa spanning entire seventh storey", url: "https://www.kailanigrandcayman.com/wellness" },
+      { name: "Oceanstone Seaside Resort", location: "Nova Scotia, Canada", type: "Seaside Resort", desc: "Vision and interior design for hydrothermal spa expansion", url: "https://oceanstoneresort.com/spa/" },
+      { name: "El Conquistador Resort", location: "Fajardo, Puerto Rico", type: "Waldorf Astoria", desc: "Cutting-edge wellness programming — Spafinder Wellness Award winner", url: "https://www.conquistadorresort.com/amenities/spa" },
+      { name: "Rosewood Villa Magna", location: "Madrid, Spain", type: "Luxury Hotel", desc: "Full-service spa and wellness solutions", url: "https://www.rosewoodhotels.com/en/villa-magna/wellness" },
+      { name: "Four Seasons Resort Toronto", location: "Toronto, Canada", type: "Luxury Hotel", desc: "Wellness brand integration within resort", url: "https://www.fourseasons.com/toronto/spa/" },
+      { name: "Thompson Hotel Toronto", location: "Toronto, Canada", type: "Luxury Hotel", desc: "Wellness brand integration within hotel", url: "https://www.1hotels.com/toronto/do/wellness" },
+      { name: "889 Yonge", location: "Toronto, Canada", type: "Wellness Club & Residences", desc: "Eco-conscious wellness clinic and yoga community from concept to build", url: "https://889community.com/" },
     ],
   },
   {
@@ -194,16 +194,16 @@ const consultants = [
     projectCount: "450+",
     luxuryBrands: ["St. Regis", "Fontainebleau", "TWA Hotel"],
     topProjects: [
-      { name: "15 Central Park West", location: "New York, NY", type: "Luxury Residential", desc: "Designed and managed fitness for NYC's most prestigious address" },
-      { name: "432 Park Avenue", location: "New York, NY", type: "Luxury Residential", desc: "Fitness and wellness center for supertall residential skyscraper" },
+      { name: "15 Central Park West", location: "New York, NY", type: "Luxury Residential", desc: "Designed and managed fitness for NYC's most prestigious address", url: "https://15centralparkw.com/15cpwamenities" },
+      { name: "432 Park Avenue", location: "New York, NY", type: "Luxury Residential", desc: "Fitness and wellness center for supertall residential skyscraper", url: "https://www.432parkaveuenyc.com/health-wellness" },
       { name: "220 Central Park South", location: "New York, NY", type: "Luxury Residential", desc: "Fitness amenities for ultra-luxury residential building" },
-      { name: "Fisher Island (Palazzo Del Sol & Della Luna)", location: "Miami, FL", type: "Luxury Residential", desc: "Fitness amenities for exclusive island community" },
-      { name: "St. Regis Residences", location: "Miami, FL", type: "Luxury Residential", desc: "Fitness amenities for branded luxury residential" },
-      { name: "Eighty Seven Park", location: "Miami, FL", type: "Luxury Residential", desc: "Fitness amenities for luxury residential building" },
-      { name: "Fontainebleau Resort", location: "Las Vegas, NV", type: "Resort", desc: "State-of-the-art fitness center at luxury resort" },
-      { name: "520 West 28th (Zaha Hadid)", location: "New York, NY", type: "Luxury Residential", desc: "Fitness for architecturally significant High Line building" },
-      { name: "53 W53 (MoMA Tower)", location: "New York, NY", type: "Luxury Residential", desc: "Fitness amenities for Jean Nouvel-designed supertall" },
-      { name: "The Camellias", location: "Gurugram, India", type: "Luxury Residential", desc: "Fitness amenities for ultra-luxury international residential" },
+      { name: "Fisher Island (Palazzo Del Sol & Della Luna)", location: "Miami, FL", type: "Luxury Residential", desc: "Fitness amenities for exclusive island community", url: "https://fisherislandclub.com/spa-page/" },
+      { name: "St. Regis Residences", location: "Miami, FL", type: "Luxury Residential", desc: "Fitness amenities for branded luxury residential", url: "https://miamisrr.com/amenities/" },
+      { name: "Eighty Seven Park", location: "Miami, FL", type: "Luxury Residential", desc: "Fitness amenities for luxury residential building", url: "https://eightysevenpark.com/amenities/" },
+      { name: "Fontainebleau Resort", location: "Las Vegas, NV", type: "Resort", desc: "State-of-the-art fitness center at luxury resort", url: "https://www.fontainebleaulasvegas.com/wellness/lapis-spa-and-wellness/" },
+      { name: "520 West 28th (Zaha Hadid)", location: "New York, NY", type: "Luxury Residential", desc: "Fitness for architecturally significant High Line building", url: "https://www.520w28nyc.com/amenities" },
+      { name: "53 W53 (MoMA Tower)", location: "New York, NY", type: "Luxury Residential", desc: "Fitness amenities for Jean Nouvel-designed supertall", url: "https://53w53.com/amenities" },
+      { name: "The Camellias", location: "Gurugram, India", type: "Luxury Residential", desc: "Fitness amenities for ultra-luxury international residential", url: "https://thecamellias.dlf.in/" },
     ],
   },
   {
@@ -228,8 +228,8 @@ const consultants = [
     luxuryBrands: ["The Luxury Collection", "St. Regis", "Conrad", "Ritz-Carlton", "Four Seasons", "Waldorf Astoria"],
     topProjects: [
       { name: "Playa Serena Spa", location: "Punta Cana, Dominican Republic", type: "Luxury Collection", desc: "1,200 sq m spa with seven treatment bungalows and hydrothermal facilities" },
-      { name: "Conrad Punta de Mita", location: "Mexico", type: "Conrad", desc: "Architectural and interior design for luxury resort" },
-      { name: "St. Regis Costa Mujeres", location: "Mexico", type: "St. Regis", desc: "Destination spa design for luxury resort" },
+      { name: "Conrad Punta de Mita", location: "Mexico", type: "Conrad", desc: "Architectural and interior design for luxury resort", url: "https://www.conradpuntademita.com/wellness/" },
+      { name: "St. Regis Costa Mujeres", location: "Mexico", type: "St. Regis", desc: "Destination spa design for luxury resort", url: "https://www.marriott.com/en-us/hotels/cuncm-the-st-regis-costa-mujeres-resort-cancun/overview/" },
     ],
   },
 ];
@@ -436,23 +436,30 @@ export default function WellnessConsultants() {
                     Top {c.topProjects.length} Notable Projects
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                    {c.topProjects.map((p, j) => (
-                      <div key={j} className="flex items-start gap-3 p-3 rounded-lg bg-[#FAFAF8] border border-[#B8860B]/5">
-                        <span className="font-mono text-[9px] text-[#B8860B]/60 font-semibold mt-0.5 shrink-0">{String(j + 1).padStart(2, "0")}</span>
-                        <div className="min-w-0">
-                          <p className="font-body text-[13px] font-medium text-black leading-tight">{p.name}</p>
-                          <div className="flex items-center gap-2 mt-0.5 flex-wrap">
-                            <span className="inline-flex items-center gap-0.5 text-[10px] text-black/45 font-body">
-                              <MapPin className="w-2.5 h-2.5" />{p.location}
-                            </span>
-                            <span className="inline-flex items-center gap-0.5 text-[10px] text-[#B8860B]/70 font-mono">
-                              <Building2 className="w-2.5 h-2.5" />{p.type}
-                            </span>
+                    {c.topProjects.map((p, j) => {
+                      const Wrapper = (p as any).url ? 'a' : 'div';
+                      const wrapperProps = (p as any).url ? { href: (p as any).url, target: "_blank", rel: "noopener noreferrer" } : {};
+                      return (
+                        <Wrapper key={j} {...wrapperProps} className={`flex items-start gap-3 p-3 rounded-lg bg-[#FAFAF8] border border-[#B8860B]/5 transition-all duration-200 ${(p as any).url ? 'hover:border-[#B8860B]/30 hover:bg-[#B8860B]/[0.02] hover:shadow-sm cursor-pointer group' : ''}`}>
+                          <span className="font-mono text-[9px] text-[#B8860B]/60 font-semibold mt-0.5 shrink-0">{String(j + 1).padStart(2, "0")}</span>
+                          <div className="min-w-0 flex-1">
+                            <div className="flex items-center gap-1.5">
+                              <p className={`font-body text-[13px] font-medium leading-tight ${(p as any).url ? 'text-black group-hover:text-[#B8860B] transition-colors' : 'text-black'}`}>{p.name}</p>
+                              {(p as any).url && <ExternalLink className="w-3 h-3 text-[#B8860B]/40 group-hover:text-[#B8860B] transition-colors shrink-0" />}
+                            </div>
+                            <div className="flex items-center gap-2 mt-0.5 flex-wrap">
+                              <span className="inline-flex items-center gap-0.5 text-[10px] text-black/45 font-body">
+                                <MapPin className="w-2.5 h-2.5" />{p.location}
+                              </span>
+                              <span className="inline-flex items-center gap-0.5 text-[10px] text-[#B8860B]/70 font-mono">
+                                <Building2 className="w-2.5 h-2.5" />{p.type}
+                              </span>
+                            </div>
+                            <p className="font-body text-[11px] text-black/50 mt-1 leading-relaxed">{p.desc}</p>
                           </div>
-                          <p className="font-body text-[11px] text-black/50 mt-1 leading-relaxed">{p.desc}</p>
-                        </div>
-                      </div>
-                    ))}
+                        </Wrapper>
+                      );
+                    })}
                   </div>
                 </div>
 
@@ -589,14 +596,14 @@ export default function WellnessConsultants() {
       {/* Navigation */}
       <section className="py-16 border-t border-[#B8860B]/10">
         <div className="container max-w-4xl flex items-center justify-between">
-          <Link href="/longevity/saltleaf">
+          <Link href="/longevity/saltleaf/level-3-wellness">
             <a className="inline-flex items-center gap-2 font-body text-sm text-black/65 hover:text-[#B8860B] transition-colors">
-              <ArrowLeft className="w-4 h-4" /> Back to Saltleaf Overview
+              <ArrowLeft className="w-4 h-4" /> Prev: Level 3 Wellness
             </a>
           </Link>
-          <Link href="/longevity/saltleaf/longevity-suite">
+          <Link href="/longevity/saltleaf">
             <a className="inline-flex items-center gap-2 font-body text-sm text-black/65 hover:text-[#B8860B] transition-colors">
-              Next: Longevity Suite <ArrowRight className="w-4 h-4" />
+              Back to Saltleaf Overview
             </a>
           </Link>
         </div>

@@ -18,7 +18,7 @@ export default function ImageLightbox({ src, alt, children, className }: ImageLi
   const containerRef = useRef<HTMLDivElement>(null);
 
   const minScale = 0.5;
-  const maxScale = 4;
+  const maxScale = 8;
 
   useEffect(() => {
     if (isOpen) {

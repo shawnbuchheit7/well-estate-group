@@ -13,21 +13,6 @@ import { fadeInUp, staggerContainer } from "@/lib/animations";
 
 const agendaItems = [
   {
-    title: "Wellness Consultants",
-    subtitle: "Scope of Work & RFP Review",
-    description: "Review the written scope of work or RFP for wellness consultant selection. Fountain Life has worked with BluSpas (Acqualina) and The Wright Fit (NYC residential) — understanding the specific scope will help provide targeted feedback on the 7 shortlisted consultants.",
-    href: "/longevity/saltleaf/wellness-consultants",
-    details: [
-      "TLEE Wellness — Tracy Lee (currently engaged on SLT1)",
-      "Studio DeA — Drue DeAngelis",
-      "Trilogy Spa Holdings",
-      "BluSpas (FL has direct experience — Acqualina)",
-      "Core Essence",
-      "The Wright Fit (FL has direct experience — NYC residential)",
-      "KALA Design Group",
-    ],
-  },
-  {
     title: "Longevity Consultation Suite",
     subtitle: "Services & Programming Beyond Current Scope",
     description: "Review the services Fountain Life could provide out of the longevity consultation room, beyond what's currently shown (VO₂ max, body composition, treatment table). Reference: Fountain Life Houston center images attached.",
@@ -61,6 +46,21 @@ const agendaItems = [
       "Vitality pool design and programming",
       "Overall Level 3 flow and resident experience",
       "Feedback format: redlines or written comments to follow",
+    ],
+  },
+  {
+    title: "Wellness Consultants",
+    subtitle: "Scope of Work & RFP Review",
+    description: "Review the written scope of work or RFP for wellness consultant selection. Fountain Life has worked with BluSpas (Acqualina) and The Wright Fit (NYC residential) — understanding the specific scope will help provide targeted feedback on the 7 shortlisted consultants.",
+    href: "/longevity/saltleaf/wellness-consultants",
+    details: [
+      "TLEE Wellness — Tracy Lee (currently engaged on SLT1)",
+      "Studio DeA — Drue DeAngelis",
+      "Trilogy Spa Holdings",
+      "BluSpas (FL has direct experience — Acqualina)",
+      "Core Essence",
+      "The Wright Fit (FL has direct experience — NYC residential)",
+      "KALA Design Group",
     ],
   },
 ];

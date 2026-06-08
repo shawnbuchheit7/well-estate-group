@@ -4,7 +4,7 @@
  */
 
 import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 import Layout from "@/components/Layout";
 import LightHero from "@/components/LightHero";
@@ -345,9 +345,9 @@ export default function Level3Wellness() {
               <ArrowLeft className="w-4 h-4" /> Prev: Fitness Layout
             </a>
           </Link>
-          <Link href="/longevity/saltleaf">
+          <Link href="/longevity/saltleaf/wellness-consultants">
             <a className="inline-flex items-center gap-2 font-body text-sm text-black/65 hover:text-[#B8860B] transition-colors">
-              Back to Saltleaf Overview
+              Next: Wellness Consultants <ArrowRight className="w-4 h-4" />
             </a>
           </Link>
         </div>
