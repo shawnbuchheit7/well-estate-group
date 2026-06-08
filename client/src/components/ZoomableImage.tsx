@@ -10,6 +10,7 @@ interface ZoomableImageProps {
 
 /**
  * Inline zoomable image — no popup/lightbox.
+ * On load, the image is "right-sized" to fill the container width.
  * Pinch-to-zoom and scroll-to-zoom directly on the image.
  * Drag to pan when zoomed in.
  */
@@ -23,10 +24,52 @@ export default function ZoomableImage({
   const containerRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
   const [scale, setScale] = useState(1);
+  const [baseScale, setBaseScale] = useState(1);
   const [translate, setTranslate] = useState({ x: 0, y: 0 });
   const [isPanning, setIsPanning] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
   const panStart = useRef({ x: 0, y: 0 });
   const translateStart = useRef({ x: 0, y: 0 });
+
+  // Calculate the "fit-to-width" scale on image load so the drawing fills the container
+  const fitToContainer = useCallback(() => {
+    const container = containerRef.current;
+    const img = imgRef.current;
+    if (!container || !img || !img.naturalWidth) return;
+
+    const containerWidth = container.clientWidth;
+    const containerHeight = container.clientHeight;
+    const imgWidth = img.naturalWidth;
+    const imgHeight = img.naturalHeight;
+
+    // Calculate scale to fit width, but don't exceed container height
+    const scaleToFitWidth = containerWidth / imgWidth;
+    const scaleToFitHeight = containerHeight / imgHeight;
+    
+    // Use the larger of the two to fill the container (cover-style for width priority)
+    // but cap at fit-height if the image would overflow too much vertically
+    const fitScale = Math.max(scaleToFitWidth, scaleToFitHeight);
+    
+    // Center the image in the container
+    const scaledWidth = imgWidth * fitScale;
+    const scaledHeight = imgHeight * fitScale;
+    const offsetX = (containerWidth - scaledWidth) / 2;
+    const offsetY = (containerHeight - scaledHeight) / 2;
+
+    setBaseScale(fitScale);
+    setScale(fitScale);
+    setTranslate({ x: offsetX, y: offsetY });
+    setImageLoaded(true);
+  }, []);
+
+  // Re-fit on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      if (imageLoaded) fitToContainer();
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [imageLoaded, fitToContainer]);
 
   const handleWheel = useCallback((e: React.WheelEvent) => {
     e.preventDefault();
@@ -41,7 +84,7 @@ export default function ZoomableImage({
 
     // Determine zoom direction — gentle sensitivity for trackpad
     const delta = e.deltaY > 0 ? -0.05 : 0.05;
-    const newScale = Math.min(Math.max(0.5, scale + delta * scale), 80);
+    const newScale = Math.min(Math.max(baseScale * 0.5, scale + delta * scale), 80);
 
     // Zoom toward mouse position
     const scaleRatio = newScale / scale;
@@ -50,15 +93,15 @@ export default function ZoomableImage({
 
     setScale(newScale);
     setTranslate({ x: newTranslateX, y: newTranslateY });
-  }, [scale, translate]);
+  }, [scale, translate, baseScale]);
 
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
-    if (scale <= 1) return;
+    if (scale <= baseScale) return;
     e.preventDefault();
     setIsPanning(true);
     panStart.current = { x: e.clientX, y: e.clientY };
     translateStart.current = { ...translate };
-  }, [scale, translate]);
+  }, [scale, translate, baseScale]);
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     if (!isPanning) return;
@@ -78,23 +121,22 @@ export default function ZoomableImage({
     const container = containerRef.current;
     if (!container) return;
 
-    if (scale > 1.5) {
-      // Reset
-      setScale(1);
-      setTranslate({ x: 0, y: 0 });
+    if (scale > baseScale * 1.5) {
+      // Reset to fit
+      fitToContainer();
     } else {
-      // Zoom to 3x at click point
+      // Zoom to 3x base at click point
       const rect = container.getBoundingClientRect();
       const mouseX = e.clientX - rect.left;
       const mouseY = e.clientY - rect.top;
-      const newScale = 3;
+      const newScale = baseScale * 3;
       const scaleRatio = newScale / scale;
       const newTranslateX = mouseX - (mouseX - translate.x) * scaleRatio;
       const newTranslateY = mouseY - (mouseY - translate.y) * scaleRatio;
       setScale(newScale);
       setTranslate({ x: newTranslateX, y: newTranslateY });
     }
-  }, [scale, translate]);
+  }, [scale, translate, baseScale, fitToContainer]);
 
   // Touch handling for pinch-to-zoom
   const lastTouchDist = useRef<number | null>(null);
@@ -109,12 +151,12 @@ export default function ZoomableImage({
         x: (e.touches[0].clientX + e.touches[1].clientX) / 2,
         y: (e.touches[0].clientY + e.touches[1].clientY) / 2,
       };
-    } else if (e.touches.length === 1 && scale > 1) {
+    } else if (e.touches.length === 1 && scale > baseScale) {
       setIsPanning(true);
       panStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
       translateStart.current = { ...translate };
     }
-  }, [scale, translate]);
+  }, [scale, translate, baseScale]);
 
   const handleTouchMove = useCallback((e: React.TouchEvent) => {
     if (e.touches.length === 2 && lastTouchDist.current !== null) {
@@ -130,7 +172,7 @@ export default function ZoomableImage({
       const centerX = lastTouchCenter.current.x - rect.left;
       const centerY = lastTouchCenter.current.y - rect.top;
 
-      const newScale = Math.min(Math.max(0.5, scale * scaleChange), 80);
+      const newScale = Math.min(Math.max(baseScale * 0.5, scale * scaleChange), 80);
       const scaleRatio = newScale / scale;
       const newTranslateX = centerX - (centerX - translate.x) * scaleRatio;
       const newTranslateY = centerY - (centerY - translate.y) * scaleRatio;
@@ -150,7 +192,7 @@ export default function ZoomableImage({
         y: translateStart.current.y + dy,
       });
     }
-  }, [scale, translate, isPanning]);
+  }, [scale, translate, isPanning, baseScale]);
 
   const handleTouchEnd = useCallback(() => {
     lastTouchDist.current = null;
@@ -159,9 +201,8 @@ export default function ZoomableImage({
   }, []);
 
   const reset = useCallback(() => {
-    setScale(1);
-    setTranslate({ x: 0, y: 0 });
-  }, []);
+    fitToContainer();
+  }, [fitToContainer]);
 
   const zoomIn = useCallback(() => {
     const container = containerRef.current;
@@ -183,13 +224,13 @@ export default function ZoomableImage({
     const rect = container.getBoundingClientRect();
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    const newScale = Math.max(scale / 1.25, 0.5);
+    const newScale = Math.max(scale / 1.25, baseScale * 0.5);
     const scaleRatio = newScale / scale;
     const newTranslateX = centerX - (centerX - translate.x) * scaleRatio;
     const newTranslateY = centerY - (centerY - translate.y) * scaleRatio;
     setScale(newScale);
     setTranslate({ x: newTranslateX, y: newTranslateY });
-  }, [scale, translate]);
+  }, [scale, translate, baseScale]);
 
   // Prevent default wheel on the container to avoid page scroll when zooming
   useEffect(() => {
@@ -208,7 +249,7 @@ export default function ZoomableImage({
     <div
       ref={containerRef}
       className={`relative group overflow-hidden ${containerClassName}`}
-      style={{ height: maxHeight, cursor: scale > 1 ? (isPanning ? "grabbing" : "grab") : "zoom-in" }}
+      style={{ height: maxHeight, cursor: scale > baseScale ? (isPanning ? "grabbing" : "grab") : "zoom-in" }}
       onWheel={handleWheel}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
@@ -224,16 +265,25 @@ export default function ZoomableImage({
         src={src}
         alt={alt}
         draggable={false}
+        onLoad={fitToContainer}
         className={`select-none ${className}`}
         style={{
-          width: "100%",
-          height: "100%",
-          objectFit: "contain",
+          position: "absolute",
+          top: 0,
+          left: 0,
           transformOrigin: "0 0",
           transform: `translate(${translate.x}px, ${translate.y}px) scale(${scale})`,
           transition: isPanning ? "none" : "transform 0.1s ease-out",
+          opacity: imageLoaded ? 1 : 0,
         }}
       />
+
+      {/* Loading placeholder */}
+      {!imageLoaded && (
+        <div className="absolute inset-0 flex items-center justify-center bg-[#FAFAF8]">
+          <span className="text-xs text-black/30 font-mono">Loading drawing...</span>
+        </div>
+      )}
 
       {/* Zoom controls */}
       <div className="absolute top-3 right-3 z-10 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -253,14 +303,14 @@ export default function ZoomableImage({
           onClick={(e) => { e.stopPropagation(); reset(); }}
           className="h-8 px-2 rounded bg-white/90 shadow border border-gray-200 hover:bg-white text-gray-700 text-xs font-medium flex items-center justify-center"
         >
-          Reset
+          Fit
         </button>
       </div>
 
       {/* Zoom indicator */}
-      {scale > 1.05 && (
+      {scale > baseScale * 1.05 && (
         <div className="absolute top-3 left-3 z-10 text-[10px] text-gray-500 bg-white/90 px-2 py-1 rounded shadow border border-gray-100">
-          {scale.toFixed(1)}x
+          {(scale / baseScale).toFixed(1)}x
         </div>
       )}
 
