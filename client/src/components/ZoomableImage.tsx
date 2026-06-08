@@ -10,8 +10,8 @@ interface ZoomableImageProps {
 
 /**
  * Inline zoomable image.
- * Default: image is centered and fit inside the container (object-fit: contain).
- * Pinch (two-finger trackpad) or buttons to zoom. Drag to pan when zoomed.
+ * Default: image centered and fit inside container.
+ * Pinch zooms toward the point you're pinching on.
  * Normal scroll passes through to the page.
  */
 export default function ZoomableImage({
@@ -22,93 +22,104 @@ export default function ZoomableImage({
   maxHeight = "700px",
 }: ZoomableImageProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  // Transform state: scale and translate relative to the "fit" position
   const [scale, setScale] = useState(1);
-  const [translate, setTranslate] = useState({ x: 0, y: 0 });
+  const [originX, setOriginX] = useState("50%");
+  const [originY, setOriginY] = useState("50%");
+  const [translateX, setTranslateX] = useState(0);
+  const [translateY, setTranslateY] = useState(0);
   const [isPanning, setIsPanning] = useState(false);
   const panStart = useRef({ x: 0, y: 0 });
-  const translateStart = useRef({ x: 0, y: 0 });
+  const txStart = useRef(0);
+  const tyStart = useRef(0);
 
-  // Use refs for the wheel handler to avoid re-attaching
-  const scaleRef = useRef(scale);
-  const translateRef = useRef(translate);
-  useEffect(() => { scaleRef.current = scale; }, [scale]);
-  useEffect(() => { translateRef.current = translate; }, [translate]);
+  // Refs for wheel handler
+  const stateRef = useRef({ scale: 1, translateX: 0, translateY: 0 });
+  useEffect(() => {
+    stateRef.current = { scale, translateX, translateY };
+  }, [scale, translateX, translateY]);
 
-  // Only intercept pinch gesture (ctrlKey set by browser for trackpad pinch)
+  // Pinch-to-zoom via trackpad (ctrlKey). Normal scroll passes through.
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
     const handleWheel = (e: WheelEvent) => {
-      if (!e.ctrlKey) return; // Normal scroll passes through
-
+      if (!e.ctrlKey) return;
       e.preventDefault();
       e.stopPropagation();
 
-      const rect = container.getBoundingClientRect();
-      const mouseX = e.clientX - rect.left;
-      const mouseY = e.clientY - rect.top;
+      const img = imgRef.current;
+      if (!img) return;
 
-      const currentScale = scaleRef.current;
-      const currentTranslate = translateRef.current;
-      const delta = e.deltaY > 0 ? -0.03 : 0.03;
-      const newScale = Math.min(Math.max(0.5, currentScale + delta * currentScale), 80);
+      const rect = img.getBoundingClientRect();
+      // Mouse position as percentage of the displayed image
+      const pctX = ((e.clientX - rect.left) / rect.width) * 100;
+      const pctY = ((e.clientY - rect.top) / rect.height) * 100;
 
-      // Zoom toward mouse position
-      const scaleRatio = newScale / currentScale;
-      const newTranslateX = mouseX - (mouseX - currentTranslate.x) * scaleRatio;
-      const newTranslateY = mouseY - (mouseY - currentTranslate.y) * scaleRatio;
+      const { scale: curScale, translateX: curTx, translateY: curTy } = stateRef.current;
+      const delta = e.deltaY > 0 ? -0.04 : 0.04;
+      const newScale = Math.min(Math.max(1, curScale + delta * curScale), 60);
+
+      // When zooming in from scale=1, set origin to cursor point
+      if (curScale <= 1.01) {
+        setOriginX(`${pctX}%`);
+        setOriginY(`${pctY}%`);
+        setTranslateX(0);
+        setTranslateY(0);
+      }
 
       setScale(newScale);
-      setTranslate({ x: newTranslateX, y: newTranslateY });
     };
 
     container.addEventListener("wheel", handleWheel, { passive: false });
     return () => container.removeEventListener("wheel", handleWheel);
   }, []);
 
+  // Mouse pan when zoomed
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
     if (scale <= 1.05) return;
     e.preventDefault();
     setIsPanning(true);
     panStart.current = { x: e.clientX, y: e.clientY };
-    translateStart.current = { ...translate };
-  }, [scale, translate]);
+    txStart.current = translateX;
+    tyStart.current = translateY;
+  }, [scale, translateX, translateY]);
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     if (!isPanning) return;
-    const dx = e.clientX - panStart.current.x;
-    const dy = e.clientY - panStart.current.y;
-    setTranslate({
-      x: translateStart.current.x + dx,
-      y: translateStart.current.y + dy,
-    });
+    setTranslateX(txStart.current + (e.clientX - panStart.current.x));
+    setTranslateY(tyStart.current + (e.clientY - panStart.current.y));
   }, [isPanning]);
 
   const handleMouseUp = useCallback(() => {
     setIsPanning(false);
   }, []);
 
+  // Double-click: zoom to 3x at that point, or reset
   const handleDoubleClick = useCallback((e: React.MouseEvent) => {
+    const img = imgRef.current;
+    if (!img) return;
+
     if (scale > 1.5) {
-      // Reset
       setScale(1);
-      setTranslate({ x: 0, y: 0 });
+      setTranslateX(0);
+      setTranslateY(0);
+      setOriginX("50%");
+      setOriginY("50%");
     } else {
-      // Zoom to 3x at click point
-      const container = containerRef.current;
-      if (!container) return;
-      const rect = container.getBoundingClientRect();
-      const mouseX = e.clientX - rect.left;
-      const mouseY = e.clientY - rect.top;
-      const newScale = 3;
-      const scaleRatio = newScale / scale;
-      const newTranslateX = mouseX - (mouseX - translate.x) * scaleRatio;
-      const newTranslateY = mouseY - (mouseY - translate.y) * scaleRatio;
-      setScale(newScale);
-      setTranslate({ x: newTranslateX, y: newTranslateY });
+      const rect = img.getBoundingClientRect();
+      const pctX = ((e.clientX - rect.left) / rect.width) * 100;
+      const pctY = ((e.clientY - rect.top) / rect.height) * 100;
+      setOriginX(`${pctX}%`);
+      setOriginY(`${pctY}%`);
+      setTranslateX(0);
+      setTranslateY(0);
+      setScale(3);
     }
-  }, [scale, translate]);
+  }, [scale]);
 
   // Touch pinch-to-zoom
   const lastTouchDist = useRef<number | null>(null);
@@ -119,16 +130,27 @@ export default function ZoomableImage({
       const dx = e.touches[0].clientX - e.touches[1].clientX;
       const dy = e.touches[0].clientY - e.touches[1].clientY;
       lastTouchDist.current = Math.sqrt(dx * dx + dy * dy);
-      lastTouchCenter.current = {
-        x: (e.touches[0].clientX + e.touches[1].clientX) / 2,
-        y: (e.touches[0].clientY + e.touches[1].clientY) / 2,
-      };
+
+      // Set origin to midpoint of the two fingers
+      const img = imgRef.current;
+      if (img) {
+        const rect = img.getBoundingClientRect();
+        const cx = ((e.touches[0].clientX + e.touches[1].clientX) / 2 - rect.left) / rect.width * 100;
+        const cy = ((e.touches[0].clientY + e.touches[1].clientY) / 2 - rect.top) / rect.height * 100;
+        if (scale <= 1.01) {
+          setOriginX(`${cx}%`);
+          setOriginY(`${cy}%`);
+          setTranslateX(0);
+          setTranslateY(0);
+        }
+      }
     } else if (e.touches.length === 1 && scale > 1.05) {
       setIsPanning(true);
       panStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-      translateStart.current = { ...translate };
+      txStart.current = translateX;
+      tyStart.current = translateY;
     }
-  }, [scale, translate]);
+  }, [scale, translateX, translateY]);
 
   const handleTouchMove = useCallback((e: React.TouchEvent) => {
     if (e.touches.length === 2 && lastTouchDist.current !== null) {
@@ -137,34 +159,14 @@ export default function ZoomableImage({
       const dy = e.touches[0].clientY - e.touches[1].clientY;
       const dist = Math.sqrt(dx * dx + dy * dy);
       const scaleChange = dist / lastTouchDist.current;
-
-      const container = containerRef.current;
-      if (!container || !lastTouchCenter.current) return;
-      const rect = container.getBoundingClientRect();
-      const centerX = lastTouchCenter.current.x - rect.left;
-      const centerY = lastTouchCenter.current.y - rect.top;
-
-      const newScale = Math.min(Math.max(0.5, scale * scaleChange), 80);
-      const scaleRatio = newScale / scale;
-      const newTranslateX = centerX - (centerX - translate.x) * scaleRatio;
-      const newTranslateY = centerY - (centerY - translate.y) * scaleRatio;
-
+      const newScale = Math.min(Math.max(1, scale * scaleChange), 60);
       setScale(newScale);
-      setTranslate({ x: newTranslateX, y: newTranslateY });
       lastTouchDist.current = dist;
-      lastTouchCenter.current = {
-        x: (e.touches[0].clientX + e.touches[1].clientX) / 2,
-        y: (e.touches[0].clientY + e.touches[1].clientY) / 2,
-      };
     } else if (e.touches.length === 1 && isPanning) {
-      const dx = e.touches[0].clientX - panStart.current.x;
-      const dy = e.touches[0].clientY - panStart.current.y;
-      setTranslate({
-        x: translateStart.current.x + dx,
-        y: translateStart.current.y + dy,
-      });
+      setTranslateX(txStart.current + (e.touches[0].clientX - panStart.current.x));
+      setTranslateY(tyStart.current + (e.touches[0].clientY - panStart.current.y));
     }
-  }, [scale, translate, isPanning]);
+  }, [scale, isPanning]);
 
   const handleTouchEnd = useCallback(() => {
     lastTouchDist.current = null;
@@ -174,38 +176,26 @@ export default function ZoomableImage({
 
   const reset = useCallback(() => {
     setScale(1);
-    setTranslate({ x: 0, y: 0 });
+    setTranslateX(0);
+    setTranslateY(0);
+    setOriginX("50%");
+    setOriginY("50%");
   }, []);
 
   const zoomIn = useCallback(() => {
-    const container = containerRef.current;
-    if (!container) return;
-    const rect = container.getBoundingClientRect();
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const newScale = Math.min(scale * 1.4, 80);
-    const scaleRatio = newScale / scale;
-    const newTranslateX = centerX - (centerX - translate.x) * scaleRatio;
-    const newTranslateY = centerY - (centerY - translate.y) * scaleRatio;
-    setScale(newScale);
-    setTranslate({ x: newTranslateX, y: newTranslateY });
-  }, [scale, translate]);
+    setScale((s) => Math.min(s * 1.4, 60));
+  }, []);
 
   const zoomOut = useCallback(() => {
-    const container = containerRef.current;
-    if (!container) return;
-    const rect = container.getBoundingClientRect();
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const newScale = Math.max(scale / 1.4, 0.5);
-    const scaleRatio = newScale / scale;
-    const newTranslateX = centerX - (centerX - translate.x) * scaleRatio;
-    const newTranslateY = centerY - (centerY - translate.y) * scaleRatio;
+    const newScale = Math.max(scale / 1.4, 1);
     setScale(newScale);
-    setTranslate({ x: newTranslateX, y: newTranslateY });
-  }, [scale, translate]);
+    if (newScale <= 1.01) {
+      setTranslateX(0);
+      setTranslateY(0);
+    }
+  }, [scale]);
 
-  const isZoomed = scale > 1.05 || Math.abs(translate.x) > 2 || Math.abs(translate.y) > 2;
+  const isZoomed = scale > 1.05;
 
   return (
     <div
@@ -221,8 +211,8 @@ export default function ZoomableImage({
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      {/* Default view: simple centered image using object-fit contain */}
       <img
+        ref={imgRef}
         src={src}
         alt={alt}
         draggable={false}
@@ -230,8 +220,8 @@ export default function ZoomableImage({
         style={{
           objectFit: "contain",
           objectPosition: "center",
-          transformOrigin: "center center",
-          transform: `translate(${translate.x}px, ${translate.y}px) scale(${scale})`,
+          transformOrigin: `${originX} ${originY}`,
+          transform: `translate(${translateX}px, ${translateY}px) scale(${scale})`,
           transition: isPanning ? "none" : "transform 0.15s ease-out",
         }}
       />
@@ -261,7 +251,7 @@ export default function ZoomableImage({
       </div>
 
       {/* Zoom indicator */}
-      {scale > 1.05 && (
+      {isZoomed && (
         <div className="absolute top-3 left-3 z-10 text-[10px] text-gray-500 bg-white/90 px-2 py-1 rounded shadow border border-gray-100">
           {scale.toFixed(1)}x
         </div>
