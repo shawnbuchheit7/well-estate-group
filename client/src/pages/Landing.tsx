@@ -166,9 +166,9 @@ export default function Landing() {
             >
               <div className="aspect-[3/4] max-w-[380px] mx-auto rounded-2xl overflow-hidden relative border border-[#B8860B]/20 shadow-[0_4px_40px_rgba(0,0,0,0.06)]">
                 <img 
-                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/vBqvPbhZQWXuywlW.jpeg" 
-                  alt="Shawn Buchheit — Founder & President" 
-                  className="w-full h-[130%] object-cover object-[center_15%]"
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/mnrdEjNzTKOSRNUZ.jpg" 
+                  alt="Luxury Wellness & Longevity Center" 
+                  className="w-full h-full object-cover object-center"
                   loading="lazy"
                 />
                 {/* Corner accents */}
@@ -350,33 +350,38 @@ export default function Landing() {
                 num: '01',
                 title: 'Go-To-Market Strategy',
                 desc: 'Strategic market entry, sales infrastructure, and commercial acceleration for wellness and fitness brands entering new markets or scaling existing operations.',
+                href: '/gtm',
               },
               {
                 num: '02',
                 title: 'Longevity Center Development',
                 desc: 'Full business planning, unit economics, clinical protocol design, and operational strategy for physician-led regenerative medicine centers.',
+                href: '/longevity/luxury',
               },
               {
                 num: '03',
                 title: 'Product Intelligence',
                 desc: 'Independent clinical evaluation, competitive analysis, and development advisory for next-generation wellness and longevity products.',
+                href: '/product-intelligence',
               },
               {
                 num: '04',
                 title: 'Venture & Capital Advisory',
                 desc: 'Strategic investment guidance and advisory for emerging fitness, wellness, and longevity products poised to disrupt the consumer health market.',
+                href: '/venture-advisory',
               },
             ].map((service) => (
-              <motion.div 
-                key={service.num} 
+              <motion.a 
+                key={service.num}
+                href={service.href}
                 variants={fadeInUp}
-                className="group p-8 md:p-10 border border-[#B8860B]/20 rounded-2xl hover:border-[#B8860B]/50 hover:shadow-[0_8px_40px_rgba(184,134,11,0.06)] transition-all duration-500 relative overflow-hidden"
+                className="group p-8 md:p-10 border border-[#B8860B]/20 rounded-2xl hover:border-[#B8860B]/50 hover:shadow-[0_8px_40px_rgba(184,134,11,0.06)] transition-all duration-500 relative overflow-hidden cursor-pointer block"
               >
                 <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#B8860B]/0 via-[#B8860B]/40 to-[#B8860B]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <span className="font-mono text-[11px] tracking-[0.2em] text-[#B8860B] font-semibold">{service.num}</span>
                 <h3 className="font-display text-xl md:text-2xl font-medium mt-3 mb-4 text-black">{service.title}</h3>
                 <p className="font-body text-[15px] text-black/60 leading-relaxed">{service.desc}</p>
-              </motion.div>
+              </motion.a>
             ))}
           </motion.div>
         </div>
