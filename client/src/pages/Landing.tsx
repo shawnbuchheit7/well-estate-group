@@ -164,11 +164,11 @@ export default function Landing() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <div className="aspect-[4/5] rounded-2xl overflow-hidden relative border border-[#B8860B]/20 shadow-[0_4px_40px_rgba(0,0,0,0.06)]">
+              <div className="aspect-[3/4] max-w-[380px] mx-auto rounded-2xl overflow-hidden relative border border-[#B8860B]/20 shadow-[0_4px_40px_rgba(0,0,0,0.06)]">
                 <img 
                   src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/vBqvPbhZQWXuywlW.jpeg" 
                   alt="Shawn Buchheit — Founder & President" 
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-[130%] object-cover object-[center_15%]"
                   loading="lazy"
                 />
                 {/* Corner accents */}
