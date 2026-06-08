@@ -17,7 +17,7 @@ import { FloatingCTA } from "@/components/FloatingCTA";
 
 interface LayoutProps {
   children: React.ReactNode;
-  section?: "longevity" | "longevity-performance" | "gtm" | "gtm-zerowheel" | "gtm-sample" | "products";
+  section?: "longevity" | "longevity-performance" | "longevity-saltleaf" | "gtm" | "gtm-zerowheel" | "gtm-sample" | "products";
 }
 
 // Longevity Luxury Model nav links
@@ -32,6 +32,15 @@ const longevityNavLinks = [
   { href: "/longevity/projections", label: "Projections" },
   { href: "/longevity/hiring", label: "Team" },
   { href: "/longevity/faq", label: "FAQ" },
+];
+
+// Saltleaf project nav links
+const saltleafNavLinks = [
+  { href: "/longevity/saltleaf", label: "Overview" },
+  { href: "/longevity/saltleaf/wellness-consultants", label: "Wellness Consultants" },
+  { href: "/longevity/saltleaf/longevity-suite", label: "Longevity Suite" },
+  { href: "/longevity/saltleaf/fitness-layout", label: "Fitness Layout" },
+  { href: "/longevity/saltleaf/level-3-wellness", label: "Level 3 Wellness" },
 ];
 
 // Longevity Performance Model nav links
@@ -91,6 +100,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
 
   // Determine which nav links to use based on section and current location
   const isLongevityPerformanceRoute = location.startsWith("/longevity/performance-model");
+  const isSaltleafRoute = location.startsWith("/longevity/saltleaf");
   const isLongevityProjectsRoute = location === "/longevity";
   const isLongevityRoute = location.startsWith("/longevity");
   const isZWRoute = location.startsWith("/gtm/zerowheel");
@@ -130,6 +140,11 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
     navLinks = [];
     homeLink = "/";
     sectionLabel = "Venture & Product Capital";
+  } else if (isSaltleafRoute || section === "longevity-saltleaf") {
+    navLinks = saltleafNavLinks;
+    homeLink = "/longevity/saltleaf";
+    sectionLabel = "Saltleaf on Estero Bay";
+    backLink = "/longevity";
   } else if (isLongevityPerformanceRoute || section === "longevity-performance") {
     navLinks = longevityPerformanceNavLinks;
     homeLink = "/longevity/performance-model";

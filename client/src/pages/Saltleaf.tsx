@@ -16,6 +16,7 @@ const agendaItems = [
     title: "Wellness Consultants",
     subtitle: "Scope of Work & RFP Review",
     description: "Review the written scope of work or RFP for wellness consultant selection. Fountain Life has worked with BluSpas (Acqualina) and The Wright Fit (NYC residential) — understanding the specific scope will help provide targeted feedback on the 7 shortlisted consultants.",
+    href: "/longevity/saltleaf/wellness-consultants",
     details: [
       "TLEE Wellness — Tracy Lee (currently engaged on SLT1)",
       "Studio DeA — Drue DeAngelis",
@@ -30,6 +31,7 @@ const agendaItems = [
     title: "Longevity Consultation Suite",
     subtitle: "Services & Programming Beyond Current Scope",
     description: "Review the services Fountain Life could provide out of the longevity consultation room, beyond what's currently shown (VO₂ max, body composition, treatment table). Reference: Fountain Life Houston center images attached.",
+    href: "/longevity/saltleaf/longevity-suite",
     details: [
       "Current TLEE recommendations: VO₂ max bike, body composition analyzer, treatment table, counter with sink",
       "Fountain Life services to explore: IV therapy, biomarker testing, sports chiropractic, acupuncture, dermatology consultations",
@@ -41,6 +43,7 @@ const agendaItems = [
     title: "Fitness Layout (SPX)",
     subtitle: "Recommended Layout Review",
     description: "Confirm whether the current layout is the recommended design from SPX. Review the longevity lounge space allocation and equipment placement. Discuss whether removing lounge furniture to focus on equipment provides adequate space.",
+    href: "/longevity/saltleaf/fitness-layout",
     details: [
       "Is this the final recommended layout from SPX?",
       "Longevity lounge vs. equipment space trade-off",
@@ -52,6 +55,7 @@ const agendaItems = [
     title: "Level 3 Wellness Areas",
     subtitle: "Locker Rooms, Hot/Cold Therapy & Vitality Pool",
     description: "Reviewed the full Level 3 amenity floor including fitness, his/her locker rooms with hot/cold therapy, and vitality pool. Prepared feedback and recommendations for discussion.",
+    href: "/longevity/saltleaf/level-3-wellness",
     details: [
       "His/Her locker rooms — hot/cold therapy integration",
       "Vitality pool design and programming",
@@ -105,40 +109,48 @@ export default function Saltleaf() {
             variants={staggerContainer}
           >
             {agendaItems.map((item, i) => (
-              <motion.div
-                key={i}
-                variants={fadeInUp}
-                className="group p-8 rounded-2xl border border-[#B8860B]/40 bg-white hover:border-[#B8860B]/60 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300"
-              >
-                {/* Number badge */}
-                <div className="flex items-center justify-between mb-4">
-                  <span className="font-mono text-[#B8860B] font-semibold text-xs tracking-wider">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                </div>
+              <motion.div key={i} variants={fadeInUp}>
+                <Link href={item.href}>
+                  <a className="block group p-8 rounded-2xl border border-[#B8860B]/40 bg-white hover:border-[#B8860B]/70 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] transition-all duration-300 cursor-pointer h-full">
+                    {/* Number badge */}
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="font-mono text-[#B8860B] font-semibold text-xs tracking-wider">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <ArrowRight className="w-4 h-4 text-black/20 group-hover:text-[#B8860B] group-hover:translate-x-1 transition-all duration-300" />
+                    </div>
 
-                {/* Title */}
-                <h3 className="font-display text-xl md:text-2xl font-medium text-black mb-1">
-                  {item.title}
-                </h3>
-                <p className="font-mono text-[10px] text-black/40 tracking-[0.15em] uppercase mb-4">
-                  {item.subtitle}
-                </p>
+                    {/* Title */}
+                    <h3 className="font-display text-xl md:text-2xl font-medium text-black mb-1 group-hover:text-[#B8860B] transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="font-mono text-[10px] text-black/40 tracking-[0.15em] uppercase mb-4">
+                      {item.subtitle}
+                    </p>
 
-                {/* Description */}
-                <p className="font-body text-sm text-black/65 leading-relaxed mb-6">
-                  {item.description}
-                </p>
+                    {/* Description */}
+                    <p className="font-body text-sm text-black/65 leading-relaxed mb-6">
+                      {item.description}
+                    </p>
 
-                {/* Details list */}
-                <ul className="space-y-2">
-                  {item.details.map((detail, j) => (
-                    <li key={j} className="flex items-start gap-2 text-xs text-black/55 font-body">
-                      <span className="text-[#B8860B] mt-0.5">•</span>
-                      <span>{detail}</span>
-                    </li>
-                  ))}
-                </ul>
+                    {/* Details list */}
+                    <ul className="space-y-2">
+                      {item.details.map((detail, j) => (
+                        <li key={j} className="flex items-start gap-2 text-xs text-black/55 font-body">
+                          <span className="text-[#B8860B] mt-0.5">•</span>
+                          <span>{detail}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* View Detail CTA */}
+                    <div className="mt-6 pt-4 border-t border-[#B8860B]/15">
+                      <span className="font-body text-xs font-semibold text-black/50 group-hover:text-[#B8860B] transition-colors uppercase tracking-wider">
+                        View Details →
+                      </span>
+                    </div>
+                  </a>
+                </Link>
               </motion.div>
             ))}
           </motion.div>

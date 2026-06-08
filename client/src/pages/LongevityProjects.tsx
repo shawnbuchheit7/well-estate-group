@@ -40,9 +40,7 @@ const models: ModelTile[] = [
       { label: "Client", value: "LBDG" },
     ],
     icon: (
-      <svg className="w-7 h-7 text-[#B8860B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6" />
-      </svg>
+      <img src="/saltleaf-logo.svg" alt="Saltleaf" className="w-8 h-10" />
     ),
   },
   {
