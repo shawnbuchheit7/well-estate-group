@@ -164,21 +164,20 @@ export default function Landing() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <div className="aspect-[4/5] bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl overflow-hidden relative border border-gray-100">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center px-8">
-                    <img 
-                      src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/LHselcWIkeWDRNuE.png" 
-                      alt="Well Estate Group" 
-                      className="w-24 h-24 mx-auto mb-6 opacity-80"
-                    />
-                    <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-black/40 font-medium">Est. 2020</p>
-                    <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/30 mt-2">Houston, Texas</p>
-                  </div>
-                </div>
+              <div className="aspect-[4/5] rounded-2xl overflow-hidden relative border border-[#B8860B]/20 shadow-[0_4px_40px_rgba(0,0,0,0.06)]">
+                <img 
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/vBqvPbhZQWXuywlW.jpeg" 
+                  alt="Shawn Buchheit — Founder & President" 
+                  className="w-full h-full object-cover object-top"
+                  loading="lazy"
+                />
                 {/* Corner accents */}
                 <div className="absolute top-6 right-6 w-16 h-16 border-t border-r border-[#B8860B]/30" />
                 <div className="absolute bottom-6 left-6 w-16 h-16 border-b border-l border-[#B8860B]/30" />
+                {/* Est. badge */}
+                <div className="absolute bottom-6 right-6 bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 border border-[#B8860B]/20">
+                  <p className="font-body text-[10px] tracking-[0.2em] uppercase text-black/50 font-medium">Est. 2020 &middot; Fort Myers, FL</p>
+                </div>
               </div>
             </motion.div>
 
@@ -503,7 +502,7 @@ export default function Landing() {
               <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/40 mb-4 font-medium">Contact</p>
               <div className="space-y-2">
                 <a href="mailto:shawn@wellestategroup.com" className="block font-body text-sm text-black/60 hover:text-black transition-colors">shawn@wellestategroup.com</a>
-                <p className="font-body text-sm text-black/50">Houston, TX</p>
+                <p className="font-body text-sm text-black/50">Fort Myers, FL</p>
               </div>
             </div>
           </div>
