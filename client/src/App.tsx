@@ -23,6 +23,7 @@ import Home from "./pages/Home";
 // Longevity Projects Landing (multi-model view)
 const LongevityProjects = lazy(() => import("./pages/LongevityProjects"));
 const LongevityPerformanceModel = lazy(() => import("./pages/LongevityPerformanceModel"));
+const Saltleaf = lazy(() => import("./pages/Saltleaf"));
 
 // GTM Projects Landing
 const GTMProjects = lazy(() => import("./pages/GTMProjects"));
@@ -169,6 +170,9 @@ function App() {
                   <Route path="/longevity/hiring" component={() => <LongevityPasswordGate><Hiring /></LongevityPasswordGate>} />
                   <Route path="/longevity/faq" component={() => <LongevityPasswordGate><FAQ /></LongevityPasswordGate>} />
                   
+                  {/* Saltleaf on Estero Bay */}
+                  <Route path="/longevity/saltleaf" component={() => <LongevityPasswordGate><Saltleaf /></LongevityPasswordGate>} />
+
                   {/* Longevity Performance Model */}
                   <Route path="/longevity/performance-model" component={() => <LongevityPasswordGate><LongevityPerformanceModel /></LongevityPasswordGate>} />
                   <Route path="/longevity/performance-model/about" component={() => <LongevityPasswordGate><LongevityPerformanceModel /></LongevityPasswordGate>} />
