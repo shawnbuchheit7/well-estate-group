@@ -1,6 +1,7 @@
 /**
  * Saltleaf — Fitness Layout (SPX)
  * Visual-first page with architectural floor plans
+ * Branded with Saltleaf teal (#1a3e4c)
  */
 
 import { motion } from "framer-motion";
@@ -10,6 +11,8 @@ import Layout from "@/components/Layout";
 import LightHero from "@/components/LightHero";
 import ZoomableImage from "@/components/ZoomableImage";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
+
+const ACCENT = "#1a3e4c";
 
 const floorPlans = [
   {
@@ -104,9 +107,10 @@ export default function FitnessLayout() {
   return (
     <Layout section="longevity-saltleaf">
       <LightHero
-        eyebrow="Agenda Item 03"
+        eyebrow="Agenda Item 02"
         title={<>Fitness Layout</>}
         description="SPX fitness programming and spatial design for the Saltleaf Tower One amenity level. Reviewing the floor plan, zone allocations, and integration with the broader wellness ecosystem."
+        accentColor={ACCENT}
         stats={[
           { label: "Primary Level", value: "3" },
           { label: "Est. Fitness Area", value: "~5,900 SF" },
@@ -125,7 +129,7 @@ export default function FitnessLayout() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono font-semibold text-xs tracking-[0.2em] uppercase" style={{ color: ACCENT }}>
               Floor Plans
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 text-black">
@@ -147,7 +151,8 @@ export default function FitnessLayout() {
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="rounded-2xl border border-[#B8860B]/20 bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                className="rounded-2xl border bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                style={{ borderColor: `${ACCENT}33` }}
               >
                 <ZoomableImage src={plan.src} alt={plan.title} maxHeight="700px" className="bg-[#FAFAF8]" />
                 <div className="p-6 flex items-start justify-between gap-4">
@@ -155,7 +160,7 @@ export default function FitnessLayout() {
                     <h3 className="font-display text-lg font-medium text-black">{plan.title}</h3>
                     <p className="font-body text-sm text-black/60 mt-1 leading-relaxed max-w-3xl">{plan.description}</p>
                   </div>
-                  <span className="font-mono text-[10px] text-[#B8860B]/70 bg-[#B8860B]/[0.06] px-2 py-1 rounded shrink-0">
+                  <span className="font-mono text-[10px] px-2 py-1 rounded shrink-0" style={{ color: `${ACCENT}B3`, backgroundColor: `${ACCENT}0F` }}>
                     {plan.drawing}
                   </span>
                 </div>
@@ -175,7 +180,7 @@ export default function FitnessLayout() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono font-semibold text-xs tracking-[0.2em] uppercase" style={{ color: ACCENT }}>
               Space Planning
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 text-black">
@@ -194,11 +199,14 @@ export default function FitnessLayout() {
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="rounded-2xl border border-[#B8860B]/15 bg-white p-6 hover:border-[#B8860B]/30 transition-colors"
+                className="rounded-2xl border bg-white p-6 transition-colors"
+                style={{ borderColor: `${ACCENT}26` }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = `${ACCENT}4D`; }}
+                onMouseLeave={(e) => { e.currentTarget.style.borderColor = `${ACCENT}26`; }}
               >
                 <div className="flex items-start justify-between mb-3">
-                  <span className="font-mono text-[#B8860B] font-semibold text-xs">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="font-mono text-sm text-[#B8860B] font-semibold">{zone.sqft}</span>
+                  <span className="font-mono font-semibold text-xs" style={{ color: ACCENT }}>{String(i + 1).padStart(2, "0")}</span>
+                  <span className="font-mono text-sm font-semibold" style={{ color: ACCENT }}>{zone.sqft}</span>
                 </div>
                 <h3 className="font-display text-lg font-medium text-black mb-2">{zone.zone}</h3>
                 <p className="font-body text-xs text-black/60 leading-relaxed">{zone.notes}</p>
@@ -217,7 +225,7 @@ export default function FitnessLayout() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono font-semibold text-xs tracking-[0.2em] uppercase" style={{ color: ACCENT }}>
               Key Questions
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 mb-8 text-black">
@@ -226,12 +234,12 @@ export default function FitnessLayout() {
 
             <motion.div variants={fadeInUp} className="space-y-4">
               {layoutQuestions.map((q, i) => (
-                <div key={i} className={`p-6 rounded-xl border bg-white ${q.priority === 'high' ? 'border-[#B8860B]/30' : 'border-[#B8860B]/15'}`}>
+                <div key={i} className="p-6 rounded-xl border bg-white" style={{ borderColor: q.priority === 'high' ? `${ACCENT}4D` : `${ACCENT}26` }}>
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="font-mono text-[#B8860B] font-semibold text-xs">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="font-mono font-semibold text-xs" style={{ color: ACCENT }}>{String(i + 1).padStart(2, "0")}</span>
                     <h4 className="font-display text-base font-medium text-black">{q.title}</h4>
                     {q.priority === 'high' && (
-                      <span className="px-2 py-0.5 rounded-full text-[8px] font-mono font-bold bg-[#B8860B]/10 text-[#B8860B] uppercase tracking-wider">Priority</span>
+                      <span className="px-2 py-0.5 rounded-full text-[8px] font-mono font-bold uppercase tracking-wider" style={{ backgroundColor: `${ACCENT}1A`, color: ACCENT }}>Priority</span>
                     )}
                   </div>
                   <p className="font-body text-sm text-black/60 leading-relaxed pl-8">{q.description}</p>
@@ -251,7 +259,7 @@ export default function FitnessLayout() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono font-semibold text-xs tracking-[0.2em] uppercase" style={{ color: ACCENT }}>
               Team
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 mb-8 text-black">
@@ -260,9 +268,9 @@ export default function FitnessLayout() {
 
             <motion.div variants={fadeInUp} className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {spxTeam.map((person, i) => (
-                <div key={i} className="p-6 rounded-2xl border border-[#B8860B]/15 bg-white">
+                <div key={i} className="p-6 rounded-2xl border bg-white" style={{ borderColor: `${ACCENT}26` }}>
                   <h4 className="font-display text-lg font-medium text-black">{person.name}</h4>
-                  <p className="font-mono text-[10px] text-[#B8860B] tracking-[0.12em] uppercase mt-1 mb-3">{person.role}</p>
+                  <p className="font-mono text-[10px] tracking-[0.12em] uppercase mt-1 mb-3" style={{ color: ACCENT }}>{person.role}</p>
                   <p className="font-body text-sm text-black/60 leading-relaxed">{person.background}</p>
                 </div>
               ))}
@@ -272,15 +280,15 @@ export default function FitnessLayout() {
       </section>
 
       {/* Navigation */}
-      <section className="py-16 border-t border-[#B8860B]/10">
+      <section className="py-16 border-t" style={{ borderColor: `${ACCENT}1A` }}>
         <div className="container max-w-4xl flex items-center justify-between">
           <Link href="/longevity/saltleaf/longevity-suite">
-            <a className="inline-flex items-center gap-2 font-body text-sm text-black/65 hover:text-[#B8860B] transition-colors">
+            <a className="inline-flex items-center gap-2 font-body text-sm text-black/65 hover:text-black transition-colors">
               <ArrowLeft className="w-4 h-4" /> Prev: Longevity Suite
             </a>
           </Link>
           <Link href="/longevity/saltleaf/level-3-wellness">
-            <a className="inline-flex items-center gap-2 font-body text-sm text-black/65 hover:text-[#B8860B] transition-colors">
+            <a className="inline-flex items-center gap-2 font-body text-sm text-black/65 hover:text-black transition-colors">
               Next: Level 3 Wellness <ArrowRight className="w-4 h-4" />
             </a>
           </Link>

@@ -1,7 +1,7 @@
 /**
  * Saltleaf on Estero Bay — Meeting Prep & Project Page
  * London Bay Development Group — Wellness Design & Programming Advisory
- * Design: Light luxury theme matching site-wide aesthetic
+ * Design: Light luxury theme with Saltleaf brand teal (#1a3e4c)
  */
 
 import { motion } from "framer-motion";
@@ -11,16 +11,18 @@ import Layout from "@/components/Layout";
 import LightHero from "@/components/LightHero";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 
+const ACCENT = "#1a3e4c";
+
 const agendaItems = [
   {
     title: "Longevity Consultation Suite",
     subtitle: "Services & Programming Beyond Current Scope",
-    description: "Review the services Fountain Life could provide out of the longevity consultation room, beyond what's currently shown (VO₂ max, body composition, treatment table). Reference: Fountain Life Houston center images attached.",
+    description: "Review the services that could be provided out of the longevity consultation room, beyond what's currently shown (VO₂ max, body composition, treatment table). Reference: Houston center images attached.",
     href: "/longevity/saltleaf/longevity-suite",
     details: [
       "Current TLEE recommendations: VO₂ max bike, body composition analyzer, treatment table, counter with sink",
-      "Fountain Life services to explore: IV therapy, biomarker testing, sports chiropractic, acupuncture, dermatology consultations",
-      "Room design reference: FL Houston center suites (images provided)",
+      "Additional services to explore: IV therapy, biomarker testing, sports chiropractic, acupuncture, dermatology consultations",
+      "Room design reference: Houston center suites (images provided)",
       "Question: What is the full activity list we want to drive from this space?",
     ],
   },
@@ -51,15 +53,15 @@ const agendaItems = [
   {
     title: "Wellness Consultants",
     subtitle: "Scope of Work & RFP Review",
-    description: "Review the written scope of work or RFP for wellness consultant selection. Fountain Life has worked with BluSpas (Acqualina) and The Wright Fit (NYC residential) — understanding the specific scope will help provide targeted feedback on the 7 shortlisted consultants.",
+    description: "Review the written scope of work or RFP for wellness consultant selection. Understanding the specific scope will help provide targeted feedback on the 7 shortlisted consultants.",
     href: "/longevity/saltleaf/wellness-consultants",
     details: [
       "TLEE Wellness — Tracy Lee (currently engaged on SLT1)",
       "Studio DeA — Drue DeAngelis",
       "Trilogy Spa Holdings",
-      "BluSpas (FL has direct experience — Acqualina)",
+      "BluSpas (direct experience — Acqualina)",
       "Core Essence",
-      "The Wright Fit (FL has direct experience — NYC residential)",
+      "The Wright Fit (direct experience — NYC residential)",
       "KALA Design Group",
     ],
   },
@@ -69,9 +71,10 @@ export default function Saltleaf() {
   return (
     <Layout section="longevity-saltleaf">
       <LightHero
-        eyebrow="Client Project"
+        eyebrow="Wellness Advisory"
         title={<>Saltleaf<br /><em className="italic font-light">on Estero Bay</em></>}
         description="Wellness design and programming advisory for London Bay Development Group's premier coastal community — featuring The Ritz-Carlton Residences, Estero Bay. Saltleaf Tower 1, Level 3 wellness amenities."
+        accentColor={ACCENT}
         stats={[
           { label: "Tower", value: "SLT1" },
           { label: "Level", value: "3" },
@@ -90,7 +93,7 @@ export default function Saltleaf() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono font-semibold text-xs tracking-[0.2em] uppercase" style={{ color: ACCENT }}>
               Meeting Prep
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-medium mt-4 mb-4 text-black">
@@ -111,17 +114,17 @@ export default function Saltleaf() {
             {agendaItems.map((item, i) => (
               <motion.div key={i} variants={fadeInUp}>
                 <Link href={item.href}>
-                  <a className="block group p-8 rounded-2xl border border-[#B8860B]/40 bg-white hover:border-[#B8860B]/70 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] transition-all duration-300 cursor-pointer h-full">
+                  <a className="block group p-8 rounded-2xl border bg-white hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] transition-all duration-300 cursor-pointer h-full" style={{ borderColor: `${ACCENT}66` }} onMouseEnter={(e) => { e.currentTarget.style.borderColor = `${ACCENT}B3`; }} onMouseLeave={(e) => { e.currentTarget.style.borderColor = `${ACCENT}66`; }}>
                     {/* Number badge */}
                     <div className="flex items-center justify-between mb-4">
-                      <span className="font-mono text-[#B8860B] font-semibold text-xs tracking-wider">
+                      <span className="font-mono font-semibold text-xs tracking-wider" style={{ color: ACCENT }}>
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      <ArrowRight className="w-4 h-4 text-black/20 group-hover:text-[#B8860B] group-hover:translate-x-1 transition-all duration-300" />
+                      <ArrowRight className="w-4 h-4 text-black/20 group-hover:translate-x-1 transition-all duration-300" style={{ }} />
                     </div>
 
                     {/* Title */}
-                    <h3 className="font-display text-xl md:text-2xl font-medium text-black mb-1 group-hover:text-[#B8860B] transition-colors">
+                    <h3 className="font-display text-xl md:text-2xl font-medium text-black mb-1 transition-colors">
                       {item.title}
                     </h3>
                     <p className="font-mono text-[10px] text-black/40 tracking-[0.15em] uppercase mb-4">
@@ -137,15 +140,15 @@ export default function Saltleaf() {
                     <ul className="space-y-2">
                       {item.details.map((detail, j) => (
                         <li key={j} className="flex items-start gap-2 text-xs text-black/55 font-body">
-                          <span className="text-[#B8860B] mt-0.5">•</span>
+                          <span className="mt-0.5" style={{ color: ACCENT }}>•</span>
                           <span>{detail}</span>
                         </li>
                       ))}
                     </ul>
 
                     {/* View Detail CTA */}
-                    <div className="mt-6 pt-4 border-t border-[#B8860B]/15">
-                      <span className="font-body text-xs font-semibold text-black/50 group-hover:text-[#B8860B] transition-colors uppercase tracking-wider">
+                    <div className="mt-6 pt-4" style={{ borderTop: `1px solid ${ACCENT}26` }}>
+                      <span className="font-body text-xs font-semibold text-black/50 group-hover:text-black transition-colors uppercase tracking-wider">
                         View Details →
                       </span>
                     </div>
@@ -167,7 +170,7 @@ export default function Saltleaf() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono font-semibold text-xs tracking-[0.2em] uppercase" style={{ color: ACCENT }}>
               Project Context
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 mb-4 text-black">
@@ -182,18 +185,18 @@ export default function Saltleaf() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.div variants={fadeInUp} className="p-6 rounded-2xl border border-[#B8860B]/20 bg-white">
+            <motion.div variants={fadeInUp} className="p-6 rounded-2xl border bg-white" style={{ borderColor: `${ACCENT}33` }}>
               <h4 className="font-display text-lg font-medium text-black mb-2">Developer</h4>
               <p className="font-body text-sm text-black/65">London Bay Development Group</p>
               <p className="font-body text-xs text-black/40 mt-1">Christopher Smuts, Mark Wilson, Stephen Wilson, Craig Klingensmith</p>
             </motion.div>
-            <motion.div variants={fadeInUp} className="p-6 rounded-2xl border border-[#B8860B]/20 bg-white">
+            <motion.div variants={fadeInUp} className="p-6 rounded-2xl border bg-white" style={{ borderColor: `${ACCENT}33` }}>
               <h4 className="font-display text-lg font-medium text-black mb-2">Wellness Team</h4>
               <p className="font-body text-sm text-black/65">TLEE Wellness (Tracy Lee) — Consultant</p>
               <p className="font-body text-sm text-black/65">SPX (Sean Sackmann) — Fitness</p>
               <p className="font-body text-sm text-black/65">Thermal Collective — Hydrotherapy</p>
             </motion.div>
-            <motion.div variants={fadeInUp} className="p-6 rounded-2xl border border-[#B8860B]/20 bg-white">
+            <motion.div variants={fadeInUp} className="p-6 rounded-2xl border bg-white" style={{ borderColor: `${ACCENT}33` }}>
               <h4 className="font-display text-lg font-medium text-black mb-2">Architecture</h4>
               <p className="font-body text-sm text-black/65">Arquitectonica — Design Architect</p>
               <p className="font-body text-sm text-black/65">Meyer Davis — Interior Design</p>
@@ -207,7 +210,7 @@ export default function Saltleaf() {
       <section className="py-16">
         <div className="container text-center">
           <Link href="/longevity">
-            <a className="inline-flex items-center gap-2 font-body text-sm text-black/65 hover:text-[#B8860B] transition-colors">
+            <a className="inline-flex items-center gap-2 font-body text-sm text-black/65 hover:text-black transition-colors">
               ← Back to Longevity Ventures
             </a>
           </Link>

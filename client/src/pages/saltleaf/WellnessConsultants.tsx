@@ -237,7 +237,7 @@ const consultants = [
 /* ─── Helper Components ─── */
 function ScopeIndicator({ active }: { active: boolean }) {
   return active ? (
-    <Check className="w-4 h-4 text-[#B8860B]" />
+    <Check className="w-4 h-4 text-[#1a3e4c]" />
   ) : (
     <Minus className="w-4 h-4 text-black/20" />
   );
@@ -245,8 +245,8 @@ function ScopeIndicator({ active }: { active: boolean }) {
 
 function ResidentialBadge({ level }: { level: string }) {
   const colors: Record<string, string> = {
-    dominant: "bg-[#B8860B] text-white",
-    strong: "bg-[#B8860B]/20 text-[#B8860B]",
+    dominant: "bg-[#1a3e4c] text-white",
+    strong: "bg-[#1a3e4c]/20 text-[#1a3e4c]",
     moderate: "bg-black/10 text-black/60",
     limited: "bg-black/5 text-black/40",
   };
@@ -268,9 +268,10 @@ export default function WellnessConsultants() {
   return (
     <Layout section="longevity-saltleaf">
       <LightHero
-        eyebrow="Agenda Item 01"
+        eyebrow="Agenda Item 04"
         title={<>Wellness Consultants</>}
         description="Deep-dive comparison of all 7 shortlisted wellness consultant candidates. Research includes specializations, project portfolios, residential experience, and unique differentiators."
+        accentColor="#1a3e4c"
         stats={[
           { label: "Candidates", value: "7" },
           { label: "FL Experience", value: "2" },
@@ -289,7 +290,7 @@ export default function WellnessConsultants() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#1a3e4c] font-semibold text-xs tracking-[0.2em] uppercase">
               Comparison Matrix
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 text-black">
@@ -303,11 +304,11 @@ export default function WellnessConsultants() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeInUp}
-            className="overflow-x-auto rounded-2xl border border-[#B8860B]/20 bg-white shadow-sm"
+            className="overflow-x-auto rounded-2xl border border-[#1a3e4c]/20 bg-white shadow-sm"
           >
             <table className="w-full text-left" style={{ minWidth: "1000px" }}>
               <thead>
-                <tr className="border-b border-[#B8860B]/10 bg-[#FAFAF8]">
+                <tr className="border-b border-[#1a3e4c]/10 bg-[#FAFAF8]">
                   <th className="p-3 font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold whitespace-nowrap">Consultant</th>
                   <th className="p-3 font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold whitespace-nowrap">Est.</th>
                   <th className="p-3 font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold whitespace-nowrap">HQ</th>
@@ -322,11 +323,11 @@ export default function WellnessConsultants() {
               </thead>
               <tbody>
                 {consultants.map((c, i) => (
-                  <tr key={i} className={`border-b border-[#B8860B]/5 hover:bg-[#B8860B]/[0.02] transition-colors ${c.engaged ? 'bg-[#B8860B]/[0.04]' : ''} ${c.flExperience ? 'bg-blue-50/30' : ''}`}>
+                  <tr key={i} className={`border-b border-[#1a3e4c]/5 hover:bg-[#1a3e4c]/[0.02] transition-colors ${c.engaged ? 'bg-[#1a3e4c]/[0.04]' : ''} ${c.flExperience ? 'bg-blue-50/30' : ''}`}>
                     <td className="p-3">
                       <div className="flex items-center gap-1.5 flex-wrap">
                         <span className="font-body text-[13px] font-medium text-black">{c.shortName}</span>
-                        {c.engaged && <span className="px-1 py-0.5 rounded text-[7px] font-mono font-bold bg-[#B8860B] text-white uppercase leading-none">Engaged</span>}
+                        {c.engaged && <span className="px-1 py-0.5 rounded text-[7px] font-mono font-bold bg-[#1a3e4c] text-white uppercase leading-none">Engaged</span>}
                         {c.flExperience && <span className="px-1 py-0.5 rounded text-[7px] font-mono font-bold bg-blue-600 text-white uppercase leading-none">FL</span>}
                       </div>
                     </td>
@@ -357,7 +358,7 @@ export default function WellnessConsultants() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#1a3e4c] font-semibold text-xs tracking-[0.2em] uppercase">
               Detailed Profiles
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 text-black">
@@ -379,17 +380,17 @@ export default function WellnessConsultants() {
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className={`rounded-2xl border bg-white overflow-hidden ${c.engaged ? 'border-[#B8860B]/50 ring-1 ring-[#B8860B]/20' : c.flExperience ? 'border-blue-300/50' : 'border-[#B8860B]/15'}`}
+                className={`rounded-2xl border bg-white overflow-hidden ${c.engaged ? 'border-[#1a3e4c]/50 ring-1 ring-[#1a3e4c]/20' : c.flExperience ? 'border-blue-300/50' : 'border-[#1a3e4c]/15'}`}
               >
                 {/* Header */}
                 <div className="p-8 pb-0">
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
                     <div>
                       <div className="flex items-center gap-3 mb-1 flex-wrap">
-                        <span className="font-mono text-[#B8860B] font-semibold text-xs">{String(i + 1).padStart(2, "0")}</span>
+                        <span className="font-mono text-[#1a3e4c] font-semibold text-xs">{String(i + 1).padStart(2, "0")}</span>
                         {c.logo && <img src={c.logo} alt={c.shortName} className="h-8 w-auto object-contain opacity-80" />}
                         <h3 className="font-display text-xl md:text-2xl font-medium text-black">{c.name}</h3>
-                        {c.engaged && <span className="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-[#B8860B] text-white uppercase tracking-wider">Currently Engaged</span>}
+                        {c.engaged && <span className="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-[#1a3e4c] text-white uppercase tracking-wider">Currently Engaged</span>}
                         {c.flExperience && <span className="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-blue-600 text-white uppercase tracking-wider">FL Direct Experience</span>}
                       </div>
                       <p className="font-body text-sm text-black/50">Led by {c.leader} · Est. {c.founded} · {c.hq}</p>
@@ -398,7 +399,7 @@ export default function WellnessConsultants() {
                       href={c.website}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 font-mono text-[10px] text-[#B8860B] hover:text-[#8B6914] tracking-wider uppercase transition-colors shrink-0"
+                      className="inline-flex items-center gap-1.5 font-mono text-[10px] text-[#1a3e4c] hover:text-[#0f2a34] tracking-wider uppercase transition-colors shrink-0"
                     >
                       Visit Website <ExternalLink className="w-3 h-3" />
                     </a>
@@ -421,7 +422,7 @@ export default function WellnessConsultants() {
                     <p className="font-mono text-[9px] text-black/40 tracking-[0.12em] uppercase mb-2 font-semibold">Luxury Brand Associations</p>
                     <div className="flex flex-wrap gap-1.5">
                       {c.luxuryBrands.map((brand, j) => (
-                        <span key={j} className="px-2 py-0.5 rounded-full text-[10px] font-body text-black/60 bg-[#B8860B]/[0.06] border border-[#B8860B]/10">
+                        <span key={j} className="px-2 py-0.5 rounded-full text-[10px] font-body text-black/60 bg-[#1a3e4c]/[0.06] border border-[#1a3e4c]/10">
                           {brand}
                         </span>
                       ))}
@@ -432,7 +433,7 @@ export default function WellnessConsultants() {
                 {/* Top Projects Grid */}
                 <div className="px-8 pb-8">
                   <p className="font-mono text-[9px] text-black/40 tracking-[0.12em] uppercase mb-3 font-semibold flex items-center gap-2">
-                    <Star className="w-3 h-3 text-[#B8860B]" />
+                    <Star className="w-3 h-3 text-[#1a3e4c]" />
                     Top {c.topProjects.length} Notable Projects
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
@@ -440,18 +441,18 @@ export default function WellnessConsultants() {
                       const Wrapper = (p as any).url ? 'a' : 'div';
                       const wrapperProps = (p as any).url ? { href: (p as any).url, target: "_blank", rel: "noopener noreferrer" } : {};
                       return (
-                        <Wrapper key={j} {...wrapperProps} className={`flex items-start gap-3 p-3 rounded-lg bg-[#FAFAF8] border border-[#B8860B]/5 transition-all duration-200 ${(p as any).url ? 'hover:border-[#B8860B]/30 hover:bg-[#B8860B]/[0.02] hover:shadow-sm cursor-pointer group' : ''}`}>
-                          <span className="font-mono text-[9px] text-[#B8860B]/60 font-semibold mt-0.5 shrink-0">{String(j + 1).padStart(2, "0")}</span>
+                        <Wrapper key={j} {...wrapperProps} className={`flex items-start gap-3 p-3 rounded-lg bg-[#FAFAF8] border border-[#1a3e4c]/5 transition-all duration-200 ${(p as any).url ? 'hover:border-[#1a3e4c]/30 hover:bg-[#1a3e4c]/[0.02] hover:shadow-sm cursor-pointer group' : ''}`}>
+                          <span className="font-mono text-[9px] text-[#1a3e4c]/60 font-semibold mt-0.5 shrink-0">{String(j + 1).padStart(2, "0")}</span>
                           <div className="min-w-0 flex-1">
                             <div className="flex items-center gap-1.5">
-                              <p className={`font-body text-[13px] font-medium leading-tight ${(p as any).url ? 'text-black group-hover:text-[#B8860B] transition-colors' : 'text-black'}`}>{p.name}</p>
-                              {(p as any).url && <ExternalLink className="w-3 h-3 text-[#B8860B]/40 group-hover:text-[#B8860B] transition-colors shrink-0" />}
+                              <p className={`font-body text-[13px] font-medium leading-tight ${(p as any).url ? 'text-black group-hover:text-[#1a3e4c] transition-colors' : 'text-black'}`}>{p.name}</p>
+                              {(p as any).url && <ExternalLink className="w-3 h-3 text-[#1a3e4c]/40 group-hover:text-[#1a3e4c] transition-colors shrink-0" />}
                             </div>
                             <div className="flex items-center gap-2 mt-0.5 flex-wrap">
                               <span className="inline-flex items-center gap-0.5 text-[10px] text-black/45 font-body">
                                 <MapPin className="w-2.5 h-2.5" />{p.location}
                               </span>
-                              <span className="inline-flex items-center gap-0.5 text-[10px] text-[#B8860B]/70 font-mono">
+                              <span className="inline-flex items-center gap-0.5 text-[10px] text-[#1a3e4c]/70 font-mono">
                                 <Building2 className="w-2.5 h-2.5" />{p.type}
                               </span>
                             </div>
@@ -464,7 +465,7 @@ export default function WellnessConsultants() {
                 </div>
 
                 {/* Footer Stats */}
-                <div className="px-8 py-5 border-t border-[#B8860B]/10 bg-[#FAFAF8]/50 flex flex-wrap gap-6">
+                <div className="px-8 py-5 border-t border-[#1a3e4c]/10 bg-[#FAFAF8]/50 flex flex-wrap gap-6">
                   <div>
                     <span className="font-mono text-[9px] text-black/40 tracking-[0.12em] uppercase block">Scope</span>
                     <span className="font-body text-xs text-black/70 mt-0.5 block">
@@ -503,7 +504,7 @@ export default function WellnessConsultants() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#1a3e4c] font-semibold text-xs tracking-[0.2em] uppercase">
               Strategic Observations
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 mb-8 text-black">
@@ -511,42 +512,42 @@ export default function WellnessConsultants() {
             </motion.h2>
 
             <motion.div variants={fadeInUp} className="space-y-6">
-              <div className="p-6 rounded-2xl border border-[#B8860B]/20 bg-white">
-                <h4 className="font-display text-lg font-medium text-black mb-2">Fountain Life Direct Experience</h4>
+              <div className="p-6 rounded-2xl border border-[#1a3e4c]/20 bg-white">
+                <h4 className="font-display text-lg font-medium text-black mb-2">Direct Experience Partners</h4>
                 <p className="font-body text-sm text-black/65 leading-relaxed">
-                  Two firms have direct working relationships with Fountain Life: <strong className="text-black">BluSpas</strong> (Acqualina project) and <strong className="text-black">The Wright Fit</strong> (NYC luxury residential). This first-hand experience means we can provide specific, credible feedback on their capabilities, work style, and deliverable quality.
+                  Two firms have direct working relationships with our team: <strong className="text-black">BluSpas</strong> (Acqualina project) and <strong className="text-black">The Wright Fit</strong> (NYC luxury residential). This first-hand experience means we can provide specific, credible feedback on their capabilities, work style, and deliverable quality.
                 </p>
               </div>
 
-              <div className="p-6 rounded-2xl border border-[#B8860B]/20 bg-white">
+              <div className="p-6 rounded-2xl border border-[#1a3e4c]/20 bg-white">
                 <h4 className="font-display text-lg font-medium text-black mb-2">The Operator Question</h4>
                 <p className="font-body text-sm text-black/65 leading-relaxed">
                   <strong className="text-black">Trilogy Spa Holdings</strong> is the only firm that operates as a true spa/wellness operator (leased or managed model). If London Bay wants a partner who will run the wellness operation post-opening — not just design it — Trilogy is the only candidate offering that. This is a fundamentally different value proposition.
                 </p>
               </div>
 
-              <div className="p-6 rounded-2xl border border-[#B8860B]/20 bg-white">
+              <div className="p-6 rounded-2xl border border-[#1a3e4c]/20 bg-white">
                 <h4 className="font-display text-lg font-medium text-black mb-2">Florida Depth: BluSpas Dominates</h4>
                 <p className="font-body text-sm text-black/65 leading-relaxed">
                   <strong className="text-black">BluSpas</strong> has 8 Florida projects including Ritz-Carlton West Palm Beach, Ritz-Carlton Key Biscayne, Fisher Island, Pier 66, Four Seasons Jacksonville, and Waldorf Astoria Orlando. No other firm comes close to this level of Florida-specific experience. <strong className="text-black">The Wright Fit</strong> has 3 Florida projects (Fisher Island, St. Regis Miami, Eighty Seven Park).
                 </p>
               </div>
 
-              <div className="p-6 rounded-2xl border border-[#B8860B]/20 bg-white">
+              <div className="p-6 rounded-2xl border border-[#1a3e4c]/20 bg-white">
                 <h4 className="font-display text-lg font-medium text-black mb-2">Luxury Residential Depth</h4>
                 <p className="font-body text-sm text-black/65 leading-relaxed">
                   <strong className="text-black">The Wright Fit</strong> dominates luxury residential fitness with 70+ projects (15 Central Park West, 432 Park Avenue, Fisher Island). <strong className="text-black">BluSpas</strong> brings 450+ total projects including 48 Four Seasons across 24 countries. These two have the deepest luxury residential experience by far.
                 </p>
               </div>
 
-              <div className="p-6 rounded-2xl border border-[#B8860B]/20 bg-white">
+              <div className="p-6 rounded-2xl border border-[#1a3e4c]/20 bg-white">
                 <h4 className="font-display text-lg font-medium text-black mb-2">Brand Power: BluSpas Leads</h4>
                 <p className="font-body text-sm text-black/65 leading-relaxed">
                   <strong className="text-black">BluSpas</strong> has worked with more luxury brands than any other candidate: Four Seasons, Ritz-Carlton, Waldorf Astoria, St. Regis, Bvlgari, Rosewood, Belmond, Nobu, Aman, and Raffles. <strong className="text-black">Trilogy</strong> has Guerlain, Sisley, and 111SKIN brand partnerships. <strong className="text-black">TLEE</strong> has Ritz-Carlton Reserve, EDITION, and Equinox.
                 </p>
               </div>
 
-              <div className="p-6 rounded-2xl border border-[#B8860B]/20 bg-white">
+              <div className="p-6 rounded-2xl border border-[#1a3e4c]/20 bg-white">
                 <h4 className="font-display text-lg font-medium text-black mb-2">Critical Question: What Is the Scope?</h4>
                 <p className="font-body text-sm text-black/65 leading-relaxed">
                   Before recommending any candidate, we need to understand the specific scope of work. Is London Bay looking for: (a) design only, (b) programming + design, (c) full operations management, or (d) a hybrid? The answer dramatically changes which firms are best suited. TLEE is already engaged — is this a replacement, supplement, or expansion of scope?
@@ -566,7 +567,7 @@ export default function WellnessConsultants() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono text-[#1a3e4c] font-semibold text-xs tracking-[0.2em] uppercase">
               Discussion Points
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 mb-8 text-black">
@@ -578,13 +579,13 @@ export default function WellnessConsultants() {
                 "What is the written scope of work or RFP for the wellness consultant role?",
                 "Is the consultant expected to handle design, programming, operations, or a combination?",
                 "What is the timeline for consultant selection and engagement?",
-                "Will the selected consultant work alongside Fountain Life or independently?",
+                "Will the selected consultant work alongside the wellness advisory team or independently?",
                 "How does the consultant scope interact with SPX (fitness) and Thermal Collective (hydrotherapy)?",
                 "Is TLEE being replaced, supplemented, or is this an additional scope area?",
                 "Does London Bay want an operator (Trilogy model) or a consultant (design + programming)?",
               ].map((q, i) => (
-                <div key={i} className="flex items-start gap-4 p-5 rounded-xl border border-[#B8860B]/15 bg-white">
-                  <span className="font-mono text-[#B8860B] font-semibold text-xs mt-0.5">{String(i + 1).padStart(2, "0")}</span>
+                <div key={i} className="flex items-start gap-4 p-5 rounded-xl border border-[#1a3e4c]/15 bg-white">
+                  <span className="font-mono text-[#1a3e4c] font-semibold text-xs mt-0.5">{String(i + 1).padStart(2, "0")}</span>
                   <p className="font-body text-sm text-black/70">{q}</p>
                 </div>
               ))}
@@ -594,15 +595,15 @@ export default function WellnessConsultants() {
       </section>
 
       {/* Navigation */}
-      <section className="py-16 border-t border-[#B8860B]/10">
+      <section className="py-16 border-t border-[#1a3e4c]/10">
         <div className="container max-w-4xl flex items-center justify-between">
           <Link href="/longevity/saltleaf/level-3-wellness">
-            <a className="inline-flex items-center gap-2 font-body text-sm text-black/65 hover:text-[#B8860B] transition-colors">
+            <a className="inline-flex items-center gap-2 font-body text-sm text-black/65 hover:text-black transition-colors">
               <ArrowLeft className="w-4 h-4" /> Prev: Level 3 Wellness
             </a>
           </Link>
           <Link href="/longevity/saltleaf">
-            <a className="inline-flex items-center gap-2 font-body text-sm text-black/65 hover:text-[#B8860B] transition-colors">
+            <a className="inline-flex items-center gap-2 font-body text-sm text-black/65 hover:text-black transition-colors">
               Back to Saltleaf Overview
             </a>
           </Link>

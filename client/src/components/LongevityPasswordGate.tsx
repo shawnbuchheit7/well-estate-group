@@ -3,10 +3,12 @@
  * Time-limited access (48 hours) for all /longevity/* routes
  * Password: vitakavana2026
  * Stores auth timestamp in localStorage — expires after 48 hours
+ * Saltleaf routes use Saltleaf teal branding instead of WEG gold
  */
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Lock, ArrowRight, Eye, EyeOff, Clock, Layers } from 'lucide-react';
+import { useLocation } from 'wouter';
 
 const LC_PASSWORD = 'vitakavana2026';
 const MASTER_PASSWORD = 'ShawnFree';
@@ -49,6 +51,11 @@ export default function LongevityPasswordGate({ children }: LongevityPasswordGat
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [remainingTime, setRemainingTime] = useState('');
+  const [location] = useLocation();
+
+  const isSaltleafRoute = location.startsWith('/longevity/saltleaf');
+  const accent = isSaltleafRoute ? '#1a3e4c' : '#B8860B';
+  const brandLabel = isSaltleafRoute ? 'Saltleaf on Estero Bay' : 'Well Estate Group';
 
   useEffect(() => {
     if (isSessionValid()) {
@@ -104,7 +111,7 @@ export default function LongevityPasswordGate({ children }: LongevityPasswordGat
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#FAFAF8]">
-        <div className="w-8 h-8 border border-[#B8860B] border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border border-t-transparent rounded-full animate-spin" style={{ borderColor: `${accent}`, borderTopColor: 'transparent' }} />
       </div>
     );
   }
@@ -121,9 +128,9 @@ export default function LongevityPasswordGate({ children }: LongevityPasswordGat
         backgroundSize: '40px 40px'
       }} />
 
-      {/* Gold accent lines */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#B8860B]/30 to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#B8860B]/30 to-transparent" />
+      {/* Accent lines */}
+      <div className="absolute top-0 left-0 right-0 h-px" style={{ backgroundImage: `linear-gradient(to right, transparent, ${accent}4D, transparent)` }} />
+      <div className="absolute bottom-0 left-0 right-0 h-px" style={{ backgroundImage: `linear-gradient(to right, transparent, ${accent}4D, transparent)` }} />
 
       <motion.div
         initial={{ opacity: 0, y: 20, scale: 0.97 }}
@@ -131,26 +138,28 @@ export default function LongevityPasswordGate({ children }: LongevityPasswordGat
         transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
         className="relative z-10 w-full max-w-md mx-6"
       >
-        <div className="bg-white border border-[#B8860B]/55 rounded-2xl shadow-[0_20px_80px_rgba(0,0,0,0.07)] p-10">
+        <div className="bg-white rounded-2xl shadow-[0_20px_80px_rgba(0,0,0,0.07)] p-10" style={{ border: `1px solid ${accent}88` }}>
 
-          {/* Longevity Center branding */}
+          {/* Branding */}
           <div className="flex flex-col items-center mb-8">
             <motion.div
-              className="w-14 h-14 rounded-xl bg-[#B8860B]/10 flex items-center justify-center mb-5"
+              className="w-14 h-14 rounded-xl flex items-center justify-center mb-5"
+              style={{ backgroundColor: `${accent}1A` }}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.15, duration: 0.4 }}
             >
-              <Layers className="w-7 h-7 text-[#B8860B]" />
+              <Layers className="w-7 h-7" style={{ color: accent }} />
             </motion.div>
 
             <motion.p
-              className="font-mono text-[10px] text-[#B8860B] uppercase tracking-[0.2em] mb-1"
+              className="font-mono text-[10px] uppercase tracking-[0.2em] mb-1"
+              style={{ color: accent }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.25 }}
             >
-              Longevity Center
+              {isSaltleafRoute ? 'Wellness Advisory' : 'Longevity Center'}
             </motion.p>
             <motion.h1
               className="font-display text-xl font-semibold text-black text-center"
@@ -171,16 +180,17 @@ export default function LongevityPasswordGate({ children }: LongevityPasswordGat
           </div>
 
           {/* Divider */}
-          <div className="w-10 h-px bg-[#B8860B] mx-auto mb-7" />
+          <div className="w-10 h-px mx-auto mb-7" style={{ backgroundColor: accent }} />
 
           {/* Time notice */}
           <motion.div
-            className="flex items-center gap-2 bg-[#B8860B]/5 border border-[#B8860B]/15 rounded-lg px-4 py-2.5 mb-6"
+            className="flex items-center gap-2 rounded-lg px-4 py-2.5 mb-6"
+            style={{ backgroundColor: `${accent}0D`, border: `1px solid ${accent}26` }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.38 }}
           >
-            <Clock className="w-3.5 h-3.5 text-[#B8860B] flex-shrink-0" />
+            <Clock className="w-3.5 h-3.5 flex-shrink-0" style={{ color: accent }} />
             <p className="font-body text-[11px] text-black/55">
               Access is time-limited to <span className="font-medium text-black/75">48 hours</span> from code entry.
             </p>
@@ -207,7 +217,10 @@ export default function LongevityPasswordGate({ children }: LongevityPasswordGat
                   onKeyDown={handleKeyDown}
                   placeholder="Enter invitation code"
                   autoFocus
-                  className="w-full pl-11 pr-12 py-3.5 bg-[#FAFAF8] border-[1.5px] border-[#B8860B]/55 rounded-xl font-body text-sm text-black placeholder:text-black/20 focus:outline-none focus:border-[#B8860B] focus:ring-2 focus:ring-[#B8860B]/10 transition-all"
+                  className="w-full pl-11 pr-12 py-3.5 bg-[#FAFAF8] rounded-xl font-body text-sm text-black placeholder:text-black/20 focus:outline-none transition-all"
+                  style={{ border: `1.5px solid ${accent}88`, }}
+                  onFocus={(e) => { e.currentTarget.style.borderColor = accent; e.currentTarget.style.boxShadow = `0 0 0 2px ${accent}1A`; }}
+                  onBlur={(e) => { e.currentTarget.style.borderColor = `${accent}88`; e.currentTarget.style.boxShadow = 'none'; }}
                 />
                 <button
                   type="button"
@@ -252,7 +265,7 @@ export default function LongevityPasswordGate({ children }: LongevityPasswordGat
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
           >
-            Private & Confidential — Well Estate Group
+            Private & Confidential — {brandLabel}
           </motion.p>
         </div>
       </motion.div>

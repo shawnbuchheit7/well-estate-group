@@ -1,6 +1,7 @@
 /**
  * Saltleaf — Level 3 Wellness Areas
  * Visual-first page with architectural drawings and thermal design
+ * Branded with Saltleaf teal (#1a3e4c)
  */
 
 import { motion } from "framer-motion";
@@ -10,6 +11,8 @@ import Layout from "@/components/Layout";
 import LightHero from "@/components/LightHero";
 import ZoomableImage from "@/components/ZoomableImage";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
+
+const ACCENT = "#1a3e4c";
 
 const floorPlans = [
   {
@@ -104,9 +107,10 @@ export default function Level3Wellness() {
   return (
     <Layout section="longevity-saltleaf">
       <LightHero
-        eyebrow="Agenda Item 04"
+        eyebrow="Agenda Item 03"
         title={<>Level 3 Wellness Areas</>}
         description="Complete review of the Level 3 amenity floor including locker rooms with hot/cold therapy, vitality pool by Thermal Collective, and overall circulation flow between wellness zones."
+        accentColor={ACCENT}
         stats={[
           { label: "Areas", value: "5+" },
           { label: "Thermal Types", value: "4" },
@@ -125,7 +129,7 @@ export default function Level3Wellness() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono font-semibold text-xs tracking-[0.2em] uppercase" style={{ color: ACCENT }}>
               Architectural Plans
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 text-black">
@@ -147,7 +151,8 @@ export default function Level3Wellness() {
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="rounded-2xl border border-[#B8860B]/20 bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                className="rounded-2xl border bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                style={{ borderColor: `${ACCENT}33` }}
               >
                 <ZoomableImage src={plan.src} alt={plan.title} maxHeight="700px" className="bg-[#FAFAF8]" />
                 <div className="p-6 flex items-start justify-between gap-4">
@@ -155,7 +160,7 @@ export default function Level3Wellness() {
                     <h3 className="font-display text-lg font-medium text-black">{plan.title}</h3>
                     <p className="font-body text-sm text-black/60 mt-1 leading-relaxed max-w-3xl">{plan.description}</p>
                   </div>
-                  <span className="font-mono text-[10px] text-[#B8860B]/70 bg-[#B8860B]/[0.06] px-2 py-1 rounded shrink-0">
+                  <span className="font-mono text-[10px] px-2 py-1 rounded shrink-0" style={{ color: `${ACCENT}B3`, backgroundColor: `${ACCENT}0F` }}>
                     {plan.drawing}
                   </span>
                 </div>
@@ -175,7 +180,7 @@ export default function Level3Wellness() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono font-semibold text-xs tracking-[0.2em] uppercase" style={{ color: ACCENT }}>
               Wellness Zones
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 text-black">
@@ -194,10 +199,11 @@ export default function Level3Wellness() {
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="p-8 rounded-2xl border border-[#B8860B]/20 bg-white"
+                className="p-8 rounded-2xl border bg-white"
+                style={{ borderColor: `${ACCENT}33` }}
               >
                 <div className="flex items-start gap-4 mb-4">
-                  <span className="font-mono text-[#B8860B] font-semibold text-sm">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="font-mono font-semibold text-sm" style={{ color: ACCENT }}>{String(i + 1).padStart(2, "0")}</span>
                   <div className="flex-1">
                     <h3 className="font-display text-xl md:text-2xl font-medium text-black mb-1">{area.title}</h3>
                     <p className="font-mono text-[10px] text-black/40 tracking-[0.12em] uppercase">{area.subtitle}</p>
@@ -207,7 +213,7 @@ export default function Level3Wellness() {
                 <ul className="space-y-2 ml-10">
                   {area.details.map((detail, j) => (
                     <li key={j} className="flex items-start gap-2 text-xs text-black/60 font-body">
-                      <span className="text-[#B8860B] mt-0.5">•</span>
+                      <span className="mt-0.5" style={{ color: ACCENT }}>•</span>
                       <span>{detail}</span>
                     </li>
                   ))}
@@ -228,7 +234,7 @@ export default function Level3Wellness() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono font-semibold text-xs tracking-[0.2em] uppercase" style={{ color: ACCENT }}>
               Thermal Programming
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 text-black">
@@ -244,11 +250,12 @@ export default function Level3Wellness() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeInUp}
-            className="overflow-x-auto rounded-2xl border border-[#B8860B]/20 bg-white shadow-sm"
+            className="overflow-x-auto rounded-2xl border bg-white shadow-sm"
+            style={{ borderColor: `${ACCENT}33` }}
           >
             <table className="w-full text-left" style={{ minWidth: "600px" }}>
               <thead>
-                <tr className="border-b border-[#B8860B]/10 bg-[#FAFAF8]">
+                <tr className="bg-[#FAFAF8]" style={{ borderBottom: `1px solid ${ACCENT}1A` }}>
                   <th className="p-4 font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold whitespace-nowrap">Element</th>
                   <th className="p-4 font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold whitespace-nowrap">Temperature</th>
                   <th className="p-4 font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold whitespace-nowrap">Duration</th>
@@ -257,9 +264,9 @@ export default function Level3Wellness() {
               </thead>
               <tbody>
                 {thermalDesign.map((item, i) => (
-                  <tr key={i} className={`${i < thermalDesign.length - 1 ? 'border-b border-[#B8860B]/5' : ''} hover:bg-[#B8860B]/[0.02] transition-colors`}>
+                  <tr key={i} className="transition-colors" style={{ borderBottom: i < thermalDesign.length - 1 ? `1px solid ${ACCENT}0D` : undefined }}>
                     <td className="p-4 font-body text-sm font-medium text-black">{item.element}</td>
-                    <td className="p-4 font-mono text-sm text-[#B8860B] font-semibold">{item.temp}</td>
+                    <td className="p-4 font-mono text-sm font-semibold" style={{ color: ACCENT }}>{item.temp}</td>
                     <td className="p-4 font-body text-sm text-black/65">{item.duration}</td>
                     <td className="p-4 font-body text-sm text-black/65">{item.benefit}</td>
                   </tr>
@@ -279,7 +286,7 @@ export default function Level3Wellness() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono font-semibold text-xs tracking-[0.2em] uppercase" style={{ color: ACCENT }}>
               Discussion Points
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 mb-8 text-black">
@@ -288,8 +295,8 @@ export default function Level3Wellness() {
 
             <motion.div variants={fadeInUp} className="space-y-3">
               {keyQuestions.map((q, i) => (
-                <div key={i} className="flex items-start gap-4 p-5 rounded-xl border border-[#B8860B]/15 bg-white">
-                  <span className="font-mono text-[#B8860B] font-semibold text-xs mt-0.5">{String(i + 1).padStart(2, "0")}</span>
+                <div key={i} className="flex items-start gap-4 p-5 rounded-xl border bg-white" style={{ borderColor: `${ACCENT}26` }}>
+                  <span className="font-mono font-semibold text-xs mt-0.5" style={{ color: ACCENT }}>{String(i + 1).padStart(2, "0")}</span>
                   <p className="font-body text-sm text-black/70">{q}</p>
                 </div>
               ))}
@@ -307,7 +314,7 @@ export default function Level3Wellness() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-mono font-semibold text-xs tracking-[0.2em] uppercase" style={{ color: ACCENT }}>
               Next Steps
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 mb-8 text-black">
@@ -315,8 +322,8 @@ export default function Level3Wellness() {
             </motion.h2>
             <motion.div variants={fadeInUp} className="space-y-4">
               {feedbackApproach.map((item, i) => (
-                <div key={i} className="flex items-start gap-4 p-5 rounded-xl border border-[#B8860B]/15 bg-white">
-                  <span className="font-mono text-[#B8860B] font-semibold text-xs mt-0.5">{String(i + 1).padStart(2, "0")}</span>
+                <div key={i} className="flex items-start gap-4 p-5 rounded-xl border bg-white" style={{ borderColor: `${ACCENT}26` }}>
+                  <span className="font-mono font-semibold text-xs mt-0.5" style={{ color: ACCENT }}>{String(i + 1).padStart(2, "0")}</span>
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-1">
                       <h4 className="font-display text-base font-medium text-black">{item.method}</h4>
@@ -332,15 +339,15 @@ export default function Level3Wellness() {
       </section>
 
       {/* Navigation */}
-      <section className="py-16 border-t border-[#B8860B]/10">
+      <section className="py-16 border-t" style={{ borderColor: `${ACCENT}1A` }}>
         <div className="container max-w-4xl flex items-center justify-between">
           <Link href="/longevity/saltleaf/fitness-layout">
-            <a className="inline-flex items-center gap-2 font-body text-sm text-black/65 hover:text-[#B8860B] transition-colors">
+            <a className="inline-flex items-center gap-2 font-body text-sm text-black/65 hover:text-black transition-colors">
               <ArrowLeft className="w-4 h-4" /> Prev: Fitness Layout
             </a>
           </Link>
           <Link href="/longevity/saltleaf/wellness-consultants">
-            <a className="inline-flex items-center gap-2 font-body text-sm text-black/65 hover:text-[#B8860B] transition-colors">
+            <a className="inline-flex items-center gap-2 font-body text-sm text-black/65 hover:text-black transition-colors">
               Next: Wellness Consultants <ArrowRight className="w-4 h-4" />
             </a>
           </Link>

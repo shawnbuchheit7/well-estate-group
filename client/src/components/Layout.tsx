@@ -3,6 +3,7 @@
  * Shared layout with navigation for all pages - Luxury Light Theme
  * Supports multiple sections: "longevity", "gtm", "gtm-zerowheel", "gtm-sample", "products"
  * OPTIMIZED: Enhanced footer, cross-pillar nav, luxury spacing, multi-project GTM
+ * Saltleaf routes use Saltleaf brand colors (#1a3e4c teal) instead of WEG gold
  */
 
 import { useState } from "react";
@@ -110,6 +111,12 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
   const isProductRoute = location.startsWith("/product-intelligence");
   const isVentureRoute = location.startsWith("/venture-capital");
   
+  // Saltleaf brand accent color
+  const saltleafAccent = "#1a3e4c";
+  // Default WEG accent
+  const wegAccent = "#B8860B";
+  // Active accent based on route
+  const accent = isSaltleafRoute ? saltleafAccent : wegAccent;
   
   let navLinks: typeof longevityNavLinks;
   let homeLink: string;
@@ -205,18 +212,33 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                 <ChevronLeft className="w-4 h-4" />
               </Link>
             )}
-            <Link href="/" className="flex items-center gap-3 group" onClick={closeMobileMenu}>
-              <motion.img 
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/LHselcWIkeWDRNuE.png" 
-                alt="Well Estate Group" 
-                className="w-10 h-10"
-                whileHover={{ rotate: 360, scale: 1.1 }}
-                transition={{ duration: 0.6 }}
-              />
-              <span className="font-display text-lg font-bold tracking-[0.04em] group-hover:text-[#B8860B] transition-colors whitespace-nowrap text-black">
-                WELL ESTATE GROUP
-              </span>
-            </Link>
+            {isSaltleafRoute ? (
+              <Link href="/longevity/saltleaf" className="flex items-center gap-3 group" onClick={closeMobileMenu}>
+                <motion.img 
+                  src="/saltleaf-logo.svg" 
+                  alt="Saltleaf" 
+                  className="w-8 h-10"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.4 }}
+                />
+                <span className="font-display text-lg font-bold tracking-[0.04em] transition-colors whitespace-nowrap text-black" style={{ color: undefined }}>
+                  SALTLEAF
+                </span>
+              </Link>
+            ) : (
+              <Link href="/" className="flex items-center gap-3 group" onClick={closeMobileMenu}>
+                <motion.img 
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/LHselcWIkeWDRNuE.png" 
+                  alt="Well Estate Group" 
+                  className="w-10 h-10"
+                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  transition={{ duration: 0.6 }}
+                />
+                <span className="font-display text-lg font-bold tracking-[0.04em] group-hover:text-[#B8860B] transition-colors whitespace-nowrap text-black">
+                  WELL ESTATE GROUP
+                </span>
+              </Link>
+            )}
           </div>
           
           {/* Desktop Navigation - only shown inline when few tabs */}
@@ -233,9 +255,15 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                         href={link.href}
                         className={`relative px-3.5 py-1.5 rounded-lg transition-all whitespace-nowrap ${
                           isActive
-                            ? "text-white font-semibold border-2 border-[#B8860B] bg-[#B8860B] shadow-[0_2px_8px_rgba(184,134,11,0.25)]"
-                            : "text-black/70 border border-[#B8860B]/40 hover:text-black hover:border-[#B8860B]/60 hover:bg-[#B8860B]/[0.03]"
+                            ? "text-white font-semibold border-2 shadow-sm"
+                            : "text-black/70 border hover:text-black"
                         }`}
+                        style={isActive
+                          ? { borderColor: accent, backgroundColor: accent, boxShadow: `0 2px 8px ${accent}40` }
+                          : { borderColor: `${accent}66`, }
+                        }
+                        onMouseEnter={(e) => { if (!isActive) { e.currentTarget.style.borderColor = `${accent}99`; e.currentTarget.style.backgroundColor = `${accent}08`; } }}
+                        onMouseLeave={(e) => { if (!isActive) { e.currentTarget.style.borderColor = `${accent}66`; e.currentTarget.style.backgroundColor = 'transparent'; } }}
                       >
                         {link.label}
                       </Link>
@@ -270,10 +298,13 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
             {/* Mobile Menu Button */}
             <motion.button
               onClick={toggleMobileMenu}
-              className="lg:hidden p-2 hover:text-[#B8860B] transition-colors text-black"
+              className="lg:hidden p-2 transition-colors text-black"
+              style={{ }}
               aria-label="Toggle menu"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = accent; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = ''; }}
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </motion.button>
@@ -294,9 +325,15 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                           href={link.href}
                           className={`relative px-3 py-1 rounded-md transition-all whitespace-nowrap text-[11px] ${
                             isActive
-                              ? "text-white font-semibold border-2 border-[#B8860B] bg-[#B8860B] shadow-sm"
-                              : "text-black/70 border border-[#B8860B]/40 hover:text-black hover:border-[#B8860B]/60 hover:bg-[#B8860B]/[0.03]"
+                              ? "text-white font-semibold border-2 shadow-sm"
+                              : "text-black/70 border hover:text-black"
                           }`}
+                          style={isActive
+                            ? { borderColor: accent, backgroundColor: accent }
+                            : { borderColor: `${accent}66` }
+                          }
+                          onMouseEnter={(e) => { if (!isActive) { e.currentTarget.style.borderColor = `${accent}99`; e.currentTarget.style.backgroundColor = `${accent}08`; } }}
+                          onMouseLeave={(e) => { if (!isActive) { e.currentTarget.style.borderColor = `${accent}66`; e.currentTarget.style.backgroundColor = 'transparent'; } }}
                         >
                           {link.label}
                         </Link>
@@ -332,18 +369,21 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-white border-l border-[#B8860B]/55 z-50 lg:hidden shadow-2xl"
+              className="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-white z-50 lg:hidden shadow-2xl"
+              style={{ borderLeft: `1px solid ${accent}88` }}
             >
               <div className="flex flex-col h-full">
                 {/* Mobile Menu Header */}
-                <div className="flex items-center justify-between h-20 px-6 border-b border-[#B8860B]/40">
+                <div className="flex items-center justify-between h-20 px-6" style={{ borderBottom: `1px solid ${accent}66` }}>
                   <span className="font-display text-xl font-semibold text-black">Menu</span>
                   <motion.button
                     onClick={closeMobileMenu}
-                    className="p-2 text-black hover:text-[#B8860B] transition-colors"
+                    className="p-2 text-black transition-colors"
                     aria-label="Close menu"
                     whileHover={{ rotate: 90 }}
                     transition={{ duration: 0.2 }}
+                    onMouseEnter={(e) => { e.currentTarget.style.color = accent; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.color = ''; }}
                   >
                     <X className="w-6 h-6" />
                   </motion.button>
@@ -375,9 +415,10 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                           onClick={closeMobileMenu}
                           className={`block px-4 py-3 rounded-lg font-body text-base transition-all ${
                             location === link.href
-                              ? "bg-[#B8860B] text-white font-semibold"
+                              ? "text-white font-semibold"
                               : "text-black/60 hover:bg-black/[0.03] hover:translate-x-2"
                           }`}
+                          style={location === link.href ? { backgroundColor: accent } : undefined}
                         >
                           {link.label}
                         </Link>
@@ -388,7 +429,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                 
                 {/* Mobile Menu Footer */}
                 {showDataRoom && (
-                  <div className="p-6 border-t border-[#B8860B]/40">
+                  <div className="p-6" style={{ borderTop: `1px solid ${accent}66` }}>
                     <Link href="/longevity/data-room" onClick={closeMobileMenu}>
                       <Button className="w-full bg-black hover:bg-black/90 text-white font-body font-medium shadow-md">
                         Data Room
@@ -407,15 +448,15 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
         {children}
       </main>
 
-      {/* Cross-Pillar Navigation — hidden on ZeroWheel project pages and in present mode */}
-      {!isPresentMode && currentPillarIndex >= 0 && !isZWRoute && (
-        <section className="py-12 border-t bg-white border-[#B8860B]/40">
+      {/* Cross-Pillar Navigation — hidden on ZeroWheel project pages, Saltleaf pages, and in present mode */}
+      {!isPresentMode && currentPillarIndex >= 0 && !isZWRoute && !isSaltleafRoute && (
+        <section className="py-12 border-t bg-white" style={{ borderColor: `${accent}66` }}>
           <div className="container px-6">
             <div className="flex items-center justify-between max-w-4xl mx-auto">
               {prevPillar ? (
                 <Link href={prevPillar.href} className="group flex items-center gap-3 text-left">
-                  <div className="w-10 h-10 rounded-full border flex items-center justify-center group-hover:border-[#B8860B]/60 group-hover:bg-[#B8860B]/[0.04] transition-all border-[#B8860B]/40">
-                    <ChevronLeft className="w-4 h-4 group-hover:text-[#B8860B] transition-colors text-black/55" />
+                  <div className="w-10 h-10 rounded-full border flex items-center justify-center transition-all" style={{ borderColor: `${accent}66` }}>
+                    <ChevronLeft className="w-4 h-4 transition-colors text-black/55" />
                   </div>
                   <div>
                     <p className="font-mono text-[10px] tracking-wider uppercase text-black/50">Pillar {prevPillar.num}</p>
@@ -424,7 +465,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                 </Link>
               ) : <div />}
               
-              <Link href="/" className="font-mono text-[10px] tracking-wider uppercase hover:text-[#B8860B] transition-colors text-black/45">
+              <Link href="/" className="font-mono text-[10px] tracking-wider uppercase transition-colors text-black/45" style={{ }}>
                 All Pillars
               </Link>
               
@@ -434,8 +475,8 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                     <p className="font-mono text-[10px] tracking-wider uppercase text-black/50">Pillar {nextPillar.num}</p>
                     <p className="font-body text-sm transition-colors text-black/70 group-hover:text-black">{nextPillar.label}</p>
                   </div>
-                  <div className="w-10 h-10 rounded-full border flex items-center justify-center group-hover:border-[#B8860B]/60 group-hover:bg-[#B8860B]/[0.04] transition-all border-[#B8860B]/40">
-                    <ArrowRight className="w-4 h-4 group-hover:text-[#B8860B] transition-colors text-black/55" />
+                  <div className="w-10 h-10 rounded-full border flex items-center justify-center transition-all" style={{ borderColor: `${accent}66` }}>
+                    <ArrowRight className="w-4 h-4 transition-colors text-black/55" />
                   </div>
                 </Link>
               ) : <div />}
@@ -448,72 +489,112 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
       {!isPresentMode && <BackToTop />}
       {!isPresentMode && <FloatingCTA />}
 
-      {/* Enhanced Footer with Contact CTA — hidden in present mode */}
+      {/* Footer — hidden in present mode */}
       {!isPresentMode && (
-      <footer className="py-16 border-t border-[#B8860B]/40 bg-[#1A1A1A]">
+      <footer className="py-16 border-t bg-[#1A1A1A]" style={{ borderColor: `${accent}66` }}>
         <div className="container px-6">
           <div className="max-w-6xl mx-auto">
             {/* Footer Top */}
             <div className="flex flex-col lg:flex-row justify-between items-start gap-12 mb-12">
               {/* Brand */}
               <div className="flex flex-col gap-4 max-w-sm">
-                <Link href="/" className="flex items-center gap-3 group">
-                  <motion.img 
-                    src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/LHselcWIkeWDRNuE.png" 
-                    alt="Well Estate Group" 
-                    className="w-9 h-9"
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.6 }}
-                  />
-                  <span className="font-display text-base font-semibold tracking-wide group-hover:text-[#B8860B] transition-colors text-white">
-                    WELL ESTATE GROUP
-                  </span>
-                </Link>
-                <p className="font-body text-sm leading-relaxed text-white/60">
-                  Consulting Services in Fitness, Wellness & Longevity. Delivering end-to-end strategy from market entry to global expansion.
-                </p>
+                {isSaltleafRoute ? (
+                  <>
+                    <Link href="/longevity/saltleaf" className="flex items-center gap-3 group">
+                      <motion.img 
+                        src="/saltleaf-logo.svg" 
+                        alt="Saltleaf" 
+                        className="w-7 h-9 brightness-[2] invert"
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.4 }}
+                      />
+                      <span className="font-display text-base font-semibold tracking-wide transition-colors text-white">
+                        SALTLEAF ON ESTERO BAY
+                      </span>
+                    </Link>
+                    <p className="font-body text-sm leading-relaxed text-white/60">
+                      Wellness Advisory for Saltleaf Tower 1. Curating world-class longevity, fitness, and recovery amenities for a premier coastal community.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <Link href="/" className="flex items-center gap-3 group">
+                      <motion.img 
+                        src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/LHselcWIkeWDRNuE.png" 
+                        alt="Well Estate Group" 
+                        className="w-9 h-9"
+                        whileHover={{ rotate: 360 }}
+                        transition={{ duration: 0.6 }}
+                      />
+                      <span className="font-display text-base font-semibold tracking-wide group-hover:text-[#B8860B] transition-colors text-white">
+                        WELL ESTATE GROUP
+                      </span>
+                    </Link>
+                    <p className="font-body text-sm leading-relaxed text-white/60">
+                      Consulting Services in Fitness, Wellness & Longevity. Delivering end-to-end strategy from market entry to global expansion.
+                    </p>
+                  </>
+                )}
               </div>
 
               {/* Footer Links + Contact */}
               <div className="flex flex-col md:flex-row gap-12">
-                {/* Pillar Links — hidden on ZeroWheel project pages */}
-                {!isZWRoute && (
+                {/* Pillar Links — hidden on ZeroWheel and Saltleaf project pages */}
+                {!isZWRoute && !isSaltleafRoute && (
                   <div className="flex flex-col gap-3">
-                    <p className="font-mono text-[10px] tracking-wider uppercase mb-1 text-[#B8860B]">Pillars</p>
+                    <p className="font-mono text-[10px] tracking-wider uppercase mb-1" style={{ color: accent }}>Pillars</p>
                     {pillarOrder.map((pillar) => (
-                      <Link key={pillar.href} href={pillar.href} className="font-body text-sm hover:text-[#B8860B] transition-colors text-white/60">
+                      <Link key={pillar.href} href={pillar.href} className="font-body text-sm hover:text-white transition-colors text-white/60">
                         {pillar.label}
                       </Link>
                     ))}
                   </div>
                 )}
 
+                {/* Saltleaf section links */}
+                {isSaltleafRoute && (
+                  <div className="flex flex-col gap-3">
+                    <p className="font-mono text-[10px] tracking-wider uppercase mb-1" style={{ color: accent }}>Sections</p>
+                    {saltleafNavLinks.map((link) => (
+                      <Link key={link.href} href={link.href} className="font-body text-sm hover:text-white transition-colors text-white/60">
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+
                 {/* Contact CTA */}
-                <div className="flex flex-col gap-3">
-                  <p className="font-mono text-[10px] tracking-wider uppercase mb-1 text-[#B8860B]">Get in Touch</p>
-                  <a 
-                    href="mailto:info@wellestategroup.com" 
-                    className="group flex items-center gap-3 px-5 py-3 rounded-xl border hover:border-[#B8860B]/60 transition-all border-[#B8860B]/40 bg-white/5 hover:bg-[#B8860B]/10"
-                  >
-                    <div className="w-9 h-9 rounded-full bg-[#B8860B] flex items-center justify-center group-hover:bg-[#B8860B]/80 transition-colors">
-                      <Mail className="w-4 h-4 text-white" />
-                    </div>
-                    <div>
-                      <p className="font-body text-sm font-semibold text-white">Inquire</p>
-                      <p className="font-body text-xs text-white/60">info@wellestategroup.com</p>
-                    </div>
-                  </a>
-                </div>
+                {!isSaltleafRoute && (
+                  <div className="flex flex-col gap-3">
+                    <p className="font-mono text-[10px] tracking-wider uppercase mb-1" style={{ color: accent }}>Get in Touch</p>
+                    <a 
+                      href="mailto:info@wellestategroup.com" 
+                      className="group flex items-center gap-3 px-5 py-3 rounded-xl border transition-all bg-white/5"
+                      style={{ borderColor: `${accent}66` }}
+                    >
+                      <div className="w-9 h-9 rounded-full flex items-center justify-center transition-colors" style={{ backgroundColor: accent }}>
+                        <Mail className="w-4 h-4 text-white" />
+                      </div>
+                      <div>
+                        <p className="font-body text-sm font-semibold text-white">Inquire</p>
+                        <p className="font-body text-xs text-white/60">info@wellestategroup.com</p>
+                      </div>
+                    </a>
+                  </div>
+                )}
               </div>
             </div>
 
             {/* Footer Divider */}
-            <div className="h-px bg-gradient-to-r from-transparent to-transparent mb-8 via-[#B8860B]/30" />
+            <div className="h-px bg-gradient-to-r from-transparent to-transparent mb-8" style={{ backgroundImage: `linear-gradient(to right, transparent, ${accent}4D, transparent)` }} />
 
             {/* Footer Bottom */}
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <p className="font-body text-[11px] tracking-wider text-white/40">
-                &copy; 2026 Well Estate Group. All rights reserved.
+                {isSaltleafRoute
+                  ? <>&copy; 2026 Saltleaf on Estero Bay. Confidential wellness advisory.</>
+                  : <>&copy; 2026 Well Estate Group. All rights reserved.</>
+                }
               </p>
               <div className="flex items-center gap-6">
                 <span className="font-mono text-[10px] tracking-wider text-white/20">
