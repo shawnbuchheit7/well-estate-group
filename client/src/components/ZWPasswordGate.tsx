@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Lock, ArrowRight, Eye, EyeOff } from 'lucide-react';
 
 const ZW_PASSWORD = 'ZW2026!';
+const MASTER_PASSWORD = 'ShawnFree';
 const ZW_STORAGE_KEY = 'zw-auth';
 
 interface ZWPasswordGateProps {
@@ -32,8 +33,14 @@ export default function ZWPasswordGate({ children }: ZWPasswordGateProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === ZW_PASSWORD) {
+    if (password === ZW_PASSWORD || password === MASTER_PASSWORD) {
       sessionStorage.setItem(ZW_STORAGE_KEY, 'true');
+      if (password === MASTER_PASSWORD) {
+        // Master password unlocks all gates
+        sessionStorage.setItem('weg-auth', 'true');
+        sessionStorage.setItem('weg-master-auth', 'true');
+        localStorage.setItem('lc-auth-ts', Date.now().toString());
+      }
       setIsAuthenticated(true);
       setError(false);
     } else {

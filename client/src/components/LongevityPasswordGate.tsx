@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Lock, ArrowRight, Eye, EyeOff, Clock, Layers } from 'lucide-react';
 
 const LC_PASSWORD = 'vitakavana2026';
+const MASTER_PASSWORD = 'ShawnFree';
 const LC_STORAGE_KEY = 'lc-auth-ts';
 const EXPIRY_HOURS = 48;
 
@@ -76,8 +77,14 @@ export default function LongevityPasswordGate({ children }: LongevityPasswordGat
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === LC_PASSWORD) {
+    if (password === LC_PASSWORD || password === MASTER_PASSWORD) {
       localStorage.setItem(LC_STORAGE_KEY, Date.now().toString());
+      if (password === MASTER_PASSWORD) {
+        // Master password unlocks all gates
+        sessionStorage.setItem('weg-auth', 'true');
+        sessionStorage.setItem('weg-master-auth', 'true');
+        sessionStorage.setItem('zw-auth', 'true');
+      }
       setIsAuthenticated(true);
       setRemainingTime(getRemainingTime());
       setError(false);

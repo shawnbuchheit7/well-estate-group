@@ -15,7 +15,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Lock, ArrowRight, Eye, EyeOff } from 'lucide-react';
 
 const CORRECT_PASSWORD = 'WEG2020';
+const MASTER_PASSWORD = 'ShawnFree';
 const STORAGE_KEY = 'weg-auth';
+const MASTER_STORAGE_KEY = 'weg-master-auth';
 
 interface PasswordGateProps {
   children: React.ReactNode;
@@ -85,8 +87,14 @@ export default function PasswordGate({ children }: PasswordGateProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === CORRECT_PASSWORD) {
+    if (password === CORRECT_PASSWORD || password === MASTER_PASSWORD) {
       sessionStorage.setItem(STORAGE_KEY, 'true');
+      if (password === MASTER_PASSWORD) {
+        // Master password unlocks all gates
+        sessionStorage.setItem(MASTER_STORAGE_KEY, 'true');
+        sessionStorage.setItem('zw-auth', 'true');
+        localStorage.setItem('lc-auth-ts', Date.now().toString());
+      }
       setIsAuthenticated(true);
       setError(false);
     } else {
