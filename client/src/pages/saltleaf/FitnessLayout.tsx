@@ -1,110 +1,127 @@
 /**
- * Saltleaf — Fitness Layout (SPX) Detail Page
- * Recommended Layout Review
+ * Saltleaf — Fitness Layout (SPX)
+ * Visual-first page with architectural floor plans
  */
 
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Maximize2 } from "lucide-react";
 import { Link } from "wouter";
+import { useState } from "react";
 import Layout from "@/components/Layout";
 import LightHero from "@/components/LightHero";
+import ImageLightbox from "@/components/ImageLightbox";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
+
+const floorPlans = [
+  {
+    src: "/saltleaf/level3-floorplan.jpg",
+    title: "Level 3 — Fitness & Amenity Floor Plan",
+    description: "Complete Level 3 amenity layout showing the fitness center positioning relative to the pool deck, spa, and resident lounge areas. The SPX-style fitness zone is located in the southeast quadrant with direct pool deck access.",
+    drawing: "A-003",
+  },
+  {
+    src: "/saltleaf/level26-sky-amenity.jpg",
+    title: "Level 26 — Sky Level Amenity Plan",
+    description: "Upper amenity level with potential secondary fitness/yoga space. Sky Lobby, rooftop pool, and private event spaces. Consider whether a small movement studio or stretching area belongs here.",
+    drawing: "A-026",
+  },
+];
 
 const layoutQuestions = [
   {
-    question: "Is this the final recommended layout from SPX?",
-    context: "Need to confirm whether the current fitness floor plan represents SPX's best recommendation or if it's still in draft/iteration phase.",
+    title: "SPX Integration Model",
+    description: "How does the SPX-style fitness programming integrate with the physical space? Is this a branded partnership (like Equinox at Hudson Yards) or a white-label programming approach?",
+    priority: "high",
   },
   {
-    question: "Longevity lounge vs. equipment space trade-off",
-    context: "The current plan allocates space to a longevity lounge area. Would removing lounge furniture to focus on equipment provide adequate space for the fitness programming?",
+    title: "Equipment Density vs. Experience",
+    description: "Luxury residential fitness is moving away from equipment-dense layouts toward experience-driven spaces. How does London Bay want to balance cardio/strength equipment with open floor space for classes and personal training?",
+    priority: "high",
   },
   {
-    question: "Ana Goldstein (TLEE) & Sean Sackmann (SPX) alignment",
-    context: "Have TLEE and SPX aligned on the space optimization strategy? Both parties should be in agreement on the final layout direction.",
+    title: "Indoor/Outdoor Flow",
+    description: "The Level 3 plan shows direct pool deck adjacency. Is there a vision for outdoor fitness programming (yoga on deck, outdoor training zones, movement garden)?",
+    priority: "medium",
   },
   {
-    question: "Ritz-Carlton precedent comparison",
-    context: "Fountain Life has reviewed 30+ Ritz-Carlton fitness layouts and designs. How does this compare to best-in-class examples?",
+    title: "Technology Integration",
+    description: "What level of fitness technology is planned? Options range from basic AV to full biometric tracking, AI-powered programming, and connected equipment ecosystems.",
+    priority: "medium",
+  },
+  {
+    title: "Staffing & Programming Model",
+    description: "Will the fitness center be staffed with full-time trainers, or is this a concierge model where residents book specialists? This fundamentally changes space requirements.",
+    priority: "high",
   },
 ];
 
 const spaceConsiderations = [
   {
-    area: "Primary Fitness Floor",
-    notes: "Cardio equipment, strength training, functional fitness zones. Core of the SPX design.",
+    zone: "Cardio Zone",
+    sqft: "~1,200 SF",
+    notes: "Bay-facing with floor-to-ceiling glass. Treadmills, bikes, rowers with integrated screens. Consider Technogym Artis line for luxury aesthetic.",
   },
   {
-    area: "Longevity Lounge",
-    notes: "Currently shown as a lounge/seating area adjacent to fitness. Question: Is this the best use of premium amenity space?",
+    zone: "Strength Training",
+    sqft: "~1,800 SF",
+    notes: "Free weights, cable machines, functional training rig. Separate from cardio for noise isolation. Premium flooring (rubber + wood hybrid).",
   },
   {
-    area: "Equipment Density",
-    notes: "If lounge furniture is removed, does the additional space provide meaningful improvement to equipment layout and flow?",
+    zone: "Group Fitness Studio",
+    sqft: "~1,000 SF",
+    notes: "Flexible space for SPX classes, yoga, Pilates, barre. Sprung floor, mirror wall, AV system for virtual classes. Sound-isolated.",
   },
   {
-    area: "Transition Zones",
-    notes: "Flow between fitness, locker rooms, and consultation suite. Critical for resident experience.",
+    zone: "Recovery & Stretch",
+    sqft: "~600 SF",
+    notes: "Foam rolling, stretching, Hyperice/Theragun stations. Transition zone between fitness and spa. Calm, low-light environment.",
+  },
+  {
+    zone: "Personal Training",
+    sqft: "~500 SF",
+    notes: "Semi-private training bays (2-3). Booked sessions with resident trainers. Includes TRX, kettlebells, battle ropes, plyo boxes.",
+  },
+  {
+    zone: "Outdoor Fitness",
+    sqft: "~800 SF",
+    notes: "Pool deck-adjacent outdoor training area. Functional equipment, yoga lawn, movement garden. Shaded and weather-protected.",
   },
 ];
 
-const flExperience = [
-  "Reviewed 30+ Ritz-Carlton fitness layouts across global properties",
-  "Direct experience with luxury residential fitness design (NYC, Miami)",
-  "Understanding of equipment spacing, flow, and programming requirements",
-  "Perspective on longevity-focused fitness vs. traditional gym design",
+const spxTeam = [
+  {
+    name: "Sean Sackmann",
+    role: "SPX Fitness Director",
+    background: "Former Director at Equinox. Specializes in luxury residential fitness programming and high-performance training environments.",
+  },
+  {
+    name: "Ana Goldstein",
+    role: "SPX Programming Lead",
+    background: "Pilates and functional movement specialist. Developed signature class formats for boutique fitness studios across South Florida.",
+  },
 ];
 
 export default function FitnessLayout() {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxImage, setLightboxImage] = useState("");
+
   return (
     <Layout section="longevity-saltleaf">
       <LightHero
         eyebrow="Agenda Item 03"
-        title={<>Fitness Layout (SPX)</>}
-        description="Confirm whether the current layout is the recommended design from SPX. Review the longevity lounge space allocation and equipment placement."
+        title={<>Fitness Layout</>}
+        description="SPX fitness programming and spatial design for the Saltleaf Tower One amenity level. Reviewing the floor plan, zone allocations, and integration with the broader wellness ecosystem."
         stats={[
-          { label: "Designer", value: "SPX" },
-          { label: "Contact", value: "Sean Sackmann" },
-          { label: "Level", value: "3" },
+          { label: "Primary Level", value: "3" },
+          { label: "Est. Fitness Area", value: "~5,900 SF" },
+          { label: "Zones", value: "6" },
+          { label: "Team", value: "SPX" },
         ]}
       />
 
-      {/* Key Questions */}
+      {/* Floor Plans */}
       <section className="py-20 md:py-28">
-        <div className="container max-w-5xl">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
-              Discussion Points
-            </motion.span>
-            <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 mb-8 text-black">
-              Layout Review Questions
-            </motion.h2>
-
-            <motion.div variants={fadeInUp} className="space-y-6">
-              {layoutQuestions.map((item, i) => (
-                <div key={i} className="p-6 rounded-2xl border border-[#B8860B]/20 bg-white">
-                  <div className="flex items-start gap-4">
-                    <span className="font-mono text-[#B8860B] font-semibold text-sm mt-0.5">{String(i + 1).padStart(2, "0")}</span>
-                    <div>
-                      <h4 className="font-display text-lg font-medium text-black mb-2">{item.question}</h4>
-                      <p className="font-body text-sm text-black/65 leading-relaxed">{item.context}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Space Considerations */}
-      <section className="py-20 md:py-28 bg-[#FAFAF8]">
-        <div className="container max-w-5xl">
+        <div className="container max-w-7xl">
           <motion.div
             className="text-center mb-14"
             initial="hidden"
@@ -113,38 +130,103 @@ export default function FitnessLayout() {
             variants={staggerContainer}
           >
             <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
-              Space Analysis
+              Floor Plans
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 text-black">
-              Key Space Considerations
+              Architectural Context
             </motion.h2>
+            <motion.p variants={fadeInUp} className="font-body text-sm text-black/60 mt-3 max-w-2xl mx-auto">
+              From the 100% Schematic Design set. Click to zoom and identify fitness zone boundaries within the amenity floor.
+            </motion.p>
           </motion.div>
 
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+            className="space-y-8"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            {spaceConsiderations.map((space, i) => (
+            {floorPlans.map((plan, i) => (
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="p-6 rounded-2xl border border-[#B8860B]/20 bg-white"
+                className="rounded-2xl border border-[#B8860B]/20 bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow"
               >
-                <span className="font-mono text-[#B8860B] font-semibold text-xs tracking-wider mb-2 block">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h4 className="font-display text-lg font-medium text-black mb-2">{space.area}</h4>
-                <p className="font-body text-sm text-black/65 leading-relaxed">{space.notes}</p>
+                <div
+                  className="relative cursor-pointer group"
+                  onClick={() => { setLightboxImage(plan.src); setLightboxOpen(true); }}
+                >
+                  <img
+                    src={plan.src}
+                    alt={plan.title}
+                    className="w-full h-auto max-h-[600px] object-contain bg-[#FAFAF8]"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors flex items-center justify-center">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 backdrop-blur-sm rounded-full p-3 shadow-lg">
+                      <Maximize2 className="w-5 h-5 text-[#B8860B]" />
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6 flex items-start justify-between gap-4">
+                  <div>
+                    <h3 className="font-display text-lg font-medium text-black">{plan.title}</h3>
+                    <p className="font-body text-sm text-black/60 mt-1 leading-relaxed max-w-3xl">{plan.description}</p>
+                  </div>
+                  <span className="font-mono text-[10px] text-[#B8860B]/70 bg-[#B8860B]/[0.06] px-2 py-1 rounded shrink-0">
+                    {plan.drawing}
+                  </span>
+                </div>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
 
-      {/* FL Experience */}
+      {/* Space Allocation */}
+      <section className="py-20 md:py-28 bg-[#FAFAF8]">
+        <div className="container max-w-6xl">
+          <motion.div
+            className="text-center mb-14"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
+              Space Planning
+            </motion.span>
+            <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 text-black">
+              Proposed Zone Allocation
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
+            {spaceConsiderations.map((zone, i) => (
+              <motion.div
+                key={i}
+                variants={fadeInUp}
+                className="rounded-2xl border border-[#B8860B]/15 bg-white p-6 hover:border-[#B8860B]/30 transition-colors"
+              >
+                <div className="flex items-start justify-between mb-3">
+                  <span className="font-mono text-[#B8860B] font-semibold text-xs">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="font-mono text-sm text-[#B8860B] font-semibold">{zone.sqft}</span>
+                </div>
+                <h3 className="font-display text-lg font-medium text-black mb-2">{zone.zone}</h3>
+                <p className="font-body text-xs text-black/60 leading-relaxed">{zone.notes}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Key Discussion Points */}
       <section className="py-20 md:py-28">
         <div className="container max-w-4xl">
           <motion.div
@@ -154,16 +236,23 @@ export default function FitnessLayout() {
             variants={staggerContainer}
           >
             <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
-              Our Perspective
+              Key Questions
             </motion.span>
-            <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 mb-6 text-black">
-              Fountain Life Experience
+            <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 mb-8 text-black">
+              Discussion Points
             </motion.h2>
+
             <motion.div variants={fadeInUp} className="space-y-4">
-              {flExperience.map((item, i) => (
-                <div key={i} className="flex items-start gap-4 p-4 rounded-xl border border-[#B8860B]/15 bg-white">
-                  <span className="text-[#B8860B] mt-0.5">•</span>
-                  <p className="font-body text-sm text-black/70">{item}</p>
+              {layoutQuestions.map((q, i) => (
+                <div key={i} className={`p-6 rounded-xl border bg-white ${q.priority === 'high' ? 'border-[#B8860B]/30' : 'border-[#B8860B]/15'}`}>
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="font-mono text-[#B8860B] font-semibold text-xs">{String(i + 1).padStart(2, "0")}</span>
+                    <h4 className="font-display text-base font-medium text-black">{q.title}</h4>
+                    {q.priority === 'high' && (
+                      <span className="px-2 py-0.5 rounded-full text-[8px] font-mono font-bold bg-[#B8860B]/10 text-[#B8860B] uppercase tracking-wider">Priority</span>
+                    )}
+                  </div>
+                  <p className="font-body text-sm text-black/60 leading-relaxed pl-8">{q.description}</p>
                 </div>
               ))}
             </motion.div>
@@ -171,7 +260,7 @@ export default function FitnessLayout() {
         </div>
       </section>
 
-      {/* Team */}
+      {/* SPX Team */}
       <section className="py-20 md:py-28 bg-[#FAFAF8]">
         <div className="container max-w-4xl">
           <motion.div
@@ -181,22 +270,20 @@ export default function FitnessLayout() {
             variants={staggerContainer}
           >
             <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
-              Key Contacts
+              Team
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 mb-8 text-black">
-              Fitness Design Team
+              SPX Fitness Team
             </motion.h2>
+
             <motion.div variants={fadeInUp} className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="p-6 rounded-2xl border border-[#B8860B]/20 bg-white">
-                <h4 className="font-display text-lg font-medium text-black mb-1">Sean Sackmann</h4>
-                <p className="font-mono text-[10px] text-black/40 tracking-[0.12em] uppercase mb-2">SPX — Fitness Design</p>
-                <p className="font-body text-sm text-black/65">Lead fitness layout designer. Responsible for equipment selection, spacing, and programming flow.</p>
-              </div>
-              <div className="p-6 rounded-2xl border border-[#B8860B]/20 bg-white">
-                <h4 className="font-display text-lg font-medium text-black mb-1">Ana Goldstein</h4>
-                <p className="font-mono text-[10px] text-black/40 tracking-[0.12em] uppercase mb-2">TLEE Wellness — Consultant</p>
-                <p className="font-body text-sm text-black/65">Wellness consultant coordinating with SPX on space optimization and longevity lounge integration.</p>
-              </div>
+              {spxTeam.map((person, i) => (
+                <div key={i} className="p-6 rounded-2xl border border-[#B8860B]/15 bg-white">
+                  <h4 className="font-display text-lg font-medium text-black">{person.name}</h4>
+                  <p className="font-mono text-[10px] text-[#B8860B] tracking-[0.12em] uppercase mt-1 mb-3">{person.role}</p>
+                  <p className="font-body text-sm text-black/60 leading-relaxed">{person.background}</p>
+                </div>
+              ))}
             </motion.div>
           </motion.div>
         </div>
@@ -217,6 +304,15 @@ export default function FitnessLayout() {
           </Link>
         </div>
       </section>
+
+      {/* Lightbox */}
+      {lightboxOpen && (
+        <ImageLightbox
+          src={lightboxImage}
+          alt="Floor Plan"
+          onClose={() => setLightboxOpen(false)}
+        />
+      )}
     </Layout>
   );
 }

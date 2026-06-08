@@ -15,6 +15,7 @@ const consultants = [
   {
     name: "TLEE Spas + Wellness",
     shortName: "TLEE",
+    logo: "/logos/tlee.png",
     leader: "Tracy Lee",
     founded: "2010",
     hq: "San Francisco, CA",
@@ -47,6 +48,7 @@ const consultants = [
   {
     name: "Studio DeA",
     shortName: "Studio DeA",
+    logo: "/logos/studio-dea.jpg",
     leader: "Drue DeAngelis",
     founded: "~2024",
     hq: "Miami Beach, FL",
@@ -75,6 +77,7 @@ const consultants = [
   {
     name: "Trilogy Spa Holdings",
     shortName: "Trilogy",
+    logo: "/logos/trilogy.jpg",
     leader: "David Stoup",
     founded: "2011",
     hq: "Phoenix, AZ",
@@ -107,6 +110,7 @@ const consultants = [
   {
     name: "Blu Spas, Inc.",
     shortName: "BluSpas",
+    logo: "/logos/bluspas.png",
     leader: "Cary Collier",
     founded: "1998",
     hq: "Whitefish, MT",
@@ -139,6 +143,7 @@ const consultants = [
   {
     name: "Core Essence",
     shortName: "Core Essence",
+    logo: "/logos/core-essence.jpg",
     leader: "Jennifer Findlay",
     founded: "2016",
     hq: "Toronto, ON",
@@ -171,6 +176,7 @@ const consultants = [
   {
     name: "The Wright Fit",
     shortName: "Wright Fit",
+    logo: "/logos/wright-fit.png",
     leader: "Jay Wright",
     founded: "2007",
     hq: "New York, NY",
@@ -203,6 +209,7 @@ const consultants = [
   {
     name: "KALA Design Group",
     shortName: "KALA",
+    logo: "/logos/kala.png",
     leader: "Ana Ramirez",
     founded: "2022",
     hq: "Coral Gables, FL",
@@ -290,7 +297,7 @@ export default function WellnessConsultants() {
             </motion.h2>
           </motion.div>
 
-          {/* Responsive Table with fixed layout */}
+          {/* Responsive Table */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -298,31 +305,19 @@ export default function WellnessConsultants() {
             variants={fadeInUp}
             className="overflow-x-auto rounded-2xl border border-[#B8860B]/20 bg-white shadow-sm"
           >
-            <table className="w-full text-left" style={{ minWidth: "1100px", tableLayout: "fixed" }}>
-              <colgroup>
-                <col style={{ width: "180px" }} />
-                <col style={{ width: "70px" }} />
-                <col style={{ width: "130px" }} />
-                <col style={{ width: "70px" }} />
-                <col style={{ width: "70px" }} />
-                <col style={{ width: "70px" }} />
-                <col style={{ width: "90px" }} />
-                <col style={{ width: "70px" }} />
-                <col style={{ width: "60px" }} />
-                <col style={{ width: "200px" }} />
-              </colgroup>
+            <table className="w-full text-left" style={{ minWidth: "1000px" }}>
               <thead>
                 <tr className="border-b border-[#B8860B]/10 bg-[#FAFAF8]">
-                  <th className="p-3 font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold">Consultant</th>
-                  <th className="p-3 font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold">Est.</th>
-                  <th className="p-3 font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold">HQ</th>
-                  <th className="p-3 font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold text-center">Design</th>
-                  <th className="p-3 font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold text-center">Prog.</th>
-                  <th className="p-3 font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold text-center">Ops</th>
-                  <th className="p-3 font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold">Residential</th>
-                  <th className="p-3 font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold">Projects</th>
-                  <th className="p-3 font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold">FL</th>
-                  <th className="p-3 font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold">Key Strength</th>
+                  <th className="p-3 font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold whitespace-nowrap">Consultant</th>
+                  <th className="p-3 font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold whitespace-nowrap">Est.</th>
+                  <th className="p-3 font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold whitespace-nowrap">HQ</th>
+                  <th className="p-3 font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold text-center whitespace-nowrap">Design</th>
+                  <th className="p-3 font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold text-center whitespace-nowrap">Prog.</th>
+                  <th className="p-3 font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold text-center whitespace-nowrap">Ops</th>
+                  <th className="p-3 font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold whitespace-nowrap">Residential</th>
+                  <th className="p-3 font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold whitespace-nowrap">Projects</th>
+                  <th className="p-3 font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold whitespace-nowrap">FL</th>
+                  <th className="p-3 font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold whitespace-nowrap">Key Strength</th>
                 </tr>
               </thead>
               <tbody>
@@ -392,6 +387,7 @@ export default function WellnessConsultants() {
                     <div>
                       <div className="flex items-center gap-3 mb-1 flex-wrap">
                         <span className="font-mono text-[#B8860B] font-semibold text-xs">{String(i + 1).padStart(2, "0")}</span>
+                        {c.logo && <img src={c.logo} alt={c.shortName} className="h-8 w-auto object-contain opacity-80" />}
                         <h3 className="font-display text-xl md:text-2xl font-medium text-black">{c.name}</h3>
                         {c.engaged && <span className="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-[#B8860B] text-white uppercase tracking-wider">Currently Engaged</span>}
                         {c.flExperience && <span className="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-blue-600 text-white uppercase tracking-wider">FL Direct Experience</span>}

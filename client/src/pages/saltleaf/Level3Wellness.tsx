@@ -1,14 +1,31 @@
 /**
- * Saltleaf — Level 3 Wellness Areas Detail Page
- * Locker Rooms, Hot/Cold Therapy & Vitality Pool
+ * Saltleaf — Level 3 Wellness Areas
+ * Visual-first page with architectural drawings and thermal design
  */
 
 import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Maximize2 } from "lucide-react";
 import { Link } from "wouter";
+import { useState } from "react";
 import Layout from "@/components/Layout";
 import LightHero from "@/components/LightHero";
+import ImageLightbox from "@/components/ImageLightbox";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
+
+const floorPlans = [
+  {
+    src: "/saltleaf/level3-floorplan.jpg",
+    title: "Level 3 — Full Amenity Floor Plan",
+    description: "Complete Level 3 wellness floor showing locker rooms, vitality pool, spa treatment rooms, fitness center, and circulation paths. The thermal wellness areas (steam, sauna, cold plunge) are integrated within the his/her locker room zones.",
+    drawing: "A-003",
+  },
+  {
+    src: "/saltleaf/saltleaf-rendering.jpg",
+    title: "Saltleaf Tower One — Exterior Context",
+    description: "The Level 3 amenity podium sits at the base of the tower with direct Estero Bay waterfront access. The vitality pool and outdoor wellness areas benefit from unobstructed bay views to the west.",
+    drawing: "Cover",
+  },
+];
 
 const wellnessAreas = [
   {
@@ -49,6 +66,13 @@ const wellnessAreas = [
   },
 ];
 
+const thermalDesign = [
+  { element: "Steam Rooms", temp: "110-115°F", duration: "10-15 min", benefit: "Cardiovascular, detoxification" },
+  { element: "Dry Sauna", temp: "170-190°F", duration: "15-20 min", benefit: "Heat shock proteins, recovery" },
+  { element: "Cold Plunge", temp: "38-45°F", duration: "2-5 min", benefit: "Inflammation, mental clarity" },
+  { element: "Vitality Pool", temp: "92-96°F", duration: "15-30 min", benefit: "Relaxation, hydrotherapy" },
+];
+
 const feedbackApproach = [
   {
     method: "Redlines on Drawings",
@@ -67,29 +91,100 @@ const feedbackApproach = [
   },
 ];
 
-const thermalDesign = [
-  { element: "Steam Rooms", temp: "110-115°F", duration: "10-15 min", benefit: "Cardiovascular, detoxification" },
-  { element: "Dry Sauna", temp: "170-190°F", duration: "15-20 min", benefit: "Heat shock proteins, recovery" },
-  { element: "Cold Plunge", temp: "38-45°F", duration: "2-5 min", benefit: "Inflammation, mental clarity" },
-  { element: "Vitality Pool", temp: "92-96°F", duration: "15-30 min", benefit: "Relaxation, hydrotherapy" },
+const keyQuestions = [
+  "What is the total square footage allocated to thermal wellness (steam, sauna, cold plunge)?",
+  "Are the locker rooms sized for peak-hour capacity with thermal elements running?",
+  "What is Thermal Collective's design status — concept, SD, or DD?",
+  "Is the vitality pool indoor, outdoor, or indoor/outdoor with retractable enclosure?",
+  "How does the thermal circuit connect to the pool deck and fitness areas?",
+  "What is the ventilation and MEP strategy for steam/sauna adjacency?",
+  "Is there a dedicated relaxation lounge between thermal and pool areas?",
 ];
 
 export default function Level3Wellness() {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxImage, setLightboxImage] = useState("");
+
   return (
     <Layout section="longevity-saltleaf">
       <LightHero
         eyebrow="Agenda Item 04"
         title={<>Level 3 Wellness Areas</>}
-        description="Reviewed the full Level 3 amenity floor including fitness, his/her locker rooms with hot/cold therapy, and vitality pool. Prepared feedback and recommendations for discussion."
+        description="Complete review of the Level 3 amenity floor including locker rooms with hot/cold therapy, vitality pool by Thermal Collective, and overall circulation flow between wellness zones."
         stats={[
           { label: "Areas", value: "5+" },
-          { label: "Thermal", value: "4 Types" },
+          { label: "Thermal Types", value: "4" },
           { label: "Designer", value: "Thermal Collective" },
+          { label: "Drawing", value: "A-003" },
         ]}
       />
 
-      {/* Wellness Areas */}
+      {/* Architectural Plans */}
       <section className="py-20 md:py-28">
+        <div className="container max-w-7xl">
+          <motion.div
+            className="text-center mb-14"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
+              Architectural Plans
+            </motion.span>
+            <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 text-black">
+              Level 3 Wellness Floor
+            </motion.h2>
+            <motion.p variants={fadeInUp} className="font-body text-sm text-black/60 mt-3 max-w-2xl mx-auto">
+              Click any plan to zoom and inspect the wellness area boundaries, thermal element locations, and circulation paths.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className="space-y-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
+            {floorPlans.map((plan, i) => (
+              <motion.div
+                key={i}
+                variants={fadeInUp}
+                className="rounded-2xl border border-[#B8860B]/20 bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+              >
+                <div
+                  className="relative cursor-pointer group"
+                  onClick={() => { setLightboxImage(plan.src); setLightboxOpen(true); }}
+                >
+                  <img
+                    src={plan.src}
+                    alt={plan.title}
+                    className="w-full h-auto max-h-[600px] object-contain bg-[#FAFAF8]"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors flex items-center justify-center">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 backdrop-blur-sm rounded-full p-3 shadow-lg">
+                      <Maximize2 className="w-5 h-5 text-[#B8860B]" />
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6 flex items-start justify-between gap-4">
+                  <div>
+                    <h3 className="font-display text-lg font-medium text-black">{plan.title}</h3>
+                    <p className="font-body text-sm text-black/60 mt-1 leading-relaxed max-w-3xl">{plan.description}</p>
+                  </div>
+                  <span className="font-mono text-[10px] text-[#B8860B]/70 bg-[#B8860B]/[0.06] px-2 py-1 rounded shrink-0">
+                    {plan.drawing}
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Wellness Areas */}
+      <section className="py-20 md:py-28 bg-[#FAFAF8]">
         <div className="container max-w-5xl">
           <motion.div
             className="text-center mb-14"
@@ -99,7 +194,7 @@ export default function Level3Wellness() {
             variants={staggerContainer}
           >
             <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
-              Level 3 Amenity Floor
+              Wellness Zones
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 text-black">
               Key Wellness Areas
@@ -142,7 +237,7 @@ export default function Level3Wellness() {
       </section>
 
       {/* Thermal Design Parameters */}
-      <section className="py-20 md:py-28 bg-[#FAFAF8]">
+      <section className="py-20 md:py-28">
         <div className="container max-w-5xl">
           <motion.div
             className="text-center mb-14"
@@ -166,21 +261,54 @@ export default function Level3Wellness() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+            className="overflow-x-auto rounded-2xl border border-[#B8860B]/20 bg-white shadow-sm"
+          >
+            <table className="w-full text-left" style={{ minWidth: "600px" }}>
+              <thead>
+                <tr className="border-b border-[#B8860B]/10 bg-[#FAFAF8]">
+                  <th className="p-4 font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold whitespace-nowrap">Element</th>
+                  <th className="p-4 font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold whitespace-nowrap">Temperature</th>
+                  <th className="p-4 font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold whitespace-nowrap">Duration</th>
+                  <th className="p-4 font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold whitespace-nowrap">Primary Benefit</th>
+                </tr>
+              </thead>
+              <tbody>
+                {thermalDesign.map((item, i) => (
+                  <tr key={i} className={`${i < thermalDesign.length - 1 ? 'border-b border-[#B8860B]/5' : ''} hover:bg-[#B8860B]/[0.02] transition-colors`}>
+                    <td className="p-4 font-body text-sm font-medium text-black">{item.element}</td>
+                    <td className="p-4 font-mono text-sm text-[#B8860B] font-semibold">{item.temp}</td>
+                    <td className="p-4 font-body text-sm text-black/65">{item.duration}</td>
+                    <td className="p-4 font-body text-sm text-black/65">{item.benefit}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Key Questions */}
+      <section className="py-20 md:py-28 bg-[#FAFAF8]">
+        <div className="container max-w-4xl">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.div variants={fadeInUp} className="rounded-2xl border border-[#B8860B]/20 bg-white overflow-hidden">
-              <div className="grid grid-cols-4 gap-0 border-b border-[#B8860B]/10 p-4 bg-[#FAFAF8]">
-                <span className="font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold">Element</span>
-                <span className="font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold">Temperature</span>
-                <span className="font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold">Duration</span>
-                <span className="font-mono text-[9px] text-black/50 tracking-[0.12em] uppercase font-semibold">Primary Benefit</span>
-              </div>
-              {thermalDesign.map((item, i) => (
-                <div key={i} className={`grid grid-cols-4 gap-0 p-4 ${i < thermalDesign.length - 1 ? 'border-b border-[#B8860B]/10' : ''}`}>
-                  <span className="font-body text-sm font-medium text-black">{item.element}</span>
-                  <span className="font-body text-sm text-black/65">{item.temp}</span>
-                  <span className="font-body text-sm text-black/65">{item.duration}</span>
-                  <span className="font-body text-sm text-black/65">{item.benefit}</span>
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
+              Discussion Points
+            </motion.span>
+            <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 mb-8 text-black">
+              Questions for the Meeting
+            </motion.h2>
+
+            <motion.div variants={fadeInUp} className="space-y-3">
+              {keyQuestions.map((q, i) => (
+                <div key={i} className="flex items-start gap-4 p-5 rounded-xl border border-[#B8860B]/15 bg-white">
+                  <span className="font-mono text-[#B8860B] font-semibold text-xs mt-0.5">{String(i + 1).padStart(2, "0")}</span>
+                  <p className="font-body text-sm text-black/70">{q}</p>
                 </div>
               ))}
             </motion.div>
@@ -188,7 +316,7 @@ export default function Level3Wellness() {
         </div>
       </section>
 
-      {/* Feedback Approach */}
+      {/* Next Steps */}
       <section className="py-20 md:py-28">
         <div className="container max-w-4xl">
           <motion.div
@@ -236,6 +364,15 @@ export default function Level3Wellness() {
           </Link>
         </div>
       </section>
+
+      {/* Lightbox */}
+      {lightboxOpen && (
+        <ImageLightbox
+          src={lightboxImage}
+          alt="Floor Plan"
+          onClose={() => setLightboxOpen(false)}
+        />
+      )}
     </Layout>
   );
 }
