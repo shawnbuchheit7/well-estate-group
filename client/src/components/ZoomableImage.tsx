@@ -10,9 +10,10 @@ interface ZoomableImageProps {
 
 /**
  * Inline zoomable image — no popup/lightbox.
- * On load, the image is "right-sized" to fill the container width.
- * Pinch-to-zoom and scroll-to-zoom directly on the image.
- * Drag to pan when zoomed in.
+ * On load, the image is "right-sized" to fill the container.
+ * Only pinch-to-zoom (two-finger spread on trackpad) zooms the image.
+ * Normal scroll passes through to the page — no scroll hijacking.
+ * Drag to pan when zoomed in. Double-click to zoom/reset.
  */
 export default function ZoomableImage({
   src,
@@ -31,7 +32,7 @@ export default function ZoomableImage({
   const panStart = useRef({ x: 0, y: 0 });
   const translateStart = useRef({ x: 0, y: 0 });
 
-  // Calculate the "fit-to-width" scale on image load so the drawing fills the container
+  // Calculate the "fit-to-container" scale on image load
   const fitToContainer = useCallback(() => {
     const container = containerRef.current;
     const img = imgRef.current;
@@ -42,15 +43,10 @@ export default function ZoomableImage({
     const imgWidth = img.naturalWidth;
     const imgHeight = img.naturalHeight;
 
-    // Calculate scale to fit width, but don't exceed container height
     const scaleToFitWidth = containerWidth / imgWidth;
     const scaleToFitHeight = containerHeight / imgHeight;
-    
-    // Use the larger of the two to fill the container (cover-style for width priority)
-    // but cap at fit-height if the image would overflow too much vertically
     const fitScale = Math.max(scaleToFitWidth, scaleToFitHeight);
-    
-    // Center the image in the container
+
     const scaledWidth = imgWidth * fitScale;
     const scaledHeight = imgHeight * fitScale;
     const offsetX = (containerWidth - scaledWidth) / 2;
@@ -71,29 +67,48 @@ export default function ZoomableImage({
     return () => window.removeEventListener("resize", handleResize);
   }, [imageLoaded, fitToContainer]);
 
-  const handleWheel = useCallback((e: React.WheelEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-
+  // Detect pinch gesture on trackpad (ctrlKey is set by the browser for pinch events)
+  // Normal scroll (no ctrlKey) passes through to the page
+  useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    const rect = container.getBoundingClientRect();
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
+    const handleWheel = (e: WheelEvent) => {
+      // Only intercept pinch-to-zoom (browser sets ctrlKey for trackpad pinch)
+      if (!e.ctrlKey) return; // Let normal scroll pass through to page
 
-    // Determine zoom direction — gentle sensitivity for trackpad
-    const delta = e.deltaY > 0 ? -0.05 : 0.05;
-    const newScale = Math.min(Math.max(baseScale * 0.5, scale + delta * scale), 80);
+      e.preventDefault();
+      e.stopPropagation();
 
-    // Zoom toward mouse position
-    const scaleRatio = newScale / scale;
-    const newTranslateX = mouseX - (mouseX - translate.x) * scaleRatio;
-    const newTranslateY = mouseY - (mouseY - translate.y) * scaleRatio;
+      const rect = container.getBoundingClientRect();
+      const mouseX = e.clientX - rect.left;
+      const mouseY = e.clientY - rect.top;
 
-    setScale(newScale);
-    setTranslate({ x: newTranslateX, y: newTranslateY });
-  }, [scale, translate, baseScale]);
+      const delta = e.deltaY > 0 ? -0.03 : 0.03;
+      const currentScale = scaleRef.current;
+      const currentTranslate = translateRef.current;
+      const currentBaseScale = baseScaleRef.current;
+      const newScale = Math.min(Math.max(currentBaseScale * 0.5, currentScale + delta * currentScale), 80);
+
+      const scaleRatio = newScale / currentScale;
+      const newTranslateX = mouseX - (mouseX - currentTranslate.x) * scaleRatio;
+      const newTranslateY = mouseY - (mouseY - currentTranslate.y) * scaleRatio;
+
+      setScale(newScale);
+      setTranslate({ x: newTranslateX, y: newTranslateY });
+    };
+
+    container.addEventListener("wheel", handleWheel, { passive: false });
+    return () => container.removeEventListener("wheel", handleWheel);
+  }, []);
+
+  // Refs to keep current values accessible in the wheel handler without re-attaching
+  const scaleRef = useRef(scale);
+  const translateRef = useRef(translate);
+  const baseScaleRef = useRef(baseScale);
+  useEffect(() => { scaleRef.current = scale; }, [scale]);
+  useEffect(() => { translateRef.current = translate; }, [translate]);
+  useEffect(() => { baseScaleRef.current = baseScale; }, [baseScale]);
 
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
     if (scale <= baseScale) return;
@@ -122,10 +137,8 @@ export default function ZoomableImage({
     if (!container) return;
 
     if (scale > baseScale * 1.5) {
-      // Reset to fit
       fitToContainer();
     } else {
-      // Zoom to 3x base at click point
       const rect = container.getBoundingClientRect();
       const mouseX = e.clientX - rect.left;
       const mouseY = e.clientY - rect.top;
@@ -138,7 +151,7 @@ export default function ZoomableImage({
     }
   }, [scale, translate, baseScale, fitToContainer]);
 
-  // Touch handling for pinch-to-zoom
+  // Touch handling for pinch-to-zoom (mobile / iPad)
   const lastTouchDist = useRef<number | null>(null);
   const lastTouchCenter = useRef<{ x: number; y: number } | null>(null);
 
@@ -232,25 +245,11 @@ export default function ZoomableImage({
     setTranslate({ x: newTranslateX, y: newTranslateY });
   }, [scale, translate, baseScale]);
 
-  // Prevent default wheel on the container to avoid page scroll when zooming
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-    const preventWheel = (e: WheelEvent) => {
-      if (container.contains(e.target as Node)) {
-        e.preventDefault();
-      }
-    };
-    container.addEventListener("wheel", preventWheel, { passive: false });
-    return () => container.removeEventListener("wheel", preventWheel);
-  }, []);
-
   return (
     <div
       ref={containerRef}
       className={`relative group overflow-hidden ${containerClassName}`}
-      style={{ height: maxHeight, cursor: scale > baseScale ? (isPanning ? "grabbing" : "grab") : "zoom-in" }}
-      onWheel={handleWheel}
+      style={{ height: maxHeight, cursor: scale > baseScale ? (isPanning ? "grabbing" : "grab") : "default" }}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
@@ -316,7 +315,7 @@ export default function ZoomableImage({
 
       {/* Hint */}
       <div className="absolute bottom-2 left-1/2 -translate-x-1/2 text-[10px] text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity bg-white/80 px-2 py-0.5 rounded pointer-events-none">
-        Scroll to zoom · Drag to pan · Double-click to zoom/reset
+        Pinch to zoom · Drag to pan · Double-click to zoom/reset
       </div>
     </div>
   );
