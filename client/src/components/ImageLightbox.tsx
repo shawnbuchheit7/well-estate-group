@@ -18,7 +18,7 @@ export default function ImageLightbox({ src, alt, children, className }: ImageLi
   const containerRef = useRef<HTMLDivElement>(null);
 
   const minScale = 0.5;
-  const maxScale = 8;
+  const maxScale = 20;
 
   useEffect(() => {
     if (isOpen) {
@@ -42,11 +42,11 @@ export default function ImageLightbox({ src, alt, children, className }: ImageLi
   };
 
   const handleZoomIn = () => {
-    setScale((prev) => Math.min(prev + 0.5, maxScale));
+    setScale((prev) => Math.min(prev * 1.5, maxScale));
   };
 
   const handleZoomOut = () => {
-    setScale((prev) => Math.max(prev - 0.5, minScale));
+    setScale((prev) => Math.max(prev / 1.5, minScale));
   };
 
   const handleReset = () => {
@@ -56,8 +56,8 @@ export default function ImageLightbox({ src, alt, children, className }: ImageLi
 
   const handleWheel = (e: React.WheelEvent) => {
     e.preventDefault();
-    const delta = e.deltaY > 0 ? -0.2 : 0.2;
-    setScale((prev) => Math.min(Math.max(prev + delta, minScale), maxScale));
+    const factor = e.deltaY > 0 ? 0.85 : 1.18;
+    setScale((prev) => Math.min(Math.max(prev * factor, minScale), maxScale));
   };
 
   const handleMouseDown = (e: React.MouseEvent) => {
