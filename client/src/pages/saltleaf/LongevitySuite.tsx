@@ -8,7 +8,7 @@ import { ArrowLeft, ArrowRight, Check, Star } from "lucide-react";
 import { Link } from "wouter";
 import Layout from "@/components/Layout";
 import LightHero from "@/components/LightHero";
-import ImageLightbox from "@/components/ImageLightbox";
+import ZoomableImage from "@/components/ZoomableImage";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 
 const saltleafPlans = [
@@ -151,7 +151,7 @@ export default function LongevitySuite() {
               Schematic Design Set
             </motion.h2>
             <motion.p variants={fadeInUp} className="font-body text-sm text-black/60 mt-3 max-w-2xl mx-auto">
-              From the 05/15/2026 100% Schematic Design package by Arquitectonica. Click any plan to zoom in — up to 20x magnification for detail inspection.
+              From the 05/15/2026 100% Schematic Design package by Arquitectonica. Pinch or scroll to zoom directly on any plan.
             </motion.p>
           </motion.div>
 
@@ -168,13 +168,7 @@ export default function LongevitySuite() {
                 variants={fadeInUp}
                 className="rounded-2xl border border-[#B8860B]/20 bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow"
               >
-                <ImageLightbox src={plan.src} alt={plan.title} className="bg-[#FAFAF8]">
-                  <img
-                    src={plan.src}
-                    alt={plan.title}
-                    className="w-full h-auto max-h-[600px] object-contain bg-[#FAFAF8]"
-                  />
-                </ImageLightbox>
+                <ZoomableImage src={plan.src} alt={plan.title} maxHeight="700px" className="bg-[#FAFAF8]" />
                 <div className="p-6 flex items-start justify-between gap-4">
                   <div>
                     <h3 className="font-display text-lg font-medium text-black">{plan.title}</h3>
@@ -207,7 +201,7 @@ export default function LongevitySuite() {
               Fountain Life Houston Center
             </motion.h2>
             <motion.p variants={fadeInUp} className="font-body text-sm text-black/60 mt-3 max-w-2xl mx-auto">
-              4411 San Felipe Street, Houston TX — The operational reference for what we propose to bring to Saltleaf. Click to zoom into the full construction drawing.
+              4411 San Felipe Street, Houston TX — The operational reference for what we propose to bring to Saltleaf. Pinch or scroll to zoom directly on the drawing.
             </motion.p>
           </motion.div>
 
@@ -218,13 +212,7 @@ export default function LongevitySuite() {
             viewport={{ once: true, margin: "-100px" }}
             className="rounded-2xl border border-[#B8860B]/20 bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow"
           >
-            <ImageLightbox src="/saltleaf/houston-floorplan.jpg" alt="FL Houston — Enlarged Floor Plan A801" className="bg-[#FAFAF8]">
-              <img
-                src="/saltleaf/houston-floorplan.jpg"
-                alt="FL Houston — Enlarged Floor Plan A801"
-                className="w-full h-auto max-h-[700px] object-contain bg-[#FAFAF8]"
-              />
-            </ImageLightbox>
+            <ZoomableImage src="/saltleaf/houston-a110-overall.jpg" alt="FL Houston — Overall Floor Plan A110" maxHeight="700px" className="bg-[#FAFAF8]" />
             <div className="p-6 flex items-start justify-between gap-4">
               <div>
                 <h3 className="font-display text-lg font-medium text-black">Houston Preventative Healthcare Center — Enlarged Floor Plan</h3>
@@ -278,13 +266,7 @@ export default function LongevitySuite() {
                 variants={fadeInUp}
                 className={`rounded-2xl border border-[#B8860B]/15 bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow ${i === 0 ? 'md:col-span-2' : ''}`}
               >
-                <ImageLightbox src={img.src} alt={img.title} className="bg-[#FAFAF8]">
-                  <img
-                    src={img.src}
-                    alt={img.title}
-                    className={`w-full h-auto object-cover bg-[#FAFAF8] ${i === 0 ? 'max-h-[500px]' : 'max-h-[350px]'}`}
-                  />
-                </ImageLightbox>
+                <ZoomableImage src={img.src} alt={img.title} maxHeight={i === 0 ? "500px" : "350px"} className="bg-[#FAFAF8]" />
                 <div className="p-5">
                   <h4 className="font-display text-sm font-medium text-black">{img.title}</h4>
                   <p className="font-body text-xs text-black/55 mt-1 leading-relaxed">{img.description}</p>

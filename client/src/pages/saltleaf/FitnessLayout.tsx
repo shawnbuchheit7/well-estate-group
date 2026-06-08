@@ -8,7 +8,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 import Layout from "@/components/Layout";
 import LightHero from "@/components/LightHero";
-import ImageLightbox from "@/components/ImageLightbox";
+import ZoomableImage from "@/components/ZoomableImage";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 
 const floorPlans = [
@@ -149,13 +149,7 @@ export default function FitnessLayout() {
                 variants={fadeInUp}
                 className="rounded-2xl border border-[#B8860B]/20 bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow"
               >
-                <ImageLightbox src={plan.src} alt={plan.title} className="bg-[#FAFAF8]">
-                  <img
-                    src={plan.src}
-                    alt={plan.title}
-                    className="w-full h-auto max-h-[600px] object-contain bg-[#FAFAF8]"
-                  />
-                </ImageLightbox>
+                <ZoomableImage src={plan.src} alt={plan.title} maxHeight="700px" className="bg-[#FAFAF8]" />
                 <div className="p-6 flex items-start justify-between gap-4">
                   <div>
                     <h3 className="font-display text-lg font-medium text-black">{plan.title}</h3>
