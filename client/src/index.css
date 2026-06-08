@@ -344,6 +344,7 @@ table th {
   letter-spacing: 0.12em;
   color: #555;
   padding: 0.875rem 1rem;
+  white-space: nowrap;
 }
 
 table td {

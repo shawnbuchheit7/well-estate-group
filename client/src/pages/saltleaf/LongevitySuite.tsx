@@ -4,9 +4,8 @@
  */
 
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, Maximize2 } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Link } from "wouter";
-import { useState } from "react";
 import Layout from "@/components/Layout";
 import LightHero from "@/components/LightHero";
 import ImageLightbox from "@/components/ImageLightbox";
@@ -108,9 +107,6 @@ const keyQuestions = [
 ];
 
 export default function LongevitySuite() {
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [lightboxImage, setLightboxImage] = useState("");
-
   return (
     <Layout section="longevity-saltleaf">
       <LightHero
@@ -159,21 +155,13 @@ export default function LongevitySuite() {
                 variants={fadeInUp}
                 className="rounded-2xl border border-[#B8860B]/20 bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow"
               >
-                <div
-                  className="relative cursor-pointer group"
-                  onClick={() => { setLightboxImage(plan.src); setLightboxOpen(true); }}
-                >
+                <ImageLightbox src={plan.src} alt={plan.title} className="bg-[#FAFAF8]">
                   <img
                     src={plan.src}
                     alt={plan.title}
                     className="w-full h-auto max-h-[600px] object-contain bg-[#FAFAF8]"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors flex items-center justify-center">
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 backdrop-blur-sm rounded-full p-3 shadow-lg">
-                      <Maximize2 className="w-5 h-5 text-[#B8860B]" />
-                    </div>
-                  </div>
-                </div>
+                </ImageLightbox>
                 <div className="p-6 flex items-start justify-between gap-4">
                   <div>
                     <h3 className="font-display text-lg font-medium text-black">{plan.title}</h3>
@@ -371,14 +359,6 @@ export default function LongevitySuite() {
         </div>
       </section>
 
-      {/* Lightbox */}
-      {lightboxOpen && (
-        <ImageLightbox
-          src={lightboxImage}
-          alt="Architectural Plan"
-          onClose={() => setLightboxOpen(false)}
-        />
-      )}
     </Layout>
   );
 }
