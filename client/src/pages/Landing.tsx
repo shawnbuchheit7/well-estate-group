@@ -228,7 +228,7 @@ export default function Landing() {
             {[
               { value: '15+', label: 'Years Leading Global Wellness' },
               { value: '144+', label: 'Vessel Network' },
-              { value: '4', label: 'Global Regions' },
+              { value: '5+', label: 'Longevity Centers Built' },
               { value: '$5.6T', label: 'Global Wellness Economy' },
             ].map((stat, i) => (
               <motion.div 
@@ -280,26 +280,26 @@ export default function Landing() {
                 </div>
                 <div className="space-y-4 font-body text-[15px] text-black/70 leading-[1.8]">
                   <p>
-                    Former global executive at <strong className="text-black font-semibold">Technogym</strong>, where he led wellness strategy and implementation for the world's most prestigious hospitality groups, cruise lines, luxury real estate developments, private clubs, and professional sports organizations.
+                    <strong className="text-black font-semibold">Founding team member, President & COO of Fountain Life</strong> — a physician-led longevity and regenerative medicine platform backed by Tony Robbins and Peter Diamandis. Shawn built and scaled the operational infrastructure from concept to multi-center execution, overseeing clinical operations, membership growth, and the technology platform.
                   </p>
                   <p>
-                    With over 15 years at the intersection of fitness, wellness, and luxury operations, Shawn has personally designed, built, and managed wellness programs across four global regions — from 144+ cruise vessels to Platinum Clubs of America to NFL and MLB training facilities.
+                    Former global executive at <strong className="text-black font-semibold">Technogym</strong> — the world leader in premium fitness and wellness solutions — where he led wellness strategy and implementation across four global regions for the world's most prestigious hospitality groups, cruise lines, luxury real estate, private clubs, and professional sports organizations. Managed a network of 144+ cruise vessels, Platinum Clubs of America, and NFL/MLB training facilities.
                   </p>
                   <p>
-                    Prior to Technogym, Shawn was recognized as an award-winning employee at <strong className="text-black font-semibold">The Ritz-Carlton Hotel Company</strong>, where he developed his foundation in world-class service delivery and operational excellence at the highest level of luxury hospitality.
+                    Prior to Technogym, recognized as an award-winning employee at <strong className="text-black font-semibold">The Ritz-Carlton Hotel Company</strong>, where he developed his foundation in world-class service delivery and operational excellence at the highest level of luxury hospitality.
                   </p>
                   <p>
                     A <strong className="text-black font-semibold">FAA-certified commercial pilot</strong>, Shawn brings the same precision, discipline, and systems-thinking to wellness operations that aviation demands — where there is no margin for error.
                   </p>
                   <p className="text-black font-semibold text-base">
-                    This isn't advisory from a distance. This is leadership forged in execution.
+                    From Ritz-Carlton to Technogym to Fountain Life — this isn't advisory from a distance. This is leadership forged in execution.
                   </p>
                   
                   {/* Credentials */}
                   <div className="pt-6 border-t border-gray-100 mt-6">
                     <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/40 mb-4 font-medium">Key Partnerships & Associations</p>
                     <div className="flex flex-wrap gap-2">
-                      {['Technogym', 'Ritz-Carlton', 'Platinum Clubs of America', 'CMAA', 'PGA', 'NFL', 'MLB', 'NCAA', 'Troon', 'OneSpaWorld'].map((name) => (
+                      {['Fountain Life', 'Technogym', 'Ritz-Carlton', 'Platinum Clubs of America', 'CMAA', 'PGA', 'NFL', 'MLB', 'NCAA', 'Troon', 'OneSpaWorld'].map((name) => (
                         <span key={name} className="font-body text-[11px] px-3 py-1.5 bg-gray-50 border border-gray-200/80 rounded-full text-black/60 font-medium">
                           {name}
                         </span>
@@ -409,11 +409,11 @@ export default function Landing() {
             {[
               {
                 title: 'Operational Authority',
-                desc: 'Led by a former Technogym global executive who managed wellness operations across hospitality, cruise, sports, and private clubs — not theorists, operators.',
+                desc: 'Led by a founding team member and President/COO of Fountain Life, and a former Technogym global executive. Not theorists — operators who have built and run wellness at the highest level.',
               },
               {
                 title: 'Global Scale',
-                desc: 'From 144+ cruise vessels to Platinum Clubs of America to NFL training facilities — we\'ve implemented at a scale no other wellness consultancy can match.',
+                desc: 'From multi-center longevity platforms to 144+ cruise vessels to Platinum Clubs to NFL training facilities — we\'ve built and operated at a scale no other wellness consultancy can match.',
               },
               {
                 title: 'End-to-End Delivery',
@@ -421,8 +421,8 @@ export default function Landing() {
               },
             ].map((item, i) => (
               <motion.div key={i} variants={fadeInUp} className="text-center md:text-left">
-                <div className="w-12 h-12 rounded-full border border-[#B8860B]/40 flex items-center justify-center mb-5 mx-auto md:mx-0 bg-[#B8860B]/[0.05]">
-                  <span className="font-mono text-sm text-[#B8860B] font-semibold">{i + 1}</span>
+                <div className="w-10 h-10 rounded-full border border-[#B8860B]/40 flex items-center justify-center mb-5 mx-auto md:mx-0">
+                  <span className="font-mono text-xs text-[#B8860B] font-semibold">{i + 1}</span>
                 </div>
                 <h3 className="font-display text-xl font-medium mb-3 text-white">{item.title}</h3>
                 <p className="font-body text-[15px] text-white/55 leading-relaxed">{item.desc}</p>
