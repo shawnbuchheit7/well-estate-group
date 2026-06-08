@@ -272,8 +272,13 @@ export default function Landing() {
             <div className="bg-white rounded-2xl p-8 md:p-12 shadow-[0_4px_40px_rgba(0,0,0,0.04)] border border-[#B8860B]/20">
               <div className="grid md:grid-cols-[1fr_2fr] gap-8 items-start">
                 <div className="text-center md:text-left">
-                  <div className="w-28 h-28 rounded-full bg-gradient-to-br from-gray-100 to-gray-200 mx-auto md:mx-0 flex items-center justify-center mb-4 ring-2 ring-[#B8860B]/20 ring-offset-2">
-                    <span className="font-display text-3xl text-black/40">SB</span>
+                  <div className="w-36 h-36 rounded-2xl overflow-hidden mx-auto md:mx-0 mb-4 ring-2 ring-[#B8860B]/20 ring-offset-2">
+                    <img
+                      src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/FvgOMwymrJGxXgrc.webp"
+                      alt="Shawn Buchheit"
+                      className="w-full h-full object-cover object-top"
+                      loading="lazy"
+                    />
                   </div>
                   <h3 className="font-display text-xl font-semibold text-black">Shawn Buchheit</h3>
                   <p className="font-body text-sm text-black/50 mt-1">Founder & President</p>
