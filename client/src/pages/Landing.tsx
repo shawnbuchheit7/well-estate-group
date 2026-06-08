@@ -11,6 +11,63 @@
 
 import { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'wouter';
+import { ArrowRight, FlaskConical, TrendingUp } from 'lucide-react';
+
+const pillars = [
+  {
+    num: "I",
+    title: "Go-To-Market",
+    description: "Strategic market entry and growth acceleration for innovative wellness & fitness brands",
+    href: "/gtm",
+    icon: "chart",
+  },
+  {
+    num: "II",
+    title: "Longevity Ventures",
+    description: "Business planning and investment strategy for physician-led longevity and regenerative medicine centers",
+    href: "/longevity",
+    icon: "heart",
+  },
+  {
+    num: "III",
+    title: "Product Intelligence",
+    description: "Independent testing, clinical evaluation, and development advisory for next-generation wellness and longevity products",
+    href: "/product-intelligence",
+    icon: "flask",
+  },
+  {
+    num: "IV",
+    title: "Venture & Product Capital",
+    description: "Strategic investment in emerging fitness and wellness products poised to disrupt the consumer health market",
+    href: "/venture-capital",
+    icon: "trending",
+  },
+];
+
+function PillarIcon({ type }: { type: string }) {
+  const cls = "w-6 h-6 md:w-7 md:h-7 text-[#B8860B]";
+  switch (type) {
+    case "chart":
+      return (
+        <svg className={cls} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6" />
+        </svg>
+      );
+    case "heart":
+      return (
+        <svg className={cls} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+        </svg>
+      );
+    case "flask":
+      return <FlaskConical className={cls} strokeWidth={1.5} />;
+    case "trending":
+      return <TrendingUp className={cls} strokeWidth={1.5} />;
+    default:
+      return null;
+  }
+}
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -317,7 +374,7 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Solutions Section */}
+      {/* Solutions Section - 4-Across Pillar Cards */}
       <section id="solutions" className="py-24 md:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <motion.div 
@@ -339,49 +396,48 @@ export default function Landing() {
           </motion.div>
 
           <motion.div 
-            className="grid md:grid-cols-2 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
           >
-            {[
-              {
-                num: '01',
-                title: 'Go-To-Market Strategy',
-                desc: 'Strategic market entry, sales infrastructure, and commercial acceleration for wellness and fitness brands entering new markets or scaling existing operations.',
-                href: '/gtm',
-              },
-              {
-                num: '02',
-                title: 'Longevity Center Development',
-                desc: 'Full business planning, unit economics, clinical protocol design, and operational strategy for physician-led regenerative medicine centers.',
-                href: '/longevity/luxury',
-              },
-              {
-                num: '03',
-                title: 'Product Intelligence',
-                desc: 'Independent clinical evaluation, competitive analysis, and development advisory for next-generation wellness and longevity products.',
-                href: '/product-intelligence',
-              },
-              {
-                num: '04',
-                title: 'Venture & Capital Advisory',
-                desc: 'Strategic investment guidance and advisory for emerging fitness, wellness, and longevity products poised to disrupt the consumer health market.',
-                href: '/venture-advisory',
-              },
-            ].map((service) => (
-              <motion.a 
-                key={service.num}
-                href={service.href}
-                variants={fadeInUp}
-                className="group p-8 md:p-10 border border-[#B8860B]/20 rounded-2xl hover:border-[#B8860B]/50 hover:shadow-[0_8px_40px_rgba(184,134,11,0.06)] transition-all duration-500 relative overflow-hidden cursor-pointer block"
-              >
-                <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#B8860B]/0 via-[#B8860B]/40 to-[#B8860B]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <span className="font-mono text-[11px] tracking-[0.2em] text-[#B8860B] font-semibold">{service.num}</span>
-                <h3 className="font-display text-xl md:text-2xl font-medium mt-3 mb-4 text-black">{service.title}</h3>
-                <p className="font-body text-[15px] text-black/60 leading-relaxed">{service.desc}</p>
-              </motion.a>
+            {pillars.map((pillar) => (
+              <Link key={pillar.num} href={pillar.href}>
+                <motion.div
+                  variants={fadeInUp}
+                  className="group relative overflow-hidden rounded-xl border border-[#B8860B]/40 bg-white cursor-pointer h-full"
+                  style={{
+                    boxShadow: "0 2px 8px rgba(184,134,11,0.06), 0 4px 20px rgba(0,0,0,0.04)",
+                  }}
+                  whileHover={{
+                    scale: 1.02,
+                    y: -4,
+                    boxShadow: "0 12px 40px rgba(184,134,11,0.12), 0 0 0 2px rgba(184,134,11,0.5)",
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <div className="relative p-8 md:p-9 flex flex-col items-center text-center min-h-[300px] md:min-h-[340px] justify-center">
+                    <span className="font-mono text-[10px] text-[#0A0A0A]/50 tracking-[0.3em] mb-5 group-hover:text-[#B8860B] transition-colors duration-400">
+                      PILLAR {pillar.num}
+                    </span>
+                    <div className="mb-7 w-12 h-12 rounded-lg border border-[#B8860B]/40 flex items-center justify-center bg-[#B8860B]/[0.04] group-hover:border-[#B8860B]/60 group-hover:bg-[#B8860B]/[0.08] transition-all duration-400">
+                      <PillarIcon type={pillar.icon} />
+                    </div>
+                    <h3 className="font-display text-xl md:text-2xl font-bold text-[#0A0A0A] mb-3 leading-tight tracking-tight">
+                      {pillar.title}
+                    </h3>
+                    <p className="font-body text-[13px] text-[#0A0A0A]/70 leading-relaxed max-w-[240px] mb-8">
+                      {pillar.description}
+                    </p>
+                    <div className="flex items-center gap-2 font-mono text-xs font-semibold text-[#B8860B] group-hover:text-[#B8963E] transition-colors tracking-[0.1em] uppercase">
+                      <span>Enter</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform duration-300" />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#B8860B] to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center" />
+                </motion.div>
+              </Link>
             ))}
           </motion.div>
         </div>
