@@ -27,6 +27,25 @@ interface ModelTile {
 
 const models: ModelTile[] = [
   {
+    id: "saltleaf",
+    title: "Saltleaf on Estero Bay",
+    titleDisplay: <>Saltleaf<br /><em className="italic font-light">on Estero Bay</em></>,
+    subtitle: "Wellness Design & Programming Advisory",
+    description: "Wellness programming, longevity suite design, and fitness layout advisory for London Bay Development Group's premier coastal community — featuring The Ritz-Carlton Residences, Estero Bay.",
+    href: "/longevity/saltleaf",
+    status: "active",
+    stats: [
+      { label: "Tower", value: "SLT1" },
+      { label: "Level", value: "3" },
+      { label: "Client", value: "LBDG" },
+    ],
+    icon: (
+      <svg className="w-7 h-7 text-[#B8860B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6" />
+      </svg>
+    ),
+  },
+  {
     id: "luxury",
     title: "Longevity Center Luxury Business Model",
     titleDisplay: <>Longevity Center<br /><em className="italic font-light">Luxury Business Model</em></>,
@@ -75,6 +94,7 @@ export default function LongevityProjects() {
         description="Business planning and investment strategy for physician-led longevity and regenerative medicine centers. Multiple center models designed for different market segments and operational approaches."
         stats={[
           { label: "Business Models", value: "2" },
+          { label: "Client Projects", value: "1" },
           { label: "Global Reach", value: "40+" },
           { label: "Exit Potential", value: "$2B+" },
           { label: "Revenue Streams", value: "6+" },
@@ -92,10 +112,10 @@ export default function LongevityProjects() {
             variants={staggerContainer}
           >
             <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
-              Center Models
+              Projects & Models
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 text-black">
-              Business Models
+              Client Projects & Business Models
             </motion.h2>
           </motion.div>
 
@@ -154,7 +174,7 @@ export default function LongevityProjects() {
 
                       {/* CTA */}
                       <div className="flex items-center gap-2 text-black/65 group-hover:text-[#B8860B] transition-colors pt-4 border-t border-[#B8860B]/40">
-                        <span className="font-body text-sm font-semibold">View Model</span>
+                        <span className="font-body text-sm font-semibold">{model.id === 'saltleaf' ? 'View Project' : 'View Model'}</span>
                         <motion.div
                           animate={{ x: [0, 4, 0] }}
                           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
@@ -175,7 +195,7 @@ export default function LongevityProjects() {
                   <Plus className="w-5 h-5 text-black/20" />
                 </div>
                 <div className="text-center">
-                  <p className="font-display text-base font-medium text-black/25">Additional Model</p>
+                  <p className="font-display text-base font-medium text-black/25">Additional Project</p>
                   <p className="font-body text-xs text-black/15 mt-1">Coming soon</p>
                 </div>
               </div>
