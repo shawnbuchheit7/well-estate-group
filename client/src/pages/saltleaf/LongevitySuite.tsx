@@ -331,6 +331,29 @@ export default function LongevitySuite() {
             </motion.p>
           </motion.div>
 
+          {/* TLEE Assessment Room Drawing */}
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="rounded-2xl border bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow mb-10"
+            style={{ borderColor: `${ACCENT}33` }}
+          >
+            <ZoomableImage src="/saltleaf/tlee-assessment-room.jpg" alt="TLEE Assessment Room — Fountain Life/Longevity 368 SF" maxHeight="500px" className="bg-[#FAFAF8]" />
+            <div className="p-6 flex items-start justify-between gap-4">
+              <div>
+                <h3 className="font-display text-lg font-medium text-black">Longevity Assessment Room — TLEE Programming</h3>
+                <p className="font-body text-sm text-black/60 mt-1 leading-relaxed max-w-3xl">
+                  368 SF dedicated longevity consultation room as programmed by TLEE. Located adjacent to Fitness Director office, Specialty Shower, and Beauty Salon on Level 3. This is the room that will house the VO₂ max bike, body composition analyzer, treatment table, and counter with sink.
+                </p>
+              </div>
+              <span className="font-mono text-[10px] px-2 py-1 rounded shrink-0" style={{ color: `${ACCENT}B3`, backgroundColor: `${ACCENT}0F` }}>
+                A-003
+              </span>
+            </div>
+          </motion.div>
+
           <motion.div
             className="rounded-2xl border border-black/10 bg-white p-8"
             initial="hidden"
