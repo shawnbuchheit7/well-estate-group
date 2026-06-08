@@ -39,8 +39,8 @@ export default function ZoomableImage({
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
 
-    // Determine zoom direction
-    const delta = e.deltaY > 0 ? -0.15 : 0.15;
+    // Determine zoom direction — gentle sensitivity for trackpad
+    const delta = e.deltaY > 0 ? -0.05 : 0.05;
     const newScale = Math.min(Math.max(0.5, scale + delta * scale), 80);
 
     // Zoom toward mouse position
@@ -169,7 +169,7 @@ export default function ZoomableImage({
     const rect = container.getBoundingClientRect();
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    const newScale = Math.min(scale * 1.5, 80);
+    const newScale = Math.min(scale * 1.25, 80);
     const scaleRatio = newScale / scale;
     const newTranslateX = centerX - (centerX - translate.x) * scaleRatio;
     const newTranslateY = centerY - (centerY - translate.y) * scaleRatio;
@@ -183,7 +183,7 @@ export default function ZoomableImage({
     const rect = container.getBoundingClientRect();
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    const newScale = Math.max(scale / 1.5, 0.5);
+    const newScale = Math.max(scale / 1.25, 0.5);
     const scaleRatio = newScale / scale;
     const newTranslateX = centerX - (centerX - translate.x) * scaleRatio;
     const newTranslateY = centerY - (centerY - translate.y) * scaleRatio;
