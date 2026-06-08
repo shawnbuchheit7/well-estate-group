@@ -15,32 +15,33 @@ function ZoomControls({ onClose }: { onClose: () => void }) {
 
   return (
     <div
-      className="absolute top-4 right-4 z-[60] flex items-center gap-1.5"
+      className="fixed top-4 right-4 flex items-center gap-2"
+      style={{ zIndex: 10001 }}
       onClick={(e) => e.stopPropagation()}
     >
       <button
         onClick={() => zoomOut(0.5)}
-        className="px-3 py-1.5 rounded bg-gray-800 hover:bg-gray-700 text-white text-sm font-mono transition-colors"
+        className="w-10 h-10 rounded-full bg-white shadow-lg border border-gray-200 hover:bg-gray-100 text-gray-800 text-xl font-bold flex items-center justify-center transition-colors"
       >
         −
       </button>
       <button
         onClick={() => zoomIn(0.5)}
-        className="px-3 py-1.5 rounded bg-gray-800 hover:bg-gray-700 text-white text-sm font-mono transition-colors"
+        className="w-10 h-10 rounded-full bg-white shadow-lg border border-gray-200 hover:bg-gray-100 text-gray-800 text-xl font-bold flex items-center justify-center transition-colors"
       >
         +
       </button>
       <button
         onClick={() => resetTransform()}
-        className="px-3 py-1.5 rounded bg-gray-800 hover:bg-gray-700 text-white text-sm font-mono transition-colors"
+        className="h-10 px-4 rounded-full bg-white shadow-lg border border-gray-200 hover:bg-gray-100 text-gray-800 text-sm font-medium flex items-center justify-center transition-colors"
       >
-        Reset
+        Fit
       </button>
       <button
         onClick={onClose}
-        className="px-3 py-1.5 rounded bg-red-700 hover:bg-red-600 text-white text-sm transition-colors ml-1"
+        className="w-10 h-10 rounded-full bg-red-600 hover:bg-red-700 text-white flex items-center justify-center transition-colors shadow-lg"
       >
-        <X className="w-4 h-4" />
+        <X className="w-5 h-5" />
       </button>
     </div>
   );
@@ -72,8 +73,8 @@ export default function ImageLightbox({ src, alt, children, className }: ImageLi
         {children || (
           <>
             <img loading="lazy" src={src} alt={alt} className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-              <ZoomIn className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+              <ZoomIn className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg" />
             </div>
           </>
         )}
@@ -86,25 +87,31 @@ export default function ImageLightbox({ src, alt, children, className }: ImageLi
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.15 }}
-            className="fixed inset-0 z-50"
-            style={{ background: "#f5f5f5" }}
+            className="fixed inset-0"
+            style={{ zIndex: 10000, background: "#ffffff" }}
           >
             <TransformWrapper
-              initialScale={0.9}
-              minScale={0.3}
+              initialScale={1}
+              minScale={0.5}
               maxScale={80}
               centerOnInit={true}
               limitToBounds={false}
-              wheel={{ step: 0.08 }}
-              pinch={{ step: 3 }}
-              doubleClick={{ step: 2.5, mode: "zoomIn" }}
-              panning={{ velocityDisabled: true }}
+              wheel={{ step: 0.15, smoothStep: 0.004 }}
+              pinch={{ step: 5 }}
+              doubleClick={{ step: 3, mode: "zoomIn" }}
+              panning={{ velocityDisabled: false }}
             >
               <ZoomControls onClose={() => setIsOpen(false)} />
               <TransformComponent
                 wrapperStyle={{
                   width: "100vw",
                   height: "100vh",
+                  overflow: "hidden",
+                }}
+                contentStyle={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
               >
                 <img
@@ -113,21 +120,20 @@ export default function ImageLightbox({ src, alt, children, className }: ImageLi
                   draggable={false}
                   style={{
                     display: "block",
+                    maxWidth: "95vw",
+                    maxHeight: "95vh",
                     width: "auto",
                     height: "auto",
-                    maxWidth: "none",
-                    maxHeight: "none",
+                    objectFit: "contain",
                     userSelect: "none",
-                  }}
-                  onLoad={(e) => {
-                    // Log native size for debugging
-                    const img = e.currentTarget;
-                    console.log(`Lightbox image loaded: ${img.naturalWidth}x${img.naturalHeight}`);
                   }}
                 />
               </TransformComponent>
-              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-[60] text-gray-500 text-xs bg-white/90 px-3 py-1 rounded shadow-sm">
-                Scroll to zoom · Drag to pan · Double-click to zoom in · Esc to close
+              <div
+                className="fixed bottom-4 left-1/2 -translate-x-1/2 text-gray-400 text-xs bg-white/90 px-4 py-2 rounded-full shadow-sm border border-gray-100"
+                style={{ zIndex: 10001 }}
+              >
+                Scroll / pinch to zoom · Drag to pan · Double-click to zoom in · Esc to close
               </div>
             </TransformWrapper>
           </motion.div>
