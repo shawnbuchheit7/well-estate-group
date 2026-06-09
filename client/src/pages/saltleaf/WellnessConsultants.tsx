@@ -597,9 +597,9 @@ export default function WellnessConsultants() {
       {/* Navigation */}
       <section className="py-16 border-t border-[#1a3e4c]/10">
         <div className="container max-w-4xl flex items-center justify-between">
-          <Link href="/longevity/saltleaf/level-3-wellness">
+          <Link href="/longevity/saltleaf/outdoor-wellness">
             <a className="inline-flex items-center gap-2 font-body text-sm text-black/65 hover:text-black transition-colors">
-              <ArrowLeft className="w-4 h-4" /> Prev: Level 3 Wellness
+              <ArrowLeft className="w-4 h-4" /> Prev: Outdoor Wellness
             </a>
           </Link>
           <Link href="/longevity/saltleaf">

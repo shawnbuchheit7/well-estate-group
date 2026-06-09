@@ -327,6 +327,18 @@ export default function OutdoorWellness() {
           </div>
         </section>
       )}
+
+      {/* Footer Navigation */}
+      <section className="py-10 border-t border-gray-100">
+        <div className="container max-w-7xl flex justify-between items-center">
+          <a href="/longevity/saltleaf/level-3-wellness" className="inline-flex items-center gap-2 font-body text-sm text-black/65 hover:text-black transition-colors">
+            ← Prev: Level 3 Wellness
+          </a>
+          <a href="/longevity/saltleaf/wellness-consultants" className="inline-flex items-center gap-2 font-body text-sm text-black/65 hover:text-black transition-colors">
+            Next: Wellness Consultants →
+          </a>
+        </div>
+      </section>
     </Layout>
   );
 }

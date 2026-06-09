@@ -418,9 +418,9 @@ export default function Level3Wellness() {
               <ArrowLeft className="w-4 h-4" /> Prev: Fitness Layout
             </a>
           </Link>
-          <Link href="/longevity/saltleaf/wellness-consultants">
+          <Link href="/longevity/saltleaf/outdoor-wellness">
             <a className="inline-flex items-center gap-2 font-body text-sm text-black/65 hover:text-black transition-colors">
-              Next: Wellness Consultants <ArrowRight className="w-4 h-4" />
+              Next: Outdoor Wellness <ArrowRight className="w-4 h-4" />
             </a>
           </Link>
         </div>

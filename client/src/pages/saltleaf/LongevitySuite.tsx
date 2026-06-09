@@ -152,7 +152,7 @@ export default function LongevitySuite() {
               Schematic Design Set
             </motion.h2>
             <motion.p variants={fadeInUp} className="font-body text-sm text-black/60 mt-3 max-w-2xl mx-auto">
-              From the 05/15/2026 100% Schematic Design package by Arquitectonica. Pinch or scroll to zoom directly on any plan.
+              From the 05/15/2026 100% Schematic Design package by Arquitectonica. Pinch to zoom directly on any plan.
             </motion.p>
           </motion.div>
 
@@ -220,7 +220,7 @@ export default function LongevitySuite() {
               <div>
                 <h3 className="font-display text-lg font-medium text-black">Houston Preventative Healthcare Center — Enlarged Floor Plan</h3>
                 <p className="font-body text-sm text-black/60 mt-1 leading-relaxed max-w-3xl">
-                  Full construction drawing showing 5 longevity suites, MRI scanner, CT scan, blood draw, reception, and support spaces. Architect: Hunton Brady. Drawing A801 at 1/4" = 1'-0" scale.
+                  Full construction drawing showing 5 longevity suites, MRI scanner, CT scan, blood draw, reception, and support spaces. Architect: Hunton Brady. Drawing A801 at 1/4" = 1'-0" scale. Individual consultation suites are approximately 100–150 SF each (~9'–10' × 12'–15'). Testing/DexaScan room: 125 SF (Drawing A821). Total facility: ~7,500+ SF.
                 </p>
               </div>
               <span className="font-mono text-[10px] px-2 py-1 rounded shrink-0" style={{ color: `${ACCENT}B3`, backgroundColor: `${ACCENT}0F` }}>
@@ -337,12 +337,12 @@ export default function LongevitySuite() {
             className="rounded-2xl border bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow mb-10"
             style={{ borderColor: `${ACCENT}33` }}
           >
-            <ZoomableImage src="/saltleaf/tlee-assessment-room.jpg" alt="TLEE Assessment Room — Fountain Life/Longevity 368 SF" maxHeight="500px" className="bg-[#FAFAF8]" />
+            <ZoomableImage src="/saltleaf/tlee-assessment-room.jpg" alt="TLEE Assessment Room — Longevity Suite 368 SF" maxHeight="500px" className="bg-[#FAFAF8]" />
             <div className="p-6 flex items-start justify-between gap-4">
               <div>
                 <h3 className="font-display text-lg font-medium text-black">Longevity Assessment Room — TLEE Programming</h3>
                 <p className="font-body text-sm text-black/60 mt-1 leading-relaxed max-w-3xl">
-                  368 SF dedicated longevity consultation room as programmed by TLEE. Located adjacent to Fitness Director office, Specialty Shower, and Beauty Salon on Level 3. This is the room that will house the VO₂ max bike, body composition analyzer, treatment table, and counter with sink.
+                  368 SF dedicated longevity consultation room as programmed by TLEE (approximately 2.5× the size of a single Houston suite). Located adjacent to Fitness Director office, Specialty Shower, and Beauty Salon on Level 3. This is the room that will house the VO₂ max bike, body composition analyzer, treatment table, and counter with sink.
                 </p>
               </div>
               <span className="font-mono text-[10px] px-2 py-1 rounded shrink-0" style={{ color: `${ACCENT}B3`, backgroundColor: `${ACCENT}0F` }}>
@@ -412,21 +412,29 @@ export default function LongevitySuite() {
 
             {/* Technogym Checkup */}
             <motion.div variants={fadeInUp} className="rounded-2xl border bg-white overflow-hidden" style={{ borderColor: '#0e7c6b33' }}>
-              <div className="grid grid-cols-1 md:grid-cols-2">
-                <img src="/saltleaf/technogym-checkup-1.jpg" alt="Technogym Checkup — AI-powered wellness assessment" className="w-full h-64 md:h-full object-cover" />
-                <div className="p-8 flex flex-col justify-center">
-                  <span className="font-mono text-[10px] tracking-[0.15em] uppercase mb-2" style={{ color: '#0e7c6b' }}>Shawn's Recommendation</span>
-                  <h4 className="font-display text-xl font-medium text-black mb-3">Technogym Checkup</h4>
-                  <p className="font-body text-sm text-black/65 leading-relaxed">
-                    AI-powered holistic assessment station measuring functional movement, grip strength, mobility, balance, body composition, and cognitive skills. Calculates a "Wellness Age" metric and automatically generates personalized training programs. Intel RealSense motion tracking provides clinical-grade movement analysis in a luxury form factor — available in the Sand Stone finish for seamless integration.
-                  </p>
-                  <a href="https://www.technogym.com/en-US/product/technogym-checkup_E030-SLS.html" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-mono text-xs mt-4 hover:underline" style={{ color: '#0e7c6b' }}>
-                    View Product →
-                  </a>
+              <div className="p-8">
+                <span className="font-mono text-[10px] tracking-[0.15em] uppercase mb-2 block" style={{ color: '#0e7c6b' }}>Shawn's Recommendation</span>
+                <h4 className="font-display text-xl font-medium text-black mb-3">Technogym Checkup</h4>
+                <p className="font-body text-sm text-black/65 leading-relaxed mb-6">
+                  AI-powered holistic assessment station measuring functional movement, grip strength, mobility, balance, body composition, and cognitive skills. Calculates a "Wellness Age" metric and automatically generates personalized training programs. Intel RealSense motion tracking provides clinical-grade movement analysis in a luxury form factor — available in the Sand Stone finish for seamless integration.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                  <div className="rounded-lg overflow-hidden bg-gray-50">
+                    <img src="/saltleaf/technogym-checkup-side.jpg" alt="Technogym Checkup — Side view of the unit" className="w-full h-64 object-contain" />
+                    <p className="text-xs text-center text-black/50 py-2">Side View</p>
+                  </div>
+                  <div className="rounded-lg overflow-hidden bg-gray-50">
+                    <img src="/saltleaf/technogym-checkup-front.jpg" alt="Technogym Checkup — Front view of the unit" className="w-full h-64 object-contain" />
+                    <p className="text-xs text-center text-black/50 py-2">Front View</p>
+                  </div>
+                  <div className="rounded-lg overflow-hidden bg-gray-50">
+<img src="/saltleaf/technogym-checkup-1.jpg" alt="Technogym Checkup — Wellness Age assessment interface" className="w-full h-64 object-contain" />
+                     <p className="text-xs text-center text-black/50 py-2">Wellness Age Interface</p>
+                  </div>
                 </div>
-              </div>
-              <div className="border-t" style={{ borderColor: '#0e7c6b1A' }}>
-                <img src="/saltleaf/technogym-checkup-2.png" alt="Technogym Checkup in use — staff-guided assessment" className="w-full h-56 object-cover object-top" />
+                <a href="https://www.technogym.com/en-US/product/technogym-checkup_E030-SLS.html" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-mono text-xs hover:underline" style={{ color: '#0e7c6b' }}>
+                  View Product →
+                </a>
               </div>
             </motion.div>
           </motion.div>
