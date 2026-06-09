@@ -1,5 +1,6 @@
 import { useState } from "react";
 import LightHero from "../../components/LightHero";
+import Layout from "../../components/Layout";
 
 const ACCENT = "#1a3e4c";
 
@@ -110,7 +111,7 @@ export default function OutdoorWellness() {
   const [activeSolution, setActiveSolution] = useState(0);
 
   return (
-    <div className="min-h-screen bg-white">
+    <Layout section="longevity-saltleaf">
       <LightHero
         eyebrow="Outdoor Wellness"
         title="Outdoor Wellness Spaces"
@@ -326,6 +327,6 @@ export default function OutdoorWellness() {
           </div>
         </section>
       )}
-    </div>
+    </Layout>
   );
 }
