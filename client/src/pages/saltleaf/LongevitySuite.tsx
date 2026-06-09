@@ -72,12 +72,12 @@ const option2Features = [
   { item: "Counter with Sink", source: "TLEE Original" },
   { item: "Large-format branded display (65\"+)", source: "Proposed Addition" },
   { item: "Consultation seating area", source: "Proposed Addition" },
-  { item: "Ambient cove lighting system", source: "Proposed Addition" },
-  { item: "Beverage cooler & hospitality", source: "Proposed Addition" },
+
   { item: "Sound isolation upgrade", source: "Proposed Addition" },
   { item: "Telehealth/video conferencing", source: "Proposed Addition" },
   { item: "Lactate Threshold Testing", source: "Shawn" },
   { item: "Technogym Checkup — Functional Movement & Grip Strength", source: "Shawn" },
+  { item: "Blood Draws (Comprehensive Biomarker Panels)", source: "Shawn" },
 ];
 
 const proposedServices = [
