@@ -36,16 +36,6 @@ const layoutQuestions = [
     priority: "high",
   },
   {
-    title: "Indoor/Outdoor Flow",
-    description: "The Level 3 plan shows direct pool deck adjacency. Is there a vision for outdoor fitness programming (yoga on deck, outdoor training zones, movement garden)?",
-    priority: "medium",
-  },
-  {
-    title: "Technology Integration",
-    description: "What level of fitness technology is planned? Options range from basic AV to full biometric tracking, AI-powered programming, and connected equipment ecosystems.",
-    priority: "medium",
-  },
-  {
     title: "Staffing & Programming Model",
     description: "Will the fitness center be staffed with full-time trainers, or is this a concierge model where residents book specialists? This fundamentally changes space requirements.",
     priority: "high",
