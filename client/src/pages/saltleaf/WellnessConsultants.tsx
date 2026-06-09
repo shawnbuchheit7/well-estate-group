@@ -22,14 +22,14 @@ const consultants = [
     website: "https://tleespas.com",
     scope: { design: true, programming: true, operations: true },
     specialization: "Spa design & elevated wellness experiences for hospitality and real estate",
-    differentiator: "Human-centered environmental design with 70+ global projects. Currently engaged on SLT1 — already embedded in the project.",
+    differentiator: "Human-centered environmental design with 70+ global projects. Human-centered environmental design with 70+ global projects. Under consideration for SLT1 wellness programming.",
     residentialExp: "strong",
     flExperience: false,
-    engaged: true,
+    engaged: false,
     floridaPresence: true,
     floridaCount: 2,
     recognition: "Multiple Forbes Five-Star Spa Awards",
-    keyStrength: "Already on the project",
+    keyStrength: "Under consideration",
     projectCount: "70+",
     luxuryBrands: ["Equinox Hotel", "Ritz-Carlton Reserve", "EDITION", "Waldorf Astoria", "Auberge Resorts"],
     topProjects: [
@@ -390,7 +390,7 @@ export default function WellnessConsultants() {
                         <span className="font-mono text-[#1a3e4c] font-semibold text-xs">{String(i + 1).padStart(2, "0")}</span>
                         {c.logo && <img src={c.logo} alt={c.shortName} className="h-8 w-auto object-contain opacity-80" />}
                         <h3 className="font-display text-xl md:text-2xl font-medium text-black">{c.name}</h3>
-                        {c.engaged && <span className="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-[#1a3e4c] text-white uppercase tracking-wider">Currently Engaged</span>}
+                        {c.engaged && <span className="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-[#1a3e4c] text-white uppercase tracking-wider">Under Consideration</span>}
                         {c.flExperience && <span className="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-blue-600 text-white uppercase tracking-wider">FL Direct Experience</span>}
                       </div>
                       <p className="font-body text-sm text-black/50">Led by {c.leader} · Est. {c.founded} · {c.hq}</p>
@@ -550,7 +550,7 @@ export default function WellnessConsultants() {
               <div className="p-6 rounded-2xl border border-[#1a3e4c]/20 bg-white">
                 <h4 className="font-display text-lg font-medium text-black mb-2">Critical Question: What Is the Scope?</h4>
                 <p className="font-body text-sm text-black/65 leading-relaxed">
-                  Before recommending any candidate, we need to understand the specific scope of work. Is London Bay looking for: (a) design only, (b) programming + design, (c) full operations management, or (d) a hybrid? The answer dramatically changes which firms are best suited. TLEE is already engaged — is this a replacement, supplement, or expansion of scope?
+                  Before recommending any candidate, we need to understand the specific scope of work. Is London Bay looking for: (a) design only, (b) programming + design, (c) full operations management, or (d) a hybrid? The answer dramatically changes which firms are best suited. TLEE is under consideration — is this a replacement, supplement, or expansion of scope?
                 </p>
               </div>
             </motion.div>

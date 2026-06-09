@@ -56,7 +56,7 @@ const agendaItems = [
     description: "Review the written scope of work or RFP for wellness consultant selection. Understanding the specific scope will help provide targeted feedback on the 7 shortlisted consultants.",
     href: "/longevity/saltleaf/wellness-consultants",
     details: [
-      "TLEE Wellness — Tracy Lee (currently engaged on SLT1)",
+      "TLEE Wellness — Tracy Lee (under consideration)",
       "Studio DeA — Drue DeAngelis",
       "Trilogy Spa Holdings",
       "BluSpas (direct experience — Acqualina)",
@@ -89,6 +89,23 @@ export default function Saltleaf() {
         accentColor={ACCENT}
 
       />
+
+      {/* Building Exterior */}
+      <section className="py-12 md:py-16">
+        <div className="container max-w-5xl mx-auto">
+          <div className="rounded-2xl overflow-hidden shadow-lg border" style={{ borderColor: `${ACCENT}20` }}>
+            <img
+              src="/saltleaf/saltleaf-rendering.jpg"
+              alt="Saltleaf Tower One — Estero Bay, Florida"
+              className="w-full h-auto object-cover"
+            />
+            <div className="p-4 bg-white text-center">
+              <p className="font-display text-lg font-medium text-black">Saltleaf Tower One</p>
+              <p className="font-body text-sm text-black/55">Estero Bay, Florida — London Bay Development Group</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Meeting Agenda */}
       <section className="py-20 md:py-28">

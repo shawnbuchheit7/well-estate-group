@@ -41,6 +41,7 @@ const saltleafNavLinks = [
   { href: "/longevity/saltleaf/longevity-suite", label: "Longevity Suite" },
   { href: "/longevity/saltleaf/fitness-layout", label: "Fitness Layout" },
   { href: "/longevity/saltleaf/level-3-wellness", label: "Level 3 Wellness" },
+  { href: "/longevity/saltleaf/outdoor-wellness", label: "Outdoor Wellness" },
   { href: "/longevity/saltleaf/wellness-consultants", label: "Wellness Consultants" },
 ];
 
