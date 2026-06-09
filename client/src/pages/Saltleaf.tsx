@@ -75,12 +75,7 @@ export default function Saltleaf() {
         title={<>Saltleaf<br /><em className="italic font-light">on Estero Bay</em></>}
         description="Wellness design and programming advisory for London Bay Development Group's premier coastal community — featuring The Ritz-Carlton Residences, Estero Bay. Saltleaf Tower 1, Level 3 wellness amenities."
         accentColor={ACCENT}
-        stats={[
-          { label: "Tower", value: "SLT1" },
-          { label: "Level", value: "3" },
-          { label: "Client", value: "LBDG" },
-          { label: "Status", value: "Active" },
-        ]}
+
       />
 
       {/* Meeting Agenda */}

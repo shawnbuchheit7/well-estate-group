@@ -21,12 +21,7 @@ const floorPlans = [
     description: "Complete Level 3 amenity layout showing the fitness center positioning relative to the pool deck, spa, and resident lounge areas. The fitness zone is located in the southeast quadrant with direct pool deck access.",
     drawing: "A-003",
   },
-  {
-    src: "/saltleaf/level26-sky-amenity.jpg",
-    title: "Level 26 — Sky Level Amenity Plan",
-    description: "Upper amenity level with potential secondary fitness/yoga space. Sky Lobby, rooftop pool, and private event spaces. Consider whether a small movement studio or stretching area belongs here.",
-    drawing: "A-026",
-  },
+
 ];
 
 const layoutQuestions = [
