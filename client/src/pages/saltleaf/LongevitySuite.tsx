@@ -21,12 +21,7 @@ const saltleafPlans = [
     description: "The primary wellness and amenity level showing the Longevity Consultation Suite location, spa areas, fitness zones, pools, and resident lounges.",
     drawing: "A-003",
   },
-  {
-    src: "/saltleaf/level26-sky-amenity.jpg",
-    title: "Level 26 — Sky Amenity Floor Plan",
-    description: "Upper amenity level featuring Sky Lobby/Dining (2,800 SF), Sky Bar (1,300 SF), rooftop pool, private dining/board room, and sunset terrace.",
-    drawing: "A-026",
-  },
+
 ];
 
 const houstonSuiteImages = [
