@@ -76,8 +76,8 @@ const option2Features = [
   { item: "Beverage cooler & hospitality", source: "Proposed Addition" },
   { item: "Sound isolation upgrade", source: "Proposed Addition" },
   { item: "Telehealth/video conferencing", source: "Proposed Addition" },
-  { item: "Lactate Threshold Testing", source: "WEG Advisory" },
-  { item: "Technogym Checkup — Functional Movement & Grip Strength", source: "WEG Advisory" },
+  { item: "Lactate Threshold Testing", source: "Shawn" },
+  { item: "Technogym Checkup — Functional Movement & Grip Strength", source: "Shawn" },
 ];
 
 const proposedServices = [
@@ -360,7 +360,7 @@ export default function LongevitySuite() {
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {option2Features.map((f, i) => {
-                const isAdvisory = f.source === 'WEG Advisory';
+                const isAdvisory = f.source === 'Shawn';
                 const isProposed = f.source === 'Proposed Addition';
                 const isTlee = f.source === 'TLEE Original';
                 return (
@@ -374,7 +374,7 @@ export default function LongevitySuite() {
                     color: isAdvisory ? '#0e7c6b' : isProposed ? ACCENT : 'rgba(0,0,0,0.4)',
                     backgroundColor: isAdvisory ? '#0e7c6b1A' : isProposed ? `${ACCENT}1A` : 'rgba(0,0,0,0.05)'
                   }}>
-                    {isAdvisory ? 'WEG ADVISORY' : isProposed ? 'PROPOSED' : 'TLEE'}
+                    {isAdvisory ? 'SHAWN' : isProposed ? 'PROPOSED' : 'TLEE'}
                   </span>
                 </div>
                 );
