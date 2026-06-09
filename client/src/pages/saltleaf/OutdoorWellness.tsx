@@ -118,6 +118,27 @@ export default function OutdoorWellness() {
         accentColor={ACCENT}
       />
 
+      {/* Hero Images — South Beach Installation */}
+      <div className="max-w-7xl mx-auto px-6 pt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="rounded-2xl overflow-hidden shadow-lg">
+            <img
+              src="/saltleaf/outdoor/hero-south-beach-1.jpg"
+              alt="MyEquilibria installation — Lummus Park, South Beach, Miami"
+              className="w-full h-[320px] object-cover"
+            />
+          </div>
+          <div className="rounded-2xl overflow-hidden shadow-lg">
+            <img
+              src="/saltleaf/outdoor/hero-south-beach-2.jpg"
+              alt="MyEquilibria outdoor fitness — South Beach, Miami at sunset"
+              className="w-full h-[320px] object-cover"
+            />
+          </div>
+        </div>
+        <p className="text-center text-sm text-gray-500 mt-4 font-body">MyEquilibria installation — Lummus Park, South Beach, Miami</p>
+      </div>
+
       {/* Tab Navigation */}
       <div className="max-w-7xl mx-auto px-6 pt-12">
         <div className="flex gap-4 border-b border-gray-200">
