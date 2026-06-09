@@ -580,7 +580,7 @@ export default function WellnessConsultants() {
                 "Is the consultant expected to handle design, programming, operations, or a combination?",
                 "What is the timeline for consultant selection and engagement?",
                 "Will the selected consultant work alongside the wellness advisory team or independently?",
-                "How does the consultant scope interact with SPX (fitness) and Thermal Collective (hydrotherapy)?",
+                "How does the consultant scope interact with the fitness programming team and Thermal Collective (hydrotherapy)?",
                 "Is TLEE being replaced, supplemented, or is this an additional scope area?",
                 "Does London Bay want an operator (Trilogy model) or a consultant (design + programming)?",
               ].map((q, i) => (

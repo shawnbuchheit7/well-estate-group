@@ -27,14 +27,14 @@ const agendaItems = [
     ],
   },
   {
-    title: "Fitness Layout (SPX)",
+    title: "Fitness Layout",
     subtitle: "Recommended Layout Review",
-    description: "Confirm whether the current layout is the recommended design from SPX. Review the longevity lounge space allocation and equipment placement. Discuss whether removing lounge furniture to focus on equipment provides adequate space.",
+    description: "Review the current fitness layout recommendation. Evaluate the longevity lounge space allocation and equipment placement. Discuss whether removing lounge furniture to focus on equipment provides adequate space.",
     href: "/longevity/saltleaf/fitness-layout",
     details: [
-      "Is this the final recommended layout from SPX?",
+      "Is this the final recommended fitness layout?",
       "Longevity lounge vs. equipment space trade-off",
-      "Ana Goldstein (TLEE) & Sean Sackmann (SPX) discussion on space optimization",
+      "Ana Goldstein (TLEE) discussion on space optimization",
       "Reference: 30+ Ritz-Carlton layouts and designs for comparison",
     ],
   },
@@ -193,7 +193,7 @@ export default function Saltleaf() {
             <motion.div variants={fadeInUp} className="p-6 rounded-2xl border bg-white" style={{ borderColor: `${ACCENT}33` }}>
               <h4 className="font-display text-lg font-medium text-black mb-2">Wellness Team</h4>
               <p className="font-body text-sm text-black/65">TLEE Wellness (Tracy Lee) — Consultant</p>
-              <p className="font-body text-sm text-black/65">SPX (Sean Sackmann) — Fitness</p>
+
               <p className="font-body text-sm text-black/65">Thermal Collective — Hydrotherapy</p>
             </motion.div>
             <motion.div variants={fadeInUp} className="p-6 rounded-2xl border bg-white" style={{ borderColor: `${ACCENT}33` }}>

@@ -1,5 +1,5 @@
 /**
- * Saltleaf — Fitness Layout (SPX)
+ * Saltleaf — Fitness Layout
  * Visual-first page with architectural floor plans
  * Branded with Saltleaf teal (#1a3e4c)
  */
@@ -18,7 +18,7 @@ const floorPlans = [
   {
     src: "/saltleaf/level3-floorplan.jpg",
     title: "Level 3 — Fitness & Amenity Floor Plan",
-    description: "Complete Level 3 amenity layout showing the fitness center positioning relative to the pool deck, spa, and resident lounge areas. The SPX-style fitness zone is located in the southeast quadrant with direct pool deck access.",
+    description: "Complete Level 3 amenity layout showing the fitness center positioning relative to the pool deck, spa, and resident lounge areas. The fitness zone is located in the southeast quadrant with direct pool deck access.",
     drawing: "A-003",
   },
   {
@@ -31,8 +31,8 @@ const floorPlans = [
 
 const layoutQuestions = [
   {
-    title: "SPX Integration Model",
-    description: "How does the SPX-style fitness programming integrate with the physical space? Is this a branded partnership (like Equinox at Hudson Yards) or a white-label programming approach?",
+    title: "Fitness Programming Model",
+    description: "How does the fitness programming integrate with the physical space? Is this a branded partnership (like Equinox at Hudson Yards) or a white-label programming approach?",
     priority: "high",
   },
   {
@@ -71,7 +71,7 @@ const spaceConsiderations = [
   {
     zone: "Group Fitness Studio",
     sqft: "~1,000 SF",
-    notes: "Flexible space for SPX classes, yoga, Pilates, barre. Sprung floor, mirror wall, AV system for virtual classes. Sound-isolated.",
+    notes: "Flexible space for group classes, yoga, Pilates, barre. Sprung floor, mirror wall, AV system for virtual classes. Sound-isolated.",
   },
   {
     zone: "Recovery & Stretch",
@@ -90,18 +90,7 @@ const spaceConsiderations = [
   },
 ];
 
-const spxTeam = [
-  {
-    name: "Sean Sackmann",
-    role: "SPX Fitness Director",
-    background: "Former Director at Equinox. Specializes in luxury residential fitness programming and high-performance training environments.",
-  },
-  {
-    name: "Ana Goldstein",
-    role: "SPX Programming Lead",
-    background: "Pilates and functional movement specialist. Developed signature class formats for boutique fitness studios across South Florida.",
-  },
-];
+
 
 export default function FitnessLayout() {
   return (
@@ -109,13 +98,13 @@ export default function FitnessLayout() {
       <LightHero
         eyebrow="Agenda Item 02"
         title={<>Fitness Layout</>}
-        description="SPX fitness programming and spatial design for the Saltleaf Tower One amenity level. Reviewing the floor plan, zone allocations, and integration with the broader wellness ecosystem."
+        description="Fitness programming and spatial design for the Saltleaf Tower One amenity level. Reviewing the floor plan, zone allocations, and integration with the broader wellness ecosystem."
         accentColor={ACCENT}
         stats={[
           { label: "Primary Level", value: "3" },
           { label: "Est. Fitness Area", value: "~5,900 SF" },
           { label: "Zones", value: "6" },
-          { label: "Team", value: "SPX" },
+          { label: "Status", value: "Review" },
         ]}
       />
 
@@ -243,35 +232,6 @@ export default function FitnessLayout() {
                     )}
                   </div>
                   <p className="font-body text-sm text-black/60 leading-relaxed pl-8">{q.description}</p>
-                </div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* SPX Team */}
-      <section className="py-20 md:py-28 bg-[#FAFAF8]">
-        <div className="container max-w-4xl">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            <motion.span variants={fadeInUp} className="font-mono font-semibold text-xs tracking-[0.2em] uppercase" style={{ color: ACCENT }}>
-              Team
-            </motion.span>
-            <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 mb-8 text-black">
-              SPX Fitness Team
-            </motion.h2>
-
-            <motion.div variants={fadeInUp} className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {spxTeam.map((person, i) => (
-                <div key={i} className="p-6 rounded-2xl border bg-white" style={{ borderColor: `${ACCENT}26` }}>
-                  <h4 className="font-display text-lg font-medium text-black">{person.name}</h4>
-                  <p className="font-mono text-[10px] tracking-[0.12em] uppercase mt-1 mb-3" style={{ color: ACCENT }}>{person.role}</p>
-                  <p className="font-body text-sm text-black/60 leading-relaxed">{person.background}</p>
                 </div>
               ))}
             </motion.div>
