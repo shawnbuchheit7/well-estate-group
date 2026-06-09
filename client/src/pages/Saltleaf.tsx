@@ -65,6 +65,18 @@ const agendaItems = [
       "KALA Design Group",
     ],
   },
+  {
+    title: "Outdoor Wellness Spaces",
+    subtitle: "MyEquilibria — Premium Outdoor Fitness & Wellness",
+    description: "Explore design-forward outdoor wellness installations for Saltleaf's exterior amenity spaces. Reference imagery organized by luxury property installations and by solution category.",
+    href: "/longevity/saltleaf/outdoor-wellness",
+    details: [
+      "Luxury resort & residential installations worldwide",
+      "Solution categories: Performance Fitness, Wellness, Movability, Inclusivity, Longevity, Youth",
+      "Nature-inspired, Italian-designed stainless steel equipment",
+      "300+ installations across 30 countries",
+    ],
+  },
 ];
 
 export default function Saltleaf() {

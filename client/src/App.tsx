@@ -28,6 +28,7 @@ const SaltleafWellnessConsultants = lazy(() => import("./pages/saltleaf/Wellness
 const SaltleafLongevitySuite = lazy(() => import("./pages/saltleaf/LongevitySuite"));
 const SaltleafFitnessLayout = lazy(() => import("./pages/saltleaf/FitnessLayout"));
 const SaltleafLevel3Wellness = lazy(() => import("./pages/saltleaf/Level3Wellness"));
+const SaltleafOutdoorWellness = lazy(() => import("./pages/saltleaf/OutdoorWellness"));
 
 // GTM Projects Landing
 const GTMProjects = lazy(() => import("./pages/GTMProjects"));
@@ -180,6 +181,7 @@ function App() {
                   <Route path="/longevity/saltleaf/longevity-suite" component={() => <LongevityPasswordGate><SaltleafLongevitySuite /></LongevityPasswordGate>} />
                   <Route path="/longevity/saltleaf/fitness-layout" component={() => <LongevityPasswordGate><SaltleafFitnessLayout /></LongevityPasswordGate>} />
                   <Route path="/longevity/saltleaf/level-3-wellness" component={() => <LongevityPasswordGate><SaltleafLevel3Wellness /></LongevityPasswordGate>} />
+                  <Route path="/longevity/saltleaf/outdoor-wellness" component={() => <LongevityPasswordGate><SaltleafOutdoorWellness /></LongevityPasswordGate>} />
 
                   {/* Longevity Performance Model */}
                   <Route path="/longevity/performance-model" component={() => <LongevityPasswordGate><LongevityPerformanceModel /></LongevityPasswordGate>} />
