@@ -381,6 +381,55 @@ export default function LongevitySuite() {
               })}
             </div>
           </motion.div>
+          {/* Shawn's Proposed Solutions */}
+          <motion.div
+            className="mt-12 space-y-10"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
+            <motion.h3 variants={fadeInUp} className="font-display text-2xl font-medium text-black">
+              Proposed Assessment Solutions
+            </motion.h3>
+
+            {/* Lactate Threshold Testing */}
+            <motion.div variants={fadeInUp} className="rounded-2xl border bg-white overflow-hidden" style={{ borderColor: '#0e7c6b33' }}>
+              <div className="grid grid-cols-1 md:grid-cols-2">
+                <img src="/saltleaf/lactate-testing-1.jpg" alt="Lactate threshold testing — blood sample during exercise" className="w-full h-64 md:h-full object-cover" />
+                <div className="p-8 flex flex-col justify-center">
+                  <span className="font-mono text-[10px] tracking-[0.15em] uppercase mb-2" style={{ color: '#0e7c6b' }}>Shawn's Recommendation</span>
+                  <h4 className="font-display text-xl font-medium text-black mb-3">Lactate Threshold Testing</h4>
+                  <p className="font-body text-sm text-black/65 leading-relaxed">
+                    Blood lactate analysis during graded exercise to identify aerobic and anaerobic thresholds. A small fingertip blood sample is taken at increasing intensity intervals to determine the precise heart rate zones where lactate accumulates — enabling truly personalized endurance training prescriptions for each resident.
+                  </p>
+                </div>
+              </div>
+              <div className="border-t" style={{ borderColor: '#0e7c6b1A' }}>
+                <img src="/saltleaf/lactate-testing-2.jpg" alt="Lactate testing on bike with physiologist" className="w-full h-56 object-cover object-center" />
+              </div>
+            </motion.div>
+
+            {/* Technogym Checkup */}
+            <motion.div variants={fadeInUp} className="rounded-2xl border bg-white overflow-hidden" style={{ borderColor: '#0e7c6b33' }}>
+              <div className="grid grid-cols-1 md:grid-cols-2">
+                <img src="/saltleaf/technogym-checkup-1.jpg" alt="Technogym Checkup — AI-powered wellness assessment" className="w-full h-64 md:h-full object-cover" />
+                <div className="p-8 flex flex-col justify-center">
+                  <span className="font-mono text-[10px] tracking-[0.15em] uppercase mb-2" style={{ color: '#0e7c6b' }}>Shawn's Recommendation</span>
+                  <h4 className="font-display text-xl font-medium text-black mb-3">Technogym Checkup</h4>
+                  <p className="font-body text-sm text-black/65 leading-relaxed">
+                    AI-powered holistic assessment station measuring functional movement, grip strength, mobility, balance, body composition, and cognitive skills. Calculates a "Wellness Age" metric and automatically generates personalized training programs. Intel RealSense motion tracking provides clinical-grade movement analysis in a luxury form factor — available in the Sand Stone finish for seamless integration.
+                  </p>
+                  <a href="https://www.technogym.com/en-US/product/technogym-checkup_E030-SLS.html" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-mono text-xs mt-4 hover:underline" style={{ color: '#0e7c6b' }}>
+                    View Product →
+                  </a>
+                </div>
+              </div>
+              <div className="border-t" style={{ borderColor: '#0e7c6b1A' }}>
+                <img src="/saltleaf/technogym-checkup-2.png" alt="Technogym Checkup in use — staff-guided assessment" className="w-full h-56 object-cover object-top" />
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
