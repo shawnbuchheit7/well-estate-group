@@ -170,8 +170,80 @@ export default function Level3Wellness() {
         </div>
       </section>
 
-      {/* Wellness Areas */}
+      {/* Cold Plunge Proposal */}
       <section className="py-20 md:py-28 bg-[#FAFAF8]">
+        <div className="container max-w-7xl">
+          <motion.div
+            className="text-center mb-14"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
+            <motion.span variants={fadeInUp} className="font-mono font-semibold text-xs tracking-[0.2em] uppercase" style={{ color: '#0e7c6b' }}>
+              Shawn's Recommendation
+            </motion.span>
+            <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 text-black">
+              Possible Cold Plunge Location?
+            </motion.h2>
+            <motion.p variants={fadeInUp} className="font-body text-sm text-black/60 mt-3 max-w-2xl mx-auto">
+              Proposing an outdoor cold plunge barrel adjacent to the pool deck and cabana courtyard. This location provides easy access from the thermal circuit while maintaining a premium outdoor wellness experience.
+            </motion.p>
+          </motion.div>
+
+          {/* Annotated Floor Plan */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+            className="rounded-2xl border bg-white overflow-hidden shadow-sm mb-10"
+            style={{ borderColor: '#0e7c6b33' }}
+          >
+            <ZoomableImage src="/saltleaf/level3-cold-plunge-callout.jpg" alt="Level 3 floor plan with proposed cold plunge location highlighted" maxHeight="700px" className="bg-[#FAFAF8]" />
+            <div className="p-6">
+              <h3 className="font-display text-lg font-medium text-black">Proposed Location — Pool Deck / Cabana Courtyard</h3>
+              <p className="font-body text-sm text-black/60 mt-1">Outdoor area adjacent to the vitality pool and locker rooms. Completes the hot/cold thermal circuit with direct access from steam and sauna areas.</p>
+            </div>
+          </motion.div>
+
+          {/* Reference Product */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
+            <motion.h3 variants={fadeInUp} className="font-display text-xl font-medium text-black mb-6">
+              Reference: Polar Monkeys Commercial Barrel
+            </motion.h3>
+            <motion.div variants={fadeInUp} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="rounded-2xl border bg-white overflow-hidden" style={{ borderColor: '#0e7c6b33' }}>
+                <img src="/saltleaf/cold-plunge-barrel.webp" alt="Polar Monkeys Commercial Barrel — 316 marine-grade stainless steel" className="w-full h-72 object-contain bg-white p-4" />
+                <div className="p-5 border-t" style={{ borderColor: '#0e7c6b1A' }}>
+                  <h4 className="font-display text-base font-medium text-black">The Barrel Commercial</h4>
+                  <p className="font-body text-xs text-black/60 mt-1">Full vertical immersion in under 3 sq ft of floor space. 316 marine-grade stainless steel, 130 gallon capacity, no plumbing required.</p>
+                </div>
+              </div>
+              <div className="rounded-2xl border bg-white overflow-hidden" style={{ borderColor: '#0e7c6b33' }}>
+                <img src="/saltleaf/cold-plunge-barrel-2.jpg" alt="Polar Monkeys Cyber Barrel in black finish" className="w-full h-72 object-contain bg-white p-4" />
+                <div className="p-5 border-t" style={{ borderColor: '#0e7c6b1A' }}>
+                  <h4 className="font-display text-base font-medium text-black">Cyber Barrel — Black Finish</h4>
+                  <p className="font-body text-xs text-black/60 mt-1">Custom branding available. Minimal footprint ideal for luxury amenity decks. App-controlled temperature management.</p>
+                </div>
+              </div>
+            </motion.div>
+            <motion.div variants={fadeInUp} className="mt-4">
+              <a href="https://polarmonkeys.com/products/the-commercial-barrel" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-mono text-xs hover:underline" style={{ color: '#0e7c6b' }}>
+                View Product →
+              </a>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Wellness Areas */}
+      <section className="py-20 md:py-28">
         <div className="container max-w-5xl">
           <motion.div
             className="text-center mb-14"
