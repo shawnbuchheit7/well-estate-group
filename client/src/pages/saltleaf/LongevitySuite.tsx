@@ -76,6 +76,8 @@ const option2Features = [
   { item: "Beverage cooler & hospitality", source: "Proposed Addition" },
   { item: "Sound isolation upgrade", source: "Proposed Addition" },
   { item: "Telehealth/video conferencing", source: "Proposed Addition" },
+  { item: "Lactate Threshold Testing", source: "WEG Advisory" },
+  { item: "Technogym Checkup — Functional Movement & Grip Strength", source: "WEG Advisory" },
 ];
 
 const proposedServices = [
@@ -357,15 +359,26 @@ export default function LongevitySuite() {
             variants={fadeInUp}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {option2Features.map((f, i) => (
-                <div key={i} className={`flex items-center gap-3 p-3 rounded-lg ${f.source === 'Proposed Addition' ? 'border' : 'bg-black/[0.02] border border-black/5'}`} style={f.source === 'Proposed Addition' ? { backgroundColor: `${ACCENT}0A`, borderColor: `${ACCENT}33` } : undefined}>
-                  <Check className={`w-4 h-4 shrink-0`} style={{ color: f.source === 'Proposed Addition' ? ACCENT : 'rgba(0,0,0,0.4)' }} />
+              {option2Features.map((f, i) => {
+                const isAdvisory = f.source === 'WEG Advisory';
+                const isProposed = f.source === 'Proposed Addition';
+                const isTlee = f.source === 'TLEE Original';
+                return (
+                <div key={i} className={`flex items-center gap-3 p-3 rounded-lg border`} style={{
+                  backgroundColor: isAdvisory ? '#0e7c6b0A' : isProposed ? `${ACCENT}0A` : 'rgba(0,0,0,0.02)',
+                  borderColor: isAdvisory ? '#0e7c6b33' : isProposed ? `${ACCENT}33` : 'rgba(0,0,0,0.05)'
+                }}>
+                  <Check className={`w-4 h-4 shrink-0`} style={{ color: isAdvisory ? '#0e7c6b' : isProposed ? ACCENT : 'rgba(0,0,0,0.4)' }} />
                   <span className="font-body text-sm text-black/75">{f.item}</span>
-                  <span className={`ml-auto font-mono text-[9px] px-2 py-0.5 rounded-full shrink-0`} style={f.source === 'Proposed Addition' ? { color: ACCENT, backgroundColor: `${ACCENT}1A` } : { color: 'rgba(0,0,0,0.4)', backgroundColor: 'rgba(0,0,0,0.05)' }}>
-                    {f.source === 'Proposed Addition' ? 'PROPOSED' : 'TLEE'}
+                  <span className={`ml-auto font-mono text-[9px] px-2 py-0.5 rounded-full shrink-0`} style={{
+                    color: isAdvisory ? '#0e7c6b' : isProposed ? ACCENT : 'rgba(0,0,0,0.4)',
+                    backgroundColor: isAdvisory ? '#0e7c6b1A' : isProposed ? `${ACCENT}1A` : 'rgba(0,0,0,0.05)'
+                  }}>
+                    {isAdvisory ? 'WEG ADVISORY' : isProposed ? 'PROPOSED' : 'TLEE'}
                   </span>
                 </div>
-              ))}
+                );
+              })}
             </div>
           </motion.div>
         </div>
