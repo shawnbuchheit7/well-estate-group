@@ -99,8 +99,18 @@ export default function Landing() {
       </motion.nav>
 
       {/* Hero Section — Commanding, minimal */}
-      <section ref={heroRef} className="min-h-screen flex items-center justify-center pt-20 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-white via-[#FAFAF8] to-[#FAFAF8]" />
+      <section ref={heroRef} className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
+        {/* Background Video */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/AazsyqQemaKsmcfz.mp4"
+        />
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-black/50" />
         
         <motion.div 
           className="relative z-10 max-w-5xl mx-auto px-6 text-center"
@@ -110,7 +120,7 @@ export default function Landing() {
         >
           <motion.h1 
             variants={fadeInUp}
-            className="font-display text-5xl md:text-7xl lg:text-8xl font-semibold leading-[0.95] mb-8 text-black tracking-tight"
+            className="font-display text-5xl md:text-7xl lg:text-8xl font-semibold leading-[0.95] mb-8 text-white tracking-tight"
           >
             We Don't Advise.<br />
             <span className="text-[#B8860B]">We Build.</span>
@@ -118,7 +128,7 @@ export default function Landing() {
 
           <motion.p 
             variants={fadeInUp}
-            className="font-body text-lg md:text-xl text-black/60 leading-relaxed max-w-3xl mx-auto mb-4"
+            className="font-body text-lg md:text-xl text-white/80 leading-relaxed max-w-3xl mx-auto mb-4"
           >
             The only wellness consulting firm led by the operator who built Fountain Life from concept to scale, 
             managed 144+ vessel wellness programs at Technogym, and delivered for the world's most demanding brands.
@@ -126,17 +136,17 @@ export default function Landing() {
 
           <motion.p 
             variants={fadeInUp}
-            className="font-body text-base text-black/40 mb-12"
+            className="font-body text-base text-white/50 mb-12"
           >
             Longevity Centers &middot; Mixed-Use Developments &middot; Hospitality Wellness &middot; Global Expansion
           </motion.p>
           
           <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="#contact" className="group px-10 py-4 bg-black text-white font-body text-sm tracking-[0.12em] uppercase rounded-full hover:bg-black/90 transition-all shadow-[0_4px_20px_rgba(0,0,0,0.12)] hover:-translate-y-0.5">
+            <a href="#contact" className="group px-10 py-4 bg-white text-black font-body text-sm tracking-[0.12em] uppercase rounded-full hover:bg-white/90 transition-all shadow-[0_4px_20px_rgba(255,255,255,0.2)] hover:-translate-y-0.5">
               Start a Conversation
               <svg className="inline-block ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
             </a>
-            <a href="#proof" className="px-10 py-4 font-body text-sm tracking-[0.12em] uppercase text-black/60 hover:text-black transition-all">
+            <a href="#proof" className="px-10 py-4 font-body text-sm tracking-[0.12em] uppercase text-white/70 hover:text-white transition-all">
               See the Track Record
             </a>
           </motion.div>
@@ -148,7 +158,7 @@ export default function Landing() {
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
-          <div className="w-[1px] h-12 bg-gradient-to-b from-transparent via-black/20 to-black/40" />
+          <div className="w-[1px] h-12 bg-gradient-to-b from-transparent via-white/40 to-white/70" />
         </motion.div>
       </section>
 
