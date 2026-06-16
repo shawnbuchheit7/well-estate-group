@@ -5,7 +5,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Plus } from "lucide-react";
+import { ArrowRight, Plus, ExternalLink } from "lucide-react";
 import { Link } from "wouter";
 import Layout from "@/components/Layout";
 import LightHero from "@/components/LightHero";
@@ -18,6 +18,7 @@ interface ModelTile {
   subtitle: string;
   description: string;
   href: string;
+  external?: boolean;
   logoSrc?: string;
   logoAlt?: string;
   status: "active" | "coming-soon";
@@ -81,6 +82,27 @@ const models: ModelTile[] = [
       </svg>
     ),
   },
+  {
+    id: "franchise-portal",
+    title: "International Franchise Portal",
+    titleDisplay: <>Franchise<br /><em className="italic font-light">Partner Portal</em></>,
+    subtitle: "Secure Franchise Operations Hub",
+    description: "Authentication-gated franchise partner portal for Fountain Life international operations. SOPs, marketing assets, brand standards, service catalog, approved suppliers, tech stack documentation, and compliance — all in one secure workspace.",
+    href: "https://fl-franchise-portal.manus.space",
+    external: true,
+    status: "active",
+    stats: [
+      { label: "Services", value: "180" },
+      { label: "Suppliers", value: "53" },
+      { label: "SOPs", value: "Live" },
+    ],
+    icon: (
+      <svg className="w-7 h-7 text-[#B8860B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        <path d="M9 12l2 2 4-4" />
+      </svg>
+    ),
+  },
 ];
 
 export default function LongevityProjects() {
@@ -126,6 +148,52 @@ export default function LongevityProjects() {
           >
             {models.map((model) => (
               <motion.div key={model.id} variants={fadeInUp} className="h-full">
+                {model.external ? (
+                  <a href={model.href} target="_blank" rel="noopener noreferrer" className="h-full block">
+                    <motion.div
+                      whileHover={{ y: -6, boxShadow: "0 24px 48px rgba(0,0,0,0.10), 0 8px 16px rgba(0,0,0,0.06)" }}
+                      className="group relative rounded-xl border border-[#B8860B]/40 bg-white overflow-hidden cursor-pointer hover:border-[#B8860B]/60 transition-all duration-300 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.03)] h-full"
+                    >
+                      <div className="p-8">
+                        <div className="flex items-start justify-between mb-6">
+                          <div className="w-14 h-14 rounded-xl bg-[#FAFAF8] border border-[#B8860B]/55 flex items-center justify-center shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+                            {model.icon}
+                          </div>
+                          <span className={`font-mono text-[9px] tracking-[0.15em] uppercase px-3 py-1.5 rounded-full font-medium ${
+                            model.status === "active" 
+                              ? "bg-[#B8860B]/10 text-[#B8860B] border border-[#B8860B]/55" 
+                              : "bg-black/[0.03] text-black/45 border border-[#B8860B]/55"
+                          }`}>
+                            {model.status === "active" ? "Active" : "Coming Soon"}
+                          </span>
+                        </div>
+                        <h3 className="font-display text-2xl font-bold text-black mb-2 group-hover:text-[#B8860B] transition-colors tracking-tight leading-tight">
+                          {model.titleDisplay || model.title}
+                        </h3>
+                        <p className="font-mono text-[10px] text-black/60 tracking-[0.15em] uppercase mb-4 font-medium">
+                          {model.subtitle}
+                        </p>
+                        <p className="font-body text-sm text-black/70 leading-relaxed mb-7">
+                          {model.description}
+                        </p>
+                        {model.stats && (
+                          <div className="flex gap-3 mb-7">
+                            {model.stats.map((stat, i) => (
+                              <div key={i} className="flex-1 text-center py-3 rounded-lg bg-[#FAFAF8] border border-[#B8860B]/55">
+                                <p className="font-display text-xl font-bold text-black leading-none">{stat.value}</p>
+                                <p className="font-mono text-[9px] text-black/55 uppercase tracking-[0.12em] font-medium mt-1.5">{stat.label}</p>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                        <div className="flex items-center gap-2 text-black/65 group-hover:text-[#B8860B] transition-colors pt-4 border-t border-[#B8860B]/40">
+                          <span className="font-body text-sm font-semibold">Open Portal</span>
+                          <ExternalLink className="w-4 h-4" />
+                        </div>
+                      </div>
+                    </motion.div>
+                  </a>
+                ) : (
                 <Link href={model.href} className="h-full block">
                   <motion.div
                     whileHover={{ y: -6, boxShadow: "0 24px 48px rgba(0,0,0,0.10), 0 8px 16px rgba(0,0,0,0.06)" }}
@@ -183,6 +251,7 @@ export default function LongevityProjects() {
                     </div>
                   </motion.div>
                 </Link>
+                )}
               </motion.div>
             ))}
 
