@@ -88,7 +88,7 @@ const models: ModelTile[] = [
     titleDisplay: <>Franchise<br /><em className="italic font-light">Partner Portal</em></>,
     subtitle: "Secure Franchise Operations Hub",
     description: "Authentication-gated franchise partner portal for Fountain Life international operations. SOPs, marketing assets, brand standards, service catalog, approved suppliers, tech stack documentation, and compliance — all in one secure workspace.",
-    href: "https://fountainfran-fruyeybc.manus.space",
+    href: "https://franchise.wellestategroup.com",
     external: true,
     status: "active",
     stats: [
