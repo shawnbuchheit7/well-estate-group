@@ -391,7 +391,7 @@ export default function Landing() {
                 title: 'Go-To-Market & Expansion',
                 items: ['Management agreements & licensing', 'JV & franchise structuring', 'International market entry', 'Sales infrastructure & channel dev', 'Partnership & distribution strategy'],
                 audience: 'For Operators & Brands',
-                href: '/gtm/zerowheel',
+                href: '/gtm',
               },
               {
                 num: '04',
