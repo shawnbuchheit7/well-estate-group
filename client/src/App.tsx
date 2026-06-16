@@ -23,6 +23,7 @@ import Home from "./pages/Home";
 // Longevity Projects Landing (multi-model view)
 const LongevityProjects = lazy(() => import("./pages/LongevityProjects"));
 const LongevityPerformanceModel = lazy(() => import("./pages/LongevityPerformanceModel"));
+const LongevityFranchisePortal = lazy(() => import("./pages/LongevityFranchisePortal"));
 const Saltleaf = lazy(() => import("./pages/Saltleaf"));
 const SaltleafWellnessConsultants = lazy(() => import("./pages/saltleaf/WellnessConsultants"));
 const SaltleafLongevitySuite = lazy(() => import("./pages/saltleaf/LongevitySuite"));
@@ -182,6 +183,9 @@ function App() {
                   <Route path="/longevity/saltleaf/fitness-layout" component={() => <LongevityPasswordGate><SaltleafFitnessLayout /></LongevityPasswordGate>} />
                   <Route path="/longevity/saltleaf/level-3-wellness" component={() => <LongevityPasswordGate><SaltleafLevel3Wellness /></LongevityPasswordGate>} />
                   <Route path="/longevity/saltleaf/outdoor-wellness" component={() => <LongevityPasswordGate><SaltleafOutdoorWellness /></LongevityPasswordGate>} />
+
+                  {/* Longevity Franchise Portal */}
+                  <Route path="/longevity/franchise-portal" component={() => <LongevityPasswordGate><LongevityFranchisePortal /></LongevityPasswordGate>} />
 
                   {/* Longevity Performance Model */}
                   <Route path="/longevity/performance-model" component={() => <LongevityPasswordGate><LongevityPerformanceModel /></LongevityPasswordGate>} />
