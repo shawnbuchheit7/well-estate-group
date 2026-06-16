@@ -375,30 +375,30 @@ export default function Landing() {
               {
                 num: '01',
                 title: 'Longevity Center Development',
-                items: ['Revenue model & break-even analysis', 'Membership tier architecture', 'Clinical protocol & staffing design', 'Equipment ROI & space planning', 'Venture & capital advisory'],
+                items: ['Revenue model & break-even analysis', 'Membership tier architecture', 'Clinical protocol & staffing design', 'Market entry & international expansion', 'JV, licensing & franchise structuring'],
                 audience: 'For Investors & Operators',
                 href: '/longevity',
               },
               {
                 num: '02',
                 title: 'Product & Brand Strategy',
-                items: ['Consumer & commercial product positioning', 'Market intelligence & competitive analysis', 'Channel strategy & distribution', 'Brand partnership development', 'Product lifecycle & innovation roadmap'],
+                items: ['Consumer & commercial product positioning', 'Go-to-market strategy & execution', 'Channel strategy & distribution', 'Brand partnership development', 'Product lifecycle & innovation roadmap'],
                 audience: 'For Product Companies & Brands',
-                href: '/product-intelligence',
+                href: '/gtm',
               },
               {
                 num: '03',
-                title: 'Go-To-Market & Expansion',
-                items: ['Management agreements & licensing', 'JV & franchise structuring', 'International market entry', 'Sales infrastructure & channel dev', 'Partnership & distribution strategy'],
-                audience: 'For Operators & Brands',
-                href: '/gtm',
+                title: 'Venture & Capital Advisory',
+                items: ['Fundraising strategy & investor materials', 'PE & institutional deal structuring', 'Financial modeling & valuation', 'Due diligence preparation', 'Exit planning & strategic positioning'],
+                audience: 'For Founders & Investors',
+                href: '/venture-capital',
               },
               {
                 num: '04',
                 title: 'Technology & AI',
                 items: ['AI-powered diagnostics & analytics', 'Platform architecture & integration', 'Biomarker data intelligence', 'Predictive health modeling', 'Digital twin & member experience'],
                 audience: 'For Operators & Investors',
-                href: '/venture-capital',
+                href: '/technology',
               },
             ].map((service) => (
               <motion.a 
