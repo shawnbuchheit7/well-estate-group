@@ -70,10 +70,10 @@ export default function PasswordGate({ children }: PasswordGateProps) {
     setIsLoading(false);
   }, []);
 
-  // Landing page is public — no password required
-  if (onLandingPage) {
-    return <>{children}</>;
-  }
+  // Landing page is now also password-protected during development
+  // if (onLandingPage) {
+  //   return <>{children}</>;
+  // }
 
   // Always pass through on ZeroWheel routes — ZWPasswordGate handles auth there
   if (onZWRoute) {
