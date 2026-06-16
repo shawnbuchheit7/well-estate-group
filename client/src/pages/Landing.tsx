@@ -375,15 +375,15 @@ export default function Landing() {
               {
                 num: '01',
                 title: 'Longevity Center Development',
-                items: ['Revenue model & break-even analysis', 'Membership tier architecture', 'Clinical protocol & staffing design', 'Equipment ROI & space planning', 'Technology platform integration'],
+                items: ['Revenue model & break-even analysis', 'Membership tier architecture', 'Clinical protocol & staffing design', 'Equipment ROI & space planning', 'Venture & capital advisory'],
                 audience: 'For Investors & Operators',
                 href: '/longevity',
               },
               {
                 num: '02',
-                title: 'Mixed-Use & Developer Advisory',
-                items: ['TI contribution structuring', 'Revenue sharing models', 'Asset value quantification', 'Board-level economic viability', 'Circulation & adjacency design'],
-                audience: 'For Developers',
+                title: 'Product & Brand Strategy',
+                items: ['Consumer & commercial product positioning', 'Market intelligence & competitive analysis', 'Channel strategy & distribution', 'Brand partnership development', 'Product lifecycle & innovation roadmap'],
+                audience: 'For Product Companies & Brands',
                 href: '/product-intelligence',
               },
               {
@@ -395,8 +395,8 @@ export default function Landing() {
               },
               {
                 num: '04',
-                title: 'Membership & Revenue Optimization',
-                items: ['Pricing architecture & tier design', 'Retention & cross-sell strategy', 'Corporate & family account models', 'Hotel-integrated wellness programs', 'Unit economics & LTV modeling'],
+                title: 'Technology & AI',
+                items: ['AI-powered diagnostics & analytics', 'Platform architecture & integration', 'Biomarker data intelligence', 'Predictive health modeling', 'Digital twin & member experience'],
                 audience: 'For Operators & Investors',
                 href: '/venture-capital',
               },
