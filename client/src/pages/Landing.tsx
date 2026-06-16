@@ -377,36 +377,41 @@ export default function Landing() {
                 title: 'Longevity Center Development',
                 items: ['Revenue model & break-even analysis', 'Membership tier architecture', 'Clinical protocol & staffing design', 'Equipment ROI & space planning', 'Technology platform integration'],
                 audience: 'For Investors & Operators',
+                href: '/longevity',
               },
               {
                 num: '02',
                 title: 'Mixed-Use & Developer Advisory',
                 items: ['TI contribution structuring', 'Revenue sharing models', 'Asset value quantification', 'Board-level economic viability', 'Circulation & adjacency design'],
                 audience: 'For Developers',
+                href: '/product-intelligence',
               },
               {
                 num: '03',
                 title: 'Go-To-Market & Expansion',
                 items: ['Management agreements & licensing', 'JV & franchise structuring', 'International market entry', 'Sales infrastructure & channel dev', 'Partnership & distribution strategy'],
                 audience: 'For Operators & Brands',
+                href: '/gtm/zerowheel',
               },
               {
                 num: '04',
                 title: 'Membership & Revenue Optimization',
                 items: ['Pricing architecture & tier design', 'Retention & cross-sell strategy', 'Corporate & family account models', 'Hotel-integrated wellness programs', 'Unit economics & LTV modeling'],
                 audience: 'For Operators & Investors',
+                href: '/venture-capital',
               },
             ].map((service) => (
-              <motion.div 
-                key={service.num} 
+              <motion.a 
+                key={service.num}
+                href={service.href}
                 variants={fadeInUp}
-                className="group p-8 md:p-10 bg-white border border-gray-200/80 rounded-xl hover:border-[#B8860B]/30 hover:shadow-[0_8px_40px_rgba(0,0,0,0.04)] transition-all duration-500"
+                className="group block p-8 md:p-10 bg-white border border-gray-200/80 rounded-xl hover:border-[#B8860B]/30 hover:shadow-[0_8px_40px_rgba(0,0,0,0.04)] transition-all duration-500 cursor-pointer no-underline"
               >
                 <div className="flex items-center justify-between mb-5">
                   <span className="font-mono text-[11px] tracking-[0.2em] text-[#B8860B] font-medium">{service.num}</span>
                   <span className="font-body text-[10px] tracking-[0.1em] uppercase text-black/30 font-medium">{service.audience}</span>
                 </div>
-                <h3 className="font-display text-xl md:text-2xl font-medium mb-5 text-black">{service.title}</h3>
+                <h3 className="font-display text-xl md:text-2xl font-medium mb-5 text-black group-hover:text-[#B8860B] transition-colors">{service.title}</h3>
                 <ul className="space-y-2.5">
                   {service.items.map((item, i) => (
                     <li key={i} className="flex items-start gap-3">
@@ -415,7 +420,11 @@ export default function Landing() {
                     </li>
                   ))}
                 </ul>
-              </motion.div>
+                <div className="mt-6 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="font-body text-[12px] text-[#B8860B] font-medium uppercase tracking-wider">View Details</span>
+                  <span className="text-[#B8860B]">→</span>
+                </div>
+              </motion.a>
             ))}
           </motion.div>
         </div>
