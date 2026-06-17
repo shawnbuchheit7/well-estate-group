@@ -30,32 +30,6 @@ const productSections = [
   { href: "/product-intelligence/corporate-health", label: "Corporate Health" },
 ];
 
-/** Inline SVG logo mark — renders crisply at any size without pixelation */
-function WEGLogoMark({ className }: { className?: string }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 591 591"
-      className={className}
-      aria-hidden="true"
-    >
-      <circle
-        cx="295.5"
-        cy="295.5"
-        r="265"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="26"
-      />
-      <path
-        fillRule="evenodd"
-        d="M 168 180 L 220 180 L 295.5 400 L 371 180 L 423 180 L 330 430 L 295.5 430 L 261 430 Z M 232 180 L 295.5 305 L 359 180 Z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
-
 interface FullScreenNavProps {
   /** Current page label shown as badge on the right */
   currentLabel: string;
@@ -103,7 +77,12 @@ export default function FullScreenNav({
       {/* Center: Logo + Section dropdown */}
       <div className="flex-1 flex items-center justify-center gap-3">
         <Link href="/" className="flex items-center gap-2.5 group">
-          <WEGLogoMark className="w-7 h-7 text-white/90 group-hover:text-white transition-colors" />
+          <img
+            src="/weg-logo-mark-white.png"
+            alt="Well Estate Group"
+            className="w-7 h-7 no-sharpen"
+            style={{ imageRendering: "auto" }}
+          />
           <span className="text-[11px] font-semibold tracking-[0.08em] text-white/90 group-hover:text-white transition-colors hidden sm:inline">
             WELL ESTATE GROUP
           </span>

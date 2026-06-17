@@ -865,10 +865,16 @@ img[src*="unsplash"] {
 
 /* SVG and icons — pixel-perfect */
 svg,
-img[src$=".svg"],
-img[src$=".png"] {
+img[src$=".svg"] {
   image-rendering: -webkit-optimize-contrast;
   shape-rendering: geometricPrecision;
+}
+
+/* PNG logos and icons with fine detail — smooth scaling */
+img[src$=".png"].no-sharpen,
+img[src*="logo"] {
+  image-rendering: auto;
+  image-rendering: smooth;
 }
 
 /* Force GPU acceleration for smoother rendering */
