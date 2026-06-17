@@ -111,30 +111,28 @@ export default function LongevityFranchisePortal() {
       </div>
 
       {/* Main content — branded launcher */}
-      <div className="flex-1 overflow-auto px-6 py-10">
-        <div className="max-w-md w-full mx-auto text-center">
+      <div className="flex-1 overflow-auto">
+        <div className="max-w-2xl w-full mx-auto text-center px-8 pt-16 pb-12">
           {/* Logo & Title */}
-          <div className="mb-6">
-            <img 
-              src="/weg-logo-mark-gold-dark.png" 
-              alt="Well Estate Group" 
-              className="w-12 h-12 mx-auto mb-4 no-sharpen"
-            />
-            <h1 className="text-xl font-light text-[#1A1A1A] tracking-tight mb-1.5" style={{ fontFamily: "'Playfair Display', serif" }}>
-              International Franchise Portal
-            </h1>
-            <p className="text-xs text-[#666] font-light leading-relaxed max-w-sm mx-auto">
-              Your living playbook from corporate — site selection, build-out, hiring, licensing, and day-to-day operations.
-            </p>
-          </div>
+          <img 
+            src="/weg-logo-mark-gold-dark.png" 
+            alt="Well Estate Group" 
+            className="w-16 h-16 mx-auto mb-6 no-sharpen"
+          />
+          <h1 className="text-3xl font-light text-[#1A1A1A] tracking-tight mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
+            International Franchise Portal
+          </h1>
+          <p className="text-base text-[#555] font-light leading-relaxed max-w-lg mx-auto mb-10">
+            Your living playbook from corporate — site selection, build-out, hiring, licensing, and day-to-day operations.
+          </p>
 
           {/* Feature grid */}
-          <div className="grid grid-cols-2 gap-2.5 mb-6">
+          <div className="grid grid-cols-2 gap-4 mb-10">
             {portalFeatures.map((feature) => (
-              <div key={feature.title} className="bg-white rounded-xl p-4 border border-[#E8E4DE] text-left">
-                <feature.icon className="w-4 h-4 text-[#C5A059] mb-2" />
-                <div className="text-[11px] font-medium text-[#1A1A1A] mb-0.5">{feature.title}</div>
-                <div className="text-[10px] text-[#888] leading-relaxed">{feature.desc}</div>
+              <div key={feature.title} className="bg-white rounded-xl p-5 border border-[#E8E4DE] text-left shadow-sm">
+                <feature.icon className="w-5 h-5 text-[#C5A059] mb-3" />
+                <div className="text-sm font-medium text-[#1A1A1A] mb-1">{feature.title}</div>
+                <div className="text-xs text-[#777] leading-relaxed">{feature.desc}</div>
               </div>
             ))}
           </div>
@@ -144,15 +142,15 @@ export default function LongevityFranchisePortal() {
             href={PORTAL_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2.5 px-8 py-3.5 bg-[#0A0A0A] hover:bg-[#1A1A1A] text-white text-sm font-medium rounded-xl transition-all shadow-lg hover:shadow-xl"
+            className="inline-flex items-center gap-3 px-10 py-4 bg-[#0A0A0A] hover:bg-[#1A1A1A] text-white text-base font-medium rounded-xl transition-all shadow-lg hover:shadow-xl"
           >
             <span>Open Franchise Portal</span>
-            <ExternalLink className="w-4 h-4" />
+            <ExternalLink className="w-5 h-5" />
           </a>
 
           {/* Security note */}
-          <div className="mt-5 flex items-center justify-center gap-1.5 text-[10px] text-[#999]">
-            <Lock className="w-3 h-3" />
+          <div className="mt-6 flex items-center justify-center gap-2 text-sm text-[#999]">
+            <Lock className="w-4 h-4" />
             <span>Secure access · Authorized partners only</span>
           </div>
         </div>
