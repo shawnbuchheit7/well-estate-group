@@ -125,7 +125,7 @@ export default function ProductsLanding() {
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto"
+            className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto items-stretch"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -134,11 +134,11 @@ export default function ProductsLanding() {
             {products.map((product) => {
               const status = statusConfig[product.status];
               return (
-                <motion.div key={product.id} variants={fadeInUp}>
-                  <Link href={product.href}>
+                <motion.div key={product.id} variants={fadeInUp} className="h-full">
+                  <Link href={product.href} className="h-full block">
                     <motion.div
                       whileHover={{ y: -6, boxShadow: "0 24px 48px rgba(0,0,0,0.10), 0 8px 16px rgba(0,0,0,0.06)" }}
-                      className="group relative rounded-xl border border-[#B8860B]/40 bg-white overflow-hidden cursor-pointer hover:border-[#B8860B]/60 transition-all duration-300 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.03)]"
+                      className="group relative rounded-xl border border-[#B8860B]/40 bg-white overflow-hidden cursor-pointer hover:border-[#B8860B]/60 transition-all duration-300 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.03)] h-full flex flex-col"
                     >
                       {/* Product Image */}
                       {product.imageSrc && (
@@ -153,7 +153,7 @@ export default function ProductsLanding() {
                       )}
 
                       {/* Card Content */}
-                      <div className="p-8">
+                      <div className="p-8 flex flex-col flex-grow">
                         {/* Top row: Category + Status */}
                         <div className="flex items-start justify-between mb-5">
                           <div className="w-11 h-11 rounded-xl bg-[#F5F4F1] border border-[#B8860B]/55 flex items-center justify-center shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
@@ -171,7 +171,7 @@ export default function ProductsLanding() {
                         <p className="font-mono text-[10px] text-black/60 tracking-[0.15em] uppercase mb-4 font-medium">
                           {product.subtitle}
                         </p>
-                        <p className="font-body text-sm text-black/70 leading-relaxed mb-7">
+                        <p className="font-body text-sm text-black/70 leading-relaxed mb-7 flex-grow">
                           {product.description}
                         </p>
 
