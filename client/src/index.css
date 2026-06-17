@@ -953,6 +953,12 @@ body {
   filter: contrast(1.02);
 }
 
+/* Exclude DHT page from body-level contrast filter (has its own) */
+.dht-root {
+  filter: none;
+  isolation: isolate;
+}
+
 /* Slightly increase contrast on images for punchier visuals */
 img:not(.no-sharpen) {
   filter: contrast(1.03) saturate(1.02);

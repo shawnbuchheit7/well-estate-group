@@ -1160,7 +1160,7 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
                 <img
                   src={ORGAN_IMAGES[prevOrgan] || ORGAN_IMAGES.default}
                   alt=""
-                  className="object-contain absolute"
+                  className="object-contain absolute no-sharpen"
                   style={{
                     filter: getOrganGlowFilter(prevOrgan),
                     transform: `scale(${zoom / 100})`,
@@ -1180,19 +1180,20 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
                 ref={bodyImgRef}
                 src={isOverview ? ORGAN_IMAGES.default : (ORGAN_IMAGES[selectedOrganKey] || ORGAN_IMAGES.default)}
                 alt="Digital Health Twin"
-                className="object-contain"
+                className="object-contain no-sharpen"
                 onLoad={() => {
                   if (bodyImgRef.current) setBodyRect(bodyImgRef.current.getBoundingClientRect());
                   if (bodyContainerRef.current) setContainerRect(bodyContainerRef.current.getBoundingClientRect());
                 }}
                 style={{
                   filter: isOverview
-                    ? 'brightness(1.05) contrast(1.08) sepia(0.15) hue-rotate(-10deg) saturate(0.9) drop-shadow(0 0 30px rgba(184, 134, 11, 0.12)) drop-shadow(0 0 60px rgba(184, 134, 11, 0.06))'
+                    ? 'brightness(1.08) contrast(1.12) sepia(0.08) hue-rotate(-5deg) saturate(0.95) drop-shadow(0 0 30px rgba(184, 134, 11, 0.12)) drop-shadow(0 0 60px rgba(184, 134, 11, 0.06))'
                     : getOrganGlowFilter(selectedOrganKey),
                   transform: `scale(${(zoom / 100) * (isTransitioning ? 0.93 : 1)})`,
                   height: "100%",
                   maxWidth: "100%",
                   objectFit: "contain" as React.CSSProperties["objectFit"],
+                  imageRendering: "auto" as React.CSSProperties["imageRendering"],
                   opacity: isTransitioning ? 0.6 : 1,
                   transition: isTransitioning
                     ? "filter 0.3s ease-in, transform 0.3s ease-in, opacity 0.3s ease-in, mask-image 0.3s ease, -webkit-mask-image 0.3s ease"

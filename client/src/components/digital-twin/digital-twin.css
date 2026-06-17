@@ -417,12 +417,19 @@
 /* Body images — maximum quality rendering */
 .dht-root img {
   image-rendering: auto;
-  image-rendering: smooth;
+  image-rendering: high-quality;
   -ms-interpolation-mode: bicubic;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   transform: translateZ(0);
-  will-change: transform, opacity;
+}
+
+/* Body visualization — crisp at all zoom levels */
+.dht-root img.no-sharpen {
+  image-rendering: auto;
+  image-rendering: high-quality;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 
 /* SVG charts and visualizations — crisp lines */
