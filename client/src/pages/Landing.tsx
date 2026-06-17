@@ -110,7 +110,7 @@ export default function Landing() {
           src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/AazsyqQemaKsmcfz.mp4"
         />
         {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 bg-black/60" />
         
         <motion.div 
           className="relative z-10 max-w-5xl mx-auto px-6 text-center"
@@ -129,8 +129,8 @@ export default function Landing() {
 
           <motion.p 
             variants={fadeInUp}
-            className="font-body text-lg md:text-xl text-white/90 leading-relaxed max-w-3xl mx-auto mb-4"
-            style={{ textShadow: '0 1px 12px rgba(0,0,0,0.6)' }}
+            className="font-body text-lg md:text-xl text-white leading-relaxed max-w-3xl mx-auto mb-4"
+            style={{ textShadow: '0 2px 16px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.7)' }}
           >
             The only wellness consulting firm led by the operator who built Fountain Life from concept to scale, 
             managed 144+ vessel wellness programs at Technogym, and delivered for the world's most demanding brands.
@@ -138,8 +138,8 @@ export default function Landing() {
 
           <motion.p 
             variants={fadeInUp}
-            className="font-body text-base text-white/70 mb-12"
-            style={{ textShadow: '0 1px 10px rgba(0,0,0,0.6)' }}
+            className="font-body text-base text-white/90 mb-12"
+            style={{ textShadow: '0 2px 12px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.7)' }}
           >
             Longevity Centers &middot; Mixed-Use Developments &middot; Hospitality Wellness &middot; Global Expansion
           </motion.p>
