@@ -89,9 +89,9 @@ export default function CorporateHealth() {
       <div className="fixed top-0 left-0 right-0 z-[60]">
         <FullScreenNav
           currentLabel="Corporate Health"
-          section="products"
-          backHref="/product-intelligence"
-          backLabel="Back to Products"
+          section="longevity"
+          backHref="/longevity"
+          backLabel="Back to Longevity"
         />
       </div>
       {/* Fixed Header */}

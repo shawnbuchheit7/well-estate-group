@@ -15,7 +15,7 @@ export default function DigitalHealthTwin() {
       <div className="fixed top-0 left-0 right-0 z-[60]">
         <FullScreenNav
           currentLabel="Digital Health Twin"
-          section="technology"
+          section="longevity"
           backHref="/longevity/technology"
           backLabel="Back to Technology"
         />
