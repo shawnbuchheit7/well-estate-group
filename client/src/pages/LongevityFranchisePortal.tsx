@@ -106,7 +106,8 @@ export default function LongevityFranchisePortal() {
       {/* Full-screen iframe */}
       <iframe
         src={PORTAL_URL}
-        className="flex-1 w-full border-0"
+        className="w-full border-0"
+        style={{ height: 'calc(100vh - 44px)' }}
         title="Well Estate Group Franchise Portal"
         allow="clipboard-write; clipboard-read"
         loading="eager"
