@@ -106,7 +106,7 @@ export default function Landing() {
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-contain"
+          className="absolute inset-0 w-full h-full object-cover object-top"
           src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/AazsyqQemaKsmcfz.mp4"
         />
         {/* Light overlay to fade background for text readability */}
@@ -145,7 +145,7 @@ export default function Landing() {
           </motion.p>
           
           <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="#contact" className="group px-10 py-4 bg-black text-white font-body text-sm tracking-[0.12em] uppercase rounded-full hover:bg-black/90 transition-all shadow-[0_4px_20px_rgba(0,0,0,0.15)] hover:-translate-y-0.5">
+            <a href="#contact" className="group px-8 py-3 border-2 border-black text-black font-body text-sm tracking-[0.12em] uppercase rounded-full hover:bg-black hover:text-white transition-all hover:-translate-y-0.5">
               Start a Conversation
               <svg className="inline-block ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
             </a>
