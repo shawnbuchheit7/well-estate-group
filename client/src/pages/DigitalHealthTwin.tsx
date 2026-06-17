@@ -11,14 +11,16 @@ const DemoDashboard = lazy(() => import("@/components/digital-twin/DemoDashboard
 
 export default function DigitalHealthTwin() {
   return (
-    <div className="fixed inset-0 z-50 bg-white flex flex-col">
-      <FullScreenNav
-        currentLabel="Digital Health Twin"
-        section="technology"
-        backHref="/longevity/technology"
-        backLabel="Back to Technology"
-      />
-      <div className="flex-1 overflow-auto">
+    <>
+      <div className="fixed top-0 left-0 right-0 z-[60]">
+        <FullScreenNav
+          currentLabel="Digital Health Twin"
+          section="technology"
+          backHref="/longevity/technology"
+          backLabel="Back to Technology"
+        />
+      </div>
+      <div className="pt-11">
         <Suspense fallback={
           <div className="min-h-screen flex items-center justify-center bg-white">
             <div className="text-center">
@@ -30,6 +32,6 @@ export default function DigitalHealthTwin() {
           <DemoDashboard />
         </Suspense>
       </div>
-    </div>
+    </>
   );
 }

@@ -80,7 +80,7 @@ export default function DemoDashboard() {
   const isTwinTab = activeTab === "twin";
 
   return (
-    <div className="dht-root h-full flex flex-col overflow-hidden" style={{ background: "var(--fl-bg-deep)" }}>
+    <div className="dht-root h-[calc(100vh-2.75rem)] flex flex-col overflow-hidden" style={{ background: "var(--fl-bg-deep)" }}>
 
       {/* ═══ WEG Luxury Header ═══ */}
       <header className="flex-shrink-0 sticky top-0 z-50" style={{
