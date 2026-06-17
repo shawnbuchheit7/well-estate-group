@@ -67,7 +67,7 @@ const CATEGORY_CONFIG: Record<string, { label: string; icon: React.ElementType; 
   metabolic: { label: "Metabolic", icon: Flame, color: "#F59E0B" },
   cardiovascular: { label: "Cardiovascular", icon: Heart, color: "#EF4444" },
   inflammatory: { label: "Inflammatory", icon: Shield, color: "#9A7B4F" },
-  hormonal: { label: "Hormonal", icon: Zap, color: "#06B6D4" },
+  hormonal: { label: "Hormonal", icon: Zap, color: "#9A7B4F" },
   nutritional: { label: "Liver & Kidney", icon: Droplets, color: "#10B981" },
   immune: { label: "Longevity", icon: Activity, color: "#EC4899" },
 };
@@ -79,7 +79,7 @@ const EVENT_CATEGORY_CONFIG: Record<string, { icon: React.ElementType; color: st
   milestone: { icon: TrendingUp, color: "#F59E0B", label: "Milestone" },
   intervention: { icon: Pill, color: "#9A7B4F", label: "Intervention" },
   lab: { icon: FlaskConical, color: "#EC4899", label: "Lab Work" },
-  lifestyle: { icon: Dumbbell, color: "#06B6D4", label: "Lifestyle" },
+  lifestyle: { icon: Dumbbell, color: "#9A7B4F", label: "Lifestyle" },
 };
 
 /* ─── Chart colors for multi-line comparison ─── */
@@ -185,7 +185,7 @@ function DateRangeSlider({
             style={{
               left: `${startPct}%`,
               width: `${endPct - startPct}%`,
-              background: "linear-gradient(90deg, #B8860B, #06B6D4)",
+              background: "linear-gradient(90deg, #B8860B, #D4A853)",
               boxShadow: "0 0 10px rgba(34,211,238,0.3)",
             }}
           />
@@ -949,7 +949,7 @@ export function BiomarkerTrends({ dbBiomarkers, timelineEvents = [], goals = [] 
                     }`}
                   >
                     <div className="flex items-center justify-between">
-                      <span className={`text-xs font-medium ${isSelected ? "text-cyan-300" : "text-gray-900"}`}>{bm.name}</span>
+                      <span className={`text-xs font-medium ${isSelected ? "text-amber-600" : "text-gray-900"}`}>{bm.name}</span>
                       {isSelected && <div className="w-2 h-2 rounded-full bg-amber-600" style={{ boxShadow: "0 0 6px rgba(34,211,238,0.6)" }} />}
                     </div>
                     <div className="flex items-center gap-2 mt-1">

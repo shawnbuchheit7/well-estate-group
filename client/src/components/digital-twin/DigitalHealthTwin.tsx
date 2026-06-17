@@ -502,11 +502,11 @@ function VitalsBar() {
   };
 
   return (
-    <div className="flex items-center justify-center gap-3 px-6 py-2" data-tour="vitals-bar" style={{ background: 'linear-gradient(180deg, transparent, var(--fl-bg-deep))', borderTop: '1px solid var(--fl-border-subtle)' }}>
+    <div className="flex items-center justify-center gap-3 px-6 py-2" data-tour="vitals-bar" style={{ background: 'linear-gradient(180deg, transparent, rgba(5,10,18,0.95))', borderTop: '1px solid rgba(184, 134, 11, 0.15)' }}>
       {vitals.map((vital, i) => {
         const accentHex = vitalColorMap[vital.color] || '#B8860B';
         return (
-          <div key={i} className="text-center px-5 py-2 rounded-xl relative group transition-all duration-300 overflow-hidden hover:-translate-y-0.5" style={{ background: 'var(--fl-bg-card)', border: '1px solid var(--fl-border)', boxShadow: 'var(--fl-shadow-crisp)' }}>
+          <div key={i} className="text-center px-5 py-2 rounded-xl relative group transition-all duration-300 overflow-hidden hover:-translate-y-0.5" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(184, 134, 11, 0.15)', boxShadow: '0 2px 8px rgba(0,0,0,0.2)' }}>
             {/* Top accent line with glow */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[2px] w-14 rounded-full" style={{ background: `linear-gradient(90deg, transparent, ${accentHex}, transparent)`, opacity: 0.7 }} />
             <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[6px] w-14 rounded-full blur-[4px]" style={{ background: `linear-gradient(90deg, transparent, ${accentHex}, transparent)`, opacity: 0.3 }} />
@@ -514,8 +514,8 @@ function VitalsBar() {
               <span className="absolute top-2 right-2.5 w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse" />
             )}
             <p className="text-[9px] font-semibold uppercase tracking-[0.15em] mb-1" style={{ color: accentHex }}>{vital.label}</p>
-            <p className="text-base font-bold tabular-nums transition-all duration-500" style={{ fontFamily: "'Space Mono', monospace", color: 'var(--fl-text-primary)' }}>
-              {vital.value} <span className="text-[10px] font-normal" style={{ color: 'var(--fl-text-muted)' }}>{vital.unit}</span>
+            <p className="text-base font-bold tabular-nums transition-all duration-500" style={{ fontFamily: "'Space Mono', monospace", color: '#FFFFFF' }}>
+              {vital.value} <span className="text-[10px] font-normal" style={{ color: 'rgba(255,255,255,0.5)' }}>{vital.unit}</span>
             </p>
           </div>
         );
@@ -672,19 +672,19 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
   // Get the glow drop-shadow filter for the selected organ
   const getOrganGlowFilter = (organKey: string) => {
     const config = ORGAN_CONFIGS.find(c => c.key === organKey);
-    if (!config) return "invert(1) hue-rotate(180deg) brightness(0.4) contrast(1.3) sepia(0.1) drop-shadow(0 0 15px rgba(184, 134, 11, 0.1))";
-    return `invert(1) hue-rotate(180deg) brightness(0.4) contrast(1.3) sepia(0.1) drop-shadow(0 0 15px ${config.glowColor}) drop-shadow(0 0 35px ${config.glowColor.replace(/[\d.]+\)$/, '0.15)')})`;  
+    if (!config) return "brightness(1.1) contrast(1.05) drop-shadow(0 0 20px rgba(184, 134, 11, 0.12))";
+    return `brightness(1.15) contrast(1.05) saturate(1.1) drop-shadow(0 0 20px ${config.glowColor}) drop-shadow(0 0 50px ${config.glowColor.replace(/[\d.]+\)$/, '0.12)')})`;  
   };
 
   return (
-    <div className="w-full h-full overflow-hidden flex flex-col relative fl-theme-transition fl-twin-dark-zone" style={{ background: 'var(--fl-bg-deep)', boxShadow: 'var(--fl-shadow-elevated)' }}>
+    <div className="w-full h-full overflow-hidden flex flex-col relative fl-theme-transition" style={{ background: '#FFFFFF', boxShadow: '0 0 0 1px rgba(184, 134, 11, 0.1), 0 4px 24px rgba(0,0,0,0.06)', borderRadius: '16px' }}>
       {/* Compare Organs Overlay */}
       {showCompare && (
         <CompareOrgansOverlay organConfigs={ORGAN_CONFIGS} getOrganAge={getOrganAge} onClose={() => setShowCompare(false)} />
       )}
 
       {/* Top Bar - Organ Quick Select (Desktop) */}
-      <div className="hidden md:flex items-center justify-between px-5 py-2" style={{ borderBottom: '1px solid var(--fl-border)' }}>
+      <div className="hidden md:flex items-center justify-between px-5 py-2" style={{ borderBottom: '1px solid rgba(184, 134, 11, 0.1)' }}>
         <div className="flex items-center gap-0.5">
           {/* Overview tab */}
           <button
@@ -692,15 +692,15 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
             className="px-3 py-1.5 rounded-md text-[12px] font-semibold transition-all duration-200 flex items-center gap-1.5"
             style={isOverview ? {
               background: 'rgba(184, 134, 11, 0.08)',
-              color: 'var(--fl-accent)',
-              boxShadow: '0 0 20px rgba(184, 134, 11, 0.08)',
+              color: '#B8860B',
+              boxShadow: '0 0 20px rgba(184, 134, 11, 0.06)',
               border: '1px solid rgba(184, 134, 11, 0.2)',
-            } : { border: '1px solid transparent', color: 'var(--fl-text-muted)' }}
+            } : { border: '1px solid transparent', color: '#6B7280' }}
           >
             <Activity className="w-3 h-3" />
             Overview
           </button>
-          <div className="w-px h-4 mx-1" style={{ background: 'var(--fl-border)' }} />
+          <div className="w-px h-4 mx-1" style={{ background: 'rgba(184, 134, 11, 0.15)' }} />
           {ORGAN_CONFIGS.map((organ) => {
             const isSelected = selectedOrganKey === organ.key;
             return (
@@ -709,11 +709,11 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
                 onClick={() => setSelectedOrganKey(organ.key)}
                 className="px-3 py-1.5 rounded-md text-[12px] font-semibold transition-all duration-200 flex items-center gap-1.5"
                 style={isSelected ? {
-                  background: `${organ.color}18`,
+                  background: `${organ.color}12`,
                   color: organ.color,
-                  boxShadow: `0 0 20px ${organ.color}12`,
+                  boxShadow: `0 0 20px ${organ.color}08`,
                   border: `1px solid ${organ.color}30`,
-                } : { border: '1px solid transparent', color: 'var(--fl-text-muted)' }}
+                } : { border: '1px solid transparent', color: '#6B7280' }}
               >
                 <organ.icon className="w-3 h-3" />
                 {organ.label}
@@ -724,15 +724,15 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
       </div>
 
       {/* Mobile Organ Pill Strip — ultra-compact */}
-      <div className="md:hidden fl-mobile-organ-strip" style={{ borderBottom: '1px solid var(--fl-border)' }}>
+      <div className="md:hidden fl-mobile-organ-strip" style={{ borderBottom: '1px solid rgba(184, 134, 11, 0.1)' }}>
         <button
           onClick={() => { setSelectedOrganKey("overview"); setMobilePanel('none'); }}
           className="flex items-center gap-0.5 px-2 py-0.5 rounded-full text-[9px] font-semibold whitespace-nowrap flex-shrink-0 transition-all"
           style={isOverview ? {
-            background: 'rgba(184, 134, 11, 0.12)',
-            color: 'var(--fl-accent)',
+            background: 'rgba(184, 134, 11, 0.1)',
+            color: '#B8860B',
             border: '1px solid rgba(184, 134, 11, 0.25)',
-          } : { border: '1px solid var(--fl-border)', color: 'var(--fl-text-muted)' }}
+          } : { border: '1px solid rgba(0,0,0,0.08)', color: '#6B7280' }}
         >
           <Activity className="w-2.5 h-2.5" />
           Overview
@@ -745,10 +745,10 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
               onClick={() => { setSelectedOrganKey(organ.key); setMobilePanel('none'); }}
               className="flex items-center gap-0.5 px-2 py-0.5 rounded-full text-[9px] font-semibold whitespace-nowrap flex-shrink-0 transition-all"
               style={isSelected ? {
-                background: `${organ.color}15`,
+                background: `${organ.color}12`,
                 color: organ.color,
-                border: `1px solid ${organ.color}35`,
-              } : { border: '1px solid var(--fl-border)', color: 'var(--fl-text-muted)' }}
+                border: `1px solid ${organ.color}30`,
+              } : { border: '1px solid rgba(0,0,0,0.08)', color: '#6B7280' }}
             >
               <organ.icon className="w-2.5 h-2.5" />
               {organ.label}
@@ -761,7 +761,7 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
       <div className="flex flex-1 overflow-hidden relative">
 
         {/* ═══ LEFT PANEL (Desktop only) ═══ */}
-        <div className="hidden md:block w-[300px] flex-shrink-0 p-4 overflow-y-auto" style={{ borderRight: '1px solid var(--fl-border)' }}>
+        <div className="hidden md:block w-[300px] flex-shrink-0 p-4 overflow-y-auto" style={{ borderRight: '1px solid rgba(184, 134, 11, 0.12)', background: '#FAFAFA' }}>
           {isOverview ? (
             /* ─── OVERVIEW LEFT PANEL — Streamlined ─── */
             <>
@@ -1143,10 +1143,10 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
         </div>
 
         {/* ═══ CENTER PANEL — AI-Generated Organ Image Swapping ═══ */}
-        <div className="flex-1 flex flex-col relative" ref={bodyContainerRef} style={{ minWidth: 0 }}>
+        <div className="flex-1 flex flex-col relative" ref={bodyContainerRef} style={{ minWidth: 0, background: '#050A12', borderRadius: '16px', margin: '4px 0', overflow: 'hidden', boxShadow: '0 0 0 1px rgba(184, 134, 11, 0.20), 0 8px 40px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.03)' }}>
           {/* Layered ambient background */}
           <div className="absolute inset-0 pointer-events-none z-[1]" style={{
-            backgroundImage: `radial-gradient(ellipse 60% 50% at 50% 45%, ${selectedConfig.color}08 0%, transparent 70%), radial-gradient(circle at 50% 40%, var(--fl-accent-glow) 0%, transparent 60%), radial-gradient(circle at 1px 1px, var(--fl-border) 1px, transparent 0)`,
+            backgroundImage: `radial-gradient(ellipse 60% 50% at 50% 45%, ${selectedConfig.color}15 0%, transparent 70%), radial-gradient(circle at 50% 40%, rgba(184, 134, 11, 0.04) 0%, transparent 60%), radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0)`,
             backgroundSize: '100% 100%, 100% 100%, 40px 40px',
             transition: 'background-image 0.6s ease',
           }} />
@@ -1187,7 +1187,7 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
                 }}
                 style={{
                   filter: isOverview
-                    ? 'invert(1) hue-rotate(180deg) brightness(0.4) contrast(1.3) sepia(0.1) drop-shadow(0 0 20px rgba(184, 134, 11, 0.12))'
+                    ? 'brightness(1.1) contrast(1.05) drop-shadow(0 0 30px rgba(184, 134, 11, 0.15)) drop-shadow(0 0 60px rgba(184, 134, 11, 0.08))'
                     : getOrganGlowFilter(selectedOrganKey),
                   transform: `scale(${(zoom / 100) * (isTransitioning ? 0.93 : 1)})`,
                   height: "100%",
@@ -1302,7 +1302,7 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
                 <span className="text-xs font-semibold" style={{ color: selectedConfig.color }}>
                   {selectedConfig.label} System
                 </span>
-                <span className="text-[10px]" style={{ color: 'var(--fl-text-muted)' }}>|</span>
+                <span className="text-[10px]" style={{ color: 'rgba(255,255,255,0.4)' }}>|</span>
                 <span className={`text-[10px] font-bold ${ageDiffColor}`}>
                   Age {selectedAge}
                 </span>
@@ -1361,11 +1361,11 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
 
           {/* Compare / Export floating buttons (hidden in overview and on mobile) */}
           {!isOverview && <div className="hidden md:flex items-center justify-center gap-3 py-1.5">
-            <Button variant="outline" size="sm" className="rounded-lg px-4 gap-2 h-8 text-[11px] font-medium backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5" style={{ border: '1px solid var(--fl-border)', background: 'var(--fl-bg-card)', backgroundImage: 'var(--fl-card-gradient)', color: 'var(--fl-text-secondary)', boxShadow: 'var(--fl-shadow-crisp)' }} onClick={() => setShowCompare(true)}>
+            <Button variant="outline" size="sm" className="rounded-lg px-4 gap-2 h-8 text-[11px] font-medium backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5" style={{ border: '1px solid rgba(255,255,255,0.12)', background: 'rgba(255,255,255,0.05)', color: 'rgba(255,255,255,0.7)', boxShadow: '0 2px 8px rgba(0,0,0,0.2)' }} onClick={() => setShowCompare(true)}>
               <GitCompare className="w-3.5 h-3.5" /> Compare Organs
             </Button>
 
-            <Button variant="outline" size="sm" className="rounded-lg px-4 gap-2 h-8 text-[11px] font-medium backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5" style={{ border: '1px solid var(--fl-border-accent)', background: 'var(--fl-accent-glow)', color: 'var(--fl-accent)', boxShadow: 'var(--fl-shadow-crisp)' }} onClick={() => {
+            <Button variant="outline" size="sm" className="rounded-lg px-4 gap-2 h-8 text-[11px] font-medium backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5" style={{ border: '1px solid rgba(184, 134, 11, 0.35)', background: 'rgba(184, 134, 11, 0.1)', color: '#B8860B', boxShadow: '0 2px 8px rgba(0,0,0,0.2)' }} onClick={() => {
               exportHealthTwinPdf({
                 userName: "Member",
                 biologicalAge: Math.round(ORGAN_CONFIGS.reduce((sum, c) => sum + getOrganAge(c.key), 0) / ORGAN_CONFIGS.length),
@@ -1396,7 +1396,7 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
 
           {/* Bottom: Vitals Bar on desktop, Organ Bio Ages on mobile */}
           {isMobile ? (
-            <div className="flex items-center justify-center gap-1.5 px-3 py-1.5" data-tour="vitals-bar" style={{ background: 'linear-gradient(180deg, transparent, var(--fl-bg-deep))', borderTop: '1px solid var(--fl-border-subtle)' }}>
+            <div className="flex items-center justify-center gap-1.5 px-3 py-1.5" data-tour="vitals-bar" style={{ background: 'linear-gradient(180deg, transparent, rgba(5,10,18,0.95))', borderTop: '1px solid rgba(184, 134, 11, 0.15)' }}>
               {ORGAN_CONFIGS.map((organ) => {
                 const age = getOrganAge(organ.key);
                 const diff = age - chronoAge;
@@ -1409,15 +1409,15 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
                     onClick={() => { setSelectedOrganKey(organ.key); }}
                     className="text-center px-1.5 py-1.5 rounded-lg relative transition-all duration-200 active:scale-95 flex-1"
                     style={{
-                      background: selectedOrganKey === organ.key ? `${organ.color}12` : 'var(--fl-bg-card)',
-                      border: `1px solid ${selectedOrganKey === organ.key ? `${organ.color}35` : 'var(--fl-border)'}`,
-                      boxShadow: 'var(--fl-shadow-crisp)',
+                      background: selectedOrganKey === organ.key ? `${organ.color}20` : 'rgba(255,255,255,0.04)',
+                      border: `1px solid ${selectedOrganKey === organ.key ? `${organ.color}50` : 'rgba(184, 134, 11, 0.12)'}`,
+                      boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
                     }}
                   >
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[1.5px] w-6 rounded-full" style={{ background: `linear-gradient(90deg, transparent, ${organ.color}, transparent)`, opacity: 0.5 }} />
                     <Icon className="w-2.5 h-2.5 mx-auto mb-0.5" style={{ color: organ.color }} />
                     <p className="text-[8px] font-semibold uppercase tracking-wider mb-0.5" style={{ color: organ.color }}>{organ.label}</p>
-                    <p className="text-sm font-bold tabular-nums" style={{ fontFamily: "'Space Mono', monospace", color: 'var(--fl-text-primary)' }}>{age}</p>
+                    <p className="text-sm font-bold tabular-nums" style={{ fontFamily: "'Space Mono', monospace", color: '#FFFFFF' }}>{age}</p>
                     <p className="text-[7px] font-semibold" style={{ color: diffColor }}>{diffLabel}</p>
                   </button>
                 );
@@ -1429,7 +1429,7 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
         </div>
 
         {/* ═══ RIGHT PANEL (Desktop only) ═══ */}
-        <div ref={rightPanelRef} className="hidden md:flex w-[220px] flex-shrink-0 p-3 overflow-y-auto flex-col gap-2" data-tour="organ-cards" style={{ borderLeft: '1px solid var(--fl-border)' }}>
+        <div ref={rightPanelRef} className="hidden md:flex w-[220px] flex-shrink-0 p-3 overflow-y-auto flex-col gap-2" data-tour="organ-cards" style={{ borderLeft: '1px solid rgba(184, 134, 11, 0.12)', background: '#FAFAFA' }}>
           {ORGAN_CONFIGS.map((organ) => {
             const isSelected = selectedOrganKey === organ.key;
             const age = getOrganAge(organ.key);

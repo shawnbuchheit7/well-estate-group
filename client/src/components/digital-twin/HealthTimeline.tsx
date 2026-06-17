@@ -241,7 +241,7 @@ const DEMO_TIMELINE: TimelineEvent[] = [
 /* ─── Category Config ─── */
 const CATEGORY_CONFIG: Record<string, { icon: typeof Heart; color: string; label: string; gradient: string }> = {
   screening: { icon: Scan, color: "#10B981", label: "Screening", gradient: "linear-gradient(135deg, #10B981, #059669)" },
-  assessment: { icon: Stethoscope, color: "#3B82F6", label: "Assessment", gradient: "linear-gradient(135deg, #3B82F6, #2563EB)" },
+  assessment: { icon: Stethoscope, color: "#4A5568", label: "Assessment", gradient: "linear-gradient(135deg, #4A5568, #2D3748)" },
   milestone: { icon: TrendingUp, color: "#F59E0B", label: "Milestone", gradient: "linear-gradient(135deg, #F59E0B, #D97706)" },
   intervention: { icon: Syringe, color: "#9A7B4F", label: "Intervention", gradient: "linear-gradient(135deg, #9A7B4F, #7A5E3A)" },
   lab: { icon: FlaskConical, color: "#EC4899", label: "Lab Results", gradient: "linear-gradient(135deg, #EC4899, #DB2777)" },
@@ -695,7 +695,7 @@ export function HealthTimeline({ dbTimeline = [] }: { dbTimeline?: Array<{ id: n
       <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3">
         {[
           { label: "Screenings", value: events.filter((e) => e.category === "screening").length, icon: Scan, color: "#10B981", gradient: "linear-gradient(135deg, #10B981, #059669)" },
-          { label: "Assessments", value: events.filter((e) => e.category === "assessment").length, icon: Stethoscope, color: "#3B82F6", gradient: "linear-gradient(135deg, #3B82F6, #2563EB)" },
+          { label: "Assessments", value: events.filter((e) => e.category === "assessment").length, icon: Stethoscope, color: "#4A5568", gradient: "linear-gradient(135deg, #4A5568, #2D3748)" },
           { label: "Lab Results", value: events.filter((e) => e.category === "lab").length, icon: FlaskConical, color: "#EC4899", gradient: "linear-gradient(135deg, #EC4899, #DB2777)" },
           { label: "Upcoming", value: events.filter((e) => e.status === "upcoming").length, icon: Calendar, color: "#F59E0B", gradient: "linear-gradient(135deg, #F59E0B, #D97706)" },
         ].map((stat, i) => (
