@@ -234,7 +234,7 @@ export default function Landing() {
       <section className="py-24 md:py-32 bg-[#FAFAF8]">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <motion.div 
-            className="grid md:grid-cols-2 gap-10 md:gap-14 items-center"
+            className="grid md:grid-cols-[3fr_2fr] gap-10 md:gap-14 items-center"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
