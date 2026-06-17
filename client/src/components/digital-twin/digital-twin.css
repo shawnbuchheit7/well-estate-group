@@ -409,3 +409,53 @@
 .dht-root [style*="Space Mono"] {
   font-family: 'Space Mono', monospace !important;
 }
+
+/* ═══════════════════════════════════════════════════
+   HIGH-RES RENDERING — Digital Health Twin specific
+   ═══════════════════════════════════════════════════ */
+
+/* Body images — maximum quality rendering */
+.dht-root img {
+  image-rendering: auto;
+  image-rendering: smooth;
+  -ms-interpolation-mode: bicubic;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform, opacity;
+}
+
+/* SVG charts and visualizations — crisp lines */
+.dht-root svg {
+  shape-rendering: geometricPrecision;
+  text-rendering: optimizeLegibility;
+}
+
+.dht-root svg text {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.dht-root svg line,
+.dht-root svg path,
+.dht-root svg circle,
+.dht-root svg rect {
+  shape-rendering: geometricPrecision;
+}
+
+/* Crisp card edges */
+.dht-root .fl-card,
+.dht-root .fl-card-elevated,
+.dht-root [data-slot="card"] {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Ensure animations don't blur */
+.dht-root [class*="transition"],
+.dht-root [class*="animate"] {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}

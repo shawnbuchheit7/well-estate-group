@@ -826,3 +826,123 @@ html {
     }
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HIGH-RESOLUTION RENDERING OPTIMIZATIONS
+   Ensures maximum crispness on all displays (Retina, 4K, standard)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Global rendering quality */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+}
+
+/* Image rendering — crisp on all displays */
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: bicubic;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Photos and complex images — smooth scaling */
+img[src$=".jpg"],
+img[src$=".jpeg"],
+img[src$=".webp"],
+img[src*="manuscdn"],
+img[src*="unsplash"] {
+  image-rendering: auto;
+  image-rendering: smooth;
+  -ms-interpolation-mode: bicubic;
+}
+
+/* SVG and icons — pixel-perfect */
+svg,
+img[src$=".svg"],
+img[src$=".png"] {
+  image-rendering: -webkit-optimize-contrast;
+  shape-rendering: geometricPrecision;
+}
+
+/* Force GPU acceleration for smoother rendering */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Ensure sharp borders and shadows */
+*,
+*::before,
+*::after {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* High-DPI media query optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  body {
+    -webkit-font-smoothing: subpixel-antialiased;
+  }
+  
+  img {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+}
+
+/* Crisp text rendering for all weights */
+@layer base {
+  * {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Ensure thin fonts render crisply */
+  [class*="font-light"],
+  [class*="font-thin"],
+  [class*="font-extralight"] {
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  /* Ensure bold fonts have proper weight rendering */
+  [class*="font-bold"],
+  [class*="font-extrabold"],
+  [class*="font-black"],
+  strong, b {
+    -webkit-font-smoothing: antialiased;
+    font-synthesis: none;
+  }
+}
+
+/* Prevent blurry transforms */
+[class*="transform"],
+[class*="translate"],
+[class*="scale"],
+[class*="rotate"] {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+/* Crisp borders */
+[class*="border"],
+[class*="ring"],
+[class*="divide"] {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Optimize backdrop-filter rendering */
+[class*="backdrop"],
+[style*="backdrop-filter"] {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
