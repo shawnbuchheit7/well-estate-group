@@ -17,8 +17,6 @@ interface ProductTile {
   subtitle: string;
   description: string;
   href: string;
-  imageSrc?: string;
-  imageAlt?: string;
   status: "active" | "in-development" | "evaluation" | "research";
   stats?: { label: string; value: string }[];
   category: string;
@@ -45,8 +43,6 @@ const products: ProductTile[] = [
     subtitle: "Minimalist Power Rack Attachment",
     description: "Ultra-minimal \"T-Spine\" structure that eliminates bulky steel plates and provides a sleek, skeletal aesthetic. Universal fit for 5 lb to 100 lb round pro-style dumbbells with tool-less mounting.",
     href: "/product-intelligence/t-spine",
-    imageSrc: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/JfhWDSbPCOpvLyfH.webp",
-    imageAlt: "T-Spine Dumbbell Rest — Front Elevation",
     status: "active",
     stats: [
       { label: "Weight Range", value: "5–100 lb" },
@@ -140,17 +136,6 @@ export default function ProductsLanding() {
                       whileHover={{ y: -6, boxShadow: "0 24px 48px rgba(0,0,0,0.10), 0 8px 16px rgba(0,0,0,0.06)" }}
                       className="group relative rounded-xl border border-[#B8860B]/40 bg-white overflow-hidden cursor-pointer hover:border-[#B8860B]/60 transition-all duration-300 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.03)] h-full flex flex-col"
                     >
-                      {/* Product Image */}
-                      {product.imageSrc && (
-                        <div className="w-full h-56 bg-[#FAFAF8] border-b border-[#B8860B]/40 flex items-center justify-center p-6 overflow-hidden">
-                          <img
-                            loading="lazy"
-                            src={product.imageSrc}
-                            alt={product.imageAlt || product.title}
-                            className="h-full w-auto object-contain group-hover:scale-105 transition-transform duration-500"
-                          />
-                        </div>
-                      )}
 
                       {/* Card Content */}
                       <div className="p-8 flex flex-col flex-grow">
