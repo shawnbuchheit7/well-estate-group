@@ -389,6 +389,7 @@ export default function Landing() {
                 items: ['Revenue model & break-even analysis', 'Membership tier architecture', 'Clinical protocol & staffing design', 'Market entry & international expansion', 'JV, licensing & franchise structuring'],
                 audience: 'For Investors & Operators',
                 href: '/longevity',
+                bgImage: '/card-bg-longevity.jpg',
               },
               {
                 num: '02',
@@ -396,6 +397,7 @@ export default function Landing() {
                 items: ['Consumer & commercial product positioning', 'Go-to-market strategy & execution', 'Channel strategy & distribution', 'Brand partnership development', 'Product lifecycle & innovation roadmap'],
                 audience: 'For Product Companies & Brands',
                 href: '/product-intelligence',
+                bgImage: '/card-bg-product.jpg',
               },
               {
                 num: '03',
@@ -403,6 +405,7 @@ export default function Landing() {
                 items: ['Fundraising strategy & investor materials', 'PE & institutional deal structuring', 'Financial modeling & valuation', 'Due diligence preparation', 'Exit planning & strategic positioning'],
                 audience: 'For Founders & Investors',
                 href: '/venture-capital',
+                bgImage: '/card-bg-venture.jpg',
               },
               {
                 num: '04',
@@ -410,33 +413,43 @@ export default function Landing() {
                 items: ['AI-powered diagnostics & analytics', 'Platform architecture & integration', 'Biomarker data intelligence', 'Predictive health modeling', 'Digital twin & member experience'],
                 audience: 'For Operators & Investors',
                 href: '/technology',
+                bgImage: '/card-bg-technology.jpg',
               },
             ].map((service) => (
               <motion.a 
                 key={service.num}
                 href={service.href}
                 variants={fadeInUp}
-                className="group relative block p-8 md:p-10 bg-white rounded-2xl shadow-[0_2px_20px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)] border border-black/[0.04] cursor-pointer no-underline transition-all duration-500 hover:-translate-y-1"
+                className="group relative block p-8 md:p-10 bg-white rounded-2xl shadow-[0_2px_20px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)] border border-black/[0.04] cursor-pointer no-underline transition-all duration-500 hover:-translate-y-1 overflow-hidden"
               >
+                {/* Ghosted background image */}
+                <img 
+                  src={service.bgImage} 
+                  alt="" 
+                  className="absolute inset-0 w-full h-full object-cover opacity-[0.35] group-hover:opacity-[0.5] transition-opacity duration-500 pointer-events-none"
+                  loading="lazy"
+                />
                 {/* Gold left accent bar */}
-                <div className="absolute top-8 left-0 w-[3px] h-10 bg-gradient-to-b from-[#B8860B] to-[#D4AF37] rounded-r-full" />
+                <div className="absolute top-8 left-0 w-[3px] h-10 bg-gradient-to-b from-[#B8860B] to-[#D4AF37] rounded-r-full z-10" />
                 
-                <div className="flex items-center justify-between mb-5">
-                  <span className="font-display text-3xl font-bold text-black/10">{service.num}</span>
-                  <span className="font-body text-[10px] tracking-[0.12em] uppercase text-black/40 font-medium">{service.audience}</span>
-                </div>
-                <h3 className="font-display text-xl md:text-2xl font-semibold mb-5 text-black group-hover:text-[#B8860B] transition-colors duration-300">{service.title}</h3>
-                <ul className="space-y-2.5 mb-6">
-                  {service.items.map((item, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#B8860B]/40 mt-2 shrink-0" />
-                      <span className="font-body text-[14px] text-black/55 leading-relaxed">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="flex items-center gap-2 text-[#B8860B] opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  <span className="font-body text-[12px] font-semibold uppercase tracking-[0.15em]">View Details</span>
-                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-5">
+                    <span className="font-display text-3xl font-bold text-black/15">{service.num}</span>
+                    <span className="font-body text-[10px] tracking-[0.12em] uppercase text-black/50 font-medium">{service.audience}</span>
+                  </div>
+                  <h3 className="font-display text-xl md:text-2xl font-semibold mb-5 text-black group-hover:text-[#B8860B] transition-colors duration-300">{service.title}</h3>
+                  <ul className="space-y-2.5 mb-6">
+                    {service.items.map((item, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#B8860B]/50 mt-2 shrink-0" />
+                        <span className="font-body text-[14px] text-black/65 leading-relaxed">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="flex items-center gap-2 text-[#B8860B] opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <span className="font-body text-[12px] font-semibold uppercase tracking-[0.15em]">View Details</span>
+                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                  </div>
                 </div>
               </motion.a>
             ))}
