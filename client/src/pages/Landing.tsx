@@ -100,18 +100,17 @@ export default function Landing() {
 
       {/* Hero Section — Commanding, minimal */}
       <section ref={heroRef} className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
-        {/* Background Image — enhanced WEG architectural concept */}
-        <img
-          src="/weg-hero-building.jpg"
-          alt="Well Estate Group — wellness-led mixed-use development concept"
+        {/* Background Video */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
           className="absolute inset-0 w-full h-full object-cover"
+          src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/AazsyqQemaKsmcfz.mp4"
         />
-        {/* Light wash to keep the detailed image bright while ensuring contrast */}
-        <div className="absolute inset-0 bg-black/35" />
-        {/* Focused scrim behind the headline block for readability */}
-        <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 62% 58% at 50% 46%, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.34) 48%, rgba(0,0,0,0) 78%)' }} />
-        {/* Bottom anchor gradient for buttons/scroll cue */}
-        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/55 to-transparent" />
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-black/50" />
         
         <motion.div 
           className="relative z-10 max-w-5xl mx-auto px-6 text-center"
@@ -243,10 +242,10 @@ export default function Landing() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <div className="aspect-[4/3] rounded-xl overflow-hidden relative">
+              <div className="aspect-[16/9] rounded-xl overflow-hidden relative">
                 <img 
-                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/vbYOpkEmUOZjoLXO.jpg" 
-                  alt="Premium Technogym wellness environment — the standard WEG delivers" 
+                  src="/weg-hero-building.jpg" 
+                  alt="Well Estate Group — wellness-led mixed-use development concept" 
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
