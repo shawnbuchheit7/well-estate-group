@@ -250,10 +250,7 @@ export default function Landing() {
                   loading="lazy"
                 />
               </div>
-              {/* Small overlay badge */}
-              <div className="absolute -bottom-4 -right-4 md:bottom-6 md:right-6 bg-white rounded-lg px-5 py-3 shadow-lg border border-gray-100">
-                <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-black/50 font-medium">Est. 2020 &middot; Fort Myers, FL</p>
-              </div>
+
             </motion.div>
 
             {/* Right - Content */}
