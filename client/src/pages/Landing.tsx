@@ -99,18 +99,18 @@ export default function Landing() {
       </motion.nav>
 
       {/* Hero Section — Commanding, minimal */}
-      <section ref={heroRef} className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
+      <section ref={heroRef} className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden bg-[#1a1a18]">
         {/* Background Video */}
         <video
           autoPlay
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-contain"
           src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/AazsyqQemaKsmcfz.mp4"
         />
         {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-black/40" />
         
         <motion.div 
           className="relative z-10 max-w-5xl mx-auto px-6 text-center"
