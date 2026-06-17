@@ -111,29 +111,29 @@ export default function LongevityFranchisePortal() {
       </div>
 
       {/* Main content — branded launcher */}
-      <div className="flex-1 flex items-start justify-center px-6 pt-16 pb-12 overflow-auto">
+      <div className="flex-1 flex items-center justify-center px-6 py-8 overflow-auto">
         <div className="max-w-lg w-full text-center">
           {/* Logo & Title */}
-          <div className="mb-8">
+          <div className="mb-6">
             <img 
               src="/weg-logo-mark-gold-dark.png" 
               alt="Well Estate Group" 
-              className="w-14 h-14 mx-auto mb-5 no-sharpen"
+              className="w-12 h-12 mx-auto mb-4 no-sharpen"
             />
-            <h1 className="text-2xl font-light text-[#1A1A1A] tracking-tight mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+            <h1 className="text-xl font-light text-[#1A1A1A] tracking-tight mb-1.5" style={{ fontFamily: "'Playfair Display', serif" }}>
               International Franchise Portal
             </h1>
-            <p className="text-sm text-[#666] font-light leading-relaxed max-w-sm mx-auto">
+            <p className="text-xs text-[#666] font-light leading-relaxed max-w-sm mx-auto">
               Your living playbook from corporate — site selection, build-out, hiring, licensing, and day-to-day operations.
             </p>
           </div>
 
           {/* Feature grid */}
-          <div className="grid grid-cols-2 gap-3 mb-8">
+          <div className="grid grid-cols-2 gap-2.5 mb-6">
             {portalFeatures.map((feature) => (
               <div key={feature.title} className="bg-white rounded-xl p-4 border border-[#E8E4DE] text-left">
                 <feature.icon className="w-4 h-4 text-[#C5A059] mb-2" />
-                <div className="text-xs font-medium text-[#1A1A1A] mb-0.5">{feature.title}</div>
+                <div className="text-[11px] font-medium text-[#1A1A1A] mb-0.5">{feature.title}</div>
                 <div className="text-[10px] text-[#888] leading-relaxed">{feature.desc}</div>
               </div>
             ))}
