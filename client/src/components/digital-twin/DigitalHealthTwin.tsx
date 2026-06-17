@@ -1143,7 +1143,7 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
         </div>
 
         {/* ═══ CENTER PANEL — AI-Generated Organ Image Swapping ═══ */}
-        <div className="flex-1 flex flex-col relative" ref={bodyContainerRef} style={{ minWidth: 0, background: '#050A12', borderRadius: '16px', margin: '4px 0', overflow: 'hidden', boxShadow: '0 0 0 1px rgba(184, 134, 11, 0.20), 0 8px 40px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.03)' }}>
+        <div className="flex-1 flex flex-col relative" ref={bodyContainerRef} style={{ minWidth: 0, background: '#000000', borderRadius: '0px', margin: '0', overflow: 'hidden' }}>
           {/* Layered ambient background */}
           <div className="absolute inset-0 pointer-events-none z-[1]" style={{
             backgroundImage: `radial-gradient(ellipse 60% 50% at 50% 45%, ${selectedConfig.color}15 0%, transparent 70%), radial-gradient(circle at 50% 40%, rgba(184, 134, 11, 0.04) 0%, transparent 60%), radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0)`,
