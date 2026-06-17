@@ -2,6 +2,7 @@
  * Demo Dashboard — standalone version that uses local demo data
  * instead of tRPC/database queries. Used for Vercel demo deployment.
  */
+import "./digital-twin.css";
 import { Card } from "@/components/ui/card";
 import DigitalHealthTwin from "./DigitalHealthTwin";
 import { OrganGrid } from "./OrganGrid";
