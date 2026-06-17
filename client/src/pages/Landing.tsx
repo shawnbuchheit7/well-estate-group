@@ -242,11 +242,14 @@ export default function Landing() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <div className="aspect-[16/9] rounded-xl overflow-hidden relative">
+              <div className="aspect-[16/10] rounded-xl overflow-hidden relative shadow-xl">
                 <img 
                   src="/weg-hero-building.jpg" 
+                  srcSet="/weg-hero-building.jpg 1192w, /weg-hero-building@2x.jpg 2384w"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   alt="Well Estate Group — wellness-led mixed-use development concept" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover no-sharpen"
+                  style={{ imageRendering: 'auto' }}
                   loading="lazy"
                 />
               </div>
