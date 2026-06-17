@@ -1187,7 +1187,7 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
                 }}
                 style={{
                   filter: isOverview
-                    ? 'brightness(1.1) contrast(1.05) drop-shadow(0 0 30px rgba(184, 134, 11, 0.15)) drop-shadow(0 0 60px rgba(184, 134, 11, 0.08))'
+                    ? 'brightness(1.05) contrast(1.08) sepia(0.15) hue-rotate(-10deg) saturate(0.9) drop-shadow(0 0 30px rgba(184, 134, 11, 0.12)) drop-shadow(0 0 60px rgba(184, 134, 11, 0.06))'
                     : getOrganGlowFilter(selectedOrganKey),
                   transform: `scale(${(zoom / 100) * (isTransitioning ? 0.93 : 1)})`,
                   height: "100%",
