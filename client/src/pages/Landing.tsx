@@ -378,7 +378,7 @@ export default function Landing() {
           </motion.div>
 
           <motion.div 
-            className="grid md:grid-cols-2 gap-5"
+            className="grid md:grid-cols-2 gap-6"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -391,6 +391,7 @@ export default function Landing() {
                 items: ['Revenue model & break-even analysis', 'Membership tier architecture', 'Clinical protocol & staffing design', 'Market entry & international expansion', 'JV, licensing & franchise structuring'],
                 audience: 'For Investors & Operators',
                 href: '/longevity',
+                icon: '◎',
               },
               {
                 num: '02',
@@ -398,6 +399,7 @@ export default function Landing() {
                 items: ['Consumer & commercial product positioning', 'Go-to-market strategy & execution', 'Channel strategy & distribution', 'Brand partnership development', 'Product lifecycle & innovation roadmap'],
                 audience: 'For Product Companies & Brands',
                 href: '/product-intelligence',
+                icon: '◈',
               },
               {
                 num: '03',
@@ -405,6 +407,7 @@ export default function Landing() {
                 items: ['Fundraising strategy & investor materials', 'PE & institutional deal structuring', 'Financial modeling & valuation', 'Due diligence preparation', 'Exit planning & strategic positioning'],
                 audience: 'For Founders & Investors',
                 href: '/venture-capital',
+                icon: '◆',
               },
               {
                 num: '04',
@@ -412,30 +415,38 @@ export default function Landing() {
                 items: ['AI-powered diagnostics & analytics', 'Platform architecture & integration', 'Biomarker data intelligence', 'Predictive health modeling', 'Digital twin & member experience'],
                 audience: 'For Operators & Investors',
                 href: '/technology',
+                icon: '⬡',
               },
             ].map((service) => (
               <motion.a 
                 key={service.num}
                 href={service.href}
                 variants={fadeInUp}
-                className="group block p-8 md:p-10 bg-white border border-gray-200/80 rounded-xl hover:border-[#B8860B]/30 hover:shadow-[0_8px_40px_rgba(0,0,0,0.04)] transition-all duration-500 cursor-pointer no-underline"
+                className="group relative block p-8 md:p-10 bg-black rounded-2xl overflow-hidden cursor-pointer no-underline transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)]"
               >
-                <div className="flex items-center justify-between mb-5">
-                  <span className="font-mono text-[11px] tracking-[0.2em] text-[#B8860B] font-medium">{service.num}</span>
-                  <span className="font-body text-[10px] tracking-[0.1em] uppercase text-black/30 font-medium">{service.audience}</span>
-                </div>
-                <h3 className="font-display text-xl md:text-2xl font-medium mb-5 text-black group-hover:text-[#B8860B] transition-colors">{service.title}</h3>
-                <ul className="space-y-2.5">
-                  {service.items.map((item, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <span className="w-1 h-1 rounded-full bg-[#B8860B]/60 mt-2 shrink-0" />
-                      <span className="font-body text-[14px] text-black/55 leading-relaxed">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-6 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span className="font-body text-[12px] text-[#B8860B] font-medium uppercase tracking-wider">View Details</span>
-                  <span className="text-[#B8860B]">→</span>
+                {/* Subtle gradient accent */}
+                <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-[#B8860B] via-[#D4AF37] to-[#B8860B]/0" />
+                {/* Background number */}
+                <span className="absolute top-6 right-8 font-display text-[80px] font-bold text-white/[0.03] leading-none select-none">{service.num}</span>
+                
+                <div className="relative">
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="font-mono text-[11px] tracking-[0.25em] text-[#D4AF37] font-medium">{service.num}</span>
+                    <span className="font-body text-[10px] tracking-[0.12em] uppercase text-white/30 font-medium px-3 py-1 rounded-full border border-white/10">{service.audience}</span>
+                  </div>
+                  <h3 className="font-display text-2xl md:text-[28px] font-semibold mb-6 text-white group-hover:text-[#D4AF37] transition-colors duration-300 leading-tight">{service.title}</h3>
+                  <ul className="space-y-3 mb-8">
+                    {service.items.map((item, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]/50 mt-1.5 shrink-0" />
+                        <span className="font-body text-[14px] text-white/60 leading-relaxed">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="flex items-center gap-2 text-[#D4AF37] group-hover:gap-3 transition-all duration-300">
+                    <span className="font-body text-[12px] font-semibold uppercase tracking-[0.15em]">View Details</span>
+                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                  </div>
                 </div>
               </motion.a>
             ))}
