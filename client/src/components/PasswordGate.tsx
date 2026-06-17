@@ -113,7 +113,7 @@ export default function PasswordGate({ children }: PasswordGateProps) {
       <div className="min-h-screen flex items-center justify-center bg-white">
         <img
                       loading="lazy"
-          src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/LHselcWIkeWDRNuE.png"
+          src="/weg-logo-mark-gold-dark.png"
           alt="Well Estate Group"
           className="w-16 h-16 animate-spin"
           style={{ animationDuration: '2s', animationTimingFunction: 'linear' }}
@@ -145,7 +145,7 @@ export default function PasswordGate({ children }: PasswordGateProps) {
           {/* Logo */}
           <div className="flex flex-col items-center mb-10">
             <motion.img
-              src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/LHselcWIkeWDRNuE.png"
+              src="/weg-logo-mark-gold-dark.png"
               alt="Well Estate Group"
               className="w-20 h-20 mb-5"
               initial={{ opacity: 0, scale: 0.8 }}

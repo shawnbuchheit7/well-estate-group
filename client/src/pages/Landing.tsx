@@ -77,7 +77,7 @@ export default function Landing() {
         <div className="w-full px-6 lg:px-10 xl:px-16 flex items-center justify-between h-18 py-4">
           <a href="/" className="flex items-center gap-3 group">
             <motion.img 
-              src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/LHselcWIkeWDRNuE.png" 
+              src="/weg-logo-mark-gold-dark.png" 
               alt="Well Estate Group" 
               className="w-10 h-10"
               whileHover={{ rotate: 360, scale: 1.05 }}
@@ -514,7 +514,7 @@ export default function Landing() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-3">
               <img 
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/LHselcWIkeWDRNuE.png" 
+                src="/weg-logo-mark-gold-dark.png" 
                 alt="Well Estate Group" 
                 className="w-7 h-7"
               />

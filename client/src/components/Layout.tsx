@@ -229,7 +229,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
             ) : (
               <Link href="/" className="flex items-center gap-3 group" onClick={closeMobileMenu}>
                 <motion.img 
-                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/LHselcWIkeWDRNuE.png" 
+                  src="/weg-logo-mark-gold-dark.png" 
                   alt="Well Estate Group" 
                   className="w-10 h-10"
                   whileHover={{ rotate: 360, scale: 1.1 }}
@@ -521,7 +521,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                   <>
                     <Link href="/" className="flex items-center gap-3 group">
                       <motion.img 
-                        src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663219582709/LHselcWIkeWDRNuE.png" 
+                        src="/weg-logo-mark-white.png" 
                         alt="Well Estate Group" 
                         className="w-9 h-9"
                         whileHover={{ rotate: 360 }}
