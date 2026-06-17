@@ -385,7 +385,7 @@ function TrendChart({
           <g key={pct}>
             <line x1={padding.left} y1={y} x2={padding.left + chartW} y2={y} stroke="rgba(0,0,0,0.06)" strokeWidth="1" strokeDasharray={pct === 0 || pct === 100 ? "0" : "4 4"} />
             {isSingle && normalizedData[0] && (
-              <text x={padding.left - 10} y={y + 4} textAnchor="end" fill="rgba(0,0,0,0.4)" fontSize="10" fontFamily="monospace">
+              <text x={padding.left - 10} y={y + 4} textAnchor="end" fill="rgba(0,0,0,0.4)" fontSize="10" fontFamily="'Space Mono', monospace">
                 {(normalizedData[0].min + (pct / 100) * normalizedData[0].range).toFixed(1)}
               </text>
             )}
@@ -541,7 +541,7 @@ function TrendChart({
                 <circle cx={p.x} cy={p.y} r="6" fill="var(--fl-bg-deep)" stroke={bm.color} strokeWidth="2" />
                 <circle cx={p.x} cy={p.y} r="3" fill={bm.color} />
                 {/* Value label */}
-                <text x={p.x} y={p.y - 14} textAnchor="middle" fill={bm.color} fontSize="10" fontWeight="700" fontFamily="monospace">
+                <text x={p.x} y={p.y - 14} textAnchor="middle" fill={bm.color} fontSize="10" fontWeight="700" fontFamily="'Space Mono', monospace">
                   {p.value % 1 === 0 ? p.value : p.value.toFixed(1)}
                 </text>
               </g>

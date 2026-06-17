@@ -247,8 +247,8 @@ function ECGReadout({ color, width = 150, height = 50 }: { color: string; width?
           fill="none" stroke={color} strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round" opacity="0.25"
         />
       </g>
-      <text x="2" y="10" fill={color} fontSize="9" fontFamily="monospace" opacity="0.7">ECG</text>
-      <text x={width - 35} y="10" fill={color} fontSize="9" fontFamily="monospace" opacity="0.7">72 bpm</text>
+      <text x="2" y="10" fill={color} fontSize="9" fontFamily="'Space Mono', monospace" opacity="0.7">ECG</text>
+      <text x={width - 35} y="10" fill={color} fontSize="9" fontFamily="'Space Mono', monospace" opacity="0.7">72 bpm</text>
     </svg>
   );
 }
@@ -266,8 +266,8 @@ function BrainwaveReadout({ color, width = 150, height = 50 }: { color: string; 
       <polyline points={points} fill="none" stroke={color} strokeWidth="1.2" strokeLinecap="round" opacity="0.7">
         <animate attributeName="stroke-dashoffset" values="0;-200" dur="3s" repeatCount="indefinite" />
       </polyline>
-      <text x="2" y="10" fill={color} fontSize="9" fontFamily="monospace" opacity="0.7">EEG</text>
-      <text x={width - 42} y="10" fill={color} fontSize="9" fontFamily="monospace" opacity="0.7">α 10 Hz</text>
+      <text x="2" y="10" fill={color} fontSize="9" fontFamily="'Space Mono', monospace" opacity="0.7">EEG</text>
+      <text x={width - 42} y="10" fill={color} fontSize="9" fontFamily="'Space Mono', monospace" opacity="0.7">α 10 Hz</text>
     </svg>
   );
 }
@@ -284,8 +284,8 @@ function BreathingReadout({ color, width = 150, height = 50 }: { color: string; 
       <polyline points={points} fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" opacity="0.7">
         <animate attributeName="stroke-dashoffset" values="0;-150" dur="4s" repeatCount="indefinite" />
       </polyline>
-      <text x="2" y="10" fill={color} fontSize="9" fontFamily="monospace" opacity="0.7">RESP</text>
-      <text x={width - 48} y="10" fill={color} fontSize="9" fontFamily="monospace" opacity="0.7">16 br/min</text>
+      <text x="2" y="10" fill={color} fontSize="9" fontFamily="'Space Mono', monospace" opacity="0.7">RESP</text>
+      <text x={width - 48} y="10" fill={color} fontSize="9" fontFamily="'Space Mono', monospace" opacity="0.7">16 br/min</text>
     </svg>
   );
 }
@@ -303,8 +303,8 @@ function EMGReadout({ color, width = 150, height = 50 }: { color: string; width?
   return (
     <svg width={width} height={height} className="overflow-visible">
       <polyline points={points} fill="none" stroke={color} strokeWidth="1" strokeLinecap="round" opacity="0.7" />
-      <text x="2" y="10" fill={color} fontSize="9" fontFamily="monospace" opacity="0.7">EMG</text>
-      <text x={width - 36} y="10" fill={color} fontSize="9" fontFamily="monospace" opacity="0.7">Active</text>
+      <text x="2" y="10" fill={color} fontSize="9" fontFamily="'Space Mono', monospace" opacity="0.7">EMG</text>
+      <text x={width - 36} y="10" fill={color} fontSize="9" fontFamily="'Space Mono', monospace" opacity="0.7">Active</text>
     </svg>
   );
 }
@@ -318,7 +318,7 @@ function MetabolicReadout({ color, width = 150, height = 50 }: { color: string; 
           <animate attributeName="height" values={`${v * (height - 14)};${v * (height - 14) * 0.7};${v * (height - 14)}`} dur={`${2 + i * 0.3}s`} repeatCount="indefinite" />
         </rect>
       ))}
-      <text x="2" y="10" fill={color} fontSize="9" fontFamily="monospace" opacity="0.7">ALT/AST</text>
+      <text x="2" y="10" fill={color} fontSize="9" fontFamily="'Space Mono', monospace" opacity="0.7">ALT/AST</text>
     </svg>
   );
 }
@@ -333,8 +333,8 @@ function FiltrationReadout({ color, width = 150, height = 50 }: { color: string;
   return (
     <svg width={width} height={height} className="overflow-visible">
       <polyline points={points} fill="none" stroke={color} strokeWidth="1.2" strokeLinecap="round" opacity="0.7" />
-      <text x="2" y="10" fill={color} fontSize="9" fontFamily="monospace" opacity="0.7">GFR</text>
-      <text x={width - 48} y="10" fill={color} fontSize="9" fontFamily="monospace" opacity="0.7">&gt;90 mL/m</text>
+      <text x="2" y="10" fill={color} fontSize="9" fontFamily="'Space Mono', monospace" opacity="0.7">GFR</text>
+      <text x={width - 48} y="10" fill={color} fontSize="9" fontFamily="'Space Mono', monospace" opacity="0.7">&gt;90 mL/m</text>
     </svg>
   );
 }
