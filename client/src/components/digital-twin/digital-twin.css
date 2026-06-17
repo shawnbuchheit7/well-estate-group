@@ -54,41 +54,26 @@
 }
 
 /* ═══════════════════════════════════════════════════
-   DIGITAL TWIN DARK ZONE — Body visualization
-   Dark background required for body image visibility
+   BODY IMAGE — Inverted for light background
    ═══════════════════════════════════════════════════ */
 .dht-root .fl-twin-dark-zone {
-  --fl-bg-deep: #0A0A0A;
-  --fl-bg-base: #111111;
-  --fl-bg-card: #1A1A1A;
-  --fl-bg-elevated: #222222;
-  --fl-bg-surface: #2A2A2A;
-  --fl-accent: #D4A853;
-  --fl-accent-dim: #B8860B;
-  --fl-accent-glow: rgba(212, 168, 83, 0.15);
-  --fl-gold: #D4A853;
-  --fl-gold-light: #E8C878;
-  --fl-gold-glow: rgba(212, 168, 83, 0.20);
-  --fl-gold-gradient: linear-gradient(135deg, #B8860B, #D4A853, #E8C878);
-  --fl-text-primary: #F5F5F5;
-  --fl-text-secondary: #AAAAAA;
-  --fl-text-muted: #666666;
-  --fl-text-accent: #D4A853;
-  --fl-text-gold: #E8C878;
-  --fl-border: rgba(184, 134, 11, 0.20);
-  --fl-border-subtle: rgba(184, 134, 11, 0.10);
-  --fl-border-accent: rgba(212, 168, 83, 0.30);
-  --fl-border-gold: rgba(212, 168, 83, 0.40);
-  --fl-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
-  --fl-shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(184, 134, 11, 0.15);
-  --fl-shadow-elevated: 0 8px 32px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
-  --fl-shadow-crisp: 0 1px 3px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(184, 134, 11, 0.20);
-  --fl-shadow-glow-accent: 0 0 20px rgba(212, 168, 83, 0.12), 0 0 60px rgba(212, 168, 83, 0.06);
-  --fl-shadow-glow-gold: 0 0 20px rgba(212, 168, 83, 0.15), 0 0 60px rgba(212, 168, 83, 0.08);
-  --fl-gradient-start: #1A1A1A;
-  --fl-gradient-end: #0A0A0A;
-  --fl-card-gradient: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, transparent 100%);
-  --fl-bg-radial: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(212, 168, 83, 0.04), transparent 70%);
+  /* No dark overrides — inherits light theme */
+}
+
+.dht-root .fl-body-image {
+  filter: invert(1) hue-rotate(180deg) brightness(0.35) contrast(1.4) sepia(0.15);
+  opacity: 0.85;
+}
+
+.dht-root .fl-body-image-glow {
+  filter: invert(1) hue-rotate(180deg) brightness(0.3) contrast(1.3) sepia(0.2);
+  opacity: 0.4;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
 /* ═══════════════════════════════════════════════════

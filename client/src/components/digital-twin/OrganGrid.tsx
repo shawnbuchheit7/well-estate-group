@@ -47,7 +47,7 @@ const organColors: Record<string, string> = {
   "Liver": "#10B981",
   "Kidneys": "#EC4899",
   "Muscle": "#F59E0B",
-  "Stomach": "#06B6D4",
+  "Stomach": "#B8860B",
   "Pancreas": "#A855F7",
   "Intestines": "#F97316",
   "Thyroid": "#14B8A6",
@@ -56,7 +56,7 @@ const organColors: Record<string, string> = {
 
 function getScoreColor(score: number): string {
   if (score >= 85) return "#34d399";
-  if (score >= 70) return "#22d3ee";
+  if (score >= 70) return "#B8860B";
   if (score >= 55) return "#facc15";
   return "#f87171";
 }
@@ -220,7 +220,7 @@ function OrganCard({ organ, isExpanded, onToggle }: { organ: OrganAssessment; is
               style={{
                 width: `${score}%`,
                 background: `linear-gradient(90deg, ${scoreColor}40, ${scoreColor})`,
-                boxShadow: `0 0 12px ${scoreColor}30, inset 0 1px 0 rgba(255,255,255,0.15)`,
+                boxShadow: `0 0 12px ${scoreColor}30, inset 0 1px 0 rgba(184,134,11,0.15)`,
               }}
             />
           </div>

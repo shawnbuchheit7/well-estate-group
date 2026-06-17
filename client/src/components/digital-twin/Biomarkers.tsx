@@ -164,7 +164,7 @@ function ScoreGauge({ value, max, color, size = 72, label }: { value: number; ma
           </filter>
         </defs>
         {/* Background track */}
-        <circle cx={size/2} cy={size/2} r={r} fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth="5" />
+        <circle cx={size/2} cy={size/2} r={r} fill="none" stroke="rgba(0,0,0,0.06)" strokeWidth="5" />
         {/* Progress arc */}
         <circle
           cx={size/2} cy={size/2} r={r}
@@ -242,7 +242,7 @@ function RadialBiomarkerGauge({ value, min, max, optimalLow, optimalHigh, color,
         {/* Background arc */}
         <path
           d={`M 3 ${size * 0.55} A ${r} ${r} 0 0 1 ${size - 3} ${size * 0.55}`}
-          fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth="4" strokeLinecap="round"
+          fill="none" stroke="rgba(0,0,0,0.06)" strokeWidth="4" strokeLinecap="round"
         />
         {/* Progress arc */}
         <path
@@ -330,7 +330,7 @@ function PercentileBadge({ biomarker }: { biomarker: Biomarker }) {
       <div className="flex flex-col gap-1">
         <div className="flex items-center gap-1.5">
           <Users className="w-2.5 h-2.5" style={{ color: 'var(--fl-text-muted)' }} />
-          <div className="relative w-16 h-1 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.04)' }}>
+          <div className="relative w-16 h-1 rounded-full overflow-hidden" style={{ background: 'rgba(0,0,0,0.06)' }}>
             <div className="absolute top-0 left-0 h-full rounded-full transition-all duration-1000" style={{
               width: `${percentile}%`,
               background: `linear-gradient(90deg, ${pctColor}40, ${pctColor})`,
@@ -342,7 +342,7 @@ function PercentileBadge({ biomarker }: { biomarker: Biomarker }) {
         </div>
         <div className="flex items-center gap-1.5">
           <span className="text-[8px]" style={{ color: 'var(--fl-accent)' }}>FL</span>
-          <div className="relative w-16 h-1 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.04)' }}>
+          <div className="relative w-16 h-1 rounded-full overflow-hidden" style={{ background: 'rgba(0,0,0,0.06)' }}>
             <div className="absolute top-0 left-0 h-full rounded-full transition-all duration-1000" style={{
               width: `${flPercentile}%`,
               background: 'linear-gradient(90deg, rgba(34,211,238,0.4), rgba(34,211,238,1))',
@@ -398,7 +398,7 @@ function InterconnectionMap({ biomarker, onNavigate }: { biomarker: Biomarker; o
   if (connections.length === 0) return null;
 
   return (
-    <div className="mt-4 pt-4" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+    <div className="mt-4 pt-4" style={{ borderTop: '1px solid rgba(0,0,0,0.08)' }}>
       <div className="flex items-center gap-2 mb-3">
         <Link2 className="w-3.5 h-3.5" style={{ color: 'var(--fl-accent)' }} />
         <span className="text-[9px] uppercase tracking-widest font-bold" style={{ color: 'var(--fl-text-muted)' }}>Connected Biomarkers</span>
@@ -462,7 +462,7 @@ function HealthMomentum({ categories }: { categories: BiomarkerCategory[] }) {
       <div className="relative w-12 h-12 flex items-center justify-center">
         <svg width="48" height="48" viewBox="0 0 48 48">
           {/* Background circle */}
-          <circle cx="24" cy="24" r="20" fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth="2" />
+          <circle cx="24" cy="24" r="20" fill="none" stroke="rgba(0,0,0,0.06)" strokeWidth="2" />
           {/* Colored arc */}
           <circle cx="24" cy="24" r="20" fill="none" stroke={momentumColor} strokeWidth="2.5" strokeLinecap="round"
             strokeDasharray={`${Math.PI * 20}`} strokeDashoffset={`${Math.PI * 20 * 0.25}`}
@@ -563,7 +563,7 @@ function Sparkline({ data, color, refLow, refHigh, optimalLow, optimalHigh, widt
               <circle cx={p.x} cy={p.y} r="1.5" fill="white" />
             </>
           ) : (
-            <circle cx={p.x} cy={p.y} r="1.5" fill="rgba(255,255,255,0.3)" />
+            <circle cx={p.x} cy={p.y} r="1.5" fill="rgba(0,0,0,0.4)" />
           )}
         </g>
       ))}
@@ -593,9 +593,9 @@ function RangeBar({ value, refLow, refHigh, optimalLow, optimalHigh, color }: {
   return (
     <div className="relative w-full">
       {/* Bar container */}
-      <div className="relative h-2 w-full rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.03)' }}>
+      <div className="relative h-2 w-full rounded-full overflow-hidden" style={{ background: 'rgba(0,0,0,0.04)' }}>
         {/* Reference range */}
-        <div className="absolute top-0 h-full rounded-full" style={{ left: `${refLeftPct}%`, width: `${refWidthPct}%`, background: 'rgba(255,255,255,0.04)' }} />
+        <div className="absolute top-0 h-full rounded-full" style={{ left: `${refLeftPct}%`, width: `${refWidthPct}%`, background: 'rgba(0,0,0,0.06)' }} />
         {/* Optimal zone - green */}
         <div className="absolute top-0 h-full rounded-full" style={{
           left: `${optLeftPct}%`, width: `${optWidthPct}%`,
@@ -674,15 +674,15 @@ function DetailChart({ biomarker, color, goal }: { biomarker: Biomarker; color: 
       {/* Grid lines */}
       {ticks.map((t, i) => (
         <g key={i}>
-          <line x1={pad.left} y1={toY(t)} x2={w - pad.right} y2={toY(t)} stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
-          <text x={pad.left - 8} y={toY(t) + 3} textAnchor="end" fill="rgba(255,255,255,0.25)" fontSize="9" fontFamily="'Space Mono', monospace">
+          <line x1={pad.left} y1={toY(t)} x2={w - pad.right} y2={toY(t)} stroke="rgba(0,0,0,0.06)" strokeWidth="1" />
+          <text x={pad.left - 8} y={toY(t) + 3} textAnchor="end" fill="rgba(0,0,0,0.4)" fontSize="9" fontFamily="'Space Mono', monospace">
             {t < 10 ? t.toFixed(1) : Math.round(t)}
           </text>
         </g>
       ))}
 
       {/* Reference range band */}
-      <rect x={pad.left} y={refTop} width={plotW} height={Math.max(0, refBot - refTop)} fill="rgba(255,255,255,0.015)" rx="2" />
+      <rect x={pad.left} y={refTop} width={plotW} height={Math.max(0, refBot - refTop)} fill="rgba(0,0,0,0.02)" rx="2" />
 
       {/* Optimal zone band */}
       <rect x={pad.left} y={optTop} width={plotW} height={Math.max(0, optBot - optTop)} fill="rgba(16,185,129,0.08)" rx="2" />
@@ -725,7 +725,7 @@ function DetailChart({ biomarker, color, goal }: { biomarker: Biomarker; color: 
             <circle cx={p.x} cy={p.y} r={isLast ? 5 : 3} fill={dotColor} />
             {isLast && <circle cx={p.x} cy={p.y} r="2" fill="white" />}
             {/* Value label */}
-            <text x={p.x} y={p.y - 10} textAnchor="middle" fill={isLast ? "white" : "rgba(255,255,255,0.5)"} fontSize={isLast ? "11" : "9"} fontWeight={isLast ? "800" : "500"} fontFamily="'Space Mono', monospace">
+            <text x={p.x} y={p.y - 10} textAnchor="middle" fill={isLast ? "#0A0A0A" : "rgba(0,0,0,0.5)"} fontSize={isLast ? "11" : "9"} fontWeight={isLast ? "800" : "500"} fontFamily="'Space Mono', monospace">
               {val}
             </text>
           </g>
@@ -734,7 +734,7 @@ function DetailChart({ biomarker, color, goal }: { biomarker: Biomarker; color: 
 
       {/* X-axis labels */}
       {data.map((d, i) => (
-        <text key={i} x={toX(i)} y={h - 5} textAnchor="middle" fill="rgba(255,255,255,0.3)" fontSize="9" fontFamily="'Space Mono', monospace">
+        <text key={i} x={toX(i)} y={h - 5} textAnchor="middle" fill="rgba(0,0,0,0.4)" fontSize="9" fontFamily="'Space Mono', monospace">
           {d.date.split(' ')[0]}
         </text>
       ))}
@@ -826,7 +826,7 @@ function BiomarkerRow({ biomarker, color, expanded, onToggle, index, goal, goalT
                 return (
                   <>
                     {/* Reference range (lighter) */}
-                    <div className="absolute top-0 h-full rounded-full" style={{ left: `${refL}%`, width: `${refW}%`, background: 'rgba(255,255,255,0.04)' }} />
+                    <div className="absolute top-0 h-full rounded-full" style={{ left: `${refL}%`, width: `${refW}%`, background: 'rgba(0,0,0,0.06)' }} />
                     {/* Optimal range (green) */}
                     <div className="absolute top-0 h-full rounded-full" style={{ left: `${optL}%`, width: `${optW}%`, background: 'rgba(16,185,129,0.25)' }} />
                     {/* Value dot */}
@@ -900,14 +900,14 @@ function BiomarkerRow({ biomarker, color, expanded, onToggle, index, goal, goalT
             </div>
 
             {/* Mini Range Bar Preview */}
-            <div className="mb-4 md:mb-5 p-3 md:p-4 rounded-xl" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)' }}>
+            <div className="mb-4 md:mb-5 p-3 md:p-4 rounded-xl" style={{ background: 'rgba(0,0,0,0.02)', border: '1px solid rgba(0,0,0,0.06)' }}>
               <div className="flex items-center justify-between mb-2">
                 <span className="text-[9px] uppercase tracking-widest font-bold" style={{ color: 'var(--fl-text-muted)' }}>Range Position</span>
                 <span className="text-[11px] font-bold tabular-nums" style={{ fontFamily: "'Space Mono', monospace", color }}>{biomarker.value} <span className="text-[9px] font-normal text-gray-600">{biomarker.unit}</span></span>
               </div>
               <div className="relative mx-auto" style={{ maxWidth: '100%' }}>
                 {/* Full range bar */}
-                <div className="relative h-3 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.06)' }}>
+                <div className="relative h-3 rounded-full overflow-hidden" style={{ background: 'rgba(0,0,0,0.08)' }}>
                   {/* Optimal zone highlight */}
                   <div className="absolute top-0 bottom-0 rounded-full" style={{
                     left: `${Math.max(0, ((biomarker.optimalLow - biomarker.refLow) / (biomarker.refHigh - biomarker.refLow)) * 100)}%`,
@@ -920,7 +920,7 @@ function BiomarkerRow({ biomarker, color, expanded, onToggle, index, goal, goalT
                     left: `${Math.max(2, Math.min(98, ((biomarker.value - biomarker.refLow) / (biomarker.refHigh - biomarker.refLow)) * 100))}%`,
                     background: color,
                     boxShadow: `0 0 8px ${color}60, 0 0 16px ${color}30`,
-                    border: '2px solid rgba(255,255,255,0.9)',
+                    border: '2px solid var(--fl-bg-card)',
                   }} />
                 </div>
                 {/* Labels */}
@@ -938,7 +938,7 @@ function BiomarkerRow({ biomarker, color, expanded, onToggle, index, goal, goalT
             {/* Two-column layout: Chart + Stats */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
               {/* Chart (2 cols) */}
-              <div className="lg:col-span-2 rounded-xl p-4" style={{ background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.04)' }}>
+              <div className="lg:col-span-2 rounded-xl p-4" style={{ background: 'rgba(0,0,0,0.02)', border: '1px solid rgba(0,0,0,0.06)' }}>
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-[10px] text-gray-600 uppercase tracking-widest font-semibold">Trend History</span>
                   <div className="flex items-center gap-3">
@@ -976,13 +976,13 @@ function BiomarkerRow({ biomarker, color, expanded, onToggle, index, goal, goalT
                 </div>
 
                 {/* Percentile Ranking */}
-                <div className="rounded-xl p-4" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                <div className="rounded-xl p-4" style={{ background: 'rgba(0,0,0,0.02)', border: '1px solid rgba(0,0,0,0.08)' }}>
                   <p className="text-[9px] uppercase tracking-widest font-bold mb-3" style={{ color: 'var(--fl-text-muted)' }}>Percentile Ranking</p>
                   <PercentileBadge biomarker={biomarker} />
                 </div>
 
                 {/* Ranges */}
-                <div className="rounded-xl p-4" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                <div className="rounded-xl p-4" style={{ background: 'rgba(0,0,0,0.02)', border: '1px solid rgba(0,0,0,0.08)' }}>
                   <p className="text-[9px] text-gray-600 uppercase tracking-widest font-bold mb-3">Reference Ranges</p>
                   <div className="space-y-2.5">
                     <div className="flex justify-between items-center">
@@ -1002,7 +1002,7 @@ function BiomarkerRow({ biomarker, color, expanded, onToggle, index, goal, goalT
                 </div>
 
                 {/* Change */}
-                <div className="rounded-xl p-4" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                <div className="rounded-xl p-4" style={{ background: 'rgba(0,0,0,0.02)', border: '1px solid rgba(0,0,0,0.08)' }}>
                   <p className="text-[9px] text-gray-600 uppercase tracking-widest font-bold mb-2">Since Baseline</p>
                   <div className="flex items-center gap-2">
                     <TrendIcon className="w-4 h-4" style={{ color: trendColor }} />
@@ -1018,7 +1018,7 @@ function BiomarkerRow({ biomarker, color, expanded, onToggle, index, goal, goalT
             </div>
 
             {/* Goal + Set Goal Button */}
-            <div className="mt-5 pt-4 flex items-center justify-between" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+            <div className="mt-5 pt-4 flex items-center justify-between" style={{ borderTop: '1px solid rgba(0,0,0,0.08)' }}>
               <div className="flex items-center gap-3">
                 {goal !== undefined && (
                   <div className="flex items-center gap-2 px-3 py-2 rounded-lg" style={{ background: 'rgba(34,211,238,0.05)', border: '1px solid rgba(34,211,238,0.1)' }}>
@@ -1064,7 +1064,7 @@ function BiomarkerRow({ biomarker, color, expanded, onToggle, index, goal, goalT
 
             {/* Ask WEG AI AI Section */}
              {onAskZori && (
-              <div className="mt-4 pt-4" data-tour="zori" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+              <div className="mt-4 pt-4" data-tour="zori" style={{ borderTop: '1px solid rgba(0,0,0,0.08)' }}>
                 {!zoriResponse && !zoriLoading && (
                   <button
                     onClick={async (e) => {
@@ -1114,7 +1114,7 @@ function BiomarkerRow({ biomarker, color, expanded, onToggle, index, goal, goalT
             )}
 
             {/* Full Range Bar */}
-            <div className="mt-4 pt-4" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+            <div className="mt-4 pt-4" style={{ borderTop: '1px solid rgba(0,0,0,0.08)' }}>
               <p className="text-[9px] text-gray-600 uppercase tracking-widest font-bold mb-3">Position in Range</p>
               <RangeBar
                 value={biomarker.value}
@@ -1251,9 +1251,9 @@ function GoalDialog({ biomarker, currentGoal, currentTargetDate, onSave, onClose
   const [target, setTarget] = useState(currentGoal?.toString() || biomarker.optimalLow.toString());
   const [targetDate, setTargetDate] = useState(currentTargetDate || '');
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm" onClick={onClose}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm" onClick={onClose}>
       <div className="w-full max-w-sm mx-4 rounded-2xl p-6" onClick={(e) => e.stopPropagation()}
-        style={{ background: 'linear-gradient(135deg, #0A1628, #0D1B2A)', border: '1px solid rgba(255,255,255,0.08)' }}>
+        style={{ background: 'var(--fl-bg-card)', backgroundImage: 'var(--fl-card-gradient)', border: '1px solid var(--fl-border)' }}>
         <div className="flex items-center justify-between mb-5">
           <h3 className="text-base font-bold text-gray-900">Set Target Goal</h3>
           <button onClick={onClose} className="w-7 h-7 rounded-lg flex items-center justify-center hover:bg-white/[0.06] transition-colors">
@@ -1311,7 +1311,7 @@ function AIInsightsPanel({ insights, isLoading, onGenerate }: {
   onGenerate: () => void;
 }) {
   return (
-    <div className="rounded-2xl overflow-hidden" style={{ background: 'linear-gradient(135deg, #060C16, #0A1628)', border: '1px solid rgba(139,92,246,0.12)' }}>
+    <div className="rounded-2xl overflow-hidden" style={{ background: 'var(--fl-bg-card)', backgroundImage: 'var(--fl-card-gradient)', border: '1px solid var(--fl-border)' }}>
       <div className="h-px w-full" style={{ background: 'linear-gradient(90deg, transparent 5%, rgba(139,92,246,0.4), rgba(34,211,238,0.3), transparent 95%)' }} />
       <div className="px-6 py-5">
         <div className="flex items-center justify-between mb-4">
@@ -1338,7 +1338,7 @@ function AIInsightsPanel({ insights, isLoading, onGenerate }: {
         {insights ? (
           <div className="space-y-4">
             {/* Summary */}
-            <div className="p-4 rounded-xl" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)' }}>
+            <div className="p-4 rounded-xl" style={{ background: 'rgba(0,0,0,0.02)', border: '1px solid rgba(0,0,0,0.06)' }}>
               <p className="text-[13px] text-gray-200 leading-relaxed">{insights.summary}</p>
             </div>
 
@@ -1583,7 +1583,7 @@ export function Biomarkers({ dbBiomarkers, goals, insights, insightsLoading, onS
                   </span>
                 </div>
                 {/* Progress */}
-                <div className="w-20 h-1 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.04)' }}>
+                <div className="w-20 h-1 rounded-full overflow-hidden" style={{ background: 'rgba(0,0,0,0.06)' }}>
                   <div className="h-full rounded-full transition-all duration-1000 ease-out" style={{
                     width: `${catPct}%`,
                     background: `linear-gradient(90deg, ${cat.color}40, ${cat.color})`,

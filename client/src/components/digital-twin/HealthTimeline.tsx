@@ -243,9 +243,9 @@ const CATEGORY_CONFIG: Record<string, { icon: typeof Heart; color: string; label
   screening: { icon: Scan, color: "#10B981", label: "Screening", gradient: "linear-gradient(135deg, #10B981, #059669)" },
   assessment: { icon: Stethoscope, color: "#3B82F6", label: "Assessment", gradient: "linear-gradient(135deg, #3B82F6, #2563EB)" },
   milestone: { icon: TrendingUp, color: "#F59E0B", label: "Milestone", gradient: "linear-gradient(135deg, #F59E0B, #D97706)" },
-  intervention: { icon: Syringe, color: "#8B5CF6", label: "Intervention", gradient: "linear-gradient(135deg, #8B5CF6, #7C3AED)" },
+  intervention: { icon: Syringe, color: "#9A7B4F", label: "Intervention", gradient: "linear-gradient(135deg, #9A7B4F, #7A5E3A)" },
   lab: { icon: FlaskConical, color: "#EC4899", label: "Lab Results", gradient: "linear-gradient(135deg, #EC4899, #DB2777)" },
-  lifestyle: { icon: Activity, color: "#06B6D4", label: "Lifestyle", gradient: "linear-gradient(135deg, #06B6D4, #0891B2)" },
+  lifestyle: { icon: Activity, color: "#B8860B", label: "Lifestyle", gradient: "linear-gradient(135deg, #B8860B, #8B6508)" },
 };
 
 const ORGAN_ICONS: Record<string, typeof Heart> = {
@@ -262,7 +262,7 @@ const ORGAN_ICONS: Record<string, typeof Heart> = {
 function ResultBadge({ result, status }: { result: string; status?: string }) {
   const styles: Record<string, { bg: string; text: string; border: string; icon: typeof CheckCircle2 }> = {
     positive: { bg: "rgba(16,185,129,0.08)", text: "#10B981", border: "rgba(16,185,129,0.25)", icon: CheckCircle2 },
-    neutral: { bg: "rgba(34,211,238,0.08)", text: "#22D3EE", border: "rgba(34,211,238,0.25)", icon: Sparkles },
+    neutral: { bg: "rgba(184,134,11,0.08)", text: "#B8860B", border: "rgba(184,134,11,0.25)", icon: Sparkles },
     attention: { bg: "rgba(245,158,11,0.08)", text: "#F59E0B", border: "rgba(245,158,11,0.25)", icon: AlertCircle },
   };
   const s = styles[(status as string) || "neutral"] || styles.neutral;
@@ -439,7 +439,7 @@ export function HealthTimeline({ dbTimeline = [] }: { dbTimeline?: Array<{ id: n
               className="h-full rounded-full transition-all duration-1000"
               style={{
                 width: `${(completedCount / events.length) * 100}%`,
-                background: 'linear-gradient(90deg, #22D3EE, #10B981)',
+                background: 'linear-gradient(90deg, #B8860B, #10B981)',
                 boxShadow: '0 0 12px rgba(34,211,238,0.4)',
               }}
             />

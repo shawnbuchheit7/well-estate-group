@@ -206,14 +206,14 @@ function DateRangeSlider({
           {/* Start handle */}
           <div
             className="absolute w-5 h-5 rounded-full border-2 border-amber-600 cursor-grab active:cursor-grabbing z-10 hover:scale-110 transition-transform"
-            style={{ left: `${startPct}%`, top: '50%', transform: "translate(-50%, -50%)", boxShadow: "0 0 12px rgba(34,211,238,0.4)", background: 'var(--fl-bg-deep, #0A1628)' }}
+            style={{ left: `${startPct}%`, top: '50%', transform: "translate(-50%, -50%)", boxShadow: "0 0 12px rgba(184,134,11,0.3)", background: 'var(--fl-bg-deep)' }}
             onMouseDown={handleMouseDown("start")}
           />
 
           {/* End handle */}
           <div
             className="absolute w-5 h-5 rounded-full border-2 border-amber-600 cursor-grab active:cursor-grabbing z-10 hover:scale-110 transition-transform"
-            style={{ left: `${endPct}%`, top: '50%', transform: "translate(-50%, -50%)", boxShadow: "0 0 12px rgba(34,211,238,0.4)", background: 'var(--fl-bg-deep, #0A1628)' }}
+            style={{ left: `${endPct}%`, top: '50%', transform: "translate(-50%, -50%)", boxShadow: "0 0 12px rgba(184,134,11,0.3)", background: 'var(--fl-bg-deep)' }}
             onMouseDown={handleMouseDown("end")}
           />
         </div>
@@ -383,9 +383,9 @@ function TrendChart({
         const y = padding.top + chartH - (pct / 100) * chartH;
         return (
           <g key={pct}>
-            <line x1={padding.left} y1={y} x2={padding.left + chartW} y2={y} stroke="rgba(255,255,255,0.04)" strokeWidth="1" strokeDasharray={pct === 0 || pct === 100 ? "0" : "4 4"} />
+            <line x1={padding.left} y1={y} x2={padding.left + chartW} y2={y} stroke="rgba(0,0,0,0.06)" strokeWidth="1" strokeDasharray={pct === 0 || pct === 100 ? "0" : "4 4"} />
             {isSingle && normalizedData[0] && (
-              <text x={padding.left - 10} y={y + 4} textAnchor="end" fill="rgba(255,255,255,0.3)" fontSize="10" fontFamily="monospace">
+              <text x={padding.left - 10} y={y + 4} textAnchor="end" fill="rgba(0,0,0,0.4)" fontSize="10" fontFamily="monospace">
                 {(normalizedData[0].min + (pct / 100) * normalizedData[0].range).toFixed(1)}
               </text>
             )}
@@ -398,8 +398,8 @@ function TrendChart({
         const x = padding.left + (i / (allDates.length - 1)) * chartW;
         return (
           <g key={date}>
-            <line x1={x} y1={padding.top} x2={x} y2={padding.top + chartH} stroke="rgba(255,255,255,0.03)" strokeWidth="1" />
-            <text x={x} y={height - 12} textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="11" fontWeight="500">
+            <line x1={x} y1={padding.top} x2={x} y2={padding.top + chartH} stroke="rgba(0,0,0,0.04)" strokeWidth="1" />
+            <text x={x} y={height - 12} textAnchor="middle" fill="rgba(0,0,0,0.5)" fontSize="11" fontWeight="500">
               {formatDate(date)}
             </text>
           </g>
@@ -472,7 +472,7 @@ function TrendChart({
                 width={120}
                 height={20}
                 rx={4}
-                fill="var(--fl-bg-deep, #0A1628)"
+                fill="var(--fl-bg-deep)"
                 stroke={evt.color}
                 strokeWidth={0.5}
                 opacity={0.95}
@@ -504,7 +504,7 @@ function TrendChart({
               strokeDasharray="6 4"
               opacity="0.5"
             />
-            <rect x={padding.left + chartW - 52} y={goalY - 10} width={52} height={16} rx={4} fill="var(--fl-bg-deep, #0A1628)" stroke={bm.color} strokeWidth={0.5} opacity={0.9} />
+            <rect x={padding.left + chartW - 52} y={goalY - 10} width={52} height={16} rx={4} fill="var(--fl-bg-deep)" stroke={bm.color} strokeWidth={0.5} opacity={0.9} />
             <text x={padding.left + chartW - 26} y={goalY + 1} textAnchor="middle" fill={bm.color} fontSize="8" fontWeight="700" opacity={0.8}>
               GOAL {goal.targetValue}
             </text>
@@ -538,7 +538,7 @@ function TrendChart({
             {/* Data points */}
             {points.map((p, i) => (
               <g key={i}>
-                <circle cx={p.x} cy={p.y} r="6" fill="var(--fl-bg-deep, #0A1628)" stroke={bm.color} strokeWidth="2" />
+                <circle cx={p.x} cy={p.y} r="6" fill="var(--fl-bg-deep)" stroke={bm.color} strokeWidth="2" />
                 <circle cx={p.x} cy={p.y} r="3" fill={bm.color} />
                 {/* Value label */}
                 <text x={p.x} y={p.y - 14} textAnchor="middle" fill={bm.color} fontSize="10" fontWeight="700" fontFamily="monospace">
@@ -556,7 +556,7 @@ function TrendChart({
           x={14}
           y={padding.top + chartH / 2}
           textAnchor="middle"
-          fill="rgba(255,255,255,0.25)"
+          fill="rgba(0,0,0,0.3)"
           fontSize="10"
           transform={`rotate(-90, 14, ${padding.top + chartH / 2})`}
         >
@@ -618,9 +618,9 @@ function ChangeSummary({ biomarker, color }: { biomarker: TrendBiomarker; color:
         <span
           className="text-[10px] px-2 py-0.5 rounded-full font-semibold"
           style={{
-            background: isPositiveChange ? "rgba(16,185,129,0.1)" : changePct === 0 ? "rgba(255,255,255,0.05)" : "rgba(245,158,11,0.1)",
+            background: isPositiveChange ? "rgba(16,185,129,0.1)" : changePct === 0 ? "rgba(0,0,0,0.04)" : "rgba(245,158,11,0.1)",
             color: isPositiveChange ? "#10B981" : changePct === 0 ? "#6B7280" : "#F59E0B",
-            border: `1px solid ${isPositiveChange ? "rgba(16,185,129,0.2)" : changePct === 0 ? "rgba(255,255,255,0.05)" : "rgba(245,158,11,0.2)"}`,
+            border: `1px solid ${isPositiveChange ? "rgba(16,185,129,0.2)" : changePct === 0 ? "rgba(0,0,0,0.04)" : "rgba(245,158,11,0.2)"}`,
           }}
         >
           {isPositiveChange ? "Improving" : changePct === 0 ? "Stable" : "Monitor"}

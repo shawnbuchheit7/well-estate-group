@@ -399,8 +399,8 @@ function CompareOrgansOverlay({
   };
 
   return (
-    <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
-      <div className="relative w-[560px] max-w-[90%] rounded-2xl p-6" style={{ background: 'var(--fl-bg-card)', backgroundImage: 'var(--fl-card-gradient)', border: '1px solid var(--fl-border)', boxShadow: 'var(--fl-shadow-elevated), 0 0 60px rgba(0, 212, 245, 0.08)' }}>
+    <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm">
+      <div className="relative w-[560px] max-w-[90%] rounded-2xl p-6" style={{ background: 'var(--fl-bg-card)', backgroundImage: 'var(--fl-card-gradient)', border: '1px solid var(--fl-border)', boxShadow: 'var(--fl-shadow-elevated)' }}>
         <div className="flex items-center justify-between mb-4">
           <div>
             <h3 className="text-lg font-bold flex items-center gap-2" style={{ color: 'var(--fl-text-primary)' }}>
@@ -415,7 +415,7 @@ function CompareOrgansOverlay({
         <div className="w-full h-[340px]">
           <ResponsiveContainer width="100%" height="100%">
             <RadarChart cx="50%" cy="50%" outerRadius="70%" data={radarData}>
-              <PolarGrid stroke="rgba(255,255,255,0.06)" strokeDasharray="3 3" />
+              <PolarGrid stroke="rgba(0,0,0,0.06)" strokeDasharray="3 3" />
               <PolarAngleAxis dataKey="organ" tick={renderCustomTick} tickLine={false} />
               <PolarRadiusAxis angle={90} domain={[0, 100]} tick={false} axisLine={false} />
               <Radar name="Health Score" dataKey="score" stroke="#B8860B" fill="#B8860B" fillOpacity={0.15} strokeWidth={2} dot={{ r: 4, fill: "#B8860B", stroke: "#0F172A", strokeWidth: 2 }} />
@@ -497,14 +497,14 @@ function VitalsBar() {
 
   const vitalColorMap: Record<string, string> = {
     'text-red-400': '#f87171',
-    'text-amber-700': '#22d3ee',
+    'text-amber-700': '#B8860B',
     'text-amber-400': '#fbbf24',
   };
 
   return (
     <div className="flex items-center justify-center gap-3 px-6 py-2" data-tour="vitals-bar" style={{ background: 'linear-gradient(180deg, transparent, var(--fl-bg-deep))', borderTop: '1px solid var(--fl-border-subtle)' }}>
       {vitals.map((vital, i) => {
-        const accentHex = vitalColorMap[vital.color] || '#22d3ee';
+        const accentHex = vitalColorMap[vital.color] || '#B8860B';
         return (
           <div key={i} className="text-center px-5 py-2 rounded-xl relative group transition-all duration-300 overflow-hidden hover:-translate-y-0.5" style={{ background: 'var(--fl-bg-card)', border: '1px solid var(--fl-border)', boxShadow: 'var(--fl-shadow-crisp)' }}>
             {/* Top accent line with glow */}
@@ -672,8 +672,8 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
   // Get the glow drop-shadow filter for the selected organ
   const getOrganGlowFilter = (organKey: string) => {
     const config = ORGAN_CONFIGS.find(c => c.key === organKey);
-    if (!config) return "brightness(0.85) drop-shadow(0 0 15px rgba(0, 217, 255, 0.1))";
-    return `brightness(${config.brightness}) drop-shadow(0 0 15px ${config.glowColor}) drop-shadow(0 0 35px ${config.glowColor.replace(/[\d.]+\)$/, '0.2)')}) drop-shadow(0 0 60px ${config.glowColor.replace(/[\d.]+\)$/, '0.08)')})`;  
+    if (!config) return "invert(1) hue-rotate(180deg) brightness(0.4) contrast(1.3) sepia(0.1) drop-shadow(0 0 15px rgba(184, 134, 11, 0.1))";
+    return `invert(1) hue-rotate(180deg) brightness(0.4) contrast(1.3) sepia(0.1) drop-shadow(0 0 15px ${config.glowColor}) drop-shadow(0 0 35px ${config.glowColor.replace(/[\d.]+\)$/, '0.15)')})`;  
   };
 
   return (
@@ -1187,7 +1187,7 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
                 }}
                 style={{
                   filter: isOverview
-                    ? 'brightness(0.9) drop-shadow(0 0 20px rgba(184, 134, 11, 0.15)) drop-shadow(0 0 50px rgba(184, 134, 11, 0.06))'
+                    ? 'invert(1) hue-rotate(180deg) brightness(0.4) contrast(1.3) sepia(0.1) drop-shadow(0 0 20px rgba(184, 134, 11, 0.12))'
                     : getOrganGlowFilter(selectedOrganKey),
                   transform: `scale(${(zoom / 100) * (isTransitioning ? 0.93 : 1)})`,
                   height: "100%",
@@ -1217,8 +1217,8 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
                     className="w-full md:w-auto rounded-lg md:rounded-2xl px-3 py-2 md:px-8 md:py-5 border backdrop-blur-xl text-center relative overflow-hidden"
                     style={{
                       borderColor: 'rgba(184, 134, 11, 0.2)',
-                      background: 'rgba(5, 15, 30, 0.88)',
-                      boxShadow: '0 0 60px rgba(184, 134, 11, 0.12), 0 0 120px rgba(184, 134, 11, 0.04), 0 8px 32px rgba(0,0,0,0.4)',
+                      background: 'rgba(255, 255, 255, 0.92)',
+                      boxShadow: '0 0 40px rgba(184, 134, 11, 0.08), 0 8px 32px rgba(0,0,0,0.06)',
                     }}
                   >
                     {/* Ambient glow */}
@@ -1246,16 +1246,16 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
                       </div>
                     </div>
                     {/* Bio Age Trend Sparkline (desktop only) */}
-                    <div className="hidden md:block mt-3 pt-3 relative z-10" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+                    <div className="hidden md:block mt-3 pt-3 relative z-10" style={{ borderTop: '1px solid rgba(184, 134, 11, 0.15)' }}>
                       <div className="flex items-center justify-between mb-1.5">
                         <span className="text-[9px] uppercase tracking-wider font-medium" style={{ color: 'var(--fl-text-muted)' }}>6-Assessment Trend</span>
                         <span className="text-[9px] font-semibold text-emerald-400">↓ Improving</span>
                       </div>
                       <svg width="180" height="40" viewBox="0 0 180 40" className="w-full">
                         {/* Grid lines */}
-                        <line x1="0" y1="10" x2="180" y2="10" stroke="rgba(255,255,255,0.04)" strokeWidth="0.5" />
-                        <line x1="0" y1="20" x2="180" y2="20" stroke="rgba(255,255,255,0.04)" strokeWidth="0.5" />
-                        <line x1="0" y1="30" x2="180" y2="30" stroke="rgba(255,255,255,0.04)" strokeWidth="0.5" />
+                        <line x1="0" y1="10" x2="180" y2="10" stroke="rgba(0,0,0,0.06)" strokeWidth="0.5" />
+                        <line x1="0" y1="20" x2="180" y2="20" stroke="rgba(0,0,0,0.06)" strokeWidth="0.5" />
+                        <line x1="0" y1="30" x2="180" y2="30" stroke="rgba(0,0,0,0.06)" strokeWidth="0.5" />
                         {/* Gradient fill under the line */}
                         <defs>
                           <linearGradient id="bioAgeTrendFill" x1="0" y1="0" x2="0" y2="1">
@@ -1479,7 +1479,7 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
             style={{
               background: `${selectedConfig.color}18`,
               borderColor: `${selectedConfig.color}40`,
-              boxShadow: `0 0 20px ${selectedConfig.color}15, 0 4px 12px rgba(0,0,0,0.3)`,
+              boxShadow: `0 0 20px ${selectedConfig.color}15, 0 4px 12px rgba(0,0,0,0.06)`,
             }}
           >
             <selectedConfig.icon className="w-3.5 h-3.5" style={{ color: selectedConfig.color }} />
@@ -1491,8 +1491,8 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
         {/* ═══ MOBILE: Bottom Sheet for Organ Details ═══ */}
         {isMobile && !isOverview && mobilePanel === 'details' && (
           <div className="absolute inset-0 z-30 flex flex-col">
-            <div className="flex-shrink-0 h-[30%]" onClick={() => setMobilePanel('none')} style={{ background: 'rgba(0,0,0,0.4)' }} />
-            <div className="flex-1 overflow-y-auto rounded-t-2xl fl-slide-up" style={{ background: 'var(--fl-bg-deep)', borderTop: `2px solid ${selectedConfig.color}30`, boxShadow: '0 -8px 40px rgba(0,0,0,0.5)' }}>
+            <div className="flex-shrink-0 h-[30%]" onClick={() => setMobilePanel('none')} style={{ background: 'rgba(0,0,0,0.15)' }} />
+            <div className="flex-1 overflow-y-auto rounded-t-2xl fl-slide-up" style={{ background: 'var(--fl-bg-deep)', borderTop: `2px solid ${selectedConfig.color}30`, boxShadow: '0 -8px 40px rgba(0,0,0,0.08)' }}>
               <div className="sticky top-0 z-10 pt-2 pb-3 px-4" style={{ background: 'var(--fl-bg-deep)', borderBottom: '1px solid var(--fl-border)' }}>
                 <div className="w-10 h-1 rounded-full mx-auto mb-3" style={{ background: 'var(--fl-border)' }} />
                 <div className="flex items-center justify-between">

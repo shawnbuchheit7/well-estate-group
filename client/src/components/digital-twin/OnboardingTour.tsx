@@ -28,7 +28,7 @@ const TOUR_STEPS: TourStep[] = [
     description: "Well Estate Group's Digital Health Twin gives you unprecedented insight into your biology. Let us show you the powerful tools at your fingertips.",
     icon: <Rocket className="w-6 h-6" />,
     position: "center",
-    accentColor: "#22D3EE",
+    accentColor: "#B8860B",
     illustration: (
       <div className="relative w-full h-32 flex items-center justify-center">
         <div className="absolute inset-0 flex items-center justify-center">
@@ -70,7 +70,7 @@ const TOUR_STEPS: TourStep[] = [
     targetSelector: "[data-tour='bio-age-hero']",
     tabToNavigate: "twin",
     position: "right",
-    accentColor: "#22D3EE",
+    accentColor: "#B8860B",
   },
   // Step 3: Organ System Ages (left panel, still on twin tab)
   {
@@ -253,7 +253,7 @@ function Confetti() {
   const pieces = useRef(
     Array.from({ length: 50 }, () => ({
       x: 50 + (Math.random() - 0.5) * 60,
-      color: ['#22D3EE', '#10B981', '#F59E0B', '#8B5CF6', '#EC4899', '#EF4444'][Math.floor(Math.random() * 6)],
+      color: ['#B8860B', '#10B981', '#F59E0B', '#9A7B4F', '#EC4899', '#EF4444'][Math.floor(Math.random() * 6)],
       delay: Math.random() * 0.5,
       rotation: Math.random() * 360,
       size: Math.random() * 6 + 3,
@@ -452,9 +452,9 @@ function TourCard({
       <div
         className="relative rounded-2xl overflow-hidden"
         style={{
-          background: 'linear-gradient(135deg, rgba(10,22,40,0.95), rgba(13,27,42,0.95))',
+          background: 'rgba(255,255,255,0.97)',
           border: `1px solid ${step.accentColor}25`,
-          boxShadow: `0 25px 60px rgba(0,0,0,0.5), 0 0 40px ${step.accentColor}15, inset 0 1px 0 rgba(255,255,255,0.05)`,
+          boxShadow: `0 25px 60px rgba(0,0,0,0.08), 0 0 40px ${step.accentColor}08, 0 0 0 1px rgba(184,134,11,0.15)`,
           backdropFilter: 'blur(20px)',
         }}
       >
@@ -536,7 +536,7 @@ function TourCard({
                       ? step.accentColor
                       : i < stepIndex
                         ? `${step.accentColor}60`
-                        : 'rgba(255,255,255,0.1)',
+                        : 'rgba(0,0,0,0.06)',
                     boxShadow: i === stepIndex ? `0 0 8px ${step.accentColor}50` : undefined,
                   }}
                 />
@@ -551,9 +551,9 @@ function TourCard({
                 onClick={onPrev}
                 className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-[12px] font-semibold transition-all hover:scale-[1.02]"
                 style={{
-                  background: 'rgba(255,255,255,0.04)',
-                  border: '1px solid rgba(255,255,255,0.08)',
-                  color: 'rgba(255,255,255,0.7)',
+                  background: 'rgba(0,0,0,0.04)',
+                  border: '1px solid rgba(0,0,0,0.08)',
+                  color: 'rgba(0,0,0,0.6)',
                 }}
               >
                 <ArrowLeft className="w-3.5 h-3.5" />
@@ -740,7 +740,7 @@ export function TourTriggerButton({ onClick }: { onClick: () => void }) {
       style={{
         background: 'linear-gradient(135deg, rgba(34,211,238,0.1), rgba(139,92,246,0.08))',
         border: '1px solid rgba(34,211,238,0.2)',
-        color: '#22D3EE',
+        color: '#B8860B',
         boxShadow: '0 0 15px rgba(34,211,238,0.05)',
       }}
     >
