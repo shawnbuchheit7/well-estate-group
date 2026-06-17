@@ -1,9 +1,9 @@
 /*
- * Longevity Franchise Portal — Redirect page
- * Immediately redirects to the external franchise portal while providing
- * a branded loading state and fallback navigation back to the main site.
+ * Longevity Franchise Portal — Embedded iframe
+ * Renders the external franchise portal inside the WEG site with a compact
+ * navigation bar at the top for easy section switching.
  */
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ArrowLeft, ChevronDown, ExternalLink } from "lucide-react";
 import { Link } from "wouter";
 
@@ -24,15 +24,6 @@ const navSections = [
 
 export default function LongevityFranchisePortal() {
   const [navOpen, setNavOpen] = useState(false);
-  const [redirecting, setRedirecting] = useState(true);
-
-  useEffect(() => {
-    // Auto-redirect to the portal in the same tab
-    window.location.href = PORTAL_URL;
-    // If redirect doesn't happen (e.g. popup blocker), show fallback after 2s
-    const timer = setTimeout(() => setRedirecting(false), 2000);
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <div className="fixed inset-0 z-50 bg-[#0A0A0A] flex flex-col">
@@ -113,36 +104,15 @@ export default function LongevityFranchisePortal() {
         </div>
       </div>
 
-      {/* Loading / Redirect content */}
-      <div className="flex-1 flex items-center justify-center">
-        <div className="text-center max-w-md px-6">
-          {redirecting ? (
-            <>
-              <div className="w-10 h-10 border-2 border-[#C5A059] border-t-transparent rounded-full animate-spin mx-auto mb-6" />
-              <p className="text-white/60 text-sm font-light">Opening Franchise Portal...</p>
-            </>
-          ) : (
-            <>
-              <img 
-                src="/weg-logo-mark-white.png" 
-                alt="Well Estate Group" 
-                className="w-16 h-16 mx-auto mb-6 no-sharpen opacity-80"
-              />
-              <h2 className="text-white text-xl font-light mb-3 tracking-tight">Franchise Portal</h2>
-              <p className="text-white/50 text-sm font-light mb-8 leading-relaxed">
-                The franchise portal opens in this window. If it didn't open automatically, click below.
-              </p>
-              <a
-                href={PORTAL_URL}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[#C5A059] hover:bg-[#D4B86A] text-black text-sm font-medium rounded-lg transition-colors"
-              >
-                <span>Open Franchise Portal</span>
-                <ExternalLink className="w-4 h-4" />
-              </a>
-            </>
-          )}
-        </div>
-      </div>
+      {/* Full-screen iframe */}
+      <iframe
+        src={PORTAL_URL}
+        className="w-full border-0"
+        style={{ height: 'calc(100vh - 44px)' }}
+        title="Well Estate Group Franchise Portal"
+        allow="clipboard-write; clipboard-read; storage-access"
+        loading="eager"
+      />
     </div>
   );
 }
