@@ -394,7 +394,7 @@ export default function Landing() {
                 title: 'Product & Brand Strategy',
                 items: ['Consumer & commercial product positioning', 'Go-to-market strategy & execution', 'Channel strategy & distribution', 'Brand partnership development', 'Product lifecycle & innovation roadmap'],
                 audience: 'For Product Companies & Brands',
-                href: '/gtm',
+                href: '/product-intelligence',
               },
               {
                 num: '03',
