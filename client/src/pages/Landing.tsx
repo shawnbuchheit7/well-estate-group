@@ -426,7 +426,7 @@ export default function Landing() {
                 <img 
                   src={service.bgImage} 
                   alt="" 
-                  className="absolute inset-0 w-full h-full object-cover opacity-[0.35] group-hover:opacity-[0.5] transition-opacity duration-500 pointer-events-none"
+                  className="absolute inset-0 w-full h-full object-cover opacity-[0.55] group-hover:opacity-[0.7] transition-opacity duration-500 pointer-events-none"
                   loading="lazy"
                 />
                 {/* Gold left accent bar */}
