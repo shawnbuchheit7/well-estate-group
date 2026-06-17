@@ -179,7 +179,7 @@ function ScoreGauge({ value, max, color, size = 72, label }: { value: number; ma
         />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <span className="text-lg font-black tabular-nums" style={{ color, fontFamily: "'JetBrains Mono', monospace" }}>{value}</span>
+        <span className="text-lg font-black tabular-nums" style={{ color, fontFamily: "'Space Mono', monospace" }}>{value}</span>
       </div>
     </div>
   );
@@ -336,7 +336,7 @@ function PercentileBadge({ biomarker }: { biomarker: Biomarker }) {
               background: `linear-gradient(90deg, ${pctColor}40, ${pctColor})`,
             }} />
           </div>
-          <span className="text-[9px] font-bold tabular-nums" style={{ color: pctColor, fontFamily: "'JetBrains Mono', monospace" }}>
+          <span className="text-[9px] font-bold tabular-nums" style={{ color: pctColor, fontFamily: "'Space Mono', monospace" }}>
             Top {100 - percentile}%
           </span>
         </div>
@@ -348,7 +348,7 @@ function PercentileBadge({ biomarker }: { biomarker: Biomarker }) {
               background: 'linear-gradient(90deg, rgba(34,211,238,0.4), rgba(34,211,238,1))',
             }} />
           </div>
-          <span className="text-[9px] font-bold tabular-nums" style={{ color: 'var(--fl-accent)', fontFamily: "'JetBrains Mono', monospace" }}>
+          <span className="text-[9px] font-bold tabular-nums" style={{ color: 'var(--fl-accent)', fontFamily: "'Space Mono', monospace" }}>
             Top {100 - flPercentile}%
           </span>
         </div>
@@ -489,8 +489,8 @@ function HealthMomentum({ categories }: { categories: BiomarkerCategory[] }) {
             <span className="text-emerald-400">{improving}</span>
           </span>
           <span className="text-[9px] font-semibold flex items-center gap-1">
-            <Minus className="w-2.5 h-2.5 text-gray-400" />
-            <span className="text-gray-400">{stable}</span>
+            <Minus className="w-2.5 h-2.5 text-gray-600" />
+            <span className="text-gray-600">{stable}</span>
           </span>
           <span className="text-[9px] font-semibold flex items-center gap-1">
             <ArrowDown className="w-2.5 h-2.5 text-red-400" />
@@ -607,16 +607,16 @@ function RangeBar({ value, refLow, refHigh, optimalLow, optimalHigh, color }: {
         <div className="relative">
           <div className="w-3.5 h-3.5 rounded-full border-[2.5px]" style={{
             background: markerColor,
-            borderColor: '#050A12',
+            borderColor: '#FFFFFF',
             boxShadow: `0 0 12px ${markerColor}60, 0 0 4px ${markerColor}`,
           }} />
         </div>
       </div>
       {/* Labels */}
       <div className="flex justify-between mt-1.5">
-        <span className="text-[8px] text-gray-600 tabular-nums" style={{ fontFamily: "'JetBrains Mono', monospace" }}>{refLow}</span>
-        <span className="text-[8px] text-emerald-500/40 tabular-nums" style={{ fontFamily: "'JetBrains Mono', monospace" }}>optimal</span>
-        <span className="text-[8px] text-gray-600 tabular-nums" style={{ fontFamily: "'JetBrains Mono', monospace" }}>{refHigh}</span>
+        <span className="text-[8px] text-gray-600 tabular-nums" style={{ fontFamily: "'Space Mono', monospace" }}>{refLow}</span>
+        <span className="text-[8px] text-emerald-500/40 tabular-nums" style={{ fontFamily: "'Space Mono', monospace" }}>optimal</span>
+        <span className="text-[8px] text-gray-600 tabular-nums" style={{ fontFamily: "'Space Mono', monospace" }}>{refHigh}</span>
       </div>
     </div>
   );
@@ -675,7 +675,7 @@ function DetailChart({ biomarker, color, goal }: { biomarker: Biomarker; color: 
       {ticks.map((t, i) => (
         <g key={i}>
           <line x1={pad.left} y1={toY(t)} x2={w - pad.right} y2={toY(t)} stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
-          <text x={pad.left - 8} y={toY(t) + 3} textAnchor="end" fill="rgba(255,255,255,0.25)" fontSize="9" fontFamily="'JetBrains Mono', monospace">
+          <text x={pad.left - 8} y={toY(t) + 3} textAnchor="end" fill="rgba(255,255,255,0.25)" fontSize="9" fontFamily="'Space Mono', monospace">
             {t < 10 ? t.toFixed(1) : Math.round(t)}
           </text>
         </g>
@@ -690,7 +690,7 @@ function DetailChart({ biomarker, color, goal }: { biomarker: Biomarker; color: 
       <line x1={pad.left} y1={optBot} x2={w - pad.right} y2={optBot} stroke="rgba(16,185,129,0.2)" strokeWidth="1" strokeDasharray="4 4" />
 
       {/* Optimal label */}
-      <text x={w - pad.right + 4} y={(optTop + optBot) / 2 + 3} fill="rgba(16,185,129,0.4)" fontSize="8" fontFamily="'JetBrains Mono', monospace">OPT</text>
+      <text x={w - pad.right + 4} y={(optTop + optBot) / 2 + 3} fill="rgba(16,185,129,0.4)" fontSize="8" fontFamily="'Space Mono', monospace">OPT</text>
 
       {/* Goal target line */}
       {goal !== undefined && (() => {
@@ -699,7 +699,7 @@ function DetailChart({ biomarker, color, goal }: { biomarker: Biomarker; color: 
           <g>
             <line x1={pad.left} y1={goalY} x2={w - pad.right} y2={goalY} stroke="rgba(34,211,238,0.5)" strokeWidth="1.5" strokeDasharray="6 4" />
             <circle cx={pad.left} cy={goalY} r="3" fill="#22D3EE" />
-            <text x={w - pad.right + 4} y={goalY + 3} fill="rgba(34,211,238,0.7)" fontSize="8" fontWeight="700" fontFamily="'JetBrains Mono', monospace">GOAL</text>
+            <text x={w - pad.right + 4} y={goalY + 3} fill="rgba(34,211,238,0.7)" fontSize="8" fontWeight="700" fontFamily="'Space Mono', monospace">GOAL</text>
           </g>
         );
       })()}
@@ -725,7 +725,7 @@ function DetailChart({ biomarker, color, goal }: { biomarker: Biomarker; color: 
             <circle cx={p.x} cy={p.y} r={isLast ? 5 : 3} fill={dotColor} />
             {isLast && <circle cx={p.x} cy={p.y} r="2" fill="white" />}
             {/* Value label */}
-            <text x={p.x} y={p.y - 10} textAnchor="middle" fill={isLast ? "white" : "rgba(255,255,255,0.5)"} fontSize={isLast ? "11" : "9"} fontWeight={isLast ? "800" : "500"} fontFamily="'JetBrains Mono', monospace">
+            <text x={p.x} y={p.y - 10} textAnchor="middle" fill={isLast ? "white" : "rgba(255,255,255,0.5)"} fontSize={isLast ? "11" : "9"} fontWeight={isLast ? "800" : "500"} fontFamily="'Space Mono', monospace">
               {val}
             </text>
           </g>
@@ -734,7 +734,7 @@ function DetailChart({ biomarker, color, goal }: { biomarker: Biomarker; color: 
 
       {/* X-axis labels */}
       {data.map((d, i) => (
-        <text key={i} x={toX(i)} y={h - 5} textAnchor="middle" fill="rgba(255,255,255,0.3)" fontSize="9" fontFamily="'JetBrains Mono', monospace">
+        <text key={i} x={toX(i)} y={h - 5} textAnchor="middle" fill="rgba(255,255,255,0.3)" fontSize="9" fontFamily="'Space Mono', monospace">
           {d.date.split(' ')[0]}
         </text>
       ))}
@@ -853,14 +853,14 @@ function BiomarkerRow({ biomarker, color, expanded, onToggle, index, goal, goalT
           {/* Value + Trend */}
           <div className="text-right min-w-[60px] md:min-w-[80px] flex-shrink-0">
             <div className="flex items-baseline gap-1 justify-end">
-              <span className="text-base font-black tabular-nums" style={{ fontFamily: "'JetBrains Mono', monospace", color: 'var(--fl-text-primary)' }}>
+              <span className="text-base font-black tabular-nums" style={{ fontFamily: "'Space Mono', monospace", color: 'var(--fl-text-primary)' }}>
                 {biomarker.value}
               </span>
               <span className="text-[9px] font-medium" style={{ color: 'var(--fl-text-muted)' }}>{biomarker.unit}</span>
             </div>
             <div className="flex items-center gap-1.5 justify-end mt-0.5" data-tour="velocity">
               <TrendIcon className="w-3 h-3" style={{ color: trendColor }} />
-              <span className="text-[10px] font-semibold tabular-nums" style={{ color: trendColor, fontFamily: "'JetBrains Mono', monospace" }}>
+              <span className="text-[10px] font-semibold tabular-nums" style={{ color: trendColor, fontFamily: "'Space Mono', monospace" }}>
                 {pctChange > 0 ? '+' : ''}{pctChange.toFixed(1)}%
               </span>
               <VelocityIndicator history={biomarker.history} upIsGood={upIsGood} />
@@ -903,7 +903,7 @@ function BiomarkerRow({ biomarker, color, expanded, onToggle, index, goal, goalT
             <div className="mb-4 md:mb-5 p-3 md:p-4 rounded-xl" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)' }}>
               <div className="flex items-center justify-between mb-2">
                 <span className="text-[9px] uppercase tracking-widest font-bold" style={{ color: 'var(--fl-text-muted)' }}>Range Position</span>
-                <span className="text-[11px] font-bold tabular-nums" style={{ fontFamily: "'JetBrains Mono', monospace", color }}>{biomarker.value} <span className="text-[9px] font-normal text-gray-500">{biomarker.unit}</span></span>
+                <span className="text-[11px] font-bold tabular-nums" style={{ fontFamily: "'Space Mono', monospace", color }}>{biomarker.value} <span className="text-[9px] font-normal text-gray-600">{biomarker.unit}</span></span>
               </div>
               <div className="relative mx-auto" style={{ maxWidth: '100%' }}>
                 {/* Full range bar */}
@@ -940,20 +940,20 @@ function BiomarkerRow({ biomarker, color, expanded, onToggle, index, goal, goalT
               {/* Chart (2 cols) */}
               <div className="lg:col-span-2 rounded-xl p-4" style={{ background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.04)' }}>
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-[10px] text-gray-400 uppercase tracking-widest font-semibold">Trend History</span>
+                  <span className="text-[10px] text-gray-600 uppercase tracking-widest font-semibold">Trend History</span>
                   <div className="flex items-center gap-3">
                     <div className="flex items-center gap-1.5">
                       <div className="w-2 h-2 rounded-full" style={{ background: 'rgba(16,185,129,0.3)' }} />
-                      <span className="text-[9px] text-gray-500">Optimal Zone</span>
+                      <span className="text-[9px] text-gray-600">Optimal Zone</span>
                     </div>
                     <div className="flex items-center gap-1.5">
                       <div className="w-4 h-0.5 rounded" style={{ background: color }} />
-                      <span className="text-[9px] text-gray-500">Your Values</span>
+                      <span className="text-[9px] text-gray-600">Your Values</span>
                     </div>
                     {goal !== undefined && (
                       <div className="flex items-center gap-1.5">
                         <div className="w-4 h-0.5 rounded" style={{ background: '#22D3EE', opacity: 0.5 }} />
-                        <span className="text-[9px] text-cyan-400/60">Goal</span>
+                        <span className="text-[9px] text-amber-700/60">Goal</span>
                       </div>
                     )}
                   </div>
@@ -969,8 +969,8 @@ function BiomarkerRow({ biomarker, color, expanded, onToggle, index, goal, goalT
                   <div className="flex items-center justify-center gap-3">
                     <RadialBiomarkerGauge value={biomarker.value} min={biomarker.refLow} max={biomarker.refHigh} optimalLow={biomarker.optimalLow} optimalHigh={biomarker.optimalHigh} color={color} size={56} />
                     <div>
-                      <p className="text-2xl font-black tabular-nums" style={{ fontFamily: "'JetBrains Mono', monospace", color: 'var(--fl-text-primary)' }}>{biomarker.value}</p>
-                      <p className="text-[10px] text-gray-500 mt-0.5">{biomarker.unit}</p>
+                      <p className="text-2xl font-black tabular-nums" style={{ fontFamily: "'Space Mono', monospace", color: 'var(--fl-text-primary)' }}>{biomarker.value}</p>
+                      <p className="text-[10px] text-gray-600 mt-0.5">{biomarker.unit}</p>
                     </div>
                   </div>
                 </div>
@@ -983,18 +983,18 @@ function BiomarkerRow({ biomarker, color, expanded, onToggle, index, goal, goalT
 
                 {/* Ranges */}
                 <div className="rounded-xl p-4" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)' }}>
-                  <p className="text-[9px] text-gray-400 uppercase tracking-widest font-bold mb-3">Reference Ranges</p>
+                  <p className="text-[9px] text-gray-600 uppercase tracking-widest font-bold mb-3">Reference Ranges</p>
                   <div className="space-y-2.5">
                     <div className="flex justify-between items-center">
                       <span className="text-[11px] text-emerald-400 font-medium">Optimal</span>
-                      <span className="text-[12px] text-emerald-300 font-bold tabular-nums" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+                      <span className="text-[12px] text-emerald-300 font-bold tabular-nums" style={{ fontFamily: "'Space Mono', monospace" }}>
                         {biomarker.optimalLow} – {biomarker.optimalHigh}
                       </span>
                     </div>
                     <div className="h-px bg-white/[0.04]" />
                     <div className="flex justify-between items-center">
-                      <span className="text-[11px] text-gray-400 font-medium">Normal</span>
-                      <span className="text-[12px] text-gray-300 font-bold tabular-nums" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+                      <span className="text-[11px] text-gray-600 font-medium">Normal</span>
+                      <span className="text-[12px] text-gray-300 font-bold tabular-nums" style={{ fontFamily: "'Space Mono', monospace" }}>
                         {biomarker.refLow} – {biomarker.refHigh}
                       </span>
                     </div>
@@ -1003,10 +1003,10 @@ function BiomarkerRow({ biomarker, color, expanded, onToggle, index, goal, goalT
 
                 {/* Change */}
                 <div className="rounded-xl p-4" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)' }}>
-                  <p className="text-[9px] text-gray-400 uppercase tracking-widest font-bold mb-2">Since Baseline</p>
+                  <p className="text-[9px] text-gray-600 uppercase tracking-widest font-bold mb-2">Since Baseline</p>
                   <div className="flex items-center gap-2">
                     <TrendIcon className="w-4 h-4" style={{ color: trendColor }} />
-                    <span className="text-lg font-black tabular-nums" style={{ color: trendColor, fontFamily: "'JetBrains Mono', monospace" }}>
+                    <span className="text-lg font-black tabular-nums" style={{ color: trendColor, fontFamily: "'Space Mono', monospace" }}>
                       {pctChange > 0 ? '+' : ''}{pctChange.toFixed(1)}%
                     </span>
                   </div>
@@ -1022,16 +1022,16 @@ function BiomarkerRow({ biomarker, color, expanded, onToggle, index, goal, goalT
               <div className="flex items-center gap-3">
                 {goal !== undefined && (
                   <div className="flex items-center gap-2 px-3 py-2 rounded-lg" style={{ background: 'rgba(34,211,238,0.05)', border: '1px solid rgba(34,211,238,0.1)' }}>
-                    <Target className="w-3.5 h-3.5 text-cyan-400" />
-                    <span className="text-[10px] text-gray-400 font-medium">Goal:</span>
-                    <span className="text-sm font-bold text-cyan-400 tabular-nums" style={{ fontFamily: "'JetBrains Mono', monospace" }}>{goal}</span>
-                    <span className="text-[10px] text-gray-500">{biomarker.unit}</span>
+                    <Target className="w-3.5 h-3.5 text-amber-700" />
+                    <span className="text-[10px] text-gray-600 font-medium">Goal:</span>
+                    <span className="text-sm font-bold text-amber-700 tabular-nums" style={{ fontFamily: "'Space Mono', monospace" }}>{goal}</span>
+                    <span className="text-[10px] text-gray-600">{biomarker.unit}</span>
                     {(() => {
                       const progress = Math.min(100, Math.max(0, ((biomarker.value - (biomarker.history[0]?.value || biomarker.value)) / (goal - (biomarker.history[0]?.value || biomarker.value))) * 100));
                       return progress >= 100 ? (
                         <span className="text-[10px] text-emerald-400 font-bold ml-1">✓ Achieved</span>
                       ) : (
-                        <span className="text-[10px] text-cyan-400/70 font-semibold ml-1">{Math.round(progress)}% there</span>
+                        <span className="text-[10px] text-amber-700/70 font-semibold ml-1">{Math.round(progress)}% there</span>
                       );
                     })()}
                     {goalTargetDate && (() => {
@@ -1053,7 +1053,7 @@ function BiomarkerRow({ biomarker, color, expanded, onToggle, index, goal, goalT
               {onSetGoal && (
                 <button
                   onClick={(e) => { e.stopPropagation(); onSetGoal(biomarker); }}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[10px] font-semibold text-cyan-400 hover:bg-cyan-500/10 transition-all"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[10px] font-semibold text-amber-700 hover:bg-amber-700/10 transition-all"
                   style={{ border: '1px solid rgba(34,211,238,0.15)' }}
                 >
                   <Target className="w-3 h-3" />
@@ -1062,7 +1062,7 @@ function BiomarkerRow({ biomarker, color, expanded, onToggle, index, goal, goalT
               )}
             </div>
 
-            {/* Ask Zori AI Section */}
+            {/* Ask WEG AI AI Section */}
              {onAskZori && (
               <div className="mt-4 pt-4" data-tour="zori" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
                 {!zoriResponse && !zoriLoading && (
@@ -1079,17 +1079,17 @@ function BiomarkerRow({ biomarker, color, expanded, onToggle, index, goal, goalT
                     className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold transition-all hover:scale-[1.02] active:scale-[0.98]"
                     style={{ background: 'linear-gradient(135deg, rgba(139,92,246,0.12), rgba(34,211,238,0.08))', border: '1px solid rgba(139,92,246,0.2)' }}
                   >
-                    <Sparkles className="w-3.5 h-3.5 text-violet-400" />
-                    <span className="text-violet-300">Ask Zori</span>
-                    <span className="text-gray-500 text-[10px]">— AI analysis of {biomarker.name}</span>
+                    <Sparkles className="w-3.5 h-3.5 text-amber-700" />
+                    <span className="text-amber-700">Ask WEG AI</span>
+                    <span className="text-gray-600 text-[10px]">— AI analysis of {biomarker.name}</span>
                   </button>
                 )}
                 {zoriLoading && (
                   <div className="flex items-center gap-3 px-4 py-3 rounded-xl" style={{ background: 'rgba(139,92,246,0.05)', border: '1px solid rgba(139,92,246,0.1)' }}>
                     <div className="relative">
-                      <Loader2 className="w-4 h-4 text-violet-400 animate-spin" />
+                      <Loader2 className="w-4 h-4 text-amber-700 animate-spin" />
                     </div>
-                    <span className="text-xs text-violet-300 font-medium">Zori is analyzing {biomarker.name}...</span>
+                    <span className="text-xs text-amber-700 font-medium">WEG AI is analyzing {biomarker.name}...</span>
                   </div>
                 )}
                 {zoriResponse && (
@@ -1097,11 +1097,11 @@ function BiomarkerRow({ biomarker, color, expanded, onToggle, index, goal, goalT
                     <div className="h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(139,92,246,0.3), rgba(34,211,238,0.2), transparent)' }} />
                     <div className="px-4 py-3">
                       <div className="flex items-center gap-2 mb-2">
-                        <Sparkles className="w-3.5 h-3.5 text-violet-400" />
-                        <span className="text-[10px] text-violet-400 uppercase tracking-widest font-bold">Zori's Analysis</span>
+                        <Sparkles className="w-3.5 h-3.5 text-amber-700" />
+                        <span className="text-[10px] text-amber-700 uppercase tracking-widest font-bold">Zori's Analysis</span>
                         <button
                           onClick={(e) => { e.stopPropagation(); setZoriResponse(null); }}
-                          className="ml-auto text-gray-500 hover:text-gray-300 transition-colors"
+                          className="ml-auto text-gray-600 hover:text-gray-300 transition-colors"
                         >
                           <X className="w-3 h-3" />
                         </button>
@@ -1115,7 +1115,7 @@ function BiomarkerRow({ biomarker, color, expanded, onToggle, index, goal, goalT
 
             {/* Full Range Bar */}
             <div className="mt-4 pt-4" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-              <p className="text-[9px] text-gray-400 uppercase tracking-widest font-bold mb-3">Position in Range</p>
+              <p className="text-[9px] text-gray-600 uppercase tracking-widest font-bold mb-3">Position in Range</p>
               <RangeBar
                 value={biomarker.value}
                 refLow={biomarker.refLow}
@@ -1255,46 +1255,46 @@ function GoalDialog({ biomarker, currentGoal, currentTargetDate, onSave, onClose
       <div className="w-full max-w-sm mx-4 rounded-2xl p-6" onClick={(e) => e.stopPropagation()}
         style={{ background: 'linear-gradient(135deg, #0A1628, #0D1B2A)', border: '1px solid rgba(255,255,255,0.08)' }}>
         <div className="flex items-center justify-between mb-5">
-          <h3 className="text-base font-bold text-white">Set Target Goal</h3>
+          <h3 className="text-base font-bold text-gray-900">Set Target Goal</h3>
           <button onClick={onClose} className="w-7 h-7 rounded-lg flex items-center justify-center hover:bg-white/[0.06] transition-colors">
-            <X className="w-4 h-4 text-gray-400" />
+            <X className="w-4 h-4 text-gray-600" />
           </button>
         </div>
-        <p className="text-sm text-gray-400 mb-4">{biomarker.name} ({biomarker.unit})</p>
+        <p className="text-sm text-gray-600 mb-4">{biomarker.name} ({biomarker.unit})</p>
         <div className="mb-4">
-          <label className="text-[10px] text-gray-500 uppercase tracking-widest font-bold mb-2 block">Target Value</label>
+          <label className="text-[10px] text-gray-600 uppercase tracking-widest font-bold mb-2 block">Target Value</label>
           <input
             type="number"
             step="any"
             value={target}
             onChange={(e) => setTarget(e.target.value)}
-            className="w-full px-4 py-3 rounded-xl bg-[#050A12] border border-white/[0.08] text-white text-lg font-bold focus:outline-none focus:border-cyan-500/40 focus:ring-1 focus:ring-cyan-500/10 transition-all"
-            style={{ fontFamily: "'JetBrains Mono', monospace" }}
+            className="w-full px-4 py-3 rounded-xl bg-[#FFFFFF] border border-gray-200 text-gray-900 text-lg font-bold focus:outline-none focus:border-amber-600/40 focus:ring-1 focus:ring-amber-600/10 transition-all"
+            style={{ fontFamily: "'Space Mono', monospace" }}
           />
         </div>
         <div className="mb-4">
-          <label className="text-[10px] text-gray-500 uppercase tracking-widest font-bold mb-2 block">Target Date (optional)</label>
+          <label className="text-[10px] text-gray-600 uppercase tracking-widest font-bold mb-2 block">Target Date (optional)</label>
           <input
             type="date"
             value={targetDate}
             onChange={(e) => setTargetDate(e.target.value)}
             min={new Date().toISOString().split('T')[0]}
-            className="w-full px-4 py-3 rounded-xl bg-[#050A12] border border-white/[0.08] text-white text-sm focus:outline-none focus:border-cyan-500/40 focus:ring-1 focus:ring-cyan-500/10 transition-all [color-scheme:dark]"
+            className="w-full px-4 py-3 rounded-xl bg-[#FFFFFF] border border-gray-200 text-gray-900 text-sm focus:outline-none focus:border-amber-600/40 focus:ring-1 focus:ring-amber-600/10 transition-all [color-scheme:dark]"
           />
         </div>
-        <div className="flex items-center gap-2 mb-5 text-[11px] text-gray-500">
+        <div className="flex items-center gap-2 mb-5 text-[11px] text-gray-600">
           <span>Optimal range:</span>
-          <span className="text-emerald-400 font-semibold" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+          <span className="text-emerald-400 font-semibold" style={{ fontFamily: "'Space Mono', monospace" }}>
             {biomarker.optimalLow} – {biomarker.optimalHigh} {biomarker.unit}
           </span>
         </div>
         <div className="flex gap-3">
-          <button onClick={onClose} className="flex-1 px-4 py-2.5 rounded-xl text-sm font-medium text-gray-400 border border-white/[0.06] hover:bg-white/[0.04] transition-all">
+          <button onClick={onClose} className="flex-1 px-4 py-2.5 rounded-xl text-sm font-medium text-gray-600 border border-gray-200 hover:bg-white/[0.04] transition-all">
             Cancel
           </button>
           <button
             onClick={() => { const val = parseFloat(target); if (!isNaN(val)) { onSave(biomarker.name, val, targetDate || undefined); onClose(); } }}
-            className="flex-1 px-4 py-2.5 rounded-xl text-sm font-semibold bg-cyan-500 text-[#050A12] hover:bg-cyan-400 transition-all shadow-[0_0_20px_rgba(0,229,255,0.15)]"
+            className="flex-1 px-4 py-2.5 rounded-xl text-sm font-semibold bg-amber-600 text-gray-900 hover:bg-amber-700 transition-all shadow-[0_0_20px_rgba(184,134,11,0.15)]"
           >
             Save Goal
           </button>
@@ -1317,11 +1317,11 @@ function AIInsightsPanel({ insights, isLoading, onGenerate }: {
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ background: 'linear-gradient(135deg, rgba(139,92,246,0.15), rgba(34,211,238,0.1))', border: '1px solid rgba(139,92,246,0.15)' }}>
-              <Sparkles className="w-4.5 h-4.5 text-violet-400" />
+              <Sparkles className="w-4.5 h-4.5 text-amber-700" />
             </div>
             <div>
-              <h3 className="text-sm font-bold text-white tracking-tight">AI Health Insights</h3>
-              <p className="text-[10px] text-gray-500">Personalized analysis powered by AI</p>
+              <h3 className="text-sm font-bold text-gray-900 tracking-tight">AI Health Insights</h3>
+              <p className="text-[10px] text-gray-600">Personalized analysis powered by AI</p>
             </div>
           </div>
           <button
@@ -1378,7 +1378,7 @@ function AIInsightsPanel({ insights, isLoading, onGenerate }: {
           </div>
         ) : !isLoading ? (
           <div className="text-center py-6">
-            <p className="text-sm text-gray-500">Click "Generate Insights" to get personalized AI analysis of your biomarker data.</p>
+            <p className="text-sm text-gray-600">Click "Generate Insights" to get personalized AI analysis of your biomarker data.</p>
           </div>
         ) : null}
       </div>
@@ -1452,7 +1452,7 @@ export function Biomarkers({ dbBiomarkers, goals, insights, insightsLoading, onS
             {/* Left: Title + subtitle */}
             <div>
               <p className="text-[10px] uppercase tracking-[0.2em] font-semibold mb-1" style={{ color: 'var(--fl-text-gold)' }}>Precision Health</p>
-              <h2 className="text-lg md:text-xl font-bold tracking-tight" style={{ fontFamily: "'Inter Tight', 'Inter', system-ui, sans-serif", letterSpacing: '-0.03em', color: 'var(--fl-text-primary)' }}>Biomarker Analysis</h2>
+              <h2 className="text-lg md:text-xl font-bold tracking-tight" style={{ fontFamily: "'Playfair Display', serif", letterSpacing: '-0.03em', color: 'var(--fl-text-primary)' }}>Biomarker Analysis</h2>
               <p className="text-xs mt-1" style={{ color: 'var(--fl-text-muted)' }}>{totalBiomarkers} biomarkers across {categories.length} categories · Last updated Jan 2026</p>
             </div>
 
@@ -1474,18 +1474,18 @@ export function Biomarkers({ dbBiomarkers, goals, insights, insightsLoading, onS
                 <div className="flex flex-row md:flex-col gap-2">
                   <div className="flex items-center gap-1.5 md:gap-2 px-2 md:px-3 py-1 md:py-1.5 rounded-lg" style={{ background: 'rgba(16,185,129,0.06)', border: '1px solid rgba(16,185,129,0.1)' }}>
                     <CheckCircle2 className="w-3 h-3 md:w-3.5 md:h-3.5 text-emerald-400" />
-                    <span className="text-[11px] md:text-xs font-bold text-emerald-400 tabular-nums" style={{ fontFamily: "'JetBrains Mono', monospace" }}>{optimalCount}</span>
+                    <span className="text-[11px] md:text-xs font-bold text-emerald-400 tabular-nums" style={{ fontFamily: "'Space Mono', monospace" }}>{optimalCount}</span>
                     <span className="text-[9px] md:text-[10px] text-emerald-400/80 hidden sm:inline">optimal</span>
                   </div>
                   <div className="flex items-center gap-1.5 md:gap-2 px-2 md:px-3 py-1 md:py-1.5 rounded-lg" style={{ background: 'rgba(245,158,11,0.05)', border: '1px solid rgba(245,158,11,0.08)' }}>
                     <AlertTriangle className="w-3 h-3 md:w-3.5 md:h-3.5 text-yellow-400" />
-                    <span className="text-[11px] md:text-xs font-bold text-yellow-400 tabular-nums" style={{ fontFamily: "'JetBrains Mono', monospace" }}>{inRangeCount}</span>
+                    <span className="text-[11px] md:text-xs font-bold text-yellow-400 tabular-nums" style={{ fontFamily: "'Space Mono', monospace" }}>{inRangeCount}</span>
                     <span className="text-[9px] md:text-[10px] text-yellow-400/80 hidden sm:inline">in range</span>
                   </div>
                   {outOfRangeCount > 0 && (
                     <div className="flex items-center gap-1.5 md:gap-2 px-2 md:px-3 py-1 md:py-1.5 rounded-lg" style={{ background: 'rgba(239,68,68,0.05)', border: '1px solid rgba(239,68,68,0.08)' }}>
                       <XCircle className="w-3 h-3 md:w-3.5 md:h-3.5 text-red-400" />
-                      <span className="text-[11px] md:text-xs font-bold text-red-400 tabular-nums" style={{ fontFamily: "'JetBrains Mono', monospace" }}>{outOfRangeCount}</span>
+                      <span className="text-[11px] md:text-xs font-bold text-red-400 tabular-nums" style={{ fontFamily: "'Space Mono', monospace" }}>{outOfRangeCount}</span>
                       <span className="text-[9px] md:text-[10px] text-red-400/80 hidden sm:inline">attention</span>
                     </div>
                   )}
@@ -1513,7 +1513,7 @@ export function Biomarkers({ dbBiomarkers, goals, insights, insightsLoading, onS
           <Button
             variant="outline"
             size="sm"
-            className={`h-8 text-xs rounded-lg px-3 ${selectedCategory === "all" ? "bg-white/[0.08] text-white border-white/[0.12]" : "border-white/[0.05] text-gray-500 hover:text-gray-300 hover:border-white/[0.08]"}`}
+            className={`h-8 text-xs rounded-lg px-3 ${selectedCategory === "all" ? "bg-white/[0.08] text-gray-900 border-white/[0.12]" : "border-white/[0.05] text-gray-600 hover:text-gray-300 hover:border-gray-200"}`}
             onClick={() => setSelectedCategory("all")}
           >
             All ({totalBiomarkers})
@@ -1526,7 +1526,7 @@ export function Biomarkers({ dbBiomarkers, goals, insights, insightsLoading, onS
                 key={cat.key}
                 variant="outline"
                 size="sm"
-                className={`h-8 text-xs rounded-lg gap-1.5 px-3 transition-all ${isActive ? "" : "border-white/[0.05] text-gray-500 hover:text-gray-300 hover:border-white/[0.08]"}`}
+                className={`h-8 text-xs rounded-lg gap-1.5 px-3 transition-all ${isActive ? "" : "border-white/[0.05] text-gray-600 hover:text-gray-300 hover:border-gray-200"}`}
                 style={isActive ? { background: `${cat.color}12`, color: cat.color, borderColor: `${cat.color}25` } : undefined}
                 onClick={() => setSelectedCategory(cat.key)}
               >
@@ -1539,7 +1539,7 @@ export function Biomarkers({ dbBiomarkers, goals, insights, insightsLoading, onS
           <Button
             variant="outline"
             size="sm"
-            className="h-8 text-xs rounded-lg border-white/[0.05] text-gray-500 gap-1.5 hover:text-gray-300 hover:border-white/[0.08]"
+            className="h-8 text-xs rounded-lg border-white/[0.05] text-gray-600 gap-1.5 hover:text-gray-300 hover:border-gray-200"
             onClick={() => setSortBy(sortBy === "name" ? "status" : "name")}
           >
             <ArrowUpDown className="w-3 h-3" />
@@ -1577,9 +1577,9 @@ export function Biomarkers({ dbBiomarkers, goals, insights, insightsLoading, onS
               <div className="flex items-center gap-4">
                 {/* Score */}
                 <div className="flex items-center gap-2">
-                  <span className="text-xs text-gray-500">
-                    <span className="font-bold" style={{ color: cat.color, fontFamily: "'JetBrains Mono', monospace" }}>{catOptimal}</span>
-                    <span className="text-gray-500">/{cat.biomarkers.length}</span>
+                  <span className="text-xs text-gray-600">
+                    <span className="font-bold" style={{ color: cat.color, fontFamily: "'Space Mono', monospace" }}>{catOptimal}</span>
+                    <span className="text-gray-600">/{cat.biomarkers.length}</span>
                   </span>
                 </div>
                 {/* Progress */}
@@ -1590,7 +1590,7 @@ export function Biomarkers({ dbBiomarkers, goals, insights, insightsLoading, onS
                     boxShadow: `0 0 8px ${cat.color}30`,
                   }} />
                 </div>
-                <span className="text-xs font-bold tabular-nums min-w-[28px] text-right" style={{ color: cat.color, fontFamily: "'JetBrains Mono', monospace" }}>{catPct}%</span>
+                <span className="text-xs font-bold tabular-nums min-w-[28px] text-right" style={{ color: cat.color, fontFamily: "'Space Mono', monospace" }}>{catPct}%</span>
               </div>
             </div>
 

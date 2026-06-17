@@ -25,7 +25,7 @@ const TOUR_STEPS: TourStep[] = [
   {
     id: "welcome",
     title: "Welcome to Your Health Command Center",
-    description: "Fountain Life's Digital Health Twin gives you unprecedented insight into your biology. Let us show you the powerful tools at your fingertips.",
+    description: "Well Estate Group's Digital Health Twin gives you unprecedented insight into your biology. Let us show you the powerful tools at your fingertips.",
     icon: <Rocket className="w-6 h-6" />,
     position: "center",
     accentColor: "#22D3EE",
@@ -44,7 +44,7 @@ const TOUR_STEPS: TourStep[] = [
             border: '1px solid rgba(34,211,238,0.3)',
             boxShadow: '0 0 40px rgba(34,211,238,0.2)',
           }}>
-            <Sparkles className="w-8 h-8 text-cyan-400" />
+            <Sparkles className="w-8 h-8 text-amber-700" />
           </div>
         </div>
       </div>
@@ -109,7 +109,7 @@ const TOUR_STEPS: TourStep[] = [
   {
     id: "momentum",
     title: "Health Momentum Score",
-    description: "Now let's look at your biomarkers. The Momentum indicator shows whether your markers are collectively improving, stable, or declining — a metric unique to Fountain Life.",
+    description: "Now let's look at your biomarkers. The Momentum indicator shows whether your markers are collectively improving, stable, or declining — a metric unique to Well Estate Group.",
     icon: <TrendingUp className="w-6 h-6" />,
     targetSelector: "[data-tour='momentum']",
     tabToNavigate: "biomarkers",
@@ -131,7 +131,7 @@ const TOUR_STEPS: TourStep[] = [
   {
     id: "gauges",
     title: "Radial Gauges & Percentile Ranking",
-    description: "Expand any biomarker to see an animated radial gauge showing your position in the optimal range, plus your percentile ranking versus the general population AND Fountain Life's elite cohort.",
+    description: "Expand any biomarker to see an animated radial gauge showing your position in the optimal range, plus your percentile ranking versus the general population AND Well Estate Group's elite cohort.",
     icon: <Gauge className="w-6 h-6" />,
     targetSelector: "[data-tour='gauges']",
     tabToNavigate: "biomarkers",
@@ -139,10 +139,10 @@ const TOUR_STEPS: TourStep[] = [
     position: "left",
     accentColor: "#8B5CF6",
   },
-  // Step 9: Ask Zori (still expanded, still on biomarkers tab)
+  // Step 9: Ask WEG AI (still expanded, still on biomarkers tab)
   {
     id: "zori",
-    title: "Ask Zori — Your AI Health Advisor",
+    title: "Ask WEG AI — Your AI Health Advisor",
     description: "Get personalized AI-powered analysis for any biomarker. Zori understands your complete health profile and provides context-aware recommendations tailored specifically to you.",
     icon: <Brain className="w-6 h-6" />,
     targetSelector: "[data-tour='zori']",
@@ -487,7 +487,7 @@ function TourCard({
             {!isLast && (
               <button
                 onClick={onSkip}
-                className="text-[11px] text-gray-500 hover:text-gray-300 transition-colors px-2 py-1 rounded-lg hover:bg-white/[0.04]"
+                className="text-[11px] text-gray-600 hover:text-gray-300 transition-colors px-2 py-1 rounded-lg hover:bg-white/[0.04]"
               >
                 Skip tour
               </button>
@@ -502,12 +502,12 @@ function TourCard({
           )}
 
           {/* Title */}
-          <h3 className="text-lg font-bold text-white mb-2 leading-tight">
+          <h3 className="text-lg font-bold text-gray-900 mb-2 leading-tight">
             {step.title}
           </h3>
 
           {/* Description with typewriter */}
-          <p className="text-[13px] leading-relaxed text-gray-400 min-h-[48px]">
+          <p className="text-[13px] leading-relaxed text-gray-600 min-h-[48px]">
             <TypewriterText text={step.description} speed={12} />
           </p>
 

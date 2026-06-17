@@ -46,7 +46,7 @@ const DEMO_TIMELINE: TimelineEvent[] = [
     id: "1",
     date: "2026-01-15",
     title: "Initial Comprehensive Health Assessment",
-    description: "Full Fountain Life executive health evaluation including 150+ biomarkers, advanced cardiac imaging, and cognitive testing.",
+    description: "Full Well Estate Group executive health evaluation including 150+ biomarkers, advanced cardiac imaging, and cognitive testing.",
     category: "assessment",
     status: "completed",
     result: "Health Score: 88%",
@@ -298,7 +298,7 @@ function TimelineNode({ color, gradient, isCompleted, isUpcoming, isExpanded }: 
         }}
       >
         {isCompleted && (
-          <CheckCircle2 className="w-4.5 h-4.5 text-white" />
+          <CheckCircle2 className="w-4.5 h-4.5 text-gray-900" />
         )}
         {isUpcoming && (
           <Clock className="w-4 h-4" style={{ color: `${color}80` }} />
@@ -387,15 +387,15 @@ export function HealthTimeline({ dbTimeline = [] }: { dbTimeline?: Array<{ id: n
                 border: '1px solid rgba(34,211,238,0.2)',
               }}>
                 <div className="absolute inset-0 rounded-xl blur-[8px]" style={{ background: 'rgba(34,211,238,0.08)' }} />
-                <Calendar className="w-5 h-5 text-cyan-400 relative z-10" />
+                <Calendar className="w-5 h-5 text-amber-700 relative z-10" />
               </div>
               <div>
                 <p className="text-[10px] uppercase tracking-[0.2em] font-semibold mb-0.5" style={{ color: 'var(--fl-text-gold)' }}>Your Journey</p>
-                <h2 className="text-xl font-bold tracking-tight" style={{ fontFamily: "'Inter Tight', 'Inter', system-ui, sans-serif", letterSpacing: '-0.03em', color: 'var(--fl-text-primary)' }}>
+                <h2 className="text-xl font-bold tracking-tight" style={{ fontFamily: "'Playfair Display', serif", letterSpacing: '-0.03em', color: 'var(--fl-text-primary)' }}>
                   Health Journey
                 </h2>
                 <p className="text-xs" style={{ color: 'var(--fl-text-muted)' }}>
-                  Your complete Fountain Life health optimization timeline
+                  Your complete Well Estate Group health optimization timeline
                 </p>
               </div>
             </div>
@@ -404,21 +404,21 @@ export function HealthTimeline({ dbTimeline = [] }: { dbTimeline?: Array<{ id: n
           {/* Stats */}
           <div className="flex items-center gap-4">
             <div className="text-center">
-              <p className="text-3xl font-black text-cyan-400 tabular-nums" style={{ fontFamily: "'Inter Tight', 'Inter', system-ui, sans-serif", letterSpacing: '-0.03em', textShadow: '0 0 20px rgba(34,211,238,0.3)' }}>
+              <p className="text-3xl font-black text-amber-700 tabular-nums" style={{ fontFamily: "'Playfair Display', serif", letterSpacing: '-0.03em', textShadow: '0 0 20px rgba(34,211,238,0.3)' }}>
                 {events.length}
               </p>
               <p className="text-[9px] uppercase tracking-widest font-bold" style={{ color: 'var(--fl-text-muted)' }}>Total</p>
             </div>
             <div className="w-px h-10" style={{ background: 'var(--fl-border)' }} />
             <div className="text-center">
-              <p className="text-3xl font-black text-emerald-400 tabular-nums" style={{ fontFamily: "'Inter Tight', 'Inter', system-ui, sans-serif", letterSpacing: '-0.03em', textShadow: '0 0 20px rgba(16,185,129,0.3)' }}>
+              <p className="text-3xl font-black text-emerald-400 tabular-nums" style={{ fontFamily: "'Playfair Display', serif", letterSpacing: '-0.03em', textShadow: '0 0 20px rgba(16,185,129,0.3)' }}>
                 {completedCount}
               </p>
               <p className="text-[9px] uppercase tracking-widest font-bold" style={{ color: 'var(--fl-text-muted)' }}>Done</p>
             </div>
             <div className="w-px h-10" style={{ background: 'var(--fl-border)' }} />
             <div className="text-center">
-              <p className="text-3xl font-black text-amber-400 tabular-nums" style={{ fontFamily: "'Inter Tight', 'Inter', system-ui, sans-serif", letterSpacing: '-0.03em', textShadow: '0 0 20px rgba(245,158,11,0.3)' }}>
+              <p className="text-3xl font-black text-amber-400 tabular-nums" style={{ fontFamily: "'Playfair Display', serif", letterSpacing: '-0.03em', textShadow: '0 0 20px rgba(245,158,11,0.3)' }}>
                 {upcomingCount}
               </p>
               <p className="text-[9px] uppercase tracking-widest font-bold" style={{ color: 'var(--fl-text-muted)' }}>Upcoming</p>
@@ -430,7 +430,7 @@ export function HealthTimeline({ dbTimeline = [] }: { dbTimeline?: Array<{ id: n
         <div className="mt-5 relative">
           <div className="flex items-center justify-between mb-1.5">
             <span className="text-[10px] font-bold uppercase tracking-widest" style={{ color: 'var(--fl-text-muted)' }}>Journey Progress</span>
-            <span className="text-xs font-bold text-cyan-400 tabular-nums" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+            <span className="text-xs font-bold text-amber-700 tabular-nums" style={{ fontFamily: "'Space Mono', monospace" }}>
               {Math.round((completedCount / events.length) * 100)}%
             </span>
           </div>
@@ -493,9 +493,9 @@ export function HealthTimeline({ dbTimeline = [] }: { dbTimeline?: Array<{ id: n
                 border: '2px solid rgba(34,211,238,0.3)',
               }}>
                 <div className="absolute inset-0 rounded-full blur-[6px]" style={{ background: 'rgba(34,211,238,0.15)' }} />
-                <div className="w-2 h-2 rounded-full bg-cyan-400 relative z-10" />
+                <div className="w-2 h-2 rounded-full bg-amber-600 relative z-10" />
               </div>
-              <h3 className="text-sm font-bold uppercase tracking-wider" style={{ fontFamily: "'Inter Tight', 'Inter', system-ui, sans-serif", color: 'var(--fl-accent)' }}>
+              <h3 className="text-sm font-bold uppercase tracking-wider" style={{ fontFamily: "'Playfair Display', serif", color: 'var(--fl-accent)' }}>
                 {group.label}
               </h3>
               <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, var(--fl-accent), transparent)' }} />
@@ -610,7 +610,7 @@ export function HealthTimeline({ dbTimeline = [] }: { dbTimeline?: Array<{ id: n
                           </div>
 
                           <div className="flex items-center gap-2">
-                            <span className="text-[11px] font-semibold tabular-nums" style={{ color: 'var(--fl-text-muted)', fontFamily: "'JetBrains Mono', monospace" }}>
+                            <span className="text-[11px] font-semibold tabular-nums" style={{ color: 'var(--fl-text-muted)', fontFamily: "'Space Mono', monospace" }}>
                               {new Date(event.date + "T00:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
                             </span>
                             {event.details && event.details.length > 0 && (
@@ -627,7 +627,7 @@ export function HealthTimeline({ dbTimeline = [] }: { dbTimeline?: Array<{ id: n
                         </div>
 
                         {/* Title */}
-                        <h4 className="text-sm font-bold mb-1.5 group-hover:text-cyan-400 transition-colors leading-snug" style={{ color: 'var(--fl-text-primary)' }}>
+                        <h4 className="text-sm font-bold mb-1.5 group-hover:text-amber-700 transition-colors leading-snug" style={{ color: 'var(--fl-text-primary)' }}>
                           {event.title}
                         </h4>
 
@@ -714,7 +714,7 @@ export function HealthTimeline({ dbTimeline = [] }: { dbTimeline?: Array<{ id: n
               <stat.icon className="w-5 h-5" style={{ color: stat.color }} />
             </div>
             <p className="text-3xl font-black tabular-nums" style={{
-              fontFamily: "'JetBrains Mono', monospace",
+              fontFamily: "'Space Mono', monospace",
               color: stat.color,
               textShadow: `0 0 20px ${stat.color}30`,
             }}>

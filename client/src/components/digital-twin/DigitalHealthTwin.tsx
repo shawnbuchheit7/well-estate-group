@@ -418,7 +418,7 @@ function CompareOrgansOverlay({
               <PolarGrid stroke="rgba(255,255,255,0.06)" strokeDasharray="3 3" />
               <PolarAngleAxis dataKey="organ" tick={renderCustomTick} tickLine={false} />
               <PolarRadiusAxis angle={90} domain={[0, 100]} tick={false} axisLine={false} />
-              <Radar name="Health Score" dataKey="score" stroke="#00D9FF" fill="#00D9FF" fillOpacity={0.15} strokeWidth={2} dot={{ r: 4, fill: "#00D9FF", stroke: "#0F172A", strokeWidth: 2 }} />
+              <Radar name="Health Score" dataKey="score" stroke="#B8860B" fill="#B8860B" fillOpacity={0.15} strokeWidth={2} dot={{ r: 4, fill: "#B8860B", stroke: "#0F172A", strokeWidth: 2 }} />
               <Tooltip content={({ active, payload }) => {
                 if (!active || !payload?.length) return null;
                 const d = payload[0].payload;
@@ -427,7 +427,7 @@ function CompareOrgansOverlay({
                   <div className="rounded-lg px-3 py-2 shadow-xl" style={{ background: 'var(--fl-bg-card)', border: '1px solid var(--fl-border)' }}>
                     <p className="text-sm font-bold" style={{ color: organ?.color }}>{d.organ}</p>
                     <p className="text-xs" style={{ color: 'var(--fl-text-secondary)' }}>Organ Age: <span className="font-semibold" style={{ color: 'var(--fl-text-primary)' }}>{d.age}</span></p>
-                    <p className="text-xs" style={{ color: 'var(--fl-text-secondary)' }}>Health Score: <span className="text-cyan-400 font-semibold">{d.score}</span></p>
+                    <p className="text-xs" style={{ color: 'var(--fl-text-secondary)' }}>Health Score: <span className="text-amber-700 font-semibold">{d.score}</span></p>
                   </div>
                 );
               }} />
@@ -491,13 +491,13 @@ function VitalsBar() {
   const vitals = [
     { label: "Heart Rate", value: `${hr}`, unit: "bpm", color: "text-red-400", pulse: true },
     { label: "Blood Pressure", value: `${sys}/${dia}`, unit: "mmHg", color: "text-red-400", pulse: false },
-    { label: "SpO2", value: `${spo2}`, unit: "%", color: "text-cyan-400", pulse: false },
+    { label: "SpO2", value: `${spo2}`, unit: "%", color: "text-amber-700", pulse: false },
     { label: "Temperature", value: `${temp.toFixed(1)}`, unit: "°F", color: "text-amber-400", pulse: false },
   ];
 
   const vitalColorMap: Record<string, string> = {
     'text-red-400': '#f87171',
-    'text-cyan-400': '#22d3ee',
+    'text-amber-700': '#22d3ee',
     'text-amber-400': '#fbbf24',
   };
 
@@ -514,7 +514,7 @@ function VitalsBar() {
               <span className="absolute top-2 right-2.5 w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse" />
             )}
             <p className="text-[9px] font-semibold uppercase tracking-[0.15em] mb-1" style={{ color: accentHex }}>{vital.label}</p>
-            <p className="text-base font-bold tabular-nums transition-all duration-500" style={{ fontFamily: "'JetBrains Mono', monospace", color: 'var(--fl-text-primary)' }}>
+            <p className="text-base font-bold tabular-nums transition-all duration-500" style={{ fontFamily: "'Space Mono', monospace", color: 'var(--fl-text-primary)' }}>
               {vital.value} <span className="text-[10px] font-normal" style={{ color: 'var(--fl-text-muted)' }}>{vital.unit}</span>
             </p>
           </div>
@@ -691,10 +691,10 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
             onClick={() => setSelectedOrganKey("overview")}
             className="px-3 py-1.5 rounded-md text-[12px] font-semibold transition-all duration-200 flex items-center gap-1.5"
             style={isOverview ? {
-              background: 'rgba(0, 217, 245, 0.08)',
+              background: 'rgba(184, 134, 11, 0.08)',
               color: 'var(--fl-accent)',
-              boxShadow: '0 0 20px rgba(0, 217, 245, 0.08)',
-              border: '1px solid rgba(0, 217, 245, 0.2)',
+              boxShadow: '0 0 20px rgba(184, 134, 11, 0.08)',
+              border: '1px solid rgba(184, 134, 11, 0.2)',
             } : { border: '1px solid transparent', color: 'var(--fl-text-muted)' }}
           >
             <Activity className="w-3 h-3" />
@@ -729,9 +729,9 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
           onClick={() => { setSelectedOrganKey("overview"); setMobilePanel('none'); }}
           className="flex items-center gap-0.5 px-2 py-0.5 rounded-full text-[9px] font-semibold whitespace-nowrap flex-shrink-0 transition-all"
           style={isOverview ? {
-            background: 'rgba(0, 217, 245, 0.12)',
+            background: 'rgba(184, 134, 11, 0.12)',
             color: 'var(--fl-accent)',
-            border: '1px solid rgba(0, 217, 245, 0.25)',
+            border: '1px solid rgba(184, 134, 11, 0.25)',
           } : { border: '1px solid var(--fl-border)', color: 'var(--fl-text-muted)' }}
         >
           <Activity className="w-2.5 h-2.5" />
@@ -766,8 +766,8 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
             /* ─── OVERVIEW LEFT PANEL — Streamlined ─── */
             <>
               <div className="flex items-center gap-3 mb-5">
-                <div className="w-9 h-9 rounded-lg flex items-center justify-center relative" style={{ background: 'rgba(0, 217, 245, 0.08)', border: '1px solid rgba(0, 217, 245, 0.15)' }}>
-                  <div className="absolute inset-0 rounded-lg blur-[8px]" style={{ background: 'rgba(0, 217, 245, 0.06)' }} />
+                <div className="w-9 h-9 rounded-lg flex items-center justify-center relative" style={{ background: 'rgba(184, 134, 11, 0.08)', border: '1px solid rgba(184, 134, 11, 0.15)' }}>
+                  <div className="absolute inset-0 rounded-lg blur-[8px]" style={{ background: 'rgba(184, 134, 11, 0.06)' }} />
                   <Activity className="w-5 h-5 relative z-10" style={{ color: 'var(--fl-accent)' }} />
                 </div>
                 <div>
@@ -816,11 +816,11 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
                             />
                           )}
                           {good > 0 && (
-                            <circle cx="50" cy="50" r={radius} fill="none" stroke="#00D9F5" strokeWidth={strokeWidth}
+                            <circle cx="50" cy="50" r={radius} fill="none" stroke="#B8860B" strokeWidth={strokeWidth}
                               strokeDasharray={`${goodLen} ${circumference - goodLen}`}
                               strokeDashoffset={goodOffset}
                               strokeLinecap="round" className="transition-all duration-700"
-                              style={{ filter: 'drop-shadow(0 0 4px rgba(0,217,245,0.3))' }}
+                              style={{ filter: 'drop-shadow(0 0 4px rgba(184,134,11,0.3))' }}
                             />
                           )}
                           {attention > 0 && (
@@ -833,7 +833,7 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
                           )}
                         </svg>
                         <div className="absolute inset-0 flex flex-col items-center justify-center">
-                          <span className="text-xl font-extrabold" style={{ fontFamily: "'Inter Tight', 'Inter', system-ui, sans-serif", letterSpacing: '-0.04em', color: 'var(--fl-text-primary)' }}>{overallScore}</span>
+                          <span className="text-xl font-extrabold" style={{ fontFamily: "'Playfair Display', serif", letterSpacing: '-0.04em', color: 'var(--fl-text-primary)' }}>{overallScore}</span>
                           <span className="text-[8px] uppercase tracking-widest font-semibold" style={{ color: 'var(--fl-text-muted)' }}>Score</span>
                         </div>
                       </div>
@@ -841,17 +841,17 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
                         <div className="flex items-center gap-2">
                           <div className="w-2 h-2 rounded-full bg-emerald-400" style={{ boxShadow: '0 0 6px rgba(16,185,129,0.5)' }} />
                           <span className="text-[10px]" style={{ color: 'var(--fl-text-secondary)' }}>Excellent</span>
-                          <span className="text-[11px] font-bold ml-auto" style={{ fontFamily: "'JetBrains Mono', monospace", color: '#10B981' }}>{excellent}</span>
+                          <span className="text-[11px] font-bold ml-auto" style={{ fontFamily: "'Space Mono', monospace", color: '#10B981' }}>{excellent}</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <div className="w-2 h-2 rounded-full bg-cyan-400" style={{ boxShadow: '0 0 6px rgba(0,217,245,0.4)' }} />
+                          <div className="w-2 h-2 rounded-full bg-amber-600" style={{ boxShadow: '0 0 6px rgba(184,134,11,0.4)' }} />
                           <span className="text-[10px]" style={{ color: 'var(--fl-text-secondary)' }}>On Track</span>
-                          <span className="text-[11px] font-bold ml-auto" style={{ fontFamily: "'JetBrains Mono', monospace", color: '#00D9F5' }}>{good}</span>
+                          <span className="text-[11px] font-bold ml-auto" style={{ fontFamily: "'Space Mono', monospace", color: '#B8860B' }}>{good}</span>
                         </div>
                         <div className="flex items-center gap-2">
                           <div className="w-2 h-2 rounded-full bg-yellow-400" style={{ boxShadow: '0 0 6px rgba(245,158,11,0.4)' }} />
                           <span className="text-[10px]" style={{ color: 'var(--fl-text-secondary)' }}>Attention</span>
-                          <span className="text-[11px] font-bold ml-auto" style={{ fontFamily: "'JetBrains Mono', monospace", color: '#F59E0B' }}>{attention}</span>
+                          <span className="text-[11px] font-bold ml-auto" style={{ fontFamily: "'Space Mono', monospace", color: '#F59E0B' }}>{attention}</span>
                         </div>
                       </div>
                     </div>
@@ -879,7 +879,7 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
                       >
                         <organ.icon className="w-3.5 h-3.5 flex-shrink-0" style={{ color: organ.color }} />
                         <span className="text-[11px] font-medium flex-1 text-left" style={{ color: 'var(--fl-text-secondary)' }}>{organ.label}</span>
-                        <span className="text-[13px] font-bold tabular-nums" style={{ fontFamily: "'Inter Tight', 'Inter', system-ui, sans-serif", color: 'var(--fl-text-primary)' }}>{age}</span>
+                        <span className="text-[13px] font-bold tabular-nums" style={{ fontFamily: "'Playfair Display', serif", color: 'var(--fl-text-primary)' }}>{age}</span>
                         <span className="text-[9px] font-semibold min-w-[52px] text-right" style={{ color: isOlder ? '#EF4444' : isYounger ? '#10B981' : 'var(--fl-text-muted)' }}>
                           {isYounger ? `${Math.abs(diff)}y younger` : isOlder ? `${diff}y older` : 'On track'}
                         </span>
@@ -937,7 +937,7 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
                   className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 hover:-translate-y-0.5"
                   style={{ background: 'var(--fl-bg-card)', border: '1px solid var(--fl-border)', boxShadow: 'var(--fl-shadow-crisp)' }}
                 >
-                  <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: 'rgba(0, 217, 245, 0.08)' }}>
+                  <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: 'rgba(184, 134, 11, 0.08)' }}>
                     <GitCompare className="w-3.5 h-3.5" style={{ color: 'var(--fl-accent)' }} />
                   </div>
                   <p className="text-[11px] font-semibold" style={{ color: 'var(--fl-text-primary)' }}>Compare Organs</p>
@@ -948,8 +948,8 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
                     className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 hover:-translate-y-0.5"
                     style={{ background: 'var(--fl-bg-card)', border: '1px solid var(--fl-border)', boxShadow: 'var(--fl-shadow-crisp)' }}
                   >
-                    <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: 'rgba(139, 92, 246, 0.08)' }}>
-                      <Clock className="w-3.5 h-3.5 text-violet-400" />
+                    <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: 'rgba(184, 134, 11, 0.08)' }}>
+                      <Clock className="w-3.5 h-3.5 text-amber-700" />
                     </div>
                     <p className="text-[11px] font-semibold" style={{ color: 'var(--fl-text-primary)' }}>Health Timeline</p>
                   </button>
@@ -963,7 +963,7 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
             onClick={() => setSelectedOrganKey('overview')}
             className="flex items-center gap-1.5 mb-3 px-2 py-1 -ml-1 rounded-md text-[11px] font-medium transition-all duration-200 hover:translate-x-[-2px] group"
             style={{ color: 'var(--fl-text-muted)' }}
-            onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--fl-accent)'; e.currentTarget.style.background = 'rgba(0,217,245,0.06)'; }}
+            onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--fl-accent)'; e.currentTarget.style.background = 'rgba(184,134,11,0.06)'; }}
             onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--fl-text-muted)'; e.currentTarget.style.background = 'transparent'; }}
           >
             <ChevronLeft className="w-3.5 h-3.5" />
@@ -986,7 +986,7 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
               <div>
                 <p className="text-[10px] uppercase tracking-widest font-semibold mb-1" style={{ color: 'var(--fl-text-gold)' }}>Organ Age</p>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-4xl font-extrabold" style={{ fontFamily: "'Inter Tight', 'Inter', system-ui, sans-serif", letterSpacing: '-0.04em', color: 'var(--fl-text-primary)' }}>{selectedAge}</span>
+                  <span className="text-4xl font-extrabold" style={{ fontFamily: "'Playfair Display', serif", letterSpacing: '-0.04em', color: 'var(--fl-text-primary)' }}>{selectedAge}</span>
                   <span className="text-xs" style={{ color: 'var(--fl-text-muted)' }}>years</span>
                 </div>
               </div>
@@ -1003,7 +1003,7 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
                 <div key={i} className="rounded-lg p-2.5 relative overflow-hidden" style={{ border: '1px solid var(--fl-border)', background: 'var(--fl-bg-card)' }}>
                   <div className="absolute top-0 left-0 w-[2px] h-full" style={{ background: `linear-gradient(180deg, ${selectedConfig.color}, transparent)` }} />
                   <p className="text-[10px] mb-0.5 pl-2" style={{ color: 'var(--fl-text-muted)' }}>{f.label}</p>
-                  <p className="text-[13px] font-bold pl-2" style={{ fontFamily: "'JetBrains Mono', monospace", color: 'var(--fl-text-primary)' }}>{f.value}</p>
+                  <p className="text-[13px] font-bold pl-2" style={{ fontFamily: "'Space Mono', monospace", color: 'var(--fl-text-primary)' }}>{f.value}</p>
                 </div>
               ))}
             </div>
@@ -1050,7 +1050,7 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-xs" style={{ color: 'var(--fl-text-muted)' }}>Risk Assessment</span>
-                <span className="text-xs text-cyan-400 font-medium">Low Risk</span>
+                <span className="text-xs text-amber-700 font-medium">Low Risk</span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-xs" style={{ color: 'var(--fl-text-muted)' }}>Next Screening</span>
@@ -1066,11 +1066,11 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
           </div>
 
           {/* ─── Genomics & DNA Panel ─── */}
-          <div className="mt-5 rounded-xl border border-violet-500/20 bg-violet-500/[0.04] p-4 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-20 h-20 bg-violet-500/5 rounded-full -translate-y-1/2 translate-x-1/2" />
+          <div className="mt-5 rounded-xl border border-amber-600/20 bg-amber-600/[0.04] p-4 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-20 h-20 bg-amber-600/5 rounded-full -translate-y-1/2 translate-x-1/2" />
             <div className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 rounded-lg bg-violet-500/20 flex items-center justify-center">
-                <svg className="w-4.5 h-4.5 text-violet-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <div className="w-8 h-8 rounded-lg bg-amber-600/20 flex items-center justify-center">
+                <svg className="w-4.5 h-4.5 text-amber-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M2 15c6.667-6 13.333 0 20-6" />
                   <path d="M9 22c1.798-1.998 2.518-3.995 2.807-5.993" />
                   <path d="M15 2c-1.798 1.998-2.518 3.995-2.807 5.993" />
@@ -1086,7 +1086,7 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
               </div>
               <div>
                 <h3 className="text-sm font-bold" style={{ color: 'var(--fl-text-primary)' }}>Genomics & DNA</h3>
-                <p className="text-[10px] text-violet-400 font-medium">Whole Genome Sequencing</p>
+                <p className="text-[10px] text-amber-700 font-medium">Whole Genome Sequencing</p>
               </div>
             </div>
             <div className="space-y-2 mb-3">
@@ -1100,7 +1100,7 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-xs" style={{ color: 'var(--fl-text-muted)' }}>Pharmacogenomics</span>
-                <span className="text-xs text-cyan-400 font-medium">12 drug responses</span>
+                <span className="text-xs text-amber-700 font-medium">12 drug responses</span>
               </div>
             </div>
             {/* Risk Categories */}
@@ -1124,12 +1124,12 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
               </div>
               <div className="flex items-center justify-between px-2.5 py-1.5 rounded-lg" style={{ background: 'var(--fl-bg-card)', border: '1px solid var(--fl-border)' }}>
                 <span className="text-[11px]" style={{ color: 'var(--fl-text-secondary)' }}>COMT (Stress)</span>
-                <span className="text-[11px] text-cyan-400 font-semibold">Val/Met — Balanced</span>
+                <span className="text-[11px] text-amber-700 font-semibold">Val/Met — Balanced</span>
               </div>
             </div>
-            <div className="text-[10px] leading-relaxed border-t border-violet-500/15 pt-2" style={{ color: 'var(--fl-text-secondary)' }}>
+            <div className="text-[10px] leading-relaxed border-t border-amber-600/15 pt-2" style={{ color: 'var(--fl-text-secondary)' }}>
               <div className="flex items-start gap-1.5">
-                <svg className="w-3 h-3 text-violet-400 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg className="w-3 h-3 text-amber-700 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M2 15c6.667-6 13.333 0 20-6" />
                   <path d="M9 22c1.798-1.998 2.518-3.995 2.807-5.993" />
                   <path d="M15 2c-1.798 1.998-2.518 3.995-2.807 5.993" />
@@ -1187,7 +1187,7 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
                 }}
                 style={{
                   filter: isOverview
-                    ? 'brightness(0.9) drop-shadow(0 0 20px rgba(0, 217, 245, 0.15)) drop-shadow(0 0 50px rgba(0, 217, 245, 0.06))'
+                    ? 'brightness(0.9) drop-shadow(0 0 20px rgba(184, 134, 11, 0.15)) drop-shadow(0 0 50px rgba(184, 134, 11, 0.06))'
                     : getOrganGlowFilter(selectedOrganKey),
                   transform: `scale(${(zoom / 100) * (isTransitioning ? 0.93 : 1)})`,
                   height: "100%",
@@ -1216,18 +1216,18 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
                   <div
                     className="w-full md:w-auto rounded-lg md:rounded-2xl px-3 py-2 md:px-8 md:py-5 border backdrop-blur-xl text-center relative overflow-hidden"
                     style={{
-                      borderColor: 'rgba(0, 217, 245, 0.2)',
+                      borderColor: 'rgba(184, 134, 11, 0.2)',
                       background: 'rgba(5, 15, 30, 0.88)',
-                      boxShadow: '0 0 60px rgba(0, 217, 245, 0.12), 0 0 120px rgba(0, 217, 245, 0.04), 0 8px 32px rgba(0,0,0,0.4)',
+                      boxShadow: '0 0 60px rgba(184, 134, 11, 0.12), 0 0 120px rgba(184, 134, 11, 0.04), 0 8px 32px rgba(0,0,0,0.4)',
                     }}
                   >
                     {/* Ambient glow */}
-                    <div className="absolute inset-0 rounded-2xl pointer-events-none" style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(0, 217, 245, 0.08), transparent 70%)' }} />
-                    <div className="absolute top-0 left-0 right-0 h-[1px]" style={{ background: 'linear-gradient(90deg, transparent, rgba(0, 217, 245, 0.3), transparent)' }} />
+                    <div className="absolute inset-0 rounded-2xl pointer-events-none" style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(184, 134, 11, 0.08), transparent 70%)' }} />
+                    <div className="absolute top-0 left-0 right-0 h-[1px]" style={{ background: 'linear-gradient(90deg, transparent, rgba(184, 134, 11, 0.3), transparent)' }} />
                     {/* Mobile: compact horizontal layout */}
                     <div className="flex md:hidden items-center justify-center gap-3 relative z-10">
                       <p className="text-[9px] uppercase tracking-[0.2em] font-semibold" style={{ color: 'var(--fl-text-gold)' }}>Bio Age</p>
-                      <span className="text-2xl font-extrabold" style={{ fontFamily: "'Inter Tight', 'Inter', system-ui, sans-serif", letterSpacing: '-0.06em', color: 'var(--fl-text-primary)', textShadow: '0 0 40px rgba(0, 217, 245, 0.2)' }}>{animatedBioAge}</span>
+                      <span className="text-2xl font-extrabold" style={{ fontFamily: "'Playfair Display', serif", letterSpacing: '-0.06em', color: 'var(--fl-text-primary)', textShadow: '0 0 40px rgba(184, 134, 11, 0.2)' }}>{animatedBioAge}</span>
                       <span className="text-[10px]" style={{ color: 'var(--fl-text-muted)' }}>Chrono {chronoAge}</span>
                       <span className="text-[10px]" style={{ color: 'var(--fl-text-muted)' }}>•</span>
                       <span className={`text-[11px] font-bold ${bioAgeDiffColor}`}>{bioAgeDiffLabel}</span>
@@ -1236,7 +1236,7 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
                     <div className="hidden md:block">
                       <p className="text-[10px] uppercase tracking-[0.25em] font-semibold mb-1 relative z-10" style={{ color: 'var(--fl-text-gold)' }}>Bio Age</p>
                       <div className="flex items-baseline justify-center gap-3 relative z-10">
-                        <span className="text-6xl font-extrabold" style={{ fontFamily: "'Inter Tight', 'Inter', system-ui, sans-serif", letterSpacing: '-0.06em', color: 'var(--fl-text-primary)', textShadow: '0 0 40px rgba(0, 217, 245, 0.2)' }}>{animatedBioAge}</span>
+                        <span className="text-6xl font-extrabold" style={{ fontFamily: "'Playfair Display', serif", letterSpacing: '-0.06em', color: 'var(--fl-text-primary)', textShadow: '0 0 40px rgba(184, 134, 11, 0.2)' }}>{animatedBioAge}</span>
                         <span className="text-base font-medium" style={{ color: 'var(--fl-text-muted)' }}>years</span>
                       </div>
                       <div className="flex items-center justify-center gap-2 mt-1.5 relative z-10">
@@ -1417,7 +1417,7 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[1.5px] w-6 rounded-full" style={{ background: `linear-gradient(90deg, transparent, ${organ.color}, transparent)`, opacity: 0.5 }} />
                     <Icon className="w-2.5 h-2.5 mx-auto mb-0.5" style={{ color: organ.color }} />
                     <p className="text-[8px] font-semibold uppercase tracking-wider mb-0.5" style={{ color: organ.color }}>{organ.label}</p>
-                    <p className="text-sm font-bold tabular-nums" style={{ fontFamily: "'JetBrains Mono', monospace", color: 'var(--fl-text-primary)' }}>{age}</p>
+                    <p className="text-sm font-bold tabular-nums" style={{ fontFamily: "'Space Mono', monospace", color: 'var(--fl-text-primary)' }}>{age}</p>
                     <p className="text-[7px] font-semibold" style={{ color: diffColor }}>{diffLabel}</p>
                   </button>
                 );
@@ -1460,11 +1460,11 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
                 <div className="flex items-center justify-between relative z-10">
                   <div className="flex items-center gap-2">
                     <Icon className="w-4 h-4" style={{ color: organ.color }} />
-                    <span className="text-2xl font-bold" style={{ fontFamily: "'Inter Tight', 'Inter', system-ui, sans-serif", letterSpacing: '-0.03em', color: isSelected ? 'var(--fl-text-primary)' : 'var(--fl-text-secondary)' }}>{age}</span>
+                    <span className="text-2xl font-bold" style={{ fontFamily: "'Playfair Display', serif", letterSpacing: '-0.03em', color: isSelected ? 'var(--fl-text-primary)' : 'var(--fl-text-secondary)' }}>{age}</span>
                   </div>
                   <Sparkline data={organ.trend} color={organ.color} width={60} height={22} />
                 </div>
-                <p className={`text-[10px] mt-1 relative z-10 ${status === "On track" ? "text-emerald-400" : status === "Younger" ? "text-cyan-400" : status === "Attention" ? "text-yellow-400" : "text-red-400"}`}>{status}</p>
+                <p className={`text-[10px] mt-1 relative z-10 ${status === "On track" ? "text-emerald-400" : status === "Younger" ? "text-amber-700" : status === "Attention" ? "text-yellow-400" : "text-red-400"}`}>{status}</p>
               </button>
             );
           })}
@@ -1518,7 +1518,7 @@ export default function DigitalHealthTwin({ organAssessments, initialOrgan, onTa
                       <div key={i} className="rounded-lg p-2.5 relative overflow-hidden" style={{ border: '1px solid var(--fl-border)', background: 'var(--fl-bg-card)' }}>
                         <div className="absolute top-0 left-0 w-[2px] h-full" style={{ background: `linear-gradient(180deg, ${selectedConfig.color}, transparent)` }} />
                         <p className="text-[10px] mb-0.5 pl-2" style={{ color: 'var(--fl-text-muted)' }}>{f.label}</p>
-                        <p className="text-[13px] font-bold pl-2" style={{ fontFamily: "'JetBrains Mono', monospace", color: 'var(--fl-text-primary)' }}>{f.value}</p>
+                        <p className="text-[13px] font-bold pl-2" style={{ fontFamily: "'Space Mono', monospace", color: 'var(--fl-text-primary)' }}>{f.value}</p>
                       </div>
                     ))}
                   </div>

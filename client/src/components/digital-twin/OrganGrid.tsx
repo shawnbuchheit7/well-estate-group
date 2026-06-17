@@ -94,7 +94,7 @@ function ScoreRing({ value, size = 72, strokeWidth = 5, color }: { value: number
         />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <span className="text-lg font-black tabular-nums leading-none" style={{ fontFamily: "'Inter Tight', 'Inter', system-ui, sans-serif", letterSpacing: '-0.03em', color: 'var(--fl-text-primary)' }}>{value.toFixed(0)}</span>
+        <span className="text-lg font-black tabular-nums leading-none" style={{ fontFamily: "'Playfair Display', serif", letterSpacing: '-0.03em', color: 'var(--fl-text-primary)' }}>{value.toFixed(0)}</span>
         <span className="text-[7px] font-semibold mt-0.5 tracking-widest" style={{ color: 'var(--fl-text-muted)' }}>SCORE</span>
       </div>
     </div>
@@ -173,7 +173,7 @@ function OrganCard({ organ, isExpanded, onToggle }: { organ: OrganAssessment; is
               className="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full border-2 flex items-center justify-center"
               style={{ borderColor: 'var(--fl-bg-deep)', background: config.color }}
             >
-              <span className="text-[7px] font-bold text-white">{config.emoji}</span>
+              <span className="text-[7px] font-bold text-gray-900">{config.emoji}</span>
             </div>
           </div>
 
@@ -209,7 +209,7 @@ function OrganCard({ organ, isExpanded, onToggle }: { organ: OrganAssessment; is
           <div className="mt-4 relative">
           <div className="flex items-center justify-between mb-1.5">
             <span className="text-[9px] font-semibold uppercase tracking-wider" style={{ color: 'var(--fl-text-muted)' }}>Health Score</span>
-            <span className="text-[10px] font-bold tabular-nums" style={{ color: scoreColor, fontFamily: "'JetBrains Mono', monospace" }}>{score.toFixed(1)}%</span>
+            <span className="text-[10px] font-bold tabular-nums" style={{ color: scoreColor, fontFamily: "'Space Mono', monospace" }}>{score.toFixed(1)}%</span>
           </div>
           <div className="relative h-1.5 rounded-full overflow-hidden" style={{ background: 'var(--fl-border)' }}>
             {/* Optimal zone indicator */}
@@ -284,7 +284,7 @@ function OrganCard({ organ, isExpanded, onToggle }: { organ: OrganAssessment; is
         {(organ.recommendations || organ.findings) && (
           <div className="flex justify-center mt-3">
             <div className={`flex items-center gap-1 px-3 py-1 rounded-full text-[10px] font-medium transition-all duration-300 ${
-              isExpanded ? "text-cyan-400" : "text-gray-500 group-hover:text-gray-400"
+              isExpanded ? "text-amber-700" : "text-gray-600 group-hover:text-gray-600"
             }`} style={isExpanded ? { background: `${organColor}10`, color: organColor } : { background: 'var(--fl-bg-card)' }}>
               {isExpanded ? "Show less" : "View details"}
               <ChevronDown className={`w-3 h-3 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`} />
@@ -320,7 +320,7 @@ export function OrganGrid({ organAssessments }: OrganGridProps) {
       <div className="flex items-start justify-between">
         <div>
           <p className="text-[10px] uppercase tracking-[0.2em] font-semibold mb-1" style={{ color: 'var(--fl-text-gold)' }}>Precision Diagnostics</p>
-          <h2 className="text-xl font-bold tracking-tight" style={{ fontFamily: "'Inter Tight', 'Inter', system-ui, sans-serif", letterSpacing: '-0.03em', color: 'var(--fl-text-primary)' }}>Organ Health Assessment</h2>
+          <h2 className="text-xl font-bold tracking-tight" style={{ fontFamily: "'Playfair Display', serif", letterSpacing: '-0.03em', color: 'var(--fl-text-primary)' }}>Organ Health Assessment</h2>
           <p className="text-[13px] mt-1" style={{ color: 'var(--fl-text-muted)' }}>Detailed analysis of {organAssessments.length} organ systems from your latest evaluation</p>
         </div>
       </div>
@@ -335,7 +335,7 @@ export function OrganGrid({ organAssessments }: OrganGridProps) {
             <ScoreRing value={avgScore} size={56} strokeWidth={3} color="#22d3ee" />
             <div>
               <p className="text-[9px] uppercase tracking-widest font-semibold" style={{ color: 'var(--fl-text-muted)' }}>Average Score</p>
-              <p className="text-xl font-black" style={{ fontFamily: "'Inter Tight', 'Inter', system-ui, sans-serif", letterSpacing: '-0.03em', color: 'var(--fl-text-primary)' }}>{avgScore.toFixed(1)}<span className="text-sm font-normal ml-0.5" style={{ color: 'var(--fl-text-muted)' }}>%</span></p>
+              <p className="text-xl font-black" style={{ fontFamily: "'Playfair Display', serif", letterSpacing: '-0.03em', color: 'var(--fl-text-primary)' }}>{avgScore.toFixed(1)}<span className="text-sm font-normal ml-0.5" style={{ color: 'var(--fl-text-muted)' }}>%</span></p>
               <p className="text-[10px]" style={{ color: 'var(--fl-text-muted)' }}>Across all organs</p>
             </div>
           </div>
@@ -351,7 +351,7 @@ export function OrganGrid({ organAssessments }: OrganGridProps) {
             </div>
             <div>
               <p className="text-[9px] uppercase tracking-widest font-semibold" style={{ color: 'var(--fl-text-muted)' }}>Healthy Organs</p>
-              <p className="text-xl font-black text-emerald-400" style={{ fontFamily: "'Inter Tight', 'Inter', system-ui, sans-serif", letterSpacing: '-0.03em' }}>{excellentCount} <span className="text-sm font-normal" style={{ color: 'var(--fl-text-muted)' }}>of {organAssessments.length}</span></p>
+              <p className="text-xl font-black text-emerald-400" style={{ fontFamily: "'Playfair Display', serif", letterSpacing: '-0.03em' }}>{excellentCount} <span className="text-sm font-normal" style={{ color: 'var(--fl-text-muted)' }}>of {organAssessments.length}</span></p>
               <p className="text-[10px]" style={{ color: 'var(--fl-text-muted)' }}>{Math.round((excellentCount / organAssessments.length) * 100)}% in good condition</p>
             </div>
           </div>
@@ -363,11 +363,11 @@ export function OrganGrid({ organAssessments }: OrganGridProps) {
           {attentionCount > 0 && <div className="absolute top-0 left-0 right-0 h-[1px]" style={{ background: 'linear-gradient(90deg, transparent, rgba(251,146,60,0.3), transparent)' }} />}
           <div className="relative p-4 flex items-center gap-4">
             <div className={`w-14 h-14 rounded-xl flex items-center justify-center ${attentionCount > 0 ? 'bg-orange-500/10 border border-orange-500/20' : ''}`} style={attentionCount > 0 ? undefined : { background: 'var(--fl-bg-card)', border: '1px solid var(--fl-border)' }}>
-              <AlertTriangle className={`w-7 h-7 ${attentionCount > 0 ? 'text-orange-400' : 'text-gray-500'}`} />
+              <AlertTriangle className={`w-7 h-7 ${attentionCount > 0 ? 'text-orange-400' : 'text-gray-600'}`} />
             </div>
             <div>
               <p className="text-[9px] uppercase tracking-widest font-semibold" style={{ color: 'var(--fl-text-muted)' }}>Need Attention</p>
-              <p className={`text-xl font-black ${attentionCount > 0 ? 'text-orange-400' : ''}`} style={{ fontFamily: "'JetBrains Mono', monospace", color: attentionCount > 0 ? undefined : 'var(--fl-text-muted)' }}>{attentionCount} <span className="text-sm font-normal" style={{ color: 'var(--fl-text-muted)' }}>organ{attentionCount !== 1 ? "s" : ""}</span></p>
+              <p className={`text-xl font-black ${attentionCount > 0 ? 'text-orange-400' : ''}`} style={{ fontFamily: "'Space Mono', monospace", color: attentionCount > 0 ? undefined : 'var(--fl-text-muted)' }}>{attentionCount} <span className="text-sm font-normal" style={{ color: 'var(--fl-text-muted)' }}>organ{attentionCount !== 1 ? "s" : ""}</span></p>
                       <p className="text-[10px]" style={{ color: 'var(--fl-text-muted)' }}>{attentionCount > 0 ? 'Review recommended' : 'All systems nominal'}</p>
             </div>
           </div>

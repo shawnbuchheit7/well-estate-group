@@ -66,7 +66,7 @@ interface BiomarkerTrendsProps {
 const CATEGORY_CONFIG: Record<string, { label: string; icon: React.ElementType; color: string }> = {
   metabolic: { label: "Metabolic", icon: Flame, color: "#F59E0B" },
   cardiovascular: { label: "Cardiovascular", icon: Heart, color: "#EF4444" },
-  inflammatory: { label: "Inflammatory", icon: Shield, color: "#8B5CF6" },
+  inflammatory: { label: "Inflammatory", icon: Shield, color: "#9A7B4F" },
   hormonal: { label: "Hormonal", icon: Zap, color: "#06B6D4" },
   nutritional: { label: "Liver & Kidney", icon: Droplets, color: "#10B981" },
   immune: { label: "Longevity", icon: Activity, color: "#EC4899" },
@@ -74,21 +74,21 @@ const CATEGORY_CONFIG: Record<string, { label: string; icon: React.ElementType; 
 
 /* ─── Timeline event category config ─── */
 const EVENT_CATEGORY_CONFIG: Record<string, { icon: React.ElementType; color: string; label: string }> = {
-  screening: { icon: Scan, color: "#22D3EE", label: "Screening" },
+  screening: { icon: Scan, color: "#B8860B", label: "Screening" },
   assessment: { icon: Stethoscope, color: "#10B981", label: "Assessment" },
   milestone: { icon: TrendingUp, color: "#F59E0B", label: "Milestone" },
-  intervention: { icon: Pill, color: "#8B5CF6", label: "Intervention" },
+  intervention: { icon: Pill, color: "#9A7B4F", label: "Intervention" },
   lab: { icon: FlaskConical, color: "#EC4899", label: "Lab Work" },
   lifestyle: { icon: Dumbbell, color: "#06B6D4", label: "Lifestyle" },
 };
 
 /* ─── Chart colors for multi-line comparison ─── */
 const CHART_COLORS = [
-  "#22D3EE", // cyan
+  "#B8860B", // cyan
   "#10B981", // emerald
   "#F59E0B", // amber
   "#EC4899", // pink
-  "#8B5CF6", // violet
+  "#9A7B4F", // violet
   "#EF4444", // red
 ];
 
@@ -158,15 +158,15 @@ function DateRangeSlider({
     <div className="space-y-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <SlidersHorizontal className="w-3.5 h-3.5 text-cyan-400" />
-          <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Date Range</span>
+          <SlidersHorizontal className="w-3.5 h-3.5 text-amber-700" />
+          <span className="text-xs font-semibold text-gray-600 uppercase tracking-wider">Date Range</span>
         </div>
         <div className="flex items-center gap-2 text-xs">
-          <span className="px-2 py-0.5 rounded-md bg-cyan-500/10 text-cyan-400 font-medium border border-cyan-500/20">
+          <span className="px-2 py-0.5 rounded-md bg-amber-600/10 text-amber-700 font-medium border border-amber-600/20">
             {formatDate(dates[startIdx])}
           </span>
-          <ArrowRight className="w-3 h-3 text-gray-500" />
-          <span className="px-2 py-0.5 rounded-md bg-cyan-500/10 text-cyan-400 font-medium border border-cyan-500/20">
+          <ArrowRight className="w-3 h-3 text-gray-600" />
+          <span className="px-2 py-0.5 rounded-md bg-amber-600/10 text-amber-700 font-medium border border-amber-600/20">
             {formatDate(dates[endIdx])}
           </span>
         </div>
@@ -185,7 +185,7 @@ function DateRangeSlider({
             style={{
               left: `${startPct}%`,
               width: `${endPct - startPct}%`,
-              background: "linear-gradient(90deg, #22D3EE, #06B6D4)",
+              background: "linear-gradient(90deg, #B8860B, #06B6D4)",
               boxShadow: "0 0 10px rgba(34,211,238,0.3)",
             }}
           />
@@ -197,7 +197,7 @@ function DateRangeSlider({
             return (
               <div
                 key={i}
-                className={`absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full transition-all ${isInRange ? "bg-cyan-400" : "bg-white/10"}`}
+                className={`absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full transition-all ${isInRange ? "bg-amber-600" : "bg-white/10"}`}
                 style={{ left: `${pct}%`, transform: 'translate(-50%, -50%)' }}
               />
             );
@@ -205,14 +205,14 @@ function DateRangeSlider({
 
           {/* Start handle */}
           <div
-            className="absolute w-5 h-5 rounded-full border-2 border-cyan-400 cursor-grab active:cursor-grabbing z-10 hover:scale-110 transition-transform"
+            className="absolute w-5 h-5 rounded-full border-2 border-amber-600 cursor-grab active:cursor-grabbing z-10 hover:scale-110 transition-transform"
             style={{ left: `${startPct}%`, top: '50%', transform: "translate(-50%, -50%)", boxShadow: "0 0 12px rgba(34,211,238,0.4)", background: 'var(--fl-bg-deep, #0A1628)' }}
             onMouseDown={handleMouseDown("start")}
           />
 
           {/* End handle */}
           <div
-            className="absolute w-5 h-5 rounded-full border-2 border-cyan-400 cursor-grab active:cursor-grabbing z-10 hover:scale-110 transition-transform"
+            className="absolute w-5 h-5 rounded-full border-2 border-amber-600 cursor-grab active:cursor-grabbing z-10 hover:scale-110 transition-transform"
             style={{ left: `${endPct}%`, top: '50%', transform: "translate(-50%, -50%)", boxShadow: "0 0 12px rgba(34,211,238,0.4)", background: 'var(--fl-bg-deep, #0A1628)' }}
             onMouseDown={handleMouseDown("end")}
           />
@@ -229,7 +229,7 @@ function DateRangeSlider({
             return (
               <span
                 key={i}
-                className={`absolute text-[9px] whitespace-nowrap ${isInRange ? "text-gray-400" : "text-gray-600"}`}
+                className={`absolute text-[9px] whitespace-nowrap ${isInRange ? "text-gray-600" : "text-gray-600"}`}
                 style={{ left: `${pct}%`, transform }}
               >
                 {formatDate(date)}
@@ -241,10 +241,10 @@ function DateRangeSlider({
 
       {/* Quick range presets */}
       <div className="flex items-center gap-1.5">
-        <span className="text-[10px] text-gray-500 mr-1">Quick:</span>
+        <span className="text-[10px] text-gray-600 mr-1">Quick:</span>
         {dates.length >= 2 && (
           <button
-            className="text-[10px] px-2 py-0.5 rounded-md border border-white/[0.06] text-gray-400 hover:text-cyan-400 hover:border-cyan-500/20 transition-colors"
+            className="text-[10px] px-2 py-0.5 rounded-md border border-gray-200 text-gray-600 hover:text-amber-700 hover:border-amber-600/20 transition-colors"
             onClick={() => onRangeChange(dates.length - 2, dates.length - 1)}
           >
             Last 2
@@ -252,14 +252,14 @@ function DateRangeSlider({
         )}
         {dates.length >= 3 && (
           <button
-            className="text-[10px] px-2 py-0.5 rounded-md border border-white/[0.06] text-gray-400 hover:text-cyan-400 hover:border-cyan-500/20 transition-colors"
+            className="text-[10px] px-2 py-0.5 rounded-md border border-gray-200 text-gray-600 hover:text-amber-700 hover:border-amber-600/20 transition-colors"
             onClick={() => onRangeChange(dates.length - 3, dates.length - 1)}
           >
             Last 3
           </button>
         )}
         <button
-          className="text-[10px] px-2 py-0.5 rounded-md border border-white/[0.06] text-gray-400 hover:text-cyan-400 hover:border-cyan-500/20 transition-colors"
+          className="text-[10px] px-2 py-0.5 rounded-md border border-gray-200 text-gray-600 hover:text-amber-700 hover:border-amber-600/20 transition-colors"
           onClick={() => onRangeChange(0, dates.length - 1)}
         >
           All Time
@@ -342,7 +342,7 @@ function TrendChart({
 
   if (allDates.length < 2 || biomarkers.length === 0) {
     return (
-      <div className="flex items-center justify-center h-48 text-gray-500 text-sm">
+      <div className="flex items-center justify-center h-48 text-gray-600 text-sm">
         Select biomarkers to compare trends
       </div>
     );
@@ -614,7 +614,7 @@ function ChangeSummary({ biomarker, color }: { biomarker: TrendBiomarker; color:
       <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: `linear-gradient(90deg, transparent, ${color}, transparent)`, opacity: 0.5 }} />
 
       <div className="flex items-center justify-between mb-3">
-        <span className="text-xs text-gray-400 font-medium">{biomarker.name}</span>
+        <span className="text-xs text-gray-600 font-medium">{biomarker.name}</span>
         <span
           className="text-[10px] px-2 py-0.5 rounded-full font-semibold"
           style={{
@@ -795,7 +795,7 @@ export function BiomarkerTrends({ dbBiomarkers, timelineEvents = [], goals = [] 
       <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 md:gap-6 items-start">
         <div>
           <p className="text-[10px] uppercase tracking-[0.2em] font-semibold mb-1" style={{ color: 'var(--fl-text-gold)' }}>Longitudinal Analysis</p>
-          <h2 className="text-xl font-bold tracking-tight flex items-center gap-3" style={{ fontFamily: "'Inter Tight', 'Inter', system-ui, sans-serif", letterSpacing: '-0.03em', color: 'var(--fl-text-primary)' }}>
+          <h2 className="text-xl font-bold tracking-tight flex items-center gap-3" style={{ fontFamily: "'Playfair Display', serif", letterSpacing: '-0.03em', color: 'var(--fl-text-primary)' }}>
             <BarChart3 className="w-5 h-5" style={{ color: 'var(--fl-accent)' }} />
             Biomarker Trends
           </h2>
@@ -808,7 +808,7 @@ export function BiomarkerTrends({ dbBiomarkers, timelineEvents = [], goals = [] 
             <div className="absolute inset-0" style={{ background: 'var(--fl-bg-card)' }} />
             <div className="absolute top-0 left-0 right-0 h-[1px]" style={{ background: 'linear-gradient(90deg, transparent, rgba(16,185,129,0.3), transparent)' }} />
             <div className="relative px-5 py-3 text-center">
-              <p className="text-3xl font-black text-emerald-400 tabular-nums" style={{ fontFamily: "'Inter Tight', 'Inter', system-ui, sans-serif", letterSpacing: '-0.03em', textShadow: "0 0 15px rgba(16,185,129,0.2)" }}>
+              <p className="text-3xl font-black text-emerald-400 tabular-nums" style={{ fontFamily: "'Playfair Display', serif", letterSpacing: '-0.03em', textShadow: "0 0 15px rgba(16,185,129,0.2)" }}>
                 {improvingCount}
               </p>
               <p className="text-[9px] uppercase tracking-widest font-semibold" style={{ color: 'var(--fl-text-muted)' }}>Improving</p>
@@ -818,7 +818,7 @@ export function BiomarkerTrends({ dbBiomarkers, timelineEvents = [], goals = [] 
             <div className="absolute inset-0" style={{ background: 'var(--fl-bg-card)' }} />
             <div className="absolute top-0 left-0 right-0 h-[1px]" style={{ background: 'linear-gradient(90deg, transparent, rgba(34,211,238,0.3), transparent)' }} />
             <div className="relative px-5 py-3 text-center">
-              <p className="text-3xl font-black text-cyan-400 tabular-nums" style={{ fontFamily: "'Inter Tight', 'Inter', system-ui, sans-serif", letterSpacing: '-0.03em', textShadow: "0 0 15px rgba(34,211,238,0.2)" }}>
+              <p className="text-3xl font-black text-amber-700 tabular-nums" style={{ fontFamily: "'Playfair Display', serif", letterSpacing: '-0.03em', textShadow: "0 0 15px rgba(34,211,238,0.2)" }}>
                 {optimalCount}/{dbBiomarkers.length}
               </p>
               <p className="text-[9px] uppercase tracking-widest font-semibold" style={{ color: 'var(--fl-text-muted)' }}>Optimal</p>
@@ -847,7 +847,7 @@ export function BiomarkerTrends({ dbBiomarkers, timelineEvents = [], goals = [] 
         <Button
           variant="outline"
           size="sm"
-          className="h-7 text-xs rounded-full gap-1 border-dashed border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/10"
+          className="h-7 text-xs rounded-full gap-1 border-dashed border-amber-600/30 text-amber-700 hover:bg-amber-600/10"
           onClick={() => setShowPicker(!showPicker)}
         >
           <Plus className="w-3 h-3" />
@@ -857,7 +857,7 @@ export function BiomarkerTrends({ dbBiomarkers, timelineEvents = [], goals = [] 
           <Button
             variant="outline"
             size="sm"
-            className="h-7 text-xs rounded-full gap-1 border-gray-600 text-gray-400 hover:bg-white/5"
+            className="h-7 text-xs rounded-full gap-1 border-gray-600 text-gray-600 hover:bg-white/5"
             onClick={() => setSelectedBiomarkers([])}
           >
             Clear All
@@ -872,8 +872,8 @@ export function BiomarkerTrends({ dbBiomarkers, timelineEvents = [], goals = [] 
               size="sm"
               className={`h-7 text-xs rounded-full gap-1.5 transition-all ${
                 showEvents
-                  ? "border-violet-500/30 text-violet-400 bg-violet-500/10"
-                  : "border-white/[0.06] text-gray-500"
+                  ? "border-amber-600/30 text-amber-700 bg-amber-600/10"
+                  : "border-gray-200 text-gray-600"
               }`}
               onClick={() => setShowEvents(!showEvents)}
             >
@@ -887,21 +887,21 @@ export function BiomarkerTrends({ dbBiomarkers, timelineEvents = [], goals = [] 
 
       {/* Biomarker Picker */}
       {showPicker && (
-        <div className="rounded-2xl border border-cyan-500/10 p-5 space-y-4" style={{ background: 'var(--fl-bg-card)' }}>
+        <div className="rounded-2xl border border-amber-600/10 p-5 space-y-4" style={{ background: 'var(--fl-bg-card)' }}>
           <div className="flex items-center gap-3">
             <input
               type="text"
               placeholder="Search biomarkers..."
               value={pickerSearch}
               onChange={(e) => setPickerSearch(e.target.value)}
-              className="flex-1 px-4 py-2 rounded-lg text-sm placeholder-gray-600 focus:outline-none focus:border-cyan-500/30 focus:ring-1 focus:ring-cyan-500/15 transition-all"
+              className="flex-1 px-4 py-2 rounded-lg text-sm placeholder-gray-600 focus:outline-none focus:border-amber-600/30 focus:ring-1 focus:ring-amber-600/15 transition-all"
               style={{ background: 'var(--fl-bg-deep)', border: '1px solid var(--fl-border)', color: 'var(--fl-text-primary)' }}
             />
             <div className="flex items-center gap-1 flex-wrap">
               <Button
                 variant="outline"
                 size="sm"
-                className={`h-7 text-xs rounded-lg ${pickerCategory === "all" ? "bg-cyan-500/15 text-cyan-400 border-cyan-500/25" : "border-white/[0.06] text-gray-400"}`}
+                className={`h-7 text-xs rounded-lg ${pickerCategory === "all" ? "bg-amber-600/15 text-amber-700 border-amber-600/25" : "border-gray-200 text-gray-600"}`}
                 onClick={() => setPickerCategory("all")}
               >
                 All
@@ -915,7 +915,7 @@ export function BiomarkerTrends({ dbBiomarkers, timelineEvents = [], goals = [] 
                     key={cat}
                     variant="outline"
                     size="sm"
-                    className={`h-7 text-xs rounded-lg gap-1 ${pickerCategory === cat ? "" : "border-white/[0.06] text-gray-400"}`}
+                    className={`h-7 text-xs rounded-lg gap-1 ${pickerCategory === cat ? "" : "border-gray-200 text-gray-600"}`}
                     style={pickerCategory === cat ? { background: `${config.color}15`, color: config.color, borderColor: `${config.color}30` } : undefined}
                     onClick={() => setPickerCategory(cat)}
                   >
@@ -944,16 +944,16 @@ export function BiomarkerTrends({ dbBiomarkers, timelineEvents = [], goals = [] 
                     disabled={!isSelected && selectedBiomarkers.length >= 6}
                     className={`text-left px-3 py-2.5 rounded-lg border transition-all duration-200 ${
                       isSelected
-                        ? "border-cyan-500/25 bg-cyan-500/8"
-                        : "border-white/[0.04] hover:border-white/10 hover:bg-white/[0.03] disabled:opacity-30 disabled:cursor-not-allowed"
+                        ? "border-amber-600/25 bg-amber-600/8"
+                        : "border-gray-100 hover:border-white/10 hover:bg-white/[0.03] disabled:opacity-30 disabled:cursor-not-allowed"
                     }`}
                   >
                     <div className="flex items-center justify-between">
-                      <span className={`text-xs font-medium ${isSelected ? "text-cyan-300" : "text-white"}`}>{bm.name}</span>
-                      {isSelected && <div className="w-2 h-2 rounded-full bg-cyan-400" style={{ boxShadow: "0 0 6px rgba(34,211,238,0.6)" }} />}
+                      <span className={`text-xs font-medium ${isSelected ? "text-cyan-300" : "text-gray-900"}`}>{bm.name}</span>
+                      {isSelected && <div className="w-2 h-2 rounded-full bg-amber-600" style={{ boxShadow: "0 0 6px rgba(34,211,238,0.6)" }} />}
                     </div>
                     <div className="flex items-center gap-2 mt-1">
-                      <span className="text-[10px] text-gray-500">{bm.currentValue}{bm.unit ? ` ${bm.unit}` : ""}</span>
+                      <span className="text-[10px] text-gray-600">{bm.currentValue}{bm.unit ? ` ${bm.unit}` : ""}</span>
                       <span className="text-[10px]" style={{ color: config?.color || "#6B7280" }}>
                         {config?.label || bm.category}
                       </span>
@@ -977,7 +977,7 @@ export function BiomarkerTrends({ dbBiomarkers, timelineEvents = [], goals = [] 
                 {chartData.map((bm) => (
                   <div key={bm.name} className="flex items-center gap-1.5">
                     <div className="w-3 h-[2px] rounded-full" style={{ background: bm.color }} />
-                    <span className="text-[10px] text-gray-400">{bm.name}</span>
+                    <span className="text-[10px] text-gray-600">{bm.name}</span>
                   </div>
                 ))}
               </div>
@@ -986,10 +986,10 @@ export function BiomarkerTrends({ dbBiomarkers, timelineEvents = [], goals = [] 
 
             {/* Event legend below chart */}
             {showEvents && filteredEvents.length > 0 && (
-              <div className="mt-4 pt-4 border-t border-white/[0.04]">
+              <div className="mt-4 pt-4 border-t border-gray-100">
                 <div className="flex items-center gap-2 mb-2">
-                  <Layers className="w-3.5 h-3.5 text-violet-400" />
-                  <span className="text-[10px] text-gray-500 uppercase tracking-wider font-semibold">Health Events in Range</span>
+                  <Layers className="w-3.5 h-3.5 text-amber-700" />
+                  <span className="text-[10px] text-gray-600 uppercase tracking-wider font-semibold">Health Events in Range</span>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-1.5">
                   {filteredEvents.map((evt, i) => (
@@ -1012,7 +1012,7 @@ export function BiomarkerTrends({ dbBiomarkers, timelineEvents = [], goals = [] 
             <Button
               variant="outline"
               size="sm"
-              className="text-xs rounded-full gap-1 border-cyan-500/20 text-cyan-400 hover:bg-cyan-500/10"
+              className="text-xs rounded-full gap-1 border-amber-600/20 text-amber-700 hover:bg-amber-600/10"
               onClick={() => setSelectedBiomarkers(["LDL Cholesterol", "HDL Cholesterol", "Triglycerides"])}
             >
               <Heart className="w-3 h-3" />
@@ -1030,7 +1030,7 @@ export function BiomarkerTrends({ dbBiomarkers, timelineEvents = [], goals = [] 
             <Button
               variant="outline"
               size="sm"
-              className="text-xs rounded-full gap-1 border-violet-500/20 text-violet-400 hover:bg-violet-500/10"
+              className="text-xs rounded-full gap-1 border-amber-600/20 text-amber-700 hover:bg-amber-600/10"
               onClick={() => setSelectedBiomarkers(["IL-6", "hs-CRP", "TNF-alpha", "Homocysteine"])}
             >
               <Shield className="w-3 h-3" />
@@ -1053,9 +1053,9 @@ export function BiomarkerTrends({ dbBiomarkers, timelineEvents = [], goals = [] 
       {selectedData.length > 0 && (
         <div>
               <h3 className="text-sm font-bold mb-3 flex items-center gap-2" style={{ color: 'var(--fl-text-primary)' }}>
-            <ArrowRight className="w-4 h-4 text-cyan-400" />
+            <ArrowRight className="w-4 h-4 text-amber-700" />
             Change Summary
-            <span className="text-[10px] text-gray-500 font-normal ml-1">
+            <span className="text-[10px] text-gray-600 font-normal ml-1">
               ({formatDate(allAssessmentDates[dateStartIdx])} → {formatDate(allAssessmentDates[dateEndIdx])})
             </span>
           </h3>
@@ -1088,8 +1088,8 @@ export function BiomarkerTrends({ dbBiomarkers, timelineEvents = [], goals = [] 
                   onClick={() => toggleBiomarker(bm.name)}
                   className={`text-left px-3 py-2.5 rounded-lg border transition-all duration-200 ${
                     isSelected
-                      ? "border-cyan-500/25 bg-cyan-500/8 shadow-sm"
-                      : "border-white/[0.04] hover:border-white/10 hover:bg-white/[0.03]"
+                      ? "border-amber-600/25 bg-amber-600/8 shadow-sm"
+                      : "border-gray-100 hover:border-white/10 hover:bg-white/[0.03]"
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1">
@@ -1099,7 +1099,7 @@ export function BiomarkerTrends({ dbBiomarkers, timelineEvents = [], goals = [] 
                     />
                   </div>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-sm font-bold tabular-nums" style={{ fontFamily: "'JetBrains Mono', monospace", color: 'var(--fl-text-primary)' }}>
+                    <span className="text-sm font-bold tabular-nums" style={{ fontFamily: "'Space Mono', monospace", color: 'var(--fl-text-primary)' }}>
                       {bm.currentValue % 1 === 0 ? bm.currentValue : bm.currentValue.toFixed(1)}
                     </span>
                     <span className="text-[9px]" style={{ color: 'var(--fl-text-muted)' }}>{bm.unit}</span>
