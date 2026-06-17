@@ -358,3 +358,54 @@
 .dht-root table tr:hover td {
   background: #FAFAF8;
 }
+
+/* ═══════════════════════════════════════════════════
+   WEG TYPOGRAPHY ENFORCEMENT — Global overrides
+   ═══════════════════════════════════════════════════ */
+
+/* All headings and bold titles use Playfair Display */
+.dht-root h1, .dht-root h2, .dht-root h3, .dht-root h4, .dht-root h5, .dht-root h6,
+.dht-root [class*="font-bold"],
+.dht-root [class*="font-extrabold"],
+.dht-root [class*="font-black"],
+.dht-root [class*="font-semibold"] {
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* Only large display numbers and explicit headings use Playfair */
+.dht-root .fl-display,
+.dht-root .fl-display-lg,
+.dht-root .fl-display-xl {
+  font-family: 'Playfair Display', serif !important;
+}
+
+/* All numeric/data values use Space Mono */
+.dht-root [class*="tabular-nums"] {
+  font-family: 'Space Mono', monospace;
+}
+
+/* Section labels use Space Mono uppercase */
+.dht-root [class*="tracking-wider"],
+.dht-root [class*="tracking-widest"],
+.dht-root [class*="uppercase"] {
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 0.1em;
+}
+
+/* Ensure body text is always DM Sans */
+.dht-root span,
+.dht-root p,
+.dht-root div,
+.dht-root button {
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* Override for explicit Playfair elements */
+.dht-root [style*="Playfair"] {
+  font-family: 'Playfair Display', serif !important;
+}
+
+/* Override for explicit Space Mono elements */
+.dht-root [style*="Space Mono"] {
+  font-family: 'Space Mono', monospace !important;
+}
