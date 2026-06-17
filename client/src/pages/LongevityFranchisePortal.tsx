@@ -111,7 +111,7 @@ export default function LongevityFranchisePortal() {
       </div>
 
       {/* Main content — branded launcher */}
-      <div className="flex-1 overflow-auto">
+      <div className="flex-1 min-h-0 overflow-auto">
         <div className="max-w-2xl w-full mx-auto text-center px-8 pt-16 pb-12">
           {/* Logo & Title */}
           <img 
