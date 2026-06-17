@@ -8,6 +8,7 @@ import { motion, useInView } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { Check, X, ArrowRight } from "lucide-react";
+import FullScreenNav from "@/components/FullScreenNav";
 
 // Animated counter component
 function AnimatedStat({ value, suffix = "", prefix = "" }: { value: number; suffix?: string; prefix?: string }) {
@@ -84,8 +85,17 @@ export default function CorporateHealth() {
 
   return (
     <div className="bg-[#0a0a0a] text-white min-h-screen relative">
+      {/* Site Navigation */}
+      <div className="fixed top-0 left-0 right-0 z-[60]">
+        <FullScreenNav
+          currentLabel="Corporate Health"
+          section="products"
+          backHref="/product-intelligence"
+          backLabel="Back to Products"
+        />
+      </div>
       {/* Fixed Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 px-8 py-5 flex items-center justify-between bg-[#0a0a0a]/80 backdrop-blur-md border-b border-white/[0.06]">
+      <header className="fixed top-11 left-0 right-0 z-50 px-8 py-5 flex items-center justify-between bg-[#0a0a0a]/80 backdrop-blur-md border-b border-white/[0.06]">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 rounded-full border border-[#B8860B]/60 flex items-center justify-center">
             <div className="w-2 h-2 rounded-full bg-[#B8860B]" />
@@ -118,7 +128,7 @@ export default function CorporateHealth() {
       </nav>
 
       {/* ===== SECTION 01: COVER ===== */}
-      <section id="cover" className="min-h-screen flex flex-col justify-center relative overflow-hidden px-8 md:px-16 pt-20">
+      <section id="cover" className="min-h-screen flex flex-col justify-center relative overflow-hidden px-8 md:px-16 pt-32">
         {/* Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#0d1117] to-[#0a0a0a]" />
         <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "radial-gradient(ellipse at 70% 50%, rgba(184,134,11,0.08) 0%, transparent 60%)" }} />
