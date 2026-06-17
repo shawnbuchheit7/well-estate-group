@@ -1,160 +1,78 @@
-/*
- * Longevity Franchise Portal — Branded launcher page
- * Keeps the URL at wellestategroup.com/longevity/franchise-portal while
- * providing navigation back to the main site sections. Opens the external
- * franchise portal in a new tab for full functionality.
- */
 import { useState } from "react";
-import { ArrowLeft, ChevronDown, ExternalLink, Lock, BookOpen, Users, BarChart3, FileText } from "lucide-react";
 import { Link } from "wouter";
 
-const PORTAL_URL = "https://fountainfran-fruyeybc.manus.space";
-
-const navSections = [
-  { href: "/longevity/luxury", label: "About" },
-  { href: "/longevity/opportunity", label: "Opportunity" },
-  { href: "/longevity/memberships", label: "Memberships" },
-  { href: "/longevity/therapeutics", label: "Therapeutics" },
-  { href: "/longevity/technology", label: "Technology" },
-  { href: "/longevity/use-of-funds", label: "Funds" },
-  { href: "/longevity/performance", label: "Economics" },
-  { href: "/longevity/projections", label: "Projections" },
-  { href: "/longevity/hiring", label: "Team" },
-  { href: "/longevity/faq", label: "FAQ" },
-];
-
-const portalFeatures = [
-  { icon: BookOpen, title: "Franchise Playbook", desc: "SOPs, brand standards, and operational guides" },
-  { icon: BarChart3, title: "Launch Roadmap", desc: "Five-phase path from agreement to steady state" },
-  { icon: Users, title: "Corporate Support Pod", desc: "Your dedicated leadership team contacts" },
-  { icon: FileText, title: "Compliance & Records", desc: "Regulatory documents and acknowledgments" },
+const sections = [
+  { label: "About", href: "/longevity/about" },
+  { label: "Opportunity", href: "/longevity/opportunity" },
+  { label: "Memberships", href: "/longevity/memberships" },
+  { label: "Therapeutics", href: "/longevity/therapeutics" },
+  { label: "Technology", href: "/longevity/technology" },
+  { label: "Funds", href: "/longevity/funds" },
+  { label: "Economics", href: "/longevity/economics" },
+  { label: "Projections", href: "/longevity/projections" },
+  { label: "Team", href: "/longevity/team" },
+  { label: "FAQ", href: "/longevity/faq" },
+  { label: "All Projects", href: "/longevity" },
 ];
 
 export default function LongevityFranchisePortal() {
   const [navOpen, setNavOpen] = useState(false);
 
   return (
-    <div className="fixed top-0 left-0 w-screen h-screen z-50 bg-[#FAFAF7] flex flex-col">
+    <div className="fixed top-0 left-0 w-screen h-screen z-50 flex flex-col bg-black">
       {/* Compact navigation bar */}
       <div className="flex items-center h-11 px-4 bg-[#0A0A0A] text-white shrink-0 border-b border-white/10 relative z-50">
         {/* Left: Back to main site */}
         <Link href="/longevity" className="inline-flex items-center gap-2 text-white/70 hover:text-white transition-colors text-xs font-medium mr-4">
-          <ArrowLeft className="w-3.5 h-3.5" />
-          <span className="hidden sm:inline">Back to WEG</span>
+          <span className="text-sm">←</span> Back to WEG
         </Link>
 
-        {/* Center: Logo + Section dropdown */}
+        {/* Center: Logo + Navigate dropdown */}
         <div className="flex-1 flex items-center justify-center gap-3">
-          <Link href="/" className="flex items-center gap-2 group">
-            <img 
-              src="/weg-logo-mark-white.png" 
-              alt="Well Estate Group" 
-              className="w-5 h-5 no-sharpen"
-            />
-            <span className="text-[11px] font-semibold tracking-[0.08em] text-white/90 group-hover:text-white transition-colors hidden sm:inline">
-              WELL ESTATE GROUP
-            </span>
+          <Link href="/" className="inline-flex items-center gap-2">
+            <img src="/weg-logo-mark-white.png" alt="Well Estate Group" className="h-5 w-5" />
+            <span className="text-xs font-semibold tracking-wide text-white/90">WELL ESTATE GROUP</span>
           </Link>
 
-          {/* Section Navigator */}
           <div className="relative">
             <button
               onClick={() => setNavOpen(!navOpen)}
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-[11px] font-medium text-white/60 hover:text-white hover:bg-white/10 transition-all"
+              className="text-xs text-white/60 hover:text-white transition-colors flex items-center gap-1"
             >
-              <span>Navigate Sections</span>
-              <ChevronDown className={`w-3 h-3 transition-transform ${navOpen ? 'rotate-180' : ''}`} />
+              Navigate Sections <span className="text-[10px]">▾</span>
             </button>
 
-            {/* Dropdown */}
             {navOpen && (
               <>
                 <div className="fixed inset-0 z-40" onClick={() => setNavOpen(false)} />
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-[#141414] border border-white/15 rounded-xl shadow-2xl overflow-hidden z-50">
-                  <div className="p-1.5">
-                    <div className="px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.15em] text-white/40">
-                      Longevity Ventures
-                    </div>
-                    {navSections.map((section) => (
-                      <Link
-                        key={section.href}
-                        href={section.href}
-                        className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-white/70 hover:text-white hover:bg-white/8 transition-all"
-                        onClick={() => setNavOpen(false)}
-                      >
-                        <span>{section.label}</span>
-                      </Link>
-                    ))}
-                    <div className="border-t border-white/10 mt-1 pt-1">
-                      <Link
-                        href="/longevity"
-                        className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-[#B8860B] hover:text-[#D4A853] hover:bg-[#B8860B]/10 transition-all font-medium"
-                        onClick={() => setNavOpen(false)}
-                      >
-                        <ExternalLink className="w-3 h-3" />
-                        <span>All Projects</span>
-                      </Link>
-                    </div>
-                  </div>
+                <div className="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-[#1A1A1A] border border-white/10 rounded-lg shadow-2xl py-2 min-w-[180px] z-50">
+                  <div className="px-3 py-1.5 text-[10px] font-semibold text-white/40 uppercase tracking-wider">Longevity Ventures</div>
+                  {sections.map((s) => (
+                    <Link key={s.href} href={s.href} className="block px-3 py-1.5 text-xs text-white/70 hover:text-white hover:bg-white/5 transition-colors">
+                      {s.label}
+                    </Link>
+                  ))}
                 </div>
               </>
             )}
           </div>
         </div>
 
-        {/* Right: Current location indicator */}
-        <div className="flex items-center gap-2">
-          <span className="text-[9px] font-semibold uppercase tracking-[0.12em] text-[#B8860B] px-2 py-0.5 rounded border border-[#B8860B]/30 bg-[#B8860B]/10">
-            Franchise Portal
-          </span>
-        </div>
+        {/* Right: Current section badge */}
+        <span className="text-[10px] font-semibold tracking-wider text-white/50 border border-white/20 rounded px-2 py-0.5 uppercase">
+          Franchise Portal
+        </span>
       </div>
 
-      {/* Main content — branded launcher */}
-      <div className="flex-1 min-h-0 overflow-auto">
-        <div className="max-w-2xl w-full mx-auto text-center px-8 pt-16 pb-12">
-          {/* Logo & Title */}
-          <img 
-            src="/weg-logo-mark-gold-dark.png" 
-            alt="Well Estate Group" 
-            className="w-16 h-16 mx-auto mb-6 no-sharpen"
-          />
-          <h1 className="text-3xl font-light text-[#1A1A1A] tracking-tight mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
-            International Franchise Portal
-          </h1>
-          <p className="text-base text-[#555] font-light leading-relaxed max-w-lg mx-auto mb-10">
-            Your living playbook from corporate — site selection, build-out, hiring, licensing, and day-to-day operations.
-          </p>
-
-          {/* Feature grid */}
-          <div className="grid grid-cols-2 gap-4 mb-10">
-            {portalFeatures.map((feature) => (
-              <div key={feature.title} className="bg-white rounded-xl p-5 border border-[#E8E4DE] text-left shadow-sm">
-                <feature.icon className="w-5 h-5 text-[#C5A059] mb-3" />
-                <div className="text-sm font-medium text-[#1A1A1A] mb-1">{feature.title}</div>
-                <div className="text-xs text-[#777] leading-relaxed">{feature.desc}</div>
-              </div>
-            ))}
-          </div>
-
-          {/* CTA Button */}
-          <a
-            href={PORTAL_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-10 py-4 bg-[#0A0A0A] hover:bg-[#1A1A1A] text-white text-base font-medium rounded-xl transition-all shadow-lg hover:shadow-xl"
-          >
-            <span>Open Franchise Portal</span>
-            <ExternalLink className="w-5 h-5" />
-          </a>
-
-          {/* Security note */}
-          <div className="mt-6 flex items-center justify-center gap-2 text-sm text-[#999]">
-            <Lock className="w-4 h-4" />
-            <span>Secure access · Authorized partners only</span>
-          </div>
-        </div>
-      </div>
+      {/* Franchise Portal iframe - takes remaining height */}
+      <iframe
+        src="https://fountainfran-fruyeybc.manus.space"
+        className="flex-1 w-full border-0"
+        style={{ minHeight: 0 }}
+        allow="storage-access; cross-origin-isolated"
+        sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals allow-top-navigation"
+        title="Franchise Portal"
+      />
     </div>
   );
 }
