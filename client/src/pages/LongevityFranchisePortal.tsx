@@ -1,10 +1,11 @@
 /*
- * Longevity Franchise Portal — Embedded iframe
- * Renders the external franchise portal inside the WEG site with a compact
- * navigation bar at the top for easy section switching.
+ * Longevity Franchise Portal — Branded launcher page
+ * Keeps the URL at wellestategroup.com/longevity/franchise-portal while
+ * providing navigation back to the main site sections. Opens the external
+ * franchise portal in a new tab for full functionality.
  */
 import { useState } from "react";
-import { ArrowLeft, ChevronDown, ExternalLink } from "lucide-react";
+import { ArrowLeft, ChevronDown, ExternalLink, Lock, BookOpen, Users, BarChart3, FileText } from "lucide-react";
 import { Link } from "wouter";
 
 const PORTAL_URL = "https://fountainfran-fruyeybc.manus.space";
@@ -22,11 +23,18 @@ const navSections = [
   { href: "/longevity/faq", label: "FAQ" },
 ];
 
+const portalFeatures = [
+  { icon: BookOpen, title: "Franchise Playbook", desc: "SOPs, brand standards, and operational guides" },
+  { icon: BarChart3, title: "Launch Roadmap", desc: "Five-phase path from agreement to steady state" },
+  { icon: Users, title: "Corporate Support Pod", desc: "Your dedicated leadership team contacts" },
+  { icon: FileText, title: "Compliance & Records", desc: "Regulatory documents and acknowledgments" },
+];
+
 export default function LongevityFranchisePortal() {
   const [navOpen, setNavOpen] = useState(false);
 
   return (
-    <div className="fixed inset-0 z-50 bg-[#0A0A0A] flex flex-col">
+    <div className="fixed inset-0 z-50 bg-[#FAFAF7] flex flex-col">
       {/* Compact navigation bar */}
       <div className="flex items-center h-11 px-4 bg-[#0A0A0A] text-white shrink-0 border-b border-white/10 relative z-50">
         {/* Left: Back to main site */}
@@ -61,9 +69,7 @@ export default function LongevityFranchisePortal() {
             {/* Dropdown */}
             {navOpen && (
               <>
-                {/* Backdrop */}
                 <div className="fixed inset-0 z-40" onClick={() => setNavOpen(false)} />
-                {/* Menu */}
                 <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-[#141414] border border-white/15 rounded-xl shadow-2xl overflow-hidden z-50">
                   <div className="p-1.5">
                     <div className="px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.15em] text-white/40">
@@ -104,15 +110,53 @@ export default function LongevityFranchisePortal() {
         </div>
       </div>
 
-      {/* Full-screen iframe */}
-      <iframe
-        src={PORTAL_URL}
-        className="w-full border-0"
-        style={{ height: 'calc(100vh - 44px)' }}
-        title="Well Estate Group Franchise Portal"
-        allow="clipboard-write; clipboard-read; storage-access"
-        loading="eager"
-      />
+      {/* Main content — branded launcher */}
+      <div className="flex-1 flex items-center justify-center px-6 py-12 overflow-auto">
+        <div className="max-w-lg w-full text-center">
+          {/* Logo & Title */}
+          <div className="mb-8">
+            <img 
+              src="/weg-logo-mark-gold-dark.png" 
+              alt="Well Estate Group" 
+              className="w-14 h-14 mx-auto mb-5 no-sharpen"
+            />
+            <h1 className="text-2xl font-light text-[#1A1A1A] tracking-tight mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+              International Franchise Portal
+            </h1>
+            <p className="text-sm text-[#666] font-light leading-relaxed max-w-sm mx-auto">
+              Your living playbook from corporate — site selection, build-out, hiring, licensing, and day-to-day operations.
+            </p>
+          </div>
+
+          {/* Feature grid */}
+          <div className="grid grid-cols-2 gap-3 mb-8">
+            {portalFeatures.map((feature) => (
+              <div key={feature.title} className="bg-white rounded-xl p-4 border border-[#E8E4DE] text-left">
+                <feature.icon className="w-4 h-4 text-[#C5A059] mb-2" />
+                <div className="text-xs font-medium text-[#1A1A1A] mb-0.5">{feature.title}</div>
+                <div className="text-[10px] text-[#888] leading-relaxed">{feature.desc}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA Button */}
+          <a
+            href={PORTAL_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2.5 px-8 py-3.5 bg-[#0A0A0A] hover:bg-[#1A1A1A] text-white text-sm font-medium rounded-xl transition-all shadow-lg hover:shadow-xl"
+          >
+            <span>Open Franchise Portal</span>
+            <ExternalLink className="w-4 h-4" />
+          </a>
+
+          {/* Security note */}
+          <div className="mt-5 flex items-center justify-center gap-1.5 text-[10px] text-[#999]">
+            <Lock className="w-3 h-3" />
+            <span>Secure access · Authorized partners only</span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
