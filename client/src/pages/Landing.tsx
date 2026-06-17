@@ -70,8 +70,8 @@ export default function Landing() {
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] }}
         style={{ 
-          backgroundColor: scrollY > 50 ? 'rgba(250,250,248,0.95)' : 'transparent',
-          boxShadow: scrollY > 50 ? '0 1px 3px rgba(0,0,0,0.04)' : 'none' 
+          backgroundColor: 'rgba(255,255,255,0.98)',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.06)' 
         }}
       >
         <div className="w-full px-6 lg:px-10 xl:px-16 flex items-center justify-between h-18 py-4">
