@@ -5,7 +5,7 @@
  */
 
 import { motion } from "framer-motion";
-import { ArrowRight, Plus, Dumbbell, HeartPulse, Disc3, BarChart3 } from "lucide-react";
+import { ArrowRight, Dumbbell, HeartPulse, Disc3, BarChart3 } from "lucide-react";
 import { Link } from "wouter";
 import Layout from "@/components/Layout";
 import LightHero from "@/components/LightHero";
@@ -189,69 +189,7 @@ export default function ProductsLanding() {
               );
             })}
 
-            {/* Pipeline Cards — Upcoming products */}
-            {[
-              {
-                category: "Recovery & Mobility",
-                status: "Evaluation",
-                description: "Precision-engineered recovery tool addressing a critical gap in post-workout protocols",
-                phase: "Concept Validation",
-              },
-              {
-                category: "Wellness Technology",
-                status: "Research",
-                description: "Integrated wellness monitoring solution for premium fitness facility environments",
-                phase: "Market Analysis",
-              },
-            ].map((item, i) => (
-              <motion.div key={`pipeline-${i}`} variants={fadeInUp}>
-                <div className="group relative rounded-xl border border-[#B8860B]/40 bg-white overflow-hidden h-full shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.03)]">
-                  <div className="p-8">
-                    {/* Top row */}
-                    <div className="flex items-start justify-between mb-5">
-                      <div className="w-11 h-11 rounded-xl bg-[#FAFAF8] border border-[#B8860B]/55 flex items-center justify-center shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
-                        <span className="font-display text-lg font-semibold text-black/25">?</span>
-                      </div>
-                      <span className="font-mono text-[9px] tracking-[0.15em] uppercase px-3 py-1.5 rounded-full font-medium bg-black/[0.04] text-black/45 border border-[#B8860B]/40">
-                        {item.status}
-                      </span>
-                    </div>
 
-                    <h3 className="font-display text-2xl font-bold text-black/30 mb-2 tracking-tight leading-tight">
-                      {item.category}
-                    </h3>
-                    <p className="font-mono text-[10px] text-black/35 tracking-[0.15em] uppercase mb-4 font-medium">
-                      {item.phase}
-                    </p>
-                    <p className="font-body text-sm text-black/45 leading-relaxed mb-7">
-                      {item.description}
-                    </p>
-
-                    {/* Confidential notice */}
-                    <div className="pt-4 border-t border-[#B8860B]/40">
-                      <p className="font-mono text-[10px] text-black/20 tracking-wider uppercase">
-                        Details confidential until public release
-                      </p>
-                    </div>
-                  </div>
-                  {/* Bottom accent bar */}
-                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#B8860B]/20 via-[#B8860B]/40 to-[#B8860B]/20" />
-                </div>
-              </motion.div>
-            ))}
-
-            {/* Add New Product Tile */}
-            <motion.div variants={fadeInUp}>
-              <div className="rounded-xl border-2 border-dashed border-[#B8860B]/55 bg-[#FAFAF8]/30 h-full min-h-[320px] flex flex-col items-center justify-center gap-4 cursor-default hover:border-[#B8860B]/60 transition-all duration-300">
-                <div className="w-14 h-14 rounded-xl border border-[#B8860B]/55 flex items-center justify-center bg-white">
-                  <Plus className="w-5 h-5 text-black/20" />
-                </div>
-                <div className="text-center">
-                  <p className="font-display text-base font-medium text-black/25">New Product</p>
-                  <p className="font-body text-xs text-black/15 mt-1">Coming soon</p>
-                </div>
-              </div>
-            </motion.div>
           </motion.div>
         </div>
       </section>
