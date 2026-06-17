@@ -106,7 +106,7 @@ export default function Landing() {
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover object-top"
+          className="absolute inset-0 w-full h-full object-contain"
           src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/AazsyqQemaKsmcfz.mp4"
         />
         {/* Light overlay to fade background for text readability */}
