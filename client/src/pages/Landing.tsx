@@ -232,9 +232,9 @@ export default function Landing() {
 
       {/* About — The Story (with premium building rendering) */}
       <section className="py-24 md:py-32 bg-[#FAFAF8]">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <motion.div 
-            className="grid md:grid-cols-[3fr_2fr] gap-10 md:gap-14 items-center"
+            className="grid md:grid-cols-[3fr_2fr] gap-8 md:gap-12 items-center"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -242,17 +242,15 @@ export default function Landing() {
           >
             {/* Left — Building image */}
             <motion.div variants={fadeInUp} className="relative">
-              <div className="rounded-2xl overflow-hidden shadow-2xl">
-                <img 
-                  src="/weg-hero-building.jpg" 
-                  srcSet="/weg-hero-building.jpg 1192w, /weg-hero-building@2x.jpg 2384w"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  alt="Well Estate Group — wellness-led mixed-use development concept" 
-                  className="w-full h-auto no-sharpen"
-                  style={{ imageRendering: 'auto' }}
-                  loading="lazy"
-                />
-              </div>
+              <img 
+                src="/weg-hero-building.jpg" 
+                srcSet="/weg-hero-building.jpg 1192w, /weg-hero-building@2x.jpg 2384w"
+                sizes="(max-width: 768px) 100vw, 60vw"
+                alt="Well Estate Group — wellness-led mixed-use development concept" 
+                className="w-full h-auto no-sharpen rounded-2xl"
+                style={{ imageRendering: 'auto' }}
+                loading="lazy"
+              />
             </motion.div>
 
             {/* Right — Text content */}
