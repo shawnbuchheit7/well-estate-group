@@ -5,7 +5,7 @@
  */
 
 import { motion } from "framer-motion";
-import { ArrowRight, Plus, Dumbbell, HeartPulse } from "lucide-react";
+import { ArrowRight, Plus, Dumbbell, HeartPulse, Disc3, BarChart3 } from "lucide-react";
 import { Link } from "wouter";
 import Layout from "@/components/Layout";
 import LightHero from "@/components/LightHero";
@@ -55,6 +55,34 @@ const products: ProductTile[] = [
     ],
     category: "Strength Training",
   },
+  {
+    id: "zerowheel",
+    title: "ZeroWheel",
+    subtitle: "Connected Fitness Device — Market Entry",
+    description: "Comprehensive go-to-market strategy for a next-generation motorized core training device across premium clubs, professional sports, medical, military, and hospitality channels.",
+    href: "/gtm/zerowheel",
+    status: "active",
+    stats: [
+      { label: "LOBs", value: "9" },
+      { label: "Pricing Tiers", value: "4" },
+      { label: "Channels", value: "5" },
+    ],
+    category: "Connected Fitness",
+  },
+  {
+    id: "sample-gtm",
+    title: "Sample GTM Strategy",
+    subtitle: "WEG Consulting Framework",
+    description: "A template go-to-market strategy showcasing WEG's multi-vertical distribution framework, channel strategy, and sales infrastructure capabilities.",
+    href: "/gtm/sample",
+    status: "active",
+    stats: [
+      { label: "Channels", value: "8" },
+      { label: "Markets", value: "4" },
+      { label: "Categories", value: "5" },
+    ],
+    category: "GTM Framework",
+  },
 ];
 
 const statusConfig: Record<string, { label: string; bg: string; text: string; border: string }> = {
@@ -72,7 +100,7 @@ export default function ProductsLanding() {
         title="Product Intelligence"
         description="Independent product development, testing, and evaluation for next-generation fitness and wellness equipment. Identifying market gaps and engineering solutions that meet the highest standards of performance and design."
         stats={[
-          { value: "2", label: "Active Products" },
+          { value: "4", label: "Active Products" },
           { value: "3", label: "In Pipeline" },
           { value: "8,000+", label: "Health Members" },
         ]}
@@ -129,7 +157,7 @@ export default function ProductsLanding() {
                         {/* Top row: Category + Status */}
                         <div className="flex items-start justify-between mb-5">
                           <div className="w-11 h-11 rounded-xl bg-[#F5F4F1] border border-[#B8860B]/55 flex items-center justify-center shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
-                            {product.category === "Executive Health" ? <HeartPulse className="w-5 h-5 text-black/45" /> : <Dumbbell className="w-5 h-5 text-black/45" />}
+                            {product.category === "Executive Health" ? <HeartPulse className="w-5 h-5 text-black/45" /> : product.category === "Connected Fitness" ? <Disc3 className="w-5 h-5 text-black/45" /> : product.category === "GTM Framework" ? <BarChart3 className="w-5 h-5 text-black/45" /> : <Dumbbell className="w-5 h-5 text-black/45" />}
                           </div>
                           <span className={`font-mono text-[9px] tracking-[0.15em] uppercase px-3 py-1.5 rounded-full font-medium ${status.bg} ${status.text} border ${status.border}`}>
                             {status.label}
