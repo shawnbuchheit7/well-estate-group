@@ -18,13 +18,22 @@ import {
   Users,
   BarChart3
 } from "lucide-react";
-import Layout from "@/components/Layout";
+import FullScreenNav from "@/components/FullScreenNav";
 import LightHero from "@/components/LightHero";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 
 export default function TechEcosystem() {
   return (
-    <Layout>
+    <>
+      <div className="fixed top-0 left-0 right-0 z-[60]">
+        <FullScreenNav
+          currentLabel="Tech Ecosystem"
+          section="longevity"
+          backHref="/longevity/technology"
+          backLabel="Back to Technology"
+        />
+      </div>
+      <div className="pt-11">
       <LightHero
         eyebrow="Technology & AI"
         title="Integrated Technology Ecosystem"
@@ -242,6 +251,7 @@ export default function TechEcosystem() {
           </motion.div>
         </div>
       </section>
-    </Layout>
+      </div>
+    </>
   );
 }
