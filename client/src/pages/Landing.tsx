@@ -100,17 +100,18 @@ export default function Landing() {
 
       {/* Hero Section — Commanding, minimal */}
       <section ref={heroRef} className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
-        {/* Background Video */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
+        {/* Background Image — enhanced WEG architectural concept */}
+        <img
+          src="/weg-hero-building.jpg"
+          alt="Well Estate Group — wellness-led mixed-use development concept"
           className="absolute inset-0 w-full h-full object-cover"
-          src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/AazsyqQemaKsmcfz.mp4"
         />
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-black/50" />
+        {/* Light wash to keep the detailed image bright while ensuring contrast */}
+        <div className="absolute inset-0 bg-black/35" />
+        {/* Focused scrim behind the headline block for readability */}
+        <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 62% 58% at 50% 46%, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.34) 48%, rgba(0,0,0,0) 78%)' }} />
+        {/* Bottom anchor gradient for buttons/scroll cue */}
+        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/55 to-transparent" />
         
         <motion.div 
           className="relative z-10 max-w-5xl mx-auto px-6 text-center"
@@ -121,14 +122,16 @@ export default function Landing() {
           <motion.h1 
             variants={fadeInUp}
             className="font-display text-5xl md:text-7xl lg:text-8xl font-semibold leading-[0.95] mb-8 text-white tracking-tight"
+            style={{ color: '#FFFFFF', textShadow: '0 2px 24px rgba(0,0,0,0.6), 0 1px 4px rgba(0,0,0,0.55)' }}
           >
             We Don't Advise.<br />
-            <span className="text-[#B8860B]">We Build.</span>
+            <span style={{ color: '#D4AF37' }}>We Build.</span>
           </motion.h1>
 
           <motion.p 
             variants={fadeInUp}
-            className="font-body text-lg md:text-xl text-white/80 leading-relaxed max-w-3xl mx-auto mb-4"
+            className="font-body text-lg md:text-xl text-white/90 leading-relaxed max-w-3xl mx-auto mb-4"
+            style={{ textShadow: '0 1px 12px rgba(0,0,0,0.6)' }}
           >
             The only wellness consulting firm led by the operator who built Fountain Life from concept to scale, 
             managed 144+ vessel wellness programs at Technogym, and delivered for the world's most demanding brands.
@@ -136,7 +139,8 @@ export default function Landing() {
 
           <motion.p 
             variants={fadeInUp}
-            className="font-body text-base text-white/50 mb-12"
+            className="font-body text-base text-white/70 mb-12"
+            style={{ textShadow: '0 1px 10px rgba(0,0,0,0.6)' }}
           >
             Longevity Centers &middot; Mixed-Use Developments &middot; Hospitality Wellness &middot; Global Expansion
           </motion.p>
