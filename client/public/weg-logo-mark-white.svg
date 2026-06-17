@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 591 591" width="591" height="591">
+  <!-- Outer circle ring -->
+  <circle cx="295.5" cy="295.5" r="272" fill="none" stroke="#ffffff" stroke-width="22"/>
+  <!-- W letterform with triangular cutout using evenodd -->
+  <path fill-rule="evenodd" d="
+    M 148 170
+    L 210 170
+    L 210 170
+    L 295.5 415
+    L 381 170
+    L 443 170
+    L 340 440
+    L 295.5 440
+    L 251 440
+    Z
+    M 225 170
+    L 295.5 310
+    L 366 170
+    Z
+  " fill="#ffffff"/>
+</svg>
