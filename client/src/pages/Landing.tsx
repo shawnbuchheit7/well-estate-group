@@ -230,57 +230,55 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* About — The Story (with premium gym image) */}
+      {/* About — The Story (with premium building rendering) */}
       <section className="py-24 md:py-32 bg-[#FAFAF8]">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="grid md:grid-cols-2 gap-16 md:gap-20 items-center">
-            {/* Left - Image */}
-            <motion.div 
-              className="relative"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <div className="aspect-[16/10] rounded-xl overflow-hidden relative shadow-xl">
-                <img 
-                  src="/weg-hero-building.jpg" 
-                  srcSet="/weg-hero-building.jpg 1192w, /weg-hero-building@2x.jpg 2384w"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  alt="Well Estate Group — wellness-led mixed-use development concept" 
-                  className="w-full h-full object-cover no-sharpen"
-                  style={{ imageRendering: 'auto' }}
-                  loading="lazy"
-                />
-              </div>
+          {/* Full-width building image */}
+          <motion.div 
+            className="relative mb-16 md:mb-20"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="rounded-2xl overflow-hidden shadow-2xl">
+              <img 
+                src="/weg-hero-building.jpg" 
+                srcSet="/weg-hero-building.jpg 1192w, /weg-hero-building@2x.jpg 2384w"
+                sizes="100vw"
+                alt="Well Estate Group — wellness-led mixed-use development concept" 
+                className="w-full h-auto no-sharpen"
+                style={{ imageRendering: 'auto' }}
+                loading="lazy"
+              />
+            </div>
+          </motion.div>
 
-            </motion.div>
-
-            {/* Right - Content */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <span className="font-mono text-[#B8860B] text-[11px] tracking-[0.3em] uppercase font-medium">The Operator Advantage</span>
-              <h2 className="font-display text-3xl md:text-4xl font-semibold mt-4 mb-8 text-black tracking-tight leading-tight">
-                Every question you have —<br />we've answered it in the field.
-              </h2>
-              
-              <div className="space-y-5 font-body text-[15px] text-black/65 leading-[1.85]">
-                <p>
-                  What's the break-even timeline for a longevity center? How do you structure TI contributions with a developer? What staffing ratio sustains 80%+ utilization? How do you convert diagnostic members into downstream revenue?
-                </p>
-                <p>
-                  <strong className="text-black font-medium">We don't research these answers. We've lived them.</strong> As the founding President & COO of Fountain Life, as a Technogym global executive managing four regions, and as the operator who has stood on the bridge of cruise ships, walked the floors of Platinum Clubs, and built wellness centers from architectural concept through daily P&L management.
-                </p>
-                <p>
-                  Our clients — investors, developers, and operators — come to us because we eliminate the gap between strategy and execution. There is no handoff. There is no learning curve.
-                </p>
-              </div>
-            </motion.div>
-          </div>
+          {/* Text content below */}
+          <motion.div
+            className="max-w-4xl mx-auto text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="font-mono text-[#B8860B] text-[11px] tracking-[0.3em] uppercase font-medium">The Operator Advantage</span>
+            <h2 className="font-display text-3xl md:text-5xl font-semibold mt-4 mb-8 text-black tracking-tight leading-tight">
+              Every question you have —<br />we've answered it in the field.
+            </h2>
+            
+            <div className="space-y-5 font-body text-[16px] text-black/65 leading-[1.85] max-w-3xl mx-auto text-left">
+              <p>
+                What's the break-even timeline for a longevity center? How do you structure TI contributions with a developer? What staffing ratio sustains 80%+ utilization? How do you convert diagnostic members into downstream revenue?
+              </p>
+              <p>
+                <strong className="text-black font-medium">We don't research these answers. We've lived them.</strong> As the founding President & COO of Fountain Life, as a Technogym global executive managing four regions, and as the operator who has stood on the bridge of cruise ships, walked the floors of Platinum Clubs, and built wellness centers from architectural concept through daily P&L management.
+              </p>
+              <p>
+                Our clients — investors, developers, and operators — come to us because we eliminate the gap between strategy and execution. There is no handoff. There is no learning curve.
+              </p>
+            </div>
+          </motion.div>
         </div>
       </section>
 
