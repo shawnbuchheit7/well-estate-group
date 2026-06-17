@@ -34,7 +34,7 @@ export default function LongevityFranchisePortal() {
   const [navOpen, setNavOpen] = useState(false);
 
   return (
-    <div className="fixed inset-0 z-50 bg-[#FAFAF7] flex flex-col">
+    <div className="fixed top-0 left-0 w-screen h-screen z-50 bg-[#FAFAF7] flex flex-col">
       {/* Compact navigation bar */}
       <div className="flex items-center h-11 px-4 bg-[#0A0A0A] text-white shrink-0 border-b border-white/10 relative z-50">
         {/* Left: Back to main site */}
