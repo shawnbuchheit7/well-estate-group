@@ -946,3 +946,42 @@ img[src$=".png"] {
   backface-visibility: hidden;
   transform: translateZ(0);
 }
+
+/* ===== GLOBAL CONTRAST SHARPENING ===== */
+/* Subtle contrast boost for perceived crispness */
+body {
+  filter: contrast(1.02);
+}
+
+/* Slightly increase contrast on images for punchier visuals */
+img:not(.no-sharpen) {
+  filter: contrast(1.03) saturate(1.02);
+}
+
+/* Sharper borders and shadows */
+* {
+  border-color: inherit;
+}
+
+/* Ensure text has maximum contrast */
+p, span, h1, h2, h3, h4, h5, h6, li, td, th, label, a {
+  color: inherit;
+  -webkit-text-stroke: 0;
+}
+
+/* High-contrast focus states for accessibility */
+:focus-visible {
+  outline: 2px solid #B8860B;
+  outline-offset: 2px;
+}
+
+/* Ensure SVG icons render with maximum crispness */
+svg {
+  shape-rendering: geometricPrecision;
+}
+
+/* Smooth transitions should not blur content */
+[class*="transition"] {
+  will-change: auto;
+  backface-visibility: hidden;
+}

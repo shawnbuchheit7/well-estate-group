@@ -12,7 +12,7 @@ const locations = [
   },
   {
     name: "FIVE Palm Jumeirah, Dubai",
-    image: "/saltleaf/outdoor/five-palm-dubai.jpg",
+    image: "/saltleaf/outdoor/five-palm-dubai.webp",
     type: "Luxury Resort",
   },
   {
@@ -27,12 +27,12 @@ const locations = [
   },
   {
     name: "LUX Grand Baie, Mauritius",
-    image: "/saltleaf/outdoor/lux-grand-baie-mauritius.jpg",
+    image: "/saltleaf/outdoor/lux-grand-baie-mauritius.webp",
     type: "Luxury Residential",
   },
   {
     name: "The Henley, Hong Kong",
-    image: "/saltleaf/outdoor/henley-hong-kong.jpg",
+    image: "/saltleaf/outdoor/henley-hong-kong.webp",
     type: "Luxury Residential",
   },
   {
@@ -42,17 +42,17 @@ const locations = [
   },
   {
     name: "Lummus Park, Miami Beach",
-    image: "/saltleaf/outdoor/location-miami-beach.jpg",
+    image: "/saltleaf/outdoor/location-miami-beach.webp",
     type: "Public Installation",
   },
   {
     name: "Barceloneta, Barcelona",
-    image: "/saltleaf/outdoor/location-barcelona.jpg",
+    image: "/saltleaf/outdoor/location-barcelona.webp",
     type: "Public Installation",
   },
   {
     name: "The Ellenikon Park, Athens",
-    image: "/saltleaf/outdoor/location-athens.jpg",
+    image: "/saltleaf/outdoor/location-athens.webp",
     type: "Public Installation",
   },
   {
@@ -76,13 +76,13 @@ const solutions = [
   },
   {
     name: "Wellness",
-    image: "/saltleaf/outdoor/solution-wellness.jpg",
+    image: "/saltleaf/outdoor/solution-wellness.webp",
     description:
       "Where the path of fitness embraces the nourishment of the soul — a journey where self-discovery begins through mindful outdoor movement.",
   },
   {
     name: "Movability",
-    image: "/saltleaf/outdoor/solution-movability.jpg",
+    image: "/saltleaf/outdoor/solution-movability.webp",
     description:
       "An innovative approach to enhancing wellbeing outdoors, transforming urban spaces into areas for physical activity and functional movement.",
   },
@@ -100,7 +100,7 @@ const solutions = [
   },
   {
     name: "Youth",
-    image: "/saltleaf/outdoor/solution-youth.jpg",
+    image: "/saltleaf/outdoor/solution-youth.webp",
     description:
       "Innovative training solutions for young athletes (ages 6–12) — structures that develop basic motor patterns typical of growth.",
   },
@@ -124,14 +124,14 @@ export default function OutdoorWellness() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="rounded-2xl overflow-hidden shadow-lg">
             <img
-              src="/saltleaf/outdoor/hero-south-beach-1.jpg"
+              src="/saltleaf/outdoor/hero-south-beach-1.webp"
               alt="MyEquilibria installation — Lummus Park, South Beach, Miami"
               className="w-full h-[320px] object-cover"
             />
           </div>
           <div className="rounded-2xl overflow-hidden shadow-lg">
             <img
-              src="/saltleaf/outdoor/hero-south-beach-2.jpg"
+              src="/saltleaf/outdoor/hero-south-beach-2.webp"
               alt="MyEquilibria outdoor fitness — South Beach, Miami at sunset"
               className="w-full h-[320px] object-cover"
             />
