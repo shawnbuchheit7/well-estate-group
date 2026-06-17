@@ -1,479 +1,157 @@
 /*
- * DESIGN: "Cellular Renaissance" - Organic Futurism
- * Technology page - Systems and AI that support the business
+ * Technology & AI — Card-based landing page
+ * Two product cards: Integrated Technology Ecosystem + Digital Health Twin
+ * Matches the card format used across the site (ProductsLanding, GTMProjects)
  */
 
 import { motion } from "framer-motion";
-import { 
-  Brain, 
-  Database, 
-  Shield, 
-  Cpu, 
-  Cloud, 
-  LineChart,
-  Smartphone,
-  Server,
-  Lock,
-  Zap,
-  Users,
-  BarChart3
-} from "lucide-react";
+import { ArrowRight, Cpu, Brain, Layers, Activity, Server, Dna } from "lucide-react";
+import { Link } from "wouter";
 import Layout from "@/components/Layout";
-import { fadeInUp, staggerContainer, scaleIn } from "@/lib/animations";
+import LightHero from "@/components/LightHero";
+import { fadeInUp, staggerContainer } from "@/lib/animations";
+
+interface TechTile {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  href: string;
+  status: "active" | "in-development";
+  stats?: { label: string; value: string }[];
+  icon: typeof Cpu;
+}
+
+const techProducts: TechTile[] = [
+  {
+    id: "integrated-ecosystem",
+    title: "Integrated Technology Ecosystem",
+    subtitle: "Platform Architecture & AI Infrastructure",
+    description: "Purpose-built technology stack powering personalized care delivery, operational excellence, and data-driven insights at scale. Unified platform connecting patient care, clinical operations, and business intelligence across all centers.",
+    href: "/technology/ecosystem",
+    status: "active",
+    stats: [
+      { label: "Modalities", value: "22" },
+      { label: "Data Points", value: "15B+" },
+      { label: "Integrations", value: "30+" },
+    ],
+    icon: Server,
+  },
+  {
+    id: "digital-health-twin",
+    title: "Digital Health Twin",
+    subtitle: "Personalized Health Visualization Platform",
+    description: "Full-body organ-level health visualization mapping 122 biomarkers, 8 imaging modalities, and 6 functional assessments into a unified digital twin. Real-time health scoring, longitudinal tracking, and AI-generated insights for each member.",
+    href: "/technology/digital-health-twin",
+    status: "active",
+    stats: [
+      { label: "Biomarkers", value: "122" },
+      { label: "Organ Systems", value: "10" },
+      { label: "Data Sources", value: "40+" },
+    ],
+    icon: Dna,
+  },
+];
 
 export default function Technology() {
   return (
     <Layout>
-      {/* Page Header */}
-      <section className="py-20 relative">
-        <div className="container">
-          <motion.div 
-            className="text-center max-w-4xl mx-auto"
+      <LightHero
+        eyebrow="Pillar IV"
+        title="Technology & AI"
+        description="AI-powered diagnostics, platform architecture, biomarker data intelligence, predictive health modeling, and digital twin member experiences — purpose-built for precision health at scale."
+        stats={[
+          { value: "15B+", label: "Clinical Data Points" },
+          { value: "122", label: "Biomarkers Tracked" },
+          { value: "22", label: "Diagnostic Modalities" },
+        ]}
+      />
+
+      {/* Technology Cards */}
+      <section className="py-20 bg-white">
+        <div className="container px-6">
+          <motion.div
+            className="text-center mb-14"
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
-              TECHNOLOGY PLATFORM
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
+              Technology Portfolio
             </motion.span>
-            <motion.h1 variants={fadeInUp} className="font-display text-5xl md:text-7xl font-medium mt-4 mb-6">
-              Systems & AI Infrastructure
-            </motion.h1>
-            <motion.p variants={fadeInUp} className="font-body text-xl text-muted-foreground">
-              Purpose-built technology stack powering personalized care delivery, 
-              operational excellence, and data-driven insights at scale.
-            </motion.p>
+            <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 text-black">
+              Our Platforms
+            </motion.h2>
           </motion.div>
-        </div>
-      </section>
 
-      {/* Core Platform Overview */}
-      <section className="py-20 bg-card/30">
-        <div className="container">
-          <motion.div 
-            className="max-w-6xl mx-auto"
+          <motion.div
+            className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto items-stretch"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
-                PLATFORM ARCHITECTURE
-              </span>
-              <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
-                Integrated Technology Ecosystem
-              </h2>
-              <p className="font-body text-xl text-muted-foreground max-w-2xl mx-auto">
-                A unified platform connecting patient care, clinical operations, and business intelligence.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="grid md:grid-cols-3 gap-6">
-              {[
-                {
-                  icon: Users,
-                  title: "Patient Experience Layer",
-                  description: "Mobile app, patient portal, telehealth integration, and personalized health dashboards"
-                },
-                {
-                  icon: Server,
-                  title: "Clinical Operations Core",
-                  description: "EHR integration, scheduling, inventory management, and treatment protocol automation"
-                },
-                {
-                  icon: Brain,
-                  title: "AI & Analytics Engine",
-                  description: "Predictive modeling, outcome optimization, and business intelligence dashboards"
-                }
-              ].map((item, i) => (
-                <div key={i} className="bg-card border border-border rounded-2xl p-8 hover:border-primary/50 transition-colors">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-accent to-primary flex items-center justify-center mb-6">
-                    <item.icon className="w-7 h-7 text-background" />
-                  </div>
-                  <h3 className="font-display text-xl font-medium mb-3">{item.title}</h3>
-                  <p className="font-body text-muted-foreground">{item.description}</p>
-                </div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* AI & Machine Learning */}
-      <section className="py-20">
-        <div className="container">
-          <motion.div 
-            className="max-w-6xl mx-auto"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
-                ARTIFICIAL INTELLIGENCE
-              </span>
-              <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
-                AI-Powered Care Optimization
-              </h2>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="grid md:grid-cols-2 gap-8">
-              {[
-                {
-                  icon: Brain,
-                  title: "Personalized Treatment Protocols",
-                  description: "Machine learning models analyze patient biomarkers, genetics, and outcomes to recommend optimal treatment combinations and dosing.",
-                  features: ["Biomarker pattern recognition", "Treatment response prediction", "Protocol optimization algorithms"]
-                },
-                {
-                  icon: LineChart,
-                  title: "Predictive Health Analytics",
-                  description: "AI-driven insights identify health risks before they manifest, enabling proactive interventions and personalized prevention strategies.",
-                  features: ["Risk stratification models", "Early warning indicators", "Longitudinal health tracking"]
-                },
-                {
-                  icon: Zap,
-                  title: "Operational Intelligence",
-                  description: "Real-time optimization of scheduling, inventory, and resource allocation to maximize efficiency and patient satisfaction.",
-                  features: ["Demand forecasting", "Dynamic scheduling", "Supply chain optimization"]
-                },
-                {
-                  icon: BarChart3,
-                  title: "Outcome Measurement & Reporting",
-                  description: "Automated tracking and analysis of treatment outcomes, enabling continuous improvement and evidence-based protocol refinement.",
-                  features: ["Automated outcome tracking", "Comparative effectiveness analysis", "Regulatory reporting automation"]
-                }
-              ].map((item, i) => (
-                <div key={i} className="bg-card border border-border rounded-2xl p-8 hover:border-accent/50 transition-colors">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent to-primary flex items-center justify-center flex-shrink-0">
-                      <item.icon className="w-6 h-6 text-background" />
-                    </div>
-                    <div>
-                      <h3 className="font-display text-xl font-medium mb-2">{item.title}</h3>
-                      <p className="font-body text-muted-foreground">{item.description}</p>
-                    </div>
-                  </div>
-                  <ul className="space-y-2 ml-16">
-                    {item.features.map((feature, j) => (
-                      <li key={j} className="font-body text-sm text-muted-foreground flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Patient-Facing Technology */}
-      <section className="py-20 bg-card/30">
-        <div className="container">
-          <motion.div 
-            className="max-w-6xl mx-auto"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
-                PATIENT EXPERIENCE
-              </span>
-              <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
-                Digital Health Platform
-              </h2>
-              <p className="font-body text-xl text-muted-foreground max-w-2xl mx-auto">
-                Seamless digital experience enabling 90% at-home care delivery with continuous engagement.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[
-                {
-                  icon: Smartphone,
-                  title: "Mobile Health App",
-                  description: "iOS and Android app for appointment booking, health tracking, medication reminders, and secure messaging with care team."
-                },
-                {
-                  icon: Users,
-                  title: "Patient Portal",
-                  description: "Comprehensive web portal for accessing health records, lab results, treatment plans, and educational content."
-                },
-                {
-                  icon: LineChart,
-                  title: "Health Dashboard",
-                  description: "Personalized dashboards displaying biomarkers, progress tracking, and AI-generated health insights."
-                },
-                {
-                  icon: Cloud,
-                  title: "Telehealth Integration",
-                  description: "HIPAA-compliant video consultations with physicians, enabling remote follow-ups and care coordination."
-                },
-                {
-                  icon: Zap,
-                  title: "Wearable Integration",
-                  description: "Sync data from Apple Watch, Oura Ring, WHOOP, and other devices for continuous health monitoring."
-                },
-                {
-                  icon: Shield,
-                  title: "Secure Messaging",
-                  description: "Encrypted communication with care team, including photo sharing for wound care and treatment monitoring."
-                }
-              ].map((item, i) => (
-                <div key={i} className="bg-card border border-border rounded-2xl p-6 hover:border-primary/50 transition-colors">
-                  <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center mb-4">
-                    <item.icon className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="font-display text-lg font-medium mb-2">{item.title}</h3>
-                  <p className="font-body text-sm text-muted-foreground">{item.description}</p>
-                </div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Clinical Operations Systems */}
-      <section className="py-20">
-        <div className="container">
-          <motion.div 
-            className="max-w-6xl mx-auto"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
-                CLINICAL OPERATIONS
-              </span>
-              <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
-                Operational Systems
-              </h2>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="grid md:grid-cols-2 gap-8">
-              {/* EHR & Clinical Systems */}
-              <div className="bg-card border border-border rounded-2xl p-8">
-                <h3 className="font-display text-2xl font-medium mb-6">Clinical Management</h3>
-                <div className="space-y-4">
-                  {[
-                    { system: "Electronic Health Records (EHR)", status: "Integrated", description: "Custom-built for regenerative medicine workflows" },
-                    { system: "Lab Information System", status: "Integrated", description: "Real-time lab result integration and tracking" },
-                    { system: "Imaging Management (PACS)", status: "Integrated", description: "MRI, CT, and diagnostic imaging storage" },
-                    { system: "Treatment Protocol Engine", status: "Proprietary", description: "Standardized care protocols with AI optimization" },
-                    { system: "Inventory & Supply Chain", status: "Integrated", description: "Biologic tracking and cold chain management" }
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-start justify-between gap-4 pb-4 border-b border-border last:border-0">
-                      <div>
-                        <p className="font-display font-medium">{item.system}</p>
-                        <p className="font-body text-sm text-muted-foreground">{item.description}</p>
-                      </div>
-                      <span className="font-mono text-xs text-primary bg-primary/10 px-2 py-1 rounded flex-shrink-0">
-                        {item.status}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Business Operations */}
-              <div className="bg-card border border-border rounded-2xl p-8">
-                <h3 className="font-display text-2xl font-medium mb-6">Business Operations</h3>
-                <div className="space-y-4">
-                  {[
-                    { system: "Revenue Cycle Management", status: "Integrated", description: "Membership billing, payment processing, collections" },
-                    { system: "CRM & Marketing Automation", status: "Integrated", description: "Lead management and patient engagement campaigns" },
-                    { system: "Scheduling & Resource Planning", status: "AI-Powered", description: "Dynamic scheduling with demand forecasting" },
-                    { system: "Business Intelligence", status: "Real-time", description: "KPI dashboards and executive reporting" },
-                    { system: "Compliance & Audit", status: "Automated", description: "HIPAA, FDA, and regulatory compliance tracking" }
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-start justify-between gap-4 pb-4 border-b border-border last:border-0">
-                      <div>
-                        <p className="font-display font-medium">{item.system}</p>
-                        <p className="font-body text-sm text-muted-foreground">{item.description}</p>
-                      </div>
-                      <span className="font-mono text-xs text-primary bg-primary/10 px-2 py-1 rounded flex-shrink-0">
-                        {item.status}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Data & Security */}
-      <section className="py-20 bg-card/30">
-        <div className="container">
-          <motion.div 
-            className="max-w-6xl mx-auto"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
-                INFRASTRUCTURE
-              </span>
-              <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
-                Data & Security
-              </h2>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                {
-                  icon: Cloud,
-                  title: "Cloud Infrastructure",
-                  description: "HIPAA-compliant cloud hosting with 99.99% uptime SLA and global redundancy"
-                },
-                {
-                  icon: Lock,
-                  title: "Data Encryption",
-                  description: "End-to-end encryption for all patient data at rest and in transit"
-                },
-                {
-                  icon: Shield,
-                  title: "Compliance",
-                  description: "HIPAA, SOC 2 Type II, and GDPR compliant with regular third-party audits"
-                },
-                {
-                  icon: Database,
-                  title: "Data Warehouse",
-                  description: "Centralized data lake enabling advanced analytics and AI model training"
-                }
-              ].map((item, i) => (
-                <div key={i} className="bg-card border border-border rounded-2xl p-6 text-center hover:border-primary/50 transition-colors">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-accent to-primary flex items-center justify-center mx-auto mb-4">
-                    <item.icon className="w-7 h-7 text-background" />
-                  </div>
-                  <h3 className="font-display text-lg font-medium mb-2">{item.title}</h3>
-                  <p className="font-body text-sm text-muted-foreground">{item.description}</p>
-                </div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Technology Roadmap */}
-      <section className="py-20">
-        <div className="container">
-          <motion.div 
-            className="max-w-4xl mx-auto"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
-                FUTURE DEVELOPMENT
-              </span>
-              <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
-                Technology Roadmap
-              </h2>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className="space-y-6">
-              {[
-                {
-                  phase: "2027",
-                  title: "Foundation",
-                  items: ["Core platform deployment", "EHR integration", "Patient mobile app launch", "Basic AI analytics"]
-                },
-                {
-                  phase: "2028",
-                  title: "Enhancement",
-                  items: ["Advanced AI treatment optimization", "Wearable device integration", "Expanded telehealth capabilities", "Multi-location data sync"]
-                },
-                {
-                  phase: "2029",
-                  title: "Scale",
-                  items: ["Predictive health modeling", "Automated protocol generation", "International platform expansion", "Third-party API ecosystem"]
-                },
-                {
-                  phase: "2030+",
-                  title: "Innovation",
-                  items: ["Genomic data integration", "Digital twin technology", "Real-world evidence platform", "AI-driven drug discovery support"]
-                }
-              ].map((phase, i) => (
-                <div key={i} className="flex gap-6">
-                  <div className="flex-shrink-0 w-20">
-                    <span className="font-mono text-sm text-primary">{phase.phase}</span>
-                  </div>
-                  <div className="flex-1 bg-card border border-border rounded-2xl p-6">
-                    <h3 className="font-display text-xl font-medium mb-4">{phase.title}</h3>
-                    <div className="grid md:grid-cols-2 gap-2">
-                      {phase.items.map((item, j) => (
-                        <div key={j} className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                          <span className="font-body text-sm text-muted-foreground">{item}</span>
+            {techProducts.map((product) => {
+              const IconComponent = product.icon;
+              return (
+                <motion.div key={product.id} variants={fadeInUp} className="h-full">
+                  <Link href={product.href} className="h-full block">
+                    <motion.div
+                      whileHover={{ y: -6, boxShadow: "0 24px 48px rgba(0,0,0,0.10), 0 8px 16px rgba(0,0,0,0.06)" }}
+                      className="group relative rounded-xl border border-[#B8860B]/40 bg-white overflow-hidden cursor-pointer hover:border-[#B8860B]/60 transition-all duration-300 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.03)] h-full flex flex-col"
+                    >
+                      {/* Card Content */}
+                      <div className="p-8 flex flex-col flex-grow">
+                        {/* Top row: Icon + Status */}
+                        <div className="flex items-start justify-between mb-5">
+                          <div className="w-11 h-11 rounded-xl bg-[#F5F4F1] border border-[#B8860B]/55 flex items-center justify-center shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+                            <IconComponent className="w-5 h-5 text-black/45" />
+                          </div>
+                          <span className="font-mono text-[9px] tracking-[0.15em] uppercase px-3 py-1.5 rounded-full font-medium bg-[#B8860B]/10 text-[#B8860B] border border-[#B8860B]/55">
+                            {product.status === "active" ? "Active" : "In Development"}
+                          </span>
                         </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
 
-      {/* Investment in Technology */}
-      <section className="py-20 bg-gradient-to-br from-accent/10 to-primary/10">
-        <div className="container">
-          <motion.div 
-            className="max-w-4xl mx-auto text-center"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            <motion.div variants={fadeInUp}>
-              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
-                COMPETITIVE ADVANTAGE
-              </span>
-              <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-8">
-                Technology as a Moat
-              </h2>
-            </motion.div>
+                        {/* Title */}
+                        <h3 className="font-display text-2xl font-bold text-black mb-2 group-hover:text-[#B8860B] transition-colors tracking-tight leading-tight">
+                          {product.title}
+                        </h3>
+                        <p className="font-mono text-[10px] text-black/60 tracking-[0.15em] uppercase mb-4 font-medium">
+                          {product.subtitle}
+                        </p>
+                        <p className="font-body text-sm text-black/70 leading-relaxed mb-7 flex-grow">
+                          {product.description}
+                        </p>
 
-            <motion.div variants={fadeInUp} className="grid md:grid-cols-3 gap-6">
-              {[
-                {
-                  value: "15%",
-                  label: "of Series A",
-                  description: "Allocated to technology development and AI capabilities"
-                },
-                {
-                  value: "8+",
-                  label: "Engineers",
-                  description: "Dedicated technology team building proprietary systems"
-                },
-                {
-                  value: "3",
-                  label: "Patents Pending",
-                  description: "Intellectual property in AI-driven healthcare delivery"
-                }
-              ].map((stat, i) => (
-                <div key={i} className="bg-card/50 backdrop-blur border border-border rounded-2xl p-6">
-                  <span className="font-display text-4xl font-bold text-gradient">{stat.value}</span>
-                  <p className="font-display font-medium mt-2 mb-2">{stat.label}</p>
-                  <p className="font-body text-sm text-muted-foreground">{stat.description}</p>
-                </div>
-              ))}
-            </motion.div>
+                        {/* Stats Row */}
+                        {product.stats && (
+                          <div className="flex gap-3 mb-7">
+                            {product.stats.map((stat, i) => (
+                              <div key={i} className="flex-1 text-center py-3 rounded-lg bg-[#FAFAF8] border border-[#B8860B]/55">
+                                <p className="font-display text-xl font-bold text-black leading-none">{stat.value}</p>
+                                <p className="font-mono text-[9px] text-black/55 uppercase tracking-[0.12em] font-medium mt-1.5">{stat.label}</p>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+
+                        {/* CTA */}
+                        <div className="flex items-center gap-2 text-black/65 group-hover:text-[#B8860B] transition-colors pt-4 border-t border-[#B8860B]/40">
+                          <span className="font-body text-sm font-semibold">View Details</span>
+                          <motion.div
+                            animate={{ x: [0, 4, 0] }}
+                            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                          >
+                            <ArrowRight className="w-4 h-4" />
+                          </motion.div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </Link>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
       </section>

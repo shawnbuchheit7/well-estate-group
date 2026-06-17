@@ -68,6 +68,8 @@ const VentureCapital = lazy(() => import("./pages/VentureCapital"));
 const About = lazy(() => import("./pages/About"));
 const Opportunity = lazy(() => import("./pages/Opportunity"));
 const Technology = lazy(() => import("./pages/Technology"));
+const TechEcosystem = lazy(() => import("./pages/TechEcosystem"));
+const DigitalHealthTwin = lazy(() => import("./pages/DigitalHealthTwin"));
 const Therapeutics = lazy(() => import("./pages/Therapeutics"));
 const Investors = lazy(() => import("./pages/Investors"));
 const Team = lazy(() => import("./pages/Team"));
@@ -207,6 +209,8 @@ function App() {
                   <Route path="/memberships" component={Memberships} />
                   <Route path="/therapeutics" component={Therapeutics} />
                   <Route path="/technology" component={Technology} />
+                  <Route path="/technology/ecosystem" component={TechEcosystem} />
+                  <Route path="/technology/digital-health-twin" component={DigitalHealthTwin} />
                   <Route path="/performance" component={Performance} />
                   <Route path="/investors" component={Investors} />
                   <Route path="/team" component={Team} />
