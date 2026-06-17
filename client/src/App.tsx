@@ -61,6 +61,7 @@ const ZWAffiliateProgram = lazy(() => import("./pages/zerowheel/ZWAffiliateProgr
 
 const ProductsLanding = lazy(() => import("./pages/ProductsLanding"));
 const ProductIntelligence = lazy(() => import("./pages/ProductIntelligence"));
+const CorporateHealth = lazy(() => import("./pages/CorporateHealth"));
 const VentureCapital = lazy(() => import("./pages/VentureCapital"));
 
 // Lazy load all other pages for better code splitting
@@ -154,6 +155,7 @@ function App() {
                   {/* Product Intelligence Section */}
                   <Route path="/product-intelligence" component={ProductsLanding} />
                   <Route path="/product-intelligence/t-spine" component={ProductIntelligence} />
+                  <Route path="/product-intelligence/corporate-health" component={CorporateHealth} />
                   
                   {/* Venture & Product Capital Section */}
                   <Route path="/venture-capital" component={VentureCapital} />

@@ -5,7 +5,7 @@
  */
 
 import { motion } from "framer-motion";
-import { ArrowRight, Plus, Dumbbell } from "lucide-react";
+import { ArrowRight, Plus, Dumbbell, HeartPulse } from "lucide-react";
 import { Link } from "wouter";
 import Layout from "@/components/Layout";
 import LightHero from "@/components/LightHero";
@@ -25,6 +25,20 @@ interface ProductTile {
 }
 
 const products: ProductTile[] = [
+  {
+    id: "corporate-health",
+    title: "Corporate Executive Health",
+    subtitle: "Precision Health Prospectus",
+    description: "A comprehensive briefing for CHROs, CEOs, and Total Rewards leaders on what precision executive health delivers — for the leaders your organization cannot afford to lose. Built on Fountain Life's platform.",
+    href: "/product-intelligence/corporate-health",
+    status: "active",
+    stats: [
+      { label: "Members", value: "8,000+" },
+      { label: "Data Points", value: "15B+" },
+      { label: "Detection Rate", value: "88%" },
+    ],
+    category: "Executive Health",
+  },
   {
     id: "t-spine",
     title: "T-Spine Dumbbell Rest",
@@ -58,9 +72,9 @@ export default function ProductsLanding() {
         title="Product Intelligence"
         description="Independent product development, testing, and evaluation for next-generation fitness and wellness equipment. Identifying market gaps and engineering solutions that meet the highest standards of performance and design."
         stats={[
-          { value: "1", label: "Active Product" },
+          { value: "2", label: "Active Products" },
           { value: "3", label: "In Pipeline" },
-          { value: "5 lb–100 lb", label: "Universal Fit" },
+          { value: "8,000+", label: "Health Members" },
         ]}
       />
 
@@ -115,7 +129,7 @@ export default function ProductsLanding() {
                         {/* Top row: Category + Status */}
                         <div className="flex items-start justify-between mb-5">
                           <div className="w-11 h-11 rounded-xl bg-[#F5F4F1] border border-[#B8860B]/55 flex items-center justify-center shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
-                            <Dumbbell className="w-5 h-5 text-black/45" />
+                            {product.category === "Executive Health" ? <HeartPulse className="w-5 h-5 text-black/45" /> : <Dumbbell className="w-5 h-5 text-black/45" />}
                           </div>
                           <span className={`font-mono text-[9px] tracking-[0.15em] uppercase px-3 py-1.5 rounded-full font-medium ${status.bg} ${status.text} border ${status.border}`}>
                             {status.label}
