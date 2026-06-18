@@ -306,7 +306,7 @@ export default function Landing() {
                 srcSet="/weg-hero-building.jpg 1365w, /weg-hero-building@2x.jpg 2048w"
                 sizes="(max-width: 768px) 100vw, 60vw"
                 alt="Well Estate Group — wellness-led mixed-use development concept" 
-                className="w-full h-auto no-sharpen rounded-2xl"
+                className="w-full h-auto no-sharpen rounded-2xl max-h-[80vh] object-contain"
                 style={{ imageRendering: 'auto' }}
                 loading="lazy"
               />
