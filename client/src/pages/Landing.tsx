@@ -510,7 +510,7 @@ export default function Landing() {
             <motion.a 
               variants={fadeInUp}
               href="mailto:shawn@wellestategroup.com" 
-              className="group inline-flex items-center gap-3 px-10 py-5 bg-black text-white font-body text-sm tracking-[0.12em] uppercase rounded-full hover:bg-black/90 transition-all shadow-[0_4px_20px_rgba(0,0,0,0.12)] hover:-translate-y-0.5"
+              className="group inline-flex items-center gap-3 px-10 py-5 border-2 border-black text-black bg-transparent font-body text-sm tracking-[0.12em] uppercase rounded-full hover:bg-black hover:text-white transition-all hover:-translate-y-0.5"
             >
               shawn@wellestategroup.com
               <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
