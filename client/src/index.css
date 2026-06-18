@@ -319,12 +319,12 @@ html {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03), 0 4px 16px rgba(0, 0, 0, 0.03);
 }
 
-/* Gold borders on interactive card/box elements - only cards, not inline badges */
+/* Borders on interactive card/box elements - neutral */
 [class*="border"][class*="rounded-lg"],
 [class*="border"][class*="rounded-xl"],
 [class*="border"][class*="rounded-2xl"],
 [class*="border"][class*="rounded-3xl"] {
-  border-color: rgba(184, 134, 11, 0.40);
+  border-color: rgba(0, 0, 0, 0.15);
 }
 
 /* Table styling - luxury */
@@ -386,9 +386,9 @@ input:focus, textarea:focus, select:focus {
   box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.15) !important;
 }
 
-/* Luxury section dividers — subtle gold */
+/* Section dividers — removed gold */
 section + section {
-  border-top: 1px solid rgba(184, 134, 11, 0.20);
+  border-top: none;
 }
 
 /* Premium pill/badge styling */
