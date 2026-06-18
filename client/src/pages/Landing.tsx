@@ -603,7 +603,7 @@ export default function Landing() {
                 {/* Gold top-line reveal on hover */}
                 <div className="absolute top-0 left-0 right-0 h-[3px] opacity-0 group-hover:opacity-100 transition-opacity duration-400" style={{background: 'linear-gradient(90deg, #B8860B, #D4AF37, #B8860B)'}} />
                 
-                <div className="relative z-10 p-8 md:p-10">
+                <div className="relative z-10 p-8 md:p-10" style={{textShadow: '0 0 8px rgba(255,255,255,0.9), 0 0 16px rgba(255,255,255,0.7), 0 0 3px rgba(255,255,255,1)'}}>
                   {/* Top row: circled number + audience label */}
                   <div className="flex items-center justify-between mb-6">
                     <span className="w-9 h-9 rounded-full flex items-center justify-center font-display text-sm font-semibold" style={{border: '1.5px solid #B8860B', color: '#B8860B'}}>{service.num}</span>
@@ -618,7 +618,7 @@ export default function Landing() {
                     {service.items.map((item, i) => (
                       <li key={i} className="flex items-start gap-3 py-2" style={{borderBottom: i < service.items.length - 1 ? '1px solid rgba(0,0,0,0.04)' : 'none'}}>
                         <span className="text-[12px] mt-0.5 shrink-0" style={{color: '#B8860B'}}>→</span>
-                        <span className="font-body text-[14px] font-medium leading-relaxed" style={{color: '#1a1a1a'}}>{item}</span>
+                        <span className="font-body text-[13px] leading-relaxed" style={{color: '#444'}}>{item}</span>
                       </li>
                     ))}
                   </ul>
