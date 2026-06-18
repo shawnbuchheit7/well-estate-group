@@ -955,7 +955,9 @@ img[src*="logo"] {
 
 /* ===== GLOBAL CONTRAST SHARPENING ===== */
 /* Subtle contrast boost for perceived crispness */
-body {
+/* NOTE: body-level filter breaks fixed positioning (creates new stacking context) */
+/* Moved to #root instead to preserve fixed elements */
+#root {
   filter: contrast(1.02);
 }
 
