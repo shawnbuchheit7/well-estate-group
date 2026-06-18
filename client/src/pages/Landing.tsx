@@ -516,23 +516,23 @@ export default function Landing() {
                   loading="lazy"
                 />
                 {/* Dark gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30 group-hover:from-black/95 group-hover:via-black/70 group-hover:to-black/40 transition-all duration-500" />
+                <div className="absolute inset-0 transition-opacity duration-500" style={{background: 'linear-gradient(to top, rgba(0,0,0,0.92), rgba(0,0,0,0.65) 50%, rgba(0,0,0,0.35))'}} />
                 
                 <div className="relative z-10 p-8 md:p-10 h-full flex flex-col justify-between min-h-[400px]">
                   {/* Top row: number + audience badge */}
                   <div className="flex items-start justify-between">
-                    <span className="font-display text-5xl font-bold text-white/20">{service.num}</span>
-                    <span className="inline-block px-3 py-1.5 rounded-full bg-[#B8860B]/90 text-white text-[9px] tracking-[0.12em] uppercase font-semibold backdrop-blur-sm">{service.audience}</span>
+                    <span className="font-display text-5xl font-bold" style={{color: 'rgba(255,255,255,0.2)'}}>{service.num}</span>
+                    <span className="inline-block px-3 py-1.5 rounded-full text-[9px] tracking-[0.12em] uppercase font-semibold" style={{backgroundColor: 'rgba(184,134,11,0.9)', color: '#fff'}}>{service.audience}</span>
                   </div>
                   
                   {/* Bottom content */}
                   <div>
-                    <h3 className="font-display text-2xl md:text-3xl font-semibold mb-5 text-white">{service.title}</h3>
+                    <h3 className="font-display text-2xl md:text-3xl font-semibold mb-5" style={{color: '#ffffff'}}>{service.title}</h3>
                     <ul className="space-y-2 mb-6">
                       {service.items.map((item, i) => (
                         <li key={i} className="flex items-start gap-3">
                           <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] mt-2 shrink-0" />
-                          <span className="font-body text-[14px] text-white/80 leading-relaxed">{item}</span>
+                          <span className="font-body text-[14px] leading-relaxed" style={{color: 'rgba(255,255,255,0.85)'}}>{item}</span>
                         </li>
                       ))}
                     </ul>
