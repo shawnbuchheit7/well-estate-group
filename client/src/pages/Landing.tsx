@@ -216,7 +216,7 @@ export default function Landing() {
         </div>
 
         {/* Text below video */}
-        <div className="px-[6%] pt-6 pb-4 text-center">
+        <div className="px-[6%] pt-8 pb-12 md:pb-16 text-center">
           <p className="font-mono text-sm tracking-[0.22em] uppercase mb-4" style={{ color: '#8a7a3a' }}>The Vision We Build</p>
           <h2 className="font-display font-semibold leading-[1.15] text-3xl md:text-5xl" style={{ color: '#0a0a0a' }}>From concept to daily P&amp;L — drawn to life.</h2>
         </div>
