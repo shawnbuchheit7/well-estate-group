@@ -166,7 +166,7 @@ export default function Landing() {
       </section>
 
       {/* The Vision — Hero Animation Band */}
-      <section className="relative w-full bg-[#0d0d0d] overflow-hidden" aria-label="The vision we build">
+      <section className="relative w-full bg-black overflow-hidden" aria-label="The vision we build">
         <video
           className="block w-full h-auto object-contain xl:max-h-[86vh] xl:object-cover"
           autoPlay
@@ -181,7 +181,7 @@ export default function Landing() {
         </video>
 
         {/* Text below video */}
-        <div className="px-[6%] py-16 md:py-20 bg-[#111111] text-center">
+        <div className="px-[6%] py-16 md:py-20 bg-black text-center">
           <p className="font-mono text-sm tracking-[0.22em] uppercase mb-4" style={{ color: '#d9c178' }}>The Vision We Build</p>
           <h2 className="font-display font-semibold leading-[1.15] text-3xl md:text-5xl" style={{ color: '#ffffff' }}>From concept to daily P&amp;L — drawn to life.</h2>
         </div>
