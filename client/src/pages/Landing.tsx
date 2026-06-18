@@ -572,7 +572,7 @@ export default function Landing() {
               variants={fadeInUp}
               href="mailto:shawn@wellestategroup.com" 
               className="group inline-flex items-center gap-3 px-10 py-5 border-2 border-black text-black bg-transparent font-body text-sm tracking-[0.12em] uppercase rounded-full transition-all outline-none"
-              style={{ outline: 'none' }}
+              style={{ outline: 'none', boxShadow: 'none', borderColor: '#000000' }}
               onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#000'; e.currentTarget.style.color = '#fff'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
               onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#000'; e.currentTarget.style.transform = 'translateY(0)'; }}
             >
