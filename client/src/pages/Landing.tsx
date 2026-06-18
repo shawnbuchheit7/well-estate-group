@@ -250,7 +250,8 @@ export default function Landing() {
         <div className="mx-2 md:mx-4 lg:mx-8 xl:mx-12 rounded-2xl overflow-hidden bg-black">
         <video
           ref={drawingVideoRef}
-          className="block w-full h-auto object-contain xl:max-h-[86vh] xl:object-cover"
+          className="block w-full h-auto object-contain xl:max-h-[86vh] xl:object-cover transition-opacity duration-1000"
+          style={{ opacity: drawingStarted ? 1 : 0 }}
           muted
           playsInline
           preload="auto"
