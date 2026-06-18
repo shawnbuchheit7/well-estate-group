@@ -54,12 +54,31 @@ function AnimatedCounter({ value, suffix = '', prefix = '' }: { value: number; s
 export default function Landing() {
   const [scrollY, setScrollY] = useState(0);
   const heroRef = useRef<HTMLDivElement>(null);
+  const drawingVideoRef = useRef<HTMLVideoElement>(null);
+  const [drawingStarted, setDrawingStarted] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Play drawing video only when scrolled into view
+  useEffect(() => {
+    const video = drawingVideoRef.current;
+    if (!video || drawingStarted) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !drawingStarted) {
+          setDrawingStarted(true);
+          video.play();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, [drawingStarted]);
 
   return (
     <div className="min-h-screen bg-[#FAFAF8] text-[#0A0A0A] overflow-x-hidden">
@@ -177,11 +196,12 @@ export default function Landing() {
       <section className="relative w-full bg-[#FAFAF8] py-4 md:py-6" aria-label="The vision we build">
         <div className="mx-2 md:mx-4 lg:mx-8 xl:mx-12 rounded-2xl overflow-hidden bg-black">
         <video
+          ref={drawingVideoRef}
           className="block w-full h-auto object-contain xl:max-h-[86vh] xl:object-cover"
-          autoPlay
           muted
           playsInline
           preload="auto"
+          poster="/longevity_hero_poster.jpg"
           onTimeUpdate={(e) => {
             const video = e.currentTarget;
             if (video.duration && video.currentTime >= video.duration - 2) {
