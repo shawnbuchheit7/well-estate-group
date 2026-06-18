@@ -91,7 +91,10 @@ export default function Landing() {
             <a href="#proof" className="px-4 py-2 rounded-full text-black/70 hover:text-black hover:bg-black/[0.03] transition-all">Track Record</a>
             <a href="#leadership" className="px-4 py-2 rounded-full text-black/70 hover:text-black hover:bg-black/[0.03] transition-all">Leadership</a>
             <a href="#capabilities" className="px-4 py-2 rounded-full text-black/70 hover:text-black hover:bg-black/[0.03] transition-all">Capabilities</a>
-            <a href="#contact" className="ml-2 px-5 py-2.5 rounded-full text-black font-semibold border-2 border-black hover:bg-black hover:text-white transition-all">
+            <a href="#contact" className="ml-2 px-5 py-2.5 rounded-full text-black font-semibold border-2 border-black transition-all"
+              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#000'; e.currentTarget.style.color = '#fff'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#000'; }}
+            >
               Start a Conversation
             </a>
           </div>
@@ -99,8 +102,8 @@ export default function Landing() {
       </motion.nav>
 
       {/* Hero Section — Commanding, minimal */}
-      <section className="pt-20 pb-12 md:pb-16 bg-[#FAFAF8]">
-        <div ref={heroRef} className="mx-3 md:mx-6 lg:mx-10 xl:mx-16 min-h-[calc(100vh-8rem)] flex items-center justify-center relative overflow-hidden rounded-2xl bg-[#f5f4f0]">
+      <section className="pt-20 pb-4 md:pb-6 bg-[#FAFAF8]">
+        <div ref={heroRef} className="mx-2 md:mx-4 lg:mx-8 xl:mx-12 min-h-[calc(100vh-8rem)] flex items-center justify-center relative overflow-hidden rounded-2xl bg-[#f5f4f0]">
         {/* Background Video */}
         <video
           autoPlay
@@ -146,7 +149,10 @@ export default function Landing() {
           </motion.p>
           
           <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="#contact" className="group px-8 py-3 border-2 border-black text-black font-body text-sm tracking-[0.12em] uppercase rounded-full hover:bg-black hover:text-white transition-all hover:-translate-y-0.5">
+            <a href="#contact" className="group px-8 py-3 border-2 border-black text-black font-body text-sm tracking-[0.12em] uppercase rounded-full transition-all"
+              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#000'; e.currentTarget.style.color = '#fff'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#000'; e.currentTarget.style.transform = 'translateY(0)'; }}
+            >
               Start a Conversation
               <svg className="inline-block ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
             </a>
@@ -168,8 +174,8 @@ export default function Landing() {
       </section>
 
       {/* The Vision — Hero Animation Band */}
-      <section className="relative w-full bg-[#FAFAF8] py-6 md:py-8" aria-label="The vision we build">
-        <div className="mx-3 md:mx-6 lg:mx-10 xl:mx-16 rounded-2xl overflow-hidden bg-black">
+      <section className="relative w-full bg-[#FAFAF8] py-4 md:py-6" aria-label="The vision we build">
+        <div className="mx-2 md:mx-4 lg:mx-8 xl:mx-12 rounded-2xl overflow-hidden bg-black">
         <video
           className="block w-full h-auto object-contain xl:max-h-[86vh] xl:object-cover"
           autoPlay
@@ -197,8 +203,8 @@ export default function Landing() {
       </section>
 
       {/* Proof Section — Numbers that speak */}
-      <section id="proof" className="py-6 md:py-8 bg-[#FAFAF8]">
-        <div className="mx-3 md:mx-6 lg:mx-10 xl:mx-16 rounded-2xl bg-black text-white relative overflow-hidden py-24 md:py-32">
+      <section id="proof" className="py-4 md:py-6 bg-[#FAFAF8]">
+        <div className="mx-2 md:mx-4 lg:mx-8 xl:mx-12 rounded-2xl bg-black text-white relative overflow-hidden py-24 md:py-32">
         <div className="absolute inset-0 opacity-[0.015]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '48px 48px' }} />
         
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative">
@@ -264,8 +270,8 @@ export default function Landing() {
       </section>
 
       {/* About — The Story (with premium building rendering) */}
-      <section className="py-6 md:py-8 bg-[#FAFAF8]">
-        <div className="mx-3 md:mx-6 lg:mx-10 xl:mx-16 py-16 md:py-24">
+      <section className="py-4 md:py-6 bg-[#FAFAF8]">
+        <div className="mx-2 md:mx-4 lg:mx-8 xl:mx-12 py-16 md:py-24">
           <motion.div 
             className="grid md:grid-cols-[3fr_2fr] gap-8 md:gap-12 items-center"
             initial="hidden"
@@ -310,8 +316,8 @@ export default function Landing() {
       </section>
 
       {/* Leadership Section — Shawn's headshot + credentials */}
-      <section id="leadership" className="py-6 md:py-8 bg-[#FAFAF8]">
-        <div className="mx-3 md:mx-6 lg:mx-10 xl:mx-16 py-16 md:py-24 bg-white rounded-2xl px-6 md:px-12">
+      <section id="leadership" className="py-4 md:py-6 bg-[#FAFAF8]">
+        <div className="mx-2 md:mx-4 lg:mx-8 xl:mx-12 py-16 md:py-24 bg-white rounded-2xl px-6 md:px-12">
           <motion.div 
             className="grid md:grid-cols-[280px_1fr] gap-12 md:gap-16 items-start"
             initial="hidden"
@@ -382,8 +388,8 @@ export default function Landing() {
       </section>
 
       {/* Capabilities — What we actually do */}
-      <section id="capabilities" className="py-6 md:py-8 bg-[#FAFAF8]">
-        <div className="mx-3 md:mx-6 lg:mx-10 xl:mx-16 py-16 md:py-24">
+      <section id="capabilities" className="py-4 md:py-6 bg-[#FAFAF8]">
+        <div className="mx-2 md:mx-4 lg:mx-8 xl:mx-12 py-16 md:py-24">
           <motion.div 
             className="text-center mb-16"
             initial="hidden"
@@ -485,8 +491,8 @@ export default function Landing() {
       </section>
 
       {/* Differentiator — Sharp, confident */}
-      <section className="py-6 md:py-8 bg-[#FAFAF8]">
-        <div className="mx-3 md:mx-6 lg:mx-10 xl:mx-16 py-24 md:py-32 bg-black text-white relative overflow-hidden rounded-2xl px-6 md:px-12">
+      <section className="py-4 md:py-6 bg-[#FAFAF8]">
+        <div className="mx-2 md:mx-4 lg:mx-8 xl:mx-12 py-24 md:py-32 bg-black text-white relative overflow-hidden rounded-2xl px-6 md:px-12">
         <div className="max-w-5xl mx-auto relative">
           <motion.div 
             className="text-center"
@@ -527,8 +533,8 @@ export default function Landing() {
       </section>
 
       {/* Contact / CTA Section */}
-      <section id="contact" className="py-6 md:py-8 bg-[#FAFAF8] relative">
-        <div className="mx-3 md:mx-6 lg:mx-10 xl:mx-16 py-24 md:py-32 text-center">
+      <section id="contact" className="py-4 md:py-6 bg-[#FAFAF8] relative">
+        <div className="mx-2 md:mx-4 lg:mx-8 xl:mx-12 py-24 md:py-32 text-center">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -545,7 +551,9 @@ export default function Landing() {
             <motion.a 
               variants={fadeInUp}
               href="mailto:shawn@wellestategroup.com" 
-              className="group inline-flex items-center gap-3 px-10 py-5 border-2 border-black text-black bg-transparent font-body text-sm tracking-[0.12em] uppercase rounded-full hover:bg-black hover:text-white transition-all hover:-translate-y-0.5"
+              className="group inline-flex items-center gap-3 px-10 py-5 border-2 border-black text-black bg-transparent font-body text-sm tracking-[0.12em] uppercase rounded-full transition-all"
+              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#000'; e.currentTarget.style.color = '#fff'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#000'; e.currentTarget.style.transform = 'translateY(0)'; }}
             >
               shawn@wellestategroup.com
               <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
@@ -556,7 +564,7 @@ export default function Landing() {
 
       {/* Footer — Minimal */}
       <footer className="py-12 bg-[#FAFAF8]">
-        <div className="mx-3 md:mx-6 lg:mx-10 xl:mx-16">
+        <div className="mx-2 md:mx-4 lg:mx-8 xl:mx-12">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-3">
               <img 
