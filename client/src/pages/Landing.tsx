@@ -303,10 +303,10 @@ export default function Landing() {
             <motion.div variants={fadeInUp} className="relative">
               <img 
                 src="/weg-hero-building.jpg" 
-                srcSet="/weg-hero-building.jpg 1192w, /weg-hero-building@2x.jpg 2384w"
+                srcSet="/weg-hero-building.jpg 1365w, /weg-hero-building@2x.jpg 2048w"
                 sizes="(max-width: 768px) 100vw, 60vw"
                 alt="Well Estate Group — wellness-led mixed-use development concept" 
-                className="w-full h-auto no-sharpen rounded-2xl"
+                className="w-full h-auto no-sharpen rounded-2xl max-h-[700px] object-cover object-top"
                 style={{ imageRendering: 'auto' }}
                 loading="lazy"
               />
