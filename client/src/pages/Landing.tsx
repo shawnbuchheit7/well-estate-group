@@ -181,9 +181,9 @@ export default function Landing() {
           <img src="/longevity_hero_poster.jpg" alt="The longevity and wellness vision Well Estate Group builds" />
         </video>
 
-        {/* Overlay heading */}
-        <div className="absolute left-0 right-0 bottom-0 px-[6%] pb-[4%] pt-[6%] bg-gradient-to-t from-black/55 to-transparent pointer-events-none">
-          <p className="font-mono text-[#d9c178] text-[0.8rem] tracking-[0.22em] uppercase mb-2">The Vision We Build</p>
+        {/* Text below video */}
+        <div className="px-[6%] py-8 bg-[#0d0d0d] text-center">
+          <p className="font-mono text-white/50 text-[0.8rem] tracking-[0.22em] uppercase mb-2">The Vision We Build</p>
           <h2 className="font-display text-white font-semibold leading-[1.15]" style={{ fontSize: 'clamp(1.4rem, 3vw, 2.6rem)' }}>From concept to daily P&amp;L — drawn to life.</h2>
         </div>
       </section>
