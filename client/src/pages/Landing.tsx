@@ -173,11 +173,12 @@ export default function Landing() {
           muted
           playsInline
           preload="auto"
-          poster="/longevity_hero_poster.jpg"
-          onEnded={(e) => {
+          onTimeUpdate={(e) => {
             const video = e.currentTarget;
-            video.currentTime = video.duration - 0.01;
-            video.pause();
+            if (video.duration && video.currentTime >= video.duration - 0.1) {
+              video.currentTime = video.duration - 0.1;
+              video.pause();
+            }
           }}
         >
           <source src="/longevity_hero_1080p.webm" type="video/webm" />
