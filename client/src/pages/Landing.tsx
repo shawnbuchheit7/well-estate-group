@@ -171,7 +171,6 @@ export default function Landing() {
           className="block w-full h-auto object-contain xl:max-h-[86vh] xl:object-cover"
           autoPlay
           muted
-          loop
           playsInline
           preload="auto"
           poster="/longevity_hero_poster.jpg"
