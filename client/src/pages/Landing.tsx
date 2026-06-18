@@ -506,40 +506,49 @@ export default function Landing() {
                 key={service.num}
                 href={service.href}
                 variants={fadeInUp}
-                className="group relative block rounded-2xl cursor-pointer no-underline transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)] overflow-hidden min-h-[400px]"
+                className="group relative block rounded-[20px] cursor-pointer no-underline transition-all duration-500 hover:-translate-y-[6px] overflow-hidden"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(255,255,255,0.95), rgba(250,250,248,0.8))',
+                  backdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(184,134,11,0.15)',
+                  boxShadow: 'none',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.boxShadow = '0 30px 60px rgba(184,134,11,0.12), 0 10px 20px rgba(0,0,0,0.06)';
+                  e.currentTarget.style.borderColor = 'rgba(184,134,11,0.4)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = 'none';
+                  e.currentTarget.style.borderColor = 'rgba(184,134,11,0.15)';
+                }}
               >
-                {/* Background image with zoom on hover */}
-                <img 
-                  src={service.bgImage} 
-                  alt="" 
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  loading="lazy"
-                />
-                {/* Dark gradient overlay */}
-                <div className="absolute inset-0 transition-opacity duration-500" style={{background: 'linear-gradient(to top, rgba(0,0,0,0.92), rgba(0,0,0,0.65) 50%, rgba(0,0,0,0.35))'}} />
+                {/* Gold top-line reveal on hover */}
+                <div className="absolute top-0 left-0 right-0 h-[3px] opacity-0 group-hover:opacity-100 transition-opacity duration-400" style={{background: 'linear-gradient(90deg, #B8860B, #D4AF37, #B8860B)'}} />
                 
-                <div className="relative z-10 p-8 md:p-10 h-full flex flex-col justify-between min-h-[400px]">
-                  {/* Top row: number + audience badge */}
-                  <div className="flex items-start justify-between">
-                    <span className="font-display text-5xl font-bold" style={{color: 'rgba(255,255,255,0.2)'}}>{service.num}</span>
-                    <span className="inline-block px-3 py-1.5 rounded-full text-[9px] tracking-[0.12em] uppercase font-semibold" style={{backgroundColor: 'rgba(184,134,11,0.9)', color: '#fff'}}>{service.audience}</span>
+                <div className="p-8 md:p-10">
+                  {/* Top row: circled number + audience label */}
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="w-9 h-9 rounded-full flex items-center justify-center font-display text-sm font-semibold" style={{border: '1.5px solid #B8860B', color: '#B8860B'}}>{service.num}</span>
+                    <span className="font-mono text-[9px] tracking-[0.12em] uppercase font-semibold" style={{color: '#B8860B'}}>{service.audience}</span>
                   </div>
                   
-                  {/* Bottom content */}
-                  <div>
-                    <h3 className="font-display text-2xl md:text-3xl font-semibold mb-5" style={{color: '#ffffff'}}>{service.title}</h3>
-                    <ul className="space-y-2 mb-6">
-                      {service.items.map((item, i) => (
-                        <li key={i} className="flex items-start gap-3">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] mt-2 shrink-0" />
-                          <span className="font-body text-[14px] leading-relaxed" style={{color: 'rgba(255,255,255,0.85)'}}>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="flex items-center gap-2 text-[#D4AF37] opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-400">
-                      <span className="font-body text-[12px] font-semibold uppercase tracking-[0.15em]">Explore</span>
-                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                    </div>
+                  {/* Title */}
+                  <h3 className="font-display text-2xl md:text-[26px] font-semibold mb-5" style={{color: '#0a0a0a'}}>{service.title}</h3>
+                  
+                  {/* Items with arrow bullets */}
+                  <ul className="space-y-0">
+                    {service.items.map((item, i) => (
+                      <li key={i} className="flex items-start gap-3 py-2" style={{borderBottom: i < service.items.length - 1 ? '1px solid rgba(0,0,0,0.04)' : 'none'}}>
+                        <span className="text-[12px] mt-0.5 shrink-0" style={{color: '#B8860B'}}>→</span>
+                        <span className="font-body text-[13px] leading-relaxed" style={{color: '#444'}}>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  
+                  {/* Explore link on hover */}
+                  <div className="flex items-center gap-2 mt-6 opacity-0 group-hover:opacity-100 transition-all duration-300" style={{color: '#B8860B'}}>
+                    <span className="font-body text-[11px] font-semibold uppercase tracking-[0.15em]">Explore</span>
+                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                   </div>
                 </div>
               </motion.a>
