@@ -193,7 +193,8 @@ export default function Landing() {
       </section>
 
       {/* Proof Section — Numbers that speak */}
-      <section id="proof" className="py-24 md:py-32 bg-black text-white relative overflow-hidden">
+      <section id="proof" className="py-12 md:py-16 bg-[#FAFAF8]">
+        <div className="mx-4 md:mx-8 lg:mx-16 xl:mx-24 rounded-2xl bg-black text-white relative overflow-hidden py-24 md:py-32">
         <div className="absolute inset-0 opacity-[0.015]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '48px 48px' }} />
         
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative">
@@ -254,6 +255,7 @@ export default function Landing() {
               ))}
             </div>
           </motion.div>
+        </div>
         </div>
       </section>
 
