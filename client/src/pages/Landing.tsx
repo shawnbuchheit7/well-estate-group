@@ -537,6 +537,7 @@ export default function Landing() {
                 audience: 'For Investors & Operators',
                 href: '/longevity',
                 bgImage: '/card-bg-longevity.jpg',
+                ghostArt: '/card01-longevity.jpg',
               },
               {
                 num: '02',
@@ -545,6 +546,7 @@ export default function Landing() {
                 audience: 'For Product Companies & Brands',
                 href: '/product-intelligence',
                 bgImage: '/card-bg-product.jpg',
+                ghostArt: '/card02-brand.jpg',
               },
               {
                 num: '03',
@@ -553,6 +555,7 @@ export default function Landing() {
                 audience: 'For Founders & Investors',
                 href: '/venture-capital',
                 bgImage: '/card-bg-venture.jpg',
+                ghostArt: null,
               },
               {
                 num: '04',
@@ -561,6 +564,7 @@ export default function Landing() {
                 audience: 'For Operators & Investors',
                 href: '/technology',
                 bgImage: '/card-bg-technology.jpg',
+                ghostArt: null,
               },
             ].map((service) => (
               <motion.a 
@@ -583,10 +587,23 @@ export default function Landing() {
                   e.currentTarget.style.borderColor = 'rgba(184,134,11,0.15)';
                 }}
               >
+                {/* Ghosted artwork layer — Cards 01 & 02 only */}
+                {service.ghostArt && (
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-y-0 right-0 w-[70%] md:w-[65%] bg-no-repeat bg-right bg-contain opacity-[0.10] transition-opacity duration-500 group-hover:opacity-[0.14]"
+                    style={{
+                      backgroundImage: `url('${service.ghostArt}')`,
+                      WebkitMaskImage: 'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 40%, #000 100%)',
+                      maskImage: 'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 40%, #000 100%)',
+                    }}
+                  />
+                )}
+
                 {/* Gold top-line reveal on hover */}
                 <div className="absolute top-0 left-0 right-0 h-[3px] opacity-0 group-hover:opacity-100 transition-opacity duration-400" style={{background: 'linear-gradient(90deg, #B8860B, #D4AF37, #B8860B)'}} />
                 
-                <div className="p-8 md:p-10">
+                <div className="relative z-10 p-8 md:p-10">
                   {/* Top row: circled number + audience label */}
                   <div className="flex items-center justify-between mb-6">
                     <span className="w-9 h-9 rounded-full flex items-center justify-center font-display text-sm font-semibold" style={{border: '1.5px solid #B8860B', color: '#B8860B'}}>{service.num}</span>
