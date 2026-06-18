@@ -100,7 +100,7 @@ export default function Landing() {
 
       {/* Hero Section — Commanding, minimal */}
       <section className="pt-20 pb-12 md:pb-16 bg-[#FAFAF8]">
-        <div ref={heroRef} className="mx-4 md:mx-8 lg:mx-16 xl:mx-24 min-h-[calc(100vh-8rem)] flex items-center justify-center relative overflow-hidden rounded-2xl bg-[#f5f4f0]">
+        <div ref={heroRef} className="mx-3 md:mx-6 lg:mx-10 xl:mx-16 min-h-[calc(100vh-8rem)] flex items-center justify-center relative overflow-hidden rounded-2xl bg-[#f5f4f0]">
         {/* Background Video */}
         <video
           autoPlay
@@ -168,8 +168,8 @@ export default function Landing() {
       </section>
 
       {/* The Vision — Hero Animation Band */}
-      <section className="relative w-full bg-[#FAFAF8] py-12 md:py-16" aria-label="The vision we build">
-        <div className="mx-4 md:mx-8 lg:mx-16 xl:mx-24 rounded-2xl overflow-hidden bg-black">
+      <section className="relative w-full bg-[#FAFAF8] py-6 md:py-8" aria-label="The vision we build">
+        <div className="mx-3 md:mx-6 lg:mx-10 xl:mx-16 rounded-2xl overflow-hidden bg-black">
         <video
           className="block w-full h-auto object-contain xl:max-h-[86vh] xl:object-cover"
           autoPlay
@@ -197,8 +197,8 @@ export default function Landing() {
       </section>
 
       {/* Proof Section — Numbers that speak */}
-      <section id="proof" className="py-12 md:py-16 bg-[#FAFAF8]">
-        <div className="mx-4 md:mx-8 lg:mx-16 xl:mx-24 rounded-2xl bg-black text-white relative overflow-hidden py-24 md:py-32">
+      <section id="proof" className="py-6 md:py-8 bg-[#FAFAF8]">
+        <div className="mx-3 md:mx-6 lg:mx-10 xl:mx-16 rounded-2xl bg-black text-white relative overflow-hidden py-24 md:py-32">
         <div className="absolute inset-0 opacity-[0.015]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '48px 48px' }} />
         
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative">
@@ -264,8 +264,8 @@ export default function Landing() {
       </section>
 
       {/* About — The Story (with premium building rendering) */}
-      <section className="py-12 md:py-16 bg-[#FAFAF8]">
-        <div className="mx-4 md:mx-8 lg:mx-16 xl:mx-24 py-16 md:py-24">
+      <section className="py-6 md:py-8 bg-[#FAFAF8]">
+        <div className="mx-3 md:mx-6 lg:mx-10 xl:mx-16 py-16 md:py-24">
           <motion.div 
             className="grid md:grid-cols-[3fr_2fr] gap-8 md:gap-12 items-center"
             initial="hidden"
@@ -310,8 +310,8 @@ export default function Landing() {
       </section>
 
       {/* Leadership Section — Shawn's headshot + credentials */}
-      <section id="leadership" className="py-12 md:py-16 bg-[#FAFAF8]">
-        <div className="mx-4 md:mx-8 lg:mx-16 xl:mx-24 py-16 md:py-24 bg-white rounded-2xl px-6 md:px-12">
+      <section id="leadership" className="py-6 md:py-8 bg-[#FAFAF8]">
+        <div className="mx-3 md:mx-6 lg:mx-10 xl:mx-16 py-16 md:py-24 bg-white rounded-2xl px-6 md:px-12">
           <motion.div 
             className="grid md:grid-cols-[280px_1fr] gap-12 md:gap-16 items-start"
             initial="hidden"
@@ -382,8 +382,8 @@ export default function Landing() {
       </section>
 
       {/* Capabilities — What we actually do */}
-      <section id="capabilities" className="py-12 md:py-16 bg-[#FAFAF8]">
-        <div className="mx-4 md:mx-8 lg:mx-16 xl:mx-24 py-16 md:py-24">
+      <section id="capabilities" className="py-6 md:py-8 bg-[#FAFAF8]">
+        <div className="mx-3 md:mx-6 lg:mx-10 xl:mx-16 py-16 md:py-24">
           <motion.div 
             className="text-center mb-16"
             initial="hidden"
@@ -485,8 +485,8 @@ export default function Landing() {
       </section>
 
       {/* Differentiator — Sharp, confident */}
-      <section className="py-12 md:py-16 bg-[#FAFAF8]">
-        <div className="mx-4 md:mx-8 lg:mx-16 xl:mx-24 py-24 md:py-32 bg-black text-white relative overflow-hidden rounded-2xl px-6 md:px-12">
+      <section className="py-6 md:py-8 bg-[#FAFAF8]">
+        <div className="mx-3 md:mx-6 lg:mx-10 xl:mx-16 py-24 md:py-32 bg-black text-white relative overflow-hidden rounded-2xl px-6 md:px-12">
         <div className="max-w-5xl mx-auto relative">
           <motion.div 
             className="text-center"
@@ -527,8 +527,8 @@ export default function Landing() {
       </section>
 
       {/* Contact / CTA Section */}
-      <section id="contact" className="py-12 md:py-16 bg-[#FAFAF8] relative">
-        <div className="mx-4 md:mx-8 lg:mx-16 xl:mx-24 py-24 md:py-32 text-center">
+      <section id="contact" className="py-6 md:py-8 bg-[#FAFAF8] relative">
+        <div className="mx-3 md:mx-6 lg:mx-10 xl:mx-16 py-24 md:py-32 text-center">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -556,7 +556,7 @@ export default function Landing() {
 
       {/* Footer — Minimal */}
       <footer className="py-12 bg-[#FAFAF8]">
-        <div className="mx-4 md:mx-8 lg:mx-16 xl:mx-24">
+        <div className="mx-3 md:mx-6 lg:mx-10 xl:mx-16">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-3">
               <img 
