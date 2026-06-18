@@ -53,6 +53,8 @@ function AnimatedCounter({ value, suffix = '', prefix = '' }: { value: number; s
 export default function Landing() {
   const [scrollY, setScrollY] = useState(0);
   const heroRef = useRef<HTMLDivElement>(null);
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
+  const [heroVideoStarted, setHeroVideoStarted] = useState(false);
   const drawingVideoRef = useRef<HTMLVideoElement>(null);
   const [drawingStarted, setDrawingStarted] = useState(false);
   const [showStickyCTA, setShowStickyCTA] = useState(false);
@@ -74,6 +76,23 @@ export default function Landing() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Play hero background video only when scrolled into view
+  useEffect(() => {
+    const video = heroVideoRef.current;
+    if (!video || heroVideoStarted) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !heroVideoStarted) {
+          setHeroVideoStarted(true);
+          video.play();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, [heroVideoStarted]);
 
   // Play drawing video only when scrolled into view
   useEffect(() => {
@@ -167,13 +186,13 @@ export default function Landing() {
       {/* Hero Section — Commanding, minimal */}
       <section className="pt-20 pb-4 md:pb-6 bg-[#FAFAF8]">
         <div ref={heroRef} className="mx-2 md:mx-4 lg:mx-8 xl:mx-12 min-h-[calc(100vh-8rem)] flex items-center justify-center relative overflow-hidden rounded-2xl bg-[#f5f4f0]">
-        {/* Background Video */}
+        {/* Background Video — starts only when hero is in view */}
         <video
-          autoPlay
+          ref={heroVideoRef}
           muted
-          loop
           playsInline
-          className="absolute inset-0 w-full h-full object-contain"
+          className="absolute inset-0 w-full h-full object-contain transition-opacity duration-1000"
+          style={{ opacity: heroVideoStarted ? 1 : 0 }}
           src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/AazsyqQemaKsmcfz.mp4"
         />
         {/* Light overlay to fade background for text readability */}
