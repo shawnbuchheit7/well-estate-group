@@ -95,7 +95,7 @@
   
   --border: oklch(0.75 0.10 75); /* Subtle gold borders for refined luxury feel */
   --input: oklch(0.97 0.003 0);
-  --ring: oklch(0.52 0.14 75);
+  --ring: oklch(0.0 0 0); /* Black focus ring */
   
   --sidebar: oklch(0.98 0.002 80);
   --sidebar-foreground: oklch(0.10 0.005 0);
@@ -983,7 +983,7 @@ p, span, h1, h2, h3, h4, h5, h6, li, td, th, label, a {
 
 /* High-contrast focus states for accessibility */
 :focus-visible {
-  outline: 2px solid #B8860B;
+  outline: 2px solid #000000;
   outline-offset: 2px;
 }
 

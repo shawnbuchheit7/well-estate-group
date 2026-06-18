@@ -306,7 +306,7 @@ export default function Landing() {
                 srcSet="/weg-hero-building.jpg 1365w, /weg-hero-building@2x.jpg 2048w"
                 sizes="(max-width: 768px) 100vw, 60vw"
                 alt="Well Estate Group — wellness-led mixed-use development concept" 
-                className="w-full h-auto no-sharpen rounded-2xl max-h-[700px] object-cover object-top"
+                className="w-full h-auto no-sharpen rounded-2xl"
                 style={{ imageRendering: 'auto' }}
                 loading="lazy"
               />
@@ -571,7 +571,8 @@ export default function Landing() {
             <motion.a 
               variants={fadeInUp}
               href="mailto:shawn@wellestategroup.com" 
-              className="group inline-flex items-center gap-3 px-10 py-5 border-2 border-black text-black bg-transparent font-body text-sm tracking-[0.12em] uppercase rounded-full transition-all"
+              className="group inline-flex items-center gap-3 px-10 py-5 border-2 border-black text-black bg-transparent font-body text-sm tracking-[0.12em] uppercase rounded-full transition-all outline-none"
+              style={{ outline: 'none' }}
               onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#000'; e.currentTarget.style.color = '#fff'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
               onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#000'; e.currentTarget.style.transform = 'translateY(0)'; }}
             >
