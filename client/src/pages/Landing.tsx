@@ -175,8 +175,7 @@ export default function Landing() {
           preload="auto"
           onTimeUpdate={(e) => {
             const video = e.currentTarget;
-            if (video.duration && video.currentTime >= video.duration - 0.1) {
-              video.currentTime = video.duration - 0.1;
+            if (video.duration && video.currentTime >= video.duration - 2) {
               video.pause();
             }
           }}
