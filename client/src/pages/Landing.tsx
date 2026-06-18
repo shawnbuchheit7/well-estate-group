@@ -339,17 +339,24 @@ export default function Landing() {
       <section id="leadership" className="py-4 md:py-6 bg-[#FAFAF8]">
         <div className="mx-2 md:mx-4 lg:mx-8 xl:mx-12 py-16 md:py-24 bg-white rounded-2xl px-6 md:px-12">
           <motion.div 
-            className="grid md:grid-cols-[280px_1fr] gap-12 md:gap-16 items-start"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
           >
+            {/* Header */}
+            <motion.div variants={fadeInUp} className="mb-10">
+              <span className="font-mono text-[#B8860B] text-[11px] tracking-[0.3em] uppercase font-medium">Leadership</span>
+              <h2 className="font-display text-3xl md:text-4xl font-semibold mt-3 text-black tracking-tight">
+                Operator. Builder. Executive.
+              </h2>
+            </motion.div>
+
             {/* Photos - Leadership Team */}
-            <motion.div variants={fadeInUp} className="flex gap-6 items-start">
+            <motion.div variants={fadeInUp} className="grid grid-cols-3 gap-6 md:gap-8 mb-12 max-w-2xl">
               {/* Shawn */}
               <div className="text-center">
-                <div className="w-48 h-56 md:w-56 md:h-64 rounded-xl overflow-hidden shadow-lg">
+                <div className="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-lg">
                   <img
                     src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/OslPsizQVCRklaLS.jpeg"
                     alt="Shawn Buchheit"
@@ -358,12 +365,12 @@ export default function Landing() {
                     loading="lazy"
                   />
                 </div>
-                <h3 className="font-display text-lg font-semibold text-black mt-4">Shawn Buchheit</h3>
-                <p className="font-body text-sm text-black/50 mt-1">Founder & President</p>
+                <h3 className="font-display text-base md:text-lg font-semibold text-black mt-4">Shawn Buchheit</h3>
+                <p className="font-body text-xs md:text-sm text-black/50 mt-1">Founder & President</p>
               </div>
               {/* Jay Muller */}
               <div className="text-center">
-                <div className="w-48 h-56 md:w-56 md:h-64 rounded-xl overflow-hidden shadow-lg">
+                <div className="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-lg">
                   <img
                     src="/jay-muller.webp"
                     alt="Jay Muller"
@@ -371,12 +378,12 @@ export default function Landing() {
                     loading="lazy"
                   />
                 </div>
-                <h3 className="font-display text-lg font-semibold text-black mt-4">Jay Muller</h3>
-                <p className="font-body text-sm text-black/50 mt-1">Partner</p>
+                <h3 className="font-display text-base md:text-lg font-semibold text-black mt-4">Jay Muller</h3>
+                <p className="font-body text-xs md:text-sm text-black/50 mt-1">Partner</p>
               </div>
               {/* Evan Balter */}
               <div className="text-center">
-                <div className="w-48 h-56 md:w-56 md:h-64 rounded-xl overflow-hidden shadow-lg">
+                <div className="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-lg">
                   <img
                     src="/evan-balter.webp"
                     alt="Evan Balter"
@@ -384,18 +391,13 @@ export default function Landing() {
                     loading="lazy"
                   />
                 </div>
-                <h3 className="font-display text-lg font-semibold text-black mt-4">Evan Balter</h3>
-                <p className="font-body text-sm text-black/50 mt-1">Partner</p>
+                <h3 className="font-display text-base md:text-lg font-semibold text-black mt-4">Evan Balter</h3>
+                <p className="font-body text-xs md:text-sm text-black/50 mt-1">Partner</p>
               </div>
             </motion.div>
 
             {/* Bio */}
             <motion.div variants={fadeInUp}>
-              <span className="font-mono text-[#B8860B] text-[11px] tracking-[0.3em] uppercase font-medium">Leadership</span>
-              <h2 className="font-display text-3xl md:text-4xl font-semibold mt-3 mb-8 text-black tracking-tight">
-                Operator. Builder. Executive.
-              </h2>
-              
               <div className="space-y-6">
                 {/* Career timeline */}
                 {[
