@@ -166,7 +166,8 @@ export default function Landing() {
       </section>
 
       {/* The Vision — Hero Animation Band */}
-      <section className="relative w-full bg-black overflow-hidden" aria-label="The vision we build">
+      <section className="relative w-full bg-[#FAFAF8] py-12 md:py-16" aria-label="The vision we build">
+        <div className="mx-4 md:mx-8 lg:mx-16 xl:mx-24 rounded-2xl overflow-hidden bg-black">
         <video
           className="block w-full h-auto object-contain xl:max-h-[86vh] xl:object-cover"
           autoPlay
@@ -184,9 +185,10 @@ export default function Landing() {
           <source src="/longevity_hero_1080p.mp4" type="video/mp4" />
           <img src="/longevity_hero_poster.jpg" alt="The longevity and wellness vision Well Estate Group builds" />
         </video>
+        </div>
 
         {/* Text below video */}
-        <div className="px-[6%] py-16 md:py-20 bg-white text-center">
+        <div className="px-[6%] py-16 md:py-20 text-center">
           <p className="font-mono text-sm tracking-[0.22em] uppercase mb-4" style={{ color: '#8a7a3a' }}>The Vision We Build</p>
           <h2 className="font-display font-semibold leading-[1.15] text-3xl md:text-5xl" style={{ color: '#0a0a0a' }}>From concept to daily P&amp;L — drawn to life.</h2>
         </div>
