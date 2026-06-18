@@ -165,6 +165,29 @@ export default function Landing() {
         </motion.div>
       </section>
 
+      {/* The Vision — Hero Animation Band */}
+      <section className="relative w-full bg-[#0d0d0d] overflow-hidden" aria-label="The vision we build">
+        <video
+          className="block w-full h-auto object-contain xl:max-h-[86vh] xl:object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster="/longevity_hero_poster.jpg"
+        >
+          <source src="/longevity_hero_1080p.webm" type="video/webm" />
+          <source src="/longevity_hero_1080p.mp4" type="video/mp4" />
+          <img src="/longevity_hero_poster.jpg" alt="The longevity and wellness vision Well Estate Group builds" />
+        </video>
+
+        {/* Overlay heading */}
+        <div className="absolute left-0 right-0 bottom-0 px-[6%] pb-[4%] pt-[6%] bg-gradient-to-t from-black/55 to-transparent pointer-events-none">
+          <p className="font-mono text-[#d9c178] text-[0.8rem] tracking-[0.22em] uppercase mb-2">The Vision We Build</p>
+          <h2 className="font-display text-white font-semibold leading-[1.15]" style={{ fontSize: 'clamp(1.4rem, 3vw, 2.6rem)' }}>From concept to daily P&amp;L — drawn to life.</h2>
+        </div>
+      </section>
+
       {/* Proof Section — Numbers that speak */}
       <section id="proof" className="py-24 md:py-32 bg-black text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.015]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '48px 48px' }} />
