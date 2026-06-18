@@ -182,9 +182,9 @@ export default function Landing() {
         </video>
 
         {/* Text below video */}
-        <div className="px-[6%] py-8 bg-[#0d0d0d] text-center">
-          <p className="font-mono text-white/50 text-[0.8rem] tracking-[0.22em] uppercase mb-2">The Vision We Build</p>
-          <h2 className="font-display text-white font-semibold leading-[1.15]" style={{ fontSize: 'clamp(1.4rem, 3vw, 2.6rem)' }}>From concept to daily P&amp;L — drawn to life.</h2>
+        <div className="px-[6%] py-16 md:py-20 bg-[#0d0d0d] text-center">
+          <p className="font-mono text-white/60 text-sm tracking-[0.22em] uppercase mb-4">The Vision We Build</p>
+          <h2 className="font-display text-white font-semibold leading-[1.15] text-3xl md:text-5xl">From concept to daily P&amp;L — drawn to life.</h2>
         </div>
       </section>
 
