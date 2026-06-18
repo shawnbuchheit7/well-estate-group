@@ -1,5 +1,6 @@
 /**
  * BackToTop - Floating button that appears when scrolled down
+ * Stays fixed on the right side, following the user vertically
  * Smooth scrolls back to the top of the page
  */
 
@@ -12,7 +13,7 @@ export default function BackToTop() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setVisible(window.scrollY > 400);
+      setVisible(window.scrollY > 300);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -32,10 +33,10 @@ export default function BackToTop() {
           exit={{ opacity: 0, y: 10 }}
           transition={{ duration: 0.25, ease: "easeOut" }}
           onClick={scrollToTop}
-          className="fixed bottom-6 left-6 z-40 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm border border-black/8 shadow-sm flex items-center justify-center text-black/40 hover:text-black/70 hover:border-black/20 hover:shadow-md transition-all duration-200"
+          className="fixed bottom-20 right-6 z-40 w-9 h-9 rounded-full bg-white/90 backdrop-blur-sm border border-black/10 shadow-sm flex items-center justify-center text-black/50 hover:text-black hover:border-black/25 hover:shadow-md transition-all duration-200"
           aria-label="Back to top"
         >
-          <ChevronUp className="w-3.5 h-3.5" />
+          <ChevronUp className="w-4 h-4" />
         </motion.button>
       )}
     </AnimatePresence>
