@@ -506,35 +506,40 @@ export default function Landing() {
                 key={service.num}
                 href={service.href}
                 variants={fadeInUp}
-                className="group relative block p-8 md:p-10 bg-white rounded-2xl shadow-[0_2px_20px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)] border border-black/[0.04] cursor-pointer no-underline transition-all duration-500 hover:-translate-y-1 overflow-hidden"
+                className="group relative block rounded-2xl cursor-pointer no-underline transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)] overflow-hidden min-h-[400px]"
               >
-                {/* Ghosted background image */}
+                {/* Background image with zoom on hover */}
                 <img 
                   src={service.bgImage} 
                   alt="" 
-                  className="absolute inset-0 w-full h-full object-cover opacity-[0.55] group-hover:opacity-[0.7] transition-opacity duration-500 pointer-events-none"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   loading="lazy"
                 />
-                {/* Gold left accent bar */}
-                <div className="absolute top-8 left-0 w-[3px] h-10 bg-gradient-to-b from-[#B8860B] to-[#D4AF37] rounded-r-full z-10" />
+                {/* Dark gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30 group-hover:from-black/95 group-hover:via-black/70 group-hover:to-black/40 transition-all duration-500" />
                 
-                <div className="relative z-10">
-                  <div className="flex items-center justify-between mb-5">
-                    <span className="font-display text-3xl font-bold text-black/15">{service.num}</span>
-                    <span className="font-body text-[10px] tracking-[0.12em] uppercase text-black/50 font-medium">{service.audience}</span>
+                <div className="relative z-10 p-8 md:p-10 h-full flex flex-col justify-between min-h-[400px]">
+                  {/* Top row: number + audience badge */}
+                  <div className="flex items-start justify-between">
+                    <span className="font-display text-5xl font-bold text-white/20">{service.num}</span>
+                    <span className="inline-block px-3 py-1.5 rounded-full bg-[#B8860B]/90 text-white text-[9px] tracking-[0.12em] uppercase font-semibold backdrop-blur-sm">{service.audience}</span>
                   </div>
-                  <h3 className="font-display text-xl md:text-2xl font-semibold mb-5 text-black group-hover:text-[#B8860B] transition-colors duration-300">{service.title}</h3>
-                  <ul className="space-y-2.5 mb-6">
-                    {service.items.map((item, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#B8860B]/50 mt-2 shrink-0" />
-                        <span className="font-body text-[14px] text-black/65 leading-relaxed">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="flex items-center gap-2 text-[#B8860B] opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    <span className="font-body text-[12px] font-semibold uppercase tracking-[0.15em]">View Details</span>
-                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                  
+                  {/* Bottom content */}
+                  <div>
+                    <h3 className="font-display text-2xl md:text-3xl font-semibold mb-5 text-white">{service.title}</h3>
+                    <ul className="space-y-2 mb-6">
+                      {service.items.map((item, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] mt-2 shrink-0" />
+                          <span className="font-body text-[14px] text-white/80 leading-relaxed">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="flex items-center gap-2 text-[#D4AF37] opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-400">
+                      <span className="font-body text-[12px] font-semibold uppercase tracking-[0.15em]">Explore</span>
+                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                    </div>
                   </div>
                 </div>
               </motion.a>
