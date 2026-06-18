@@ -174,6 +174,11 @@ export default function Landing() {
           playsInline
           preload="auto"
           poster="/longevity_hero_poster.jpg"
+          onEnded={(e) => {
+            const video = e.currentTarget;
+            video.currentTime = video.duration - 0.01;
+            video.pause();
+          }}
         >
           <source src="/longevity_hero_1080p.webm" type="video/webm" />
           <source src="/longevity_hero_1080p.mp4" type="video/mp4" />
