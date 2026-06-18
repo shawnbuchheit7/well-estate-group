@@ -997,3 +997,22 @@ svg {
   will-change: auto;
   backface-visibility: hidden;
 }
+
+/* Shimmer sweep animation for CTA button */
+@keyframes shimmerSweep {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.shimmer-sweep {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(184, 134, 11, 0.08) 40%,
+    rgba(184, 134, 11, 0.15) 50%,
+    rgba(184, 134, 11, 0.08) 60%,
+    transparent 100%
+  );
+  animation: shimmerSweep 3.5s ease-in-out infinite;
+  animation-delay: 2s;
+}

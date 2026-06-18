@@ -7,7 +7,7 @@
  */
 
 import { useEffect, useState, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -29,7 +29,6 @@ function AnimatedCounter({ value, suffix = '', prefix = '' }: { value: number; s
       (entries) => {
         if (entries[0].isIntersecting && !hasAnimated) {
           setHasAnimated(true);
-          let start = 0;
           const duration = 2000;
           const startTime = performance.now();
           const animate = (currentTime: number) => {
@@ -56,9 +55,14 @@ export default function Landing() {
   const heroRef = useRef<HTMLDivElement>(null);
   const drawingVideoRef = useRef<HTMLVideoElement>(null);
   const [drawingStarted, setDrawingStarted] = useState(false);
+  const [showStickyCTA, setShowStickyCTA] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+      // Show sticky CTA after scrolling past hero (roughly 100vh)
+      setShowStickyCTA(window.scrollY > window.innerHeight);
+    };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -81,7 +85,39 @@ export default function Landing() {
   }, [drawingStarted]);
 
   return (
-    <div className="min-h-screen bg-[#FAFAF8] text-[#0A0A0A] overflow-x-hidden">
+    <div className="min-h-screen bg-[#FAFAF8] text-[#0A0A0A] overflow-x-hidden relative">
+      {/* Grain texture overlay — subtle editorial feel */}
+      <div 
+        className="pointer-events-none fixed inset-0 z-[100] opacity-[0.025]"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+          backgroundRepeat: 'repeat',
+        }}
+      />
+
+      {/* Sticky CTA — appears after scrolling past hero */}
+      <AnimatePresence>
+        {showStickyCTA && (
+          <motion.div
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 100, opacity: 0 }}
+            transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="fixed bottom-8 right-8 z-50"
+          >
+            <a 
+              href="#contact" 
+              className="group flex items-center gap-2 px-6 py-3 bg-black text-white font-body text-xs tracking-[0.12em] uppercase rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.25)] transition-all"
+              onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 12px 40px rgba(0,0,0,0.35)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 32px rgba(0,0,0,0.25)'; }}
+            >
+              Start a Conversation
+              <svg className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </a>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Navigation */}
       <motion.nav 
         className="fixed top-0 left-0 right-0 z-50 backdrop-blur-2xl"
@@ -181,13 +217,22 @@ export default function Landing() {
           </motion.div>
         </motion.div>
 
-        {/* Scroll indicator */}
+        {/* Scroll indicator — animated chevron */}
         <motion.div 
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5, duration: 0.8 }}
         >
-          <div className="w-[1px] h-12 bg-gradient-to-b from-transparent via-white/40 to-white/70" />
+          <span className="font-mono text-[9px] tracking-[0.2em] uppercase text-black/40">Scroll</span>
+          <motion.div
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <svg className="w-5 h-5 text-black/30" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 14l-7 7m0 0l-7-7" />
+            </svg>
+          </motion.div>
         </motion.div>
         </div>
       </section>
@@ -355,12 +400,12 @@ export default function Landing() {
             {/* Photos - Leadership Team */}
             <motion.div variants={fadeInUp} className="grid grid-cols-3 gap-6 md:gap-8 mb-12 max-w-2xl">
               {/* Shawn */}
-              <div className="text-center">
-                <div className="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-lg">
+              <div className="text-center group">
+                <div className="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-lg transition-all duration-500 group-hover:shadow-[0_8px_32px_rgba(184,134,11,0.2)] group-hover:scale-[1.02]">
                   <img
                     src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/OslPsizQVCRklaLS.jpeg"
                     alt="Shawn Buchheit"
-                    className="w-full h-full object-cover object-top"
+                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                     style={{ objectPosition: '50% 15%' }}
                     loading="lazy"
                   />
@@ -369,12 +414,12 @@ export default function Landing() {
                 <p className="font-body text-xs md:text-sm text-black/50 mt-1">Founder & President</p>
               </div>
               {/* Jay Muller */}
-              <div className="text-center">
-                <div className="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-lg">
+              <div className="text-center group">
+                <div className="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-lg transition-all duration-500 group-hover:shadow-[0_8px_32px_rgba(184,134,11,0.2)] group-hover:scale-[1.02]">
                   <img
                     src="/jay-muller.webp"
                     alt="Jay Muller"
-                    className="w-full h-full object-cover object-top"
+                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
                   />
                 </div>
@@ -383,12 +428,12 @@ export default function Landing() {
                 <p className="font-body text-xs text-black/40 mt-0.5">Cat Lover & Flower Enthusiast</p>
               </div>
               {/* Evan Balter */}
-              <div className="text-center">
-                <div className="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-lg">
+              <div className="text-center group">
+                <div className="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-lg transition-all duration-500 group-hover:shadow-[0_8px_32px_rgba(184,134,11,0.2)] group-hover:scale-[1.02]">
                   <img
                     src="/evan-balter.webp"
                     alt="Evan Balter"
-                    className="w-full h-full object-cover object-top"
+                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
                   />
                 </div>
@@ -396,6 +441,14 @@ export default function Landing() {
                 <p className="font-body text-xs md:text-sm text-black/50 mt-1">Partner</p>
                 <p className="font-body text-xs text-black/40 mt-0.5">Avid Bird Watcher & Nickel Collector</p>
               </div>
+            </motion.div>
+
+            {/* Leadership Quote */}
+            <motion.div variants={fadeInUp} className="mb-12 pl-6 border-l-2 border-[#B8860B]/40">
+              <p className="font-display text-lg md:text-xl italic text-black/70 leading-relaxed">
+                "Strategy without execution is just a PowerPoint. We build it, staff it, and operate it until it performs."
+              </p>
+              <p className="font-body text-sm text-black/45 mt-3">— Shawn Buchheit</p>
             </motion.div>
 
             {/* Bio */}
@@ -618,13 +671,17 @@ export default function Landing() {
             <motion.a 
               variants={fadeInUp}
               href="mailto:shawn@wellestategroup.com" 
-              className="group inline-flex items-center gap-3 px-10 py-5 border-2 border-black text-black bg-transparent font-body text-sm tracking-[0.12em] uppercase rounded-full transition-all outline-none"
+              className="group inline-flex items-center gap-3 px-10 py-5 border-2 border-black text-black bg-transparent font-body text-sm tracking-[0.12em] uppercase rounded-full transition-all outline-none relative overflow-hidden"
               style={{ outline: 'none', boxShadow: 'none', borderColor: '#000000' }}
               onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#000'; e.currentTarget.style.color = '#fff'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
               onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#000'; e.currentTarget.style.transform = 'translateY(0)'; }}
             >
-              shawn@wellestategroup.com
-              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              {/* Shimmer effect */}
+              <span className="absolute inset-0 shimmer-sweep pointer-events-none" />
+              <span className="relative z-10 flex items-center gap-3">
+                shawn@wellestategroup.com
+                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </span>
             </motion.a>
           </motion.div>
         </div>
