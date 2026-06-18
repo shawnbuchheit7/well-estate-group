@@ -14,23 +14,28 @@ import { fadeInUp, staggerContainer } from "@/lib/animations";
 const investmentTheses = [
   {
     icon: Target,
-    title: "Market Gap Identification",
-    description: "Targeting underserved segments in the $6.7T global wellness market where innovation lags behind consumer demand.",
-  },
-  {
-    icon: Lightbulb,
-    title: "Product-Market Fit Validation",
-    description: "Leveraging our Product Intelligence division to validate product concepts before capital deployment.",
-  },
-  {
-    icon: Globe,
-    title: "Distribution Advantage",
-    description: "Portfolio companies gain immediate access to our Go-To-Market network spanning private clubs, medical centers, and hospitality venues.",
+    title: "Fundraising Strategy & Investor Materials",
+    description: "Crafting compelling narratives, pitch decks, and data rooms that resonate with institutional investors, family offices, and strategic partners.",
   },
   {
     icon: BarChart3,
-    title: "Revenue Acceleration",
-    description: "Strategic consulting and channel partnerships designed to compress the timeline from product launch to profitability.",
+    title: "Financial Modeling & Valuation",
+    description: "Building institutional-grade financial models, scenario analyses, and valuation frameworks that withstand LP and PE scrutiny.",
+  },
+  {
+    icon: Briefcase,
+    title: "PE & Institutional Deal Structuring",
+    description: "Structuring equity rounds, convertible instruments, and joint ventures optimized for founder economics and investor alignment.",
+  },
+  {
+    icon: Lightbulb,
+    title: "Due Diligence & Exit Planning",
+    description: "Preparing companies for inbound diligence with clean data rooms, defensible metrics, and strategic positioning for premium exits.",
+  },
+  {
+    icon: Globe,
+    title: "Strategic Capital Deployment",
+    description: "Direct investment in emerging wellness products with immediate access to our distribution network spanning private clubs, medical centers, and hospitality venues.",
   },
 ];
 
@@ -74,9 +79,9 @@ export default function VentureCapital() {
     <Layout>
       {/* Hero */}
       <LightHero
-        eyebrow="Pillar IV"
-        title="Venture & Product Capital"
-        description="Strategic investment in emerging fitness and wellness products poised to disrupt the consumer health market. We combine deep industry expertise with capital to accelerate the next generation of health innovation."
+        eyebrow="Pillar II"
+        title="Venture & Capital Advisory"
+        description="Full-spectrum capital advisory for founders, operators, and investors in the health, wellness, and longevity space. From fundraising strategy and investor materials to PE deal structuring, financial modeling, and exit planning — we guide every stage of the capital lifecycle."
         stats={[
           { value: "$6.7T", label: "Global Wellness Market" },
           { value: "5", label: "Focus Verticals" },
@@ -96,10 +101,10 @@ export default function VentureCapital() {
             variants={staggerContainer}
           >
             <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-[11px] tracking-[0.25em] uppercase">
-              Our Approach
+              Our Services
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
-              Investment Thesis
+              Capital Advisory & Investment
             </motion.h2>
           </motion.div>
 
@@ -238,11 +243,11 @@ export default function VentureCapital() {
               <Briefcase className="w-6 h-6 text-[#B8860B]" />
             </div>
             <h3 className="font-display text-2xl sm:text-3xl font-semibold text-black mb-4 tracking-tight">
-              Seeking Innovative Products
+              Ready to Raise or Exit?
             </h3>
             <p className="font-body text-sm text-black/65 leading-relaxed mb-8">
-              We are actively evaluating fitness and wellness products for strategic investment. 
-              If you have a product that addresses a genuine market gap, we want to hear from you.
+              Whether you're raising your first institutional round, structuring a PE transaction, 
+              or positioning for a premium exit — we bring the operator perspective that capital partners trust.
             </p>
             <Link href="/">
               <motion.button

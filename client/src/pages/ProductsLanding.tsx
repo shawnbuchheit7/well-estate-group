@@ -93,12 +93,12 @@ export default function ProductsLanding() {
     <Layout section="products">
       <LightHero
         eyebrow="Pillar III"
-        title="Product Intelligence"
-        description="Independent product development, testing, and evaluation for next-generation fitness and wellness equipment. Identifying market gaps and engineering solutions that meet the highest standards of performance and design."
+        title="Product & Brand Strategy"
+        description="End-to-end product positioning, go-to-market execution, and channel distribution strategy for consumer and commercial health & wellness brands. From concept validation to market dominance — we build the playbook and run it."
         stats={[
           { value: "4", label: "Active Products" },
-          { value: "3", label: "In Pipeline" },
-          { value: "8,000+", label: "Health Members" },
+          { value: "5+", label: "Channel Partners" },
+          { value: "9", label: "Distribution Verticals" },
         ]}
       />
 
@@ -113,11 +113,14 @@ export default function ProductsLanding() {
             variants={staggerContainer}
           >
             <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
-              Product Portfolio
+              Case Studies & Active Products
             </motion.span>
             <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 text-black">
-              Our Products
+              Strategy in Action
             </motion.h2>
+            <motion.p variants={fadeInUp} className="font-body text-base text-black/60 mt-4 max-w-2xl mx-auto">
+              Each product below represents a live engagement — from consumer positioning and brand architecture to multi-channel distribution and go-to-market execution.
+            </motion.p>
           </motion.div>
 
           <motion.div
