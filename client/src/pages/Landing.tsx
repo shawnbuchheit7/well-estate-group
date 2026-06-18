@@ -618,7 +618,7 @@ export default function Landing() {
                     {service.items.map((item, i) => (
                       <li key={i} className="flex items-start gap-3 py-2" style={{borderBottom: i < service.items.length - 1 ? '1px solid rgba(0,0,0,0.04)' : 'none'}}>
                         <span className="text-[12px] mt-0.5 shrink-0" style={{color: '#B8860B'}}>→</span>
-                        <span className="font-body text-[13px] leading-relaxed" style={{color: '#444'}}>{item}</span>
+                        <span className="font-body text-[14px] font-medium leading-relaxed" style={{color: '#1a1a1a'}}>{item}</span>
                       </li>
                     ))}
                   </ul>
