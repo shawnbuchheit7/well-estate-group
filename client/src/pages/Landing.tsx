@@ -345,19 +345,48 @@ export default function Landing() {
             viewport={{ once: true }}
             variants={staggerContainer}
           >
-            {/* Photo */}
-            <motion.div variants={fadeInUp} className="text-center md:text-left">
-              <div className="w-64 h-72 md:w-full md:h-80 rounded-xl overflow-hidden mx-auto md:mx-0 shadow-lg">
-                <img
-                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/OslPsizQVCRklaLS.jpeg"
-                  alt="Shawn Buchheit"
-                  className="w-full h-full object-cover object-top"
-                  style={{ objectPosition: '50% 15%' }}
-                  loading="lazy"
-                />
+            {/* Photos - Leadership Team */}
+            <motion.div variants={fadeInUp} className="flex gap-6 items-start">
+              {/* Shawn */}
+              <div className="text-center">
+                <div className="w-48 h-56 md:w-56 md:h-64 rounded-xl overflow-hidden shadow-lg">
+                  <img
+                    src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/OslPsizQVCRklaLS.jpeg"
+                    alt="Shawn Buchheit"
+                    className="w-full h-full object-cover object-top"
+                    style={{ objectPosition: '50% 15%' }}
+                    loading="lazy"
+                  />
+                </div>
+                <h3 className="font-display text-lg font-semibold text-black mt-4">Shawn Buchheit</h3>
+                <p className="font-body text-sm text-black/50 mt-1">Founder & President</p>
               </div>
-              <h3 className="font-display text-xl font-semibold text-black mt-5">Shawn Buchheit</h3>
-              <p className="font-body text-sm text-black/50 mt-1">Founder & President</p>
+              {/* Jay Muller */}
+              <div className="text-center">
+                <div className="w-48 h-56 md:w-56 md:h-64 rounded-xl overflow-hidden shadow-lg">
+                  <img
+                    src="/jay-muller.webp"
+                    alt="Jay Muller"
+                    className="w-full h-full object-cover object-top"
+                    loading="lazy"
+                  />
+                </div>
+                <h3 className="font-display text-lg font-semibold text-black mt-4">Jay Muller</h3>
+                <p className="font-body text-sm text-black/50 mt-1">Partner</p>
+              </div>
+              {/* Evan Balter */}
+              <div className="text-center">
+                <div className="w-48 h-56 md:w-56 md:h-64 rounded-xl overflow-hidden shadow-lg">
+                  <img
+                    src="/evan-balter.webp"
+                    alt="Evan Balter"
+                    className="w-full h-full object-cover object-top"
+                    loading="lazy"
+                  />
+                </div>
+                <h3 className="font-display text-lg font-semibold text-black mt-4">Evan Balter</h3>
+                <p className="font-body text-sm text-black/50 mt-1">Partner</p>
+              </div>
             </motion.div>
 
             {/* Bio */}
