@@ -56,12 +56,20 @@ export default function Landing() {
   const drawingVideoRef = useRef<HTMLVideoElement>(null);
   const [drawingStarted, setDrawingStarted] = useState(false);
   const [showStickyCTA, setShowStickyCTA] = useState(false);
+  const contactRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
-      // Show sticky CTA after scrolling past hero (roughly 100vh)
-      setShowStickyCTA(window.scrollY > window.innerHeight);
+      const pastHero = window.scrollY > window.innerHeight;
+      // Hide when near the contact/footer section
+      const contactEl = contactRef.current;
+      let nearContact = false;
+      if (contactEl) {
+        const rect = contactEl.getBoundingClientRect();
+        nearContact = rect.top < window.innerHeight - 100;
+      }
+      setShowStickyCTA(pastHero && !nearContact);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -653,7 +661,7 @@ export default function Landing() {
       </section>
 
       {/* Contact / CTA Section */}
-      <section id="contact" className="py-4 md:py-6 bg-[#FAFAF8] relative">
+      <section id="contact" ref={contactRef} className="py-4 md:py-6 bg-[#FAFAF8] relative">
         <div className="mx-2 md:mx-4 lg:mx-8 xl:mx-12 py-24 md:py-32 text-center">
           <motion.div
             initial="hidden"
