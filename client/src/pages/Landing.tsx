@@ -99,7 +99,8 @@ export default function Landing() {
       </motion.nav>
 
       {/* Hero Section — Commanding, minimal */}
-      <section ref={heroRef} className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden bg-[#f5f4f0]">
+      <section className="pt-20 pb-12 md:pb-16 bg-[#FAFAF8]">
+        <div ref={heroRef} className="mx-4 md:mx-8 lg:mx-16 xl:mx-24 min-h-[calc(100vh-8rem)] flex items-center justify-center relative overflow-hidden rounded-2xl bg-[#f5f4f0]">
         {/* Background Video */}
         <video
           autoPlay
@@ -163,6 +164,7 @@ export default function Landing() {
         >
           <div className="w-[1px] h-12 bg-gradient-to-b from-transparent via-white/40 to-white/70" />
         </motion.div>
+        </div>
       </section>
 
       {/* The Vision — Hero Animation Band */}
@@ -262,8 +264,8 @@ export default function Landing() {
       </section>
 
       {/* About — The Story (with premium building rendering) */}
-      <section className="py-24 md:py-32 bg-[#FAFAF8]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+      <section className="py-12 md:py-16 bg-[#FAFAF8]">
+        <div className="mx-4 md:mx-8 lg:mx-16 xl:mx-24 py-16 md:py-24">
           <motion.div 
             className="grid md:grid-cols-[3fr_2fr] gap-8 md:gap-12 items-center"
             initial="hidden"
@@ -308,8 +310,8 @@ export default function Landing() {
       </section>
 
       {/* Leadership Section — Shawn's headshot + credentials */}
-      <section id="leadership" className="py-24 md:py-32 bg-white">
-        <div className="max-w-6xl mx-auto px-6 md:px-12">
+      <section id="leadership" className="py-12 md:py-16 bg-[#FAFAF8]">
+        <div className="mx-4 md:mx-8 lg:mx-16 xl:mx-24 py-16 md:py-24 bg-white rounded-2xl px-6 md:px-12">
           <motion.div 
             className="grid md:grid-cols-[280px_1fr] gap-12 md:gap-16 items-start"
             initial="hidden"
@@ -380,8 +382,8 @@ export default function Landing() {
       </section>
 
       {/* Capabilities — What we actually do */}
-      <section id="capabilities" className="py-24 md:py-32 bg-[#FAFAF8]">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <section id="capabilities" className="py-12 md:py-16 bg-[#FAFAF8]">
+        <div className="mx-4 md:mx-8 lg:mx-16 xl:mx-24 py-16 md:py-24">
           <motion.div 
             className="text-center mb-16"
             initial="hidden"
@@ -483,8 +485,9 @@ export default function Landing() {
       </section>
 
       {/* Differentiator — Sharp, confident */}
-      <section className="py-24 md:py-32 bg-black text-white relative overflow-hidden">
-        <div className="max-w-5xl mx-auto px-6 md:px-12 relative">
+      <section className="py-12 md:py-16 bg-[#FAFAF8]">
+        <div className="mx-4 md:mx-8 lg:mx-16 xl:mx-24 py-24 md:py-32 bg-black text-white relative overflow-hidden rounded-2xl px-6 md:px-12">
+        <div className="max-w-5xl mx-auto relative">
           <motion.div 
             className="text-center"
             initial="hidden"
@@ -520,11 +523,12 @@ export default function Landing() {
             </motion.div>
           </motion.div>
         </div>
+        </div>
       </section>
 
       {/* Contact / CTA Section */}
-      <section id="contact" className="py-24 md:py-32 bg-[#FAFAF8] relative">
-        <div className="max-w-3xl mx-auto px-6 md:px-12 text-center">
+      <section id="contact" className="py-12 md:py-16 bg-[#FAFAF8] relative">
+        <div className="mx-4 md:mx-8 lg:mx-16 xl:mx-24 py-24 md:py-32 text-center">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -551,8 +555,8 @@ export default function Landing() {
       </section>
 
       {/* Footer — Minimal */}
-      <footer className="py-12 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <footer className="py-12 bg-[#FAFAF8]">
+        <div className="mx-4 md:mx-8 lg:mx-16 xl:mx-24">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-3">
               <img 
