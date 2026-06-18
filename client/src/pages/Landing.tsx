@@ -591,7 +591,7 @@ export default function Landing() {
                 {service.ghostArt && (
                   <div
                     aria-hidden="true"
-                    className="pointer-events-none absolute inset-y-0 right-0 w-[70%] md:w-[65%] bg-no-repeat bg-right bg-contain opacity-[0.10] transition-opacity duration-500 group-hover:opacity-[0.14]"
+                    className="pointer-events-none absolute inset-y-0 right-0 w-[70%] md:w-[65%] bg-no-repeat bg-right bg-contain opacity-[0.20] transition-opacity duration-500 group-hover:opacity-[0.28]"
                     style={{
                       backgroundImage: `url('${service.ghostArt}')`,
                       WebkitMaskImage: 'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 40%, #000 100%)',
