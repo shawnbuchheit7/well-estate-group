@@ -575,7 +575,7 @@ export default function Landing() {
                 audience: 'For Founders & Investors',
                 href: '/venture-capital',
                 bgImage: '/card-bg-venture.jpg',
-                ghostArt: null,
+                ghostArt: '/card03-venture.webp',
               },
               {
                 num: '04',
