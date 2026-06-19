@@ -557,7 +557,7 @@ export default function Landing() {
                 audience: 'For Investors & Operators',
                 href: '/longevity',
                 bgImage: '/card-bg-longevity.jpg',
-                ghostArt: '/card01-longevity.jpg',
+                ghostArt: '/card01-longevity.webp',
               },
               {
                 num: '02',
@@ -566,7 +566,7 @@ export default function Landing() {
                 audience: 'For Product Companies & Brands',
                 href: '/product-intelligence',
                 bgImage: '/card-bg-product.jpg',
-                ghostArt: '/card02-brand.jpg',
+                ghostArt: '/card02-brand.webp',
               },
               {
                 num: '03',
