@@ -77,24 +77,22 @@ export default function Landing() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Play hero background video only when scrolled into view
+  // Play hero background video only AFTER user has scrolled at least once
   useEffect(() => {
     const video = heroVideoRef.current;
     if (!video || heroVideoStarted) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !heroVideoStarted) {
-          setHeroVideoStarted(true);
-          video.play();
-        }
-      },
-      { threshold: 0.2 }
-    );
-    observer.observe(video);
-    return () => observer.disconnect();
+    let hasScrolled = false;
+    const onScroll = () => {
+      hasScrolled = true;
+      window.removeEventListener('scroll', onScroll);
+      setHeroVideoStarted(true);
+      video.play();
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, [heroVideoStarted]);
 
-  // Play drawing video only when scrolled into view
+  // Play drawing video only when scrolled into view — do NOT preload
   useEffect(() => {
     const video = drawingVideoRef.current;
     if (!video || drawingStarted) return;
@@ -102,10 +100,11 @@ export default function Landing() {
       (entries) => {
         if (entries[0].isIntersecting && !drawingStarted) {
           setDrawingStarted(true);
+          video.load();
           video.play();
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.15 }
     );
     observer.observe(video);
     return () => observer.disconnect();
@@ -273,8 +272,7 @@ export default function Landing() {
           style={{ opacity: drawingStarted ? 1 : 0 }}
           muted
           playsInline
-          preload="auto"
-          poster="/longevity_hero_poster.jpg"
+          preload="none"
           onTimeUpdate={(e) => {
             const video = e.currentTarget;
             if (video.duration && video.currentTime >= video.duration - 2) {
