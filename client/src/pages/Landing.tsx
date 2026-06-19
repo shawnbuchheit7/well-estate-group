@@ -584,7 +584,7 @@ export default function Landing() {
                 audience: 'For Operators & Investors',
                 href: '/technology',
                 bgImage: '/card-bg-technology.jpg',
-                ghostArt: null,
+                ghostArt: '/card04-technology.webp',
               },
             ].map((service) => (
               <motion.a 
@@ -607,7 +607,7 @@ export default function Landing() {
                   e.currentTarget.style.borderColor = 'rgba(184,134,11,0.15)';
                 }}
               >
-                {/* Ghosted artwork layer — Cards 01 & 02 only */}
+                {/* Ghosted artwork layer */}
                 {service.ghostArt && (
                   <div
                     aria-hidden="true"
