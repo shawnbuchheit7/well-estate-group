@@ -275,6 +275,22 @@ export default function Landing() {
 
       {/* The Vision — Hero Animation Band */}
       <section className="relative w-full bg-[#FAFAF8] py-4 md:py-6" aria-label="The vision we build">
+        <div className="mx-2 md:mx-4 lg:mx-8 xl:mx-12">
+          <motion.div
+            className="text-center mb-10"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+          >
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] text-[11px] tracking-[0.3em] uppercase font-medium">
+              The Vision We Build
+            </motion.span>
+            <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-semibold mt-4 text-black tracking-tight">
+              From concept to daily P&amp;L — drawn to life.
+            </motion.h2>
+          </motion.div>
+        </div>
         <div className="mx-2 md:mx-4 lg:mx-8 xl:mx-12 rounded-2xl overflow-hidden bg-black">
         <video
           ref={drawingVideoRef}
@@ -296,11 +312,7 @@ export default function Landing() {
         </video>
         </div>
 
-        {/* Text below video */}
-        <div className="px-[6%] pt-8 pb-12 md:pb-16 text-center">
-          <p className="font-mono text-sm tracking-[0.22em] uppercase mb-4" style={{ color: '#8a7a3a' }}>The Vision We Build</p>
-          <h2 className="font-display font-semibold leading-[1.15] text-3xl md:text-5xl" style={{ color: '#0a0a0a' }}>From concept to daily P&amp;L — drawn to life.</h2>
-        </div>
+
       </section>
 
       {/* Proof Section — Numbers that speak */}
@@ -319,7 +331,7 @@ export default function Landing() {
             <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] text-[11px] tracking-[0.3em] uppercase font-medium">
               Operational Track Record
             </motion.span>
-            <motion.h2 variants={fadeInUp} className="font-display text-4xl md:text-6xl font-semibold mt-4 text-white tracking-tight">
+            <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-semibold mt-4 text-white tracking-tight">
               Built. Operated. Scaled.
             </motion.h2>
           </motion.div>
@@ -373,6 +385,20 @@ export default function Landing() {
       {/* About — The Story (with premium building rendering) */}
       <section className="py-4 md:py-6 bg-[#FAFAF8]">
         <div className="mx-2 md:mx-4 lg:mx-8 xl:mx-12 py-16 md:py-24">
+          <motion.div
+            className="text-center mb-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+          >
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] text-[11px] tracking-[0.3em] uppercase font-medium">
+              The Operator Advantage
+            </motion.span>
+            <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-semibold mt-4 text-black tracking-tight">
+              Every question you have — we've answered it in the field.
+            </motion.h2>
+          </motion.div>
           <motion.div 
             className="grid md:grid-cols-2 gap-8 md:gap-12 items-center"
             initial="hidden"
@@ -395,10 +421,6 @@ export default function Landing() {
 
             {/* Right — Text content */}
             <motion.div variants={fadeInUp}>
-              <span className="font-mono text-[#B8860B] text-[11px] tracking-[0.3em] uppercase font-medium">The Operator Advantage</span>
-              <h2 className="font-display text-3xl md:text-4xl font-semibold mt-4 mb-8 text-black tracking-tight leading-tight">
-                Every question you have —<br />we've answered it in the field.
-              </h2>
               
               <div className="space-y-5 font-body text-[15px] text-black/65 leading-[1.85]">
                 <p>
@@ -426,9 +448,9 @@ export default function Landing() {
             variants={staggerContainer}
           >
             {/* Header */}
-            <motion.div variants={fadeInUp} className="mb-10">
+            <motion.div variants={fadeInUp} className="text-center mb-16">
               <span className="font-mono text-[#B8860B] text-[11px] tracking-[0.3em] uppercase font-medium">Leadership</span>
-              <h2 className="font-display text-3xl md:text-4xl font-semibold mt-3 text-black tracking-tight">
+              <h2 className="font-display text-3xl md:text-5xl font-semibold mt-4 text-black tracking-tight">
                 Operator. Builder. Executive.
               </h2>
             </motion.div>
@@ -636,6 +658,22 @@ export default function Landing() {
 
       {/* Differentiator — Sharp, confident */}
       <section className="py-4 md:py-6 bg-[#FAFAF8]">
+        <div className="mx-2 md:mx-4 lg:mx-8 xl:mx-12">
+          <motion.div
+            className="text-center mb-10"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+          >
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] text-[11px] tracking-[0.3em] uppercase font-medium">
+              The Difference
+            </motion.span>
+            <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-semibold mt-4 text-black tracking-tight">
+              Why WEG
+            </motion.h2>
+          </motion.div>
+        </div>
         <div className="mx-2 md:mx-4 lg:mx-8 xl:mx-12 py-24 md:py-32 bg-black text-white relative overflow-hidden rounded-2xl px-6 md:px-12">
         <div className="max-w-5xl mx-auto relative">
           <motion.div 
@@ -685,7 +723,10 @@ export default function Landing() {
             viewport={{ once: true }}
             variants={staggerContainer}
           >
-            <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-semibold text-black tracking-tight">
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] text-[11px] tracking-[0.3em] uppercase font-medium">
+              Start a Conversation
+            </motion.span>
+            <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-5xl font-semibold mt-4 text-black tracking-tight">
               Let's talk.
             </motion.h2>
             <motion.p variants={fadeInUp} className="font-body text-lg text-black/55 max-w-xl mx-auto mt-6 mb-12 leading-relaxed">
