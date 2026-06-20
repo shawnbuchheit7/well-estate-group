@@ -92,22 +92,25 @@ export default function Landing() {
     return () => window.removeEventListener('scroll', onScroll);
   }, [heroVideoStarted]);
 
-  // Play drawing video only when scrolled into view — do NOT preload
+  // Play drawing video only when scrolled into view — 2s delay so user sees the initial sketch
   useEffect(() => {
     const video = drawingVideoRef.current;
     if (!video || drawingStarted) return;
+    let timeout: ReturnType<typeof setTimeout>;
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting && !drawingStarted) {
           setDrawingStarted(true);
           video.load();
-          video.play();
+          timeout = setTimeout(() => {
+            video.play();
+          }, 2000);
         }
       },
       { threshold: 0.15 }
     );
     observer.observe(video);
-    return () => observer.disconnect();
+    return () => { observer.disconnect(); clearTimeout(timeout); };
   }, [drawingStarted]);
 
   return (
