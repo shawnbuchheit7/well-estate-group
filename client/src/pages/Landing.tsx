@@ -102,9 +102,16 @@ export default function Landing() {
         if (entries[0].isIntersecting && !drawingStarted) {
           setDrawingStarted(true);
           video.load();
-          timeout = setTimeout(() => {
-            video.play();
-          }, 2000);
+          const startAfterReady = () => {
+            timeout = setTimeout(() => {
+              video.play().catch(() => {});
+            }, 2000);
+          };
+          if (video.readyState >= 3) {
+            startAfterReady();
+          } else {
+            video.addEventListener('canplay', startAfterReady, { once: true });
+          }
         }
       },
       { threshold: 0.15 }
