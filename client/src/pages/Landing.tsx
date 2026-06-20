@@ -433,9 +433,8 @@ export default function Landing() {
               </h2>
             </motion.div>
 
-            {/* Photos - Leadership Team */}
-            <motion.div variants={fadeInUp} className="grid grid-cols-3 gap-6 md:gap-8 mb-12 max-w-2xl">
-              {/* Shawn */}
+            {/* Photo - Leadership */}
+            <motion.div variants={fadeInUp} className="mb-12 max-w-xs">
               <div className="text-center group">
                 <div className="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-lg transition-all duration-500 group-hover:shadow-[0_8px_32px_rgba(184,134,11,0.2)] group-hover:scale-[1.02]">
                   <img
@@ -448,34 +447,6 @@ export default function Landing() {
                 </div>
                 <h3 className="font-display text-base md:text-lg font-semibold text-black mt-4">Shawn Buchheit</h3>
                 <p className="font-body text-xs md:text-sm text-black/50 mt-1">Founder & President</p>
-              </div>
-              {/* Jay Muller */}
-              <div className="text-center group">
-                <div className="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-lg transition-all duration-500 group-hover:shadow-[0_8px_32px_rgba(184,134,11,0.2)] group-hover:scale-[1.02]">
-                  <img
-                    src="/jay-muller.webp"
-                    alt="Jay Muller"
-                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                </div>
-                <h3 className="font-display text-base md:text-lg font-semibold text-black mt-4">Jay Muller</h3>
-                <p className="font-body text-xs md:text-sm text-black/50 mt-1">Partner</p>
-                <p className="font-body text-xs text-black/40 mt-0.5">Cat Lover & Flower Enthusiast</p>
-              </div>
-              {/* Evan Balter */}
-              <div className="text-center group">
-                <div className="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-lg transition-all duration-500 group-hover:shadow-[0_8px_32px_rgba(184,134,11,0.2)] group-hover:scale-[1.02]">
-                  <img
-                    src="/evan-balter.webp"
-                    alt="Evan Balter"
-                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                </div>
-                <h3 className="font-display text-base md:text-lg font-semibold text-black mt-4">Evan Balter</h3>
-                <p className="font-body text-xs md:text-sm text-black/50 mt-1">Partner</p>
-                <p className="font-body text-xs text-black/40 mt-0.5">Avid Bird Watcher & Nickel Collector</p>
               </div>
             </motion.div>
 
