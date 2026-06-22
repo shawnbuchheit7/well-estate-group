@@ -63,6 +63,7 @@ const ProductsLanding = lazy(() => import("./pages/ProductsLanding"));
 const ProductIntelligence = lazy(() => import("./pages/ProductIntelligence"));
 const CorporateHealth = lazy(() => import("./pages/CorporateHealth"));
 const VentureCapital = lazy(() => import("./pages/VentureCapital"));
+const CapTablePlatform = lazy(() => import("./pages/CapTablePlatform"));
 
 // Lazy load all other pages for better code splitting
 const About = lazy(() => import("./pages/About"));
@@ -161,6 +162,9 @@ function App() {
                   
                   {/* Venture & Product Capital Section */}
                   <Route path="/venture-capital" component={VentureCapital} />
+
+                  {/* Cap Table Platform — a Well Estate Group service */}
+                  <Route path="/cap-table" component={CapTablePlatform} />
                   
                   {/* Longevity Section - Projects Landing (multi-model) */}
                   <Route path="/longevity" component={() => <LongevityPasswordGate><LongevityProjects /></LongevityPasswordGate>} />

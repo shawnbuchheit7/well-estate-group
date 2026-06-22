@@ -6,7 +6,7 @@
 
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { Target, BarChart3, Briefcase, Globe, Lightbulb } from "lucide-react";
+import { Target, BarChart3, Briefcase, Globe, Lightbulb, Table2, ArrowUpRight } from "lucide-react";
 import LightHero from "@/components/LightHero";
 import Layout from "@/components/Layout";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
@@ -227,6 +227,55 @@ export default function VentureCapital() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Portfolio Services — Cap Table Platform */}
+      <section className="py-20 sm:py-24 bg-[#F9F9F7]">
+        <div className="container px-6 sm:px-8">
+          <motion.div
+            className="text-center mb-14"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
+            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-[11px] tracking-[0.25em] uppercase">
+              Portfolio Services
+            </motion.span>
+            <motion.h2 variants={fadeInUp} className="font-display text-3xl sm:text-4xl font-semibold text-black mt-4 tracking-tight">
+              Platforms We Build
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            whileHover={{ y: -4 }}
+            className="max-w-4xl mx-auto"
+          >
+            <Link href="/cap-table">
+              <div className="group cursor-pointer bg-white rounded-2xl border border-[#B8860B]/40 shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_16px_48px_rgba(184,134,11,0.12)] hover:border-[#B8860B]/60 transition-all duration-300 overflow-hidden">
+                <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr_auto] items-center gap-6 p-8 sm:p-10">
+                  <div className="w-16 h-16 rounded-xl bg-[#FAFAF8] border border-[#B8860B]/55 flex items-center justify-center shrink-0">
+                    <Table2 className="w-7 h-7 text-[#B8860B]" />
+                  </div>
+                  <div>
+                    <span className="font-mono text-[10px] text-[#B8860B] tracking-[0.15em] uppercase font-semibold">A Well Estate Group Service</span>
+                    <h3 className="font-display text-xl sm:text-2xl font-bold text-black mt-1.5 mb-2 tracking-tight">Cap Table Management Platform</h3>
+                    <p className="font-body text-sm text-black/70 leading-relaxed max-w-xl">
+                      Real-time ownership tracking, scenario modeling, exit-waterfall analysis, and board-ready reporting — the institutional platform we built to manage our own portfolio, now offered as a service.
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-2 text-[#B8860B] font-body text-sm font-semibold whitespace-nowrap sm:justify-self-end">
+                    <span>View Platform</span>
+                    <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </motion.div>
         </div>
       </section>
 
