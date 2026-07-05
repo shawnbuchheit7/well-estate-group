@@ -20,13 +20,13 @@ export default function Team() {
             animate="visible"
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
+            <motion.span variants={fadeInUp} className="font-estate-sans text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
               ADVISORY BOARD
             </motion.span>
-            <motion.h1 variants={fadeInUp} className="font-display text-5xl md:text-7xl font-medium mt-4 mb-6">
+            <motion.h1 variants={fadeInUp} className="font-estate-headline text-5xl md:text-7xl font-medium mt-4 mb-6">
               Physician-Led Excellence
             </motion.h1>
-            <motion.p variants={fadeInUp} className="font-body text-xl text-muted-foreground">
+            <motion.p variants={fadeInUp} className="font-estate-sans text-xl text-muted-foreground">
               World-class clinical advisors guiding Well Estate Group's protocols, research, and physician education.
             </motion.p>
           </motion.div>
@@ -101,7 +101,7 @@ export default function Team() {
                   </div>
                   <div className="p-8">
                     <div className="flex items-start justify-between mb-1">
-                      <h3 className="font-display text-2xl font-medium">{member.name}</h3>
+                      <h3 className="font-estate-headline text-2xl font-medium">{member.name}</h3>
                       <a 
                         href={member.linkedin} 
                         target="_blank" 
@@ -112,12 +112,12 @@ export default function Team() {
                         <Linkedin className="w-4 h-4 text-[#0A66C2] group-hover:scale-110 transition-transform" />
                       </a>
                     </div>
-                    <p className="font-body text-primary mb-1">{member.title}</p>
-                    <p className="font-mono text-xs text-muted-foreground mb-4">{member.credentials}</p>
-                    <p className="font-body text-muted-foreground mb-6">{member.bio}</p>
+                    <p className="font-estate-sans text-primary mb-1">{member.title}</p>
+                    <p className="font-estate-sans text-xs text-muted-foreground mb-4">{member.credentials}</p>
+                    <p className="font-estate-sans text-muted-foreground mb-6">{member.bio}</p>
                     <ul className="space-y-2">
                       {member.highlights.map((highlight, i) => (
-                        <li key={i} className="font-body text-sm text-muted-foreground flex gap-2">
+                        <li key={i} className="font-estate-sans text-sm text-muted-foreground flex gap-2">
                           <span className="text-accent">•</span>
                           {highlight}
                         </li>
@@ -142,13 +142,13 @@ export default function Team() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp}>
-              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
+              <span className="font-estate-sans text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
                 EXTENDED NETWORK
               </span>
-              <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
+              <h2 className="font-estate-headline text-4xl md:text-5xl font-medium mt-4 mb-6">
                 Advisory Expertise
               </h2>
-              <p className="font-body text-xl text-muted-foreground mb-12">
+              <p className="font-estate-sans text-xl text-muted-foreground mb-12">
                 Beyond our core advisory board, Well Estate Group has access to a network of specialists 
                 across key domains.
               </p>
@@ -162,8 +162,8 @@ export default function Team() {
                 { area: "Strategic Growth", count: "4+" }
               ].map((item, i) => (
                 <div key={i} className="bg-card border border-border rounded-xl p-6 hover:border-primary/50 transition-colors">
-                  <span className="font-display text-3xl font-bold text-gradient">{item.count}</span>
-                  <p className="font-body text-sm text-muted-foreground mt-2">{item.area}</p>
+                  <span className="font-estate-headline text-3xl font-bold text-gradient">{item.count}</span>
+                  <p className="font-estate-sans text-sm text-muted-foreground mt-2">{item.area}</p>
                 </div>
               ))}
             </motion.div>
@@ -182,10 +182,10 @@ export default function Team() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
+              <span className="font-estate-sans text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
                 OUR VALUES
               </span>
-              <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
+              <h2 className="font-estate-headline text-4xl md:text-5xl font-medium mt-4 mb-6">
                 Guiding Principles
               </h2>
             </motion.div>
@@ -210,8 +210,8 @@ export default function Team() {
                 }
               ].map((value, i) => (
                 <div key={i} className="bg-card border border-border rounded-xl p-8 hover:border-primary/50 transition-colors">
-                  <h4 className="font-display text-xl font-medium mb-3">{value.title}</h4>
-                  <p className="font-body text-muted-foreground">{value.description}</p>
+                  <h4 className="font-estate-headline text-xl font-medium mb-3">{value.title}</h4>
+                  <p className="font-estate-sans text-muted-foreground">{value.description}</p>
                 </div>
               ))}
             </motion.div>

@@ -25,13 +25,13 @@ export default function Memberships() {
             animate="visible"
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
+            <motion.span variants={fadeInUp} className="font-estate-sans text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
               MEMBERSHIP TIERS
             </motion.span>
-            <motion.h1 variants={fadeInUp} className="font-display text-5xl md:text-7xl font-medium mt-4 mb-6">
+            <motion.h1 variants={fadeInUp} className="font-estate-headline text-5xl md:text-7xl font-medium mt-4 mb-6">
               Two Paths to Longevity
             </motion.h1>
-            <motion.p variants={fadeInUp} className="font-body text-xl text-muted-foreground">
+            <motion.p variants={fadeInUp} className="font-estate-sans text-xl text-muted-foreground">
               Comprehensive membership programs designed for individuals committed to 
               optimizing their healthspan through physician-led regenerative medicine.
             </motion.p>
@@ -52,7 +52,7 @@ export default function Memberships() {
             {/* ELITE Membership - Primary Tier (85% of members) */}
             <motion.div variants={scaleIn} className="relative group">
               <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-primary/10 rounded-3xl blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-5 py-1.5 bg-accent text-accent-foreground text-xs font-mono rounded-full shadow-lg z-10">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-5 py-1.5 bg-accent text-accent-foreground text-xs font-estate-sans rounded-full shadow-lg z-10">
                 85% OF MEMBERS
               </div>
               <div className="relative bg-card border-2 border-accent rounded-3xl p-10 h-full shadow-xl">
@@ -62,17 +62,17 @@ export default function Memberships() {
                     <Crown className="w-7 h-7 text-accent" />
                   </div>
                   <div>
-                    <h3 className="font-display text-3xl font-semibold tracking-tight">ELITE</h3>
+                    <h3 className="font-estate-headline text-3xl font-semibold tracking-tight">ELITE</h3>
                     <p className="text-base text-muted-foreground">Full Regenerative Program</p>
                   </div>
                 </div>
                 
                 <div className="mb-8">
-                  <span className="font-display text-5xl font-semibold">$29</span><span className="font-display text-3xl font-semibold text-foreground/70">,500</span>
+                  <span className="font-estate-headline text-5xl font-semibold">$29</span><span className="font-estate-headline text-3xl font-semibold text-foreground/70">,500</span>
                   <span className="text-lg text-muted-foreground ml-1">/year</span>
                 </div>
                 
-                <p className="font-body text-muted-foreground mb-8 text-base leading-relaxed">
+                <p className="font-estate-sans text-muted-foreground mb-8 text-base leading-relaxed">
                   Complete access to Well Estate Group's regenerative medicine platform including 
                   biologics, peptides, and ongoing physician-led care.
                 </p>
@@ -122,17 +122,17 @@ export default function Memberships() {
                     <Check className="w-7 h-7 text-muted-foreground" />
                   </div>
                   <div>
-                    <h3 className="font-display text-3xl font-semibold tracking-tight">PRIME</h3>
+                    <h3 className="font-estate-headline text-3xl font-semibold tracking-tight">PRIME</h3>
                     <p className="text-base text-muted-foreground">Diagnostic Foundation</p>
                   </div>
                 </div>
                 
                 <div className="mb-8">
-                  <span className="font-display text-5xl font-semibold">$12</span><span className="font-display text-3xl font-semibold text-foreground/70">,500</span>
+                  <span className="font-estate-headline text-5xl font-semibold">$12</span><span className="font-estate-headline text-3xl font-semibold text-foreground/70">,500</span>
                   <span className="text-lg text-muted-foreground ml-1">/year</span>
                 </div>
                 
-                <p className="font-body text-muted-foreground mb-8 text-base leading-relaxed">
+                <p className="font-estate-sans text-muted-foreground mb-8 text-base leading-relaxed">
                   Comprehensive diagnostic assessment and personalized health roadmap 
                   for those beginning their longevity journey.
                 </p>
@@ -184,7 +184,7 @@ export default function Memberships() {
                 <Crown className="w-8 h-8 text-accent" />
               </div>
               <div>
-                <h2 className="font-display text-4xl font-medium">ELITE Membership</h2>
+                <h2 className="font-estate-headline text-4xl font-medium">ELITE Membership</h2>
                 <p className="text-muted-foreground">$29,500/year • Full Regenerative Program</p>
               </div>
             </motion.div>
@@ -261,7 +261,7 @@ export default function Memberships() {
                 <div key={i} className="bg-card border border-border rounded-2xl p-6 hover:border-accent/50 transition-colors">
                   <div className="flex items-center gap-3 mb-4">
                     <category.icon className="w-5 h-5 text-accent" />
-                    <h3 className="font-display text-lg font-medium">{category.title}</h3>
+                    <h3 className="font-estate-headline text-lg font-medium">{category.title}</h3>
                   </div>
                   <ul className="space-y-2">
                     {category.items.map((item, j) => (
@@ -276,26 +276,26 @@ export default function Memberships() {
             </motion.div>
 
             <motion.div variants={fadeInUp} className="bg-gradient-to-r from-accent/10 to-primary/10 rounded-2xl p-6">
-              <h4 className="font-display font-medium mb-4">ELITE Membership Economics</h4>
+              <h4 className="font-estate-headline font-medium mb-4">ELITE Membership Economics</h4>
               <div className="grid md:grid-cols-5 gap-6 text-center">
                 <div>
-                  <span className="font-mono text-2xl text-accent">$29<span className="text-base">,500</span></span>
+                  <span className="font-estate-sans text-2xl text-accent">$29<span className="text-base">,500</span></span>
                   <p className="text-xs text-muted-foreground mt-1">Annual Fee</p>
                 </div>
                 <div>
-                  <span className="font-mono text-2xl text-foreground">70%</span>
+                  <span className="font-estate-sans text-2xl text-foreground">70%</span>
                   <p className="text-xs text-muted-foreground mt-1">Renewal Rate</p>
                 </div>
                 <div>
-                  <span className="font-mono text-2xl text-foreground">85%</span>
+                  <span className="font-estate-sans text-2xl text-foreground">85%</span>
                   <p className="text-xs text-muted-foreground mt-1">Member Mix</p>
                 </div>
                 <div>
-                  <span className="font-mono text-2xl text-foreground">3.3 yrs</span>
+                  <span className="font-estate-sans text-2xl text-foreground">3.3 yrs</span>
                   <p className="text-xs text-muted-foreground mt-1">Avg Tenure</p>
                 </div>
                 <div>
-                  <span className="font-mono text-2xl text-foreground">$97<span className="text-base">,350</span></span>
+                  <span className="font-estate-sans text-2xl text-foreground">$97<span className="text-base">,350</span></span>
                   <p className="text-xs text-muted-foreground mt-1">Lifetime Value</p>
                 </div>
               </div>
@@ -303,8 +303,8 @@ export default function Memberships() {
 
             {/* ELITE Member Journey Timeline */}
             <motion.div variants={fadeInUp} className="mt-12">
-              <h3 className="font-display text-2xl font-medium text-center mb-8">ELITE Member Journey</h3>
-              <p className="font-body text-muted-foreground text-center mb-8 max-w-3xl mx-auto">
+              <h3 className="font-estate-headline text-2xl font-medium text-center mb-8">ELITE Member Journey</h3>
+              <p className="font-estate-sans text-muted-foreground text-center mb-8 max-w-3xl mx-auto">
                 From onboarding through ongoing care, every ELITE member receives personalized attention from their dedicated care team. 
                 ELITE Physicians work under the supervision of the center's Medical Director where testing was completed.
               </p>
@@ -349,8 +349,8 @@ export default function Memberships() {
                     <div key={i} className="relative">
                       <div className="w-4 h-4 rounded-full bg-accent mx-auto mb-4 relative z-10 hidden md:block" />
                       <div className="bg-card border border-border rounded-xl p-4 hover:border-accent/50 transition-colors">
-                        <span className="font-mono text-xs text-accent">{step.phase}</span>
-                        <h4 className="font-display font-medium mt-1">{step.title}</h4>
+                        <span className="font-estate-sans text-xs text-accent">{step.phase}</span>
+                        <h4 className="font-estate-headline font-medium mt-1">{step.title}</h4>
                         <p className="text-xs text-muted-foreground mt-1 mb-3">Primary: {step.team}</p>
                         <ul className="space-y-1">
                           {step.activities.map((activity, j) => (
@@ -392,7 +392,7 @@ export default function Memberships() {
                 <Check className="w-8 h-8 text-primary" />
               </div>
               <div>
-                <h2 className="font-display text-4xl font-medium">PRIME Membership</h2>
+                <h2 className="font-estate-headline text-4xl font-medium">PRIME Membership</h2>
                 <p className="text-muted-foreground">$12,500/year • Diagnostic Foundation</p>
               </div>
             </motion.div>
@@ -436,7 +436,7 @@ export default function Memberships() {
                 <div key={i} className="bg-card border border-border rounded-2xl p-6">
                   <div className="flex items-center gap-3 mb-4">
                     <category.icon className="w-5 h-5 text-primary" />
-                    <h3 className="font-display text-lg font-medium">{category.title}</h3>
+                    <h3 className="font-estate-headline text-lg font-medium">{category.title}</h3>
                   </div>
                   <ul className="space-y-2">
                     {category.items.map((item, j) => (
@@ -451,22 +451,22 @@ export default function Memberships() {
             </motion.div>
 
             <motion.div variants={fadeInUp} className="bg-muted/30 rounded-2xl p-6">
-              <h4 className="font-display font-medium mb-4">PRIME Membership Economics</h4>
+              <h4 className="font-estate-headline font-medium mb-4">PRIME Membership Economics</h4>
               <div className="grid md:grid-cols-4 gap-6 text-center">
                 <div>
-                  <span className="font-mono text-2xl text-primary">$12<span className="text-base">,500</span></span>
+                  <span className="font-estate-sans text-2xl text-primary">$12<span className="text-base">,500</span></span>
                   <p className="text-xs text-muted-foreground mt-1">Annual Fee</p>
                 </div>
                 <div>
-                  <span className="font-mono text-2xl text-foreground">10%</span>
+                  <span className="font-estate-sans text-2xl text-foreground">10%</span>
                   <p className="text-xs text-muted-foreground mt-1">Renewal Rate</p>
                 </div>
                 <div>
-                  <span className="font-mono text-2xl text-foreground">15%</span>
+                  <span className="font-estate-sans text-2xl text-foreground">15%</span>
                   <p className="text-xs text-muted-foreground mt-1">Member Mix</p>
                 </div>
                 <div>
-                  <span className="font-mono text-2xl text-foreground">25%</span>
+                  <span className="font-estate-sans text-2xl text-foreground">25%</span>
                   <p className="text-xs text-muted-foreground mt-1">ELITE Upgrade Rate</p>
                 </div>
               </div>
@@ -486,13 +486,13 @@ export default function Memberships() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
+              <span className="font-estate-sans text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
                 MEMBER EXPERIENCE
               </span>
-              <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-4">
+              <h2 className="font-estate-headline text-4xl md:text-5xl font-medium mt-4 mb-4">
                 The ELITE Member Journey
               </h2>
-              <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className="font-estate-sans text-lg text-muted-foreground max-w-2xl mx-auto">
                 A year in the life of an ELITE member, from initial assessment through ongoing optimization
               </p>
             </motion.div>
@@ -527,11 +527,11 @@ export default function Memberships() {
               ].map((step, i) => (
                 <div key={i} className="flex gap-6 items-start">
                   <div className="w-24 shrink-0 text-right">
-                    <span className="font-mono text-sm text-primary">{step.phase}</span>
+                    <span className="font-estate-sans text-sm text-primary">{step.phase}</span>
                   </div>
                   <div className="w-3 h-3 rounded-full bg-primary mt-2 shrink-0" />
                   <div className="flex-1 pb-6 border-b border-border/50 last:border-0">
-                    <h4 className="font-display text-lg font-medium mb-2">{step.title}</h4>
+                    <h4 className="font-estate-headline text-lg font-medium mb-2">{step.title}</h4>
                     <p className="text-sm text-muted-foreground">{step.description}</p>
                   </div>
                 </div>
@@ -552,13 +552,13 @@ export default function Memberships() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
+              <span className="font-estate-sans text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
                 REVENUE EXPANSION
               </span>
-              <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-4">
+              <h2 className="font-estate-headline text-4xl md:text-5xl font-medium mt-4 mb-4">
                 Ancillary Revenue Streams
               </h2>
-              <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className="font-estate-sans text-lg text-muted-foreground max-w-2xl mx-auto">
                 Beyond membership fees, ELITE members generate significant ancillary revenue 
                 through additional products and services at 60% contribution margin.
               </p>
@@ -566,7 +566,7 @@ export default function Memberships() {
 
             <motion.div variants={fadeInUp} className="grid md:grid-cols-2 gap-8">
               <div className="bg-card border border-border rounded-2xl p-8">
-                <h3 className="font-display text-xl font-medium mb-6">Ancillary Products & Services</h3>
+                <h3 className="font-estate-headline text-xl font-medium mb-6">Ancillary Products & Services</h3>
                 <div className="space-y-4">
                   {[
                     { category: "Peptide Protocols", percentage: "35%", revenue: "$6.8M", description: "Custom peptide compounds and protocols" },
@@ -576,11 +576,11 @@ export default function Memberships() {
                   ].map((item, i) => (
                     <div key={i} className="flex items-center justify-between py-3 border-b border-border/50 last:border-0">
                       <div>
-                        <span className="font-body text-foreground">{item.category}</span>
+                        <span className="font-estate-sans text-foreground">{item.category}</span>
                         <p className="text-xs text-muted-foreground">{item.description}</p>
                       </div>
                       <div className="text-right">
-                        <span className="font-mono text-primary">{item.percentage}</span>
+                        <span className="font-estate-sans text-primary">{item.percentage}</span>
                         <p className="text-xs text-muted-foreground">{item.revenue} Y5</p>
                       </div>
                     </div>
@@ -589,23 +589,23 @@ export default function Memberships() {
               </div>
 
               <div className="bg-card border border-border rounded-2xl p-8">
-                <h3 className="font-display text-xl font-medium mb-6">Revenue Model</h3>
+                <h3 className="font-estate-headline text-xl font-medium mb-6">Revenue Model</h3>
                 <div className="space-y-6">
                   <div className="flex justify-between items-center pb-4 border-b border-border">
                     <span className="text-muted-foreground">Ancillary as % of Membership</span>
-                    <span className="font-mono text-2xl text-primary">50%</span>
+                    <span className="font-estate-sans text-2xl text-primary">50%</span>
                   </div>
                   <div className="flex justify-between items-center pb-4 border-b border-border">
                     <span className="text-muted-foreground">Contribution Margin</span>
-                    <span className="font-mono text-2xl text-foreground">60%</span>
+                    <span className="font-estate-sans text-2xl text-foreground">60%</span>
                   </div>
                   <div className="flex justify-between items-center pb-4 border-b border-border">
                     <span className="text-muted-foreground">Year 5 Ancillary Revenue</span>
-                    <span className="font-mono text-2xl text-foreground">$19.3M</span>
+                    <span className="font-estate-sans text-2xl text-foreground">$19.3M</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-muted-foreground">Year 5 Contribution</span>
-                    <span className="font-mono text-2xl text-accent">$11.6M</span>
+                    <span className="font-estate-sans text-2xl text-accent">$11.6M</span>
                   </div>
                 </div>
               </div>
@@ -625,13 +625,13 @@ export default function Memberships() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp}>
-              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
+              <span className="font-estate-sans text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
                 MEMBER ACQUISITION
               </span>
-              <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-4">
+              <h2 className="font-estate-headline text-4xl md:text-5xl font-medium mt-4 mb-4">
                 Referral Program
               </h2>
-              <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
+              <p className="font-estate-sans text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
                 Our member referral program drives 40% of new member acquisition at significantly lower CAC.
               </p>
             </motion.div>
@@ -639,14 +639,14 @@ export default function Memberships() {
             <motion.div variants={fadeInUp} className="grid md:grid-cols-2 gap-8">
               <div className="bg-card border border-border rounded-2xl p-8 text-left">
                 <Sparkles className="w-8 h-8 text-accent mb-4" />
-                <h3 className="font-display text-xl font-medium mb-2">Referring Member</h3>
-                <p className="text-3xl font-mono text-primary mb-2">$500</p>
+                <h3 className="font-estate-headline text-xl font-medium mb-2">Referring Member</h3>
+                <p className="text-3xl font-estate-sans text-primary mb-2">$500</p>
                 <p className="text-sm text-muted-foreground">Credit toward next membership renewal</p>
               </div>
               <div className="bg-card border border-border rounded-2xl p-8 text-left">
                 <Heart className="w-8 h-8 text-accent mb-4" />
-                <h3 className="font-display text-xl font-medium mb-2">New Member</h3>
-                <p className="text-3xl font-mono text-primary mb-2">$500</p>
+                <h3 className="font-estate-headline text-xl font-medium mb-2">New Member</h3>
+                <p className="text-3xl font-estate-sans text-primary mb-2">$500</p>
                 <p className="text-sm text-muted-foreground">Credit toward first membership fee</p>
               </div>
             </motion.div>
@@ -654,15 +654,15 @@ export default function Memberships() {
             <motion.div variants={fadeInUp} className="mt-8 bg-muted/30 rounded-2xl p-6">
               <div className="grid md:grid-cols-3 gap-6 text-center">
                 <div>
-                  <span className="font-mono text-2xl text-primary">$1,000</span>
+                  <span className="font-estate-sans text-2xl text-primary">$1,000</span>
                   <p className="text-xs text-muted-foreground mt-1">Total Referral CAC</p>
                 </div>
                 <div>
-                  <span className="font-mono text-2xl text-foreground">40%</span>
+                  <span className="font-estate-sans text-2xl text-foreground">40%</span>
                   <p className="text-xs text-muted-foreground mt-1">New Members from Referrals</p>
                 </div>
                 <div>
-                  <span className="font-mono text-2xl text-foreground">$300K</span>
+                  <span className="font-estate-sans text-2xl text-foreground">$300K</span>
                   <p className="text-xs text-muted-foreground mt-1">Annual CAC Savings vs Direct</p>
                 </div>
               </div>
@@ -682,13 +682,13 @@ export default function Memberships() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
+              <span className="font-estate-sans text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
                 QUICK COMPARISON
               </span>
-              <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-4">
+              <h2 className="font-estate-headline text-4xl md:text-5xl font-medium mt-4 mb-4">
                 Feature Comparison
               </h2>
-              <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className="font-estate-sans text-lg text-muted-foreground max-w-2xl mx-auto">
                 A comprehensive side-by-side comparison of PRIME and ELITE membership benefits
               </p>
             </motion.div>
@@ -698,24 +698,24 @@ export default function Memberships() {
                 <table className="w-full">
                   <thead>
                     <tr className="border-b border-border bg-muted/30">
-                      <th className="text-left p-4 font-display font-medium">Feature</th>
-                      <th className="text-center p-4 font-display font-medium">
+                      <th className="text-left p-4 font-estate-headline font-medium">Feature</th>
+                      <th className="text-center p-4 font-estate-headline font-medium">
                         <div className="flex items-center justify-center gap-2">
                           <Check className="w-4 h-4 text-primary" />
                           PRIME
                         </div>
-                        <span className="text-xs font-mono text-muted-foreground font-normal">$12,500/yr</span>
+                        <span className="text-xs font-estate-sans text-muted-foreground font-normal">$12,500/yr</span>
                       </th>
-                      <th className="text-center p-4 font-display font-medium">
+                      <th className="text-center p-4 font-estate-headline font-medium">
                         <div className="flex items-center justify-center gap-2">
                           <Crown className="w-4 h-4 text-accent" />
                           ELITE
                         </div>
-                        <span className="text-xs font-mono text-muted-foreground font-normal">$29,500/yr</span>
+                        <span className="text-xs font-estate-sans text-muted-foreground font-normal">$29,500/yr</span>
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="font-body text-sm">
+                  <tbody className="font-estate-sans text-sm">
                     {[
                       { feature: "Full-body MRI Screening", check: true, elite: true, category: "Diagnostics" },
                       { feature: "Advanced Bloodwork (100+ biomarkers)", check: true, elite: true, category: "Diagnostics" },
@@ -745,7 +745,7 @@ export default function Memberships() {
                     ].map((row, i) => (
                       row.feature === "divider" ? (
                         <tr key={i} className="bg-muted/20">
-                          <td colSpan={3} className="p-2 text-xs font-mono text-primary text-center">
+                          <td colSpan={3} className="p-2 text-xs font-estate-sans text-primary text-center">
                             {row.category}
                           </td>
                         </tr>
@@ -754,7 +754,7 @@ export default function Memberships() {
                           <td className="p-4 text-muted-foreground">{row.feature}</td>
                           <td className="p-4 text-center">
                             {typeof row.check === "string" ? (
-                              <span className="font-mono text-xs text-primary">{row.check}</span>
+                              <span className="font-estate-sans text-xs text-primary">{row.check}</span>
                             ) : row.check ? (
                               <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center mx-auto">
                                 <Check className="w-3 h-3 text-primary" />
@@ -765,7 +765,7 @@ export default function Memberships() {
                           </td>
                           <td className="p-4 text-center">
                             {typeof row.elite === "string" ? (
-                              <span className="font-mono text-xs text-accent">{row.elite}</span>
+                              <span className="font-estate-sans text-xs text-accent">{row.elite}</span>
                             ) : row.elite ? (
                               <div className="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center mx-auto">
                                 <Check className="w-3 h-3 text-accent" />
@@ -796,13 +796,13 @@ export default function Memberships() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-8">
-              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
+              <span className="font-estate-sans text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
                 DIVE DEEPER
               </span>
-              <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-4">
+              <h2 className="font-estate-headline text-4xl md:text-5xl font-medium mt-4 mb-4">
                 Explore the Economics
               </h2>
-              <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className="font-estate-sans text-lg text-muted-foreground max-w-2xl mx-auto">
                 See how membership revenue translates into sustainable unit economics and long-term value creation
               </p>
             </motion.div>
@@ -816,14 +816,14 @@ export default function Memberships() {
                     </div>
                     <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
                   </div>
-                  <h3 className="font-display text-xl font-medium mb-2">Unit Economics</h3>
-                  <p className="font-body text-sm text-muted-foreground mb-4">
+                  <h3 className="font-estate-headline text-xl font-medium mb-2">Unit Economics</h3>
+                  <p className="font-estate-sans text-sm text-muted-foreground mb-4">
                     Detailed breakdown of member lifetime value, customer acquisition costs, and contribution margins by tier.
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    <span className="text-xs font-mono px-2 py-1 rounded bg-muted text-muted-foreground">$97K ELITE LTV</span>
-                    <span className="text-xs font-mono px-2 py-1 rounded bg-muted text-muted-foreground">$1,900 Blended CAC</span>
-                    <span className="text-xs font-mono px-2 py-1 rounded bg-muted text-muted-foreground">51x LTV:CAC</span>
+                    <span className="text-xs font-estate-sans px-2 py-1 rounded bg-muted text-muted-foreground">$97K ELITE LTV</span>
+                    <span className="text-xs font-estate-sans px-2 py-1 rounded bg-muted text-muted-foreground">$1,900 Blended CAC</span>
+                    <span className="text-xs font-estate-sans px-2 py-1 rounded bg-muted text-muted-foreground">51x LTV:CAC</span>
                   </div>
                 </div>
               </Link>
@@ -836,14 +836,14 @@ export default function Memberships() {
                     </div>
                     <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all" />
                   </div>
-                  <h3 className="font-display text-xl font-medium mb-2">Growth Projections</h3>
-                  <p className="font-body text-sm text-muted-foreground mb-4">
+                  <h3 className="font-estate-headline text-xl font-medium mb-2">Growth Projections</h3>
+                  <p className="font-estate-sans text-sm text-muted-foreground mb-4">
                     See how membership growth drives revenue from a single center to a 10-center network by 2031.
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    <span className="text-xs font-mono px-2 py-1 rounded bg-muted text-muted-foreground">$57.5M Y5 Revenue</span>
-                    <span className="text-xs font-mono px-2 py-1 rounded bg-muted text-muted-foreground">1,365 Members</span>
-                    <span className="text-xs font-mono px-2 py-1 rounded bg-muted text-muted-foreground">10 Centers</span>
+                    <span className="text-xs font-estate-sans px-2 py-1 rounded bg-muted text-muted-foreground">$57.5M Y5 Revenue</span>
+                    <span className="text-xs font-estate-sans px-2 py-1 rounded bg-muted text-muted-foreground">1,365 Members</span>
+                    <span className="text-xs font-estate-sans px-2 py-1 rounded bg-muted text-muted-foreground">10 Centers</span>
                   </div>
                 </div>
               </Link>
@@ -852,27 +852,27 @@ export default function Memberships() {
             <motion.div variants={fadeInUp} className="mt-8 bg-muted/30 rounded-2xl p-6">
               <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                 <div className="text-center md:text-left">
-                  <h4 className="font-display font-medium mb-1">Key Membership Metrics</h4>
+                  <h4 className="font-estate-headline font-medium mb-1">Key Membership Metrics</h4>
                   <p className="text-sm text-muted-foreground">How membership economics flow into company financials</p>
                 </div>
                 <div className="flex flex-wrap justify-center gap-4">
                   <div className="text-center">
-                    <span className="font-mono text-xl text-primary">85%</span>
+                    <span className="font-estate-sans text-xl text-primary">85%</span>
                     <p className="text-xs text-muted-foreground">ELITE Mix</p>
                   </div>
                   <div className="w-px h-10 bg-border hidden md:block" />
                   <div className="text-center">
-                    <span className="font-mono text-xl text-foreground">70%</span>
+                    <span className="font-estate-sans text-xl text-foreground">70%</span>
                     <p className="text-xs text-muted-foreground">ELITE Renewal</p>
                   </div>
                   <div className="w-px h-10 bg-border hidden md:block" />
                   <div className="text-center">
-                    <span className="font-mono text-xl text-foreground">500</span>
+                    <span className="font-estate-sans text-xl text-foreground">500</span>
                     <p className="text-xs text-muted-foreground">New/Year</p>
                   </div>
                   <div className="w-px h-10 bg-border hidden md:block" />
                   <div className="text-center">
-                    <span className="font-mono text-xl text-accent">40%</span>
+                    <span className="font-estate-sans text-xl text-accent">40%</span>
                     <p className="text-xs text-muted-foreground">From Referrals</p>
                   </div>
                 </div>

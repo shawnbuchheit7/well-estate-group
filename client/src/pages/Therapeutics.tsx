@@ -27,13 +27,13 @@ export default function Therapeutics() {
             animate="visible"
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
+            <motion.span variants={fadeInUp} className="font-estate-sans text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
               PROPRIETARY THERAPEUTICS
             </motion.span>
-            <motion.h1 variants={fadeInUp} className="font-display text-5xl md:text-7xl font-medium mt-4 mb-6">
+            <motion.h1 variants={fadeInUp} className="font-estate-headline text-5xl md:text-7xl font-medium mt-4 mb-6">
               The Science of Longevity
             </motion.h1>
-            <motion.p variants={fadeInUp} className="font-body text-xl text-muted-foreground">
+            <motion.p variants={fadeInUp} className="font-estate-sans text-xl text-muted-foreground">
               Exclusive access to breakthrough biologics and vertically integrated manufacturing 
               capabilities that set Well Estate Group apart.
             </motion.p>
@@ -52,14 +52,14 @@ export default function Therapeutics() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp}>
-              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
+              <span className="font-estate-sans text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
                 THE WELL ESTATE GROUP DIFFERENCE
               </span>
-              <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
+              <h2 className="font-estate-headline text-4xl md:text-5xl font-medium mt-4 mb-6">
                 Physician-Led. <br />
                 <span className="text-gradient">Vertically Integrated.</span>
               </h2>
-              <p className="font-body text-lg text-muted-foreground mb-8">
+              <p className="font-estate-sans text-lg text-muted-foreground mb-8">
                 Unlike competitors who rely on third-party biologics, Well Estate Group controls the entire 
                 value chain—from cell sourcing to patient delivery. This vertical integration 
                 enables superior quality, lower costs, and faster innovation.
@@ -73,7 +73,7 @@ export default function Therapeutics() {
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-3">
                     <div className="w-2 h-2 rounded-full bg-primary" />
-                    <span className="font-body text-foreground">{item}</span>
+                    <span className="font-estate-sans text-foreground">{item}</span>
                   </div>
                 ))}
               </div>
@@ -85,7 +85,7 @@ export default function Therapeutics() {
                       loading="lazy"
                 src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663276264373/EYeJVwdkrNJOoDJr.webp" 
                 alt="Well Estate Group Treatment Room"
-                className="relative rounded-3xl border border-[#B8860B]/40 shadow-2xl ring-1 ring-[#B8860B]/20 ring-offset-2 ring-offset-white"
+                className="relative rounded-3xl border border-[#1A1A1A]/40 shadow-2xl ring-1 ring-[#1A1A1A]/20 ring-offset-2 ring-offset-white"
               />
             </motion.div>
           </motion.div>
@@ -102,10 +102,10 @@ export default function Therapeutics() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
+            <motion.span variants={fadeInUp} className="font-estate-sans text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
               BREAKTHROUGH BIOLOGICS
             </motion.span>
-            <motion.h2 variants={fadeInUp} className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
+            <motion.h2 variants={fadeInUp} className="font-estate-headline text-4xl md:text-5xl font-medium mt-4 mb-6">
               Three Pillars of Regeneration
             </motion.h2>
           </motion.div>
@@ -162,12 +162,12 @@ export default function Therapeutics() {
                   <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-6">
                     <tech.icon className="w-7 h-7 text-background" />
                   </div>
-                  <h3 className="font-display text-2xl font-medium mb-1">{tech.name}</h3>
-                  <p className="font-mono text-xs text-primary mb-4">{tech.subtitle}</p>
-                  <p className="font-body text-muted-foreground mb-6">{tech.description}</p>
+                  <h3 className="font-estate-headline text-2xl font-medium mb-1">{tech.name}</h3>
+                  <p className="font-estate-sans text-xs text-primary mb-4">{tech.subtitle}</p>
+                  <p className="font-estate-sans text-muted-foreground mb-6">{tech.description}</p>
                   <ul className="space-y-2">
                     {tech.highlights.map((highlight, i) => (
-                      <li key={i} className="font-body text-sm text-muted-foreground flex gap-2">
+                      <li key={i} className="font-estate-sans text-sm text-muted-foreground flex gap-2">
                         <span className="text-accent">•</span>
                         {highlight}
                       </li>
@@ -191,13 +191,13 @@ export default function Therapeutics() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-amber-500 text-sm tracking-wider section-header-accent-center">
+              <span className="font-estate-sans text-amber-500 text-sm tracking-wider section-header-accent-center">
                 MASSIVE ADDITIONAL OPPORTUNITY
               </span>
-              <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
+              <h2 className="font-estate-headline text-4xl md:text-5xl font-medium mt-4 mb-6">
                 Therapeutics Product Licensing
               </h2>
-              <p className="font-body text-xl text-muted-foreground max-w-3xl mx-auto">
+              <p className="font-estate-sans text-xl text-muted-foreground max-w-3xl mx-auto">
                 Beyond our owned centers, Well Estate Group's proprietary therapeutics represent a significant licensing 
                 opportunity to established medical providers worldwide.
               </p>
@@ -211,11 +211,11 @@ export default function Therapeutics() {
                     <FileText className="w-7 h-7 text-amber-500" />
                   </div>
                   <div>
-                    <h3 className="font-display text-2xl font-medium">The Opportunity</h3>
-                    <p className="font-mono text-xs text-amber-500">Asset-Light Revenue Stream</p>
+                    <h3 className="font-estate-headline text-2xl font-medium">The Opportunity</h3>
+                    <p className="font-estate-sans text-xs text-amber-500">Asset-Light Revenue Stream</p>
                   </div>
                 </div>
-                <p className="font-body text-muted-foreground mb-6">
+                <p className="font-estate-sans text-muted-foreground mb-6">
                   License Well Estate Group's proprietary therapeutics—including MUSE Cell technology, Lumasome™ exosomes, 
                   and treatment protocols—to hospitals, clinics, and medical groups worldwide without the capital 
                   investment required for physical center development.
@@ -228,15 +228,15 @@ export default function Therapeutics() {
                     { value: "Global", label: "Addressable Market" }
                   ].map((stat, i) => (
                     <div key={i} className="bg-amber-500/10 rounded-lg p-3 text-center">
-                      <span className="font-display text-xl font-bold text-amber-500">{stat.value}</span>
-                      <p className="font-body text-xs text-muted-foreground mt-1">{stat.label}</p>
+                      <span className="font-estate-headline text-xl font-bold text-amber-500">{stat.value}</span>
+                      <p className="font-estate-sans text-xs text-muted-foreground mt-1">{stat.label}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
               <div className="bg-card border border-border rounded-2xl p-8">
-                <h3 className="font-display text-xl font-medium mb-6 flex items-center gap-2">
+                <h3 className="font-estate-headline text-xl font-medium mb-6 flex items-center gap-2">
                   <Target className="w-5 h-5 text-primary" />
                   Licensable Assets
                 </h3>
@@ -268,8 +268,8 @@ export default function Therapeutics() {
                         <asset.icon className="w-5 h-5 text-primary" />
                       </div>
                       <div>
-                        <h4 className="font-display font-medium">{asset.title}</h4>
-                        <p className="font-body text-sm text-muted-foreground">{asset.description}</p>
+                        <h4 className="font-estate-headline font-medium">{asset.title}</h4>
+                        <p className="font-estate-sans text-sm text-muted-foreground">{asset.description}</p>
                       </div>
                     </div>
                   ))}
@@ -279,7 +279,7 @@ export default function Therapeutics() {
 
             {/* Target Markets */}
             <motion.div variants={fadeInUp} className="mb-12">
-              <h3 className="font-display text-2xl font-medium mb-6 flex items-center gap-2">
+              <h3 className="font-estate-headline text-2xl font-medium mb-6 flex items-center gap-2">
                 <Globe className="w-6 h-6 text-primary" />
                 Target Licensee Markets
               </h3>
@@ -306,15 +306,15 @@ export default function Therapeutics() {
                 ].map((market, i) => (
                   <div key={i} className="bg-card border border-border rounded-2xl p-6 hover:border-primary/50 transition-colors">
                     <div className="flex items-center justify-between mb-4">
-                      <h4 className="font-display text-lg font-medium">{market.segment}</h4>
-                      <span className="font-mono text-xs text-primary bg-primary/10 px-2 py-1 rounded">{market.marketSize}</span>
+                      <h4 className="font-estate-headline text-lg font-medium">{market.segment}</h4>
+                      <span className="font-estate-sans text-xs text-primary bg-primary/10 px-2 py-1 rounded">{market.marketSize}</span>
                     </div>
-                    <p className="font-body text-sm text-muted-foreground mb-4">{market.description}</p>
+                    <p className="font-estate-sans text-sm text-muted-foreground mb-4">{market.description}</p>
                     <div className="space-y-2">
                       {market.targets.map((target, j) => (
                         <div key={j} className="flex items-center gap-2 text-sm">
                           <CheckCircle2 className="w-4 h-4 text-accent" />
-                          <span className="font-body text-muted-foreground">{target}</span>
+                          <span className="font-estate-sans text-muted-foreground">{target}</span>
                         </div>
                       ))}
                     </div>
@@ -325,13 +325,13 @@ export default function Therapeutics() {
 
             {/* Revenue Model */}
             <motion.div variants={fadeInUp} className="mb-12">
-              <h3 className="font-display text-2xl font-medium mb-6 flex items-center gap-2">
+              <h3 className="font-estate-headline text-2xl font-medium mb-6 flex items-center gap-2">
                 <DollarSign className="w-6 h-6 text-primary" />
                 Licensing Revenue Model
               </h3>
               <div className="bg-card border border-border rounded-2xl overflow-hidden">
                 <div className="p-6 bg-muted/30 border-b border-border">
-                  <p className="font-body text-muted-foreground">
+                  <p className="font-estate-sans text-muted-foreground">
                     Multi-stream revenue model combining upfront fees, recurring royalties, and product supply.
                   </p>
                 </div>
@@ -339,10 +339,10 @@ export default function Therapeutics() {
                   <table className="w-full">
                     <thead>
                       <tr className="border-b border-border">
-                        <th className="text-left p-5 font-body font-semibold text-muted-foreground">Revenue Stream</th>
-                        <th className="text-left p-5 font-body font-semibold text-muted-foreground">Description</th>
-                        <th className="text-center p-5 font-body font-semibold text-muted-foreground">Margin</th>
-                        <th className="text-center p-5 font-body font-semibold text-muted-foreground">Frequency</th>
+                        <th className="text-left p-5 font-estate-sans font-semibold text-muted-foreground">Revenue Stream</th>
+                        <th className="text-left p-5 font-estate-sans font-semibold text-muted-foreground">Description</th>
+                        <th className="text-center p-5 font-estate-sans font-semibold text-muted-foreground">Margin</th>
+                        <th className="text-center p-5 font-estate-sans font-semibold text-muted-foreground">Frequency</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -354,10 +354,10 @@ export default function Therapeutics() {
                         { stream: "Technology Platform", description: "Access to Well Estate Group's clinical management software", margin: "90%+", frequency: "Monthly SaaS" }
                       ].map((row, i) => (
                         <tr key={i} className="border-b border-border/50 hover:bg-muted/20 transition-colors">
-                          <td className="p-5 font-body font-medium">{row.stream}</td>
-                          <td className="p-5 font-body text-muted-foreground">{row.description}</td>
-                          <td className="p-5 text-center font-mono text-accent">{row.margin}</td>
-                          <td className="p-5 text-center font-body text-muted-foreground">{row.frequency}</td>
+                          <td className="p-5 font-estate-sans font-medium">{row.stream}</td>
+                          <td className="p-5 font-estate-sans text-muted-foreground">{row.description}</td>
+                          <td className="p-5 text-center font-estate-sans text-accent">{row.margin}</td>
+                          <td className="p-5 text-center font-estate-sans text-muted-foreground">{row.frequency}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -368,41 +368,41 @@ export default function Therapeutics() {
 
             {/* Geographic Priorities */}
             <motion.div variants={fadeInUp} className="mb-12">
-              <h3 className="font-display text-2xl font-medium mb-6 flex items-center gap-2">
+              <h3 className="font-estate-headline text-2xl font-medium mb-6 flex items-center gap-2">
                 <Building2 className="w-6 h-6 text-primary" />
                 Geographic Licensing Priorities
               </h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="bg-card border border-border rounded-2xl p-6">
-                  <h4 className="font-display text-lg font-medium mb-4 flex items-center gap-2">
-                    <span className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-mono text-sm">1</span>
+                  <h4 className="font-estate-headline text-lg font-medium mb-4 flex items-center gap-2">
+                    <span className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-estate-sans text-sm">1</span>
                     Domestic U.S. Markets
                   </h4>
-                  <p className="font-body text-sm text-muted-foreground mb-4">
+                  <p className="font-estate-sans text-sm text-muted-foreground mb-4">
                     License to established medical groups in markets where Well Estate Group doesn't plan owned centers.
                   </p>
                   <div className="space-y-2">
                     {["Secondary metro areas (population 500K-2M)", "Regional orthopedic and sports medicine networks", "Multi-location dermatology and aesthetics groups", "Academic medical centers for research partnerships"].map((item, i) => (
                       <div key={i} className="flex items-center gap-2 text-sm">
                         <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                        <span className="font-body text-muted-foreground">{item}</span>
+                        <span className="font-estate-sans text-muted-foreground">{item}</span>
                       </div>
                     ))}
                   </div>
                 </div>
                 <div className="bg-card border border-border rounded-2xl p-6">
-                  <h4 className="font-display text-lg font-medium mb-4 flex items-center gap-2">
-                    <span className="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-500 font-mono text-sm">2</span>
+                  <h4 className="font-estate-headline text-lg font-medium mb-4 flex items-center gap-2">
+                    <span className="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-500 font-estate-sans text-sm">2</span>
                     International Markets
                   </h4>
-                  <p className="font-body text-sm text-muted-foreground mb-4">
+                  <p className="font-estate-sans text-sm text-muted-foreground mb-4">
                     License to qualified international partners with established healthcare infrastructure.
                   </p>
                   <div className="space-y-2">
                     {["Middle East (UAE, Saudi Arabia, Bahrain) - High HNW density", "Europe (UK, Germany, Switzerland) - Established private healthcare", "Asia-Pacific (Singapore, Japan, Australia) - Growing longevity market", "Latin America (Mexico, Brazil) - Medical tourism hubs"].map((item, i) => (
                       <div key={i} className="flex items-center gap-2 text-sm">
                         <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                        <span className="font-body text-muted-foreground">{item}</span>
+                        <span className="font-estate-sans text-muted-foreground">{item}</span>
                       </div>
                     ))}
                   </div>
@@ -412,7 +412,7 @@ export default function Therapeutics() {
 
             {/* Licensee Requirements */}
             <motion.div variants={fadeInUp} className="mb-12">
-              <h3 className="font-display text-2xl font-medium mb-6 flex items-center gap-2">
+              <h3 className="font-estate-headline text-2xl font-medium mb-6 flex items-center gap-2">
                 <Shield className="w-6 h-6 text-primary" />
                 Licensee Qualification Requirements
               </h3>
@@ -448,10 +448,10 @@ export default function Therapeutics() {
                     }
                   ].map((section, i) => (
                     <div key={i}>
-                      <h4 className="font-display font-medium mb-4 text-primary">{section.category}</h4>
+                      <h4 className="font-estate-headline font-medium mb-4 text-primary">{section.category}</h4>
                       <ul className="space-y-2">
                         {section.requirements.map((req, j) => (
-                          <li key={j} className="font-body text-sm text-muted-foreground flex gap-2">
+                          <li key={j} className="font-estate-sans text-sm text-muted-foreground flex gap-2">
                             <CheckCircle2 className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
                             {req}
                           </li>
@@ -471,8 +471,8 @@ export default function Therapeutics() {
                     <TrendingUp className="w-6 h-6 text-amber-500" />
                   </div>
                   <div>
-                    <h3 className="font-display text-2xl font-medium">Strategic Value for Investors</h3>
-                    <p className="font-body text-muted-foreground mt-2">
+                    <h3 className="font-estate-headline text-2xl font-medium">Strategic Value for Investors</h3>
+                    <p className="font-estate-sans text-muted-foreground mt-2">
                       Therapeutics licensing represents a capital-efficient growth pathway that complements center development.
                     </p>
                   </div>
@@ -485,13 +485,13 @@ export default function Therapeutics() {
                     { title: "Recurring Revenue", description: "Ongoing royalties and biologics supply contracts" }
                   ].map((benefit, i) => (
                     <div key={i} className="text-center">
-                      <h4 className="font-display font-medium mb-2">{benefit.title}</h4>
-                      <p className="font-body text-sm text-muted-foreground">{benefit.description}</p>
+                      <h4 className="font-estate-headline font-medium mb-2">{benefit.title}</h4>
+                      <p className="font-estate-sans text-sm text-muted-foreground">{benefit.description}</p>
                     </div>
                   ))}
                 </div>
                 <div className="mt-8 pt-6 border-t border-amber-500/20">
-                  <p className="font-body text-sm text-amber-200">
+                  <p className="font-estate-sans text-sm text-amber-200">
                     <strong className="text-amber-500">Note:</strong> A comprehensive business plan for therapeutics licensing 
                     will be developed as a separate strategic initiative following Series A close. Current projections include 
                     domestic center revenue only; licensing represents additional upside opportunity.
@@ -521,13 +521,13 @@ export default function Therapeutics() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
+              <span className="font-estate-sans text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
                 VERTICAL INTEGRATION
               </span>
-              <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
+              <h2 className="font-estate-headline text-4xl md:text-5xl font-medium mt-4 mb-6">
                 From Lab to Patient
               </h2>
-              <p className="font-body text-xl text-muted-foreground">
+              <p className="font-estate-sans text-xl text-muted-foreground">
                 Complete control over the biologics supply chain enables superior quality, 
                 lower costs, and faster innovation cycles.
               </p>
@@ -542,9 +542,9 @@ export default function Therapeutics() {
                   { step: "04", title: "Patient Delivery", desc: "Physician-administered care" }
                 ].map((item, i) => (
                   <div key={i} className="text-center">
-                    <span className="font-mono text-4xl font-bold text-gradient">{item.step}</span>
-                    <h4 className="font-display text-lg font-medium mt-2 mb-1">{item.title}</h4>
-                    <p className="font-body text-sm text-muted-foreground">{item.desc}</p>
+                    <span className="font-estate-sans text-4xl font-bold text-gradient">{item.step}</span>
+                    <h4 className="font-estate-headline text-lg font-medium mt-2 mb-1">{item.title}</h4>
+                    <p className="font-estate-sans text-sm text-muted-foreground">{item.desc}</p>
                   </div>
                 ))}
               </div>

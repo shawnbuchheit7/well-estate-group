@@ -77,10 +77,10 @@ export default function Technology() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-[#B8860B] font-semibold text-xs tracking-[0.2em] uppercase">
+            <motion.span variants={fadeInUp} className="font-estate-sans text-[#1A1A1A] font-semibold text-xs tracking-[0.2em] uppercase">
               Technology Portfolio
             </motion.span>
-            <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mt-4 text-black">
+            <motion.h2 variants={fadeInUp} className="font-estate-headline text-3xl md:text-4xl font-medium mt-4 text-black">
               Our Platforms
             </motion.h2>
           </motion.div>
@@ -99,28 +99,28 @@ export default function Technology() {
                   <Link href={product.href} className="h-full block">
                     <motion.div
                       whileHover={{ y: -6, boxShadow: "0 24px 48px rgba(0,0,0,0.10), 0 8px 16px rgba(0,0,0,0.06)" }}
-                      className="group relative rounded-xl border border-[#B8860B]/40 bg-white overflow-hidden cursor-pointer hover:border-[#B8860B]/60 transition-all duration-300 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.03)] h-full flex flex-col"
+                      className="group relative rounded-xl border border-[#1A1A1A]/40 bg-white overflow-hidden cursor-pointer hover:border-[#1A1A1A]/60 transition-all duration-300 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.03)] h-full flex flex-col"
                     >
                       {/* Card Content */}
                       <div className="p-8 flex flex-col flex-grow">
                         {/* Top row: Icon + Status */}
                         <div className="flex items-start justify-between mb-5">
-                          <div className="w-11 h-11 rounded-xl bg-[#F5F4F1] border border-[#B8860B]/55 flex items-center justify-center shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+                          <div className="w-11 h-11 rounded-xl bg-[#F5F4F1] border border-[#1A1A1A]/55 flex items-center justify-center shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
                             <IconComponent className="w-5 h-5 text-black/45" />
                           </div>
-                          <span className="font-mono text-[9px] tracking-[0.15em] uppercase px-3 py-1.5 rounded-full font-medium bg-[#B8860B]/10 text-[#B8860B] border border-[#B8860B]/55">
+                          <span className="font-estate-sans text-[9px] tracking-[0.15em] uppercase px-3 py-1.5 rounded-full font-medium bg-[#1A1A1A]/10 text-[#1A1A1A] border border-[#1A1A1A]/55">
                             {product.status === "active" ? "Active" : "In Development"}
                           </span>
                         </div>
 
                         {/* Title */}
-                        <h3 className="font-display text-2xl font-bold text-black mb-2 group-hover:text-[#B8860B] transition-colors tracking-tight leading-tight">
+                        <h3 className="font-estate-headline text-2xl font-bold text-black mb-2 group-hover:text-[#1A1A1A] transition-colors tracking-tight leading-tight">
                           {product.title}
                         </h3>
-                        <p className="font-mono text-[10px] text-black/60 tracking-[0.15em] uppercase mb-4 font-medium">
+                        <p className="font-estate-sans text-[10px] text-black/60 tracking-[0.15em] uppercase mb-4 font-medium">
                           {product.subtitle}
                         </p>
-                        <p className="font-body text-sm text-black/70 leading-relaxed mb-7 flex-grow">
+                        <p className="font-estate-sans text-sm text-black/70 leading-relaxed mb-7 flex-grow">
                           {product.description}
                         </p>
 
@@ -128,17 +128,17 @@ export default function Technology() {
                         {product.stats && (
                           <div className="flex gap-3 mb-7">
                             {product.stats.map((stat, i) => (
-                              <div key={i} className="flex-1 text-center py-3 rounded-lg bg-[#FAFAF8] border border-[#B8860B]/55">
-                                <p className="font-display text-xl font-bold text-black leading-none">{stat.value}</p>
-                                <p className="font-mono text-[9px] text-black/55 uppercase tracking-[0.12em] font-medium mt-1.5">{stat.label}</p>
+                              <div key={i} className="flex-1 text-center py-3 rounded-lg bg-[#FAFAF8] border border-[#1A1A1A]/55">
+                                <p className="font-estate-headline text-xl font-bold text-black leading-none">{stat.value}</p>
+                                <p className="font-estate-sans text-[9px] text-black/55 uppercase tracking-[0.12em] font-medium mt-1.5">{stat.label}</p>
                               </div>
                             ))}
                           </div>
                         )}
 
                         {/* CTA */}
-                        <div className="flex items-center gap-2 text-black/65 group-hover:text-[#B8860B] transition-colors pt-4 border-t border-[#B8860B]/40">
-                          <span className="font-body text-sm font-semibold">View Details</span>
+                        <div className="flex items-center gap-2 text-black/65 group-hover:text-[#1A1A1A] transition-colors pt-4 border-t border-[#1A1A1A]/40">
+                          <span className="font-estate-sans text-sm font-semibold">View Details</span>
                           <motion.div
                             animate={{ x: [0, 4, 0] }}
                             transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}

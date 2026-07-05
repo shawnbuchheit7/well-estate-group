@@ -23,13 +23,13 @@ export default function Opportunity() {
             animate="visible"
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
+            <motion.span variants={fadeInUp} className="font-estate-sans text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
               THE OPPORTUNITY
             </motion.span>
-            <motion.h1 variants={fadeInUp} className="font-display text-5xl md:text-7xl font-medium mt-4 mb-6">
+            <motion.h1 variants={fadeInUp} className="font-estate-headline text-5xl md:text-7xl font-medium mt-4 mb-6">
               A $1 Trillion+ Market
             </motion.h1>
-            <motion.p variants={fadeInUp} className="font-body text-xl text-muted-foreground">
+            <motion.p variants={fadeInUp} className="font-estate-sans text-xl text-muted-foreground">
               At the crossroads of regenerative medicine, luxury wellness, and concierge care—three sectors 
               redefining modern healthcare.
             </motion.p>
@@ -94,20 +94,20 @@ export default function Opportunity() {
                   >
                     <market.icon className="w-10 h-10 text-primary mb-6" />
                   </motion.div>
-                  <h3 className="font-display text-2xl font-medium mb-2">{market.title}</h3>
+                  <h3 className="font-estate-headline text-2xl font-medium mb-2">{market.title}</h3>
                   <div className="flex items-baseline gap-2 mb-2">
                     <AnimatedCounter 
                       value={market.numValue} 
                       prefix="$" 
                       suffix={market.suffix}
                       decimals={market.decimals || 0}
-                      className="font-display text-5xl font-semibold text-gradient"
+                      className="font-estate-headline text-5xl font-semibold text-gradient"
                       duration={2.5 + index * 0.3}
                     />
-                    <span className="font-mono text-sm text-muted-foreground">{market.year}</span>
+                    <span className="font-estate-sans text-sm text-muted-foreground">{market.year}</span>
                   </div>
                   <motion.div 
-                    className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-primary/10 text-primary font-mono text-sm mb-4"
+                    className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-primary/10 text-primary font-estate-sans text-sm mb-4"
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true }}
@@ -116,7 +116,7 @@ export default function Opportunity() {
                     <TrendingUp className="w-4 h-4" />
                     {market.growth}
                   </motion.div>
-                  <p className="font-body text-muted-foreground">{market.description}</p>
+                  <p className="font-estate-sans text-muted-foreground">{market.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -134,13 +134,13 @@ export default function Opportunity() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.span variants={fadeInUp} className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
+            <motion.span variants={fadeInUp} className="font-estate-sans text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
               COMPETITIVE ADVANTAGE
             </motion.span>
-            <motion.h2 variants={fadeInUp} className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
+            <motion.h2 variants={fadeInUp} className="font-estate-headline text-4xl md:text-5xl font-medium mt-4 mb-6">
               Why Well Estate Group Wins
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-xl text-muted-foreground max-w-3xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-estate-sans text-xl text-muted-foreground max-w-3xl mx-auto">
               A fundamentally different approach to regenerative medicine—vertically integrated, 
               physician-led, and built for scale.
             </motion.p>
@@ -159,12 +159,12 @@ export default function Opportunity() {
                 <table className="w-full">
                   <thead>
                     <tr className="border-b border-border bg-muted/30">
-                      <th className="text-left p-5 font-body font-semibold text-muted-foreground w-1/4">Capability</th>
-                      <th className="text-center p-5 font-body font-semibold w-1/4">
+                      <th className="text-left p-5 font-estate-sans font-semibold text-muted-foreground w-1/4">Capability</th>
+                      <th className="text-center p-5 font-estate-sans font-semibold w-1/4">
                         <span className="text-gradient">Well Estate Group</span>
                       </th>
-                      <th className="text-center p-5 font-body font-semibold text-muted-foreground w-1/4">HLI</th>
-                      <th className="text-center p-5 font-body font-semibold text-muted-foreground w-1/4">Concierge Clinics</th>
+                      <th className="text-center p-5 font-estate-sans font-semibold text-muted-foreground w-1/4">HLI</th>
+                      <th className="text-center p-5 font-estate-sans font-semibold text-muted-foreground w-1/4">Concierge Clinics</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -228,8 +228,8 @@ export default function Opportunity() {
                     ] as const).map((row, i) => (
                       <tr key={i} className="border-b border-border/50 hover:bg-muted/20 transition-colors">
                         <td className="p-5">
-                          <span className="font-body font-medium">{row.capability}</span>
-                          <span className="block font-mono text-xs text-muted-foreground mt-1">{row.note}</span>
+                          <span className="font-estate-sans font-medium">{row.capability}</span>
+                          <span className="block font-estate-sans text-xs text-muted-foreground mt-1">{row.note}</span>
                         </td>
                         <td className="p-5 text-center">
                           {row.weg === "yes" ? (
@@ -299,11 +299,11 @@ export default function Opportunity() {
                 }
               ].map((diff, i) => (
                 <div key={i} className="bg-card border border-border rounded-2xl p-8 overflow-hidden hover:border-primary/50 transition-colors">
-                  <h3 className="font-display text-xl font-medium mb-3">{diff.title}</h3>
-                  <p className="font-body text-muted-foreground mb-6">{diff.description}</p>
+                  <h3 className="font-estate-headline text-xl font-medium mb-3">{diff.title}</h3>
+                  <p className="font-estate-sans text-muted-foreground mb-6">{diff.description}</p>
                   <div className="flex items-center gap-2">
                     <TrendingUp className="w-4 h-4 text-primary flex-shrink-0" />
-                    <span className="font-mono text-sm text-primary font-semibold">{diff.highlight}</span>
+                    <span className="font-estate-sans text-sm text-primary font-semibold">{diff.highlight}</span>
                   </div>
                 </div>
               ))}
@@ -323,13 +323,13 @@ export default function Opportunity() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <span className="font-mono text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
+              <span className="font-estate-sans text-primary font-semibold text-sm tracking-wider uppercase section-header-accent-center">
                 THE WELL ESTATE GROUP DIFFERENCE
               </span>
-              <h2 className="font-display text-4xl md:text-5xl font-medium mt-4 mb-6">
+              <h2 className="font-estate-headline text-4xl md:text-5xl font-medium mt-4 mb-6">
                 Setting the New Standard
               </h2>
-              <p className="font-body text-xl text-muted-foreground max-w-3xl mx-auto">
+              <p className="font-estate-sans text-xl text-muted-foreground max-w-3xl mx-auto">
                 A physician-led, integrated approach to regenerative medicine that 
                 prioritizes safety, outcomes, and long-term trust.
               </p>
@@ -344,8 +344,8 @@ export default function Opportunity() {
                       <span className="text-muted-foreground text-xl">✕</span>
                     </div>
                     <div>
-                      <span className="font-mono text-xs text-muted-foreground tracking-wider">INDUSTRY NORMS</span>
-                      <h3 className="font-display text-2xl font-medium">Traditional Approach</h3>
+                      <span className="font-estate-sans text-xs text-muted-foreground tracking-wider">INDUSTRY NORMS</span>
+                      <h3 className="font-estate-headline text-2xl font-medium">Traditional Approach</h3>
                     </div>
                   </div>
                   
@@ -369,8 +369,8 @@ export default function Opportunity() {
                           <span className="text-destructive text-sm">✕</span>
                         </div>
                         <div>
-                          <h4 className="font-display font-medium mb-1">{item.title}</h4>
-                          <p className="font-body text-sm text-muted-foreground">{item.description}</p>
+                          <h4 className="font-estate-headline font-medium mb-1">{item.title}</h4>
+                          <p className="font-estate-sans text-sm text-muted-foreground">{item.description}</p>
                         </div>
                       </div>
                     ))}
@@ -388,8 +388,8 @@ export default function Opportunity() {
                         <span className="text-primary text-xl">✓</span>
                       </div>
                       <div>
-                        <span className="font-mono text-xs text-primary tracking-wider">WELL ESTATE GROUP</span>
-                        <h3 className="font-display text-2xl font-medium">Integrated Excellence</h3>
+                        <span className="font-estate-sans text-xs text-primary tracking-wider">WELL ESTATE GROUP</span>
+                        <h3 className="font-estate-headline text-2xl font-medium">Integrated Excellence</h3>
                       </div>
                     </div>
                     
@@ -413,8 +413,8 @@ export default function Opportunity() {
                             <span className="text-primary text-sm">✓</span>
                           </div>
                           <div>
-                            <h4 className="font-display font-medium mb-1">{item.title}</h4>
-                            <p className="font-body text-sm text-muted-foreground">{item.description}</p>
+                            <h4 className="font-estate-headline font-medium mb-1">{item.title}</h4>
+                            <p className="font-estate-sans text-sm text-muted-foreground">{item.description}</p>
                           </div>
                         </div>
                       ))}

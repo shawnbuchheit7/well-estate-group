@@ -243,7 +243,7 @@ function FAQAccordion({ category }: { category: FAQCategory }) {
             style={{ color: category.color === 'amber-500' ? '#f59e0b' : 'hsl(var(--primary))' }}
           />
         </div>
-        <h2 className="font-display text-2xl font-medium">{category.title}</h2>
+        <h2 className="font-estate-headline text-2xl font-medium">{category.title}</h2>
       </div>
 
       <div className="space-y-3">
@@ -256,14 +256,14 @@ function FAQAccordion({ category }: { category: FAQCategory }) {
               onClick={() => setOpenIndex(openIndex === index ? null : index)}
               className="w-full flex items-center justify-between p-5 text-left hover:bg-muted/30 transition-colors"
             >
-              <span className="font-display font-medium pr-4">{item.question}</span>
+              <span className="font-estate-headline font-medium pr-4">{item.question}</span>
               <ChevronDown 
                 className={`w-5 h-5 text-muted-foreground shrink-0 transition-transform ${openIndex === index ? 'rotate-180' : ''}`}
               />
             </button>
             {openIndex === index && (
               <div className="px-5 pb-5 border-t border-border">
-                <p className="font-body text-muted-foreground mt-4 leading-relaxed">
+                <p className="font-estate-sans text-muted-foreground mt-4 leading-relaxed">
                   {item.answer}
                 </p>
                 {item.links && item.links.length > 0 && (
@@ -301,15 +301,15 @@ export default function FAQ() {
           >
             <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2 mb-8">
               <HelpCircle className="w-4 h-4 text-primary" />
-              <span className="font-mono text-sm text-primary">INVESTOR FAQ</span>
+              <span className="font-estate-sans text-sm text-primary">INVESTOR FAQ</span>
             </motion.div>
             
-            <motion.h1 variants={fadeInUp} className="font-display text-5xl md:text-6xl font-medium mb-6">
+            <motion.h1 variants={fadeInUp} className="font-estate-headline text-5xl md:text-6xl font-medium mb-6">
               Frequently Asked
               <span className="block text-primary">Questions</span>
             </motion.h1>
             
-            <motion.p variants={fadeInUp} className="font-body text-xl text-muted-foreground max-w-2xl mx-auto">
+            <motion.p variants={fadeInUp} className="font-estate-sans text-xl text-muted-foreground max-w-2xl mx-auto">
               Comprehensive answers to common investor questions about the Well Estate Group model, 
               regulatory environment, and investment opportunity.
             </motion.p>
@@ -344,20 +344,20 @@ export default function FAQ() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl font-medium mb-6">
+            <motion.h2 variants={fadeInUp} className="font-estate-headline text-3xl md:text-4xl font-medium mb-6">
               Have More Questions?
             </motion.h2>
-            <motion.p variants={fadeInUp} className="font-body text-lg text-muted-foreground mb-8">
+            <motion.p variants={fadeInUp} className="font-estate-sans text-lg text-muted-foreground mb-8">
               Our team is available to discuss any aspects of the investment opportunity in detail.
             </motion.p>
             <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/longevity/contact">
-                <span className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground rounded-xl font-display font-medium hover:bg-primary/90 transition-colors cursor-pointer">
+                <span className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground rounded-xl font-estate-headline font-medium hover:bg-primary/90 transition-colors cursor-pointer">
                   Schedule a Call
                 </span>
               </Link>
               <Link href="/longevity/investors">
-                <span className="inline-flex items-center justify-center px-8 py-4 bg-card border border-border rounded-xl font-display font-medium hover:bg-muted/50 transition-colors cursor-pointer">
+                <span className="inline-flex items-center justify-center px-8 py-4 bg-card border border-border rounded-xl font-estate-headline font-medium hover:bg-muted/50 transition-colors cursor-pointer">
                   View Investment Terms
                 </span>
               </Link>

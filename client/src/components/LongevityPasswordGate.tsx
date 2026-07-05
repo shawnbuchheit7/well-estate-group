@@ -154,7 +154,7 @@ export default function LongevityPasswordGate({ children }: LongevityPasswordGat
             </motion.div>
 
             <motion.p
-              className="font-mono text-[10px] uppercase tracking-[0.2em] mb-1"
+              className="font-estate-sans text-[10px] uppercase tracking-[0.2em] mb-1"
               style={{ color: accent }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -163,7 +163,7 @@ export default function LongevityPasswordGate({ children }: LongevityPasswordGat
               {isEstateRoute ? 'The Estate' : isSaltleafRoute ? 'Wellness Advisory' : 'Longevity Center'}
             </motion.p>
             <motion.h1
-              className="font-display text-xl font-semibold text-black text-center"
+              className="font-estate-headline text-xl font-semibold text-black text-center"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
@@ -171,7 +171,7 @@ export default function LongevityPasswordGate({ children }: LongevityPasswordGat
               Confidential Access
             </motion.h1>
             <motion.p
-              className="font-body text-xs text-black/55 mt-2 text-center"
+              className="font-estate-sans text-xs text-black/55 mt-2 text-center"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.35 }}
@@ -192,7 +192,7 @@ export default function LongevityPasswordGate({ children }: LongevityPasswordGat
             transition={{ delay: 0.38 }}
           >
             <Clock className="w-3.5 h-3.5 flex-shrink-0" style={{ color: accent }} />
-            <p className="font-body text-[11px] text-black/55">
+            <p className="font-estate-sans text-[11px] text-black/55">
               Access is time-limited to <span className="font-medium text-black/75">48 hours</span> from code entry.
             </p>
           </motion.div>
@@ -204,7 +204,7 @@ export default function LongevityPasswordGate({ children }: LongevityPasswordGat
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
             >
-              <label className="block font-mono text-[10px] text-black/55 uppercase tracking-[0.15em] mb-3">
+              <label className="block font-estate-sans text-[10px] text-black/55 uppercase tracking-[0.15em] mb-3">
                 Invitation Code
               </label>
               <div className="relative">
@@ -218,7 +218,7 @@ export default function LongevityPasswordGate({ children }: LongevityPasswordGat
                   onKeyDown={handleKeyDown}
                   placeholder="Enter invitation code"
                   autoFocus
-                  className="w-full pl-11 pr-12 py-3.5 bg-[#FAFAF8] rounded-xl font-body text-sm text-black placeholder:text-black/20 focus:outline-none transition-all"
+                  className="w-full pl-11 pr-12 py-3.5 bg-[#FAFAF8] rounded-xl font-estate-sans text-sm text-black placeholder:text-black/20 focus:outline-none transition-all"
                   style={{ border: `1.5px solid ${accent}88`, }}
                   onFocus={(e) => { e.currentTarget.style.borderColor = accent; e.currentTarget.style.boxShadow = `0 0 0 2px ${accent}1A`; }}
                   onBlur={(e) => { e.currentTarget.style.borderColor = `${accent}88`; e.currentTarget.style.boxShadow = 'none'; }}
@@ -239,7 +239,7 @@ export default function LongevityPasswordGate({ children }: LongevityPasswordGat
                   initial={{ opacity: 0, y: -4 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -4 }}
-                  className="font-body text-xs text-red-500 mt-2 ml-1"
+                  className="font-estate-sans text-xs text-red-500 mt-2 ml-1"
                 >
                   Invalid invitation code. Please check and try again.
                 </motion.p>
@@ -248,7 +248,7 @@ export default function LongevityPasswordGate({ children }: LongevityPasswordGat
 
             <motion.button
               type="submit"
-              className="w-full mt-5 py-3.5 bg-black text-white font-body text-sm font-medium rounded-xl flex items-center justify-center gap-2 hover:bg-black/85 active:bg-black/90 transition-all"
+              className="w-full mt-5 py-3.5 bg-black text-white font-estate-sans text-sm font-medium rounded-xl flex items-center justify-center gap-2 hover:bg-black/85 active:bg-black/90 transition-all"
               whileHover={{ scale: 1.01 }}
               whileTap={{ scale: 0.99 }}
               initial={{ opacity: 0 }}
@@ -261,7 +261,7 @@ export default function LongevityPasswordGate({ children }: LongevityPasswordGat
           </form>
 
           <motion.p
-            className="font-body text-[10px] text-black/20 text-center mt-7"
+            className="font-estate-sans text-[10px] text-black/20 text-center mt-7"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
