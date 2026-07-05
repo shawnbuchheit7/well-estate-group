@@ -559,20 +559,20 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                       THE ESTATE
                     </span>
                   </Link>
-                  <p className="font-estate-sans text-sm leading-relaxed text-white/80">
+                  <p className="font-estate-sans text-sm leading-relaxed text-white">
                     Where Vitality is the Ultimate Luxury. The world's first residential ecosystem built entirely around longevity.
                   </p>
                 </div>
                 <div className="flex flex-col md:flex-row gap-12">
                   <div className="flex flex-col gap-3">
-                    <p className="font-estate-sans text-[10px] tracking-[0.15em] uppercase mb-1 text-white/70">Explore</p>
-                    <Link href="/longevity/estate" className="font-estate-sans text-sm hover:text-white transition-colors text-white/80">Overview</Link>
-                    <Link href="/longevity/estate/about" className="font-estate-sans text-sm hover:text-white transition-colors text-white/80">Vision</Link>
-                    <Link href="/longevity/estate/opportunity" className="font-estate-sans text-sm hover:text-white transition-colors text-white/80">Opportunity</Link>
-                    <Link href="/longevity/estate/memberships" className="font-estate-sans text-sm hover:text-white transition-colors text-white/80">Membership</Link>
+                    <p className="font-estate-sans text-[10px] tracking-[0.15em] uppercase mb-1 text-white">Explore</p>
+                    <Link href="/longevity/estate" className="font-estate-sans text-sm hover:text-white/70 transition-colors text-white">Overview</Link>
+                    <Link href="/longevity/estate/about" className="font-estate-sans text-sm hover:text-white/70 transition-colors text-white">Vision</Link>
+                    <Link href="/longevity/estate/opportunity" className="font-estate-sans text-sm hover:text-white/70 transition-colors text-white">Opportunity</Link>
+                    <Link href="/longevity/estate/memberships" className="font-estate-sans text-sm hover:text-white/70 transition-colors text-white">Membership</Link>
                   </div>
                   <div className="flex flex-col gap-3">
-                    <p className="font-estate-sans text-[10px] tracking-[0.15em] uppercase mb-1 text-white/70">Contact</p>
+                    <p className="font-estate-sans text-[10px] tracking-[0.15em] uppercase mb-1 text-white">Contact</p>
                     <a 
                       href="mailto:shawn@wellestategroup.com" 
                       className="group flex items-center gap-3 px-5 py-3 rounded-xl border transition-all bg-white/5"
@@ -583,18 +583,18 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                       </div>
                       <div>
                         <p className="font-estate-sans text-sm font-semibold text-white">Inquire</p>
-                        <p className="font-estate-sans text-xs text-white/80">shawn@wellestategroup.com</p>
+                        <p className="font-estate-sans text-xs text-white">shawn@wellestategroup.com</p>
                       </div>
                     </a>
                   </div>
                 </div>
               </div>
-              <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-8" />
+              <div className="h-px bg-gradient-to-r from-transparent via-white/30 to-transparent mb-8" />
               <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                <p className="font-estate-sans text-[11px] tracking-wider text-white/60">
+                <p className="font-estate-sans text-[11px] tracking-wider text-white">
                   &copy; 2026 The Estate. All rights reserved.
                 </p>
-                <span className="font-estate-sans text-[10px] tracking-[0.15em] text-white/50">CONFIDENTIAL</span>
+                <span className="font-estate-sans text-[10px] tracking-[0.15em] text-white/70">CONFIDENTIAL</span>
               </div>
             </div>
           </div>
