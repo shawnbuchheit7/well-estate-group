@@ -101,6 +101,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
   // Determine which nav links to use based on section and current location
+  const isEstateRoute = location.startsWith("/longevity/estate");
   const isLongevityPerformanceRoute = location.startsWith("/longevity/performance-model");
   const isSaltleafRoute = location.startsWith("/longevity/saltleaf");
   const isLongevityProjectsRoute = location === "/longevity";
@@ -148,6 +149,21 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
     navLinks = [];
     homeLink = "/";
     sectionLabel = "Venture & Product Capital";
+  } else if (isEstateRoute) {
+    navLinks = [
+      { href: "/longevity/estate", label: "Overview" },
+      { href: "/longevity/estate/about", label: "Vision" },
+      { href: "/longevity/estate/opportunity", label: "Opportunity" },
+      { href: "/longevity/estate/memberships", label: "Membership" },
+      { href: "/longevity/estate/therapeutics", label: "Experience" },
+      { href: "/longevity/estate/technology", label: "Technology" },
+      { href: "/longevity/estate/projections", label: "Pipeline" },
+      { href: "/longevity/estate/team", label: "Platform" },
+      { href: "/longevity/estate/faq", label: "FAQ" },
+    ];
+    homeLink = "/longevity/estate";
+    sectionLabel = "The Estate";
+    backLink = "/longevity";
   } else if (isSaltleafRoute || section === "longevity-saltleaf") {
     navLinks = saltleafNavLinks;
     homeLink = "/longevity/saltleaf";
