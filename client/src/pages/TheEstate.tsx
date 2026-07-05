@@ -150,30 +150,8 @@ export default function TheEstate() {
               Where Vitality is the Ultimate Luxury.
             </motion.p>
 
-            {/* Body text — word for word from brand deck PDF page 2 */}
-            <motion.div variants={fadeUp} className="font-estate-display text-base md:text-lg leading-relaxed max-w-3xl mx-auto mb-20 space-y-6" style={{ color: "rgba(250,247,242,0.75)" }}>
-              <p>
-                Designed to extend life—and the quality of living—The Estate is a next-generation
-                platform for luxury hospitality and wellness-oriented living.
-              </p>
-              <p>
-                An integrated network of resorts, residences, and longevity clubs, where design, science,
-                and experience converge to meet a growing global demand for health-anchored luxury
-                environments. Where every detail, from the lighting to the air itself,
-                is engineered for healing and peak human performance. Where health transcends
-                treatment and becomes lifestyle, meeting individuals where they are and empowering
-                them with tools to thrive. Grounded in science and driven by personalization,
-                The Estate leverages AI-powered diagnostics, proactive care, restorative design, and
-                global innovators to support wellbeing that engages across time and place.
-              </p>
-              <p>
-                More than a brand—The Estate is a mindset, a movement,<br />
-                and a new model for wellbeing.
-              </p>
-            </motion.div>
-
-            {/* 7 Core Pillars — vertical rectangles side by side */}
-            <motion.div variants={fadeUp} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4 mb-20">
+            {/* 7 Core Pillars — vertical rectangles side by side, directly below tagline */}
+            <motion.div variants={fadeUp} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-5 mb-20 mt-4">
               {[
                 { title: "Purpose", text: "Designed to extend life and the quality of living" },
                 { title: "Structure", text: "An integrated network of resorts, residences, and longevity clubs" },
@@ -183,11 +161,11 @@ export default function TheEstate() {
                 { title: "Technology", text: "AI-powered diagnostics, proactive care, restorative design, and global innovators" },
                 { title: "Vision", text: "A mindset, a movement, and a new model for wellbeing" },
               ].map((pillar, i) => (
-                <div key={i} className="flex flex-col items-center text-center px-5 py-12 rounded-xl border min-h-[200px] justify-center" style={{ borderColor: 'rgba(250,247,242,0.12)', backgroundColor: 'rgba(250,247,242,0.03)' }}>
-                  <p className="font-estate-sans text-[11px] font-semibold tracking-[0.2em] uppercase mb-5" style={{ color: IVORY }}>
+                <div key={i} className="flex flex-col items-center text-center px-6 py-14 rounded-xl border min-h-[240px] justify-center" style={{ borderColor: 'rgba(250,247,242,0.12)', backgroundColor: 'rgba(250,247,242,0.03)' }}>
+                  <p className="font-estate-sans text-[13px] font-semibold tracking-[0.2em] uppercase mb-5" style={{ color: IVORY }}>
                     {pillar.title}
                   </p>
-                  <p className="font-estate-sans text-[12px] leading-relaxed font-light" style={{ color: 'rgba(250,247,242,0.55)' }}>
+                  <p className="font-estate-sans text-[14px] leading-relaxed font-light" style={{ color: 'rgba(250,247,242,0.55)' }}>
                     {pillar.text}
                   </p>
                 </div>
