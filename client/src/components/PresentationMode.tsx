@@ -6,11 +6,13 @@
  * - Shows a minimal floating toolbar at bottom with ESC hint
  * - ESC key or button exits back to normal mode
  * - Smooth animated transitions
+ * Route-aware: uses black/white on Estate routes, gold on WEG routes
  */
 
 import { useState, useEffect, useCallback, createContext, useContext, ReactNode } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Monitor, X, Maximize2, ChevronLeft, ChevronRight } from "lucide-react";
+import { useLocation } from "wouter";
 
 /* ========================================
  * PRESENTATION MODE CONTEXT
@@ -39,12 +41,9 @@ export function PresentationProvider({ children }: { children: ReactNode }) {
 
   const enterPresentMode = useCallback(() => {
     setIsPresentMode(true);
-    // Request fullscreen for maximum immersion
     try {
       if (document.documentElement.requestFullscreen && !document.fullscreenElement) {
-        document.documentElement.requestFullscreen().catch(() => {
-          // Fullscreen denied — still enter present mode without it
-        });
+        document.documentElement.requestFullscreen().catch(() => {});
       }
     } catch {
       // Ignore fullscreen errors
@@ -53,7 +52,6 @@ export function PresentationProvider({ children }: { children: ReactNode }) {
 
   const exitPresentMode = useCallback(() => {
     setIsPresentMode(false);
-    // Exit fullscreen if active
     try {
       if (document.fullscreenElement) {
         document.exitFullscreen().catch(() => {});
@@ -71,52 +69,30 @@ export function PresentationProvider({ children }: { children: ReactNode }) {
     }
   }, [isPresentMode, enterPresentMode, exitPresentMode]);
 
-  // ESC key exits presentation mode
+  // ESC key handler
   useEffect(() => {
-    if (!isPresentMode) return;
-
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        e.preventDefault();
-        e.stopPropagation();
+      if (e.key === "Escape" && isPresentMode) {
         exitPresentMode();
       }
     };
-
-    // Listen for fullscreen exit (user pressed ESC in fullscreen)
-    const handleFullscreenChange = () => {
-      if (!document.fullscreenElement && isPresentMode) {
-        setIsPresentMode(false);
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown, true);
-    document.addEventListener("fullscreenchange", handleFullscreenChange);
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown, true);
-      document.removeEventListener("fullscreenchange", handleFullscreenChange);
-    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isPresentMode, exitPresentMode]);
 
-  // Apply/remove presentation mode class on body
+  // Toggle body class for CSS-based hiding
   useEffect(() => {
     if (isPresentMode) {
-      document.documentElement.classList.add("present-mode");
       document.body.classList.add("present-mode");
     } else {
-      document.documentElement.classList.remove("present-mode");
       document.body.classList.remove("present-mode");
     }
-    return () => {
-      document.documentElement.classList.remove("present-mode");
-      document.body.classList.remove("present-mode");
-    };
+    return () => { document.body.classList.remove("present-mode"); };
   }, [isPresentMode]);
 
   return (
     <PresentationContext.Provider value={{ isPresentMode, enterPresentMode, exitPresentMode, togglePresentMode }}>
       {children}
-      {/* Floating exit toolbar */}
       <AnimatePresence>
         {isPresentMode && (
           <motion.div
@@ -127,7 +103,7 @@ export function PresentationProvider({ children }: { children: ReactNode }) {
             className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[9999] flex items-center gap-4 px-5 py-2.5 rounded-full bg-black/80 backdrop-blur-xl border border-white/10 shadow-2xl"
           >
             <div className="flex items-center gap-2">
-              <Maximize2 className="w-3.5 h-3.5 text-[#B8860B]" />
+              <Maximize2 className="w-3.5 h-3.5 text-white/70" />
               <span className="font-mono text-[11px] text-white/70 tracking-wider uppercase">
                 Presentation Mode
               </span>
@@ -149,18 +125,27 @@ export function PresentationProvider({ children }: { children: ReactNode }) {
 
 /* ========================================
  * PRESENT MODE TOGGLE BUTTON (for nav bar)
+ * Route-aware: black/white on Estate, gold on WEG
  * ======================================== */
 
 export function DarkModeToggle() {
   const { isPresentMode, togglePresentMode } = usePresentationMode();
+  const [location] = useLocation();
+  const isEstateRoute = location.startsWith("/longevity/estate");
+
+  // Estate: black/white neutral. WEG: gold accent.
+  const activeClass = isEstateRoute
+    ? "border-black/40 bg-black/10 text-black"
+    : "border-[#B8860B]/40 bg-[#B8860B]/10 text-[#B8860B]";
+  const inactiveClass = isEstateRoute
+    ? "border-black/25 bg-transparent text-black/55 hover:text-black/70 hover:border-black/45"
+    : "border-[#B8860B]/55 bg-transparent text-black/55 hover:text-black/60 hover:border-[#B8860B]/60";
 
   return (
     <motion.button
       onClick={togglePresentMode}
       className={`relative flex items-center gap-2 px-3 py-1.5 rounded-full border text-[11px] font-mono tracking-wider uppercase transition-all ${
-        isPresentMode
-          ? "border-[#B8860B]/40 bg-[#B8860B]/10 text-[#B8860B]"
-          : "border-[#B8860B]/55 bg-transparent text-black/55 hover:text-black/60 hover:border-[#B8860B]/60"
+        isPresentMode ? activeClass : inactiveClass
       }`}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
@@ -200,7 +185,6 @@ export function DarkModeToggle() {
  * LEGACY EXPORTS (for backward compat)
  * ======================================== */
 
-// Keep these for any existing imports
 export const DarkThemeProvider = PresentationProvider;
 export function useDarkTheme() {
   const { isPresentMode, togglePresentMode } = usePresentationMode();
@@ -208,6 +192,7 @@ export function useDarkTheme() {
 }
 
 // Legacy full-screen slide presentation (used by Projections page)
+// Route-aware: uses black/white on Estate routes, gold on WEG routes
 
 interface Slide {
   id: string;
@@ -223,6 +208,13 @@ interface PresentationModeProps {
 export function PresentationMode({ slides, pageName }: PresentationModeProps) {
   const [isActive, setIsActive] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [location] = useLocation();
+  const isEstateRoute = location.startsWith("/longevity/estate");
+
+  // Route-aware colors
+  const accentColor = isEstateRoute ? "#1A1A1A" : "#B8860B";
+  const accentHover = isEstateRoute ? "#333333" : "#996515";
+  const accentBorder = isEstateRoute ? "rgba(26,26,26,0.35)" : "rgba(184,134,11,0.55)";
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => Math.min(prev + 1, slides.length - 1));
@@ -273,7 +265,8 @@ export function PresentationMode({ slides, pageName }: PresentationModeProps) {
     <>
       <button
         onClick={() => setIsActive(true)}
-        className="fixed bottom-6 right-6 z-40 flex items-center gap-2 px-4 py-3 bg-[#B8860B] text-white rounded-full shadow-lg shadow-[#B8860B]/20 hover:bg-[#996515] transition-all hover:scale-105 group"
+        className="fixed bottom-6 right-6 z-40 flex items-center gap-2 px-4 py-3 text-white rounded-full shadow-lg transition-all hover:scale-105 group"
+        style={{ backgroundColor: accentColor, boxShadow: `0 4px 16px ${accentColor}33` }}
         title="Enter Slide Mode"
       >
         <Maximize2 className="w-5 h-5" />
@@ -288,7 +281,7 @@ export function PresentationMode({ slides, pageName }: PresentationModeProps) {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[9998] bg-white"
           >
-            <div className="absolute top-0 left-0 right-0 h-16 bg-white/80 backdrop-blur-sm border-b border-[#B8860B]/55 flex items-center justify-between px-6 z-10">
+            <div className="absolute top-0 left-0 right-0 h-16 bg-white/80 backdrop-blur-sm flex items-center justify-between px-6 z-10" style={{ borderBottom: `1px solid ${accentBorder}` }}>
               <div className="flex items-center gap-4">
                 <span className="font-mono text-sm text-black/65">{pageName}</span>
                 <span className="text-black/20">|</span>
@@ -325,7 +318,7 @@ export function PresentationMode({ slides, pageName }: PresentationModeProps) {
               </AnimatePresence>
             </div>
 
-            <div className="absolute bottom-0 left-0 right-0 h-20 bg-white/80 backdrop-blur-sm border-t border-[#B8860B]/55 flex items-center justify-between px-6">
+            <div className="absolute bottom-0 left-0 right-0 h-20 bg-white/80 backdrop-blur-sm flex items-center justify-between px-6" style={{ borderTop: `1px solid ${accentBorder}` }}>
               <button
                 onClick={prevSlide}
                 disabled={currentSlide === 0}
@@ -340,11 +333,12 @@ export function PresentationMode({ slides, pageName }: PresentationModeProps) {
                   <button
                     key={slide.id}
                     onClick={() => goToSlide(index)}
-                    className={`flex-shrink-0 transition-all ${
-                      index === currentSlide
-                        ? "w-8 h-3 bg-[#B8860B] rounded-full"
-                        : "w-3 h-3 bg-[#B8860B]/20 hover:bg-[#B8860B]/40 rounded-full"
-                    }`}
+                    className="flex-shrink-0 transition-all rounded-full"
+                    style={{
+                      width: index === currentSlide ? "2rem" : "0.75rem",
+                      height: "0.75rem",
+                      backgroundColor: index === currentSlide ? accentColor : `${accentColor}33`,
+                    }}
                     title={slide.title}
                   />
                 ))}
@@ -353,7 +347,10 @@ export function PresentationMode({ slides, pageName }: PresentationModeProps) {
               <button
                 onClick={nextSlide}
                 disabled={currentSlide === slides.length - 1}
-                className="flex items-center gap-2 px-4 py-2 bg-[#B8860B] text-white hover:bg-[#996515] rounded-lg transition-colors disabled:opacity-30"
+                className="flex items-center gap-2 px-4 py-2 text-white rounded-lg transition-colors disabled:opacity-30"
+                style={{ backgroundColor: accentColor }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = accentHover; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = accentColor; }}
               >
                 <span className="font-mono text-sm hidden sm:inline">Next</span>
                 <ChevronRight className="w-5 h-5" />

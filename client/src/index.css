@@ -220,6 +220,17 @@
   .font-estate {
     font-family: 'Bodoni Moda', serif;
   }
+
+  /* Estate route override: .font-estate on headings must beat the global h1-h6 Playfair rule */
+  .font-estate,
+  .font-estate h1,
+  .font-estate h2,
+  .font-estate h3,
+  .font-estate h4,
+  .font-estate h5,
+  .font-estate h6 {
+    font-family: 'Bodoni Moda', serif !important;
+  }
   
   /* Luxury gradient utilities */
   .gradient-gold {
@@ -288,9 +299,15 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Selection color — gold tint */
+/* Selection color — gold tint (scoped: not on Estate routes) */
 ::selection {
   background: rgba(184, 134, 11, 0.18);
+  color: inherit;
+}
+
+/* Estate routes: neutral selection */
+[data-route-estate] ::selection {
+  background: rgba(0, 0, 0, 0.12);
   color: inherit;
 }
 
@@ -312,10 +329,25 @@ html {
   background: rgba(184, 134, 11, 0.7);
 }
 
+/* Estate routes: neutral scrollbar */
+[data-route-estate] ::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+[data-route-estate] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.45);
+}
+
 /* Enhanced card and box styling - refined luxury shadows */
 [class*="bg-card"],
 [class*="bg-muted"] {
   box-shadow: 0 2px 8px rgba(184, 134, 11, 0.04), 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+/* Estate routes: neutral card shadows */
+[data-route-estate] [class*="bg-card"],
+[data-route-estate] [class*="bg-muted"] {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.03);
 }
 
 .rounded-lg[class*="border"],
@@ -389,6 +421,20 @@ input, textarea, select {
 input:focus, textarea:focus, select:focus {
   border-color: #B8860B !important;
   box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.15) !important;
+}
+
+/* Estate routes: neutral input borders */
+[data-route-estate] input,
+[data-route-estate] textarea,
+[data-route-estate] select {
+  border: 1px solid rgba(0, 0, 0, 0.20) !important;
+}
+
+[data-route-estate] input:focus,
+[data-route-estate] textarea:focus,
+[data-route-estate] select:focus {
+  border-color: #1A1A1A !important;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08) !important;
 }
 
 /* Section dividers — removed gold */
@@ -492,6 +538,13 @@ body {
   animation: goldShimmer 3s ease-in-out infinite;
 }
 
+/* Estate routes: no gold shimmer */
+[data-route-estate] .stat-shimmer {
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  animation: none;
+}
+
 /* Section header gold accent line */
 .section-header-accent::after {
   content: '';
@@ -509,6 +562,15 @@ body {
   height: 2px;
   background: linear-gradient(90deg, transparent, #B8860B, transparent);
   margin: 8px auto 0;
+}
+
+/* Estate routes: neutral accent lines */
+[data-route-estate] .section-header-accent::after {
+  background: linear-gradient(90deg, #1A1A1A, transparent);
+}
+
+[data-route-estate] .section-header-accent-center::after {
+  background: linear-gradient(90deg, transparent, #1A1A1A, transparent);
 }
 
 /* Mobile Responsiveness Fixes */
@@ -583,6 +645,11 @@ body {
 
 .label-section {
   @apply font-mono text-[11px] font-semibold tracking-[0.25em] uppercase text-[#B8860B];
+}
+
+/* Estate routes: neutral label section */
+[data-route-estate] .label-section {
+  color: #1A1A1A !important;
 }
 
 /* Data Visualization Gold Accent System */
@@ -1022,4 +1089,10 @@ svg {
   );
   animation: shimmerSweep 3.5s ease-in-out infinite;
   animation-delay: 2s;
+}
+
+/* Estate routes: no gold shimmer sweep */
+[data-route-estate] .shimmer-sweep {
+  background: none;
+  animation: none;
 }

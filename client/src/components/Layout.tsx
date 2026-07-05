@@ -209,7 +209,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
     : null;
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-white text-black">
+    <div className="min-h-screen overflow-x-hidden bg-white text-black" {...(isEstateRoute ? { 'data-route-estate': '' } : {})}>
       {/* Scroll Progress Indicator — hidden in present mode */}
       {!isPresentMode && <ScrollProgressBar />}
       
