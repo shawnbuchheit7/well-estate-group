@@ -161,13 +161,13 @@ export default function TheEstate() {
                 { title: "Technology", text: "AI-powered diagnostics, proactive care, restorative design, and global innovators" },
                 { title: "Vision", text: "A mindset, a movement, and a new model for wellbeing" },
               ].map((pillar, i) => (
-                <div key={i} className="relative flex flex-col items-center text-center px-5 rounded-2xl border overflow-hidden" style={{ borderColor: 'rgba(250,247,242,0.12)', backgroundColor: 'rgba(250,247,242,0.03)', height: '340px' }}>
-                  <div className="absolute left-0 right-0 top-[60px] px-5 flex justify-center">
-                    <span className="inline-block bg-white rounded-full px-6 py-2 font-estate-sans text-[12px] font-semibold tracking-[0.18em] uppercase text-black">
+                <div key={i} className="relative flex flex-col items-center text-center px-5 rounded-2xl border overflow-hidden" style={{ borderColor: 'rgba(250,247,242,0.12)', backgroundColor: 'rgba(250,247,242,0.03)', height: '400px' }}>
+                  <div className="absolute left-0 right-0 top-[48px] px-5 flex justify-center">
+                    <span className="inline-block bg-white rounded-full px-4 py-1.5 font-estate-sans text-[10px] font-semibold tracking-[0.18em] uppercase text-black">
                       {pillar.title}
                     </span>
                   </div>
-                  <p className="font-estate-sans text-[15px] leading-[1.7] font-light absolute left-0 right-0 top-[120px] px-5" style={{ color: 'rgba(250,247,242,0.85)' }}>
+                  <p className="font-estate-sans text-[14px] leading-[1.8] font-light absolute left-0 right-0 top-[110px] px-5" style={{ color: 'rgba(250,247,242,0.85)' }}>
                     {pillar.text}
                   </p>
                 </div>
