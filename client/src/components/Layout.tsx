@@ -117,8 +117,10 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
   const saltleafAccent = "#1a3e4c";
   // Default WEG accent
   const wegAccent = "#B8860B";
+  // Estate uses black/dark grey — NO GOLD
+  const estateAccent = "#1A1A1A";
   // Active accent based on route
-  const accent = isSaltleafRoute ? saltleafAccent : wegAccent;
+  const accent = isEstateRoute ? estateAccent : isSaltleafRoute ? saltleafAccent : wegAccent;
   
   let navLinks: typeof longevityNavLinks;
   let homeLink: string;
@@ -240,6 +242,12 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                 />
                 <span className="font-display text-lg font-bold tracking-[0.04em] transition-colors whitespace-nowrap text-black" style={{ color: undefined }}>
                   SALTLEAF
+                </span>
+              </Link>
+            ) : isEstateRoute ? (
+              <Link href="/longevity/estate" className="flex items-center gap-3 group" onClick={closeMobileMenu}>
+                <span className="font-display text-lg font-bold tracking-[0.25em] transition-colors whitespace-nowrap text-black uppercase">
+                  THE ESTATE
                 </span>
               </Link>
             ) : (
@@ -465,8 +473,8 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
         {children}
       </main>
 
-      {/* Cross-Pillar Navigation — hidden on ZeroWheel project pages, Saltleaf pages, and in present mode */}
-      {!isPresentMode && currentPillarIndex >= 0 && !isZWRoute && !isSaltleafRoute && (
+      {/* Cross-Pillar Navigation — hidden on ZeroWheel, Saltleaf, and Estate pages, and in present mode */}
+      {!isPresentMode && currentPillarIndex >= 0 && !isZWRoute && !isSaltleafRoute && !isEstateRoute && (
         <section className="py-12 border-t bg-white" style={{ borderColor: `${accent}66` }}>
           <div className="container px-6">
             <div className="flex items-center justify-between max-w-4xl mx-auto">
@@ -507,7 +515,59 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
       {!isPresentMode && <FloatingCTA />}
 
       {/* Footer — hidden in present mode */}
-      {!isPresentMode && (
+      {!isPresentMode && isEstateRoute && (
+        <footer className="py-16 border-t bg-[#0A0A0A]" style={{ borderColor: 'rgba(250,247,242,0.08)' }}>
+          <div className="container px-6">
+            <div className="max-w-6xl mx-auto">
+              <div className="flex flex-col lg:flex-row justify-between items-start gap-12 mb-12">
+                <div className="flex flex-col gap-4 max-w-sm">
+                  <Link href="/longevity/estate" className="flex items-center gap-3 group">
+                    <span className="font-display text-base font-semibold tracking-[0.25em] transition-colors text-white uppercase">
+                      THE ESTATE
+                    </span>
+                  </Link>
+                  <p className="font-body text-sm leading-relaxed text-white/60">
+                    Where Vitality is the Ultimate Luxury. The world's first residential ecosystem built entirely around longevity.
+                  </p>
+                </div>
+                <div className="flex flex-col md:flex-row gap-12">
+                  <div className="flex flex-col gap-3">
+                    <p className="font-mono text-[10px] tracking-wider uppercase mb-1 text-white/50">Explore</p>
+                    <Link href="/longevity/estate" className="font-body text-sm hover:text-white transition-colors text-white/60">Overview</Link>
+                    <Link href="/longevity/estate/about" className="font-body text-sm hover:text-white transition-colors text-white/60">Vision</Link>
+                    <Link href="/longevity/estate/opportunity" className="font-body text-sm hover:text-white transition-colors text-white/60">Opportunity</Link>
+                    <Link href="/longevity/estate/memberships" className="font-body text-sm hover:text-white transition-colors text-white/60">Membership</Link>
+                  </div>
+                  <div className="flex flex-col gap-3">
+                    <p className="font-mono text-[10px] tracking-wider uppercase mb-1 text-white/50">Contact</p>
+                    <a 
+                      href="mailto:shawn@wellestategroup.com" 
+                      className="group flex items-center gap-3 px-5 py-3 rounded-xl border transition-all bg-white/5"
+                      style={{ borderColor: 'rgba(250,247,242,0.15)' }}
+                    >
+                      <div className="w-9 h-9 rounded-full flex items-center justify-center bg-white/10">
+                        <Mail className="w-4 h-4 text-white" />
+                      </div>
+                      <div>
+                        <p className="font-body text-sm font-semibold text-white">Inquire</p>
+                        <p className="font-body text-xs text-white/60">shawn@wellestategroup.com</p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-8" />
+              <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                <p className="font-body text-[11px] tracking-wider text-white/40">
+                  &copy; 2026 The Estate. All rights reserved.
+                </p>
+                <span className="font-mono text-[10px] tracking-wider text-white/20">CONFIDENTIAL</span>
+              </div>
+            </div>
+          </div>
+        </footer>
+      )}
+      {!isPresentMode && !isEstateRoute && (
       <footer className="py-16 border-t bg-[#1A1A1A]" style={{ borderColor: `${accent}66` }}>
         <div className="container px-6">
           <div className="max-w-6xl mx-auto">

@@ -2,10 +2,11 @@
  * The Estate — Elite Luxury Editorial Landing
  * Where Vitality is the Ultimate Luxury.
  * 
- * Design: Faithful to The Estate brand deck.
- * Colors: Deep black (#0A0A0A), warm ivory (#FAF7F2), muted grey, gold ONLY as rare whisper accent.
+ * Design: 100% faithful to The Estate brand deck.
+ * Colors: Deep black (#0A0A0A), warm ivory (#FAF7F2), muted grey. NO GOLD ANYWHERE.
+ * The deck uses black + white + ivory only. "Luxury" is warm ivory italic, not gold.
  * Typography: Large serif display, restrained mono labels, generous whitespace.
- * Photography-led credibility with real deck imagery.
+ * Section order matches deck exactly: Hero > Titans > Pillars > Ecosystem > Pipeline > Market > CTA
  */
 
 import Layout from "@/components/Layout";
@@ -29,12 +30,39 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.12 } },
 };
 
-/* ─── Brand Constants ─── */
-const GOLD = "#B8956A";
+/* ─── Brand Constants — NO GOLD ─── */
 const IVORY = "#FAF7F2";
 const DARK = "#0A0A0A";
+const WARM_ACCENT = "#E8E0D4"; // warm ivory for the italic "Luxury" — NOT gold
 
 /* ─── Data ─── */
+const founders = [
+  {
+    name: "Sam Nazarian",
+    role: "Founder & CEO",
+    image: "/sam_nazarian.jpg",
+    bio: "Visionary hospitality entrepreneur. Founder of SBE Entertainment Group — creator of SLS Hotels, Delano, and a global portfolio of luxury lifestyle brands.",
+  },
+  {
+    name: "Tony Robbins",
+    role: "Co-Founder & Strategic Partner",
+    image: "/tony_robbins.jpg",
+    bio: "World's leading life strategist and co-founder of Fountain Life. Pioneer in making precision diagnostics accessible to high-performers worldwide.",
+  },
+  {
+    name: "Marc Anthony",
+    role: "Strategic Partner",
+    image: "/marc_anthony.jpg",
+    bio: "Global entertainment icon and entrepreneur with deep roots in Latin American luxury real estate, hospitality, and cultural influence.",
+  },
+  {
+    name: "Tom Brady",
+    role: "Strategic Partner",
+    image: "/tom_brady.jpg",
+    bio: "The greatest athlete of his generation. Lifelong commitment to human performance, longevity science, and the TB12 wellness methodology.",
+  },
+];
+
 const pillars = [
   {
     name: "Longevity",
@@ -91,33 +119,6 @@ const destinations = [
   { name: "Granogue", region: "Delaware", type: "Estate & Club", image: "/dest_granogue.jpg" },
 ];
 
-const founders = [
-  {
-    name: "Sam Nazarian",
-    role: "Founder & CEO",
-    image: "/sam_nazarian.jpg",
-    bio: "Visionary hospitality entrepreneur. Founder of SBE Entertainment Group — creator of SLS Hotels, Delano, and a global portfolio of luxury lifestyle brands.",
-  },
-  {
-    name: "Tony Robbins",
-    role: "Co-Founder & Strategic Partner",
-    image: "/tony_robbins.jpg",
-    bio: "World's leading life strategist and co-founder of Fountain Life. Pioneer in making precision diagnostics accessible to high-performers worldwide.",
-  },
-  {
-    name: "Marc Anthony",
-    role: "Strategic Partner",
-    image: "/marc_anthony.jpg",
-    bio: "Global entertainment icon and entrepreneur with deep roots in Latin American luxury real estate, hospitality, and cultural influence.",
-  },
-  {
-    name: "Tom Brady",
-    role: "Strategic Partner",
-    image: "/tom_brady.jpg",
-    bio: "The greatest athlete of his generation. Lifelong commitment to human performance, longevity science, and the TB12 wellness methodology.",
-  },
-];
-
 export default function TheEstate() {
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
@@ -127,43 +128,42 @@ export default function TheEstate() {
   return (
     <Layout section="longevity">
       {/* ═══════════════════════════════════════════════════════════════
-          HERO — Full-viewport cinematic opening (deck page 1)
+          SECTION 1: HERO — Full-viewport cinematic opening (deck page 1)
+          Black background, white text, "Luxury" in warm ivory italic
       ═══════════════════════════════════════════════════════════════ */}
       <section ref={heroRef} className="relative min-h-screen flex flex-col justify-center overflow-hidden" style={{ background: DARK }}>
-        {/* Subtle ambient atmosphere */}
         <div className="absolute inset-0">
           <div className="absolute inset-0" style={{
             background: `radial-gradient(ellipse 100% 100% at 50% 50%, transparent 50%, rgba(0,0,0,0.6) 100%)`
           }} />
         </div>
 
-        {/* Content */}
         <motion.div className="relative z-10 px-8 md:px-16 max-w-7xl mx-auto w-full" style={{ y: heroY, opacity: heroOpacity }}>
           <motion.div initial="hidden" animate="visible" variants={stagger}>
-            {/* Eyebrow — gold line + gold label (one of the few allowed gold uses) */}
+            {/* Eyebrow — thin white line + white label */}
             <motion.div variants={fadeUp} className="flex items-center gap-5 mb-14">
-              <div className="w-16 h-[1px]" style={{ background: GOLD }} />
-              <span className="font-mono text-[11px] tracking-[0.4em] uppercase" style={{ color: GOLD }}>
+              <div className="w-16 h-[1px]" style={{ background: "rgba(250,247,242,0.3)" }} />
+              <span className="font-mono text-[11px] tracking-[0.4em] uppercase" style={{ color: "rgba(250,247,242,0.5)" }}>
                 The Estate
               </span>
             </motion.div>
 
-            {/* Headline — white with ONLY "Luxury" in gold italic */}
+            {/* Headline — white with "Luxury" in warm ivory italic (NOT gold) */}
             <motion.h1 variants={fadeUp} className="font-display text-5xl md:text-7xl lg:text-[6.5rem] font-light leading-[0.92] tracking-[-0.02em] mb-10" style={{ color: IVORY }}>
               Where Vitality<br />
               is the Ultimate<br />
-              <span className="italic" style={{ color: GOLD }}>Luxury.</span>
+              <span className="italic" style={{ color: WARM_ACCENT }}>Luxury.</span>
             </motion.h1>
 
-            {/* Subhead — muted ivory/grey */}
-            <motion.p variants={fadeUp} className="font-body text-lg md:text-xl leading-relaxed max-w-2xl mb-20" style={{ color: "rgba(250,247,242,0.55)" }}>
+            {/* Subhead — muted ivory */}
+            <motion.p variants={fadeUp} className="font-body text-lg md:text-xl leading-relaxed max-w-2xl mb-20" style={{ color: "rgba(250,247,242,0.6)" }}>
               The world's first residential ecosystem built entirely around longevity.
               Luxury resorts, branded residences, and longevity clubs — unified by
               pioneering science, extraordinary hospitality, and a commitment to human vitality.
             </motion.p>
 
-            {/* Stats — thin gold divider, white numbers, GREY labels (not gold) */}
-            <motion.div variants={fadeUp} className="flex flex-wrap gap-12 md:gap-16 border-t pt-10" style={{ borderColor: `${GOLD}30` }}>
+            {/* Stats — thin ivory divider, white numbers, muted grey labels */}
+            <motion.div variants={fadeUp} className="flex flex-wrap gap-12 md:gap-16 border-t pt-10" style={{ borderColor: "rgba(250,247,242,0.12)" }}>
               {[
                 { value: "24+", label: "Global Projects" },
                 { value: "8+", label: "Countries" },
@@ -174,7 +174,7 @@ export default function TheEstate() {
                   <div className="font-display text-3xl md:text-4xl font-light" style={{ color: IVORY }}>
                     <AnimatedCounter valueStr={stat.value} duration={2.5} />
                   </div>
-                  <div className="font-mono text-[9px] tracking-[0.25em] uppercase mt-2" style={{ color: "rgba(250,247,242,0.4)" }}>
+                  <div className="font-mono text-[9px] tracking-[0.25em] uppercase mt-2" style={{ color: "rgba(250,247,242,0.45)" }}>
                     {stat.label}
                   </div>
                 </div>
@@ -200,7 +200,122 @@ export default function TheEstate() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════
-          BRAND MANIFESTO — Dark editorial (matching deck page 2)
+          SECTION 2: FOUNDERS / TITANS — Immediately after hero (deck page 2)
+          Ivory background, B&W portraits, open editorial grid
+      ═══════════════════════════════════════════════════════════════ */}
+      <section className="py-28 md:py-36" style={{ background: IVORY }}>
+        <div className="max-w-7xl mx-auto px-8 md:px-16">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={stagger}
+          >
+            {/* Section header */}
+            <motion.div variants={fadeUp} className="mb-16 md:mb-20">
+              <span className="font-mono text-[10px] tracking-[0.4em] uppercase block mb-6" style={{ color: "rgba(10,10,10,0.35)" }}>
+                The Platform
+              </span>
+              <h2 className="font-display text-4xl md:text-6xl font-light" style={{ color: DARK }}>
+                Built by Industry Titans
+              </h2>
+            </motion.div>
+
+            {/* Founder portrait grid */}
+            <motion.div
+              className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10"
+              variants={stagger}
+            >
+              {founders.map((founder, i) => (
+                <motion.div
+                  key={i}
+                  variants={fadeUp}
+                  className="text-center"
+                >
+                  {/* Portrait — uniform aspect ratio */}
+                  <div className="aspect-[3/4] overflow-hidden rounded-xl mb-5">
+                    <img
+                      src={founder.image}
+                      alt={founder.name}
+                      loading="lazy"
+                      className="w-full h-full object-cover object-top"
+                    />
+                  </div>
+                  
+                  {/* Name */}
+                  <h4 className="font-display text-lg md:text-xl font-medium mb-1" style={{ color: DARK }}>
+                    {founder.name}
+                  </h4>
+                  {/* Role — muted */}
+                  <p className="font-mono text-[9px] tracking-[0.2em] uppercase mb-3" style={{ color: "rgba(10,10,10,0.4)" }}>
+                    {founder.role}
+                  </p>
+                  {/* Bio */}
+                  <p className="font-body text-xs leading-relaxed" style={{ color: "rgba(10,10,10,0.55)" }}>
+                    {founder.bio}
+                  </p>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Fountain Life integration note */}
+            <motion.div variants={fadeUp} className="mt-16 pt-12 text-center" style={{ borderTop: "1px solid rgba(10,10,10,0.08)" }}>
+              <p className="font-body text-base leading-relaxed max-w-2xl mx-auto" style={{ color: "rgba(10,10,10,0.55)" }}>
+                Integrated with <span className="font-medium" style={{ color: DARK }}>Fountain Life</span> — the world's most advanced 
+                precision diagnostics and longevity platform. Co-founded by Tony Robbins and Peter Diamandis.
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════
+          SECTION 3: FOUR PILLARS — After titans (deck page 3)
+          Ivory/cream background, 4 image cards with labels below
+      ═══════════════════════════════════════════════════════════════ */}
+      <section className="py-28 md:py-36" style={{ background: "#FEFCF9" }}>
+        <div className="max-w-7xl mx-auto px-8 md:px-16">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={stagger}
+          >
+            {/* Section headline — dark serif, centered */}
+            <motion.div variants={fadeUp} className="text-center mb-16 md:mb-20">
+              <h2 className="font-display text-3xl md:text-5xl lg:text-[3.5rem] font-light leading-[1.2]" style={{ color: DARK }}>
+                A complete ecosystem for daily optimization.<br />
+                Built on The Estate's foundational pillars.
+              </h2>
+            </motion.div>
+
+            {/* Pillar cards — 4 images with labels below */}
+            <motion.div className="grid grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6" variants={stagger}>
+              {pillars.map((pillar, i) => (
+                <motion.div key={i} variants={fadeUp} className="text-center">
+                  <div className="aspect-[3/4] overflow-hidden rounded-2xl mb-5">
+                    <img
+                      src={pillar.image}
+                      alt={pillar.name}
+                      loading="lazy"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h3 className="font-display text-xl md:text-2xl font-light mb-3" style={{ color: DARK }}>
+                    {pillar.name}
+                  </h3>
+                  <p className="font-body text-sm leading-relaxed" style={{ color: "rgba(10,10,10,0.55)" }}>
+                    {pillar.description}
+                  </p>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════
+          SECTION 4: BRAND MANIFESTO — Dark editorial
       ═══════════════════════════════════════════════════════════════ */}
       <section className="py-28 md:py-40" style={{ background: DARK }}>
         <div className="max-w-5xl mx-auto px-8 md:px-16">
@@ -221,7 +336,7 @@ export default function TheEstate() {
             <motion.p
               variants={fadeUp}
               className="font-body text-base md:text-lg leading-[1.8] max-w-3xl mx-auto"
-              style={{ color: "rgba(250,247,242,0.55)" }}
+              style={{ color: "rgba(250,247,242,0.6)" }}
             >
               Designed to extend life — and the quality of living — The Estate is a next-generation
               platform for luxury hospitality and wellness-oriented living. An integrated network of
@@ -231,7 +346,7 @@ export default function TheEstate() {
             <motion.p
               variants={fadeUp}
               className="font-body text-base md:text-lg leading-[1.8] max-w-3xl mx-auto mt-8"
-              style={{ color: "rgba(250,247,242,0.45)" }}
+              style={{ color: "rgba(250,247,242,0.5)" }}
             >
               More than a brand — The Estate is a mindset, a movement,
               and a new model for wellbeing.
@@ -241,54 +356,7 @@ export default function TheEstate() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════
-          FOUR PILLARS — Ivory background, image-led (matching deck page 4)
-      ═══════════════════════════════════════════════════════════════ */}
-      <section className="py-28 md:py-36" style={{ background: IVORY }}>
-        <div className="max-w-7xl mx-auto px-8 md:px-16">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={stagger}
-          >
-            {/* Section headline — dark serif, centered, matching deck exactly */}
-            <motion.div variants={fadeUp} className="text-center mb-16 md:mb-20">
-              <h2 className="font-display text-3xl md:text-5xl lg:text-[3.5rem] font-light leading-[1.2]" style={{ color: DARK }}>
-                A complete ecosystem for daily optimization.<br />
-                Built on The Estate's foundational pillars.
-              </h2>
-            </motion.div>
-
-            {/* Pillar cards — 4 images with labels below */}
-            <motion.div className="grid grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6" variants={stagger}>
-              {pillars.map((pillar, i) => (
-                <motion.div key={i} variants={fadeUp} className="text-center">
-                  {/* Image with rounded corners */}
-                  <div className="aspect-[3/4] overflow-hidden rounded-2xl mb-5">
-                    <img
-                      src={pillar.image}
-                      alt={pillar.name}
-                      loading="lazy"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  {/* Label — serif, centered */}
-                  <h3 className="font-display text-xl md:text-2xl font-light mb-3" style={{ color: DARK }}>
-                    {pillar.name}
-                  </h3>
-                  {/* Description — muted, centered */}
-                  <p className="font-body text-sm leading-relaxed" style={{ color: "rgba(10,10,10,0.55)" }}>
-                    {pillar.description}
-                  </p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════════
-          ECOSYSTEM — Three expressions on dark
+          SECTION 5: ECOSYSTEM — Three expressions
       ═══════════════════════════════════════════════════════════════ */}
       <section className="py-28 md:py-36" style={{ background: DARK }}>
         <div className="max-w-7xl mx-auto px-8 md:px-16">
@@ -298,7 +366,6 @@ export default function TheEstate() {
             viewport={{ once: true, margin: "-100px" }}
             variants={stagger}
           >
-            {/* Section header — white, no gold eyebrow */}
             <motion.div variants={fadeUp} className="mb-20">
               <span className="font-mono text-[10px] tracking-[0.4em] uppercase block mb-6" style={{ color: "rgba(250,247,242,0.4)" }}>
                 The Ecosystem
@@ -308,7 +375,6 @@ export default function TheEstate() {
               </h2>
             </motion.div>
 
-            {/* Ecosystem cards */}
             <div className="grid md:grid-cols-3 gap-px" style={{ background: "rgba(255,255,255,0.08)" }}>
               {ecosystem.map((item, i) => (
                 <motion.div
@@ -320,16 +386,15 @@ export default function TheEstate() {
                   <h3 className="font-display text-2xl font-light mb-4" style={{ color: IVORY }}>
                     {item.type}
                   </h3>
-                  <p className="font-body text-sm leading-relaxed mb-8" style={{ color: "rgba(250,247,242,0.5)" }}>
+                  <p className="font-body text-sm leading-relaxed mb-8" style={{ color: "rgba(250,247,242,0.55)" }}>
                     {item.desc}
                   </p>
                   
-                  {/* Stats */}
                   <div className="pt-6 border-t" style={{ borderColor: "rgba(255,255,255,0.08)" }}>
                     {item.stats.map((stat, j) => (
                       <div key={j} className="flex items-center gap-2 mb-2 last:mb-0">
                         <div className="w-1 h-1 rounded-full" style={{ background: "rgba(250,247,242,0.3)" }} />
-                        <span className="font-mono text-[10px] tracking-wider" style={{ color: "rgba(250,247,242,0.5)" }}>
+                        <span className="font-mono text-[10px] tracking-wider" style={{ color: "rgba(250,247,242,0.55)" }}>
                           {stat}
                         </span>
                       </div>
@@ -343,76 +408,7 @@ export default function TheEstate() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════
-          FOUNDERS — Open editorial layout, B&W portraits, ivory background
-      ═══════════════════════════════════════════════════════════════ */}
-      <section className="py-28 md:py-36" style={{ background: IVORY }}>
-        <div className="max-w-7xl mx-auto px-8 md:px-16">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={stagger}
-          >
-            {/* Section header */}
-            <motion.div variants={fadeUp} className="mb-16 md:mb-20">
-              <span className="font-mono text-[10px] tracking-[0.4em] uppercase block mb-6" style={{ color: "rgba(10,10,10,0.4)" }}>
-                The Platform
-              </span>
-              <h2 className="font-display text-4xl md:text-6xl font-light" style={{ color: DARK }}>
-                Built by Industry Titans
-              </h2>
-            </motion.div>
-
-            {/* Founder portrait grid — open, no card containers, uniform sizing */}
-            <motion.div
-              className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10"
-              variants={stagger}
-            >
-              {founders.map((founder, i) => (
-                <motion.div
-                  key={i}
-                  variants={fadeUp}
-                  className="text-center"
-                >
-                  {/* Portrait — uniform aspect ratio, no border, no card */}
-                  <div className="aspect-[3/4] overflow-hidden rounded-xl mb-5">
-                    <img
-                      src={founder.image}
-                      alt={founder.name}
-                      loading="lazy"
-                      className="w-full h-full object-cover object-top"
-                    />
-                  </div>
-                  
-                  {/* Name */}
-                  <h4 className="font-display text-lg md:text-xl font-medium mb-1" style={{ color: DARK }}>
-                    {founder.name}
-                  </h4>
-                  {/* Role — muted grey, not gold */}
-                  <p className="font-mono text-[9px] tracking-[0.2em] uppercase mb-3" style={{ color: "rgba(10,10,10,0.4)" }}>
-                    {founder.role}
-                  </p>
-                  {/* Bio */}
-                  <p className="font-body text-xs leading-relaxed" style={{ color: "rgba(10,10,10,0.5)" }}>
-                    {founder.bio}
-                  </p>
-                </motion.div>
-              ))}
-            </motion.div>
-
-            {/* Fountain Life integration */}
-            <motion.div variants={fadeUp} className="mt-16 pt-12 text-center" style={{ borderTop: "1px solid rgba(10,10,10,0.06)" }}>
-              <p className="font-body text-base leading-relaxed max-w-2xl mx-auto" style={{ color: "rgba(10,10,10,0.5)" }}>
-                Integrated with <span className="font-medium" style={{ color: DARK }}>Fountain Life</span> — the world's most advanced 
-                precision diagnostics and longevity platform. Co-founded by Tony Robbins and Peter Diamandis.
-              </p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════════
-          GLOBAL PIPELINE — Photography-led destination grid
+          SECTION 6: GLOBAL PIPELINE — Photography-led destination grid
       ═══════════════════════════════════════════════════════════════ */}
       <section className="py-28 md:py-36" style={{ background: DARK }}>
         <div className="max-w-7xl mx-auto px-8 md:px-16">
@@ -422,7 +418,6 @@ export default function TheEstate() {
             viewport={{ once: true, margin: "-100px" }}
             variants={stagger}
           >
-            {/* Section header */}
             <motion.div variants={fadeUp} className="mb-16 md:mb-20">
               <span className="font-mono text-[10px] tracking-[0.4em] uppercase block mb-6" style={{ color: "rgba(250,247,242,0.4)" }}>
                 Global Pipeline
@@ -430,12 +425,11 @@ export default function TheEstate() {
               <h2 className="font-display text-4xl md:text-6xl font-light" style={{ color: IVORY }}>
                 Destinations in Development
               </h2>
-              <p className="font-body text-base mt-6 max-w-2xl" style={{ color: "rgba(250,247,242,0.4)" }}>
+              <p className="font-body text-base mt-6 max-w-2xl" style={{ color: "rgba(250,247,242,0.5)" }}>
                 From private islands to urban longevity clubs — a global network of vitality-centered living.
               </p>
             </motion.div>
 
-            {/* Destination grid — photography-led cards */}
             <motion.div variants={stagger} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {destinations.map((dest, i) => (
                 <motion.div
@@ -443,7 +437,6 @@ export default function TheEstate() {
                   variants={fadeUp}
                   className="group relative overflow-hidden rounded-xl"
                 >
-                  {/* Destination image */}
                   <div className="aspect-[4/3] overflow-hidden">
                     <img
                       src={dest.image}
@@ -451,19 +444,17 @@ export default function TheEstate() {
                       loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
                     />
-                    {/* Gradient overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                   </div>
                   
-                  {/* Text overlay */}
                   <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
-                    <span className="font-mono text-[9px] tracking-[0.2em] uppercase block mb-1.5" style={{ color: "rgba(250,247,242,0.5)" }}>
+                    <span className="font-mono text-[9px] tracking-[0.2em] uppercase block mb-1.5" style={{ color: "rgba(250,247,242,0.55)" }}>
                       {dest.type}
                     </span>
                     <h4 className="font-display text-xl font-light" style={{ color: IVORY }}>
                       {dest.name}
                     </h4>
-                    <p className="font-mono text-[10px] tracking-wider uppercase mt-1" style={{ color: "rgba(250,247,242,0.4)" }}>
+                    <p className="font-mono text-[10px] tracking-wider uppercase mt-1" style={{ color: "rgba(250,247,242,0.45)" }}>
                       {dest.region}
                     </p>
                   </div>
@@ -483,7 +474,7 @@ export default function TheEstate() {
                   <div className="font-display text-3xl md:text-4xl font-light" style={{ color: IVORY }}>
                     <AnimatedCounter valueStr={stat.value} duration={2} />
                   </div>
-                  <div className="font-mono text-[9px] tracking-[0.25em] uppercase mt-2" style={{ color: "rgba(250,247,242,0.4)" }}>
+                  <div className="font-mono text-[9px] tracking-[0.25em] uppercase mt-2" style={{ color: "rgba(250,247,242,0.45)" }}>
                     {stat.label}
                   </div>
                 </div>
@@ -494,7 +485,7 @@ export default function TheEstate() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════
-          MARKET OPPORTUNITY — Ivory with editorial stats
+          SECTION 7: MARKET OPPORTUNITY — Ivory with editorial stats
       ═══════════════════════════════════════════════════════════════ */}
       <section className="py-28 md:py-36" style={{ background: IVORY }}>
         <div className="max-w-7xl mx-auto px-8 md:px-16">
@@ -504,9 +495,8 @@ export default function TheEstate() {
             viewport={{ once: true, margin: "-100px" }}
             variants={stagger}
           >
-            {/* Section header */}
             <motion.div variants={fadeUp} className="mb-16">
-              <span className="font-mono text-[10px] tracking-[0.4em] uppercase block mb-6" style={{ color: "rgba(10,10,10,0.4)" }}>
+              <span className="font-mono text-[10px] tracking-[0.4em] uppercase block mb-6" style={{ color: "rgba(10,10,10,0.35)" }}>
                 The Opportunity
               </span>
               <h2 className="font-display text-4xl md:text-6xl font-light" style={{ color: DARK }}>
@@ -514,7 +504,6 @@ export default function TheEstate() {
               </h2>
             </motion.div>
 
-            {/* Market stats — numbers in dark (not gold), clean editorial */}
             <motion.div variants={fadeUp} className="grid md:grid-cols-3 gap-12 md:gap-16">
               {[
                 {
@@ -540,18 +529,18 @@ export default function TheEstate() {
                   <h4 className="font-body text-base font-medium mb-3" style={{ color: DARK }}>
                     {stat.label}
                   </h4>
-                  <p className="font-body text-sm leading-relaxed" style={{ color: "rgba(10,10,10,0.5)" }}>
+                  <p className="font-body text-sm leading-relaxed" style={{ color: "rgba(10,10,10,0.55)" }}>
                     {stat.detail}
                   </p>
                 </div>
               ))}
             </motion.div>
 
-            {/* Positioning statement — gold only on "Until now." */}
-            <motion.div variants={fadeUp} className="mt-20 pt-12" style={{ borderTop: "1px solid rgba(10,10,10,0.06)" }}>
+            {/* Positioning statement */}
+            <motion.div variants={fadeUp} className="mt-20 pt-12" style={{ borderTop: "1px solid rgba(10,10,10,0.08)" }}>
               <p className="font-display text-2xl md:text-3xl font-light leading-relaxed max-w-4xl" style={{ color: DARK }}>
                 No one has unified luxury hospitality, branded residences, and clinical longevity into a single global platform.{" "}
-                <span className="italic" style={{ color: GOLD }}>Until now.</span>
+                <span className="italic" style={{ color: "rgba(10,10,10,0.45)" }}>Until now.</span>
               </p>
             </motion.div>
           </motion.div>
@@ -559,7 +548,7 @@ export default function TheEstate() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════
-          CTA — Dark cinematic closing
+          SECTION 8: CTA — Dark cinematic closing. NO GOLD.
       ═══════════════════════════════════════════════════════════════ */}
       <section className="relative py-32 md:py-44 overflow-hidden" style={{ background: DARK }}>
         <div className="relative z-10 max-w-4xl mx-auto px-8 md:px-16 text-center">
@@ -571,10 +560,10 @@ export default function TheEstate() {
           >
             <motion.h2 variants={fadeUp} className="font-display text-4xl md:text-6xl lg:text-7xl font-light leading-[1.05] mb-8" style={{ color: IVORY }}>
               Live Where Vitality<br />
-              is the <span className="italic" style={{ color: GOLD }}>Ultimate Luxury.</span>
+              is the <span className="italic" style={{ color: WARM_ACCENT }}>Ultimate Luxury.</span>
             </motion.h2>
 
-            <motion.p variants={fadeUp} className="font-body text-base mb-12 max-w-xl mx-auto" style={{ color: "rgba(250,247,242,0.4)" }}>
+            <motion.p variants={fadeUp} className="font-body text-base mb-12 max-w-xl mx-auto" style={{ color: "rgba(250,247,242,0.6)" }}>
               For partnership inquiries, investment opportunities, or membership interest.
             </motion.p>
 
@@ -583,7 +572,7 @@ export default function TheEstate() {
                 href="mailto:shawn@wellestategroup.com"
                 className="group inline-flex items-center gap-4 px-10 py-5 rounded-full border transition-all duration-400 hover:bg-white/5"
                 style={{
-                  borderColor: "rgba(250,247,242,0.2)",
+                  borderColor: "rgba(250,247,242,0.25)",
                 }}
               >
                 <span className="font-mono text-[11px] tracking-[0.2em] uppercase font-medium" style={{ color: IVORY }}>
