@@ -215,33 +215,67 @@
     }
   }
   
-  /* Well Estate Group Custom Utilities */
+  /* ═══════════════════════════════════════════════════════════════
+     WELL ESTATE GROUP — Font Utility Classes
+     ═══════════════════════════════════════════════════════════════ */
+  
+  /* WEG Brand Fonts */
   .font-display {
     font-family: 'Playfair Display', serif;
   }
-  
   .font-body {
     font-family: 'DM Sans', sans-serif;
   }
-  
   .font-mono {
     font-family: 'Space Mono', monospace;
   }
 
-  .font-estate {
-    font-family: 'Bodoni Moda', serif;
+  /* ═══════════════════════════════════════════════════════════════
+     THE ESTATE — Typography System (per Digital Brand Guidelines)
+     ───────────────────────────────────────────────────────────────
+     Role                    | Font                        | Class
+     ────────────────────────|─────────────────────────────|──────────────────────
+     Display Serif           | Bodoni Moda (opsz:18)       | .font-estate-display
+     Body Serif              | Bodoni Moda (opsz:9)        | .font-estate-body-serif
+     Primary Sans (UI/Nav)   | Inter (Fann Grotesque sub)  | .font-estate-sans
+     Display Sans (Wordmark) | Josefin Sans (Darby Sans)   | .font-estate-wordmark
+     ═══════════════════════════════════════════════════════════════ */
+
+  /* Display Serif — Hero headlines, taglines, pull-quotes, "Where Vitality is the Ultimate Luxury." */
+  .font-estate-display {
+    font-family: 'Bodoni Moda', serif !important;
+    font-optical-sizing: auto;
+    font-variation-settings: 'opsz' 18;
   }
 
-  .font-estate-tagline {
-    font-family: 'Josefin Sans', sans-serif;
+  /* Body Serif — Longer narrative copy, section intros, descriptive paragraphs */
+  .font-estate-body-serif {
+    font-family: 'Bodoni Moda', serif !important;
+    font-optical-sizing: auto;
+    font-variation-settings: 'opsz' 9;
   }
 
-  /* Estate route override: specific font-estate class uses Bodoni Moda */
+  /* Primary Sans-Serif — Body text, captions, labels, navigation, UI elements */
+  .font-estate-sans {
+    font-family: 'Inter', sans-serif !important;
+  }
+
+  /* Display Sans-Serif — THE ESTATE wordmark, uppercase wide tracking */
+  .font-estate-wordmark {
+    font-family: 'Josefin Sans', sans-serif !important;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+  }
+
+  /* Legacy aliases (keep for backward compat with non-Estate pages) */
   .font-estate {
     font-family: 'Bodoni Moda', serif !important;
+    font-variation-settings: 'opsz' 18;
   }
   .font-estate-tagline {
-    font-family: 'Josefin Sans', sans-serif !important;
+    font-family: 'Bodoni Moda', serif !important;
+    font-variation-settings: 'opsz' 18;
   }
   
   /* Luxury gradient utilities */

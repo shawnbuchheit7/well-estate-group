@@ -246,7 +246,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
               </Link>
             ) : isEstateRoute ? (
               <Link href="/longevity/estate" className="flex items-center gap-3 group" onClick={closeMobileMenu}>
-                <span className="font-estate text-lg font-normal tracking-[0.3em] transition-colors whitespace-nowrap text-black uppercase">
+                <span className="font-estate-wordmark text-lg transition-colors whitespace-nowrap text-black">
                   THE ESTATE
                 </span>
               </Link>
@@ -269,7 +269,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
           {/* Desktop Navigation - only shown inline when few tabs */}
           {navLinks.length <= 6 && (
             <div className="hidden lg:flex items-center justify-center flex-1 mx-4">
-              <div className="flex items-center gap-1 font-body text-xs">
+              <div className={`flex items-center gap-1 ${isEstateRoute ? 'font-estate-sans' : 'font-body'} text-xs`}>
                 {navLinks.map((link) => {
                   const isActive = location === link.href;
                   return (
@@ -355,7 +355,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
           {navLinks.length > 6 && (
             <div className="hidden lg:block relative">
               <div className="overflow-x-auto scrollbar-hide pb-0" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
-                <div className="flex items-center justify-center gap-1 px-4 py-1.5 font-body text-xs w-full">
+                <div className={`flex items-center justify-center gap-1 px-4 py-1.5 ${isEstateRoute ? 'font-estate-sans' : 'font-body'} text-xs w-full`}>
                   {navLinks.map((link) => {
                     const isActive = location === link.href;
                     return (
@@ -432,7 +432,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
               <div className="flex flex-col h-full">
                 {/* Mobile Menu Header */}
                 <div className="flex items-center justify-between h-20 px-6" style={{ borderBottom: isEstateRoute ? '1px solid rgba(0,0,0,0.1)' : `1px solid ${accent}66` }}>
-                  <span className={`${isEstateRoute ? 'font-body' : 'font-display'} text-xl font-semibold text-black`}>Menu</span>
+                  <span className={`${isEstateRoute ? 'font-estate-sans' : 'font-display'} text-xl font-semibold text-black`}>Menu</span>
                   <motion.button
                     onClick={closeMobileMenu}
                     className="p-2 text-black transition-colors"
@@ -452,7 +452,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                     <Link
                       href={backLink}
                       onClick={closeMobileMenu}
-                      className="flex items-center gap-2 px-4 py-2 text-black/65 hover:text-black transition-colors font-body text-sm"
+                      className="flex items-center gap-2 px-4 py-2 text-black/65 hover:text-black transition-colors font-estate-sans text-sm"
                     >
                       <ChevronLeft className="w-4 h-4" />
                       Back
@@ -470,7 +470,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                         <Link
                           href={link.href}
                           onClick={closeMobileMenu}
-                          className={`block px-4 py-3 rounded-lg font-body text-base transition-all ${
+                          className={`block px-4 py-3 rounded-lg font-estate-sans text-base transition-all ${
                             location === link.href
                               ? "text-white font-semibold"
                               : "text-black/60 hover:bg-black/[0.03] hover:translate-x-2"
@@ -488,7 +488,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                 {showDataRoom && (
                   <div className="p-6" style={{ borderTop: isEstateRoute ? '1px solid rgba(0,0,0,0.1)' : `1px solid ${accent}66` }}>
                     <Link href="/longevity/data-room" onClick={closeMobileMenu}>
-                      <Button className="w-full bg-black hover:bg-black/90 text-white font-body font-medium shadow-md">
+                      <Button className="w-full bg-black hover:bg-black/90 text-white font-estate-sans font-medium shadow-md">
                         Data Room
                       </Button>
                     </Link>
@@ -517,7 +517,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                   </div>
                   <div>
                     <p className="font-mono text-[10px] tracking-wider uppercase text-black/50">Pillar {prevPillar.num}</p>
-                    <p className="font-body text-sm transition-colors text-black/70 group-hover:text-black">{prevPillar.label}</p>
+                    <p className="font-estate-sans text-sm transition-colors text-black/70 group-hover:text-black">{prevPillar.label}</p>
                   </div>
                 </Link>
               ) : <div />}
@@ -530,7 +530,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                 <Link href={nextPillar.href} className="group flex items-center gap-3 text-right">
                   <div>
                     <p className="font-mono text-[10px] tracking-wider uppercase text-black/50">Pillar {nextPillar.num}</p>
-                    <p className="font-body text-sm transition-colors text-black/70 group-hover:text-black">{nextPillar.label}</p>
+                    <p className="font-estate-sans text-sm transition-colors text-black/70 group-hover:text-black">{nextPillar.label}</p>
                   </div>
                   <div className="w-10 h-10 rounded-full border flex items-center justify-center transition-all" style={{ borderColor: `${accent}66` }}>
                     <ArrowRight className="w-4 h-4 transition-colors text-black/55" />
@@ -554,21 +554,21 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
               <div className="flex flex-col lg:flex-row justify-between items-start gap-12 mb-12">
                 <div className="flex flex-col gap-4 max-w-sm">
                   <Link href="/longevity/estate" className="flex items-center gap-3 group">
-                    <span className="font-estate text-base font-normal tracking-[0.3em] transition-colors text-white uppercase">
+                    <span className="font-estate-wordmark text-base transition-colors text-white">
                       THE ESTATE
                     </span>
                   </Link>
-                  <p className="font-body text-sm leading-relaxed text-white/60">
+                  <p className="font-estate-sans text-sm leading-relaxed text-white/60">
                     Where Vitality is the Ultimate Luxury. The world's first residential ecosystem built entirely around longevity.
                   </p>
                 </div>
                 <div className="flex flex-col md:flex-row gap-12">
                   <div className="flex flex-col gap-3">
                     <p className="font-mono text-[10px] tracking-wider uppercase mb-1 text-white/50">Explore</p>
-                    <Link href="/longevity/estate" className="font-body text-sm hover:text-white transition-colors text-white/60">Overview</Link>
-                    <Link href="/longevity/estate/about" className="font-body text-sm hover:text-white transition-colors text-white/60">Vision</Link>
-                    <Link href="/longevity/estate/opportunity" className="font-body text-sm hover:text-white transition-colors text-white/60">Opportunity</Link>
-                    <Link href="/longevity/estate/memberships" className="font-body text-sm hover:text-white transition-colors text-white/60">Membership</Link>
+                    <Link href="/longevity/estate" className="font-estate-sans text-sm hover:text-white transition-colors text-white/60">Overview</Link>
+                    <Link href="/longevity/estate/about" className="font-estate-sans text-sm hover:text-white transition-colors text-white/60">Vision</Link>
+                    <Link href="/longevity/estate/opportunity" className="font-estate-sans text-sm hover:text-white transition-colors text-white/60">Opportunity</Link>
+                    <Link href="/longevity/estate/memberships" className="font-estate-sans text-sm hover:text-white transition-colors text-white/60">Membership</Link>
                   </div>
                   <div className="flex flex-col gap-3">
                     <p className="font-mono text-[10px] tracking-wider uppercase mb-1 text-white/50">Contact</p>
@@ -581,8 +581,8 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                         <Mail className="w-4 h-4 text-white" />
                       </div>
                       <div>
-                        <p className="font-body text-sm font-semibold text-white">Inquire</p>
-                        <p className="font-body text-xs text-white/60">shawn@wellestategroup.com</p>
+                        <p className="font-estate-sans text-sm font-semibold text-white">Inquire</p>
+                        <p className="font-estate-sans text-xs text-white/60">shawn@wellestategroup.com</p>
                       </div>
                     </a>
                   </div>
@@ -590,7 +590,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
               </div>
               <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-8" />
               <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                <p className="font-body text-[11px] tracking-wider text-white/40">
+                <p className="font-estate-sans text-[11px] tracking-wider text-white/40">
                   &copy; 2026 The Estate. All rights reserved.
                 </p>
                 <span className="font-mono text-[10px] tracking-wider text-white/20">CONFIDENTIAL</span>
