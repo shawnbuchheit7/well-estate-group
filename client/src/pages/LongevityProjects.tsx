@@ -216,36 +216,36 @@ export default function LongevityProjects() {
                 ) : model.branded === "estate" ? (
                 <Link href={model.href} className="h-full block">
                   <motion.div
-                    whileHover={{ y: -6, boxShadow: "0 32px 64px rgba(0,0,0,0.35), 0 12px 24px rgba(0,0,0,0.2)" }}
-                    className="group relative rounded-xl border border-white/15 bg-[#0A0A0A] overflow-hidden cursor-pointer hover:border-white/30 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.3)] h-full"
+                    whileHover={{ y: -6, boxShadow: "0 24px 48px rgba(0,0,0,0.10), 0 8px 16px rgba(0,0,0,0.06)" }}
+                    className="group relative rounded-xl border border-[#1A1A1A]/20 bg-white overflow-hidden cursor-pointer hover:border-[#1A1A1A]/40 transition-all duration-300 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.03)] h-full"
                   >
-                    {/* Estate Branded Card — Black & White, no gold, Estate fonts */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-white/[0.01] pointer-events-none" />
-                    <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                    {/* Estate Branded Card — White bg, black text, Estate fonts, no gold */}
                     <div className="p-8 relative text-center">
-                      {/* Top row: Icon centered + Status */}
+                      {/* Top row: Icon + Status */}
                       <div className="flex items-start justify-between mb-6">
-                        <div className="w-14 h-14 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center">
-                          {model.icon}
+                        <div className="w-14 h-14 rounded-xl bg-[#0A0A0A] border border-[#1A1A1A]/20 flex items-center justify-center">
+                          <svg className="w-7 h-7 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                            <path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6" />
+                          </svg>
                         </div>
-                        <span className="font-estate-sans text-[9px] tracking-[0.15em] uppercase px-3 py-1.5 rounded-full font-medium bg-white/10 text-white/80 border border-white/20">
+                        <span className="font-estate-sans text-[9px] tracking-[0.15em] uppercase px-3 py-1.5 rounded-full font-medium bg-[#0A0A0A]/5 text-[#0A0A0A]/80 border border-[#0A0A0A]/20">
                           Active
                         </span>
                       </div>
 
                       {/* THE ESTATE wordmark */}
-                      <p className="font-estate-wordmark text-sm tracking-[0.3em] uppercase mb-3" style={{ color: 'rgba(255,255,255,0.9)' }}>
+                      <p className="font-estate-wordmark text-sm tracking-[0.3em] uppercase mb-3 text-[#0A0A0A]">
                         THE ESTATE
                       </p>
 
-                      {/* Title */}
-                      <h3 className="font-estate-headline text-2xl font-light text-white mb-2 group-hover:text-white/80 transition-colors tracking-tight leading-tight">
-                        {model.titleDisplay || model.title}
+                      {/* Tagline */}
+                      <h3 className="font-estate-display italic text-2xl font-light text-[#0A0A0A] mb-2 group-hover:text-[#0A0A0A]/70 transition-colors tracking-tight leading-tight">
+                        Where Vitality is the Ultimate Luxury
                       </h3>
-                      <p className="font-estate-sans text-[10px] text-white/50 tracking-[0.15em] uppercase mb-4 font-medium">
+                      <p className="font-estate-sans text-[10px] text-[#0A0A0A]/50 tracking-[0.15em] uppercase mb-4 font-medium">
                         {model.subtitle}
                       </p>
-                      <p className="font-estate-sans text-sm text-white/60 leading-relaxed mb-7">
+                      <p className="font-estate-sans text-sm text-[#0A0A0A]/70 leading-relaxed mb-7">
                         {model.description}
                       </p>
 
@@ -253,16 +253,16 @@ export default function LongevityProjects() {
                       {model.stats && (
                         <div className="flex gap-3 mb-7">
                           {model.stats.map((stat, i) => (
-                            <div key={i} className="flex-1 text-center py-3 rounded-lg bg-white/[0.04] border border-white/15">
-                              <p className="font-estate-headline text-xl font-light text-white leading-none">{stat.value}</p>
-                              <p className="font-estate-sans text-[9px] text-white/50 uppercase tracking-[0.12em] font-medium mt-1.5">{stat.label}</p>
+                            <div key={i} className="flex-1 text-center py-3 rounded-lg bg-[#0A0A0A]/[0.03] border border-[#0A0A0A]/10">
+                              <p className="font-estate-headline text-xl font-light text-[#0A0A0A] leading-none">{stat.value}</p>
+                              <p className="font-estate-sans text-[9px] text-[#0A0A0A]/50 uppercase tracking-[0.12em] font-medium mt-1.5">{stat.label}</p>
                             </div>
                           ))}
                         </div>
                       )}
 
                       {/* CTA */}
-                      <div className="flex items-center justify-center gap-2 text-white/60 group-hover:text-white transition-colors pt-4 border-t border-white/10">
+                      <div className="flex items-center justify-center gap-2 text-[#0A0A0A]/60 group-hover:text-[#0A0A0A] transition-colors pt-4 border-t border-[#0A0A0A]/10">
                         <span className="font-estate-sans text-sm font-semibold">Explore The Estate</span>
                         <motion.div
                           animate={{ x: [0, 4, 0] }}
