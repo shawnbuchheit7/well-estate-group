@@ -86,7 +86,7 @@ const models: ModelTile[] = [
   {
     id: "estate",
     title: "The Estate",
-    titleDisplay: <>The Estate<br /><em className="italic font-light">Where Vitality is the Ultimate Luxury</em></>,
+    titleDisplay: <>The Estate<br /><em className="font-estate-display italic font-light">Where Vitality is the Ultimate Luxury</em></>,
     subtitle: "Where Vitality is the Ultimate Luxury",
     description: "The world's first residential ecosystem built entirely around longevity. Luxury resorts, branded residences, and longevity clubs — unified by pioneering science, extraordinary hospitality, and a commitment to human vitality.",
     href: "/longevity/estate",
@@ -219,7 +219,7 @@ export default function LongevityProjects() {
                     whileHover={{ y: -6, boxShadow: "0 32px 64px rgba(0,0,0,0.35), 0 12px 24px rgba(0,0,0,0.2)" }}
                     className="group relative rounded-xl border border-white/15 bg-[#0A0A0A] overflow-hidden cursor-pointer hover:border-white/30 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.3)] h-full"
                   >
-                    {/* Estate Branded Card — Black & White, no gold */}
+                    {/* Estate Branded Card — Black & White, no gold, Estate fonts */}
                     <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-white/[0.01] pointer-events-none" />
                     <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
                     <div className="p-8 relative">
@@ -228,19 +228,19 @@ export default function LongevityProjects() {
                         <div className="w-14 h-14 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center">
                           {model.icon}
                         </div>
-                        <span className="font-mono text-[9px] tracking-[0.15em] uppercase px-3 py-1.5 rounded-full font-medium bg-white/10 text-white/80 border border-white/20">
+                        <span className="font-estate-sans text-[9px] tracking-[0.15em] uppercase px-3 py-1.5 rounded-full font-medium bg-white/10 text-white/80 border border-white/20">
                           Active
                         </span>
                       </div>
 
                       {/* Title */}
-                      <h3 className="font-display text-2xl font-bold text-white mb-2 group-hover:text-white/80 transition-colors tracking-tight leading-tight">
+                      <h3 className="font-estate-headline text-2xl font-light text-white mb-2 group-hover:text-white/80 transition-colors tracking-tight leading-tight">
                         {model.titleDisplay || model.title}
                       </h3>
-                      <p className="font-mono text-[10px] text-white/50 tracking-[0.15em] uppercase mb-4 font-medium">
+                      <p className="font-estate-sans text-[10px] text-white/50 tracking-[0.15em] uppercase mb-4 font-medium">
                         {model.subtitle}
                       </p>
-                      <p className="font-body text-sm text-white/60 leading-relaxed mb-7">
+                      <p className="font-estate-sans text-sm text-white/60 leading-relaxed mb-7">
                         {model.description}
                       </p>
 
@@ -249,8 +249,8 @@ export default function LongevityProjects() {
                         <div className="flex gap-3 mb-7">
                           {model.stats.map((stat, i) => (
                             <div key={i} className="flex-1 text-center py-3 rounded-lg bg-white/[0.04] border border-white/15">
-                              <p className="font-display text-xl font-bold text-white leading-none">{stat.value}</p>
-                              <p className="font-mono text-[9px] text-white/50 uppercase tracking-[0.12em] font-medium mt-1.5">{stat.label}</p>
+                              <p className="font-estate-headline text-xl font-light text-white leading-none">{stat.value}</p>
+                              <p className="font-estate-sans text-[9px] text-white/50 uppercase tracking-[0.12em] font-medium mt-1.5">{stat.label}</p>
                             </div>
                           ))}
                         </div>
@@ -258,7 +258,7 @@ export default function LongevityProjects() {
 
                       {/* CTA */}
                       <div className="flex items-center gap-2 text-white/60 group-hover:text-white transition-colors pt-4 border-t border-white/10">
-                        <span className="font-body text-sm font-semibold">Explore The Estate</span>
+                        <span className="font-estate-sans text-sm font-semibold">Explore The Estate</span>
                         <motion.div
                           animate={{ x: [0, 4, 0] }}
                           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
