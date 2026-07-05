@@ -140,27 +140,22 @@ export default function TheEstate() {
 
         <motion.div className="relative z-10 px-8 md:px-16 max-w-5xl mx-auto w-full text-center" style={{ y: heroY, opacity: heroOpacity }}>
           <motion.div initial="hidden" animate="visible" variants={stagger}>
-            {/* Eyebrow — centered thin line + label */}
-            <motion.div variants={fadeUp} className="flex items-center justify-center gap-5 mb-14">
-              <div className="w-10 h-[1px]" style={{ background: "rgba(250,247,242,0.3)" }} />
-              <span className="font-estate-sans text-[11px] tracking-[0.4em] uppercase" style={{ color: "rgba(250,247,242,0.5)" }}>
-                The Estate
-              </span>
-              <div className="w-10 h-[1px]" style={{ background: "rgba(250,247,242,0.3)" }} />
-            </motion.div>
-
-            {/* Headline — centered, white with "Luxury" in warm ivory italic (NOT gold) */}
-            <motion.h1 variants={fadeUp} className="font-estate-headline text-5xl md:text-7xl lg:text-[6.5rem] leading-[0.92] tracking-[-0.01em] mb-10" style={{ color: IVORY }}>
-              Where Vitality<br />
-              is the Ultimate<br />
-              <span className="font-estate-display italic" style={{ color: WARM_ACCENT }}>Luxury.</span>
+            {/* Headline — full tagline in one font, matching PDF page 2 exactly */}
+            <motion.h1 variants={fadeUp} className="font-estate-headline text-4xl md:text-6xl lg:text-[5.5rem] leading-[1.1] tracking-[-0.01em] font-light mb-16" style={{ color: IVORY }}>
+              Where Vitality is the Ultimate<br />
+              Luxury.
             </motion.h1>
 
-            {/* Subhead — centered, muted ivory */}
-            <motion.p variants={fadeUp} className="font-estate-sans text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-20" style={{ color: "rgba(250,247,242,0.6)" }}>
-              The world's first residential ecosystem built entirely around longevity.
-              Luxury resorts, branded residences, and longevity clubs — unified by
-              pioneering science, extraordinary hospitality, and a commitment to human vitality.
+            {/* Body text — from brand deck PDF page 2 */}
+            <motion.p variants={fadeUp} className="font-estate-sans text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-6" style={{ color: "rgba(250,247,242,0.55)" }}>
+              Designed to extend life — and the quality of living — The Estate is a next-generation
+              platform for luxury hospitality and wellness-oriented living. An integrated network of
+              resorts, residences, and longevity clubs, where design, science, and experience converge
+              to meet a growing global demand for health-anchored luxury environments.
+            </motion.p>
+
+            <motion.p variants={fadeUp} className="font-estate-sans text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-20" style={{ color: "rgba(250,247,242,0.55)" }}>
+              More than a brand — The Estate is a mindset, a movement, and a new model for wellbeing.
             </motion.p>
 
             {/* Stats — centered, thin ivory divider, white numbers, muted grey labels */}
