@@ -53,6 +53,7 @@
   --font-body: 'DM Sans', sans-serif;
   --font-mono: 'Space Mono', monospace;
   --font-estate: 'Bodoni Moda', serif;
+  --font-estate-tagline: 'Josefin Sans', sans-serif;
 }
 
 :root {
@@ -159,6 +160,16 @@
     letter-spacing: -0.02em;
     color: #0A0A0A;
   }
+  [data-route-estate] h1,
+  [data-route-estate] h2,
+  [data-route-estate] h3,
+  [data-route-estate] h4,
+  [data-route-estate] h5,
+  [data-route-estate] h6 {
+    font-family: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+  }
   p {
     line-height: 1.7;
   }
@@ -221,15 +232,16 @@
     font-family: 'Bodoni Moda', serif;
   }
 
-  /* Estate route override: .font-estate on headings must beat the global h1-h6 Playfair rule */
-  .font-estate,
-  .font-estate h1,
-  .font-estate h2,
-  .font-estate h3,
-  .font-estate h4,
-  .font-estate h5,
-  .font-estate h6 {
+  .font-estate-tagline {
+    font-family: 'Josefin Sans', sans-serif;
+  }
+
+  /* Estate route override: specific font-estate class uses Bodoni Moda */
+  .font-estate {
     font-family: 'Bodoni Moda', serif !important;
+  }
+  .font-estate-tagline {
+    font-family: 'Josefin Sans', sans-serif !important;
   }
   
   /* Luxury gradient utilities */

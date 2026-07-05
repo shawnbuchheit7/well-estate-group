@@ -246,7 +246,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
               </Link>
             ) : isEstateRoute ? (
               <Link href="/longevity/estate" className="flex items-center gap-3 group" onClick={closeMobileMenu}>
-                <span className="font-body text-lg font-semibold tracking-[0.3em] transition-colors whitespace-nowrap text-black uppercase">
+                <span className="font-estate text-lg font-normal tracking-[0.3em] transition-colors whitespace-nowrap text-black uppercase">
                   THE ESTATE
                 </span>
               </Link>
@@ -554,7 +554,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
               <div className="flex flex-col lg:flex-row justify-between items-start gap-12 mb-12">
                 <div className="flex flex-col gap-4 max-w-sm">
                   <Link href="/longevity/estate" className="flex items-center gap-3 group">
-                    <span className="font-body text-base font-semibold tracking-[0.3em] transition-colors text-white uppercase">
+                    <span className="font-estate text-base font-normal tracking-[0.3em] transition-colors text-white uppercase">
                       THE ESTATE
                     </span>
                   </Link>
