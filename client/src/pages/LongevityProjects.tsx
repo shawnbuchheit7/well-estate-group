@@ -234,7 +234,7 @@ export default function LongevityProjects() {
                       </div>
 
                       {/* THE ESTATE wordmark */}
-                      <p className="font-estate-wordmark text-sm tracking-[0.3em] uppercase mb-3 text-[#0A0A0A]">
+                      <p className="font-estate-wordmark text-2xl font-bold tracking-[0.3em] uppercase mb-3 text-[#0A0A0A]">
                         THE ESTATE
                       </p>
 
