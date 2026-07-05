@@ -161,7 +161,7 @@ export default function TheEstate() {
                 { title: "Technology", text: "AI-powered diagnostics, proactive care, restorative design, and global innovators" },
                 { title: "Vision", text: "A mindset, a movement, and a new model for wellbeing" },
               ].map((pillar, i) => (
-                <div key={i} className="relative flex flex-col items-center text-center px-5 rounded-2xl border overflow-hidden" style={{ borderColor: 'rgba(250,247,242,0.12)', backgroundColor: 'rgba(250,247,242,0.03)', height: '420px' }}>
+                <div key={i} className="relative flex flex-col items-center text-center px-5 rounded-2xl border overflow-hidden" style={{ borderColor: 'rgba(250,247,242,0.12)', backgroundColor: 'rgba(250,247,242,0.03)', height: '340px' }}>
                   <p className="font-estate-sans text-[13px] font-semibold tracking-[0.18em] uppercase absolute left-0 right-0 top-[60px] px-5" style={{ color: IVORY }}>
                     {pillar.title}
                   </p>
