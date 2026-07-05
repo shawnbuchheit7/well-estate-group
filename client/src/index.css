@@ -52,6 +52,7 @@
   --font-display: 'Playfair Display', serif;
   --font-body: 'DM Sans', sans-serif;
   --font-mono: 'Space Mono', monospace;
+  --font-estate: 'Bodoni Moda', serif;
 }
 
 :root {
@@ -214,6 +215,10 @@
   
   .font-mono {
     font-family: 'Space Mono', monospace;
+  }
+
+  .font-estate {
+    font-family: 'Bodoni Moda', serif;
   }
   
   /* Luxury gradient utilities */

@@ -276,22 +276,38 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                     <div
                       key={link.href}
                     >
-                      <Link
-                        href={link.href}
-                        className={`relative px-3.5 py-1.5 rounded-lg transition-all whitespace-nowrap ${
-                          isActive
-                            ? "text-white font-semibold border-2 shadow-sm"
-                            : "text-black/70 border hover:text-black"
-                        }`}
-                        style={isActive
-                          ? { borderColor: accent, backgroundColor: accent, boxShadow: `0 2px 8px ${accent}40` }
-                          : { borderColor: `${accent}66`, }
-                        }
-                        onMouseEnter={(e) => { if (!isActive) { e.currentTarget.style.borderColor = `${accent}99`; e.currentTarget.style.backgroundColor = `${accent}08`; } }}
-                        onMouseLeave={(e) => { if (!isActive) { e.currentTarget.style.borderColor = `${accent}66`; e.currentTarget.style.backgroundColor = 'transparent'; } }}
-                      >
-                        {link.label}
-                      </Link>
+                      {isEstateRoute ? (
+                        <Link
+                          href={link.href}
+                          className={`relative px-3.5 py-2 transition-all whitespace-nowrap text-[11px] tracking-wide uppercase ${
+                            isActive
+                              ? "text-black font-semibold"
+                              : "text-black/50 hover:text-black/80"
+                          }`}
+                        >
+                          {link.label}
+                          {isActive && (
+                            <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-[2px] bg-black rounded-full" />
+                          )}
+                        </Link>
+                      ) : (
+                        <Link
+                          href={link.href}
+                          className={`relative px-3.5 py-1.5 rounded-lg transition-all whitespace-nowrap ${
+                            isActive
+                              ? "text-white font-semibold border-2 shadow-sm"
+                              : "text-black/70 border hover:text-black"
+                          }`}
+                          style={isActive
+                            ? { borderColor: accent, backgroundColor: accent, boxShadow: `0 2px 8px ${accent}40` }
+                            : { borderColor: `${accent}66`, }
+                          }
+                          onMouseEnter={(e) => { if (!isActive) { e.currentTarget.style.borderColor = `${accent}99`; e.currentTarget.style.backgroundColor = `${accent}08`; } }}
+                          onMouseLeave={(e) => { if (!isActive) { e.currentTarget.style.borderColor = `${accent}66`; e.currentTarget.style.backgroundColor = 'transparent'; } }}
+                        >
+                          {link.label}
+                        </Link>
+                      )}
                     </div>
                   );
                 })}
@@ -346,22 +362,38 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                       <div
                         key={link.href}
                       >
-                        <Link
-                          href={link.href}
-                          className={`relative px-3 py-1 rounded-md transition-all whitespace-nowrap text-[11px] ${
-                            isActive
-                              ? "text-white font-semibold border-2 shadow-sm"
-                              : "text-black/70 border hover:text-black"
-                          }`}
-                          style={isActive
-                            ? { borderColor: accent, backgroundColor: accent }
-                            : { borderColor: `${accent}66` }
-                          }
-                          onMouseEnter={(e) => { if (!isActive) { e.currentTarget.style.borderColor = `${accent}99`; e.currentTarget.style.backgroundColor = `${accent}08`; } }}
-                          onMouseLeave={(e) => { if (!isActive) { e.currentTarget.style.borderColor = `${accent}66`; e.currentTarget.style.backgroundColor = 'transparent'; } }}
-                        >
-                          {link.label}
-                        </Link>
+                        {isEstateRoute ? (
+                          <Link
+                            href={link.href}
+                            className={`relative px-3 py-2 transition-all whitespace-nowrap text-[11px] tracking-wide uppercase ${
+                              isActive
+                                ? "text-black font-semibold"
+                                : "text-black/50 hover:text-black/80"
+                            }`}
+                          >
+                            {link.label}
+                            {isActive && (
+                              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-[2px] bg-black rounded-full" />
+                            )}
+                          </Link>
+                        ) : (
+                          <Link
+                            href={link.href}
+                            className={`relative px-3 py-1 rounded-md transition-all whitespace-nowrap text-[11px] ${
+                              isActive
+                                ? "text-white font-semibold border-2 shadow-sm"
+                                : "text-black/70 border hover:text-black"
+                            }`}
+                            style={isActive
+                              ? { borderColor: accent, backgroundColor: accent }
+                              : { borderColor: `${accent}66` }
+                            }
+                            onMouseEnter={(e) => { if (!isActive) { e.currentTarget.style.borderColor = `${accent}99`; e.currentTarget.style.backgroundColor = `${accent}08`; } }}
+                            onMouseLeave={(e) => { if (!isActive) { e.currentTarget.style.borderColor = `${accent}66`; e.currentTarget.style.backgroundColor = 'transparent'; } }}
+                          >
+                            {link.label}
+                          </Link>
+                        )}
                       </div>
                     );
                   })}
