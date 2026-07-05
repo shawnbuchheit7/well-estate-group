@@ -140,6 +140,10 @@ export default function TheEstate() {
 
         <motion.div className="relative z-10 px-8 md:px-16 max-w-5xl mx-auto w-full text-center" style={{ y: heroY, opacity: heroOpacity }}>
           <motion.div initial="hidden" animate="visible" variants={stagger}>
+            {/* THE ESTATE wordmark — centered above headline, matching PDF */}
+            <motion.p variants={fadeUp} className="font-estate-wordmark text-sm md:text-base tracking-[0.3em] uppercase mb-8" style={{ color: IVORY }}>
+              THE ESTATE
+            </motion.p>
             {/* Headline — full tagline in one font, matching PDF page 2 exactly */}
             <motion.h1 variants={fadeUp} className="font-estate-headline text-[clamp(1.75rem,4.8vw,4.8rem)] leading-[1.1] tracking-[-0.01em] font-light mb-16 whitespace-nowrap" style={{ color: IVORY }}>
               Where Vitality is the Ultimate Luxury.

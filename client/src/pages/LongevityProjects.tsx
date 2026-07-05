@@ -222,8 +222,8 @@ export default function LongevityProjects() {
                     {/* Estate Branded Card — Black & White, no gold, Estate fonts */}
                     <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-white/[0.01] pointer-events-none" />
                     <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-                    <div className="p-8 relative">
-                      {/* Top row: Icon + Status */}
+                    <div className="p-8 relative text-center">
+                      {/* Top row: Icon centered + Status */}
                       <div className="flex items-start justify-between mb-6">
                         <div className="w-14 h-14 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center">
                           {model.icon}
@@ -232,6 +232,11 @@ export default function LongevityProjects() {
                           Active
                         </span>
                       </div>
+
+                      {/* THE ESTATE wordmark */}
+                      <p className="font-estate-wordmark text-sm tracking-[0.3em] uppercase mb-3" style={{ color: 'rgba(255,255,255,0.9)' }}>
+                        THE ESTATE
+                      </p>
 
                       {/* Title */}
                       <h3 className="font-estate-headline text-2xl font-light text-white mb-2 group-hover:text-white/80 transition-colors tracking-tight leading-tight">
@@ -257,7 +262,7 @@ export default function LongevityProjects() {
                       )}
 
                       {/* CTA */}
-                      <div className="flex items-center gap-2 text-white/60 group-hover:text-white transition-colors pt-4 border-t border-white/10">
+                      <div className="flex items-center justify-center gap-2 text-white/60 group-hover:text-white transition-colors pt-4 border-t border-white/10">
                         <span className="font-estate-sans text-sm font-semibold">Explore The Estate</span>
                         <motion.div
                           animate={{ x: [0, 4, 0] }}
