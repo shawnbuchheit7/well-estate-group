@@ -24,6 +24,7 @@ interface ModelTile {
   status: "active" | "coming-soon";
   stats?: { label: string; value: string }[];
   icon: React.ReactNode;
+  branded?: "estate";
 }
 
 const models: ModelTile[] = [
@@ -85,18 +86,19 @@ const models: ModelTile[] = [
   {
     id: "estate",
     title: "The Estate",
-    titleDisplay: <>The Estate<br /><em className="italic font-light">Business Model</em></>,
-    subtitle: "Premium Estate-Based Longevity Living",
-    description: "A premium longevity center concept delivering cutting-edge diagnostics, therapeutics, and personalized wellness programs. Designed for high-net-worth individuals seeking the most advanced health optimization available.",
+    titleDisplay: <>The Estate<br /><em className="italic font-light">Longevity Center Business Model</em></>,
+    subtitle: "Where Vitality is the Ultimate Luxury",
+    description: "The world's first residential ecosystem built entirely around longevity. Luxury resorts, branded residences, and longevity clubs — unified by pioneering science, extraordinary hospitality, and a commitment to human vitality.",
     href: "/longevity/estate",
     status: "active",
+    branded: "estate",
     stats: [
-      { label: "ARR Per Center", value: "$60M" },
-      { label: "Flagship Centers", value: "5" },
-      { label: "Exit Potential", value: "$2B+" },
+      { label: "Global Projects", value: "24+" },
+      { label: "Countries", value: "8+" },
+      { label: "Pipeline Value", value: "$2B+" },
     ],
     icon: (
-      <svg className="w-7 h-7 text-[#B8860B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <svg className="w-7 h-7 text-[#B8956A]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6" />
       </svg>
     ),
@@ -211,6 +213,62 @@ export default function LongevityProjects() {
                       </div>
                     </motion.div>
                   </a>
+                ) : model.branded === "estate" ? (
+                <Link href={model.href} className="h-full block">
+                  <motion.div
+                    whileHover={{ y: -6, boxShadow: "0 32px 64px rgba(0,0,0,0.25), 0 12px 24px rgba(184,149,106,0.15)" }}
+                    className="group relative rounded-xl border border-[#B8956A]/50 bg-[#0A0A0A] overflow-hidden cursor-pointer hover:border-[#B8956A]/80 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.3),0_1px_4px_rgba(184,149,106,0.1)] h-full"
+                  >
+                    {/* Estate Branded Card — Dark luxury */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#B8956A]/5 via-transparent to-[#B8956A]/3 pointer-events-none" />
+                    <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#B8956A]/60 to-transparent" />
+                    <div className="p-8 relative">
+                      {/* Top row: Icon + Status */}
+                      <div className="flex items-start justify-between mb-6">
+                        <div className="w-14 h-14 rounded-xl bg-[#B8956A]/10 border border-[#B8956A]/40 flex items-center justify-center">
+                          {model.icon}
+                        </div>
+                        <span className="font-mono text-[9px] tracking-[0.15em] uppercase px-3 py-1.5 rounded-full font-medium bg-[#B8956A]/15 text-[#B8956A] border border-[#B8956A]/40">
+                          Active
+                        </span>
+                      </div>
+
+                      {/* Title */}
+                      <h3 className="font-display text-2xl font-bold text-white mb-2 group-hover:text-[#B8956A] transition-colors tracking-tight leading-tight">
+                        {model.titleDisplay || model.title}
+                      </h3>
+                      <p className="font-mono text-[10px] text-[#B8956A]/80 tracking-[0.15em] uppercase mb-4 font-medium">
+                        {model.subtitle}
+                      </p>
+                      <p className="font-body text-sm text-white/60 leading-relaxed mb-7">
+                        {model.description}
+                      </p>
+
+                      {/* Stats Row */}
+                      {model.stats && (
+                        <div className="flex gap-3 mb-7">
+                          {model.stats.map((stat, i) => (
+                            <div key={i} className="flex-1 text-center py-3 rounded-lg bg-white/[0.04] border border-[#B8956A]/30">
+                              <p className="font-display text-xl font-bold text-[#B8956A] leading-none">{stat.value}</p>
+                              <p className="font-mono text-[9px] text-white/50 uppercase tracking-[0.12em] font-medium mt-1.5">{stat.label}</p>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+
+                      {/* CTA */}
+                      <div className="flex items-center gap-2 text-[#B8956A]/70 group-hover:text-[#B8956A] transition-colors pt-4 border-t border-[#B8956A]/30">
+                        <span className="font-body text-sm font-semibold">Explore The Estate</span>
+                        <motion.div
+                          animate={{ x: [0, 4, 0] }}
+                          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                        >
+                          <ArrowRight className="w-4 h-4" />
+                        </motion.div>
+                      </div>
+                    </div>
+                  </motion.div>
+                </Link>
                 ) : (
                 <Link href={model.href} className="h-full block">
                   <motion.div
