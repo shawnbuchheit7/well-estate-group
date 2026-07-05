@@ -172,6 +172,28 @@ export default function TheEstate() {
               </p>
             </motion.div>
 
+            {/* 7 Core Pillars — vertical rectangles side by side */}
+            <motion.div variants={fadeUp} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3 mb-20">
+              {[
+                { title: "Purpose", text: "Designed to extend life and the quality of living" },
+                { title: "Structure", text: "An integrated network of resorts, residences, and longevity clubs" },
+                { title: "Market", text: "Meeting a growing global demand for health-anchored luxury environments" },
+                { title: "Environment", text: "Every detail engineered for healing and peak human performance" },
+                { title: "Philosophy", text: "Health transcends treatment and becomes lifestyle" },
+                { title: "Technology", text: "AI-powered diagnostics, proactive care, restorative design, and global innovators" },
+                { title: "Vision", text: "A mindset, a movement, and a new model for wellbeing" },
+              ].map((pillar, i) => (
+                <div key={i} className="flex flex-col items-center text-center px-4 py-8 rounded-lg border" style={{ borderColor: 'rgba(250,247,242,0.12)', backgroundColor: 'rgba(250,247,242,0.03)' }}>
+                  <p className="font-estate-sans text-xs font-semibold tracking-[0.2em] uppercase mb-4" style={{ color: IVORY }}>
+                    {pillar.title}
+                  </p>
+                  <p className="font-estate-sans text-[11px] leading-relaxed font-light" style={{ color: 'rgba(250,247,242,0.55)' }}>
+                    {pillar.text}
+                  </p>
+                </div>
+              ))}
+            </motion.div>
+
             {/* Stats — centered, thin ivory divider, white numbers, muted grey labels */}
             <motion.div variants={fadeUp} className="flex flex-wrap justify-center gap-12 md:gap-16 border-t pt-10" style={{ borderColor: "rgba(250,247,242,0.12)" }}>
               {[
