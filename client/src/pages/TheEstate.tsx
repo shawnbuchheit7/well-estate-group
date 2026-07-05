@@ -165,7 +165,7 @@ export default function TheEstate() {
                   <p className="font-estate-sans text-[13px] font-semibold tracking-[0.18em] uppercase pt-16" style={{ color: IVORY }}>
                     {pillar.title}
                   </p>
-                  <p className="font-estate-sans text-[15px] leading-[1.7] font-light mt-auto pb-16" style={{ color: 'rgba(250,247,242,0.55)' }}>
+                  <p className="font-estate-sans text-[15px] leading-[1.7] font-light mt-auto pb-16" style={{ color: 'rgba(250,247,242,0.85)' }}>
                     {pillar.text}
                   </p>
                 </div>
