@@ -380,7 +380,7 @@ export default function TheEstate() {
                       src={founder.image}
                       alt={founder.name}
                       loading="lazy"
-                      className="w-full h-full object-cover object-top grayscale"
+                      className="w-full h-full object-cover object-top"
                     />
                   </div>
                   
