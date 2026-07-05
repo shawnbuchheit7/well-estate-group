@@ -83,6 +83,25 @@ const models: ModelTile[] = [
     ),
   },
   {
+    id: "estate",
+    title: "The Estate",
+    titleDisplay: <>The Estate<br /><em className="italic font-light">Business Model</em></>,
+    subtitle: "Premium Estate-Based Longevity Living",
+    description: "A premium longevity center concept delivering cutting-edge diagnostics, therapeutics, and personalized wellness programs. Designed for high-net-worth individuals seeking the most advanced health optimization available.",
+    href: "/longevity/estate",
+    status: "active",
+    stats: [
+      { label: "ARR Per Center", value: "$60M" },
+      { label: "Flagship Centers", value: "5" },
+      { label: "Exit Potential", value: "$2B+" },
+    ],
+    icon: (
+      <svg className="w-7 h-7 text-[#B8860B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6" />
+      </svg>
+    ),
+  },
+  {
     id: "franchise-portal",
     title: "International Franchise Portal",
     titleDisplay: <>Franchise<br /><em className="italic font-light">Partner Portal</em></>,
@@ -112,7 +131,7 @@ export default function LongevityProjects() {
         title="Longevity Ventures"
         description="Business planning and investment strategy for physician-led longevity and regenerative medicine centers. Multiple center models designed for different market segments and operational approaches."
         stats={[
-          { label: "Business Models", value: "2" },
+          { label: "Business Models", value: "3" },
           { label: "Client Projects", value: "1" },
           { label: "Global Reach", value: "40+" },
           { label: "Exit Potential", value: "$2B+" },

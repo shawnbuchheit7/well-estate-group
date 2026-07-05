@@ -21,6 +21,7 @@ import Landing from "./pages/Landing";
 import Home from "./pages/Home";
 
 // Longevity Projects Landing (multi-model view)
+const TheEstate = lazy(() => import("./pages/TheEstate"));
 const LongevityProjects = lazy(() => import("./pages/LongevityProjects"));
 const LongevityPerformanceModel = lazy(() => import("./pages/LongevityPerformanceModel"));
 const LongevityFranchisePortal = lazy(() => import("./pages/LongevityFranchisePortal"));
@@ -191,6 +192,17 @@ function App() {
                   <Route path="/longevity/saltleaf/fitness-layout" component={() => <LongevityPasswordGate><SaltleafFitnessLayout /></LongevityPasswordGate>} />
                   <Route path="/longevity/saltleaf/level-3-wellness" component={() => <LongevityPasswordGate><SaltleafLevel3Wellness /></LongevityPasswordGate>} />
                   <Route path="/longevity/saltleaf/outdoor-wellness" component={() => <LongevityPasswordGate><SaltleafOutdoorWellness /></LongevityPasswordGate>} />
+
+                  {/* The Estate Model */}
+                  <Route path="/longevity/estate" component={() => <LongevityPasswordGate><TheEstate /></LongevityPasswordGate>} />
+                  <Route path="/longevity/estate/about" component={() => <LongevityPasswordGate><About /></LongevityPasswordGate>} />
+                  <Route path="/longevity/estate/opportunity" component={() => <LongevityPasswordGate><Opportunity /></LongevityPasswordGate>} />
+                  <Route path="/longevity/estate/memberships" component={() => <LongevityPasswordGate><Memberships /></LongevityPasswordGate>} />
+                  <Route path="/longevity/estate/therapeutics" component={() => <LongevityPasswordGate><Therapeutics /></LongevityPasswordGate>} />
+                  <Route path="/longevity/estate/technology" component={() => <LongevityPasswordGate><Technology /></LongevityPasswordGate>} />
+                  <Route path="/longevity/estate/projections" component={() => <LongevityPasswordGate><Projections /></LongevityPasswordGate>} />
+                  <Route path="/longevity/estate/team" component={() => <LongevityPasswordGate><Team /></LongevityPasswordGate>} />
+                  <Route path="/longevity/estate/faq" component={() => <LongevityPasswordGate><FAQ /></LongevityPasswordGate>} />
 
                   {/* Longevity Franchise Portal */}
                   <Route path="/longevity/franchise-portal" component={() => <LongevityPasswordGate><LongevityFranchisePortal /></LongevityPasswordGate>} />
