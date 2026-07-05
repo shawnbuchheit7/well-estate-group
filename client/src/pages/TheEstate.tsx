@@ -150,8 +150,8 @@ export default function TheEstate() {
               Where Vitality is the Ultimate Luxury.
             </motion.p>
 
-            {/* 7 Core Pillars — vertical rectangles, equal width, centered */}
-            <motion.div variants={fadeUp} className="grid grid-cols-7 gap-4 mb-20 mt-4 w-full">
+            {/* 7 Core Pillars — square cards, equal width, text aligned consistently */}
+            <motion.div variants={fadeUp} className="grid grid-cols-7 gap-3 mb-20 mt-4 w-full">
               {[
                 { title: "Purpose", text: "Designed to extend life and the quality of living" },
                 { title: "Structure", text: "An integrated network of resorts, residences, and longevity clubs" },
@@ -161,11 +161,11 @@ export default function TheEstate() {
                 { title: "Technology", text: "AI-powered diagnostics, proactive care, restorative design, and global innovators" },
                 { title: "Vision", text: "A mindset, a movement, and a new model for wellbeing" },
               ].map((pillar, i) => (
-                <div key={i} className="flex flex-col items-center text-center px-4 py-14 rounded-2xl border" style={{ borderColor: 'rgba(250,247,242,0.12)', backgroundColor: 'rgba(250,247,242,0.03)' }}>
-                  <p className="font-estate-sans text-sm font-semibold tracking-[0.18em] uppercase mb-6" style={{ color: IVORY }}>
+                <div key={i} className="aspect-square flex flex-col items-center text-center px-5 pt-10 pb-8 rounded-2xl border" style={{ borderColor: 'rgba(250,247,242,0.12)', backgroundColor: 'rgba(250,247,242,0.03)' }}>
+                  <p className="font-estate-sans text-[13px] font-semibold tracking-[0.18em] uppercase mb-auto" style={{ color: IVORY }}>
                     {pillar.title}
                   </p>
-                  <p className="font-estate-sans text-[15px] leading-relaxed font-light mt-auto" style={{ color: 'rgba(250,247,242,0.55)' }}>
+                  <p className="font-estate-sans text-[14px] leading-relaxed font-light" style={{ color: 'rgba(250,247,242,0.55)' }}>
                     {pillar.text}
                   </p>
                 </div>
