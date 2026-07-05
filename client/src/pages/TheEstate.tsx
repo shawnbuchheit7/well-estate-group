@@ -151,7 +151,7 @@ export default function TheEstate() {
             </motion.p>
 
             {/* 7 Core Pillars — vertical rectangles side by side, directly below tagline */}
-            <motion.div variants={fadeUp} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-5 mb-20 mt-4">
+            <motion.div variants={fadeUp} className="flex flex-wrap lg:flex-nowrap gap-4 mb-20 mt-4 w-full items-stretch">
               {[
                 { title: "Purpose", text: "Designed to extend life and the quality of living" },
                 { title: "Structure", text: "An integrated network of resorts, residences, and longevity clubs" },
@@ -161,11 +161,11 @@ export default function TheEstate() {
                 { title: "Technology", text: "AI-powered diagnostics, proactive care, restorative design, and global innovators" },
                 { title: "Vision", text: "A mindset, a movement, and a new model for wellbeing" },
               ].map((pillar, i) => (
-                <div key={i} className="flex flex-col items-center text-center px-6 py-14 rounded-xl border min-h-[240px] justify-center" style={{ borderColor: 'rgba(250,247,242,0.12)', backgroundColor: 'rgba(250,247,242,0.03)' }}>
-                  <p className="font-estate-sans text-[13px] font-semibold tracking-[0.2em] uppercase mb-5" style={{ color: IVORY }}>
+                <div key={i} className="flex-1 flex flex-col items-center text-center px-5 py-16 rounded-2xl border min-h-[300px] min-w-[160px]" style={{ borderColor: 'rgba(250,247,242,0.12)', backgroundColor: 'rgba(250,247,242,0.03)' }}>
+                  <p className="font-estate-sans text-sm font-semibold tracking-[0.2em] uppercase mb-6" style={{ color: IVORY }}>
                     {pillar.title}
                   </p>
-                  <p className="font-estate-sans text-[14px] leading-relaxed font-light" style={{ color: 'rgba(250,247,242,0.55)' }}>
+                  <p className="font-estate-sans text-[15px] leading-relaxed font-light mt-auto" style={{ color: 'rgba(250,247,242,0.55)' }}>
                     {pillar.text}
                   </p>
                 </div>
