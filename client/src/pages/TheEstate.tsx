@@ -169,7 +169,7 @@ export default function TheEstate() {
                   {pillar.title}
                 </span>
               </div>
-              <p className="font-estate-sans text-[14px] leading-[1.8] font-light absolute left-0 right-0 top-[110px] px-5" style={{ color: 'rgba(250,247,242,0.85)' }}>
+              <p className="font-estate-sans text-[14px] leading-[1.8] font-light absolute left-0 right-0 top-[130px] px-5" style={{ color: 'rgba(250,247,242,0.85)' }}>
                 {pillar.text}
               </p>
             </div>
