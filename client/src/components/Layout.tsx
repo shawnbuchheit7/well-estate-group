@@ -154,6 +154,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
   } else if (isEstateRoute) {
     navLinks = [
       { href: "/longevity/estate", label: "Overview" },
+      { href: "/longevity/estate/ecosystem", label: "Ecosystem" },
       { href: "/longevity/estate/about", label: "Vision" },
       { href: "/longevity/estate/opportunity", label: "Opportunity" },
       { href: "/longevity/estate/memberships", label: "Membership" },

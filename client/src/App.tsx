@@ -22,6 +22,7 @@ import Home from "./pages/Home";
 
 // Longevity Projects Landing (multi-model view)
 const TheEstate = lazy(() => import("./pages/TheEstate"));
+const EstateEcosystem = lazy(() => import("./pages/EstateEcosystem"));
 const LongevityProjects = lazy(() => import("./pages/LongevityProjects"));
 const LongevityPerformanceModel = lazy(() => import("./pages/LongevityPerformanceModel"));
 const LongevityFranchisePortal = lazy(() => import("./pages/LongevityFranchisePortal"));
@@ -195,6 +196,7 @@ function App() {
 
                   {/* The Estate Model */}
                   <Route path="/longevity/estate" component={() => <LongevityPasswordGate><TheEstate /></LongevityPasswordGate>} />
+                  <Route path="/longevity/estate/ecosystem" component={() => <LongevityPasswordGate><EstateEcosystem /></LongevityPasswordGate>} />
                   <Route path="/longevity/estate/about" component={() => <LongevityPasswordGate><About /></LongevityPasswordGate>} />
                   <Route path="/longevity/estate/opportunity" component={() => <LongevityPasswordGate><Opportunity /></LongevityPasswordGate>} />
                   <Route path="/longevity/estate/memberships" component={() => <LongevityPasswordGate><Memberships /></LongevityPasswordGate>} />
