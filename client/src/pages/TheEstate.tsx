@@ -141,7 +141,7 @@ export default function TheEstate() {
         <motion.div className="relative z-10 px-6 md:px-12 max-w-7xl mx-auto w-full text-center" style={{ y: heroY, opacity: heroOpacity }}>
           <motion.div initial="hidden" animate="visible" variants={stagger}>
             {/* THE ESTATE — large bold serif wordmark, centered, matching PDF exactly */}
-            <motion.h1 variants={fadeUp} className="text-[clamp(2.5rem,6vw,5rem)] tracking-[0.15em] uppercase mb-12" style={{ color: IVORY, fontFamily: "'Bodoni Moda', serif", fontWeight: 900, fontVariationSettings: "'opsz' 48" }}>
+            <motion.h1 variants={fadeUp} className="font-estate-wordmark text-[clamp(2.5rem,6vw,5rem)] mb-12" style={{ color: IVORY }}>
               THE ESTATE
             </motion.h1>
 
