@@ -165,7 +165,7 @@ export default function TheEstate() {
           ].map((pillar, i) => (
             <div key={i} className="relative flex flex-col items-center text-center px-5 rounded-2xl border overflow-hidden" style={{ borderColor: 'rgba(250,247,242,0.12)', backgroundColor: 'rgba(250,247,242,0.03)', height: '400px' }}>
               <div className="absolute left-0 right-0 top-[48px] px-5 flex justify-center">
-                <span className="inline-block bg-white rounded-full px-4 py-1.5 font-estate-sans text-[10px] font-semibold tracking-[0.18em] uppercase text-black">
+                <span className="inline-block bg-white rounded-full px-6 py-2.5 font-estate-sans text-[12px] font-semibold tracking-[0.18em] uppercase text-black">
                   {pillar.title}
                 </span>
               </div>
