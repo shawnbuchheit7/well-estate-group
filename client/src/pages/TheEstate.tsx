@@ -150,10 +150,10 @@ export default function TheEstate() {
             </motion.div>
 
             {/* Headline — centered, white with "Luxury" in warm ivory italic (NOT gold) */}
-            <motion.h1 variants={fadeUp} className="font-estate-display text-5xl md:text-7xl lg:text-[6.5rem] font-light leading-[0.92] tracking-[-0.02em] mb-10" style={{ color: IVORY }}>
+            <motion.h1 variants={fadeUp} className="font-estate-headline text-5xl md:text-7xl lg:text-[6.5rem] leading-[0.92] tracking-[-0.01em] mb-10" style={{ color: IVORY }}>
               Where Vitality<br />
               is the Ultimate<br />
-              <span className="italic" style={{ color: WARM_ACCENT }}>Luxury.</span>
+              <span className="font-estate-display italic" style={{ color: WARM_ACCENT }}>Luxury.</span>
             </motion.h1>
 
             {/* Subhead — centered, muted ivory */}
@@ -172,7 +172,7 @@ export default function TheEstate() {
                 { value: "1,800+", label: "Residences" },
               ].map((stat, i) => (
                 <div key={i} className="text-center">
-                  <div className="font-estate-display text-3xl md:text-4xl font-light" style={{ color: IVORY }}>
+                  <div className="font-estate-headline text-3xl md:text-4xl font-light" style={{ color: IVORY }}>
                     <AnimatedCounter valueStr={stat.value} duration={2.5} />
                   </div>
                   <div className="font-estate-sans text-[9px] tracking-[0.25em] uppercase mt-2" style={{ color: "rgba(250,247,242,0.45)" }}>
@@ -217,7 +217,7 @@ export default function TheEstate() {
               <span className="font-estate-sans text-[10px] tracking-[0.4em] uppercase block mb-6" style={{ color: "rgba(10,10,10,0.35)" }}>
                 The Platform
               </span>
-              <h2 className="font-estate-display text-4xl md:text-6xl font-light" style={{ color: DARK }}>
+              <h2 className="font-estate-headline text-4xl md:text-6xl font-light" style={{ color: DARK }}>
                 Built by Industry Titans
               </h2>
             </motion.div>
@@ -277,7 +277,7 @@ export default function TheEstate() {
           >
             {/* Section headline — dark serif, centered */}
             <motion.div variants={fadeUp} className="text-center mb-16 md:mb-20">
-              <h2 className="font-estate-display text-3xl md:text-5xl lg:text-[3.5rem] font-light leading-[1.2]" style={{ color: DARK }}>
+              <h2 className="font-estate-headline text-3xl md:text-5xl lg:text-[3.5rem] font-light leading-[1.2]" style={{ color: DARK }}>
                 A complete ecosystem for daily optimization.<br />
                 Built on The Estate's foundational pillars.
               </h2>
@@ -295,7 +295,7 @@ export default function TheEstate() {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <h3 className="font-estate-display text-xl md:text-2xl font-light mb-3" style={{ color: DARK }}>
+                  <h3 className="font-estate-headline text-xl md:text-2xl font-light mb-3" style={{ color: DARK }}>
                     {pillar.name}
                   </h3>
                   <p className="font-estate-sans text-sm leading-relaxed" style={{ color: "rgba(10,10,10,0.55)" }}>
@@ -322,7 +322,7 @@ export default function TheEstate() {
           >
             <motion.h2
               variants={fadeUp}
-              className="font-estate-display text-3xl md:text-5xl lg:text-6xl font-light leading-[1.2] tracking-tight mb-12"
+              className="font-estate-headline text-3xl md:text-5xl lg:text-6xl font-light leading-[1.2] tracking-tight mb-12"
               style={{ color: IVORY }}
             >
               Where Vitality is the Ultimate Luxury.
@@ -364,7 +364,7 @@ export default function TheEstate() {
               <span className="font-estate-sans text-[10px] tracking-[0.4em] uppercase block mb-6" style={{ color: "rgba(250,247,242,0.4)" }}>
                 The Ecosystem
               </span>
-              <h2 className="font-estate-display text-4xl md:text-6xl font-light" style={{ color: IVORY }}>
+              <h2 className="font-estate-headline text-4xl md:text-6xl font-light" style={{ color: IVORY }}>
                 Three Expressions,<br />One Platform
               </h2>
             </motion.div>
@@ -377,7 +377,7 @@ export default function TheEstate() {
                   className="p-8 md:p-10"
                   style={{ background: DARK }}
                 >
-                  <h3 className="font-estate-display text-2xl font-light mb-4" style={{ color: IVORY }}>
+                  <h3 className="font-estate-headline text-2xl font-light mb-4" style={{ color: IVORY }}>
                     {item.type}
                   </h3>
                   <p className="font-estate-sans text-sm leading-relaxed mb-8" style={{ color: "rgba(250,247,242,0.55)" }}>
@@ -416,7 +416,7 @@ export default function TheEstate() {
               <span className="font-estate-sans text-[10px] tracking-[0.4em] uppercase block mb-6" style={{ color: "rgba(250,247,242,0.4)" }}>
                 Global Pipeline
               </span>
-              <h2 className="font-estate-display text-4xl md:text-6xl font-light" style={{ color: IVORY }}>
+              <h2 className="font-estate-headline text-4xl md:text-6xl font-light" style={{ color: IVORY }}>
                 Destinations in Development
               </h2>
               <p className="font-estate-sans text-base mt-6 max-w-2xl" style={{ color: "rgba(250,247,242,0.5)" }}>
@@ -445,7 +445,7 @@ export default function TheEstate() {
                     <span className="font-estate-sans text-[9px] tracking-[0.2em] uppercase block mb-1.5" style={{ color: "rgba(250,247,242,0.55)" }}>
                       {dest.type}
                     </span>
-                    <h4 className="font-estate-display text-xl font-light" style={{ color: IVORY }}>
+                    <h4 className="font-estate-headline text-xl font-light" style={{ color: IVORY }}>
                       {dest.name}
                     </h4>
                     <p className="font-estate-sans text-[10px] tracking-wider uppercase mt-1" style={{ color: "rgba(250,247,242,0.45)" }}>
@@ -465,7 +465,7 @@ export default function TheEstate() {
                 { value: "3,100+", label: "Keys & Units" },
               ].map((stat, i) => (
                 <div key={i}>
-                  <div className="font-estate-display text-3xl md:text-4xl font-light" style={{ color: IVORY }}>
+                  <div className="font-estate-headline text-3xl md:text-4xl font-light" style={{ color: IVORY }}>
                     <AnimatedCounter valueStr={stat.value} duration={2} />
                   </div>
                   <div className="font-estate-sans text-[9px] tracking-[0.25em] uppercase mt-2" style={{ color: "rgba(250,247,242,0.45)" }}>
@@ -493,7 +493,7 @@ export default function TheEstate() {
               <span className="font-estate-sans text-[10px] tracking-[0.4em] uppercase block mb-6" style={{ color: "rgba(10,10,10,0.35)" }}>
                 The Opportunity
               </span>
-              <h2 className="font-estate-display text-4xl md:text-6xl font-light" style={{ color: DARK }}>
+              <h2 className="font-estate-headline text-4xl md:text-6xl font-light" style={{ color: DARK }}>
                 A Category-Defining<br />Moment
               </h2>
             </motion.div>
@@ -517,7 +517,7 @@ export default function TheEstate() {
                 },
               ].map((stat, i) => (
                 <div key={i}>
-                  <div className="font-estate-display text-4xl md:text-5xl font-light mb-4" style={{ color: DARK }}>
+                  <div className="font-estate-headline text-4xl md:text-5xl font-light mb-4" style={{ color: DARK }}>
                     {stat.value}
                   </div>
                   <h4 className="font-estate-sans text-base font-medium mb-3" style={{ color: DARK }}>
@@ -552,7 +552,7 @@ export default function TheEstate() {
             viewport={{ once: true, margin: "-100px" }}
             variants={stagger}
           >
-            <motion.h2 variants={fadeUp} className="font-estate-display text-4xl md:text-6xl lg:text-7xl font-light leading-[1.05] mb-8" style={{ color: IVORY }}>
+            <motion.h2 variants={fadeUp} className="font-estate-headline text-4xl md:text-6xl lg:text-7xl font-light leading-[1.05] mb-8" style={{ color: IVORY }}>
               Live Where Vitality<br />
               is the <span className="italic" style={{ color: WARM_ACCENT }}>Ultimate Luxury.</span>
             </motion.h2>

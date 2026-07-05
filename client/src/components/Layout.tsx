@@ -331,7 +331,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                 </motion.div>
               </Link>
             ) : sectionLabel ? (
-              <span className="hidden sm:block font-mono text-[11px] tracking-wider uppercase text-black/50">
+              <span className={`hidden sm:block ${isEstateRoute ? 'font-estate-sans' : 'font-mono'} text-[11px] tracking-wider uppercase text-black/50`}>
                 {sectionLabel}
               </span>
             ) : null}
@@ -564,14 +564,14 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                 </div>
                 <div className="flex flex-col md:flex-row gap-12">
                   <div className="flex flex-col gap-3">
-                    <p className="font-mono text-[10px] tracking-wider uppercase mb-1 text-white/50">Explore</p>
+                    <p className="font-estate-sans text-[10px] tracking-[0.15em] uppercase mb-1 text-white/50">Explore</p>
                     <Link href="/longevity/estate" className="font-estate-sans text-sm hover:text-white transition-colors text-white/60">Overview</Link>
                     <Link href="/longevity/estate/about" className="font-estate-sans text-sm hover:text-white transition-colors text-white/60">Vision</Link>
                     <Link href="/longevity/estate/opportunity" className="font-estate-sans text-sm hover:text-white transition-colors text-white/60">Opportunity</Link>
                     <Link href="/longevity/estate/memberships" className="font-estate-sans text-sm hover:text-white transition-colors text-white/60">Membership</Link>
                   </div>
                   <div className="flex flex-col gap-3">
-                    <p className="font-mono text-[10px] tracking-wider uppercase mb-1 text-white/50">Contact</p>
+                    <p className="font-estate-sans text-[10px] tracking-[0.15em] uppercase mb-1 text-white/50">Contact</p>
                     <a 
                       href="mailto:shawn@wellestategroup.com" 
                       className="group flex items-center gap-3 px-5 py-3 rounded-xl border transition-all bg-white/5"
@@ -593,7 +593,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                 <p className="font-estate-sans text-[11px] tracking-wider text-white/40">
                   &copy; 2026 The Estate. All rights reserved.
                 </p>
-                <span className="font-mono text-[10px] tracking-wider text-white/20">CONFIDENTIAL</span>
+                <span className="font-estate-sans text-[10px] tracking-[0.15em] text-white/20">CONFIDENTIAL</span>
               </div>
             </div>
           </div>

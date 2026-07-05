@@ -1,7 +1,6 @@
 /**
- * FloatingCTA - A subtle floating call-to-action that appears on investor-facing pages
- * Provides a persistent "Schedule a Call" / "Request Data Room" action
- * Route-aware: uses black/white on Estate routes, gold on WEG routes
+ * FloatingCTA - A subtle floating call-to-action
+ * Route-aware: Estate routes use The Estate branding; WEG routes use WEG branding
  */
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -18,9 +17,14 @@ export function FloatingCTA() {
 
   // Route-aware colors
   const accent = isEstateRoute ? "#1A1A1A" : "#B8860B";
-  const accentBorder = isEstateRoute ? "rgba(26,26,26,0.3)" : "rgba(184,134,11,0.4)";
-  const accentBorderHover = isEstateRoute ? "rgba(26,26,26,0.6)" : "rgba(184,134,11,0.6)";
+  const accentBorder = isEstateRoute ? "rgba(26,26,26,0.15)" : "rgba(184,134,11,0.4)";
+  const accentBorderHover = isEstateRoute ? "rgba(26,26,26,0.4)" : "rgba(184,134,11,0.6)";
   const accentBg = isEstateRoute ? "rgba(26,26,26,0.03)" : "rgba(184,134,11,0.03)";
+
+  // Route-aware font classes
+  const labelFont = isEstateRoute ? "font-estate-sans" : "font-mono";
+  const headingFont = isEstateRoute ? "font-estate-headline" : "font-display";
+  const bodyFont = isEstateRoute ? "font-estate-sans" : "font-body";
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
@@ -39,17 +43,19 @@ export function FloatingCTA() {
             >
               <X className="w-4 h-4" />
             </button>
-            <p className="font-mono text-[10px] tracking-[0.15em] uppercase mb-2" style={{ color: accent }}>
-              Interested?
+            <p className={`${labelFont} text-[10px] tracking-[0.15em] uppercase mb-2`} style={{ color: accent }}>
+              {isEstateRoute ? "Inquire" : "Interested?"}
             </p>
-            <h4 className="font-display text-lg font-semibold text-[#0A0A0A] mb-3">
-              Let's Connect
+            <h4 className={`${headingFont} text-lg font-semibold text-[#0A0A0A] mb-3`}>
+              {isEstateRoute ? "Request Access" : "Let's Connect"}
             </h4>
-            <p className="font-body text-xs text-[#0A0A0A]/70 mb-4 leading-relaxed">
-              Schedule a confidential conversation about investment opportunities or request access to our data room.
+            <p className={`${bodyFont} text-xs text-[#0A0A0A]/70 mb-4 leading-relaxed`}>
+              {isEstateRoute
+                ? "Schedule a confidential conversation about membership or partnership opportunities."
+                : "Schedule a confidential conversation about investment opportunities or request access to our data room."}
             </p>
             <div className="space-y-2">
-              <Link href={isEstateRoute ? "/longevity/estate" : "/longevity/contact"}>
+              <Link href={isEstateRoute ? "/longevity/estate/memberships" : "/longevity/contact"}>
                 <div
                   className="flex items-center gap-3 p-3 rounded-lg border transition-all cursor-pointer group"
                   style={{ borderColor: accentBorder }}
@@ -57,11 +63,11 @@ export function FloatingCTA() {
                   onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = accentBorder; (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent'; }}
                 >
                   <Calendar className="w-4 h-4" style={{ color: accent }} />
-                  <span className="font-body text-sm text-[#0A0A0A]/80 flex-1">Schedule a Call</span>
+                  <span className={`${bodyFont} text-sm text-[#0A0A0A]/80 flex-1`}>Schedule a Call</span>
                   <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" style={{ color: accent }} />
                 </div>
               </Link>
-              <Link href={isEstateRoute ? "/longevity/estate" : "/longevity/data-room"}>
+              <Link href={isEstateRoute ? "/longevity/estate/opportunity" : "/longevity/data-room"}>
                 <div
                   className="flex items-center gap-3 p-3 rounded-lg border transition-all cursor-pointer group"
                   style={{ borderColor: accentBorder }}
@@ -69,7 +75,7 @@ export function FloatingCTA() {
                   onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = accentBorder; (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent'; }}
                 >
                   <FileText className="w-4 h-4" style={{ color: accent }} />
-                  <span className="font-body text-sm text-[#0A0A0A]/80 flex-1">Request Data Room</span>
+                  <span className={`${bodyFont} text-sm text-[#0A0A0A]/80 flex-1`}>{isEstateRoute ? "View Opportunity" : "Request Data Room"}</span>
                   <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" style={{ color: accent }} />
                 </div>
               </Link>

@@ -160,6 +160,9 @@
     letter-spacing: -0.02em;
     color: #0A0A0A;
   }
+  [data-route-estate] {
+    font-family: 'Inter', sans-serif;
+  }
   [data-route-estate] h1,
   [data-route-estate] h2,
   [data-route-estate] h3,
@@ -169,6 +172,7 @@
     font-family: inherit;
     font-weight: inherit;
     letter-spacing: inherit;
+    color: inherit;
   }
   p {
     line-height: 1.7;
@@ -260,12 +264,18 @@
     font-family: 'Inter', sans-serif !important;
   }
 
-  /* Display Sans-Serif — THE ESTATE wordmark, uppercase wide tracking */
+  /* Display Sans-Serif — THE ESTATE wordmark only: uppercase, very wide tracking */
   .font-estate-wordmark {
     font-family: 'Josefin Sans', sans-serif !important;
     font-weight: 300;
     text-transform: uppercase;
     letter-spacing: 0.3em;
+  }
+
+  /* Display Sans-Serif — Large-scale display headlines & section titles */
+  .font-estate-headline {
+    font-family: 'Josefin Sans', sans-serif !important;
+    font-weight: 300;
   }
 
   /* Legacy aliases (keep for backward compat with non-Estate pages) */
