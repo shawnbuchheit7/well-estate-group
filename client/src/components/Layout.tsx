@@ -549,7 +549,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
 
       {/* Footer — hidden in present mode */}
       {!isPresentMode && isEstateRoute && (
-        <footer className="py-16 border-t bg-[#0A0A0A]" style={{ borderColor: 'rgba(250,247,242,0.08)' }}>
+        <footer className="py-16 border-t bg-[#0A0A0A]" style={{ borderColor: 'rgba(250,247,242,0.08)', color: '#ffffff' }}>
           <div className="container px-6">
             <div className="max-w-6xl mx-auto">
               <div className="flex flex-col lg:flex-row justify-between items-start gap-12 mb-12">
