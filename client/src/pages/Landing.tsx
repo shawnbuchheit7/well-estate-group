@@ -291,7 +291,12 @@ export default function Landing() {
             </motion.h2>
           </motion.div>
         </div>
-        <div className="mx-2 md:mx-4 lg:mx-8 xl:mx-12 rounded-2xl overflow-hidden bg-black">
+        <div className="mx-2 md:mx-4 lg:mx-8 xl:mx-12 rounded-2xl overflow-hidden bg-[#F5F3EE] relative">
+          {!drawingStarted && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-8 h-8 border-2 border-[#B8860B]/30 border-t-[#B8860B] rounded-full animate-spin" />
+            </div>
+          )}
         <video
           ref={drawingVideoRef}
           className="block w-full h-auto object-contain xl:max-h-[86vh] xl:object-cover transition-opacity duration-1000"
@@ -440,7 +445,7 @@ export default function Landing() {
 
       {/* Leadership Section — Shawn's headshot + credentials */}
       <section id="leadership" className="py-4 md:py-6 bg-[#FAFAF8]">
-        <div className="mx-2 md:mx-4 lg:mx-8 xl:mx-12 py-16 md:py-24 bg-white rounded-2xl px-6 md:px-12">
+        <div className="mx-2 md:mx-4 lg:mx-8 xl:mx-12 py-12 md:py-16 bg-white rounded-2xl px-6 md:px-12">
           <motion.div 
             initial="hidden"
             whileInView="visible"
@@ -456,7 +461,7 @@ export default function Landing() {
             </motion.div>
 
             {/* Two-column: Photo left, Quote + Bio right */}
-            <motion.div variants={fadeInUp} className="grid md:grid-cols-[320px_1fr] gap-12 items-start">
+            <motion.div variants={fadeInUp} className="grid md:grid-cols-[380px_1fr] gap-14 items-start">
               {/* Left — Photo */}
               <div className="text-center group">
                 <div className="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-lg transition-all duration-500 group-hover:shadow-[0_8px_32px_rgba(184,134,11,0.2)] group-hover:scale-[1.02]">
@@ -479,7 +484,6 @@ export default function Landing() {
                   <p className="font-display text-lg md:text-xl italic text-black/70 leading-relaxed">
                     "Strategy without execution is just a PowerPoint. We build it, staff it, and operate it until it performs."
                   </p>
-                  <p className="font-body text-sm text-black/45 mt-3">— Shawn Buchheit</p>
                 </div>
 
                 {/* Career timeline */}
