@@ -149,50 +149,52 @@ export default function TheEstate() {
             <motion.p variants={fadeUp} className="font-estate-headline text-[clamp(1.5rem,4vw,3.2rem)] leading-[1.2] font-light mb-16 whitespace-nowrap" style={{ color: IVORY }}>
               Where Vitality is the Ultimate Luxury.
             </motion.p>
-
-            {/* 7 Core Pillars — tall vertical rectangles, title fixed top, description at consistent level */}
-            <motion.div variants={fadeUp} className="grid grid-cols-7 gap-3 mb-20 mt-4 w-full">
-              {[
-                { title: "Purpose", text: "Designed to extend life and the quality of living" },
-                { title: "Structure", text: "An integrated network of resorts, residences, and longevity clubs" },
-                { title: "Market", text: "Meeting a growing global demand for health-anchored luxury environments" },
-                { title: "Environment", text: "Every detail engineered for healing and peak human performance" },
-                { title: "Philosophy", text: "Health transcends treatment and becomes lifestyle" },
-                { title: "Technology", text: "AI-powered diagnostics, proactive care, restorative design, and global innovators" },
-                { title: "Vision", text: "A mindset, a movement, and a new model for wellbeing" },
-              ].map((pillar, i) => (
-                <div key={i} className="relative flex flex-col items-center text-center px-5 rounded-2xl border overflow-hidden" style={{ borderColor: 'rgba(250,247,242,0.12)', backgroundColor: 'rgba(250,247,242,0.03)', height: '400px' }}>
-                  <div className="absolute left-0 right-0 top-[48px] px-5 flex justify-center">
-                    <span className="inline-block bg-white rounded-full px-4 py-1.5 font-estate-sans text-[10px] font-semibold tracking-[0.18em] uppercase text-black">
-                      {pillar.title}
-                    </span>
-                  </div>
-                  <p className="font-estate-sans text-[14px] leading-[1.8] font-light absolute left-0 right-0 top-[110px] px-5" style={{ color: 'rgba(250,247,242,0.85)' }}>
-                    {pillar.text}
-                  </p>
-                </div>
-              ))}
-            </motion.div>
-
-            {/* Stats — centered, thin ivory divider, white numbers, muted grey labels */}
-            <motion.div variants={fadeUp} className="flex flex-wrap justify-center gap-12 md:gap-16 border-t pt-10" style={{ borderColor: "rgba(250,247,242,0.12)" }}>
-              {[
-                { value: "24+", label: "Global Projects" },
-                { value: "8+", label: "Countries" },
-                { value: "1,300+", label: "Hotel Keys" },
-                { value: "1,800+", label: "Residences" },
-              ].map((stat, i) => (
-                <div key={i} className="text-center">
-                  <div className="font-estate-headline text-3xl md:text-4xl font-light" style={{ color: IVORY }}>
-                    <AnimatedCounter valueStr={stat.value} duration={2.5} />
-                  </div>
-                  <div className="font-estate-sans text-[9px] tracking-[0.25em] uppercase mt-2" style={{ color: "rgba(250,247,242,0.45)" }}>
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </motion.div>
           </motion.div>
+        </motion.div>
+
+        {/* 7 Core Pillars — full-width grid outside the max-w-7xl container for wider cards */}
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="relative z-10 grid grid-cols-7 gap-4 mb-20 mt-4 w-full px-4 md:px-8">
+          {[
+            { title: "Purpose", text: "Designed to extend life and the quality of living" },
+            { title: "Structure", text: "An integrated network of resorts, residences, and longevity clubs" },
+            { title: "Market", text: "Meeting a growing global demand for health-anchored luxury environments" },
+            { title: "Environment", text: "Every detail engineered for healing and peak human performance" },
+            { title: "Philosophy", text: "Health transcends treatment and becomes lifestyle" },
+            { title: "Technology", text: "AI-powered diagnostics, proactive care, restorative design, and global innovators" },
+            { title: "Vision", text: "A mindset, a movement, and a new model for wellbeing" },
+          ].map((pillar, i) => (
+            <div key={i} className="relative flex flex-col items-center text-center px-5 rounded-2xl border overflow-hidden" style={{ borderColor: 'rgba(250,247,242,0.12)', backgroundColor: 'rgba(250,247,242,0.03)', height: '400px' }}>
+              <div className="absolute left-0 right-0 top-[48px] px-5 flex justify-center">
+                <span className="inline-block bg-white rounded-full px-4 py-1.5 font-estate-sans text-[10px] font-semibold tracking-[0.18em] uppercase text-black">
+                  {pillar.title}
+                </span>
+              </div>
+              <p className="font-estate-sans text-[14px] leading-[1.8] font-light absolute left-0 right-0 top-[110px] px-5" style={{ color: 'rgba(250,247,242,0.85)' }}>
+                {pillar.text}
+              </p>
+            </div>
+          ))}
+        </motion.div>
+
+        {/* Stats — centered, thin ivory divider, white numbers, muted grey labels */}
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="relative z-10 max-w-7xl mx-auto w-full px-6 md:px-12">
+          <div className="flex flex-wrap justify-center gap-12 md:gap-16 border-t pt-10" style={{ borderColor: "rgba(250,247,242,0.12)" }}>
+            {[
+              { value: "24+", label: "Global Projects" },
+              { value: "8+", label: "Countries" },
+              { value: "1,300+", label: "Hotel Keys" },
+              { value: "1,800+", label: "Residences" },
+            ].map((stat, i) => (
+              <div key={i} className="text-center">
+                <div className="font-estate-headline text-3xl md:text-4xl font-light" style={{ color: IVORY }}>
+                  <AnimatedCounter valueStr={stat.value} duration={2.5} />
+                </div>
+                <div className="font-estate-sans text-[9px] tracking-[0.25em] uppercase mt-2" style={{ color: "rgba(250,247,242,0.45)" }}>
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
         </motion.div>
 
         {/* Scroll indicator */}
