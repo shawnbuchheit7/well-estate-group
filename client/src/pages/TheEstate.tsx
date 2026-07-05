@@ -138,39 +138,40 @@ export default function TheEstate() {
           }} />
         </div>
 
-        <motion.div className="relative z-10 px-8 md:px-16 max-w-7xl mx-auto w-full" style={{ y: heroY, opacity: heroOpacity }}>
+        <motion.div className="relative z-10 px-8 md:px-16 max-w-5xl mx-auto w-full text-center" style={{ y: heroY, opacity: heroOpacity }}>
           <motion.div initial="hidden" animate="visible" variants={stagger}>
-            {/* Eyebrow — thin white line + white label */}
-            <motion.div variants={fadeUp} className="flex items-center gap-5 mb-14">
-              <div className="w-16 h-[1px]" style={{ background: "rgba(250,247,242,0.3)" }} />
+            {/* Eyebrow — centered thin line + label */}
+            <motion.div variants={fadeUp} className="flex items-center justify-center gap-5 mb-14">
+              <div className="w-10 h-[1px]" style={{ background: "rgba(250,247,242,0.3)" }} />
               <span className="font-mono text-[11px] tracking-[0.4em] uppercase" style={{ color: "rgba(250,247,242,0.5)" }}>
                 The Estate
               </span>
+              <div className="w-10 h-[1px]" style={{ background: "rgba(250,247,242,0.3)" }} />
             </motion.div>
 
-            {/* Headline — white with "Luxury" in warm ivory italic (NOT gold) */}
+            {/* Headline — centered, white with "Luxury" in warm ivory italic (NOT gold) */}
             <motion.h1 variants={fadeUp} className="font-display text-5xl md:text-7xl lg:text-[6.5rem] font-light leading-[0.92] tracking-[-0.02em] mb-10" style={{ color: IVORY }}>
               Where Vitality<br />
               is the Ultimate<br />
               <span className="italic" style={{ color: WARM_ACCENT }}>Luxury.</span>
             </motion.h1>
 
-            {/* Subhead — muted ivory */}
-            <motion.p variants={fadeUp} className="font-body text-lg md:text-xl leading-relaxed max-w-2xl mb-20" style={{ color: "rgba(250,247,242,0.6)" }}>
+            {/* Subhead — centered, muted ivory */}
+            <motion.p variants={fadeUp} className="font-body text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-20" style={{ color: "rgba(250,247,242,0.6)" }}>
               The world's first residential ecosystem built entirely around longevity.
               Luxury resorts, branded residences, and longevity clubs — unified by
               pioneering science, extraordinary hospitality, and a commitment to human vitality.
             </motion.p>
 
-            {/* Stats — thin ivory divider, white numbers, muted grey labels */}
-            <motion.div variants={fadeUp} className="flex flex-wrap gap-12 md:gap-16 border-t pt-10" style={{ borderColor: "rgba(250,247,242,0.12)" }}>
+            {/* Stats — centered, thin ivory divider, white numbers, muted grey labels */}
+            <motion.div variants={fadeUp} className="flex flex-wrap justify-center gap-12 md:gap-16 border-t pt-10" style={{ borderColor: "rgba(250,247,242,0.12)" }}>
               {[
                 { value: "24+", label: "Global Projects" },
                 { value: "8+", label: "Countries" },
                 { value: "1,300+", label: "Hotel Keys" },
                 { value: "1,800+", label: "Residences" },
               ].map((stat, i) => (
-                <div key={i}>
+                <div key={i} className="text-center">
                   <div className="font-display text-3xl md:text-4xl font-light" style={{ color: IVORY }}>
                     <AnimatedCounter valueStr={stat.value} duration={2.5} />
                   </div>

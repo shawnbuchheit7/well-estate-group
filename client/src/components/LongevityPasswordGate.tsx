@@ -54,8 +54,9 @@ export default function LongevityPasswordGate({ children }: LongevityPasswordGat
   const [location] = useLocation();
 
   const isSaltleafRoute = location.startsWith('/longevity/saltleaf');
-  const accent = isSaltleafRoute ? '#1a3e4c' : '#B8860B';
-  const brandLabel = isSaltleafRoute ? 'Saltleaf on Estero Bay' : 'Well Estate Group';
+  const isEstateRoute = location.startsWith('/longevity/estate');
+  const accent = isEstateRoute ? '#1A1A1A' : isSaltleafRoute ? '#1a3e4c' : '#B8860B';
+  const brandLabel = isEstateRoute ? 'The Estate' : isSaltleafRoute ? 'Saltleaf on Estero Bay' : 'Well Estate Group';
 
   useEffect(() => {
     if (isSessionValid()) {
@@ -159,7 +160,7 @@ export default function LongevityPasswordGate({ children }: LongevityPasswordGat
               animate={{ opacity: 1 }}
               transition={{ delay: 0.25 }}
             >
-              {isSaltleafRoute ? 'Wellness Advisory' : 'Longevity Center'}
+              {isEstateRoute ? 'The Estate' : isSaltleafRoute ? 'Wellness Advisory' : 'Longevity Center'}
             </motion.p>
             <motion.h1
               className="font-display text-xl font-semibold text-black text-center"

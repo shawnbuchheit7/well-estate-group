@@ -193,7 +193,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
     sectionLabel = "";
   }
 
-  const showBackButton = isGtmRoute || isLongevityRoute || isProductRoute || isVentureRoute;
+  const showBackButton = (isGtmRoute || isLongevityRoute || isProductRoute || isVentureRoute) && !isEstateRoute;
 
   // Determine current pillar for cross-pillar nav
   const currentPillarIndex = pillarOrder.findIndex(p => location.startsWith(p.href));
