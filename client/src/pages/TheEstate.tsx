@@ -39,27 +39,27 @@ const WARM_ACCENT = "#E8E0D4"; // warm ivory for the italic "Luxury" — NOT gol
 const founders = [
   {
     name: "Sam Nazarian",
-    role: "Founder & CEO",
+    role: "Founder & Chief Executive Officer",
     image: "/sam_nazarian.jpg",
-    bio: "Visionary hospitality entrepreneur. Founder of SBE Entertainment Group — creator of SLS Hotels, Delano, and a global portfolio of luxury lifestyle brands.",
+    bio: "Visionary entrepreneur, global hospitality leader, culinary disruptor, and architect of modern luxury experiences. Sam Nazarian founded sbe in 2002 and built the world's largest luxury lifestyle hotel company with 100+ hotels and residences. He continues to serve as CEO — redefining luxury, hospitality, residential, and culinary experiences. SBE includes an unparalleled global ecosystem of brands that shape the way people live, dine, and travel.",
   },
   {
     name: "Tony Robbins",
-    role: "Co-Founder & Strategic Partner",
+    role: "Co-Founder & Investor",
     image: "/tony_robbins.jpg",
-    bio: "World's leading life strategist and co-founder of Fountain Life. Pioneer in making precision diagnostics accessible to high-performers worldwide.",
+    bio: "Global entrepreneur, investor, author, sports team owner, and the world's No. 1 life and business strategist. For over 47 years, more than 100 million people from over 195 countries have invested in his books, audio, and video training, and more than 12 million people have attended his live events. A leader called upon by leaders, he has consulted and coached some of the world's greatest athletes, entertainers, Fortune 500 CEOs, and four US presidents.",
   },
   {
     name: "Marc Anthony",
-    role: "Strategic Partner",
+    role: "Equity Partner",
     image: "/marc_anthony.jpg",
-    bio: "Global entertainment icon and entrepreneur with deep roots in Latin American luxury real estate, hospitality, and cultural influence.",
+    bio: "Global music icon, entrepreneur, philanthropist, and cultural ambassador. Over a career spanning more than three decades, he has achieved 105 Billboard #1 hits, generated more than 15 billion streams, and built a global audience exceeding 100 million followers. Beyond entertainment, Marc has expanded his impact supporting transformative initiatives through his Maestro Cares Foundation.",
   },
   {
     name: "Tom Brady",
-    role: "Strategic Partner",
+    role: "Equity Partner",
     image: "/tom_brady.jpg",
-    bio: "The greatest athlete of his generation. Lifelong commitment to human performance, longevity science, and the TB12 wellness methodology.",
+    bio: "Tom Brady cemented a 23-year legacy as the most decorated player in NFL history and one of the most influential athletes of his generation. Rewriting the record books with seven Super Bowl championships and five Super Bowl MVP awards, he is a leader called upon by world-class organizations and has translated his winning blueprint into a global ecosystem of lifestyle brands, media ventures, strategic investments, and ownership stakes across professional sports.",
   },
 ];
 
@@ -259,13 +259,6 @@ export default function TheEstate() {
               ))}
             </motion.div>
 
-            {/* Fountain Life integration note */}
-            <motion.div variants={fadeUp} className="mt-16 pt-12 text-center" style={{ borderTop: "1px solid rgba(10,10,10,0.08)" }}>
-              <p className="font-body text-base leading-relaxed max-w-2xl mx-auto" style={{ color: "rgba(10,10,10,0.55)" }}>
-                Integrated with <span className="font-medium" style={{ color: DARK }}>Fountain Life</span> — the world's most advanced 
-                precision diagnostics and longevity platform. Co-founded by Tony Robbins and Peter Diamandis.
-              </p>
-            </motion.div>
           </motion.div>
         </div>
       </section>
