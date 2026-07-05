@@ -455,8 +455,9 @@ export default function Landing() {
               </h2>
             </motion.div>
 
-            {/* Photo - Leadership */}
-            <motion.div variants={fadeInUp} className="mb-12 max-w-xs">
+            {/* Two-column: Photo left, Quote + Bio right */}
+            <motion.div variants={fadeInUp} className="grid md:grid-cols-[320px_1fr] gap-12 items-start">
+              {/* Left — Photo */}
               <div className="text-center group">
                 <div className="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-lg transition-all duration-500 group-hover:shadow-[0_8px_32px_rgba(184,134,11,0.2)] group-hover:scale-[1.02]">
                   <img
@@ -467,55 +468,55 @@ export default function Landing() {
                     loading="lazy"
                   />
                 </div>
-                <h3 className="font-display text-base md:text-lg font-semibold text-black mt-4">Shawn Buchheit</h3>
-                <p className="font-body text-xs md:text-sm text-black/50 mt-1">Founder & President</p>
+                <h3 className="font-display text-lg font-semibold text-black mt-5">Shawn Buchheit</h3>
+                <p className="font-body text-sm text-black/50 mt-1">Founder & President</p>
               </div>
-            </motion.div>
 
-            {/* Leadership Quote */}
-            <motion.div variants={fadeInUp} className="mb-12 pl-6 border-l-2 border-[#B8860B]/40">
-              <p className="font-display text-lg md:text-xl italic text-black/70 leading-relaxed">
-                "Strategy without execution is just a PowerPoint. We build it, staff it, and operate it until it performs."
-              </p>
-              <p className="font-body text-sm text-black/45 mt-3">— Shawn Buchheit</p>
-            </motion.div>
+              {/* Right — Quote + Bio */}
+              <div>
+                {/* Quote */}
+                <div className="mb-10 pl-6 border-l-2 border-[#B8860B]/40">
+                  <p className="font-display text-lg md:text-xl italic text-black/70 leading-relaxed">
+                    "Strategy without execution is just a PowerPoint. We build it, staff it, and operate it until it performs."
+                  </p>
+                  <p className="font-body text-sm text-black/45 mt-3">— Shawn Buchheit</p>
+                </div>
 
-            {/* Bio */}
-            <motion.div variants={fadeInUp}>
-              <div className="space-y-6">
                 {/* Career timeline */}
-                {[
-                  {
-                    role: 'President & COO',
-                    company: 'Fountain Life',
-                    detail: 'Founding team member. Built and scaled a physician-led longevity platform from concept to multi-center operations. Oversaw clinical operations, membership growth (diagnostics, MRI, genomics, AI analytics), technology platform, and the unit economics that drive sustainable scale. Backed by Tony Robbins and Peter Diamandis.',
-                  },
-                  {
-                    role: 'Global Executive',
-                    company: 'Technogym',
-                    detail: 'Led wellness strategy and implementation across four global regions for the world\'s most prestigious hospitality groups, cruise lines (144+ vessels), luxury real estate developments, private clubs (Platinum Clubs of America), and professional sports organizations (NFL, MLB, NCAA).',
-                  },
-                  {
-                    role: 'Award-Winning Team Member',
-                    company: 'The Ritz-Carlton Hotel Company',
-                    detail: 'Foundation in world-class service delivery and operational excellence at the highest level of luxury hospitality.',
-                  },
-                  {
-                    role: 'FAA Commercial Pilot',
-                    company: '',
-                    detail: 'The same precision, discipline, and systems-thinking that aviation demands — applied to wellness operations where execution must be flawless.',
-                  },
-                ].map((item, i) => (
-                  <div key={i} className="flex gap-4 items-start">
-                    <div className="w-2 h-2 rounded-full bg-[#B8860B] mt-2.5 shrink-0" />
-                    <div>
-                      <p className="font-body text-[15px] text-black font-medium">
-                        {item.role}{item.company && <span className="text-[#B8860B]"> — {item.company}</span>}
-                      </p>
-                      <p className="font-body text-[14px] text-black/55 leading-relaxed mt-1">{item.detail}</p>
+                <div className="space-y-6">
+                  {[
+                    {
+                      role: 'President & COO',
+                      company: 'Fountain Life',
+                      detail: 'Founding team member. Built and scaled a physician-led longevity platform from concept to multi-center operations. Oversaw clinical operations, membership growth (diagnostics, MRI, genomics, AI analytics), technology platform, and the unit economics that drive sustainable scale. Backed by Tony Robbins and Peter Diamandis.',
+                    },
+                    {
+                      role: 'Global Executive',
+                      company: 'Technogym',
+                      detail: 'Led wellness strategy and implementation across four global regions for the world\'s most prestigious hospitality groups, cruise lines (144+ vessels), luxury real estate developments, private clubs (Platinum Clubs of America), and professional sports organizations (NFL, MLB, NCAA).',
+                    },
+                    {
+                      role: 'Award-Winning Team Member',
+                      company: 'The Ritz-Carlton Hotel Company',
+                      detail: 'Foundation in world-class service delivery and operational excellence at the highest level of luxury hospitality.',
+                    },
+                    {
+                      role: 'FAA Commercial Pilot',
+                      company: '',
+                      detail: 'The same precision, discipline, and systems-thinking that aviation demands — applied to wellness operations where execution must be flawless.',
+                    },
+                  ].map((item, i) => (
+                    <div key={i} className="flex gap-4 items-start">
+                      <div className="w-2 h-2 rounded-full bg-[#B8860B] mt-2.5 shrink-0" />
+                      <div>
+                        <p className="font-body text-[15px] text-black font-medium">
+                          {item.role}{item.company && <span className="text-[#B8860B]"> — {item.company}</span>}
+                        </p>
+                        <p className="font-body text-[14px] text-black/55 leading-relaxed mt-1">{item.detail}</p>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </motion.div>
           </motion.div>
