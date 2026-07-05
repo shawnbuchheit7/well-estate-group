@@ -317,8 +317,8 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
           
           {/* Section Label, Dark Mode Toggle, or Data Room Button - Far Right */}
           <div className="flex items-center gap-3 flex-shrink-0">
-            <ThemeToggle />
-            <DarkModeToggle />
+            {!isEstateRoute && <ThemeToggle />}
+            {!isEstateRoute && <DarkModeToggle />}
             {showDataRoom ? (
               <Link href="/longevity/data-room" className="hidden sm:block">
                 <motion.div
@@ -344,7 +344,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
               aria-label="Toggle menu"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              onMouseEnter={(e) => { e.currentTarget.style.color = accent; }}
+              onMouseEnter={(e) => { if (!isEstateRoute) e.currentTarget.style.color = accent; }}
               onMouseLeave={(e) => { e.currentTarget.style.color = ''; }}
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -427,19 +427,19 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
               className="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-white z-50 lg:hidden shadow-2xl"
-              style={{ borderLeft: `1px solid ${accent}88` }}
+              style={{ borderLeft: isEstateRoute ? '1px solid rgba(0,0,0,0.1)' : `1px solid ${accent}88` }}
             >
               <div className="flex flex-col h-full">
                 {/* Mobile Menu Header */}
-                <div className="flex items-center justify-between h-20 px-6" style={{ borderBottom: `1px solid ${accent}66` }}>
-                  <span className="font-display text-xl font-semibold text-black">Menu</span>
+                <div className="flex items-center justify-between h-20 px-6" style={{ borderBottom: isEstateRoute ? '1px solid rgba(0,0,0,0.1)' : `1px solid ${accent}66` }}>
+                  <span className={`${isEstateRoute ? 'font-estate' : 'font-display'} text-xl font-semibold text-black`}>Menu</span>
                   <motion.button
                     onClick={closeMobileMenu}
                     className="p-2 text-black transition-colors"
                     aria-label="Close menu"
                     whileHover={{ rotate: 90 }}
                     transition={{ duration: 0.2 }}
-                    onMouseEnter={(e) => { e.currentTarget.style.color = accent; }}
+                    onMouseEnter={(e) => { if (!isEstateRoute) e.currentTarget.style.color = accent; }}
                     onMouseLeave={(e) => { e.currentTarget.style.color = ''; }}
                   >
                     <X className="w-6 h-6" />
@@ -486,7 +486,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
                 
                 {/* Mobile Menu Footer */}
                 {showDataRoom && (
-                  <div className="p-6" style={{ borderTop: `1px solid ${accent}66` }}>
+                  <div className="p-6" style={{ borderTop: isEstateRoute ? '1px solid rgba(0,0,0,0.1)' : `1px solid ${accent}66` }}>
                     <Link href="/longevity/data-room" onClick={closeMobileMenu}>
                       <Button className="w-full bg-black hover:bg-black/90 text-white font-body font-medium shadow-md">
                         Data Room
