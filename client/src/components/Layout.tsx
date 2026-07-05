@@ -246,7 +246,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
               </Link>
             ) : isEstateRoute ? (
               <Link href="/longevity/estate" className="flex items-center gap-3 group" onClick={closeMobileMenu}>
-                <span className="font-display text-lg font-bold tracking-[0.25em] transition-colors whitespace-nowrap text-black uppercase">
+                <span className="font-body text-lg font-semibold tracking-[0.3em] transition-colors whitespace-nowrap text-black uppercase">
                   THE ESTATE
                 </span>
               </Link>
@@ -432,7 +432,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
               <div className="flex flex-col h-full">
                 {/* Mobile Menu Header */}
                 <div className="flex items-center justify-between h-20 px-6" style={{ borderBottom: isEstateRoute ? '1px solid rgba(0,0,0,0.1)' : `1px solid ${accent}66` }}>
-                  <span className={`${isEstateRoute ? 'font-estate' : 'font-display'} text-xl font-semibold text-black`}>Menu</span>
+                  <span className={`${isEstateRoute ? 'font-body' : 'font-display'} text-xl font-semibold text-black`}>Menu</span>
                   <motion.button
                     onClick={closeMobileMenu}
                     className="p-2 text-black transition-colors"
@@ -554,7 +554,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
               <div className="flex flex-col lg:flex-row justify-between items-start gap-12 mb-12">
                 <div className="flex flex-col gap-4 max-w-sm">
                   <Link href="/longevity/estate" className="flex items-center gap-3 group">
-                    <span className="font-display text-base font-semibold tracking-[0.25em] transition-colors text-white uppercase">
+                    <span className="font-body text-base font-semibold tracking-[0.3em] transition-colors text-white uppercase">
                       THE ESTATE
                     </span>
                   </Link>
