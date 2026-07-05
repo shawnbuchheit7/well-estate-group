@@ -14,45 +14,6 @@
    THE ESTATE — Self-hosted brand fonts (extracted from brand deck PDF)
    These are the ACTUAL fonts from the brand, not substitutes.
    ═══════════════════════════════════════════════════════════════ */
-@font-face {
-  font-family: 'DarbySansPoster';
-  src: url('/fonts/DarbySansPosterWeb-Light.woff2') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'FannGrotesquePro';
-  src: url('/fonts/FannGrotesquePro-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'FannGrotesquePro';
-  src: url('/fonts/FannGrotesquePro-SemiBold.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'BodoniModa18pt';
-  src: url('/fonts/BodoniModa18pt-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'BodoniModa9pt';
-  src: url('/fonts/BodoniModa9pt-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -205,7 +166,7 @@
     color: #0A0A0A;
   }
   [data-route-estate] {
-    font-family: 'FannGrotesquePro', 'Inter', sans-serif;
+    font-family: 'Inter', sans-serif;
   }
   [data-route-estate] h1,
   [data-route-estate] h2,
@@ -291,26 +252,28 @@
 
   /* ═══ SELF-HOSTED ESTATE FONTS (extracted from brand deck PDF) ═══ */
 
-  /* Display Serif — Hero headlines, taglines, pull-quotes, "Where Vitality is the Ultimate Luxury." */
+  /* Display Serif — Tagline accent ("Luxury."), pull-quotes, italic signature text */
   .font-estate-display {
-    font-family: 'BodoniModa18pt', 'Bodoni Moda', serif !important;
+    font-family: 'Bodoni Moda', serif !important;
     font-weight: 400;
+    font-variation-settings: 'opsz' 18;
   }
 
   /* Body Serif — Longer narrative copy, section intros, descriptive paragraphs */
   .font-estate-body-serif {
-    font-family: 'BodoniModa9pt', 'Bodoni Moda', serif !important;
+    font-family: 'Bodoni Moda', serif !important;
     font-weight: 400;
+    font-variation-settings: 'opsz' 9;
   }
 
   /* Primary Sans-Serif — Body text, captions, labels, navigation, UI elements */
   .font-estate-sans {
-    font-family: 'FannGrotesquePro', 'Inter', sans-serif !important;
+    font-family: 'Inter', sans-serif !important;
   }
 
   /* Display Sans-Serif — THE ESTATE wordmark: uppercase, very wide tracking */
   .font-estate-wordmark {
-    font-family: 'DarbySansPoster', sans-serif !important;
+    font-family: 'Josefin Sans', sans-serif !important;
     font-weight: 300;
     text-transform: uppercase;
     letter-spacing: 0.3em;
@@ -318,16 +281,16 @@
 
   /* Display Sans-Serif — Large-scale display headlines & section titles */
   .font-estate-headline {
-    font-family: 'DarbySansPoster', sans-serif !important;
+    font-family: 'Josefin Sans', sans-serif !important;
     font-weight: 300;
   }
 
   /* Legacy aliases */
   .font-estate {
-    font-family: 'BodoniModa18pt', 'Bodoni Moda', serif !important;
+    font-family: 'Bodoni Moda', serif !important;
   }
   .font-estate-tagline {
-    font-family: 'DarbySansPoster', sans-serif !important;
+    font-family: 'Josefin Sans', sans-serif !important;
     font-weight: 300;
   }
   
