@@ -140,26 +140,37 @@ export default function TheEstate() {
 
         <motion.div className="relative z-10 px-8 md:px-16 max-w-5xl mx-auto w-full text-center" style={{ y: heroY, opacity: heroOpacity }}>
           <motion.div initial="hidden" animate="visible" variants={stagger}>
-            {/* THE ESTATE wordmark — centered above headline, matching PDF */}
-            <motion.p variants={fadeUp} className="font-estate-wordmark text-sm md:text-base tracking-[0.3em] uppercase mb-8" style={{ color: IVORY }}>
+            {/* THE ESTATE — large bold serif wordmark, centered, matching PDF exactly */}
+            <motion.h1 variants={fadeUp} className="font-estate-display text-[clamp(2.5rem,6vw,5rem)] font-bold tracking-[0.15em] uppercase mb-12" style={{ color: IVORY }}>
               THE ESTATE
-            </motion.p>
-            {/* Headline — full tagline in one font, matching PDF page 2 exactly */}
-            <motion.h1 variants={fadeUp} className="font-estate-headline text-[clamp(1.75rem,4.8vw,4.8rem)] leading-[1.1] tracking-[-0.01em] font-light mb-16 whitespace-nowrap" style={{ color: IVORY }}>
-              Where Vitality is the Ultimate Luxury.
             </motion.h1>
 
-            {/* Body text — from brand deck PDF page 2 */}
-            <motion.p variants={fadeUp} className="font-estate-sans text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-6" style={{ color: "rgba(250,247,242,0.55)" }}>
-              Designed to extend life — and the quality of living — The Estate is a next-generation
-              platform for luxury hospitality and wellness-oriented living. An integrated network of
-              resorts, residences, and longevity clubs, where design, science, and experience converge
-              to meet a growing global demand for health-anchored luxury environments.
+            {/* Tagline — Josefin Sans Light, one line, centered */}
+            <motion.p variants={fadeUp} className="font-estate-headline text-[clamp(1.5rem,4vw,3.2rem)] leading-[1.2] font-light mb-16 whitespace-nowrap" style={{ color: IVORY }}>
+              Where Vitality is the Ultimate Luxury.
             </motion.p>
 
-            <motion.p variants={fadeUp} className="font-estate-sans text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-20" style={{ color: "rgba(250,247,242,0.55)" }}>
-              More than a brand — The Estate is a mindset, a movement, and a new model for wellbeing.
-            </motion.p>
+            {/* Body text — word for word from brand deck PDF page 2 */}
+            <motion.div variants={fadeUp} className="font-estate-display text-base md:text-lg leading-relaxed max-w-3xl mx-auto mb-20 space-y-6" style={{ color: "rgba(250,247,242,0.75)" }}>
+              <p>
+                Designed to extend life—and the quality of living—The Estate is a next-generation
+                platform for luxury hospitality and wellness-oriented living.
+              </p>
+              <p>
+                An integrated network of resorts, residences, and longevity clubs, where design, science,
+                and experience converge to meet a growing global demand for health-anchored luxury
+                environments. Where every detail, from the lighting to the air itself,
+                is engineered for healing and peak human performance. Where health transcends
+                treatment and becomes lifestyle, meeting individuals where they are and empowering
+                them with tools to thrive. Grounded in science and driven by personalization,
+                The Estate leverages AI-powered diagnostics, proactive care, restorative design, and
+                global innovators to support wellbeing that engages across time and place.
+              </p>
+              <p>
+                More than a brand—The Estate is a mindset, a movement,<br />
+                and a new model for wellbeing.
+              </p>
+            </motion.div>
 
             {/* Stats — centered, thin ivory divider, white numbers, muted grey labels */}
             <motion.div variants={fadeUp} className="flex flex-wrap justify-center gap-12 md:gap-16 border-t pt-10" style={{ borderColor: "rgba(250,247,242,0.12)" }}>
