@@ -276,50 +276,7 @@ export default function TheEstate() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════════════
-          SECTION 3: FOUR PILLARS — After titans (deck page 3)
-          Ivory/cream background, 4 image cards with labels below
-      ═══════════════════════════════════════════════════════════════ */}
-      <section className="py-28 md:py-36" style={{ background: "#FEFCF9" }}>
-        <div className="max-w-7xl mx-auto px-8 md:px-16">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={stagger}
-          >
-            {/* Section headline — dark serif, centered */}
-            <motion.div variants={fadeUp} className="text-center mb-16 md:mb-20">
-              <h2 className="font-estate-headline text-3xl md:text-5xl lg:text-[3.5rem] font-light leading-[1.2]" style={{ color: DARK }}>
-                A complete ecosystem for daily optimization.<br />
-                Built on The Estate's foundational pillars.
-              </h2>
-            </motion.div>
 
-            {/* Pillar cards — 4 images with labels below */}
-            <motion.div className="grid grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6" variants={stagger}>
-              {pillars.map((pillar, i) => (
-                <motion.div key={i} variants={fadeUp} className="text-center">
-                  <div className="aspect-[3/4] overflow-hidden rounded-2xl mb-5">
-                    <img
-                      src={pillar.image}
-                      alt={pillar.name}
-                      loading="lazy"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <h3 className="font-estate-headline text-xl md:text-2xl font-light mb-3" style={{ color: DARK }}>
-                    {pillar.name}
-                  </h3>
-                  <p className="font-estate-sans text-sm leading-relaxed" style={{ color: "rgba(10,10,10,0.55)" }}>
-                    {pillar.description}
-                  </p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
 
       {/* ═══════════════════════════════════════════════════════════════
           SECTION 4: BRAND MANIFESTO — Dark editorial
