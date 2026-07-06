@@ -319,57 +319,7 @@ export default function TheEstate() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════════════
-          SECTION 5: ECOSYSTEM — Three expressions
-      ═══════════════════════════════════════════════════════════════ */}
-      <section className="py-28 md:py-36" style={{ background: DARK }}>
-        <div className="max-w-7xl mx-auto px-8 md:px-16">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={stagger}
-          >
-            <motion.div variants={fadeUp} className="mb-20">
-              <span className="font-estate-sans text-[10px] tracking-[0.4em] uppercase block mb-6" style={{ color: "rgba(250,247,242,0.4)" }}>
-                The Ecosystem
-              </span>
-              <h2 className="font-estate-headline text-4xl md:text-6xl font-light" style={{ color: IVORY }}>
-                Three Expressions,<br />One Platform
-              </h2>
-            </motion.div>
 
-            <div className="grid md:grid-cols-3 gap-px" style={{ background: "rgba(255,255,255,0.08)" }}>
-              {ecosystem.map((item, i) => (
-                <motion.div
-                  key={i}
-                  variants={fadeUp}
-                  className="p-8 md:p-10"
-                  style={{ background: DARK }}
-                >
-                  <h3 className="font-estate-headline text-2xl font-light mb-4" style={{ color: IVORY }}>
-                    {item.type}
-                  </h3>
-                  <p className="font-estate-sans text-sm leading-relaxed mb-8" style={{ color: "rgba(250,247,242,0.55)" }}>
-                    {item.desc}
-                  </p>
-                  
-                  <div className="pt-6 border-t" style={{ borderColor: "rgba(255,255,255,0.08)" }}>
-                    {item.stats.map((stat, j) => (
-                      <div key={j} className="flex items-center gap-2 mb-2 last:mb-0">
-                        <div className="w-1 h-1 rounded-full" style={{ background: "rgba(250,247,242,0.3)" }} />
-                        <span className="font-estate-sans text-[10px] tracking-wider" style={{ color: "rgba(250,247,242,0.55)" }}>
-                          {stat}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
 
       {/* ═══════════════════════════════════════════════════════════════
           SECTION 6: GLOBAL PIPELINE — Photography-led destination grid
