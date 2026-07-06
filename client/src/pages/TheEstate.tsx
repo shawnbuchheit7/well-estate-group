@@ -63,61 +63,9 @@ const founders = [
   },
 ];
 
-const pillars = [
-  {
-    name: "Longevity",
-    image: "/pillar_longevity.jpg",
-    description: "Longevity becomes a lifestyle, embedded in daily rhythm.",
-  },
-  {
-    name: "Luxury",
-    image: "/pillar_luxury.jpg",
-    description: "An intimate, design-forward, service-first environment where every element is elevated.",
-  },
-  {
-    name: "Experience",
-    image: "/pillar_experience.jpg",
-    description: "Tailored experiences support evolving biological, emotional, and sensory needs.",
-  },
-  {
-    name: "Community",
-    image: "/pillar_community.jpg",
-    description: "Social spaces, networking, and programming foster organic connection.",
-  },
-];
 
-const ecosystem = [
-  {
-    type: "Luxury Resorts",
-    desc: "Destination-grade hospitality with integrated longevity programming, world-class dining, and regenerative wellness.",
-    stats: ["10+ Resorts", "1,300+ Keys", "8 Countries"],
-  },
-  {
-    type: "Branded Residences",
-    desc: "Ownership within a living ecosystem — residences designed around vitality, community, and long-horizon wellbeing.",
-    stats: ["1,800+ Units", "6+ Communities", "Full Ownership"],
-  },
-  {
-    type: "Longevity Clubs",
-    desc: "Members-only environments for diagnostics, performance, recovery, and social connection — the daily ritual of vitality.",
-    stats: ["5+ Clubs", "Tiered Membership", "Global Access"],
-  },
-];
 
-const destinations = [
-  { name: "Brecqhou Island", region: "English Channel", type: "Resort & Residences", image: "/dest_brecqhou.jpg" },
-  { name: "Lustica Bay", region: "Montenegro", type: "Resort & Residences", image: "/dest_lustica.jpg" },
-  { name: "Coachella Valley", region: "California", type: "Resort & Residences", image: "/dest_coachella.jpg" },
-  { name: "Playa Magante", region: "Dominican Republic", type: "Resort & Residences", image: "/dest_magante.jpg" },
-  { name: "Horned Dorset", region: "Puerto Rico", type: "Boutique Resort", image: "/dest_horned_dorset.jpg" },
-  { name: "Red Sea", region: "Saudi Arabia", type: "Ultra-Luxury Resort", image: "/dest_red_sea.jpg" },
-  { name: "Playa Secreta", region: "El Salvador", type: "Resort & Club", image: "/dest_playa_secreta.jpeg" },
-  { name: "Trentino", region: "Italy", type: "Alpine Wellness", image: "/dest_trentino.jpg" },
-  { name: "Todos Santos", region: "Mexico", type: "Coastal Resort", image: "/dest_todos_santos.jpg" },
-  { name: "Ft Lauderdale", region: "Florida", type: "Urban Club", image: "/dest_ft_lauderdale.jpg" },
-  { name: "Kura Kura", region: "Bali", type: "Island Resort", image: "/dest_kura_kura.webp" },
-  { name: "Granogue", region: "Delaware", type: "Estate & Club", image: "/dest_granogue.jpg" },
-];
+
 
 export default function TheEstate() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -278,125 +226,11 @@ export default function TheEstate() {
 
 
 
-      {/* ═══════════════════════════════════════════════════════════════
-          SECTION 4: BRAND MANIFESTO — Dark editorial
-      ═══════════════════════════════════════════════════════════════ */}
-      <section className="py-28 md:py-40" style={{ background: DARK }}>
-        <div className="max-w-5xl mx-auto px-8 md:px-16">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={stagger}
-            className="text-center"
-          >
-            <motion.h2
-              variants={fadeUp}
-              className="font-estate-headline text-3xl md:text-5xl lg:text-6xl font-light leading-[1.2] tracking-tight mb-12"
-              style={{ color: IVORY }}
-            >
-              Where Vitality is the Ultimate Luxury.
-            </motion.h2>
-            <motion.p
-              variants={fadeUp}
-              className="font-estate-sans text-base md:text-lg leading-[1.8] max-w-3xl mx-auto"
-              style={{ color: "rgba(250,247,242,0.6)" }}
-            >
-              Designed to extend life — and the quality of living — The Estate is a next-generation
-              platform for luxury hospitality and wellness-oriented living. An integrated network of
-              resorts, residences, and longevity clubs, where design, science, and experience converge
-              to meet a growing global demand for health-anchored luxury environments.
-            </motion.p>
-            <motion.p
-              variants={fadeUp}
-              className="font-estate-sans text-base md:text-lg leading-[1.8] max-w-3xl mx-auto mt-8"
-              style={{ color: "rgba(250,247,242,0.5)" }}
-            >
-              More than a brand — The Estate is a mindset, a movement,
-              and a new model for wellbeing.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
 
 
 
-      {/* ═══════════════════════════════════════════════════════════════
-          SECTION 6: GLOBAL PIPELINE — Photography-led destination grid
-      ═══════════════════════════════════════════════════════════════ */}
-      <section className="py-28 md:py-36" style={{ background: DARK }}>
-        <div className="max-w-7xl mx-auto px-8 md:px-16">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={stagger}
-          >
-            <motion.div variants={fadeUp} className="mb-16 md:mb-20">
-              <span className="font-estate-sans text-[10px] tracking-[0.4em] uppercase block mb-6" style={{ color: "rgba(250,247,242,0.4)" }}>
-                Global Pipeline
-              </span>
-              <h2 className="font-estate-headline text-4xl md:text-6xl font-light" style={{ color: IVORY }}>
-                Destinations in Development
-              </h2>
-              <p className="font-estate-sans text-base mt-6 max-w-2xl" style={{ color: "rgba(250,247,242,0.5)" }}>
-                From private islands to urban longevity clubs — a global network of vitality-centered living.
-              </p>
-            </motion.div>
 
-            <motion.div variants={stagger} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {destinations.map((dest, i) => (
-                <motion.div
-                  key={i}
-                  variants={fadeUp}
-                  className="group relative overflow-hidden rounded-xl"
-                >
-                  <div className="aspect-[4/3] overflow-hidden">
-                    <img
-                      src={dest.image}
-                      alt={dest.name}
-                      loading="lazy"
-                      className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  </div>
-                  
-                  <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
-                    <span className="font-estate-sans text-[9px] tracking-[0.2em] uppercase block mb-1.5" style={{ color: "rgba(250,247,242,0.55)" }}>
-                      {dest.type}
-                    </span>
-                    <h4 className="font-estate-headline text-xl font-light" style={{ color: IVORY }}>
-                      {dest.name}
-                    </h4>
-                    <p className="font-estate-sans text-[10px] tracking-wider uppercase mt-1" style={{ color: "rgba(250,247,242,0.45)" }}>
-                      {dest.region}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
 
-            {/* Pipeline summary stats */}
-            <motion.div variants={fadeUp} className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-16" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-              {[
-                { value: "24+", label: "Total Projects" },
-                { value: "8", label: "Countries" },
-                { value: "$2B+", label: "Pipeline Value" },
-                { value: "3,100+", label: "Keys & Units" },
-              ].map((stat, i) => (
-                <div key={i}>
-                  <div className="font-estate-headline text-3xl md:text-4xl font-light" style={{ color: IVORY }}>
-                    <AnimatedCounter valueStr={stat.value} duration={2} />
-                  </div>
-                  <div className="font-estate-sans text-[9px] tracking-[0.25em] uppercase mt-2" style={{ color: "rgba(250,247,242,0.45)" }}>
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
 
       {/* ═══════════════════════════════════════════════════════════════
           SECTION 7: MARKET OPPORTUNITY — Ivory with editorial stats

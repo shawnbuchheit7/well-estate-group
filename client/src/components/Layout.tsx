@@ -160,7 +160,7 @@ export default function Layout({ children, section = "longevity" }: LayoutProps)
       { href: "/longevity/estate/memberships", label: "Membership" },
       { href: "/longevity/estate/therapeutics", label: "Experience" },
       { href: "/longevity/estate/technology", label: "Technology" },
-      { href: "/longevity/estate/projections", label: "Pipeline" },
+      { href: "/longevity/estate/pipeline", label: "Pipeline" },
       { href: "/longevity/estate/team", label: "Platform" },
       { href: "/longevity/estate/faq", label: "FAQ" },
     ];
