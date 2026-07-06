@@ -1,8 +1,8 @@
 /**
  * The Estate Ecosystem Page
  * Includes Layout wrapper for navigation bars
- * Features: Foundational Pillars section + Hero Ecosystem Sketch
- * Clean, premium presentation — no broken cards or rectangles
+ * Features: Foundational Pillars section, Ecosystem Sketch hero image
+ * Broken expression cards and service category rectangles removed
  */
 
 import { motion } from "framer-motion";
@@ -17,10 +17,6 @@ const stagger = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.12 } },
 };
-
-/* ─── Brand Constants ─── */
-const IVORY = "#FAF7F2";
-const DARK = "#0A0A0A";
 
 const foundationalPillars = [
   {
@@ -48,37 +44,59 @@ const foundationalPillars = [
 export default function EstateEcosystem() {
   return (
     <Layout section="longevity">
-      {/* Hero Section — Dark, cinematic opening */}
-      <section className="relative py-28 md:py-36" style={{ background: DARK }}>
+      <div className="min-h-screen bg-white pt-8 pb-32">
         <div className="max-w-6xl mx-auto px-8 md:px-16">
+          {/* Header — matching PDF: serif title left, description right */}
           <motion.div
             initial="hidden"
             animate="visible"
             variants={stagger}
-            className="text-center mb-16"
+            className="mb-16"
           >
-            <motion.span
+            <motion.div variants={fadeUp} className="flex flex-col md:flex-row md:items-start gap-6 md:gap-12">
+              <h1 className="font-estate-display text-4xl md:text-5xl font-light leading-tight text-[#0A0A0A] flex-shrink-0">
+                The Estate<br />Ecosystem
+              </h1>
+              <p className="font-estate-sans text-base md:text-lg leading-relaxed text-[#0A0A0A]/70 max-w-2xl pt-2">
+                A full-circle longevity ecosystem blending preventative care, performance
+                optimization, hospitality, and lifestyle into a unified offering.
+              </p>
+            </motion.div>
+          </motion.div>
+
+          {/* Foundational Pillars Section */}
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={stagger}
+            className="mb-20"
+          >
+            <motion.h2
               variants={fadeUp}
-              className="font-estate-sans text-[10px] tracking-[0.4em] uppercase block mb-6"
-              style={{ color: "rgba(250,247,242,0.4)" }}
+              className="font-estate-display text-2xl md:text-4xl font-light text-center text-[#0A0A0A] mb-4 leading-tight"
             >
-              The Ecosystem
-            </motion.span>
-            <motion.h1
-              variants={fadeUp}
-              className="font-estate-headline text-4xl md:text-6xl font-light leading-[1.15] mb-8"
-              style={{ color: IVORY }}
-            >
-              A Full-Circle Longevity<br />Ecosystem
-            </motion.h1>
-            <motion.p
-              variants={fadeUp}
-              className="font-estate-sans text-base md:text-lg leading-[1.8] max-w-3xl mx-auto"
-              style={{ color: "rgba(250,247,242,0.6)" }}
-            >
-              Blending preventative care, performance optimization, hospitality,
-              and lifestyle into a unified offering.
-            </motion.p>
+              A complete ecosystem for daily optimization.<br />
+              Built on The Estate's foundational pillars.
+            </motion.h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+              {foundationalPillars.map((pillar, i) => (
+                <motion.div key={i} variants={fadeUp} className="text-center">
+                  <div className="aspect-[3/4] rounded-lg overflow-hidden mb-4 bg-[#F5F4F1]">
+                    <img
+                      src={pillar.image}
+                      alt={pillar.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h3 className="font-estate-display text-xl md:text-2xl font-light text-[#0A0A0A] mb-2">
+                    {pillar.title}
+                  </h3>
+                  <p className="font-estate-sans text-sm text-[#0A0A0A]/60 leading-relaxed">
+                    {pillar.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
 
           {/* Hero Ecosystem Sketch */}
@@ -86,88 +104,33 @@ export default function EstateEcosystem() {
             initial="hidden"
             animate="visible"
             variants={fadeUp}
+            className="mb-20"
           >
-            <div className="rounded-xl overflow-hidden border border-white/10 shadow-2xl">
+            <div className="rounded-xl overflow-hidden border border-[#0A0A0A]/10 shadow-lg">
               <img
                 src="/estate_ecosystem_sketch.png"
                 alt="The Estate Ecosystem — Complete architectural illustration showing all services, experiences, and expressions"
                 className="w-full h-auto"
               />
             </div>
-            <p className="font-estate-sans text-[10px] tracking-[0.3em] uppercase text-center mt-6" style={{ color: "rgba(250,247,242,0.3)" }}>
+            <p className="font-estate-sans text-xs text-[#0A0A0A]/40 text-center mt-4 tracking-wide">
               THE ESTATE ECOSYSTEM — Where Vitality is the Ultimate Luxury.
             </p>
           </motion.div>
-        </div>
-      </section>
 
-      {/* Foundational Pillars Section — Ivory background */}
-      <section className="py-28 md:py-36" style={{ background: IVORY }}>
-        <div className="max-w-6xl mx-auto px-8 md:px-16">
+          {/* THE ESTATE footer mark */}
           <motion.div
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={stagger}
+            animate="visible"
+            variants={fadeUp}
+            className="mt-20"
           >
-            <motion.div variants={fadeUp} className="text-center mb-16">
-              <span className="font-estate-sans text-[10px] tracking-[0.4em] uppercase block mb-6" style={{ color: "rgba(10,10,10,0.35)" }}>
-                Foundation
-              </span>
-              <h2 className="font-estate-headline text-3xl md:text-5xl font-light leading-[1.2]" style={{ color: DARK }}>
-                Built on Four Pillars
-              </h2>
-              <p className="font-estate-sans text-base mt-6 max-w-2xl mx-auto" style={{ color: "rgba(10,10,10,0.5)" }}>
-                A complete ecosystem for daily optimization — built on The Estate's foundational pillars.
-              </p>
-            </motion.div>
-
-            <motion.div variants={stagger} className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {foundationalPillars.map((pillar, i) => (
-                <motion.div key={i} variants={fadeUp} className="text-center">
-                  <div className="aspect-[3/4] rounded-xl overflow-hidden mb-5 bg-[#F5F4F1] shadow-sm">
-                    <img
-                      src={pillar.image}
-                      alt={pillar.title}
-                      loading="lazy"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <h3 className="font-estate-headline text-xl md:text-2xl font-light mb-2" style={{ color: DARK }}>
-                    {pillar.title}
-                  </h3>
-                  <p className="font-estate-sans text-sm leading-relaxed" style={{ color: "rgba(10,10,10,0.55)" }}>
-                    {pillar.description}
-                  </p>
-                </motion.div>
-              ))}
-            </motion.div>
+            <p className="font-estate-wordmark text-sm tracking-[0.2em] uppercase text-[#0A0A0A]/40">
+              THE ESTATE
+            </p>
           </motion.div>
         </div>
-      </section>
-
-      {/* Closing CTA */}
-      <section className="py-20 md:py-28" style={{ background: DARK }}>
-        <div className="max-w-4xl mx-auto px-8 md:px-16 text-center">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={stagger}
-          >
-            <motion.p
-              variants={fadeUp}
-              className="font-estate-headline text-2xl md:text-4xl font-light leading-[1.3]"
-              style={{ color: IVORY }}
-            >
-              Where design, science, and experience converge —<br />
-              <span className="italic" style={{ color: "rgba(250,247,242,0.5)" }}>
-                a new model for wellbeing.
-              </span>
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
+      </div>
     </Layout>
   );
 }
