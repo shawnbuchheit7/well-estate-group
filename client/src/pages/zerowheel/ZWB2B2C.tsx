@@ -203,7 +203,7 @@ export default function ZWB2B2C() {
                   { vertical: "Medical & Rehab", buyer: "Clinical Rehab Director / Owner-Operators", consumer: "Patients", model: "Hardware + Rx Subscription", ltv: "$1,200+" },
                   { vertical: "Direct-to-Consumer", buyer: "Direct (E-commerce)", consumer: "Home User", model: "Hardware + Subscription + Accessories", ltv: "$700+" },
                   { vertical: "Corporate Wellness", buyer: "Wellness Program Manager / HR Director", consumer: "Employees", model: "Hardware + Engagement Platform", ltv: "$500+" },
-                  { vertical: "Professional Sports", buyer: "Director of S&C", consumer: "Athletes", model: "Hardware + Data Analytics", ltv: "$800+" },
+                  { vertical: "Athletics, Education & Professional Sports", buyer: "Director of S&C", consumer: "Athletes", model: "Hardware + Data Analytics", ltv: "$800+" },
                   { vertical: "Hospitality & Amenities", buyer: "Management Co / Fitness & Spa Directors", consumer: "Guests & Residents", model: "Hardware + In-Room Wellness", ltv: "$300+" },
                   { vertical: "Military & Government", buyer: "TSAC-F / Police & Fire Chiefs / Dir. of Rec", consumer: "Service Members & Community", model: "Hardware + Maintenance Contract", ltv: "$500+" },
                   { vertical: "Cruise & Maritime", buyer: "VP Onboard / VP Newbuild / Mgmt Co", consumer: "Passengers & Crew", model: "Hardware + In-Cabin Wellness", ltv: "$250+" },

@@ -278,7 +278,7 @@ const lobPlaybooks = [
   },
   {
     icon: Users,
-    lob: "Professional Sports",
+    lob: "Athletics, Education & Professional Sports",
     tier: "Tier 2 — Growth Phase",
     tierColor: "#888",
     marketCategory: "Vertical",
@@ -1100,7 +1100,7 @@ export default function ZWProductAnalysis() {
           <div className="max-w-5xl mx-auto space-y-4">
             {[
               {
-                from: "Professional Sports",
+                from: "Athletics, Education & Professional Sports",
                 to: "Fitness Clubs → DTC",
                 effect: "Pro team adoption creates aspirational demand. When members see their favorite team using ZeroWheel, clubs want it on their floor — and consumers want it at home. The LA Rams and Aroldis Chapman are already active users.",
               },

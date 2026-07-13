@@ -152,7 +152,7 @@ const macroLOBs: MacroLOB[] = [
     contactNote: "Target accounts include KKR, PGA TOUR Global Home, and other premium corporate HQ fitness amenities.",
   },
   {
-    name: "Professional Sports",
+    name: "Athletics, Education & Professional Sports",
     icon: Users,
     color: "#B8860B",
     category: "Vertical",

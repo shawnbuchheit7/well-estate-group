@@ -142,7 +142,7 @@ const macroLobs: MacroLob[] = [
     subs: ["Fortune 500 Wellness Programs", "Corporate Fitness Centers", "Employee Engagement Platforms", "HR/Benefits Partnerships"],
   },
   {
-    name: "Professional Sports",
+    name: "Athletics, Education & Professional Sports",
     icon: Users,
     category: "COMMERCIAL",
     categoryColor: "#6B7280",
@@ -228,7 +228,7 @@ const summaryTable = [
   { vertical: "Medical & Rehab", decisionMaker: "Clinical Rehab Director / Owner-Operators", painPoint: "Patient safety & progress data", uvp: "CKC science, graduated assistance" },
   { vertical: "Direct-to-Consumer", decisionMaker: "Fitness Tech Enthusiast", painPoint: "Space, cost, variety", uvp: "Full smart gym at $1,095" },
   { vertical: "Corporate Wellness", decisionMaker: "Wellness Program Manager", painPoint: "Lower back pain ($100B/yr)", uvp: "Combats #1 workplace injury" },
-  { vertical: "Professional Sports", decisionMaker: "Director of S&C", painPoint: "Eccentric overload & portability", uvp: "Advanced modes, elite endorsed" },
+  { vertical: "Athletics, Education & Professional Sports", decisionMaker: "Director of S&C", painPoint: "Eccentric overload & portability", uvp: "Advanced modes, elite endorsed" },
   { vertical: "Hospitality & Amenities", decisionMaker: "Management Co / Fitness & Spa Directors / GMs", painPoint: "Limited space, no staff", uvp: "Space-saving, self-guided" },
   { vertical: "Military & Government", decisionMaker: "TSAC-F / Police & Fire Chiefs / Dir. of Recreation", painPoint: "Portability & GSA compliance", uvp: "Rugged, portable, US Army endorsed" },
   { vertical: "Cruise & Maritime", decisionMaker: "VP Onboard / VP Newbuild / Management Co", painPoint: "Extreme space constraints", uvp: "Ultra-compact, fleet management" },

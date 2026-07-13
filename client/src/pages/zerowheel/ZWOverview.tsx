@@ -68,7 +68,7 @@ export default function ZWOverview() {
               { icon: Stethoscope, label: "Medical & Rehab", description: "Physical therapy, sports medicine, and longevity centers" },
               { icon: Package, label: "Direct-to-Consumer", description: "E-commerce, social commerce, and retail" },
               { icon: Target, label: "Corporate Wellness", description: "Fortune 500 wellness programs and corporate fitness" },
-              { icon: Award, label: "Professional Sports", description: "Pro teams, collegiate athletics, and performance training" },
+              { icon: Award, label: "Athletics, Education & Professional Sports", description: "Pro teams, collegiate athletics, and performance training" },
               { icon: Building2, label: "Hospitality & Amenities", description: "Luxury hotels, resorts, and premium residential" },
               { icon: Shield, label: "Military & Government", description: "DoD, VA rehab, and GSA-compliant procurement" },
               { icon: Ship, label: "Cruise & Maritime", description: "Cruise lines, superyachts, and marine fitness" },

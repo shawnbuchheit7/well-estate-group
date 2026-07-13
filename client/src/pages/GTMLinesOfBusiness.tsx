@@ -21,7 +21,7 @@ const sections = [
 
 const allLobs = [
   "Golf & Country Clubs", "City Clubs", "Parks & Recreation",
-  "Destination Resorts", "City Hotels", "Professional Sports",
+  "Destination Resorts", "City Hotels", "Athletics, Education & Professional Sports",
   "Live/Work/Play", "Boutique Studios", "Sports Performance Centers",
   "Residential/Multi-Family BTR", "Multi-Tenant Corporate Office",
   "Maritime", "Health Care", "Influencer",
