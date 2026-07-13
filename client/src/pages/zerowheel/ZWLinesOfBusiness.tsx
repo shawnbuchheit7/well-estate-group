@@ -60,7 +60,7 @@ const macroLobs: MacroLob[] = [
     ],
     gtmPositioning: "Market as bespoke, data-driven core training exclusive to the club. Uniquely positioned for golf, tennis, and pickleball-specific routines. Members want to stay healthy to continue their favorite activities — core strength directly increases drive distance for golfers. Also supports shoulder ROM improvement and rehabilitation. Trainers offer premium sessions with real-time performance tracking.",
     keySelling: ["Golf/tennis/pickleball-specific routines", "Increases drive distance", "Shoulder ROM & rehab", "Exclusivity factor", "Trainer-led programming"],
-    subs: ["Golf & Country Clubs", "City Clubs", "Yacht Clubs", "Athletic Clubs", "Stadium/Alumni Clubs"],
+    subs: ["Golf Clubs", "Country Clubs", "City Clubs", "Athletic Clubs", "Yacht Clubs", "Stadium & Alumni Clubs"],
     testimonial: { quote: "A natural fit for members who don't fit traditional machines.", author: "Steve Boring, PhD", role: "Rochester Athletic Club, Fitness Director" },
   },
   {
